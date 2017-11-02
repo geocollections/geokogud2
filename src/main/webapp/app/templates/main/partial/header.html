@@ -45,14 +45,14 @@
                        aria-expanded="false">{{ 'INDEX.USEFUL_LINKS' | translate }}<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li data-toggle="collapse" data-target=".in"><a href="{{main.configuration.apiUrl}}"
-                                                                        target="_self">{{ 'INDEX.PUBLIC_API_LINK' | translate }}</a></li>
+                                                                        target="_blank">{{ 'INDEX.PUBLIC_API_LINK' | translate }}</a></li>
                         <li data-toggle="collapse" data-target=".in"><a href="{{main.configuration.githubUrl}}"
-                                                                        target="_self">GitHub</a></li>
+                                                                        target="_blank">GitHub</a></li>
                         <li data-toggle="collapse" data-target=".in"><a href="http://fossiilid.info/"
-                                                                        target="_self"
+                                                                        target="_blank"
                                                                         title="{{ 'INDEX.FOSSILS_TITLE' | translate }}">{{                                'INDEX.FOSSILS_LINK' | translate }}</a></li>
                         <li data-toggle="collapse" data-target=".in"><a href="http://ermas.geokogud.info/"
-                                                                        target="_self"
+                                                                        target="_blank"
                                                                         title="{{ 'INDEX.ERMAS_TITLE' | translate }}">{{                                'INDEX.ERMAS_LINK' | translate }}</a></li>
                     </ul>
                 </li>
@@ -90,7 +90,7 @@
 </div>
 <script>
     jQuery(document).ready(function ($) {
-        // Offset for Main Navigation
+        // Offset for Main Navigation after 100px
         $('#mainNav').affix({
             offset: {
                 top: 100

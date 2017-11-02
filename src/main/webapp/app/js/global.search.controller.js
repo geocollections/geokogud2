@@ -38,7 +38,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         if (!result.data) return;
         result.data.forEach(function (response) {
             $scope.searchResults[response.table] = response;
-            if (response.table == $scope.selectedTab) {
+            if (response.table === $scope.selectedTab) {
                 $scope.response.results = response.results;
                 $scope.response.related_data = response.related_data;
             }
