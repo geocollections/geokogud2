@@ -1,6 +1,6 @@
 # Geocollections of Estonia
 
-http://geocollections.arendus.geokogud.info/
+http://arendus.geokogud.info/
 
 ## Getting Started
 
