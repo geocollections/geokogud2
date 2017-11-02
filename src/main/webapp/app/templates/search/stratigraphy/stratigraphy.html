@@ -1,0 +1,110 @@
+<header ng-include="'app/templates/main/partial/header.html'"></header>
+<section id="sectionSearch">
+    <div id="searches" ng-include="'app/templates/main/partial/search.html'"></div>
+    <div class="container-fluid" bs-loading-overlay bs-loading-overlay-reference-id="searchView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                <div class="row">
+                    <h3 class="search-heading"><span data-toggle="tooltip" data-placement="bottom"
+                                                     title="{{ 'SEARCH.STRATIGRAPHY.HEADING' | translate }}">{{ 'SEARCH.STRATIGRAPHY.STRATIGRAPHY' | translate }}</span> <span
+                            class="badge badge-info">{{response.count}}</span>
+                        <button type="submit" value="showHint" class="btn btn-info btn-sm pull-right"
+                                data-ng-click="showHint()">
+                            <span class="glyphicon glyphicon-question-sign"></span> {{ 'SEARCH.FAQ' | translate }}
+                        </button>
+                    </h3>
+                </div>
+                <div class="visible-xs">
+                    <div class="row search-hint" ng-bind-html="main.getContent(main.searchTips)" data-ng-if="isHintHidden"></div>
+                </div>
+                <form ng-enter="search()">
+                    <div class="row">
+                        <div class="panel-heading searchGroupHeading"
+                             ng-click="isIdentifierFieldsCollapsed = !isIdentifierFieldsCollapsed">
+                            <h4 class="panel-title">
+                                {{ 'SEARCH.CRITERIA.HEADING.PRIMARY'| translate }}
+                                <section-opened-icon is-opened="isIdentifierFieldsCollapsed"/>
+                            </h4>
+                        </div>
+                        <div uib-collapse="isIdentifierFieldsCollapsed">
+                            <div class="well well-lg">
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12  medium-padding">
+                                        <b>{{ 'SEARCH.STRATIGRAPHY.ID' | translate }}</b>
+                                        <selectexact custom-css="searchCriterionType"
+                                                     ng-model="searchParameters.id.lookUpType"></selectexact>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="text" ng-model="searchParameters.id.name" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12  medium-padding">
+                                        <b>{{ 'SEARCH.STRATIGRAPHY.STRATIGRAPHY' | translate }}</b>
+                                        <selecthierarchy custom-css="searchCriterionType"
+                                                         ng-model="searchParameters.stratigraphy.lookUpType"></selecthierarchy>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <autocomplete-field ng-model="searchParameters.stratigraphy.name" table="stratigraphy" en="stratigraphy_en" et="stratigraphy"/>
+                                    </div>
+                                </div>
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12  medium-padding">
+                                        <b>{{ 'SEARCH.STRATIGRAPHY.INDEX' | translate }}</b>
+                                        <selectdefault custom-css="searchCriterionType"
+                                                       ng-model="searchParameters.index.lookUpType"></selectdefault>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="text" ng-model="searchParameters.index.name" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12  medium-padding">
+                                        <b>{{ 'SEARCH.STRATIGRAPHY.AGE_MIN_Y' | translate }}</b>
+                                        <selectexact custom-css="searchCriterionType"
+                                                     ng-model="searchParameters.ageMinY.lookUpType"></selectexact>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="text" ng-model="searchParameters.ageMinY.name" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12  medium-padding">
+                                        <b>{{ 'SEARCH.STRATIGRAPHY.MAIN_LITHOLOGY' | translate }}</b>
+                                        <selectdefault custom-css="searchCriterionType"
+                                                       ng-model="searchParameters.mainLithology.lookUpType"></selectdefault>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <autocomplete-field ng-model="searchParameters.mainLithology.name" table="stratigraphy" en="lithology_en" et="lithology"/>
+                                    </div>
+                                </div>
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12  medium-padding">
+                                        <b>{{ 'SEARCH.STRATIGRAPHY.AUTHOR' | translate }}</b>
+                                        <selectdefault custom-css="searchCriterionType"
+                                                       ng-model="searchParameters.author.lookUpType"></selectdefault>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <autocomplete-field ng-model="searchParameters.author.name" table="stratigraphy" en="null" et="author_free"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-include="'app/templates/search/partial/button.search.html'"></div>
+                </form>
+            </div>
+            <div class="col-sm-9 col-md-9 col-lg-9" bs-loading-overlay bs-loading-overlay-reference-id="searchView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
+                <div class="hidden-xs">
+                    <div class="row search-hint" ng-bind-html="main.getContent(main.searchTips)" data-ng-if="isHintHidden"></div>
+                </div>
+
+                <div non-isolated-include template-path="app/templates/search/stratigraphy/stratigraphy_results.html"/>
+
+            </div>
+        </div>
+    </div>
+</section>
+<div ng-include="'app/templates/main/partial/contact.html'"></div>
+<div ng-include="'app/templates/main/partial/footer.html'"></div>

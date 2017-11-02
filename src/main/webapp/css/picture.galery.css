@@ -1,0 +1,33 @@
+.page-header{
+    margin-top: 0px;
+}
+.previewImage {
+    max-height: 130px;
+}
+.img-responsive {
+    text-align: center;
+}
+.img-gallery-author {
+    color:#dc251e;
+    margin-left: 10px;
+    font-weight: 700;
+}
+.carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {
+    width: auto;
+    height: 130px;
+}
+.imagePlace {
+    margin-left: 10px;
+}
+@media only screen and (max-width: 480px) {
+    .carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {
+        width: auto;
+        height: 75px;
+    }
+    .previewImage {
+        max-height: 75px;
+    }
+    .img-gallery-author, .imagePlace {
+        font-size: 12px;
+    }
+}

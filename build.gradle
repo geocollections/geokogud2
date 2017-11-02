@@ -1,0 +1,205 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+buildscript {
+    ext {
+        springBootVersion = '1.5.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("io.spring.gradle:dependency-management-plugin:1.0.0.RELEASE")
+        classpath 'org.flywaydb:flyway-gradle-plugin:3.2.1'
+    }
+}
+
+apply plugin: 'application'
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
+apply plugin: 'idea'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.flywaydb.flyway'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+mainClassName = 'ee.ttu.geocollection.App'
+applicationDefaultJvmArgs = ['-Xms1G', '-Xmx1G', '-XX:+UseConcMarkSweepGC', '-Dfile.encoding=UTF-8']
+
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file("$buildDir/classes/main/")
+        sourceDirs += file('src/main/generated')
+    }
+}
+
+bootRepackage {
+    mainClass = "ee.ttu.geocollection.App"
+}
+
+war {
+    baseName = 'geocollections'
+    version =  ''
+}
+
+repositories {
+    mavenCentral()
+}
+
+allprojects {
+  repositories {
+    maven { url 'https://jitpack.io' }
+  }
+}
+
+configurations {
+    providedRuntime
+    querydslapt
+
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
+}
+
+sourceSets {
+    generated {
+        java {
+            srcDirs = ['src/main/generated']
+        }
+    }
+}
+dependencies {
+    ext.poiVersion = '3.14'
+
+    compile 'org.springframework.boot:spring-boot-starter-web'
+//    compile 'org.springframework.boot:spring-boot-devtools'
+    compile 'org.springframework.boot:spring-boot-starter-security'
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'org.springframework.boot:spring-boot-starter-test'
+    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    compile 'org.springframework:spring-context'
+    compile 'org.springframework:spring-context-support'
+    compile 'org.springframework:spring-jms'
+    compile 'org.springframework:spring-oxm'
+    compile("org.springframework.boot:spring-boot-starter-amqp")
+    compile 'org.springframework.ws:spring-ws-core'
+    compile ('org.springframework.security:spring-security-cas') {
+        exclude group: 'velocity', module: 'velocity'
+    }
+	compile 'org.postgresql:postgresql:9.4-1201-jdbc41'
+    compile 'joda-time:joda-time:2.7'
+    compile 'org.osgeo:proj4j:0.1.0'
+    compile('net.sf.ehcache:ehcache:2.10.0') {
+        exclude group: 'commons-logging'
+    }
+    compile 'org.flywaydb:flyway-core:3.2.1'
+    compile 'org.apache.activemq:activemq-spring:5.11.1'
+    compile 'commons-beanutils:commons-beanutils-core:1.8.3'
+    compile 'org.ostermiller:utils:1.07.00'
+    compile 'com.mysema.querydsl:querydsl-jpa:3.6.5'
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'commons-io:commons-io:2.4'
+    querydslapt 'com.mysema.querydsl:querydsl-apt:3.6.5'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.6.2'
+    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+    testCompile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.0.0'
+    testCompile 'org.springframework.ws:spring-ws-test'
+    testCompile 'com.google.code.gson:gson:2.3.1'
+    compile 'com.microsoft.ews-java-api:ews-java-api:2.0'
+    compile 'com.sun.mail:javax.mail:1.5.5';
+
+    compile "org.apache.poi:poi:$poiVersion"
+    compile "org.apache.poi:poi-scratchpad:$poiVersion"
+    compile "org.apache.poi:poi-ooxml-schemas:$poiVersion"
+    compile "org.apache.poi:poi-ooxml:$poiVersion"
+
+    compile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.assertj', name: 'assertj-core', version: '3.6.2'
+
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
+
+    compile group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.0.8'
+    compile group: 'org.apache.lucene', name: 'lucene-core', version: '6.5.0'
+    compile group: 'org.apache.lucene', name: 'lucene-grouping', version: '6.5.0'
+
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version:'3.4.0'
+    testCompile 'com.github.detro:ghostdriver:2.0.0'
+    testCompile 'com.codeborne:selenide:4.4.1'
+}
+
+task generateQueryDSL(type: JavaCompile, group: 'build', description: 'Generates the QueryDSL query types') {
+    source = sourceSets.main.java
+    classpath = configurations.compile + configurations.querydslapt
+    options.compilerArgs = [
+            "-proc:only",
+            "-processor", "com.mysema.query.apt.jpa.JPAAnnotationProcessor"
+    ]
+    destinationDir = sourceSets.generated.java.srcDirs.iterator().next()
+}
+
+compileJava {
+    //dependsOn generateQueryDSL
+    source generateQueryDSL.destinationDir
+}
+
+compileGeneratedJava {
+    //dependsOn generateQueryDSL
+    options.warnings = false
+    classpath += sourceSets.main.runtimeClasspath
+}
+
+clean {
+    //delete sourceSets.generated.java.srcDirs
+}
+
+flyway {
+    url = 'jdbc:postgresql://localhost:5432/geodeesia'
+    user = 'geodeesia'
+    password = 'geodeesia'
+    outOfOrder = false
+}
+
+bootRun {
+    jvmArgs = ["-Duser.timezone=Europe/Tallinn"]
+    systemProperties = System.properties
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.4.0'
+}
+
+test {
+     exclude "**/ee/ttu/geocollection/uiTests/*.class"
+}
+
+task testUI(type: Test) {
+     description "Runs UI tests"
+     doFirst{
+       println("Running UI tests")
+     }
+     scanForTestClasses = false
+     include "**/ee/ttu/geocollection/uiTests/*.class"
+     def phantomJsFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "phantomjs/phantomjs-2.1.1-windows/bin/phantomjs.exe" : "phantomjs/phantomjs-2.1.1-linux-x86_64/bin/phantomjs"
+     systemProperty "phantomjs.binary.path", phantomJsFilename
+}
+
+tasks.withType(Test) {
+    testLogging {
+        //showStandardStreams = true
+        events "passed", "skipped", "failed"
+        afterSuite { desc, result ->
+            if (!desc.parent) { // will match the outermost suite
+                def output = "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+                def startItem = '|  ', endItem = '  |'
+                def repeatLength = startItem.length() + output.length() + endItem.length()
+                println('\n' + ('-' * repeatLength) + '\n' + startItem + output + endItem + '\n' + ('-' * repeatLength))
+            }
+        }
+    }
+}

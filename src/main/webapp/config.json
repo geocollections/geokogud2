@@ -1,0 +1,342 @@
+{
+  "pageSetUp": {
+    "pageSize":100,
+    "debugMode": false
+  },
+
+  "urlHelper" : {
+    "lookUpType" : {
+      "icontains" : 1,
+      "iexact" :5,
+      "exact" :5,
+      "istartswith" : 2,
+      "iendswith" : 3,
+      "doesnotcontain" : 4,
+      "in" : 9,
+      "hierarchy" : 11
+    },
+    "common" : {
+      "dbs" : "",
+      "sortField" : {"order":"sortDir","sortBy" : "sort"},
+      "currentTable" : "currentTable"
+    },
+      "doi" : {
+        "fields" : {
+          "doi": "identifier",
+          "title": "title",
+          "publishedBy": "publisher",
+          "author": "authors",
+          "abstractText": "abstract"
+        }
+      },
+      "soilsite" : {
+        "fields" : {
+          "id":"id",
+          "site": "site",
+          "areaOfStudy": "area",
+          "transect": "transect",
+          "soilName": "soil",
+          "landUse": "land_use",
+          "deepMining": "deep"
+        }
+      },
+      "image": {
+        "fields": {
+          "locality": "locality",
+          "people": "people",
+          "keywords": "keywords",
+          "adminUnit": "county",
+          "dateTakenSince": "date_start",
+          "imageNumber": "number",
+          "authorAgent": "author",
+          "sizeXYSince": "size"
+        }
+      },
+      "preparation": {
+        "fields": {
+          "number": "sample_number",
+          "locality": "locality",
+          "stratigraphy": "stratigraphy",
+          "collector": "agent",
+          "description": "prep_description",
+          "speciesRecovered": "taxon",
+          "speciesFrequency": "frequency"
+        }
+      },
+      "analysis": {
+        "fields": {
+          "id": "sample_number",
+          "sample": "sample_id",
+          "locality": "locality",
+          "adminUnit": "country",
+          "stratigraphy": "stratigraphy",
+          "stratigraphyBed": "stratigraphy_bed",
+          "analysisMethod": "analysis",
+          "XXX": "component",
+          "methodDetails": "content"
+        }
+      },
+      "stratigraphy": {
+        "fields": {
+          "id": "stratigraphy_id",
+          "stratigraphy": "strat_unit",
+          "index": "index",
+          "ageMinY": "age_base",
+          "mainLithology": "lithology",
+          "author": "author"
+        }
+      },
+      "reference": {
+        "fields": {
+          "author": "author",
+          "title": "title",
+          "journal": "journal",
+          "book": "book",
+          "id": "reference___id"
+        }
+      },
+      "locality": {
+        "fields": {
+          "id": "ID",
+          "locality": "locality",
+          "number": "number",
+          "country": "country",
+          "adminUnit": "county",
+          "latitude": "latitude",
+          "longitude": "longitude",
+          "verticalExtentSince": "vertical_extent",
+          "stratigraphy": "stratigraphy",
+          "reference": "reference",
+          "maPaId": "maaamet_pa_id"
+        }
+      },
+      "drillcore": {
+        "fields": {
+          "id": "id",
+          "drillcore": "drillcore",
+          "country": "country",
+          "county": "county",
+          "stratigraphy": "stratigraphy",
+          "storageLocation": "location",
+          "boxesSince": "boxes"
+        }
+        },
+      "sample" : {
+        "fields": {
+          "agent": "agent",
+          "analysisMethod": "analysis",
+          "component": "component",
+          "content": "content",
+          "country": "country",
+          "frequency": "frequency",
+          "id": "id",
+          "locality": "locality",
+          "location": "location",
+          "sampleNumber": "sample_number",
+          "stratigraphy": "stratigraphy",
+          "stratigraphyBed": "stratigraphy_bed",
+          "taxon": "taxon"
+        }
+      },
+      "specimen": {
+          "fields": {
+            "id": "id",
+            "specimenNumber": "specimen_number",
+            "collectionNumber": "collection_id",
+            "classification": "classification",
+            "fossilMineralRock": "fossil",
+            "fossilName": "taxon",
+            "mineralRock": "name_geology",
+            "adminUnit": "country",
+            "locality": "locality",
+            "stratigraphy": "stratigraphy",
+            "collector": "agent",
+            "reference": "reference",
+            "typeStatus": "original_type",
+            "partOfFossil": "part",
+            "keyWords": "tags",
+            "regDateStart": "date_added"
+          }
+      },
+      "specialFields" : [
+        "depth", "mass", "year", "boxes", "size", "publication_year"
+      ],
+    "searchWithOutDBS": [
+      "soilsite", "preparation", "stratigraphy", "reference", "locality"
+    ],
+    "map" : {
+      "fields": {
+        "specimens": "specimens",
+        "samples": "samples",
+        "drillcores": "drillcores",
+        "citing_references": "references",
+        "analyses": "analyses",
+        "stratotypes": "stratotypes",
+        "images": "images",
+        "taxon_occurrences": "taxa",
+        "localityName": "loc"
+      }
+    }
+  },
+
+  "autocompleteUrl" : "/search/autocomplete-field",
+
+  "newsUrl":"/news",
+  "mapData": {
+    "specificLocalities":"/map/locality-summary-filter",
+    "allLocalities":"/map/locality-summary"
+  },
+
+  "webPagesUrl":"/webpages",
+
+  "specimenUrl":"/search/specimen",
+  "sampleUrl":"/search/sample",
+  "drillCoreUrl":"/search/drillcore",
+  "localityUrl":"/search/locality",
+  "referenceUrl":"/search/reference",
+  "stratigraphyUrl":"/search/stratigraphy",
+  "analysesUrl":"/search/analyses",
+  "preparationUrl":"/search/preparation",
+  "photoArchiveUrl":"/search/photo-archive",
+  "soilUrl":"/search/soil",
+  "doiUrl":"/search/doi",
+
+  "specimenDetailUrl":"/details/raw-specimen",
+  "specimenImageDetailUrl":"/details/raw-specimen-image",
+  "sampleDetailUrl":"/details/raw-sample",
+  "localityDetailUrl":"/details/raw-locality",
+  "stratigraphyDetailUrl":"/details/raw-stratigraphy",
+  "drillCoreDetailUrl":"/details/raw-drillcore",
+  "coreBoxDetailUrl":"/details/raw-corebox",
+  "referenceDetailUrl":"/details/raw-reference",
+  "analysisDetailUrl":"/details/raw-analysis",
+  "preparationDetailUrl":"/details/raw-preparation",
+  "photoArchiveDetailUrl":"/details/raw-photo-archive",
+  "soilDetailUrl":"/details/raw-soil",
+  "doiDetailUrl":"/details/raw-doi",
+
+  "detailFieldsConfig" : {
+    "specimens" : {
+      "urls" : [],
+      "localizedValues" : [],
+      "date" : ["date_added","date_changed"],
+      "ignoreFields" : []
+    },
+    "specimenImage" : {
+      "urls" : [],
+      "localizedValues" : [],
+      "date" : ["date_added","date_changed"],
+      "locality" : {"id" : "locality_id", "country" : "locality__country__value_en", "lat" : "locality__latitude", "lon" : "locality__longitude", "value_et" : "locality__locality", "value_en" : "locality__locality_en"},
+      "ignoreFields" : []
+    },
+    "samples" : {
+      "urls" : [
+        {"object" : "locality", "id": "locality_id", "value_et" : "locality__locality",  "value_en" : "locality__locality_en"},
+        {"object" : "stratigraphy", "id": "stratigraphy_id", "value_et" : "stratigraphy__stratigraphy",  "value_en" : "lithostratigraphy__stratigraphy_en"}
+      ],
+      "localizedValues" : [
+        {"value_et" : "locality__locality",  "value_en" : "locality__locality_en"},
+        {"value_et" : "locality__country__value",  "value_en" : "locality__country__value_en"},
+        {"value_et" : "soil_site__site",  "value_en" : "soil_site__site_en"},
+        {"value_et" : "stratigraphy__stratigraphy",  "value_en" : "lithostratigraphy__stratigraphy_en"},
+        {"value_et" : "lithostratigraphy__stratigraphy",  "value_en" : "lithostratigraphy__stratigraphy_en"},
+        {"value_et" : "classification_rock__name",  "value_en" : "classification_rock__name_en"},
+        {"value_et" : "rock",  "value_en" : "rock_en"}
+      ],
+      "date" : ["date_collected","date_collected_free", "date_added", "date_changed"],
+      "locality" : {"id" : "locality_id", "country" : "locality__country__value_en", "lat" : "locality__latitude", "lon" : "locality__longitude", "value_et" : "locality__locality", "value_en" : "locality__locality_en"},
+      "ignoreFields" : ["locality_id", "stratigraphy_id"]
+    },
+    "drillCores" : {
+      "urls" : [],
+      "localizedValues" : [],
+      "date" : [],
+      "locality" : {"id" : "locality_id", "country" : "locality__country__value_en", "lat" : "locality__latitude", "lon" : "locality__longitude", "value_et" : "locality__locality", "value_en" : "locality__locality_en"},
+      "ignoreFields" : []
+    },
+    "localities" : {
+      "urls" : [],
+      "localizedValues" : [{"value_et" : "asustusyksus__asustusyksus",  "value_en" : "asustusyksus__asustusyksus_en"},
+        {"value_et" : "country__value",  "value_en" : "country__value_en"},
+        {"value_et" : "locality",  "value_en" : "locality_en"},
+        {"value_et" : "maakond__maakond",  "value_en" : "maakond__maakond_en"},
+        {"value_et" : "stratigraphy_base__stratigraphy",  "value_en" : "stratigraphy_base__stratigraphy_en"},
+        {"value_et" : "stratigraphy_top__stratigraphy",  "value_en" : "stratigraphy_top__stratigraphy_en"},
+        {"value_et" : "type__value",  "value_en" : "type__value_en"},
+        {"value_et" : "vald__vald",  "value_en" : "vald__vald_en"},
+        {"value_et" : "coord_det_method__value",  "value_en" : "coord_det_method__value_en"}
+      ],
+      "locality" : {"id" : "id", "country" : "locality__country__value_en", "lat" : "latitude", "lon" : "longitude", "value_et" : "locality", "value_en" : "locality_en"},
+      "date" : ["date_added","date_changed"],
+      "ignoreFields" : []
+    },
+    "references" : {
+      "urls" : [],
+      "localizedValues" : [],
+      "date" : [],
+      "ignoreFields" : []
+    },
+    "stratigraphy" : {
+      "urls" : [],
+      "localizedValues" : [{"value_et" : "stratigraphy",  "value_en" : "stratigraphy_en"},
+        {"value_et" : "rank__value",  "value_en" : "rank__value_en"},
+        {"value_et" : "scope__value",  "value_en" : "scope__value_en"},
+        {"value_et" : "status__value",  "value_en" : "status__value_en"},
+        {"value_et" : "parent__stratigraphy",  "value_en" : "parent__stratigraphy_en"},
+        {"value_et" : "etymon",  "value_en" : "etymon_en"},
+        {"value_et" : "region",  "value_en" : "region_en"}
+      ],
+      "date" : [],
+      "ignoreFields" : []
+    },
+    "analysis" : {
+      "urls" : [{"object" : "sample", "id": "sample", "value_et" : "sample",  "value_en" : "sample"}],
+      "date" : [],
+      "ignoreFields" : []
+    },
+    "preparations" : {
+      "date" : ["date_added","date_changed"],
+      "ignoreFields" : []
+    },
+    "photoArchive" : {
+      "localizedValues" : [{"value_et" : "locality__locality",  "value_en" : "locality__locality_en"},
+        {"value_et" : "locality__country__value",  "value_en" : "locality__country__value_en"},
+        {"value_et" : "locality__maakond__maakond",  "value_en" : "locality__maakond__maakond_en"},
+        {"value_et" : "locality__vald__vald",  "value_en" : "locality__vald__vald_en"},
+        {"value_et" : "locality__asustusyksus__asustusyksus",  "value_en" : "locality__asustusyksus__asustusyksus_en"},
+        {"value_et" : "category__value",  "value_en" : "category__value_en"},
+        {"value_et" : "type__value",  "value_en" : "type__value_en"}
+      ],
+      "date" : ["date_added","date_changed"],
+      "ignoreFields" : []
+    },
+    "soil" : {
+      "locality" : {"id" : "", "country" : "locality__country__value_en", "lat" : "latitude", "lon" : "longitude", "value_et" : "area_name", "value_en" : ""},
+      "date" : [],
+      "ignoreFields" : []
+    },
+    "doi" : {
+      "localizedValues" : [{"value_et" : "language__value",  "value_en" : "language__value_en"},
+        {"value_et" : "dataset__name",  "value_en" : "dataset__name_en"}],
+      "date" : ["date_added","date_changed", "datacite_created", "datacite_updated"],
+      "ignoreFields" : []
+    }
+  },
+
+  "departments": [{"code": "GIT", "label": "GIT"},
+                  {"code": "TUG", "label": "TUG"},
+                  {"code": "ELM", "label": "ELM"},
+                  {"code": "TUGO", "label": "TUGO"},
+                  {"code": "MUMU", "label": "MUMU"},
+                  {"code": "EGK", "label": "EGK"}],
+
+
+  "apiUrl" : "https://api.arendus.geokogud.info",
+  "fossilsUrl" : "http://fossiilid.info/",
+  "ermasUrl" : "http://ermas.geokogud.info/",
+  "elmUrl" : "http://www.loodusmuuseum.ee/",
+  "geocaseUrl" : "http://www.geocase.eu/",
+  "tugUrl" : "http://natmuseum.ut.ee/388858",
+  "githubUrl" : "https://github.com/geocollections/geokogud"
+
+}

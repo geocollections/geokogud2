@@ -1,0 +1,220 @@
+<header ng-include="'app/templates/main/partial/header.html'"></header>
+<section id="sectionSearch">
+    <div id="searches" ng-include="'app/templates/main/partial/search.html'"></div>
+    <div class="container-fluid" bs-loading-overlay bs-loading-overlay-reference-id="searchView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                <div class="row">
+                    <h3 class="search-heading">{{ 'SEARCH.LOCATILIES.HEADING' | translate }} <span class="badge badge-info">{{response.count}}</span>
+                        <button type="submit" value="showHint" class="btn btn-info btn-sm pull-right"
+                                data-ng-click="showHint()">
+                            <span class="glyphicon glyphicon-question-sign"></span> {{ 'SEARCH.FAQ' | translate }}
+                        </button>
+                    </h3>
+                </div>
+                <div class="row">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"
+                                   value="showMap"
+                                   data-ng-click="showMap()">
+                            <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                            {{ 'SEARCH.SHOW_MAP' | translate }}
+                        </label>
+                    </div>
+                </div>
+                <div class="visible-xs">
+                    <div class="row search-hint" ng-bind-html="main.getContent(main.searchTips)" data-ng-if="isHintHidden"></div>
+                </div>
+                <form ng-enter="search()">
+                    <div class="row">
+                        <div class="checkbox">
+                            <checkbox-field name = 'SEARCH.SEARCH_IMAGES' ng-model="searchParameters.searchImages"></checkbox-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="panel-heading searchGroupHeading"
+                             ng-click="isIdentifierFieldsCollapsed = !isIdentifierFieldsCollapsed">
+                            <h4 class="panel-title">
+                                {{ 'SEARCH.CRITERIA.HEADING.PRIMARY'| translate }}
+                                <section-opened-icon is-opened="isIdentifierFieldsCollapsed"/>
+                            </h4>
+                        </div>
+                        <div uib-collapse="isIdentifierFieldsCollapsed">
+                            <div class="well well-lg">
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'SEARCH.LOCALITIES.LOCATION.LOCALITY' | translate }}</b>
+                                        <selectdefault custom-css="searchCriterionType"
+                                                       ng-model="searchParameters.locality.lookUpType"></selectdefault>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <autocomplete-field ng-model="searchParameters.locality.name" table="locality" en="locality_en" et="locality"/>
+                                    </div>
+                                </div>
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'SEARCH.LOCALITIES.IDENTIFIERS.NUMBER'| translate }}</b>
+                                        <selectdefault custom-css="searchCriterionType"
+                                                       ng-model="searchParameters.number.lookUpType"></selectdefault>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="text" ng-model="searchParameters.number.name" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'SEARCH.LOCALITIES.LOCATION.COUNTRY' | translate }}</b>
+                                        <selectdefault custom-css="searchCriterionType"
+                                                       ng-model="searchParameters.country.lookUpType"></selectdefault>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <autocomplete-field ng-model="searchParameters.country.name" table="locality" en="country__value_en" et="country__value"/>
+                                    </div>
+                                </div>
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'SEARCH.LOCALITIES.LOCATION.ADMIN_UNIT' | translate }}</b>
+                                        <selectdefault custom-css="searchCriterionType"
+                                                       ng-model="searchParameters.adminUnit.lookUpType"></selectdefault>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="text" ng-model="searchParameters.adminUnit.name" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'SEARCH.LOCALITIES.IDENTIFIERS.STRATIGRAPHY'| translate }}</b>
+                                        <selecthierarchy custom-css="searchCriterionType"
+                                                         ng-model="searchParameters.stratigraphy.lookUpType"
+                                                         ng-disabled="true"></selecthierarchy>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="text" ng-model="searchParameters.stratigraphy.name" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'SEARCH.LOCALITIES.IDENTIFIERS.REFERENCE' | translate }}</b>
+                                        <selectdefault custom-css="searchCriterionType"
+                                                       ng-model="searchParameters.reference.lookUpType"></selectdefault>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="text" ng-model="searchParameters.reference.name" class="form-control"
+                                               data-ng-disabled="true"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="panel-heading searchGroupHeading"
+                             ng-click="isLocationFieldsCollapsed = !isLocationFieldsCollapsed">
+                            <h4 class="panel-title">
+                                {{ 'SEARCH.CRITERIA.HEADING.ADDITIONAL'| translate }}
+                                <section-opened-icon is-opened="isLocationFieldsCollapsed"/>
+                            </h4>
+                        </div>
+                        <div uib-collapse="isLocationFieldsCollapsed">
+                            <div class="well well-lg">
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 searchCriterionTitle medium-padding">
+                                        <b>{{ 'SEARCH.LOCALITIES.IDENTIFIERS.ID' | translate }}</b>
+                                        <selectexact custom-css="searchCriterionType"
+                                                     ng-model="searchParameters.id.lookUpType"></selectexact>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="text" ng-model="searchParameters.id.name" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'SEARCH.LOCALITIES.IDENTIFIERS.MA_ID' | translate }}</b>
+                                        <selectexact custom-css="searchCriterionType"
+                                                     ng-model="searchParameters.maPaId.lookUpType"></selectexact>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="text" ng-model="searchParameters.maPaId.name" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'SEARCH.LOCALITIES.LOCATION.LATITUDE' | translate }}</b>
+                                        <selectexact custom-css="searchCriterionType"
+                                                     ng-model="searchParameters.latitude.lookUpType"></selectexact>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="text" ng-model="searchParameters.latitude.value" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'SEARCH.LOCALITIES.LOCATION.LONGITUDE' | translate }}</b>
+                                        <selectexact custom-css="searchCriterionType"
+                                                     ng-model="searchParameters.longitude.lookUpType"></selectexact>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="text" ng-model="searchParameters.longitude.value" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'SEARCH.LOCALITIES.LOCATION.VERTICAL_EXTENT' | translate }} </b>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <interval-field ng-model= "searchParameters.verticalExtentSince" lookup="gte"></interval-field >
+                                        <interval-field ng-model= "searchParameters.verticalExtentTo" lookup="lte"></interval-field >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-include="'app/templates/search/partial/button.search.html'"></div>
+                </form>
+            </div>
+            <div class="col-sm-9 col-md-9 col-lg-9" bs-loading-overlay bs-loading-overlay-reference-id="searchView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
+                <div class="hidden-xs">
+                    <div class="row search-hint" ng-bind-html="main.getContent(main.searchTips)" data-ng-if="isHintHidden"></div>
+                </div>
+
+                <div class="row">
+                    <div data-ng-if="isMapHidden">
+                        <div class="col-lg-12 search-map">
+                            <localities-map localities="localities"></localities-map>
+                            <div id='hoverbox'>
+                                <div id='hoversystem'></div>
+                                <div id='hoverstat'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <loading></loading>
+                </div>
+                <div data-ng-if="showImages" ng-include="'app/templates/search/partial/pagination.html'"></div>
+                <div class="row" data-ng-if="showImages">
+                    <div class="col-lg-12">
+                        <h3 class="page-header"><b data-ng-init="images.total = 0">{{ 'SEARCH.FOUND_IMAGES' | translate }}: {{images.total}} </b></h3>
+                    </div>
+                    <div data-ng-repeat="row in images.rows">
+                        <div class="col-lg-3 col-md-4 col-xs-6" data-ng-repeat="col in row">
+                            <figure style="border:1px solid #ddd; margin-bottom: 20px;">
+                                <a class="thumbnail" href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:col.image.id})">
+                                    <show-preview img-url="ctrl.service.composeImageUrl(col.image)" class="img-responsive"/>
+                                    <a class="imagePlace" href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:col.image.id})">
+                                        <first-not-null values="[col.image.locality__locality, col.image.locality__locality_en]"/>
+                                    </a>
+                                    <div class="img-gallery-author">{{col.image.author__agent}} {{col.image.date_taken}}</div>
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div data-ng-if="showImages" ng-include="'app/templates/search/partial/pagination.html'"></div>
+                <div data-ng-if="!showImages" non-isolated-include template-path="app/templates/search/locality/locality_results.html"/>
+
+            </div>
+        </div>
+    </div>
+</section>
+<div ng-include="'app/templates/main/partial/contact.html'"></div>
+<div ng-include="'app/templates/main/partial/footer.html'"></div>

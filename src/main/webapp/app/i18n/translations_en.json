@@ -1,0 +1,464 @@
+{
+    "INDEX": {
+        "PAGE_LOADING": "Please wait. The page is loading.",
+        "DATABASE_LINK": "Database",
+        "NEWS_LINK": "News",
+        "READ_MORE": "Read more",
+        "FOOTER_TITLE": "Questions and comments about the database and website!",
+        "FOOTER": {
+            "SARV_TITLE": "SARV: database for geocollections of Estonia",
+            "SARV_ALT": "SARV",
+            "NATARC_TITLE": "Natural History Archives and Information Network (NATARC)",
+            "NATARC_ALT": "NATARC",
+            "DATACITE_TITLE": "DataCite: find, access and reuse data",
+            "DATACITE_ALT": "DataCite",
+            "EU_TITLE": "European Union",
+            "EU_ALT": "EU",
+            "EIC_TITLE": "Environmental Investment Centre",
+            "EIC_ALT": "EIC"
+        },
+        "SARV_CC": "SARV: Geoscience collections and data repository",
+        "FOOTER_MESSAGE": "If not indicated otherwise, content of the these pages may be used, reused and distributed for non-commercial purposes taken that original author and source are properly cited.",
+        "GEOCOLLECTIONS_HEADER": "Geoscience collections of Estonia",
+        "SEARCH_FIELD_TEXT": "Start searching…",
+        "EXTENDED_SEARCH_LINK": "Extended Search",
+        "USEFUL_INFO": "USEFUL INFO",
+        "USEFUL_LINKS": "LINKS",
+        "USING_COLLECTIONS_LINK": "Using collections",
+        "PUBLIC_API_LINK": "Public API",
+        "GIT_TUT": "Geological collections at the Institute of Geology at TUT",
+        "GEOCOLLECTIONS_TITLE": "Geoscience collections of Estonia",
+        "SEARCH_LINK": "Search",
+        "MAP_LINK": "Map",
+        "ABOUT_COLLECTIONS_LINK": "About collections",
+        "ABOUT_GEOLOGICAL_COLLECTIONS_LINK": "Geological collections",
+        "FOSSILS_TITLE": "A web portal on Baltoscandian fossils",
+        "FOSSILS_LINK": "Fossils",
+        "ERMAS_TITLE": "Analytical database of rocks and sediments of Estonia",
+        "ERMAS_LINK": "ERMAS",
+        "CONTACT_LINK": "Contact",
+        "BUTTON_LANG_ET": "EST",
+        "BUTTON_LANG_EN": "ENG",
+        "TYPES_OF_SEARCHES": "Types of searches"
+    },
+    "GIT": {
+        "GIT_TITLE": "Geological collections at the Institute of Geology at TUT",
+        "PARAGRAPH_ONE": "The Institute of Geology at Tallinn University of Technology possesses the largest geological collections in Estonia. They comprise fossils, rocks, minerals and meteorites from all over the world, the emphasis being, however, on the Estonian and former Soviet Union material. The collections include historical specimens collected already in the 1850s, but most of the material has been accumulated since the 1950s until present.",
+        "PARAGRAPH_TWO": "The collections form an integral part of the research carried out at the Institute, particularly in the fields of paleontology, sedimentology and geochemistry.",
+        "GIT_HEADING": "GIT"
+    },
+    "INFO": {
+        "HEADING": "Collections",
+        "COLLECTIONS_IN_GEOLOGY": {
+            "HEADING": "Collections in geology",
+            "PARAGRAPH_ONE": "Information about the 4.6 billion year history of the planet Earth is stored in rocks, minerals and fossils, which together form the essence of geological collections, or geocollections. A large part of geological research is based on collections and often discoveries arise from specimens once collected and stored in museums.",
+            "PARAGRAPH_TWO": "On the other hand, geocollections are created during geological research and need to be kept and made available as referece material."
+        },
+        "COLLECTIONS_IN_ESTONIA": {
+            "HEADING": "Geocollections in Estonia",
+            "PARAGRAPH_ONE": "In Estonia, the main geocollections are owned by the following institutions that together make up a virtual national geological collection:",
+            "LI_ONE": "Institute of Geology at Tallinn University of Technology",
+            "LI_TWO": "Geological Museum, University of Tartu",
+            "LI_THREE": "Estonian Museum of Natural History",
+            "LI_FOUR": "Department of Geology, University of Tartu, and",
+            "LI_FIVE": "Estonian University of Life Sciences, Soil Museum",
+            "PARAGRAPH_TWO": "Large numbers of rock samples and drill cores are also held by the ",
+            "PARAGRAPH_TWO_A_LINK": "Geological Survey of Estonia"
+        },
+        "COMMON_DATABASE": {
+            "HEADING": "Common database",
+            "LINE_ONE": "The geocollections database",
+            "LINE_TWO": "SARV",
+            "LINE_THREE": "is used in four academic institutions.",
+            "LINE_FOUR": " This public portal",
+            "LINE_FIVE": " enables to search various geological data including",
+            "LINE_SPECIMENS": "collection specimens",
+            "LINE_ROCK": "rock and sediment samples",
+            "LINE_DRILL_CORE": "drill cores",
+            "LINE_LOCALITIES": "localities",
+            "LINE_REFERENCES": "references",
+            "LINE_PHOTO_ARCHIVE": "photo archive",
+            "LINE_ETC": "etc.",
+            "PARAGRAPH_TWO_LINE_ONE": "In addition, specific interfaces can be used to access data on",
+            "PARAGRAPH_TWO_LINE_TWO": "Baltoscandian fossils",
+            "PARAGRAPH_TWO_LINE_THREE": "and",
+            "PARAGRAPH_TWO_LINE_FOUR": "analytical data",
+            "PARAGRAPH_THREE_LINE_ONE": "Currently the database holds records of ",
+            "PARAGRAPH_THREE_LINE_TWO": "collection specimens and rock samples, and ",
+            "PARAGRAPH_THREE_LINE_THREE": "digital images and other media files. The data were last updated on "
+        }
+    },
+    "ERROR": {
+        "TITLE": ""
+    },
+    "SEARCH": {
+        "NO_RESULTS": "No results found",
+        "CRITERIA": {
+          "HEADING": {
+            "PRIMARY":"Search criteria",
+            "ADDITIONAL":"Additional criteria"
+          }
+        },
+        "SELECT": {
+            "GREATERTHAN": "greater than",
+            "SMALLERTHAN": "smaller than",
+            "CONTAINS": "contains",
+            "DOESNOTCONTAIN": "does not contain",
+            "EQUALS": "equals",
+            "DOESNOTEQUAL": "does not equal",
+            "STARTSWITH": "starts with",
+            "ENDSWITH": "ends with",
+            "ISINLIST": "is in list",
+            "ISBWETWEEN": "is between",
+            "HIERARCHY": "hierarchy"
+        },
+        "ANALYSES": {
+            "HELP_POPUP": {
+                "HEADING": "SEARCH TIPS:",
+                "PARAGRAPH_ONE": "First select the base table (specimens, samples, localities, references etc);",
+                "PARAGRAPH_TWO": "Specify one or more criteria; NB! search is case insensitive; for text fields partial matches are returned by default (for instance, search 'asap' in specimen name field will find 'Asaphus sp.' as well as 'Asaphus expansus'); for stratigraphy and classification the search is hierarchical by default, for number fields exact maches will be searched if user does not specify otherwise;",
+                "PARAGRAPH_THREE": "To show a map where available, tick the appropriate checkbox;",
+                "PARAGRAPH_FOUR": "To show detailed information follow the links in the results table."
+            },
+            "HEADING": "Analyses",
+            "IDENTIFIERS": {
+                "SAMPLE_ID": "Sample ID",
+                "NUMBER": "Number",
+                "BED_NAME_INDEX": "Bed name / index",
+                "IDENTIFIERS": "Identifiers"
+            },
+            "LOCATION": {
+                "LOCATION": "Location",
+                "LOCALITY": "Locality",
+                "ADMIN_UNIT": "Admin. unit",
+                "DEPTH_M": "Depth (m)",
+                "STRATIGRAPHY": "Stratigraphy"
+            },
+            "ANALYSIS": {
+                "PANEL_TITLE": "Analysis",
+                "TYPE": "Type of analysis",
+                "COMPONENT_ANALYZED": "Component analysed",
+                "CONTENT": "Content"
+            },
+            "TABLE": {
+                "ID": "ID",
+                "SAMPLE_ID": "Sample #",
+                "LOCALITY": "@:SEARCH.ANALYSES.LOCATION.LOCALITY",
+                "DEPTH_M": "@:SEARCH.ANALYSES.LOCATION.DEPTH_M",
+                "STRATIGRAPHY": "@:SEARCH.ANALYSES.LOCATION.STRATIGRAPHY",
+                "LITHOSTRATIGRAPHY": "Lithostratigraphy",
+                "BED_ID": "Bed ID",
+                "METHOD": "Method",
+                "LAB": "Lab."
+            }
+        },
+        "SPECIMENS": {
+            "HEADING": "Specimens",
+            "ID": "ID",
+            "NUMBER": "Specimen number",
+            "COLLECTION_NUMBER": "Collection number",
+            "CLASSIFICATION_NUMBER": "Classification",
+            "FOSSIL_MINERAL_ROCK": "Fossil/ Mineral/ Rock",
+            "NAME_OF_ROCK": "Name of fossil",
+            "MINERAL_ROCK": "Mineral/Rock",
+            "DEPHT_M": "Depth (m)",
+            "STRATIGRAPHY": "Stratigraphy",
+            "COLLECTOR": "Collector",
+            "REFERENCE": "Reference",
+            "TYPE_STATUS": "Type status",
+            "PART_OF_FOSSIL": "Part (of fossil)",
+            "KEYWORDS": "Key words",
+            "REG_DATE": "Reg. date",
+            "ADMIN_UNIT": "Admin.unit",
+            "LOCALITY": "Locality",
+            "NAME_PART_ELEMENT": "Name Part/element",
+            "STATUS": "Status",
+            "IMAGES": "Images",
+            "OLD_SPECIMEN_NUMBER": "Old specimen #",
+            "DEPTH_M": ""
+        },
+        "SAMPLES": {
+            "HEADING": "Samples",
+            "ID": "ID",
+            "NUMBER": "Number",
+            "DEPTH_M": "Depth (m)",
+            "STRATIGRAPHY": "Stratigraphy",
+            "BED_NAME_INDEX": "Bed name / index",
+            "COLLECTOR": "Collector",
+            "WEIGHT": "Weight (remaining, g)",
+            "STORAGE": "Storage",
+            "SPECIES_RECOVERED": "Species recovered",
+            "SPECIES_FREQUENCY": "Species frequency",
+            "TYPE_OF_ANALYSIS": "Type of analysis",
+            "COMPONENT_ANALYSED": "Component analysed",
+            "CONTENT": "Content",
+            "LOCALITY": "Locality",
+            "ADMIN_UNIT": "Admin. unit",
+            "INSTITUTE": "Inst.",
+            "ANAL": "Analyzed"
+        },
+        "DRILL_CORES": {
+            "HEADING": "Drill cores",
+            "ID": "ID",
+            "DRILLCORE": "Drillcore",
+            "STRATIGRAPHY": "Stratigraphy",
+            "STORAGE": "Storage",
+            "BOX_COUNT": "Box count",
+            "COUNTRY": "Country",
+            "ADMIN_UNIT": "Admin. unit",
+            "TABLE": {
+                "DRILLCORE": "Drillcore",
+                "LATITUDE": "Latitude (deg. deg.)",
+                "LONGITUDE": "Longitude (deg. deg.)",
+                "DEPTH_M": "Depth (m)",
+                "BOX_COUNT": "Box count",
+                "BOX_NUMBERS": "Box numbers",
+                "INSTITUTE": "Insts.",
+                "STORAGE": "Storage",
+                "IMAGES": "Images",
+                "ID": "ID"
+            }
+        },
+        "LOCATILIES": {
+            "HEADING": "Localities"
+        },
+        "REFERENCES": {
+            "HEADING": "References",
+            "ID": "ID",
+            "AUTHOR": "Author",
+            "YEAR": "Year",
+            "TITLE": "Title",
+            "JOURNAL": "Journal",
+            "BOOK": "Book",
+            "TABLE": {
+                "REFERENCE": "Reference",
+                "JOURNAL_BOOK": "Journal / Book",
+                "PP": "PP.",
+                "DOI": "DOI",
+                "REMARKS": "File(s)",
+                "ID": "ID",
+                "AUTHOR": "Author",
+                "YEAR": "Year",
+                "TITLE": "Title"
+            }
+        },
+        "STRATIGRAPHY": {
+            "STRATIGRAPHY": "Stratigraphy",
+            "HEADING": "Stratigraphic units",
+            "ID": "ID",
+            "INDEX": "Index",
+            "AGE_MIN_Y": "Age mln y",
+            "MAIN_LITHOLOGY": "Main lithology",
+            "AUTHOR": "Author",
+            "TABLE": {
+                "STRATIGRAPHY": "Stratigraphy",
+                "INDEX": "Index",
+                "TYPE": "Type",
+                "RANK": "Rank",
+                "SCOPE": "Scope",
+                "AGE": "Age",
+                "AGE_MA": "Age (Ma)",
+                "BELONGS_TO": "Belongs to",
+                "ID": "ID"
+            }
+        },
+        "ANALYSES": {
+            "HEADING": "Analyses",
+            "IDENTIFIERS": {
+                "NUMBER": "Number",
+                "SAMPLE_ID": "Sample ID",
+                "BED_NAME_INDEX": "Bed name / index"
+            },
+            "LOCATION": {
+                "LOCALITY": "Locality",
+                "ADMIN_UNIT": "Admin. unit",
+                "DEPTH_M": "Depth (m)",
+                "STRATIGRAPHY": "Stratigraphy",
+                "LOCATION": "Location"
+            },
+            "ANALYSIS": {
+                "PANEL_TITLE": "Analysis",
+                "TYPE": "Type of analysis",
+                "COMPONENT_ANALYZED": "Component analysed",
+                "CONTENT": "Content"
+            },
+            "TABLE": {
+                "LOCALITY": "@:SEARCH.ANALYSES.LOCATION.LOCALITY",
+                "DEPTH_M": "@:SEARCH.ANALYSES.LOCATION.DEPTH_M",
+                "STRATIGRAPHY": "@:SEARCH.ANALYSES.LOCATION.STRATIGRAPHY",
+                "LITHOSTRATIGRAPHY": "Lithostratigraphy",
+                "BED_ID": "Bed ID",
+                "METHOD": "Method",
+                "LAB": "Lab.",
+                "ID": "ID",
+                "SAMPLE_ID": "Sample #"
+            }
+        },
+        "PREPARATIONS": {
+            "HEADING": "Preparation",
+            "NUMBER": "Number",
+            "LOCALITY": "Locality",
+            "DEPTH_M": "Depth (m)",
+            "STRATIGRAPHY": "Stratigraphy",
+            "COLLECTOR": "Collector",
+            "DESCRIPTION": "Description",
+            "SPECIES_RECOVERED": "Species recovered",
+            "SPECIES_FREQUENCY": "Species frequency",
+            "TABLE": {
+                "STRATIGRAPHY": "Stratigraphy",
+                "LITHOSTRATIGRAPHY": "Lithostratigraphy",
+                "WEIGHT": "Weight",
+                "MORE_INFO": "",
+                "ID": "ID",
+                "NUMBER": "Number",
+                "LOCALITY": "Locality",
+                "DEPTH_M": "Depth (m)",
+                "COLLECTOR": "Coll."
+            }
+        },
+        "PHOTO_ARCHIVE": {
+            "HEADING": "Photo archive",
+            "PEOPLE": "People",
+            "KEY_WORDS": "Key words",
+            "DATE": "Date",
+            "NUMBER": "Number",
+            "AUTHOR": "Author",
+            "IMAGE_SIZE": "Image size",
+            "LOCALITY": "Locality",
+            "ADMIN_UNIT": "Admin. unit",
+            "TABLE": {
+                "NUMBER": "Number",
+                "AUTHOR": "Author",
+                "DATE": "Date",
+                "LOCALITY": "Locality",
+                "CATEGORY": "Category",
+                "KEY_WORDS": "Key words",
+                "ID": "ID"
+            }
+        },
+        "SOIL_SITES": {
+            "SOIL": "Soil",
+            "HEADING": "Soil sites",
+            "ID": "ID",
+            "SITE": "Site",
+            "AREA_OF_STUDY": "Area of study",
+            "TRANSECT": "Transect",
+            "SOIL_NAME": "Soil name",
+            "LAND_USE": "Land use",
+            "DEEP_MINING": "Is deep mining",
+            "TABLE": {
+                "SITE": "Site",
+                "AREA_OF_STUDY": "Area of study",
+                "TRANSECT": "Transect",
+                "POINT_OF_THE_TRANSECT": "Point on the transect",
+                "SOIL_NAME": "Soil name",
+                "LAND_USE": "Land use",
+                "LATITUDE": "Lat.",
+                "LONGITUDE": "Lon.",
+                "IS_DEEP_MINING": "Is deep mining",
+                "ID": "ID"
+            }
+        },
+        "DOI": {
+            "DOI": "DOI",
+            "HEADING": "Digital Object Identifiers (DOIs)",
+            "TITLE": "Title",
+            "PUBLISHED_BY": "Published by",
+            "YEAR": "Year",
+            "AUTHOR": "Author",
+            "ABSTRACT": "Abstract",
+            "TABLE": {
+                "AUTHOR": "Author",
+                "YEAR": "Year",
+                "TITLE": "Title",
+                "TYPE": "Type",
+                "DATACITE_REGISTRATION": "DataCite registration",
+                "ID": "ID",
+                "DOI": "DOI"
+            }
+        },
+        "TAXON": {
+            "HEADING": "Taxa",
+            "TABLE": {
+                "ID": "ID",
+                "FOSSIL_GROUP": "Fossil group",
+                "TAXON": "Taxon",
+                "AUTHOR": "Author",
+                "PARENT_TAXON": "Parent taxon"
+            }
+        },
+        "FAQ": "FAQ",
+        "LOCALITIES": {
+            "LOCATION": {
+                "LOCATION": "Location",
+                "LOCALITY": "Locality",
+                "COUNTRY": "Country",
+                "ADMIN_UNIT": "Admin. unit",
+                "LATITUDE": "Latitude (dec. deg.)",
+                "LONGITUDE": "Longitude (dec. deg.)",
+                "VERTICAL_EXTENT": "Vertical extent (m)"
+            },
+            "IDENTIFIERS": {
+                "ID": "ID",
+                "NUMBER": "Number",
+                "STRATIGRAPHY": "Stratigraphy",
+                "REFERENCE": "Reference",
+                "MA_ID": "MA ID"
+            },
+            "TABLE": {
+                "COUNTRY": "Country",
+                "LATITUDE": "Latitude (dec. deg.)",
+                "LONGITUDE": "Longitude (dec. deg.)",
+                "VERTICAL_EXTENT": "Vertical extent (m)",
+                "STRATIGRAPHY_BASE": "Stratigraphy base",
+                "STRATIGRAPHY_TOP": "Stratigraphy top",
+                "DRILLCORE": "Drillcore",
+                "IMAGES": "Images",
+                "MAP": "Map",
+                "MA_ID": "MA ID",
+                "ID": "ID",
+                "LOCALITY": "Locality"
+            }
+        },
+        "SHOW_MAP": "Show map",
+        "SEARCH_IMAGES": "Search images",
+        "FOUND_IMAGES": "Leitud pilte",
+        "RESET_FORM": "Reset",
+        "SEND_QUERY": "Send query",
+        "INSTITUTIONS": "Institutions"
+    },
+    "DETAIL": {
+        "DRILLCORE": {
+            "DRILLCORE_BOXES": "Drill core boxes",
+            "BOX_NUMBER": "box no.",
+            "SINCE": "Start (m)",
+            "TO": "End (m)",
+            "STRATIGRAPHY_TOP": "Stratigraphy top",
+            "STRATIGRAPHY_BASE": "Stratigraphy base"
+        },
+        "CORE_BOX": {
+            "LOCALITY": "Locality",
+            "ID": "Corebox ID",
+            "NUMBER": "Number",
+            "INBOX": "m in box",
+            "SINCE": "Start (m)",
+            "TO": "End (m)",
+            "DEPTH": "Reference depths",
+            "STRATIGRAPHY_TOP": "Stratigraphy top",
+            "STRATIGRAPHY_BASE": "Stratigraphy base",
+            "STRATIGRAPHY": "Stratigraphy",
+            "ADDITIONAL": "Remarks"
+        },
+        "LOCALITY": {
+            "TYPE": "Type",
+            "FILENAME": "Filename",
+            "LOCALITY": "Locality",
+            "AUTHOR": "Author",
+            "DATE": "Date",
+            "LINK": "Link"
+        },
+        "NEXT": "NEXT",
+        "PREVIOUS": "PREVIOUS"
+    },
+    "GLOBAL_SEARCH_INFO" : "Global search shows max 100 results. To get more information please use extended search."
+}
