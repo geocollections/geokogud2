@@ -2,10 +2,7 @@
   "name": "geokogud",
   "version": "2.0.1",
   "authors": [
-    "Olesja Senkiv <olesja.senkiv@gmail.com>",
-    "Marjana Voronina<marjanavoronina@gmail.com>",
-    "Artur Gummel<artur.gummel@gmail.com>",
-    "Stanislav Nazmudinov<stanislav.nazmudinov@ttu.com>"
+    "Enar Mustonen <enar.mustonen@gmail.com>"
   ],
   "description": "Estonia geocollection infosystem",
   "main": "main.css",
