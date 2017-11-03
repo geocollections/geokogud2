@@ -14,15 +14,15 @@ var module = angular.module("geoApp",
         'bsLoadingOverlay'
     ]);
 
-module.config(function ($translateProvider, $locationProvider, $urlRouterProvider) {
+module.config(function ($translateProvider, $locationProvider) {
 
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
     });
-    $locationProvider.hashPrefix('');
 
-    $urlRouterProvider.otherwise("/");
+    // Overrides the default '!' prefix to ''
+    $locationProvider.hashPrefix('');
 
     $translateProvider.useStaticFilesLoader({
         files: [{
@@ -48,7 +48,7 @@ var fetchData = function () {
     return $http.get("config.json").then(function(response) {
         module.constant("configuration", response.data);
     }, function(errorResponse) {
-        console.log("configuration missing!")
+        console.log("configuration missing!");
     });
 };
 var bootstrapApplication = function () {
