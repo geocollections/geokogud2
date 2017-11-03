@@ -1,4 +1,18 @@
-var module = angular.module("geoApp", ['ui.bootstrap','ui.bootstrap.datetimepicker', 'ui.router', 'pascalprecht.translate', 'ngFileUpload', 'ngCookies', 'ngSanitize', 'ngAnimate', 'ui.select2', 'ngStorage', 'bsLoadingOverlay']);
+// Data in [] are dependencies for application module
+var module = angular.module("geoApp",
+    [
+        'ui.bootstrap',
+        'ui.bootstrap.datetimepicker',
+        'ui.router',
+        'pascalprecht.translate',
+        'ngFileUpload',
+        'ngCookies',
+        'ngSanitize',
+        'ngAnimate',
+        'ui.select2',
+        'ngStorage',
+        'bsLoadingOverlay'
+    ]);
 
 module.config(function ($translateProvider, $locationProvider, $urlRouterProvider) {
 

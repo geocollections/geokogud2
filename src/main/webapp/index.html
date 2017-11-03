@@ -9,6 +9,7 @@
     <meta name="author" content="">
     <base href="/" />
     <title>Geocollections of Estonia</title>
+    <!-- TODO: For production code change .css -> .min.css and .js -> .min.js for performance improvements -->
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
     <!-- Angular-notify (pop-ups) CSS -->
@@ -34,14 +35,18 @@
 
     <ui-view></ui-view>
 
+    <!-- jQuery JS -->
     <script src="lib/jquery/dist/jquery.min.js"></script>
+    <!-- Angular framework JS -->
     <script src="lib/angular/angular.js"></script>
+    <!-- Angular Animate JS https://www.w3schools.com/angular/angular_animations.asp -->
     <script src="lib/angular-animate/angular-animate.js"></script>
+
     <script src="lib/angular-route/angular-route.js"></script>
     <script src="lib/angular-resource/angular-resource.js"></script>
     <script src="lib/angular-ui-bootstrap-datetimepicker/datetimepicker.js"></script>
     <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
-    <!-- Angular-notify (pop-ups) JS -->
+    <!-- Angular-notify (pop-ups) JS https://github.com/cgross/angular-notify -->
     <script src="lib/angular-notify/angular-notify.js"></script>
     <script src="lib/ng-file-upload/ng-file-upload-all.js"></script>
     <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -70,7 +75,7 @@
     <script src="lib/jquery.easing/js/jquery.easing.min.js"></script>
     <script src="lib/scrollreveal/dist/scrollreveal.min.js"></script>
 
-    <!-- main page animation-->
+    <!-- Custom JS for main page animation-->
     <script src="app/mainpage.js"></script>
 
     <!-- Modules -->
