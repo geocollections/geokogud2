@@ -38,6 +38,7 @@ module.config(function ($translateProvider, $locationProvider) {
                 }]
     });
 
+    // Necessary for app translations
     $translateProvider.preferredLanguage('et');
     $translateProvider.fallbackLanguage('en');
     $translateProvider.useLocalStorage();
@@ -57,6 +58,11 @@ var fetchData = function () {
     });
 };
 
+/**
+ *  Manual initialization of angular bootstrap, this is called
+ * after loading and defining all modules. After that it is not
+ * possible to add controllers, services, directives, etc.
+ */
 var bootstrapApplication = function () {
     angular.element(document).ready(function() {
         angular.bootstrap(document, ["geoApp"]);
