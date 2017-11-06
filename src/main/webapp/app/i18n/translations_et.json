@@ -4,7 +4,7 @@
         "DATABASE_LINK": "Andmebaas",
         "NEWS_LINK": "Uudised",
         "READ_MORE": "Loe rohkem",
-        "FOOTER_TITLE": "Küsimused andmebaasi ja veebilehe kohta!",
+        "FOOTER_TITLE": "Küsimustega andmebaasi või veebilehe kohta palun pöörduda: ",
         "FOOTER": {
             "SARV_TITLE": "SARV: Eesti geokogude infosüsteem",
             "SARV_ALT": "SARV",

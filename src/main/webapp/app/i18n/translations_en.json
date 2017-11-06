@@ -4,7 +4,7 @@
         "DATABASE_LINK": "Database",
         "NEWS_LINK": "News",
         "READ_MORE": "Read more",
-        "FOOTER_TITLE": "Questions and comments about the database and website!",
+        "FOOTER_TITLE": "Questions and comments about the database and website can be addressed to: ",
         "FOOTER": {
             "SARV_TITLE": "SARV: database for geocollections of Estonia",
             "SARV_ALT": "SARV",
