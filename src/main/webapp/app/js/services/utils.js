@@ -134,7 +134,7 @@ var constructor = function ($http, $location, configuration) {
         var urlParams = $location.$$search, currentTable = $location.$$path.split('/')[1];
         var filterData = {
             filters: [],
-            localityName: "",
+            localityName: ""
         };
         angular.forEach(Object.keys(urlParams), function(attr){
             if(attr != 'currentTable' && configuration.urlHelper[currentTable]) {
