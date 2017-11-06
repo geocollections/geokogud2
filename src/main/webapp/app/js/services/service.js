@@ -1,6 +1,6 @@
 var module = angular.module("geoApp");
 
-var constructor = function (utils,configuration, $window, $location) {
+var constructor = function (utils, configuration, $window, $location) {
 
     var service = {};
 
@@ -27,7 +27,7 @@ var constructor = function (utils,configuration, $window, $location) {
 
     service.getList = function (searchType, data, success,error,headers) {
         var url = getSearchUrl(searchType);
-        if(url != null) utils.httpPost(url, data, success, error, headers, true);
+        if(url !== null) utils.httpPost(url, data, success, error, headers, true);
     };
 
     service.getSearchParamsFromUrl = function () {
@@ -46,7 +46,7 @@ var constructor = function (utils,configuration, $window, $location) {
     };
     service.loadMapDataOnFilterChange = function (filters, callback, error, headers) {
         utils.httpPost(configuration.mapData.specificLocalities, filters, callback, error, headers, false);
-    }
+    };
 
     service.autocompleteSearch = function (table, val, searchField) {
         utils.httpGet(configuration.autocompleteUrl, {table: table, term: val, searchField: searchField}, null, null);
@@ -95,7 +95,7 @@ var constructor = function (utils,configuration, $window, $location) {
     }
 
     function buildApplicationUrl() {
-        if(service.location.host().indexOf('localhost') != -1){
+        if(service.location.host().indexOf('localhost') !== -1){
             return service.location.protocol() + "://" + service.location.host() + ":" + service.location.port() + "/";
         }else{
             return service.location.protocol() + "://" + service.location.host() + "/";
