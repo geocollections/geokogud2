@@ -85,6 +85,7 @@ footer {
 .navbar-default .navbar-form {
     border-color:white;
 }
+
 #button-extended-search {
     font-size:16px;
     color:white;
@@ -94,6 +95,11 @@ footer {
     padding:6px 12px;
     display:inline-block;
 }
+
+#button-extended-search:hover {
+    opacity: 0.6;
+}
+
 .ul-square{
     list-style-type:square;
 }
