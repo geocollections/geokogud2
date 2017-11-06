@@ -7,13 +7,13 @@ var constructor = function ($uibModal) {
     service.currentModal = null;
 
     service.showModalError = function (errorReason) {
-        animation: false,
         $uibModal.open({
+            animation: false,
             templateUrl: 'app/templates/main/partial/default.error.html',
             controller: ["configuration","$uibModalInstance","errorReason","$translate",
-                function(configuration,$uibModalInstance, errorReason, $translate) {
+                function(configuration, $uibModalInstance, errorReason) {
                 var vm = this;
-                vm.reason = 'ERROR.'+errorReason;
+                vm.reason = 'ERROR.' + errorReason;
                 vm.close = close;
 
                 function close() {
@@ -32,7 +32,7 @@ var constructor = function ($uibModal) {
     service.commonErrorHandler = function(errorData, status, callback) {
         //400, 401, 403
         var error;
-        if (errorData.status == 404) {
+        if (errorData.status === 404) {
             error = "INVALID_REQUEST";
         }
 
