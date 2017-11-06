@@ -5,7 +5,7 @@ var constructor = function ($http,$location, configuration, $route, $rootScope) 
     var service = {};
 
     service.isFunction = function (testable) {
-        return typeof testable == "function";
+        return typeof testable === "function";
     };
 
     service.httpGet = function (url, data, successCb, errorCb, headers) {
@@ -22,7 +22,7 @@ var constructor = function ($http,$location, configuration, $route, $rootScope) 
         if(composeSearchUrl) {
             service.composeUrl(data);
             var searchCriteria = service.decodeUrl();
-            if(searchCriteria != null) {
+            if(searchCriteria !== null) {
                 data = searchCriteria;
             }
         } else {
@@ -39,7 +39,7 @@ var constructor = function ($http,$location, configuration, $route, $rootScope) 
     };
     service.composeUrl = function(data) {
         var url = "", currentTable = $location.$$path.split('/')[1];
-        if(currentTable == "map") {
+        if(currentTable === "map") {
             angular.forEach(Object.values(data.filters), function (attr) {
                 if (configuration.urlHelper[currentTable]) {
                     var fieldName = configuration.urlHelper[currentTable].fields[attr];
@@ -54,78 +54,78 @@ var constructor = function ($http,$location, configuration, $route, $rootScope) 
             }
         } else {
             angular.forEach(Object.keys(data), function (attr) {
-                if (attr != 'sortField' && attr != 'dbs' && configuration.urlHelper[currentTable]) {
+                if (attr !== 'sortField' && attr !== 'dbs' && configuration.urlHelper[currentTable]) {
                     var fieldName = configuration.urlHelper[currentTable].fields[attr];
                     if (fieldName) url += fieldName + "_1=" + configuration.urlHelper['lookUpType'][data[attr].lookUpType] + "&" + fieldName + "=" + (data[attr].name ? data[attr].name : "") + "&";
                 }
             });
-            if (url != "") {
-                if(configuration.urlHelper.searchWithOutDBS.indexOf(currentTable) == -1) {
-                    if (data.dbs != null) {
+            if (url !== "") {
+                if(configuration.urlHelper.searchWithOutDBS.indexOf(currentTable) === -1) {
+                    if (data.dbs !== null) {
                         angular.forEach(data.dbs, function (institution) {
-                            if (institution == "GIT") {
+                            if (institution === "GIT") {
                                 url += "&dbs[]=1";
                             }
-                            if (institution == "TUG") {
+                            if (institution === "TUG") {
                                 url += "&dbs[]=2";
                             }
-                            if (institution == "ELM") {
+                            if (institution === "ELM") {
                                 url += "&dbs[]=3";
                             }
-                            if (institution == "TUGO") {
+                            if (institution === "TUGO") {
                                 url += "&dbs[]=4";
                             }
-                            if (institution == "MUMU") {
+                            if (institution === "MUMU") {
                                 url += "&dbs[]=5";
                             }
-                            if (institution == "EGK") {
+                            if (institution === "EGK") {
                                 url += "&dbs[]=6";
                             }
                         });
                     }
                 }
                 url += "&currentTable=" + currentTable.trim();
-                if(data.maxSize != null) {
+                if(data.maxSize !== null) {
                     url += "&maxSize=" + data.maxSize;
                 }
-                if(data.searchImages != null) {
+                if(data.searchImages !== null) {
                     if(data.searchImages.name) {
                         url += "&search_images=1";
                     }
                 }
-                if(data.page != null) {
+                if(data.page !== null) {
                     url += "&page=" + data.page;
                 }
-                if(data.sortField.order == "DESCENDING") {
+                if(data.sortField.order === "DESCENDING") {
                     url += "&sort="+ data.sortField.sortBy +"&sortdir=DESC";
-                } else if(data.sortField.order == "ASCENDING") {
+                } else if(data.sortField.order === "ASCENDING") {
                     url += "&sort="+ data.sortField.sortBy +"&sortdir=ASC";
                 }
                 angular.forEach(configuration.urlHelper.specialFields, function(specialField) {
-                    if(specialField == "year" && currentTable == "doi") {
+                    if(specialField === "year" && currentTable === "doi") {
                         specialField = "publication_year";
                     }
-                    if(data[specialField + "Since"] != null && data[specialField + "To"] != null) {
-                        if (data[specialField + "Since"].name != null && data[specialField + "Since"].lookUpType != null && data[specialField + "To"].name != null && data[specialField + "To"].lookUpType != null) {
+                    if(data[specialField + "Since"] !== null && data[specialField + "To"] !== null) {
+                        if (data[specialField + "Since"].name !== null && data[specialField + "Since"].lookUpType !== null && data[specialField + "To"].name !== null && data[specialField + "To"].lookUpType !== null) {
                             url += "&" + specialField + "_1=" + data[specialField + 'Since'].lookUpType + "+" + data[specialField + 'To'].lookUpType + "&" + specialField + "=" + data[specialField + "Since"].name + '+' + data[specialField + 'To'].name;
-                        } else if (data[specialField + "Since"].name != null && data[specialField + "Since"].lookUpType != null) {
+                        } else if (data[specialField + "Since"].name !== null && data[specialField + "Since"].lookUpType !== null) {
                             url += "&" + specialField + "_1=" + data[specialField + 'Since'].lookUpType + "&" + specialField + "=" + data[specialField + "Since"].name;
-                        } else if (data[specialField + "To"].name != null && data[specialField + "To"].lookUpType != null) {
+                        } else if (data[specialField + "To"].name !== null && data[specialField + "To"].lookUpType !== null) {
                             url += "&" + specialField + "_1=" + data[specialField + 'To'].lookUpType + "&" + specialField + "=" + data[specialField + "To"].name;
                         }
-                    } else if (data[specialField + "Since"] != null) {
-                        if (data[specialField + "Since"].name != null && data[specialField + "Since"].lookUpType != null) {
+                    } else if (data[specialField + "Since"] !== null) {
+                        if (data[specialField + "Since"].name !== null && data[specialField + "Since"].lookUpType !== null) {
                             url += "&" + specialField + "_1=" + data[specialField + 'Since'].lookUpType + "&" + specialField + "=" + data[specialField + "Since"].name;
                         }
-                    } else if (data[specialField + "To"] != null) {
-                        if (data[specialField + "To"].name != null && data[specialField + "To"].lookUpType != null) {
+                    } else if (data[specialField + "To"] !== null) {
+                        if (data[specialField + "To"].name !== null && data[specialField + "To"].lookUpType !== null) {
                             url += "&" + specialField + "_1=" + data[specialField + 'To'].lookUpType + "&" + specialField + "=" + data[specialField + "To"].name;
                         }
                     }
                 });
             }
         }
-            url == "" ? $location.path($location.$$path).search() : $location.path($location.$$path).search(url);
+            url === "" ? $location.path($location.$$path).search() : $location.path($location.$$path).search(url);
            $location.replace();
     };
 
@@ -134,15 +134,15 @@ var constructor = function ($http,$location, configuration, $route, $rootScope) 
         var urlParams = $location.$$search, currentTable = $location.$$path.split('/')[1];
         var filterData = {
             filters: [],
-            localityName: "",
+            localityName: ""
         };
         angular.forEach(Object.keys(urlParams), function(attr){
-            if(attr != 'currentTable' && configuration.urlHelper[currentTable]) {
+            if(attr !== 'currentTable' && configuration.urlHelper[currentTable]) {
                 angular.forEach(Object.keys(configuration.urlHelper[currentTable].fields), function(currentField) {
-                    if(configuration.urlHelper[currentTable].fields[currentField] == attr) {
-                        if(attr != "loc") {
+                    if(configuration.urlHelper[currentTable].fields[currentField] === attr) {
+                        if(attr !== "loc") {
                             filterData.filters.push(currentField);
-                        } else if (attr == "loc") {
+                        } else if (attr === "loc") {
                             filterData.localityName = urlParams[attr];
                         }
                     }
@@ -156,9 +156,9 @@ var constructor = function ($http,$location, configuration, $route, $rootScope) 
        if( Object.keys($location.$$search).length === 0) return null;
         var urlParams = $location.$$search, currentTable = $location.$$path.split('/')[1], searchParams = {};
         angular.forEach(Object.keys(urlParams), function(attr){
-            if(attr != 'currentTable' && attr != 'sortdir' && attr != 'dbs[]' && configuration.urlHelper[currentTable]) {
+            if(attr !== 'currentTable' && attr !== 'sortdir' && attr !== 'dbs[]' && configuration.urlHelper[currentTable]) {
                 angular.forEach(Object.keys(configuration.urlHelper[currentTable].fields), function(a) {
-                    if(configuration.urlHelper[currentTable].fields[a] == attr) {
+                    if(configuration.urlHelper[currentTable].fields[a] === attr) {
                         var lookUpType = getLookUpType(urlParams[attr+'_1']);
                         urlParams[attr] ? searchParams[a] = {"lookUpType":lookUpType, "name":urlParams[attr]}
                                         : searchParams[a] = {"lookUpType":lookUpType};
@@ -166,61 +166,61 @@ var constructor = function ($http,$location, configuration, $route, $rootScope) 
                 })
             }
         });
-        if(urlParams["dbs[]"] != null) {
+        if(urlParams["dbs[]"] !== null) {
             searchParams["dbs"] = [];
             angular.forEach(urlParams["dbs[]"], function(institution) {
-                if(institution == 1) {
+                if(institution === 1) {
                     searchParams.dbs.push("GIT");
                 }
-                if(institution == 2) {
+                if(institution === 2) {
                     searchParams.dbs.push("TUG");
                 }
-                if(institution == 3) {
+                if(institution === 3) {
                     searchParams.dbs.push("ELM");
                 }
-                if(institution == 4) {
+                if(institution === 4) {
                     searchParams.dbs.push("TUGO");
                 }
-                if(institution == 5) {
+                if(institution === 5) {
                     searchParams.dbs.push("MUMU");
                 }
-                if(institution == 6) {
+                if(institution === 6) {
                     searchParams.dbs.push("EGK");
                 }
             });
         }
-        if(urlParams["sortdir"] != null && urlParams["sort"] != null) {
-            if(urlParams["sortdir"] == "DESC") {
+        if(urlParams["sortdir"] !== null && urlParams["sort"] !== null) {
+            if(urlParams["sortdir"] === "DESC") {
                 searchParams["sortField"] = {sortBy: urlParams["sort"], order: "DESCENDING"};
-            } else if(urlParams["sortdir"] == "ASC") {
+            } else if(urlParams["sortdir"] === "ASC") {
                 searchParams["sortField"] = {sortBy: urlParams["sort"], order: "ASCENDING"};
             }
         }
-        if(urlParams["maxSize"] != null) {
+        if(urlParams["maxSize"] !== null) {
             searchParams["maxSize"] = Number(urlParams["maxSize"]);
         }
-        if(urlParams["search_images"] != null) {
-            if(Number(urlParams["search_images"]) == 1) {
+        if(urlParams["search_images"] !== null) {
+            if(Number(urlParams["search_images"]) === 1) {
                 searchParams["searchImages"] = {lookUpType: "exact", name: true};
             }
         }
-        if(urlParams["page"] != null) {
+        if(urlParams["page"] !== null) {
             searchParams["page"] = Number(urlParams["page"]);
         }
         angular.forEach(configuration.urlHelper.specialFields, function(specialField) {
-            if(urlParams[specialField + "_1"] != null && urlParams[specialField] != null) {
+            if(urlParams[specialField + "_1"] !== null && urlParams[specialField] !== null) {
                 var specialFieldLookUpType = urlParams[specialField + "_1"].split(" ");
                 var specialFieldName = urlParams[specialField].split(" ");
-                if(specialField == "publication_year") {
+                if(specialField === "publication_year") {
                     specialField = "year";
                 }
-                if(specialFieldName[0] != null) {
+                if(specialFieldName[0] !== null) {
                         searchParams[specialField + "Since"] = {
                             lookUpType: specialFieldLookUpType[0],
                             name: Number(specialFieldName[0])
                         }
                 }
-                if(specialFieldName[1] != null) {
+                if(specialFieldName[1] !== null) {
                         searchParams[specialField + "To"] = {
                             lookUpType: specialFieldLookUpType[1],
                             name: Number(specialFieldName[1])
@@ -233,7 +233,7 @@ var constructor = function ($http,$location, configuration, $route, $rootScope) 
     function getLookUpType(attr){
         var found = false, lookUpType = "";
         angular.forEach(Object.keys(configuration.urlHelper['lookUpType']), function(a) {
-            if(!found && configuration.urlHelper['lookUpType'][a] == attr) {
+            if(!found && configuration.urlHelper['lookUpType'][a] === attr) {
                 lookUpType = a;
                 found = true;
             }
