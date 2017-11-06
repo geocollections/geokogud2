@@ -32,7 +32,7 @@ var constructor = function ($uibModal) {
     service.commonErrorHandler = function(errorData, status, callback) {
         //400, 401, 403
         var error;
-        if (errorData.status === 404) {
+        if (errorData.status == 404) {
             error = "INVALID_REQUEST";
         }
 
