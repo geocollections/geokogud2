@@ -46,7 +46,6 @@ var constructor = function (configuration, $translate, $http, applicationService
     }
 
     function getWebPageById(id, page) {
-        console.log(id, page);
         var myDataPromise = WebPagesFactory.getData(id);
         myDataPromise.then(function(result) {
             if (page == "geocollection") { vm.geocollection = result; }
@@ -64,6 +63,9 @@ var constructor = function (configuration, $translate, $http, applicationService
     }
 
     function onNewsData(response) {
+
+        console.log(response);
+
         vm.news = response.data;
         angular.forEach(vm.news.results, function(currentNews) {
             var year = currentNews.date_added.split("-")[0];
@@ -76,6 +78,9 @@ var constructor = function (configuration, $translate, $http, applicationService
         $scope.yearToShow = $event.target.innerText;
     }
 
+    /*
+     *
+     */
     function switchYear(selectedYear) {
         if (selectedYear != null) { $scope.yearToShow = selectedYear; }
     }

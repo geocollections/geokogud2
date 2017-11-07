@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/config")
 public class ConfigurationController {
-    @Autowired
-    private AppConfig appConfig;
-
-    @RequestMapping(value = "/")
-    public AppConfig getConfig(){
-        return appConfig;
-    }
+//    @Autowired
+//    private AppConfig appConfig;
+//
+//    @RequestMapping(value = "/")
+//    public AppConfig getConfig(){
+//        return appConfig;
+//    }
 }

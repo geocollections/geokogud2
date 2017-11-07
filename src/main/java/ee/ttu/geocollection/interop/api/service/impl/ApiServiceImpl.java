@@ -26,6 +26,11 @@ import java.util.Map;
 @Service
 public class ApiServiceImpl implements ApiService {
 
+    /**
+     * to specify the number of records per page: ?paginate_by=$paginate_by
+     * Pagination is currently to 30
+     */
+    private static final int PAGINATE_BY = 30;
     private static final Logger logger = LoggerFactory.getLogger(ApiServiceImpl.class);
 
     @Value("${geo-api.url}")
@@ -42,7 +47,7 @@ public class ApiServiceImpl implements ApiService {
         if (requestId != null) {
             headers.set("Trace-UUID", requestId);
         }
-        HttpEntity<String> request = new HttpEntity<String>(headers);
+        HttpEntity<String> request = new HttpEntity<>(headers);
         logger.trace(url);
         HttpEntity<Map> response = restTemplate.exchange(url, HttpMethod.GET, request, Map.class);
         return response.getBody();
@@ -50,7 +55,7 @@ public class ApiServiceImpl implements ApiService {
 
     @Override
     public ApiResponse searchRawEntities(String tableName, int page, SortField sortField, String requestParams) {
-        return searchRawEntities(tableName, 30, page, sortField, requestParams);
+        return searchRawEntities(tableName, PAGINATE_BY, page, sortField, requestParams);
     }
 
     @Override
@@ -74,6 +79,11 @@ public class ApiServiceImpl implements ApiService {
         }
     }
 
+    /**
+     * Adds nothing or "-" sign for api to understand if ordering is ascending or descending
+     * @param order which is either ASCENDING or DESCENDING
+     * @return returns "" or "-" dependent on order
+     */
     private String getSortingDirection(SortingOrder order) {
         return order.equals(SortingOrder.ASCENDING) ? "" : "-";
     }
@@ -91,7 +101,7 @@ public class ApiServiceImpl implements ApiService {
         if (requestId != null) {
             headers.set("Trace-UUID", requestId);
         }
-        HttpEntity<String> request = new HttpEntity<String>(headers);
+        HttpEntity<String> request = new HttpEntity<>(headers);
         System.err.println(url);
         HttpEntity<Map> response = restTemplate.exchange(url, HttpMethod.GET, request, Map.class);
         return response.getBody();

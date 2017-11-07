@@ -14,15 +14,26 @@ import java.util.Calendar;
 @Service
 public class WebNewsApiServiceImpl implements WebNewsApiService {
 
+
     @Autowired
     private ApiService apiService;
 
+    /**
+     *
+     * @return returns response from api request
+     */
     @Override
     public ApiResponse getNews() {
-        int curYear = Calendar.getInstance().get(Calendar.YEAR);
         SortField sortField = new SortField();
         sortField.setOrder(SortingOrder.DESCENDING);
-        String params = "&" + ApiFields.DATE_ADDED_LT + "=" + curYear + "-12-31";
-        return apiService.searchRawEntities("webnews", 1, sortField, params);
+        return apiService.searchRawEntities("webnews", 1, sortField, buildParameters());
+    }
+
+    /**
+     * Constructs parameter for api
+     * @return String example "&date_added__lt=2017-12-31"
+     */
+    private String buildParameters() {
+        return "&" + ApiFields.DATE_ADDED_LT + "=" + Calendar.getInstance().get(Calendar.YEAR) + "-12-31";
     }
 }
