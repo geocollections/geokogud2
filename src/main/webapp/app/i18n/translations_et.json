@@ -49,18 +49,26 @@
     },
     "TUG": {
         "TUG_TITLE": "Tartu Ülikooli ",
+        "PARAGRAPH_ONE": "",
+        "PARAGRAPH_TWO": "",
         "TUG_HEADING": "TUG"
     },
     "TAMG": {
         "TAMG_TITLE": "",
+        "PARAGRAPH_ONE": "",
+        "PARAGRAPH_TWO": "",
         "TAMG_HEADING": "TAMG"
     },
     "EMU": {
         "EMU_TITLE": "Geological collection at the ",
+        "PARAGRAPH_ONE": "",
+        "PARAGRAPH_TWO": "",
         "EMU_HEADING": "EMU"
     },
     "EKG": {
         "EKG_TITLE": "Geological collection at the ",
+        "PARAGRAPH_ONE": "",
+        "PARAGRAPH_TWO": "",
         "EKG_HEADING": "EKG"
     },
     "INFO": {

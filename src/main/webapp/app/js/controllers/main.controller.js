@@ -46,6 +46,7 @@ var constructor = function (configuration, $translate, $http, applicationService
     }
 
     function getWebPageById(id, page) {
+        console.log(id, page);
         var myDataPromise = WebPagesFactory.getData(id);
         myDataPromise.then(function(result) {
             if (page == "geocollection") { vm.geocollection = result; }
@@ -54,7 +55,7 @@ var constructor = function (configuration, $translate, $http, applicationService
             else if (page == "aboutFirstColumn") { vm.aboutFirstColumn = result; }
             else if (page == "aboutSecondColumn") { vm.aboutSecondColumn = result; }
             else if (page == "aboutThirdColumn") { vm.aboutThirdColumn = result; }
-            else if (page == "git") { vm.git = result; }
+            else if (page == "git") { vm.git = result;}
             else if (page == "searchTips") { vm.searchTips = result; }
             else if (page == "drillCoreSearch") { vm.drillCoreSearch = result; }
             else if (page == "protoArchiveQuery") { vm.protoArchiveQuery = result; }
