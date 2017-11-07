@@ -47,6 +47,22 @@
         "PARAGRAPH_TWO": "The collections form an integral part of the research carried out at the Institute, particularly in the fields of paleontology, sedimentology and geochemistry.",
         "GIT_HEADING": "GIT"
     },
+    "TUG": {
+        "TUG_TITLE": "Geological collection at the ",
+        "TUG_HEADING": "TUG"
+    },
+    "TAMG": {
+        "TAMG_TITLE": "Geological collection at the ",
+        "TAMG_HEADING": "TAMG"
+    },
+    "EMU": {
+        "EMU_TITLE": "Geological collection at the ",
+        "EMU_HEADING": "EMU"
+    },
+    "EKG": {
+        "EKG_TITLE": "Geological collection at the ",
+        "EKG_HEADING": "EKG"
+    },
     "INFO": {
         "HEADING": "Collections",
         "COLLECTIONS_IN_GEOLOGY": {

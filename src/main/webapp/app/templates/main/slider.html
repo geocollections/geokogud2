@@ -1,31 +1,61 @@
 <div class="infoCarousel-nav">
 <ul class="nav nav-pills hidden-xs" role="tablist">
-   <li class="active" role="presentation">
+
+    <li class="active" role="presentation">
         <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="0">
             <i class="fa fa-circle fa-lg"></i><br/>
             {{ 'GIT.GIT_HEADING' | translate }}
         </a>
     </li>
+
     <li role="presentation">
         <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="1">
+            <i class="fa fa-circle fa-lg"></i><br/>
+            {{ 'TUG.TUG_HEADING' | translate }}
+        </a>
+    </li>
+
+    <li role="presentation">
+        <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="2">
+            <i class="fa fa-circle fa-lg"></i><br/>
+            {{ 'TAMG.TAMG_HEADING' | translate }}
+        </a>
+    </li>
+
+    <li role="presentation">
+        <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="3">
+            <i class="fa fa-circle fa-lg"></i><br/>
+            {{ 'EMU.EMU_HEADING' | translate }}
+        </a>
+    </li>
+
+    <li role="presentation">
+        <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="4">
+            <i class="fa fa-circle fa-lg"></i><br/>
+            {{ 'EKG.EKG_HEADING' | translate }}
+        </a>
+    </li>
+
+    <li role="presentation">
+        <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="5">
             <i class="fa fa-info fa-lg"></i><br/>
             {{ 'INDEX.ABOUT_COLLECTIONS_LINK' | translate }}
         </a>
     </li>
     <li role="presentation">
-        <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="2">
+        <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="6">
             <i class="fa fa-creative-commons fa-lg"></i><br/>
             {{ 'INDEX.USING_COLLECTIONS_LINK' | translate }}
         </a>
     </li>
     <li role="presentation">
-        <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="3">
+        <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="7">
             <i class="fa fa-calendar-check-o fa-lg"></i><br/>
             {{ 'INDEX.NEWS_LINK' | translate }}
         </a>
     </li>
     <li role="presentation">
-        <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="4">
+        <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="8">
             <i class="fa fa-database fa-lg"></i><br/>
             {{ 'INDEX.DATABASE_LINK' | translate }}
         </a>
@@ -36,6 +66,22 @@
         <div class="carousel-inner backgr" role="listbox">
             <div class="item active">
                 <div ng-include="'app/templates/main/git.html'"></div>
+            </div>
+
+            <div class="item">
+                <div ng-include="'app/templates/main/tug.html'"></div>
+            </div>
+
+            <div class="item">
+                <div ng-include="'app/templates/main/tamg.html'"></div>
+            </div>
+
+            <div class="item">
+                <div ng-include="'app/templates/main/emu.html'"></div>
+            </div>
+
+            <div class="item">
+                <div ng-include="'app/templates/main/ekg.html'"></div>
             </div>
 
             <div class="item">

@@ -47,6 +47,22 @@
         "PARAGRAPH_TWO": "",
         "GIT_HEADING": "GIT"
     },
+    "TUG": {
+        "TUG_TITLE": "Tartu Ülikooli ",
+        "TUG_HEADING": "TUG"
+    },
+    "TAMG": {
+        "TAMG_TITLE": "",
+        "TAMG_HEADING": "TAMG"
+    },
+    "EMU": {
+        "EMU_TITLE": "Geological collection at the ",
+        "EMU_HEADING": "EMU"
+    },
+    "EKG": {
+        "EKG_TITLE": "Geological collection at the ",
+        "EKG_HEADING": "EKG"
+    },
     "INFO": {
         "HEADING": "Kollektsioonid",
         "COLLECTIONS_IN_GEOLOGY": {
