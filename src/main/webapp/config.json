@@ -181,7 +181,7 @@
 
   "autocompleteUrl" : "/search/autocomplete-field",
 
-  "newsUrl":"/webnews",
+  "webnewsUrl":"/webnews",
   "mapData": {
     "specificLocalities":"/map/locality-summary-filter",
     "allLocalities":"/map/locality-summary"
