@@ -33,6 +33,9 @@ public class ApiServiceImpl implements ApiService {
     private static final int PAGINATE_BY = 30;
     private static final Logger logger = LoggerFactory.getLogger(ApiServiceImpl.class);
 
+    /**
+     * Value is got from resources/application.properties file
+     */
     @Value("${geo-api.url}")
     private String apiUrl;
 
@@ -60,16 +63,30 @@ public class ApiServiceImpl implements ApiService {
 
     @Override
     public ApiResponse searchRawEntities(String tableName, int paginateBy, int page, SortField sortField, String requestParams) {
-        String url = apiUrl + "/" + tableName + "/" + "?paginate_by=" + paginateBy + "&page=" + page
+        String url = apiUrl
+                + "/" + tableName + "/"
+                + "?paginate_by=" + paginateBy + "&page=" + page
                 + "&order_by=" + getSortingDirection(sortField.getOrder()) + sortField.getSortBy()
-                + "&format=json" + UrlEscapers.urlPathSegmentEscaper().escape(requestParams);
+                + "&format=json"
+                + escapeParameters(requestParams);
+
         logger.trace("Searching: " + url);
+
         try {
+            /*
+             * Retrieves a representation by doing GET on the URL.
+             * The response (if any) is converted and returned.
+             * First parameter: url.
+             * Second parameter: the type of the return value.
+             * Returns: the converted object
+             */
             ApiResponse response = restTemplate.getForObject(new URI(url), ApiResponse.class);
-            if (response != null){
+
+            if (response != null) {
                 response.setTable(tableName);
             }
             return response;
+
         } catch (HttpMessageNotReadableException e) {
             throw new AppException(AppError.BAD_REQUEST, e);
         } catch (HttpServerErrorException e) {
@@ -81,7 +98,7 @@ public class ApiServiceImpl implements ApiService {
 
     @Override
     public Map searchByField(String table, String term, String searchField) {
-        String url = apiUrl + "/" + table + "/" + "?paginate_by=" + 30
+        String url = apiUrl + "/" + table + "/" + "?paginate_by=" + PAGINATE_BY
                 + "&format=json&fields=" + searchField + "&multi_search=value:"+term+";fields:"+searchField+";lookuptype:icontains"
                 + "&group_by="+searchField;
 
@@ -104,5 +121,14 @@ public class ApiServiceImpl implements ApiService {
      */
     private String getSortingDirection(SortingOrder order) {
         return order.equals(SortingOrder.ASCENDING) ? "" : "-";
+    }
+
+    /**
+     * Returns the escaped form of a given string
+     * @param parameters String to be escaped
+     * @return returns the escaped form of String
+     */
+    private String escapeParameters(String parameters) {
+        return UrlEscapers.urlPathSegmentEscaper().escape(parameters);
     }
 }

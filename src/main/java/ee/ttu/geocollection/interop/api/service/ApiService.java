@@ -25,7 +25,7 @@ public interface ApiService {
     ApiResponse searchRawEntities(String tableName, int page, SortField sortField, String requestParams) ;
 
     /**
-     * Calls GET request and puts api response into table with same table name.
+     * Constructs URL and calls GET request then puts api response into table with same table name.
      * If request fails then exception is thrown.
      * @param tableName to specify table name /tableName/
      * @param paginateBy to specify the number of records per page: ?paginate_by=$paginate_by
