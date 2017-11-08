@@ -14,6 +14,16 @@ public class WebPagesApiServiceImpl implements WebPagesApiService {
     @Autowired
     private ApiService apiService;
 
+    /**
+     * Sorting order is set to ASCENDING,
+     * table on which data is being searched is webpages
+     * and search is done on the first page. First page
+     * does not contain all the data but that does not matter
+     * because search is done by correspondent id.
+     * @param id Identificator which equals to id value
+     *           in response's results array.
+     * @return API's response
+     */
     @Override
     public ApiResponse getWebPages(int id)  {
         SortField sortField = new SortField();

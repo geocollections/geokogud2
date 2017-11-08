@@ -20,7 +20,7 @@ public class WebNewsApiServiceImpl implements WebNewsApiService {
 
     /**
      * Sorting order is set to DESCENDING,
-     * table on which data is being serached is webnews
+     * table on which data is being searched is webnews
      * and search is done on the first page.
      * @return API's response
      */
