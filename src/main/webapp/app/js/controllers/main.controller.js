@@ -45,8 +45,14 @@ var constructor = function (configuration, $translate, $http, applicationService
         }
     }
 
+    /**
+     *
+     * @param id
+     * @param page
+     */
     function getWebPageById(id, page) {
         var myDataPromise = WebPagesFactory.getData(id);
+        console.log(myDataPromise);
         myDataPromise.then(function(result) {
             if (page == "geocollection") { vm.geocollection = result; }
             else if (page == "usingCollections") { vm.usingCollections = result; }
@@ -64,7 +70,7 @@ var constructor = function (configuration, $translate, $http, applicationService
 
     function onNewsData(response) {
 
-        console.log(response);
+        //console.log(response);
 
         vm.news = response.data;
         angular.forEach(vm.news.results, function(currentNews) {
