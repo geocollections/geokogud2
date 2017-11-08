@@ -52,9 +52,13 @@ var constructor = function (configuration, $translate, $http, applicationService
      */
     function getWebPageById(id, page) {
         var myDataPromise = WebPagesFactory.getData(id);
+<<<<<<< HEAD
 
         console.log(myDataPromise);
 
+=======
+        console.log(myDataPromise);
+>>>>>>> 854ff50a16a4d0dece1bc6b1ad9992bad4ce27b4
         myDataPromise.then(function(result) {
             if (page == "geocollection") { vm.geocollection = result; }
             else if (page == "usingCollections") { vm.usingCollections = result; }
