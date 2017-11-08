@@ -17,6 +17,13 @@ var constructor = function (utils, configuration, $window, $location) {
         utils.toggleInArray(el,array)
     };
 
+    /**
+     * Calls GET request from newsUrl which comes from config.json
+     * @param callback All response status codes from 200 - 299 are
+     * considered success and will result in the success callback being called
+     * @param error Any response status code outside this range is considered
+     * and will result in the error callback being called
+     */
     service.getNews = function (callback, error) {
         utils.httpGet(configuration.newsUrl, null, callback, error);
     };

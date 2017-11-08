@@ -18,10 +18,6 @@ public class WebNewsApiServiceImpl implements WebNewsApiService {
     @Autowired
     private ApiService apiService;
 
-    /**
-     *
-     * @return returns response from api request
-     */
     @Override
     public ApiResponse getNews() {
         SortField sortField = new SortField();

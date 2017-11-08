@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/news")
+@RequestMapping("/webnews")
 public class WebNewsController {
     @Autowired
     private WebNewsApiService webNewsApiService;
