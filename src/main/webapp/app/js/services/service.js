@@ -24,7 +24,7 @@ var constructor = function (utils, configuration, $window, $location) {
      * @param error Any response status code outside this range is considered
      * and will result in the error callback being called
      */
-    service.getNews = function (callback, error) {
+    service.getssNews = function (callback, error) {
         utils.httpGet(configuration.newsUrl, null, callback, error);
     };
 

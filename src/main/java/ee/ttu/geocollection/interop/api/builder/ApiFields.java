@@ -202,6 +202,8 @@ public class ApiFields {
     public static final String SAMPLE_STRATIGRAPHY_ID = "sample__stratigraphy_id";
     public static final String SAMPLE_LITHOSTRATIGRAPHY_ID = "sample__lithostratigraphy_id";
 
-    // webnews
+    /**
+     * Used in WebNewsApiServiceImpl class
+     */
     public static final String DATE_ADDED_LT = "date_added__lt";
 }

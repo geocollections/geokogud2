@@ -18,6 +18,12 @@ public class WebNewsApiServiceImpl implements WebNewsApiService {
     @Autowired
     private ApiService apiService;
 
+    /**
+     * Sorting order is set to DESCENDING,
+     * table on which data is being serached is webnews
+     * and search is done on the first page.
+     * @return API's response
+     */
     @Override
     public ApiResponse getNews() {
         SortField sortField = new SortField();
@@ -27,7 +33,7 @@ public class WebNewsApiServiceImpl implements WebNewsApiService {
 
     /**
      * Constructs parameter for api
-     * @return String example "&date_added__lt=2017-12-31"
+     * @return Returns string example "&date_added__lt=2017-12-31"
      */
     private String buildParameters() {
         return "&" + ApiFields.DATE_ADDED_LT + "=" + Calendar.getInstance().get(Calendar.YEAR) + "-12-31";

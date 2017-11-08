@@ -6,6 +6,12 @@ import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import java.util.Map;
 
 public interface ApiService {
+    /**
+     *
+     * @param tableName
+     * @param requestParams
+     * @return
+     */
     Map findRawEntity(String tableName, String requestParams);
 
     /**
@@ -30,5 +36,12 @@ public interface ApiService {
      */
     ApiResponse searchRawEntities(String tableName, int paginateBy, int page, SortField sortField, String requestParams) ;
 
+    /**
+     *
+     * @param table
+     * @param term
+     * @param searchField
+     * @return
+     */
     Map searchByField(String table, String term, String searchField);
 }

@@ -6,7 +6,7 @@ public interface WebNewsApiService {
 
     /**
      * Calls GET request from API's /webnews/ table.
-     * @return returns response from request into: localhost/news
+     * @return returns response from request
      */
     ApiResponse getNews();
 }

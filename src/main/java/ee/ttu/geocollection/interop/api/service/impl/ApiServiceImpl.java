@@ -79,16 +79,6 @@ public class ApiServiceImpl implements ApiService {
         }
     }
 
-    /**
-     * Adds nothing or "-" sign for api to understand if ordering is ascending or descending
-     * @param order which is either ASCENDING or DESCENDING
-     * @return returns "" or "-" dependent on order
-     */
-    private String getSortingDirection(SortingOrder order) {
-        return order.equals(SortingOrder.ASCENDING) ? "" : "-";
-    }
-
-
     @Override
     public Map searchByField(String table, String term, String searchField) {
         String url = apiUrl + "/" + table + "/" + "?paginate_by=" + 30
@@ -105,6 +95,14 @@ public class ApiServiceImpl implements ApiService {
         System.err.println(url);
         HttpEntity<Map> response = restTemplate.exchange(url, HttpMethod.GET, request, Map.class);
         return response.getBody();
+    }
 
+    /**
+     * Adds nothing or "-" sign for api to understand if ordering is ascending or descending
+     * @param order which is either ASCENDING or DESCENDING
+     * @return returns "" or "-" dependent on order
+     */
+    private String getSortingDirection(SortingOrder order) {
+        return order.equals(SortingOrder.ASCENDING) ? "" : "-";
     }
 }

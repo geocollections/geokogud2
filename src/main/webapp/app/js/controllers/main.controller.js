@@ -29,7 +29,7 @@ var constructor = function (configuration, $translate, $http, applicationService
     function asyncLoadData () {
         //if it is not modal form then load news and other page stuff
         if(!isDetailForm() && !isGlobalSearch()) {
-            applicationService.getNews(onNewsData);
+            applicationService.getssNews(onNewsData);
             // content of webpages
             vm.geocollection = getWebPageById(2, "geocollection");
             vm.usingCollections = getWebPageById(32, "usingCollections");
