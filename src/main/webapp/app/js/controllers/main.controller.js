@@ -56,9 +56,6 @@ var constructor = function (configuration, $translate, $http, applicationService
      */
     function getWebPageById(id, page) {
         var myDataPromise = WebPagesFactory.getData(id);
-
-        //console.log(myDataPromise);
-
         myDataPromise.then(function(result) {
             if (page == "geocollection") { vm.geocollection = result; }
             else if (page == "usingCollections") { vm.usingCollections = result; }
