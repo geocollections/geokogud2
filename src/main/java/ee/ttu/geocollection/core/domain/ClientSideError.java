@@ -1,8 +1,20 @@
 package ee.ttu.geocollection.core.domain;
 
 public class ClientSideError {
+
+    /**
+     * String value of url which caused error
+     */
     private String url;
+
+    /**
+     * String value of error message
+     */
     private String message;
+
+    /**
+     * String value of error stackTrace
+     */
     private String stackTrace;
 
     public String getUrl() {

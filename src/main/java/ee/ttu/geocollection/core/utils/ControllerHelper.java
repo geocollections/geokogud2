@@ -25,7 +25,6 @@ public abstract class ControllerHelper {
         responseMsg.put("success", String.valueOf(false));
         responseMsg.put("errorCode", HttpStatus.INTERNAL_SERVER_ERROR.toString());
         responseMsg.put("errorDetails", "Unexpected error");
-
         return responseMsg;
     }
 

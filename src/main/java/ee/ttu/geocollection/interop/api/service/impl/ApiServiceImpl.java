@@ -39,6 +39,9 @@ public class ApiServiceImpl implements ApiService {
     @Value("${geo-api.url}")
     private String apiUrl;
 
+    /**
+     * Creates a new instance of the RestTemplate
+     */
     private RestTemplate restTemplate = new RestTemplate();
 
     @Override
