@@ -1,5 +1,13 @@
 var module = angular.module("geoApp");
 
+/**
+ * Constructor for service.js
+ * @param utils comes from utils.js
+ * @param configuration comes from config.js
+ * @param $window
+ * @param $location
+ * @returns service
+ */
 var constructor = function (utils, configuration, $window, $location) {
 
     var service = {};
@@ -19,6 +27,7 @@ var constructor = function (utils, configuration, $window, $location) {
 
     /**
      * Calls GET request from webnewsUrl which url comes from config.json
+     * utils.httpGet comes from utils.js
      * @param callback All response status codes from 200 - 299 are considered
      *                 success and will result in the success callback being called
      * @param error Any response status code outside this range is considered
@@ -184,6 +193,7 @@ var constructor = function (utils, configuration, $window, $location) {
         window.open(params.url, '', 'width=750,height=750,scrollbars, resizable');
     }
 
+    console.log(service);
     return service;
 };
 

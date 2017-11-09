@@ -2,12 +2,13 @@ var module = angular.module("geoApp");
 
 var constructor = function (configuration, $translate, $http, applicationService, $state, $scope, $rootScope, WebPagesFactory) {
 
+    // View model
     var vm = this;
+    // Data from applicationService aka service.js
     vm.service = applicationService;
-    //config from config.json
+    // Config from config.json
     vm.configuration = configuration;
-    vm.news = [];
-    vm.years = [];
+
     vm.showNews = showNews;
     vm.yearFilter = yearFilter;
     vm.getTitle = getTitle;
@@ -17,9 +18,9 @@ var constructor = function (configuration, $translate, $http, applicationService
     vm.isSearch = isSearch;
     vm.isDetailForm = isDetailForm;
     vm.isGlobalSearch = isGlobalSearch;
-
     vm.switchYear = switchYear;
 
+    // Initial value for which year to show
     $scope.yearToShow = 0;
 
     $rootScope.$on('$stateChangeSuccess', function(){
@@ -32,7 +33,7 @@ var constructor = function (configuration, $translate, $http, applicationService
         // do not load /webpages/{id} data.
         if(!isDetailForm() && !isGlobalSearch()) {
 
-            // Gets news
+            // Uses function from service.js which gets news using httpGet()
             applicationService.getNews(onNewsData);
 
             vm.geocollection = getWebPageById(2, "geocollection");
@@ -55,7 +56,10 @@ var constructor = function (configuration, $translate, $http, applicationService
      * @param page
      */
     function getWebPageById(id, page) {
+
+        // Uses function getData from utils.js under WebPagesFactory
         var myDataPromise = WebPagesFactory.getData(id);
+
         myDataPromise.then(function(result) {
             if (page == "geocollection") { vm.geocollection = result; }
             else if (page == "usingCollections") { vm.usingCollections = result; }
@@ -71,13 +75,16 @@ var constructor = function (configuration, $translate, $http, applicationService
         });
     }
 
+    /**
+     *
+     * @param response webnews from API
+     */
     function onNewsData(response) {
-
-        //console.log(response);
-
-        vm.news = response.data;
+        // vm.news = [];
+        vm.years = [];
+        // vm.news = response.data;
         console.log(response.data);
-        angular.forEach(vm.news.results, function(currentNews) {
+        angular.forEach(response.data.results, function(currentNews) {
             var year = currentNews.date_added.split("-")[0];
             if (vm.years.indexOf(year) == -1) { vm.years.push(year); }
         });
@@ -138,7 +145,6 @@ var constructor = function (configuration, $translate, $http, applicationService
      * @returns return correspondent content
      */
     function getContent(webpage) {
-        console.log(webpage);
         if (webpage != null) { return $translate.use() === "et" ? webpage.content_et : webpage.content_en; }
         return null;
     }
@@ -158,9 +164,25 @@ var constructor = function (configuration, $translate, $http, applicationService
         startingDay: 1
     };
 
+    /**
+     * True if states current name equals any of the search states
+     * aka if user is on search page then returns true.
+     * @returns boolean value
+     */
     function isSearch() {
-        var searchStates = ['samples', 'specimens','drillcores', 'localities','references', 'stratigraphies','analyses',
-            'preparations', 'photoArchives', 'soils','dois'];
+        var searchStates = [
+            'specimens',
+            'samples',
+            'drillcores',
+            'localities',
+            'references',
+            'stratigraphies',
+            'analyses',
+            'preparations',
+            'photoArchives',
+            'soils',
+            'dois'
+            ];
         return searchStates.indexOf($state.current.name) > -1;
     }
 
