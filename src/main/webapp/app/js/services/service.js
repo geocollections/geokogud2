@@ -14,12 +14,13 @@ var constructor = function (utils, configuration, $window, $location) {
 
     service.departments = configuration.departments;
     service.pageSetUp = configuration.pageSetUp;
+    service.location = $location;
+
     service.openInNewWindow = openInNewWindow;
     service.openUrlInNewWindow = openUrlInNewWindow;
     service.showGoogleMap = showGoogleMap;
     service.showEstonianLandBoardMap = showEstonianLandBoardMap;
     service.getTranslationRoot = getTranslationRoot;
-    service.location = $location;
 
     service.toggle = function (el,array) {
         utils.toggleInArray(el,array)
@@ -54,7 +55,7 @@ var constructor = function (utils, configuration, $window, $location) {
     };
     service.getEntity = function (searchType, id, callback, error) {
         var url = getDetailUrl(searchType);
-        utils.httpGet(url + "/"+id, null, callback, error);
+        utils.httpGet(url + "/" + id, null, callback, error);
     };
 
     service.loadMapData = function (callback, error) {
@@ -71,8 +72,8 @@ var constructor = function (utils, configuration, $window, $location) {
     service.composeImageUrl = function(imageData, readyUrl) {
         if(readyUrl) return readyUrl;
         if(imageData.image_url) return imageData.image_url;
-        var imageUrl = "http://geokogud.info/"+imageData.database__acronym.toLowerCase()+"/image/";
-        return imageUrl+ imageData.imageset__imageset_series + "/"+imageData.imageset__imageset_number+"/"+imageData.filename;
+        var imageUrl = "http://geokogud.info/" + imageData.database__acronym.toLowerCase() + "/image/";
+        return imageUrl + imageData.imageset__imageset_series + "/" + imageData.imageset__imageset_number + "/" + imageData.filename;
     };
 
     service.composeExternalImagePath = function(imageData) {
@@ -177,21 +178,28 @@ var constructor = function (utils, configuration, $window, $location) {
         return root;
     }
 
-    // TODO: change window to $window
     function showGoogleMap(lat, lon, localityName) {
-        window.open('http://maps.google.com/?q='+lat+','+lon+' ('+localityName+')', '', 'width=750,height=540,scrollbars, resizable');
+        $window.open(
+            'http://maps.google.com/?q=' + lat + ',' + lon + ' (' + localityName + ')',
+            '',
+            'width=800,height=600,scrollbars, resizable'
+        );
     }
 
     function showEstonianLandBoardMap(lat,lon) {
-        window.open('http://geoportaal.maaamet.ee/url/xgis-latlon.php?lat='+lat+'&lon='+lon+'&out=xgis&app_id=UU82', '', 'width=900,height=600,scrollbars, resizable');
+        $window.open(
+            'http://geoportaal.maaamet.ee/url/xgis-latlon.php?lat=' + lat + '&lon=' + lon + '&out=xgis&app_id=UU82',
+            '',
+            'width=800,height=600,scrollbars, resizable'
+        );
     }
 
     function openInNewWindow(params) {
-        $window.open('/'+params.object+'/' + params.id, '', 'width=570,height=750,scrollbars, resizable');
+        $window.open('/' + params.object + '/' + params.id, '', 'width=570,height=750,scrollbars, resizable');
     }
 
     function openUrlInNewWindow(params) {
-        window.open(params.url, '', 'width=750,height=750,scrollbars, resizable');
+        $window.open(params.url, '', 'width=750,height=750,scrollbars, resizable');
     }
 
     return service;
