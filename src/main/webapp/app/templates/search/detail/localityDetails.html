@@ -192,18 +192,20 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Reference</th>
                         <th>Pages</th>
-                        <th>Figs.</th>
+                        <th>Figures</th>
                         <th>Remarks</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr style="cursor: pointer; " data-ng-repeat="entity in detailCtrl.localityReferences">
-                        <td><a href data-ng-click="detailCtrl.service.openInNewWindow({object:'reference',id:entity.id})">{{entity.reference__reference}}</a></td>
-                        <td>{{entity.pages}}</td>
-                        <td>{{entity.figures}}</td>
-                        <td>{{entity.remarks}}</td>
+                        <td>{{ entity.id }}</td>
+                        <td>{{ entity.reference__reference }}</td>
+                        <td>{{ entity.pages }}</td>
+                        <td>{{ entity.figures }}</td>
+                        <td>{{ entity.remarks }}</td>
                     </tr>
                     </tbody>
                 </table>
