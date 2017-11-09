@@ -2,11 +2,11 @@ var module = angular.module("geoApp");
 
 /**
  * Constructor for service.js
- * @param utils comes from utils.js
- * @param configuration comes from config.js
- * @param $window
- * @param $location
- * @returns service
+ * @param utils Comes from utils.js
+ * @param configuration Comes from config.js
+ * @param $window Angular's built in reference to browser's window object
+ * @param $location From angular translate library
+ * @returns service which contains
  */
 var constructor = function (utils, configuration, $window, $location) {
 
@@ -177,6 +177,7 @@ var constructor = function (utils, configuration, $window, $location) {
         return root;
     }
 
+    // TODO: change window to $window
     function showGoogleMap(lat, lon, localityName) {
         window.open('http://maps.google.com/?q='+lat+','+lon+' ('+localityName+')', '', 'width=750,height=540,scrollbars, resizable');
     }
@@ -193,7 +194,6 @@ var constructor = function (utils, configuration, $window, $location) {
         window.open(params.url, '', 'width=750,height=750,scrollbars, resizable');
     }
 
-    console.log(service);
     return service;
 };
 

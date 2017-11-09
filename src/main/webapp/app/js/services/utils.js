@@ -302,7 +302,10 @@ module.factory("SearchFactory", ['$http', 'configuration', function($http, confi
 }]).factory("WebPagesFactory", ['$http', 'configuration', function($http, configuration) {
 
     var getData = function(id) {
-        return $http({method:"GET", url: configuration.webPagesUrl + "/" + id}).then(function(result){
+        return $http({
+            method:"GET",
+            url: configuration.webPagesUrl + "/" + id
+        }).then(function(result){
             return result.data.results[0];
         });
     };

@@ -1,12 +1,15 @@
 var module = angular.module("geoApp");
 
+/**
+ * @param configuration Used to get configurations from config.json
+ * @param applicationService Used to get data from applicationService aka service.js
+ * @param WebPagesFactory Used to call getData function which comes from utils.js under WebPagesFactory
+ */
 var constructor = function (configuration, $translate, $http, applicationService, $state, $scope, $rootScope, WebPagesFactory) {
 
     // View model
     var vm = this;
-    // Data from applicationService aka service.js
     vm.service = applicationService;
-    // Config from config.json
     vm.configuration = configuration;
 
     vm.showNews = showNews;
@@ -23,19 +26,24 @@ var constructor = function (configuration, $translate, $http, applicationService
     // Initial value for which year to show
     $scope.yearToShow = 0;
 
-    $rootScope.$on('$stateChangeSuccess', function(){
+    // Event listener for rootScope. Everytime its state
+    // changes successfully then asynLoadData is called
+    $rootScope.$on('$stateChangeSuccess', function() {
         asyncLoadData();
     });
 
+    /**
+     * Loads all the useful wepage content unless it's
+     * global search or new "pop-up" window. Webpage content
+     * like news and different columns and so on
+     */
     function asyncLoadData () {
-
-        // If global search or new window aka modal then
-        // do not load /webpages/{id} data.
         if(!isDetailForm() && !isGlobalSearch()) {
 
-            // Uses function from service.js which gets news using httpGet()
+            // Uses function from service.js which gets news using httpGet() from /webnews
             applicationService.getNews(onNewsData);
 
+            // Following lines are used to get data from /webpages/{id}
             vm.geocollection = getWebPageById(2, "geocollection");
             vm.usingCollections = getWebPageById(32, "usingCollections");
             vm.database = getWebPageById(21, "database");
@@ -51,13 +59,13 @@ var constructor = function (configuration, $translate, $http, applicationService
     }
 
     /**
-     *
-     * @param id
-     * @param page
+     * Gets results from /webpages/{id} and makes
+     * variables equal to correct data.
+     * @param id Identificator for desired information
+     * @param page Name which given to certain result
      */
     function getWebPageById(id, page) {
 
-        // Uses function getData from utils.js under WebPagesFactory
         var myDataPromise = WebPagesFactory.getData(id);
 
         myDataPromise.then(function(result) {
@@ -76,16 +84,18 @@ var constructor = function (configuration, $translate, $http, applicationService
     }
 
     /**
-     *
-     * @param response webnews from API
+     * Iterates through each webnews object and sets
+     * $scopes yearToShow to first year got from response
+     * @param response Webnews data from API
      */
     function onNewsData(response) {
-        // vm.news = [];
         vm.years = [];
-        // vm.news = response.data;
-        console.log(response.data);
-        angular.forEach(response.data.results, function(currentNews) {
+        vm.news = response.data;
+
+        angular.forEach(vm.news.results, function(currentNews) {
+            // This gets only the year (yyyy-mm-dd)
             var year = currentNews.date_added.split("-")[0];
+            // If year is not in list then it will be pushed there
             if (vm.years.indexOf(year) == -1) { vm.years.push(year); }
         });
         $scope.yearToShow = vm.years[0];
