@@ -1,39 +1,80 @@
 var module = angular.module("geoApp");
 
-var constructor = function (configuration, $filter, $translate, $http, applicationService, $state, $stateParams, $scope,
-                            $rootScope, WebPagesFactory, GlobalSearchFactory, bsLoadingOverlayService) {
+/**
+ *
+ * @param configuration from config.json
+ * @param applicationService everything from service.js
+ * @param WebPagesFactory from utils.js
+ * @param GlobalSearchFactory from utils.js
+ * @param bsLoadingOverlayService comes from angular-loading-overlay library
+ */
+var constructor = function (configuration, $filter, $translate, $http, applicationService, $state, $stateParams,
+                            $scope, $rootScope, WebPagesFactory, GlobalSearchFactory, bsLoadingOverlayService) {
+
     var vm = this;
     vm.service = applicationService;
     vm.searchLoadingHandler = bsLoadingOverlayService.createHandler({
         referenceId: "globalView"
     });
 
+    initialisesGlobalSearchVariables();
 
-    $scope.searchResults = {
-        "specimen": {},
-        "sample": {},
-        "locality": {},
-        "reference": {},
-        "stratigraphy": {},
-        "image": {},
-        "taxon": {}
-    };
-    addClientSorting();
-    $scope.response = {
-        results: [],
-        related_data: {}
-    };
-
-    $scope.selectedTab = $stateParams.tab;
-
+    /**
+     * At first puts loading overlay then gets search query
+     * then uses searchGlobally from utils.js which first
+     * parameter is search query and second callback aka response
+     */
     $scope.searchGlobally = function () {
         vm.searchLoadingHandler.start();
         $scope.$parent.globalQuery = $stateParams.query;
-        GlobalSearchFactory.searchGlobally(
-            $stateParams.query,
-            onGlobalDataLoaded
-        );
+        GlobalSearchFactory.searchGlobally($stateParams.query, onGlobalDataLoaded);
     };
+
+    /**
+     * Initialises default values
+     */
+    function initialisesGlobalSearchVariables() {
+        $scope.searchResults = {
+            "specimen": {},
+            "sample": {},
+            "locality": {},
+            "reference": {},
+            "stratigraphy": {},
+            "image": {},
+            "taxon": {}
+        };
+
+        addClientSorting();
+
+        $scope.response = {
+            results: [],
+            related_data: {}
+        };
+        $scope.selectedTab = $stateParams.tab;
+    }
+
+    /**
+     * Sets searchParameters that sortBy is ID
+     * and order is DESCENDING.
+     * Also sortByAsc variable is set to true
+     */
+    function addClientSorting() {
+        $scope.searchParameters = {
+            sortField: {
+                sortBy: "id",
+                order: "DESCENDING"
+            }
+        };
+        $scope.sortByAsc = true;
+    }
+
+    /**
+     * If no data then return empty.
+     * Iterates through data elements aka tables.
+     * Every searchResults "tableName" equals to responses "tableName" data
+     * 
+     * @param result Response from search query
+     */
     function onGlobalDataLoaded(result) {
         if (!result.data) return;
         result.data.forEach(function (response) {
@@ -44,13 +85,6 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
             }
         });
         vm.searchLoadingHandler.stop();
-    }
-
-    function addClientSorting() {
-        $scope.searchParameters = {
-            sortField: {sortBy: "id", order: "DESCENDING"}
-        };
-        $scope.sortByAsc = true;
     }
 
     $scope.selectTab = function (tabTitle) {
@@ -85,7 +119,19 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
     $scope.selectTab($stateParams.tab);
 };
 
-constructor.$inject = ['configuration', '$filter', '$translate', '$http', 'ApplicationService', '$state', '$stateParams', '$scope',
-    '$rootScope', 'WebPagesFactory', 'GlobalSearchFactory', 'bsLoadingOverlayService'];
+constructor.$inject = [
+    'configuration',
+    '$filter',
+    '$translate',
+    '$http',
+    'ApplicationService',
+    '$state',
+    '$stateParams',
+    '$scope',
+    '$rootScope',
+    'WebPagesFactory',
+    'GlobalSearchFactory',
+    'bsLoadingOverlayService'
+];
 
 module.controller("GlobalSearchController", constructor);
