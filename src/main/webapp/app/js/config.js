@@ -176,22 +176,23 @@ module.config(function($stateProvider, $urlRouterProvider) {
             controller: "DetailController as detailCtrl",
             params: {type: "photoArchive"}
     })
-        .state('soils', {
-            url: "/soilsite",
-            templateUrl: "app/templates/search/soil_site/soil_site.html",
-            controller: "SearchController as ctrl",
-            params: {type: "soil"}
-    })
-        .state('soil', {
-            template: '<data-ui-view/>'
-    })
-        .state('soil.view', {
-            url: "/soilsite/:id",
-            templateUrl: "app/templates/search/detail/soilDetails.html",
-            controller: "DetailController as detailCtrl",
-            params: {type: "soil"}
-
-    })
+            // SOIL IS CURRENTLY NOT SUPPORTED
+    //     .state('soils', {
+    //         url: "/soilsite",
+    //         templateUrl: "app/templates/search/soil_site/soil_site.html",
+    //         controller: "SearchController as ctrl",
+    //         params: {type: "soil"}
+    // })
+    //     .state('soil', {
+    //         template: '<data-ui-view/>'
+    // })
+    //     .state('soil.view', {
+    //         url: "/soilsite/:id",
+    //         templateUrl: "app/templates/search/detail/soilDetails.html",
+    //         controller: "DetailController as detailCtrl",
+    //         params: {type: "soil"}
+    //
+    // })
         .state('dois', {
             url: "/doi",
             templateUrl: "app/templates/search/doi/doi.html",
