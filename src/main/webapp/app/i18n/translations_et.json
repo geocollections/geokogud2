@@ -484,5 +484,5 @@
         "NEXT": "JÄRGMINE",
         "PREVIOUS": "EELMINE"
     },
-    "GLOBAL_SEARCH_INFO" : "Globaalne otsing kuvab maksimaalselt 100 tulemust. Rohkem andmete kuvamiseks palun kasuta liitostingut."
+    "GLOBAL_SEARCH_INFO" : "Globaalne otsing kuvab maksimaalselt 100 tulemust. Rohkemate andmete kuvamiseks palun kasutage detailotsingut."
 }

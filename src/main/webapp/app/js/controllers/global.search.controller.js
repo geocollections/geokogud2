@@ -71,8 +71,10 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
     /**
      * If no data then return empty.
      * Iterates through data elements aka tables.
-     * Every searchResults "tableName" equals to responses "tableName" data
-     * 
+     * Every searchResults "tableName" equals to responses "tableName" data.
+     * And if response "tablename" equals selected
+     * tabs then data is saved to $scope.response.
+     * After loading the search overlay is removed.
      * @param result Response from search query
      */
     function onGlobalDataLoaded(result) {
@@ -87,6 +89,12 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         vm.searchLoadingHandler.stop();
     }
 
+    /**
+     * Default will be specimen.
+     * Gives $scope.response correspondent data which
+     * will be shown to user when click is made on certain tab.
+     * @param tabTitle Tab's name
+     */
     $scope.selectTab = function (tabTitle) {
         if (!tabTitle) {
             tabTitle = "specimen";
@@ -98,11 +106,23 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         $scope.response.related_data = $scope.searchResults[tabTitle].related_data;
     };
 
+
+    /**
+     * Switches global search fields
+     * between ASCENDING or DESCENDING
+     */
     $scope.search = function () {
-        //console.log($scope.searchParameters.sortField.sortBy)
+        // console.log($scope.searchParameters.sortField.sortBy);
         $scope.response.results = $filter('orderBy')($scope.response.results,
             ($scope.searchParameters.sortField.order == 'DESCENDING' ? '-' : '') + $scope.searchParameters.sortField.sortBy);
     };
+
+    /**
+     * Gets results length for tabs which
+     * is shown after the tab name in parentheses
+     * @param tab Tab's name
+     * @returns Integer value of results length
+     */
     $scope.getResultsLength = function (tab) {
         if ($scope.searchResults[tab].results != null) {
             return $scope.searchResults[tab].results.length;
@@ -111,6 +131,12 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         }
     };
 
+    /**
+     * Returns true if current open tab name
+     * equals to selectedTab
+     * @param tab Tab's name
+     * @returns boolean value
+     */
     $scope.isTabActive = function (tab) {
         return tab == $scope.selectedTab;
     };
