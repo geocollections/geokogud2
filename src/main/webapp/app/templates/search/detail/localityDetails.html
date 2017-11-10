@@ -104,25 +104,32 @@
     <div class="panel-body">
         <div class="row"  data-ng-if="detailCtrl.specimens.length > 0">
             <div class="col-lg-6">
-            <label>Specimens</label>
-            <table class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Stratigraphy</th>
-                    <th>Stratigraphy remarks</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr style="cursor: pointer; " data-ng-repeat="specimen in detailCtrl.specimens">
-                    <td><a href data-ng-click="openInNewWindow({object:'specimen',id:specimen.id})">{{specimen.id}}</a></td>
-                    <td><a href="http://fossiilid.info/{{specimen.taxonId}}">{{specimen.taxon}}</a></td>
-                    <td>{{specimen.stratigraphy}}</td>
-                    <td>stratigraphy_free</td>
-                </tr>
-                </tbody>
-            </table>
+                <label>Specimens</label>
+
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Stratigraphy</th>
+                            <th>Stratigraphy remarks</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr style="cursor: pointer; " data-ng-repeat="specimen in detailCtrl.specimens">
+                            <td>
+                                <a href data-ng-click="openInNewWindow({object:'specimen',id:specimen.id})">{{specimen.id}}</a>
+                            </td>
+                            <td>
+                                <a href="http://fossiilid.info/{{specimen.taxonId}}">{{specimen.taxon}}</a>
+                            </td>
+                            <td>{{specimen.stratigraphy}}</td>
+                            <td>stratigraphy_free</td>
+                        </tr>
+                    </tbody>
+                </table>
+
             <a href="">Show all specimens ???</a>
             </div>
         </div>
