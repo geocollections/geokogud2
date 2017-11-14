@@ -1,12 +1,17 @@
 <div class="panel panel-default">
     <div class="panel-body">
+
+
         <div class="row">
             <div class="detailview-title col-lg-6">
                 <h3>{{'API_TRANSLATION.SOIL.DETAIL_FORM_NAME' | translate }} <localize et="detailCtrl.results['site']" en="detailCtrl.results['site_en']"/></h3>
                 <h4><em>(ID: {{detailCtrl.results['id']}})</em></h4>
             </div>
         </div>
+
+
         </br>
+
 
         <div class="row">
             <div class="col-lg-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
@@ -41,6 +46,10 @@
                     <tr data-ng-if="detailCtrl.results.transect_point && detailCtrl.results.transect_point != null"><td>{{ 'API_TRANSLATION.SOIL.TRANSECT_POINT ' | translate }} </td><td> {{detailCtrl.results.transect_point}}</td></tr>
                 </table>
             </div>
+        </div>
+
+
+        <div class="row">
             <div class="col-lg-6" data-ng-if="detailCtrl.locality.latitude && detailCtrl.locality.longitude">
                 <div id='hoverbox' class='coupontooltip'>
                     <div id='hoversystem'></div>
@@ -51,69 +60,77 @@
                 &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude)">Maa-amet / Estonian Land Board</a>
             </div>
         </div>
-    </div>
-    <div class="panel-body">
+
+
         <div class="row" data-ng-if="detailCtrl.soilHorizon.length > 0">
-            <h3>Horizons</h3>
-            <table class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Number</th>
-                    <th>Horisont</th>
-                    <th>Sügavus, m</th>
-                    <th>Üleminek A</th>
-                    <th>Üleminek B</th>
-                    <th>Korese tüüp A</th>
-                    <th>Korese tüüp B</th>
-                    <th>Korese aste 1</th>
-                    <th>Korese aste 2</th>
-                    <th>Lõimis 1</th>
-                    <th>Lõimis 2</th>
-                    <th>Remarks</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr style="cursor: pointer; " data-ng-repeat="entity in detailCtrl.soilHorizon">
-                    <td>{{entity.id}}</td>
-                    <td>{{entity.horizon_number}}</td>
-                    <td>{{entity.horizon}}</td>
-                    <td>{{entity.depth}}</td>
-                    <td>{{entity.transition_a}}</td>
-                    <td>{{entity.transition_b}}</td>
-                    <td>{{entity.korese_tyyp_a}}</td>
-                    <td>{{entity.korese_tyyp_b}}</td>
-                    <td>{{entity.korese_aste_1}}</td>
-                    <td>{{entity.korese_aste_2}}</td>
-                    <td>{{entity.granulometry_1}}</td>
-                    <td>{{entity.granulometry_2}}</td>
-                    <td>{{sample.remarks}}</td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="col-lg-6">
+                <h3>Horizons</h3>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Number</th>
+                        <th>Horisont</th>
+                        <th>Sügavus, m</th>
+                        <th>Üleminek A</th>
+                        <th>Üleminek B</th>
+                        <th>Korese tüüp A</th>
+                        <th>Korese tüüp B</th>
+                        <th>Korese aste 1</th>
+                        <th>Korese aste 2</th>
+                        <th>Lõimis 1</th>
+                        <th>Lõimis 2</th>
+                        <th>Remarks</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr style="cursor: pointer; " data-ng-repeat="entity in detailCtrl.soilHorizon">
+                        <td>{{entity.id}}</td>
+                        <td>{{entity.horizon_number}}</td>
+                        <td>{{entity.horizon}}</td>
+                        <td>{{entity.depth}}</td>
+                        <td>{{entity.transition_a}}</td>
+                        <td>{{entity.transition_b}}</td>
+                        <td>{{entity.korese_tyyp_a}}</td>
+                        <td>{{entity.korese_tyyp_b}}</td>
+                        <td>{{entity.korese_aste_1}}</td>
+                        <td>{{entity.korese_aste_2}}</td>
+                        <td>{{entity.granulometry_1}}</td>
+                        <td>{{entity.granulometry_2}}</td>
+                        <td>{{sample.remarks}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
+
         <div class="row" data-ng-if="detailCtrl.samples.length > 0">
-            <h3>Samples</h3>
-            <table class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Number</th>
-                    <th>Horizon</th>
-                    <th>Depth, m</th>
-                    <th>Remarks</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr style="cursor: pointer; " data-ng-repeat="sample in detailCtrl.samples">
-                    <td><a href data-ng-click="detailCtrl.service.openInNewWindow({object:'sample',id:sample.id})">{{sample.id}}</a></td>
-                    <td>{{sample.number_additional}}</td>
-                    <td>{{sample.soil_horizon}}</td>
-                    <td>{{sample.depth}} - {{sample.depth_interval}}</td>
-                    <td>{{sample.remarks}}</td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="col-lg-6">
+                <h3>Samples</h3>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Number</th>
+                        <th>Horizon</th>
+                        <th>Depth, m</th>
+                        <th>Remarks</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr style="cursor: pointer; " data-ng-repeat="sample in detailCtrl.samples">
+                        <td><a href data-ng-click="detailCtrl.service.openInNewWindow({object:'sample',id:sample.id})">{{sample.id}}</a></td>
+                        <td>{{sample.number_additional}}</td>
+                        <td>{{sample.soil_horizon}}</td>
+                        <td>{{sample.depth}} - {{sample.depth_interval}}</td>
+                        <td>{{sample.remarks}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
+
     </div>
 </div>

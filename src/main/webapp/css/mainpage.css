@@ -522,6 +522,6 @@ table tr > td:first-child {
 
 @media (min-width: 1200px) {
     .col-lg-6 {
-        
+        width: 50%;
     }
 }

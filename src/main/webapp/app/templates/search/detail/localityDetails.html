@@ -1,5 +1,7 @@
 <div class="panel panel-default">
     <div class="panel-body">
+
+
         <div class="row">
             <div class="detailview-title col-lg-6">
                 <h3>
@@ -8,7 +10,9 @@
                 <h4><em>(ID: {{detailCtrl.results.id}})</em></h4>
             </div>
         </div>
+
         </br>
+
         <div class="row">
             <div class="col-lg-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
                 <table class="table table-bordered table-hover">
@@ -100,8 +104,8 @@
                 </table>
             </div>
         </div>
-    </div>
-    <div class="panel-body">
+
+
         <div class="row"  data-ng-if="detailCtrl.specimens.length > 0">
             <div class="col-lg-6">
                 <h3>Specimens</h3>
@@ -133,15 +137,20 @@
             <a href="">Show all specimens ???</a>
             </div>
         </div>
-        <div class="col-lg-6" data-ng-if="detailCtrl.locality.latitude && detailCtrl.locality.longitude">
-            <div id='hoverbox' class='coupontooltip'>
-                <div id='hoversystem'></div>
-                <div id='hoverstat'></div>
+
+
+        <div class="row">
+            <div class="col-lg-6" data-ng-if="detailCtrl.locality.latitude && detailCtrl.locality.longitude">
+                <div id='hoverbox' class='coupontooltip'>
+                    <div id='hoversystem'></div>
+                    <div id='hoverstat'></div>
+                </div>
+                <locality-map x = "detailCtrl.locality.latitude" y = "detailCtrl.locality.longitude" name = "detailCtrl.locality.localityEn" fid = "detailCtrl.locality.localityId"></locality-map>
+                <a href data-ng-click="detailCtrl.service.showGoogleMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude, detailCtrl.locality.localityEn)">Google Maps</a></span>
+                &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude)">Maa-amet / Estonian Land Board</a>
             </div>
-            <locality-map x = "detailCtrl.locality.latitude" y = "detailCtrl.locality.longitude" name = "detailCtrl.locality.localityEn" fid = "detailCtrl.locality.localityId"></locality-map>
-            <a href data-ng-click="detailCtrl.service.showGoogleMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude, detailCtrl.locality.localityEn)">Google Maps</a></span>
-            &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude)">Maa-amet / Estonian Land Board</a>
         </div>
+
 
         <div class="row" data-ng-if="detailCtrl.images.length > 0">
             <div class="col-lg-6">
@@ -170,6 +179,8 @@
                 </table>
             </div>
         </div>
+
+
         <div class="row" data-ng-if="detailCtrl.localitySynonyms.length > 0">
             <div class="col-lg-6">
                 <h3>Locality synonyms</h3>
@@ -193,6 +204,8 @@
                 </table>
             </div>
         </div>
+
+
         <div class="row" data-ng-if="detailCtrl.localityReferences.length > 0">
             <div class="col-lg-6">
                 <h3>References to locality</h3>
@@ -217,6 +230,8 @@
                 </table>
             </div>
         </div>
+
+
         <div class="row" data-ng-if="detailCtrl.drillcores.length > 0">
             <div class="col-lg-6">
                 <h3>Drillcores</h3>
@@ -238,5 +253,7 @@
                 </table>
             </div>
         </div>
+
+
     </div>
 </div>

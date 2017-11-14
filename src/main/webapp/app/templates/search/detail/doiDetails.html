@@ -1,12 +1,18 @@
 <div class="panel panel-default">
     <div class="panel-body">
+
+
         <div class="row">
             <div class="detailview-title col-lg-6">
                 <h3>{{detailCtrl.results.identifier}} {{detailCtrl.results.title}}</h3>
                 <h4><em>(ID: {{detailCtrl.results.id}})</em></h4>
             </div>
         </div>
+
+
         </br>
+
+
         <div class="row">
             <div class="col-lg-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
                 <table class="table table-bordered table-hover">
@@ -60,11 +66,15 @@
                 </table>
             </div>
         </div>
+
+
         <div class="row" data-ng-if="detailCtrl.files.length > 0">
             <div class="col-lg-6">
                 <h2>Download data</h2>
             </div>
         </div>
+
+
         <div class="row" data-ng-if="detailCtrl.files.length > 0">
             <div class="col-lg-6">
                 <table class="table table-bordered table-hover">
@@ -88,11 +98,15 @@
                 </table>
             </div>
         </div>
+
+
         <div class="row" data-ng-if="detailCtrl.doiAgent.length > 0">
             <div class="col-lg-6">
                 <h2>Related persons and institutions</h2>
             </div>
         </div>
+
+
         <div class="row" data-ng-if="detailCtrl.doiAgent.length > 0">
             <div class="col-lg-6">
                 <table class="table table-bordered table-hover">
@@ -113,11 +127,15 @@
                 </table>
             </div>
         </div>
+
+
         <div class="row"  data-ng-if="detailCtrl.doiRelatedIdentifier.length > 0">
             <div class="col-lg-6">
                 <h2>Related identifiers</h2>
             </div>
         </div>
+
+
         <div class="row"  data-ng-if="detailCtrl.doiRelatedIdentifier.length > 0">
             <div class="col-lg-6">
                 <table class="table table-bordered table-hover">
@@ -144,11 +162,14 @@
                 </table>
             </div>
         </div>
+
+
         <div class="row"  data-ng-if="detailCtrl.doiGeolocation.length > 0">
             <div class="col-lg-6">
                 <h2>Related geolocations</h2>
             </div>
         </div>
+
 
         <div class="row" data-ng-if="detailCtrl.doiGeolocation.length > 0">
             <div class="col-lg-6">
@@ -176,11 +197,14 @@
             </div>
         </div>
 
+
         <div class="row">
             <div class="col-lg-6">
                 <h2>Map of data points</h2>
             </div>
         </div>
+
+
         <div class="row">
             <div class="col-lg-6">
                 <div id='hoverbox' class='coupontooltip'>
@@ -190,11 +214,14 @@
                 <localities-map localities="detailCtrl.localities"></localities-map>
             </div>
         </div>
+
+
         <div class="row" data-ng-if="false">
             <div class="col-lg-6">
                 <h2>Preview data (for text files only)</h2>
             </div>
         </div>
+
 
         <div class="row" data-ng-if="false">
             <div class="col-lg-6">
