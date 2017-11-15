@@ -22,8 +22,10 @@ footer {
 }
 #footer-logos > a > img {
     height: 70px;
-    margin-right: 25px;
+    margin-right: 12.5px;
+    margin-left: 12.5px;
     border: 0;
+    margin-bottom: 10px;
 }
 
 #footer-logos > a > img + .tooltip > .tooltip-inner {
@@ -503,6 +505,13 @@ table tr > td:first-child {
     margin: 50px auto 0;
 }
 
+/* Styling for whole detailview page */
+.detailview-page {
+    margin-top: 14px;
+    /*margin-bottom: 100px;*/
+    box-shadow: 0 0px 0px;
+}
+
 /* Title styles for detailview */
 .detailview-title {
     padding-top: 10px;
@@ -520,8 +529,18 @@ table tr > td:first-child {
     padding: 15px 15px 0 15px;
 }
 
-@media (min-width: 1200px) {
-    .col-lg-6 {
-        width: 50%;
+@media (min-width: 700px) {
+    .detailview-page .col-lg-6 {
+        width: 100%;
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+}
+
+@media (min-width: 1000px) {
+    .detailview-page .col-lg-6 {
+        width: 100%;
+        padding-left: 24%;
+        padding-right: 24%;
     }
 }
