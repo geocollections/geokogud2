@@ -3,68 +3,75 @@
 
     <li class="active" role="presentation">
         <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="0">
-            <i class="fa fa-circle-o fa-lg"></i><br/>
-            {{ 'GIT.GIT_HEADING' | translate }}
+            <i class="fa fa-calendar-check-o fa-lg"></i><br/>
+            {{ 'INDEX.NEWS_LINK' | translate }}
         </a>
     </li>
 
     <li role="presentation">
         <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="1">
-            <i class="fa fa-circle-o fa-lg"></i><br/>
-            {{ 'TUG.TUG_HEADING' | translate }}
+            <i class="fa fa-creative-commons fa-lg"></i><br/>
+            {{ 'INDEX.USING_COLLECTIONS_LINK' | translate }}
         </a>
     </li>
 
     <li role="presentation">
         <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="2">
-            <i class="fa fa-circle-o fa-lg"></i><br/>
-            {{ 'ELM.ELM_HEADING' | translate }}
+            <i class="fa fa-info fa-lg"></i><br/>
+            {{ 'INDEX.ABOUT_COLLECTIONS_LINK' | translate }}
         </a>
     </li>
 
     <li role="presentation">
         <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="3">
-            <i class="fa fa-circle-o fa-lg"></i><br/>
-            {{ 'EMU.EMU_HEADING' | translate }}
+            <i class="fa fa-database fa-lg"></i><br/>
+            {{ 'INDEX.DATABASE_LINK' | translate }}
         </a>
     </li>
 
     <li role="presentation">
         <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="4">
             <i class="fa fa-circle-o fa-lg"></i><br/>
-            {{ 'EKG.EKG_HEADING' | translate }}
+            {{ 'GIT.GIT_HEADING' | translate }}
         </a>
     </li>
 
     <li role="presentation">
         <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="5">
-            <i class="fa fa-info fa-lg"></i><br/>
-            {{ 'INDEX.ABOUT_COLLECTIONS_LINK' | translate }}
+            <i class="fa fa-circle-o fa-lg"></i><br/>
+            {{ 'TUG.TUG_HEADING' | translate }}
         </a>
     </li>
+
     <li role="presentation">
         <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="6">
-            <i class="fa fa-creative-commons fa-lg"></i><br/>
-            {{ 'INDEX.USING_COLLECTIONS_LINK' | translate }}
+            <i class="fa fa-circle-o fa-lg"></i><br/>
+            {{ 'ELM.ELM_HEADING' | translate }}
         </a>
     </li>
-    <li role="presentation">
-        <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="7">
-            <i class="fa fa-calendar-check-o fa-lg"></i><br/>
-            {{ 'INDEX.NEWS_LINK' | translate }}
-        </a>
-    </li>
-    <li role="presentation">
-        <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="8">
-            <i class="fa fa-database fa-lg"></i><br/>
-            {{ 'INDEX.DATABASE_LINK' | translate }}
-        </a>
-    </li>
+
 </ul>
 </div>
 <div id="infoCarousel" class="carousel" data-ride="carousel" data-interval="false">
         <div class="carousel-inner backgr" role="listbox">
+
             <div class="item active">
+                <div ng-include="'app/templates/main/news.html'"></div>
+            </div>
+
+            <div class="item">
+                <div ng-include="'app/templates/main/using_collection.html'"></div>
+            </div>
+
+            <div class="item">
+                <div ng-include="'app/templates/main/geocollection.html'"></div>
+            </div>
+
+            <div class="item">
+                <div ng-include="'app/templates/main/database.html'"></div>
+            </div>
+
+            <div class="item">
                 <div ng-include="'app/templates/main/git.html'"></div>
             </div>
 
@@ -76,29 +83,6 @@
                 <div ng-include="'app/templates/main/elm.html'"></div>
             </div>
 
-            <div class="item">
-                <div ng-include="'app/templates/main/emu.html'"></div>
-            </div>
-
-            <div class="item">
-                <div ng-include="'app/templates/main/ekg.html'"></div>
-            </div>
-
-            <div class="item">
-                <div ng-include="'app/templates/main/geocollection.html'"></div>
-            </div>
-
-            <div class="item">
-                <div ng-include="'app/templates/main/using_collection.html'"></div>
-            </div>
-
-            <div class="item">
-                <div ng-include="'app/templates/main/news.html'"></div>
-            </div>
-
-            <div class="item">
-                <div ng-include="'app/templates/main/database.html'"></div>
-            </div>
         </div>
      <a class="geo-carousel-control" data-target="#infoCarousel" role="button" data-slide="prev">
          <span class="glyphicon glyphicon-chevron-left carouselControlButton" aria-hidden="true"></span>
