@@ -3,9 +3,11 @@
         width:100%;
     }
 </style>
-<div class="panel panel-default">
-    <div class="panel-body">
 
+<div ng-include="'app/templates/main/partial/detailview_header.html'"></div>
+
+<div class="panel detailview-page">
+    <div class="panel-body">
 
         <div class="row">
             <div class="col-lg-6">
@@ -20,9 +22,7 @@
             </div>
         </div>
 
-
         <br>
-
 
         <div class="row" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
             <div class="col-lg-6">
@@ -131,6 +131,7 @@
             </div>
         </div>
 
-
     </div>
 </div>
+
+<div ng-include="'app/templates/main/partial/detailview_footer.html'"></div>

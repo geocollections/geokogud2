@@ -1,7 +1,7 @@
-<nav id="mainNav" class="navbar navbar-fixed-top"> <!-- navbar-default -->
+<nav id="detailview-navbar" class="navbar navbar-default navbar-fixed-top"> <!-- navbar-default -->
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand page-scroll" href="/">{{ 'INDEX.GEOCOLLECTIONS_TITLE' | translate }}</a>
+            <a id="detailview-navbar-brand" class="navbar-brand page-scroll" href="/">{{ 'INDEX.GEOCOLLECTIONS_TITLE' | translate }}</a>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#navbar-collapse">
                 <span class="sr-only">Menu</span>
@@ -11,7 +11,7 @@
             </button>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
+            <ul id="detailview-navbar-list" class="nav navbar-nav navbar-right">
                 <li>
                     <a class="page-scroll-to-searches" href data-ui-sref="samples">{{ 'INDEX.SEARCH_LINK' | translate }}</a>
                 </li>
@@ -115,14 +115,14 @@
         <!--<a ng-show="!main.isDetailForm()" href data-ui-sref="samples" id="button-extended-search">{{ 'INDEX.EXTENDED_SEARCH_LINK' | translate }}</a>-->
     <!--</div>-->
 <!--</div>-->
-<script>
-    jQuery(document).ready(function ($) {
-        // Offset for Main Navigation after 100px
-        $('#mainNav').affix({
-            offset: {
-                top: 100
-            }
-        });
-        $("#globalQuery").focus();
-    });
-</script>
+<!--<script>-->
+    <!--jQuery(document).ready(function ($) {-->
+        <!--// Offset for Main Navigation after 100px-->
+        <!--$('#mainNav').affix({-->
+            <!--offset: {-->
+                <!--top: 100-->
+            <!--}-->
+        <!--});-->
+        <!--$("#globalQuery").focus();-->
+    <!--});-->
+<!--</script>-->

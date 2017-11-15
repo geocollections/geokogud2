@@ -11,18 +11,16 @@
             <!--</div>-->
         <!--</div>-->
 
-        </br>
-
         <div class="row">
             <div class="col-lg-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
 
                 <div class="detailview-title">
                     <h3>
                         <localize et="detailCtrl.results.analysis_method__analysis_method" en="detailCtrl.results.analysis_method__method_en"/></h3>
-                    <h4><em>(ID: {{detailCtrl.results.id}})</em></h4>
+                    <h4>
+                        <em>(ID: {{detailCtrl.results.id}})</em>
+                    </h4>
                 </div>
-
-
 
                 <table class="table table-bordered table-hover">
                     <thead>
@@ -79,9 +77,9 @@
             </div>
         </div>
 
-
     </div>
 </div>
+
 <div ng-include="'app/templates/main/partial/detailview_footer.html'"></div>
 
 

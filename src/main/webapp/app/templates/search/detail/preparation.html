@@ -1,21 +1,19 @@
-<div class="panel panel-default">
+<div ng-include="'app/templates/main/partial/detailview_header.html'"></div>
+
+<div class="panel detailview-page">
     <div class="panel-body">
-
-
-        <div class="row">
-            <div class="detailview-title col-lg-6">
-                <h3>{{'API_TRANSLATION.PREPARATION.DETAIL_FORM_NAME' | translate }}
-                    {{detailCtrl.results.preparation_number}}</h3>
-                <h4><em>(ID: {{detailCtrl.results.id}})</em></h4>
-            </div>
-        </div>
-
-
-        </br>
-
 
         <div class="row">
             <div class="col-lg-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
+
+                <div class="detailview-title">
+                    <h3>{{'API_TRANSLATION.PREPARATION.DETAIL_FORM_NAME' | translate }}
+                        {{detailCtrl.results.preparation_number}}</h3>
+                    <h4>
+                        <em>(ID: {{detailCtrl.results.id}})</em>
+                    </h4>
+                </div>
+
                 <table class="table table-bordered table-hover">
                     <thead>
                     </thead>
@@ -74,6 +72,7 @@
             </div>
         </div>
 
-
     </div>
 </div>
+
+<div ng-include="'app/templates/main/partial/detailview_footer.html'"></div>
