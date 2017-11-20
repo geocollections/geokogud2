@@ -520,6 +520,14 @@ table tr > td:first-child {
 ***  DETAILVIEW STYLES  ***
 **************************/
 
+.table-header-background-color tr td:first-child {
+    background-color: #eceeef;
+}
+
+.background-for-table-headers {
+    background-color: #eceeef;
+}
+
 /* Styling for whole detailview page */
 .detailview-page {
     margin-top: 45px;
@@ -531,8 +539,10 @@ table tr > td:first-child {
 .detailview-title {
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: #d9e2ee;
+    /*background-color: #d9e2ee; Old color */
+    background-color: #eceeef; /* New color? */
     text-align: center;
+    margin-bottom: 10px;
 }
 
 #detailview-navbar-brand {
@@ -557,6 +567,7 @@ table tr > td:first-child {
 #detailview-navbar-list {
     text-align: center;
 }
+
 
 @media (max-width: 768px) {
     #detailview-navbar-list .dropdown-menu a:hover {

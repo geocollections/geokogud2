@@ -4,34 +4,64 @@
     <div class="panel-body">
 
         <div class="row">
-            <div class="col-lg-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
+            <div class="col-lg-6"
+                 bs-loading-overlay bs-loading-overlay-reference-id="detailView"
+                 bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
 
                 <div class="detailview-title">
                     <h3>
-                        <label><localize en="detailCtrl.results.drillcore__drillcore_en" et="detailCtrl.results.drillcore__drillcore"/></label>
+                        <label>
+                            <localize en="detailCtrl.results.drillcore__drillcore_en"
+                                      et="detailCtrl.results.drillcore__drillcore"/>
+                        </label>
                     </h3>
-                    <h4>{{ 'DETAIL.DRILLCORE.BOX_NUMBER'| translate }} {{detailCtrl.results.number}}</h4>
+                    <h4> {{ 'DETAIL.DRILLCORE.BOX_NUMBER'| translate }} {{ detailCtrl.results.number }} </h4>
                 </div>
 
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover table-header-background-color">
                     <thead>
                     </thead>
+
                     <tbody>
-                        <tr><td>{{ 'DETAIL.CORE_BOX.ID'| translate }}</td><td>{{detailCtrl.results.id}}</td></tr>
-                        <tr><td>{{ 'DETAIL.CORE_BOX.LOCALITY'| translate }}</td><td>
-                            <localize en="detailCtrl.results.drillcore__drillcore_en" et="detailCtrl.results.drillcore__drillcore"/>
-                        </td></tr>
-                        <tr><td>{{ 'DETAIL.CORE_BOX.NUMBER'| translate }}</td><td>{{detailCtrl.results.number}}</td></tr>
-                        <tr><td>{{ 'DETAIL.CORE_BOX.INBOX'| translate }}</td><td>{{detailCtrl.results.number_meters}}</td></tr>
-                        <tr><td>{{ 'DETAIL.CORE_BOX.SINCE'| translate }}</td><td>{{detailCtrl.results.depth_start}}</td></tr>
-                        <tr><td>{{ 'DETAIL.CORE_BOX.TO'| translate }}</td><td>{{detailCtrl.results.depth_end}}</td></tr>
-                        <tr><td>{{ 'DETAIL.CORE_BOX.DEPTH'| translate }}</td><td>{{detailCtrl.results.depth_other}}</td></tr>
-                        <tr><td>{{ 'DETAIL.CORE_BOX.STRATIGRAPHY_TOP'| translate }}</td><td>
-                            <localize et="detailCtrl.results.stratigraphy_top__stratigraphy" en="detailCtrl.results.stratigraphy_top__stratigraphy_en"/>
-                        </td></tr>
-                        <tr><td>{{ 'DETAIL.CORE_BOX.STRATIGRAPHY_BASE'| translate }}</td><td>
-                            <localize et="detailCtrl.results.stratigraphy_base__stratigraphy" en="detailCtrl.results.stratigraphy_base__stratigraphy_en"/>
-                        </td></tr>
+                        <tr>
+                            <td> {{ 'DETAIL.CORE_BOX.ID'| translate }} </td>
+                            <td> {{ detailCtrl.results.id }} </td>
+                        </tr>
+                        <tr>
+                            <td>{{ 'DETAIL.CORE_BOX.LOCALITY'| translate }}</td>
+                            <td>
+                                <localize en="detailCtrl.results.drillcore__drillcore_en" et="detailCtrl.results.drillcore__drillcore"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{ 'DETAIL.CORE_BOX.NUMBER'| translate }}</td>
+                            <td>{{detailCtrl.results.number}}</td></tr>
+                        <tr>
+                            <td>{{ 'DETAIL.CORE_BOX.INBOX'| translate }}</td>
+                            <td>{{detailCtrl.results.number_meters}}</td></tr>
+                        <tr>
+                            <td>{{ 'DETAIL.CORE_BOX.SINCE'| translate }}</td>
+                            <td>{{detailCtrl.results.depth_start}}</td></tr>
+                        <tr>
+                            <td>{{ 'DETAIL.CORE_BOX.TO'| translate }}</td>
+                            <td>{{detailCtrl.results.depth_end}}</td></tr>
+                        <tr>
+                            <td>{{ 'DETAIL.CORE_BOX.DEPTH'| translate }}</td>
+                            <td>{{detailCtrl.results.depth_other}}</td></tr>
+                        <tr>
+                            <td>{{ 'DETAIL.CORE_BOX.STRATIGRAPHY_TOP'| translate }}</td>
+                            <td>
+                                <localize et="detailCtrl.results.stratigraphy_top__stratigraphy"
+                                          en="detailCtrl.results.stratigraphy_top__stratigraphy_en"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{ 'DETAIL.CORE_BOX.STRATIGRAPHY_BASE'| translate }}</td>
+                            <td>
+                                <localize et="detailCtrl.results.stratigraphy_base__stratigraphy"
+                                          en="detailCtrl.results.stratigraphy_base__stratigraphy_en"/>
+                            </td>
+                        </tr>
                         <!--<tr><td>{{ 'DETAIL.CORE_BOX.ADDITIONAL'| translate }}</td><td>???</td></tr>
 -->
                     </tbody>
