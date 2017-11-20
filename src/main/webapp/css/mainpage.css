@@ -520,12 +520,14 @@ table tr > td:first-child {
 ***  DETAILVIEW STYLES  ***
 **************************/
 
-.table-header-background-color tr td:first-child {
+.table-header-styles tr td:first-child {
     background-color: #eceeef;
+    font-size: smaller;
 }
 
-.background-for-table-headers {
+.styles-for-table-headers {
     background-color: #eceeef;
+    font-size: smaller;
 }
 
 /* Styling for whole detailview page */
