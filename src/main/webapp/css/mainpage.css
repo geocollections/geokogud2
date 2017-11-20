@@ -604,8 +604,6 @@ table tr > td:first-child {
         padding-left: 15%;
         padding-right: 15%;
     }
-
-    #detailview-navbar-list
 }
 
 @media (min-width: 1000px) {
@@ -615,3 +613,25 @@ table tr > td:first-child {
         padding-right: 24%;
     }
 }
+
+/* DETAIL VIEW FULL SCREEN STYLES START */
+
+/*@media (min-width: 1000px) {*/
+    /*.detailview-left {*/
+        /*display: inline;*/
+        /*float: left;*/
+        /*width: 50%;*/
+    /*}*/
+    /*.detailview-right {*/
+        /*display: inline;*/
+        /*float: right;*/
+        /*width: 50%;*/
+    /*}*/
+    /*#detailview-page-id .col-lg-6 {*/
+        /*width: 100%;*/
+        /*padding-left: 15px;*/
+        /*padding-right: 15px;*/
+    /*}*/
+/*}*/
+
+/* DETAIL VIEW FULL SCREEN STYLES END */

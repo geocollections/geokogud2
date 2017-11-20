@@ -4,8 +4,7 @@
     <div class="panel-body">
 
         <div class="row">
-            <div class="col-lg-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
-
+            <div class="col-sm-12">
                 <div class="detailview-title">
                     <h3>
                         {{'API_TRANSLATION.LOCALITY.DETAIL_FORM_NAME' | translate }}
@@ -14,7 +13,13 @@
                         <em>(ID: {{detailCtrl.results.id}})</em>
                     </h4>
                 </div>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-sm-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
+
+                <h3> {{ 'DETAILVIEW_TABLE_HEADER' | translate }} </h3>
                 <table class="table table-bordered table-hover table-header-styles">
             <!--        <tr data-ng-repeat="field in detailCtrl.fields" data-ng-if="detailCtrl.results[field] != null  && detailCtrl.results[field] != ''&& detailCtrl.isIncludedField(field)">
                         <td entity-field-name name="'API_TRANSLATION.LOCALITY.'+field | uppercase"></td>
@@ -103,11 +108,8 @@
                     <tr data-ng-if="detailCtrl.results.date_changed && detailCtrl.results.date_changed != null"><td>{{'API_TRANSLATION.LOCALITY.DATE_CHANGED ' |translate }}</td><td>{{detailCtrl.results.date_changed | date:dateFormat}}</td></tr>
                 </table>
             </div>
-        </div>
 
-
-        <div class="row"  data-ng-if="detailCtrl.specimens.length > 0">
-            <div class="col-lg-6">
+            <div class="col-sm-6" data-ng-if="detailCtrl.specimens.length > 0">
                 <h3>Specimens</h3>
 
                 <table class="table table-bordered table-hover">
@@ -136,11 +138,8 @@
 
             <a href="">Show all specimens ???</a>
             </div>
-        </div>
 
-
-        <div class="row">
-            <div class="col-lg-6" data-ng-if="detailCtrl.locality.latitude && detailCtrl.locality.longitude">
+            <div class="col-sm-6" data-ng-if="detailCtrl.locality.latitude && detailCtrl.locality.longitude">
                 <div id='hoverbox' class='coupontooltip'>
                     <div id='hoversystem'></div>
                     <div id='hoverstat'></div>
@@ -149,11 +148,8 @@
                 <a href data-ng-click="detailCtrl.service.showGoogleMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude, detailCtrl.locality.localityEn)">Google Maps</a></span>
                 &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude)">Maa-amet / Estonian Land Board</a>
             </div>
-        </div>
 
-
-        <div class="row" data-ng-if="detailCtrl.images.length > 0">
-            <div class="col-lg-6">
+            <div class="col-sm-6" data-ng-if="detailCtrl.images.length > 0">
                 <h3>Linked files</h3>
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
@@ -178,11 +174,8 @@
                     </tbody>
                 </table>
             </div>
-        </div>
 
-
-        <div class="row" data-ng-if="detailCtrl.localitySynonyms.length > 0">
-            <div class="col-lg-6">
+            <div class="col-sm-6" data-ng-if="detailCtrl.localitySynonyms.length > 0">
                 <h3>Locality synonyms</h3>
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
@@ -203,11 +196,8 @@
                     </tbody>
                 </table>
             </div>
-        </div>
 
-
-        <div class="row" data-ng-if="detailCtrl.localityReferences.length > 0">
-            <div class="col-lg-6">
+            <div class="col-lg-6" data-ng-if="detailCtrl.localityReferences.length > 0">
                 <h3>References to locality</h3>
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
@@ -229,11 +219,8 @@
                     </tbody>
                 </table>
             </div>
-        </div>
 
-
-        <div class="row" data-ng-if="detailCtrl.drillcores.length > 0">
-            <div class="col-lg-6">
+            <div class="col-lg-6" data-ng-if="detailCtrl.drillcores.length > 0">
                 <h3>Drillcores</h3>
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">

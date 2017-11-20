@@ -4,15 +4,20 @@
     <div class="panel-body">
 
         <div class="row">
-            <div class="col-lg-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
-
-                <div class="detailview-title col-lg-6">
+            <div class="col-sm-12">
+                <div class="detailview-title">
                     <h3>{{'API_TRANSLATION.SAMPLE.DETAIL_FORM_NAME' | translate }} {{detailCtrl.results.number}}</h3>
                     <h4>
                         <em>(ID: {{detailCtrl.results.id}})</em>
                     </h4>
                 </div>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-sm-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
+
+                <h3> {{ 'DETAILVIEW_TABLE_HEADER' | translate }} </h3>
                 <table class="table table-bordered table-hover table-header-styles">
                     <thead>
                     </thead>
@@ -102,11 +107,8 @@
                     </tbody>
                 </table>
             </div>
-        </div>
 
-
-        <div class="row">
-            <div class="col-lg-6" data-ng-if="detailCtrl.locality.latitude && detailCtrl.locality.longitude">
+            <div class="col-sm-6" data-ng-if="detailCtrl.locality.latitude && detailCtrl.locality.longitude">
                 <div id='hoverbox' class='coupontooltip'>
                     <div id='hoversystem'></div>
                     <div id='hoverstat'></div>

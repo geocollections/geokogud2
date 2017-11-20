@@ -484,5 +484,7 @@
         "NEXT": "NEXT",
         "PREVIOUS": "PREVIOUS"
     },
-    "GLOBAL_SEARCH_INFO" : "Global search shows max 100 results. To get more information please use extended search."
+    "GLOBAL_SEARCH_INFO" : "Global search shows max 100 results. To get more information please use extended search.",
+    "DETAILVIEW_TABLE_HEADER": "General info",
+    "DETAILVIEW_PHOTO_TABLE_HEADER": "Picture info"
 }

@@ -4,16 +4,24 @@
     <div class="panel-body">
 
         <div class="row">
-            <div class="col-lg-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
-
+            <div class="col-sm-12">
                 <div class="detailview-title">
                     <h3>{{detailCtrl.results.identifier}} {{detailCtrl.results.title}}</h3>
                     <h4>
                         <em>(ID: {{detailCtrl.results.id}})</em>
                     </h4>
                 </div>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-sm-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
+
+                <h3> {{ 'DETAILVIEW_TABLE_HEADER' | translate }} </h3>
                 <table class="table table-bordered table-hover table-header-styles">
+                    <thead>
+                    </thead>
+                    <tbody>
                   <!--  <tr data-ng-repeat="field in detailCtrl.fields" data-ng-if="detailCtrl.results[field] != null  && detailCtrl.results[field] != '' && detailCtrl.isIncludedField(field)">
                         <td entity-field-name name="'API_TRANSLATION.DOI.'+field | uppercase"></td>
                         <td entity-field-value name = "field" value="detailCtrl.results[field]" values = "detailCtrl.results"></td>
@@ -151,22 +159,15 @@
                     </tr>
                     <tr data-ng-if="detailCtrl.results.doiattachment__attachment__filename && detailCtrl.results.doiattachment__attachment__filename != null " >
                         <td> {{ 'API_TRANSLATION.DOI.DOIATTACHMENT__ATTACHMENT__FILENAME ' | translate }} </td>
-                        <td>{{detailCtrl.results.doiattachment__attachment__filename}}</td>
+                        <!-- word-break style otherwise table overflows its parent div and overlaps other tables because file name is too long -->
+                        <td style="word-break: break-all"> {{ detailCtrl.results.doiattachment__attachment__filename }} </td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
-        </div>
 
-
-        <div class="row" data-ng-if="detailCtrl.files.length > 0">
-            <div class="col-lg-6">
-                <h2>Download data</h2>
-            </div>
-        </div>
-
-
-        <div class="row" data-ng-if="detailCtrl.files.length > 0">
-            <div class="col-lg-6">
+            <div class="col-sm-6" data-ng-if="detailCtrl.files.length > 0">
+                <h3>Download data</h3>
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
                     <tr>
@@ -187,18 +188,9 @@
                     </tbody>
                 </table>
             </div>
-        </div>
 
-
-        <div class="row" data-ng-if="detailCtrl.doiAgent.length > 0">
-            <div class="col-lg-6">
-                <h2>Related persons and institutions</h2>
-            </div>
-        </div>
-
-
-        <div class="row" data-ng-if="detailCtrl.doiAgent.length > 0">
-            <div class="col-lg-6">
+            <div class="col-sm-6" data-ng-if="detailCtrl.doiAgent.length > 0">
+                <h3>Related persons and institutions</h3>
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
                     <tr>
@@ -216,18 +208,9 @@
                     </tbody>
                 </table>
             </div>
-        </div>
 
-
-        <div class="row"  data-ng-if="detailCtrl.doiRelatedIdentifier.length > 0">
-            <div class="col-lg-6">
-                <h2>Related identifiers</h2>
-            </div>
-        </div>
-
-
-        <div class="row"  data-ng-if="detailCtrl.doiRelatedIdentifier.length > 0">
-            <div class="col-lg-6">
+            <div class="col-sm-6" data-ng-if="detailCtrl.doiRelatedIdentifier.length > 0">
+                <h3>Related identifiers</h3>
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
                     <tr>
@@ -251,18 +234,9 @@
                     </tbody>
                 </table>
             </div>
-        </div>
 
-
-        <div class="row"  data-ng-if="detailCtrl.doiGeolocation.length > 0">
-            <div class="col-lg-6">
-                <h2>Related geolocations</h2>
-            </div>
-        </div>
-
-
-        <div class="row" data-ng-if="detailCtrl.doiGeolocation.length > 0">
-            <div class="col-lg-6">
+            <div class="col-sm-6" data-ng-if="detailCtrl.doiGeolocation.length > 0">
+                <h3>Related geolocations</h3>
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
                     <tr>
@@ -285,36 +259,21 @@
                     </tbody>
                 </table>
             </div>
-        </div>
 
-
-        <div class="row">
-            <div class="col-lg-6">
-                <h2>Map of data points</h2>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-lg-6">
+            <div class="col-sm-6">
+                <h3>Map of data points</h3>
                 <div id='hoverbox' class='coupontooltip'>
                     <div id='hoversystem'></div>
                     <div id='hoverstat'></div>
                 </div>
                 <localities-map localities="detailCtrl.localities"></localities-map>
             </div>
-        </div>
 
-
-        <div class="row" data-ng-if="false">
-            <div class="col-lg-6">
+            <div class="col-sm-6" data-ng-if="false">
                 <h2>Preview data (for text files only)</h2>
             </div>
-        </div>
 
-
-        <div class="row" data-ng-if="false">
-            <div class="col-lg-6">
+            <div class="col-sm-6" data-ng-if="false">
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
                     <tr>
@@ -333,6 +292,7 @@
                 </table>
             </div>
         </div>
+
     </div>
 </div>
 

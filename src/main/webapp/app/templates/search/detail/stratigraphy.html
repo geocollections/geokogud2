@@ -4,14 +4,25 @@
     <div class="panel-body">
 
         <div class="row">
-            <div class="col-lg-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
-
+            <div class="col-sm-12">
                 <div class="detailview-title">
                     <h3>
                         <localize et="detailCtrl.results.stratigraphy" en="detailCtrl.results.stratigraphy_en"/></h3>
                     <h4><em>(ID: {{detailCtrl.results.id}})</em></h4>
                 </div>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-sm-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
+
+                <!--<div class="detailview-title">-->
+                    <!--<h3>-->
+                        <!--<localize et="detailCtrl.results.stratigraphy" en="detailCtrl.results.stratigraphy_en"/></h3>-->
+                    <!--<h4><em>(ID: {{detailCtrl.results.id}})</em></h4>-->
+                <!--</div>-->
+
+                <h3> {{ 'DETAILVIEW_TABLE_HEADER' | translate }} </h3>
                 <table class="table table-bordered table-hover table-header-styles">
                     <thead>
                     </thead>
@@ -104,11 +115,8 @@
                     </tbody>
                 </table>
             </div>
-        </div>
 
-
-        <div class="row" data-ng-if="detailCtrl.stratigraphyReference.length > 0">
-            <div class="col-lg-6">
+            <div class="col-sm-6" data-ng-if="detailCtrl.stratigraphyReference.length > 0">
                 <h3>References</h3>
 
                 <table class="table table-bordered table-hover">
@@ -131,11 +139,8 @@
                     </tbody>
                 </table>
             </div>
-        </div>
 
-
-        <div class="row" data-ng-if="detailCtrl.stratigraphyStratotype.length > 0">
-            <div class="col-lg-6">
+            <div class="col-sm-6" data-ng-if="detailCtrl.stratigraphyStratotype.length > 0">
                 <h3>Stratotype</h3>
 
                 <table class="table table-bordered table-hover">
@@ -164,12 +169,9 @@
                     </tbody>
                 </table>
             </div>
-        </div>
 
-
-        <div class="row" data-ng-if="detailCtrl.stratigraphySynonym.length > 0">
-            <div class="col-lg-6">
-                <h3>Synpnym</h3>
+            <div class="col-sm-6" data-ng-if="detailCtrl.stratigraphySynonym.length > 0">
+                <h3>Synonym</h3>
 
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
