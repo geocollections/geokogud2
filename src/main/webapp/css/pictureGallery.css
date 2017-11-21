@@ -9,7 +9,7 @@
 }
 .img-gallery-author {
     color:#dc251e;
-    margin-left: 10px;
+    /*margin-left: 10px;*/
     font-weight: 700;
 }
 .carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {

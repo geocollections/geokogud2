@@ -130,14 +130,19 @@
                         <h3 class="page-header"><b data-ng-init="images.total = 0">{{ 'SEARCH.FOUND_IMAGES' | translate }}: {{images.total}} </b></h3>
                     </div>
                     <div data-ng-repeat="row in images.rows">
-                        <div class="col-lg-3 col-md-4 col-xs-6" data-ng-repeat="col in row">
-                            <figure style="border:1px solid #ddd; margin-bottom: 20px;">
-                                <a class="thumbnail" href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:col.image.id})">
+                        <div class="col-lg-15 col-lg-3 col-md-4 col-xs-6" data-ng-repeat="col in row">
+                            <!--<figure style="border:1px solid #ddd; margin-bottom: 20px;">-->
+                            <figure style="margin-bottom: 20px;">
+                                <!--<a class="thumbnail" href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:col.image.id})">-->
+                                <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:col.image.id})">
                                     <show-preview img-url="ctrl.service.composeImageUrl(col.image)" class="img-responsive"/>
-                                    <a class="imagePlace" href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:col.image.id})">
-                                        <first-not-null values="[col.image.locality__locality, col.image.locality__locality_en]"/>
-                                    </a>
-                                    <div class="img-gallery-author">{{col.image.author__agent}} {{col.image.date_taken}}</div>
+
+                                    <div class="img-gallery-author" style="text-align: center">
+                                        <a class="imagePlace" href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:col.image.id})">
+                                            <first-not-null values="[col.image.locality__locality, col.image.locality__locality_en]"/>
+                                        </a>
+                                        <br>
+                                        {{col.image.author__agent}} {{col.image.date_taken}}</div>
                                 </a>
                             </figure>
                         </div>

@@ -31,7 +31,6 @@
             // TODO: get correct names
             exportXLSXtable.fileName = 'XLSX_table';
 
-            console.log(exportXLSXtable.data);
             instance.export2file(exportXLSXtable.data, exportXLSXtable.mimeType, exportXLSXtable.fileName, exportXLSXtable.fileExtension);
         });
 
@@ -46,7 +45,6 @@
             // TODO: get correct names
             exportCSVtable.fileName = 'CSV_table';
 
-            console.log(exportCSVtable.data);
             instance.export2file(exportCSVtable.data, exportCSVtable.mimeType, exportCSVtable.fileName, exportCSVtable.fileExtension);
         });
     });
