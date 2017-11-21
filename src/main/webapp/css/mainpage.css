@@ -516,9 +516,9 @@ table tr > td:first-child {
 
 
 
-/**************************
-***  DETAILVIEW STYLES  ***
-**************************/
+/*******************************
+ *** DETAILVIEW STYLES START ***
+ *******************************/
 
 .table-header-styles tr td:first-child {
     background-color: #eceeef;
@@ -614,24 +614,12 @@ table tr > td:first-child {
     }
 }
 
-/* DETAIL VIEW FULL SCREEN STYLES START */
+/*******************************
+ ***  DETAILVIEW STYLES END  ***
+ *******************************/
 
-/*@media (min-width: 1000px) {*/
-    /*.detailview-left {*/
-        /*display: inline;*/
-        /*float: left;*/
-        /*width: 50%;*/
-    /*}*/
-    /*.detailview-right {*/
-        /*display: inline;*/
-        /*float: right;*/
-        /*width: 50%;*/
-    /*}*/
-    /*#detailview-page-id .col-lg-6 {*/
-        /*width: 100%;*/
-        /*padding-left: 15px;*/
-        /*padding-right: 15px;*/
-    /*}*/
-/*}*/
 
-/* DETAIL VIEW FULL SCREEN STYLES END */
+
+.export-buttons {
+    margin: 20px 0;
+}

@@ -485,6 +485,5 @@
         "PREVIOUS": "EELMINE"
     },
     "GLOBAL_SEARCH_INFO" : "Globaalne otsing kuvab maksimaalselt 100 tulemust. Rohkemate andmete kuvamiseks palun kasutage detailotsingut.",
-    "DETAILVIEW_TABLE_HEADER": "Üldinfo",
-    "DETAILVIEW_PHOTO_TABLE_HEADER": "Pildi info"
+    "DETAILVIEW_TABLE_HEADER": "Üldinfo"
 }
