@@ -72,6 +72,8 @@ var constructor = function (utils, configuration, $window, $location) {
     };
 
     service.composeImageUrl = function(imageData, readyUrl) {
+        console.log(imageData);
+        console.log(readyUrl);
         if(readyUrl) return readyUrl;
         if(imageData.image_url) return imageData.image_url;
         var imageUrl = "http://geokogud.info/" + imageData.database__acronym.toLowerCase() + "/image/";

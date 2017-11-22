@@ -258,20 +258,25 @@
                     <div data-ng-repeat="row in images.rows">
                         <div class="col-lg-15 col-lg-3 col-md-4 col-xs-6" data-ng-repeat="col in row">
 
-                            <figure style="border:1px solid #ddd; margin-bottom: 20px;">
+                            <figure class="margin-bottom-20">
 
-                                <a class="thumbnail" href data-ng-click="ctrl.service.openInNewWindow({object:'specimen_image',id:col.image.id})">
-                                    <show-preview img-url="ctrl.service.composeImageUrl(image, col.image.image_url)" class="img-responsive"/>
+                                <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen_image',id:col.image.id})">
+                                    <!--<show-preview img-url="ctrl.service.composeImageUrl(image, col.image.image_url)" class="img-responsive"/>-->
+                                    <show-preview img-url="ctrl.service.composeImageUrl(col.object, col.image.image_url)" class="img-responsive"/>
 
-                                    <a class="imagePlace" href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:col.object.id})">
-                                       {{col.object.database__acronym}} {{col.object.specimen_id}}
-                                    </a>
-                                    <div data-ng-if="col.object.specimenidentification__taxon__taxon == null ||col.object.specimenidentification__taxon__taxon == ''">
-                                        <a href="http://fossiilid.info/{{col.object.specimenidentification__taxon_id}}" target="_blank">{{col.object.specimenidentification__taxon__taxon}}</a>
-                                        <span data-ng-if="col.object.specimenidentification__taxon__taxon == null ||col.object.specimenidentification__taxon__taxon == ''">{{col.object.specimenidentification__name}}</span>
+                                    <div class="img-gallery-author">
+                                        <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:col.object.id})">
+                                            {{col.object.database__acronym}} {{col.object.specimen_id}}
+                                        </a>
+                                        <br>
+                                        <div data-ng-if="col.object.specimenidentification__taxon__taxon == null ||col.object.specimenidentification__taxon__taxon == ''">
+                                            <a href="http://fossiilid.info/{{col.object.specimenidentification__taxon_id}}" target="_blank">{{col.object.specimenidentification__taxon__taxon}}</a>
+                                            <span data-ng-if="col.object.specimenidentification__taxon__taxon == null ||col.object.specimenidentification__taxon__taxon == ''">{{col.object.specimenidentification__name}}</span>
+                                        </div>
                                     </div>
                                 </a>
                             </figure>
+
                         </div>
                     </div>
                 </div>
