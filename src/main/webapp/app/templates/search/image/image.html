@@ -131,25 +131,28 @@
                     </div>
                     <div data-ng-repeat="row in images.rows">
                         <div class="col-lg-15 col-lg-3 col-md-4 col-xs-6" data-ng-repeat="col in row">
-                            <!--<figure style="border:1px solid #ddd; margin-bottom: 20px;">-->
-                            <figure style="margin-bottom: 20px;">
-                                <!--<a class="thumbnail" href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:col.image.id})">-->
+
+                            <figure class="margin-bottom-20">
+
                                 <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:col.image.id})">
                                     <show-preview img-url="ctrl.service.composeImageUrl(col.image)" class="img-responsive"/>
 
-                                    <div class="img-gallery-author" style="text-align: center">
-                                        <a class="imagePlace" href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:col.image.id})">
-                                            <first-not-null values="[col.image.locality__locality, col.image.locality__locality_en]"/>
+                                    <div class="img-gallery-author">
+                                        <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:col.image.id})">
+                                            <first-not-null class="font-smaller" values="[col.image.locality__locality, col.image.locality__locality_en]"/>
                                         </a>
                                         <br>
-                                        {{col.image.author__agent}} {{col.image.date_taken}}</div>
+                                        <div>{{col.image.author__agent}} {{col.image.date_taken}}</div>
+                                    </div>
                                 </a>
                             </figure>
+
                         </div>
                     </div>
                 </div>
                 <div data-ng-if="showImages" ng-include="'app/templates/search/partial/pagination.html'"></div>
                 <div data-ng-if="!showImages" non-isolated-include template-path="app/templates/search/image/image_results.html"/>
+
             </div>
         </div>
     </div>
