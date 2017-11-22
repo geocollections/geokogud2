@@ -1,8 +1,29 @@
 <div class="search-pagination">
+    <!--<nav class="pull-left">-->
+        <!--View-->
+        <!--<select ng-model="viewby" ng-change="setItemsPerPage(viewby)">-->
+            <!--<option>10</option>-->
+            <!--<option>25</option>-->
+            <!--<option>50</option>-->
+            <!--<option>75</option>-->
+            <!--<option>100</option>-->
+        <!--</select>-->
+        <!--records at a time.-->
+    <!--</nav>-->
     <nav class="pull-right">
-        <ul uib-pagination boundary-links="true" ng-change="search()" items-per-page="pageSize"
-            max-size="$parent.searchParameters.maxSize" rotate="false" total-items="totalItems"
-            ng-model="$parent.searchParameters.page" class="pagination-sm" previous-text="&lsaquo;"
-            next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+        <ul uib-pagination
+            boundary-links="true"
+            direction-links="true"
+            ng-change="search()"
+            items-per-page="pageSize"
+            max-size="$parent.searchParameters.maxSize"
+            rotate="false"
+            total-items="totalItems"
+            ng-model="$parent.searchParameters.page"
+            class="pagination-sm"
+            first-text="&laquo;"
+            previous-text="&lsaquo;"
+            next-text="&rsaquo;"
+            last-text="&raquo;"></ul>
     </nav>
 </div>

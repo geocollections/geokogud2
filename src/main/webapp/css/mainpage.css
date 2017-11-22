@@ -623,3 +623,11 @@ table tr > td:first-child {
 .export-buttons {
     margin: 20px 0;
 }
+
+/*!* Uncomment to make picture move with the screen but needs fixing *!*/
+/*@media (min-width: 768px) {*/
+    /*#test {*/
+        /*position: fixed;*/
+        /*width: 48%;*/
+    /*}*/
+/*}*/

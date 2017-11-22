@@ -16,6 +16,12 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     $scope.isAnalysesFieldsCollapsed = true;
     $scope.isInstitutionsCollapsed = true;
 
+    // $scope.viewby = 25;
+    // $scope.setItemsPerPage = function(num) {
+    //     $scope.viewby = num;
+    //     console.log($scope.viewby);
+    // };
+
     function onSearchData(result) {
         $scope.pageSize = 30;
         $scope.totalItems = result.data.count;
