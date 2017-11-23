@@ -23,6 +23,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     // };
 
     function onSearchData(result) {
+        console.log(result);
         $scope.pageSize = 30;
         $scope.totalItems = result.data.count;
 

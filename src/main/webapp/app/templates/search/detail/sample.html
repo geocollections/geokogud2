@@ -109,6 +109,7 @@
             </div>
 
             <div class="col-sm-6" data-ng-if="detailCtrl.locality.latitude && detailCtrl.locality.longitude">
+                <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
                 <div id='hoverbox' class='coupontooltip'>
                     <div id='hoversystem'></div>
                     <div id='hoverstat'></div>
@@ -121,17 +122,6 @@
 
 
     </div>
-<!--    <div class="panel-body">
-        <div class="row">
-            <label>Analyses and procedures</label>
-        </div>
-        <div class="row">
-            <label>Microfossil preparations</label>
-        </div>
-        <div class="row">
-
-        </div>
-    </div>-->
 </div>
 
 <div ng-include="'app/templates/main/partial/detailview_footer.html'"></div>

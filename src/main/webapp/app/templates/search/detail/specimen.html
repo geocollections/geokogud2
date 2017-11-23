@@ -246,6 +246,7 @@
             </div>
 
             <div class="col-sm-6" data-ng-if="detailCtrl.locality.latitude && detailCtrl.locality.longitude">
+                <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
                 <div id='hoverbox' class='coupontooltip'>
                     <div id='hoversystem'></div>
                     <div id='hoverstat'></div>
@@ -256,7 +257,7 @@
             </div>
 
             <div class="col-sm-6" data-ng-if="detailCtrl.specimenIdentifications.length > 0">
-                <h3>Identifications (minerals and rocks)</h3>
+                <h3> {{ 'DETAIL.DETAIL_IDENTIFICATIONS' | translate }} </h3>
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
                     <tr>
@@ -282,7 +283,7 @@
             </div>
 
             <div class="col-sm-6" data-ng-if="detailCtrl.specimenReference.length > 0">
-                <h3>Reference</h3>
+                <h3> {{ 'DETAIL.DETAIL_REFERENCES' | translate }} </h3>
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
                     <tr>
@@ -306,7 +307,7 @@
             </div>
 
             <div class="col-sm-6" data-ng-if="detailCtrl.specimenImage.length > 0">
-                <h3>Images</h3>
+                <h3> {{ 'DETAIL.DETAIL_IMAGES' | translate }} </h3>
                 <table class="table table-bordered table-hover">
                     <thead>
                     </thead>

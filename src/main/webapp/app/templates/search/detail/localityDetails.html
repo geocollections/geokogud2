@@ -110,7 +110,7 @@
             </div>
 
             <div class="col-sm-6" data-ng-if="detailCtrl.specimens.length > 0">
-                <h3>Specimens</h3>
+                <h3> {{ 'DETAIL.DETAIL_SPECIMEN' }} | translate </h3>
 
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
@@ -140,6 +140,7 @@
             </div>
 
             <div class="col-sm-6" data-ng-if="detailCtrl.locality.latitude && detailCtrl.locality.longitude">
+                <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
                 <div id='hoverbox' class='coupontooltip'>
                     <div id='hoversystem'></div>
                     <div id='hoverstat'></div>
@@ -150,7 +151,7 @@
             </div>
 
             <div class="col-sm-6" data-ng-if="detailCtrl.images.length > 0">
-                <h3>Linked files</h3>
+                <h3> {{ 'DETAIL_LINKED_FILES'| translate }} </h3>
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
                     <tr>
@@ -176,7 +177,7 @@
             </div>
 
             <div class="col-sm-6" data-ng-if="detailCtrl.localitySynonyms.length > 0">
-                <h3>Locality synonyms</h3>
+                <h3> {{ 'DETAIL_LOCALITY_SYNONYMS' | translate }} </h3>
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
                     <tr>
@@ -198,7 +199,7 @@
             </div>
 
             <div class="col-lg-6" data-ng-if="detailCtrl.localityReferences.length > 0">
-                <h3>References to locality</h3>
+                <h3> {{ 'DETAIL.DETAIL_REFERENCES' | translate }} </h3>
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
                     <tr>
@@ -221,7 +222,7 @@
             </div>
 
             <div class="col-lg-6" data-ng-if="detailCtrl.drillcores.length > 0">
-                <h3>Drillcores</h3>
+                <h3> {{ 'DETAIL.DETAIL_DRILLCORES' | translate }} </h3>
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
                     <tr>

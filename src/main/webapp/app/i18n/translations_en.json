@@ -482,7 +482,22 @@
             "LINK": "Link"
         },
         "NEXT": "NEXT",
-        "PREVIOUS": "PREVIOUS"
+        "PREVIOUS": "PREVIOUS",
+        "DETAIL_MAP": "Map",
+        "DETAIL_IDENTIFICATIONS": "Identifications (minerals and rocks)",
+        "DETAIL_REFERENCES": "References",
+        "DETAIL_IMAGES": "Images",
+        "DETAIL_SPECIMEN": "Specimen",
+        "DETAIL_LINKED_FILES": "Linked files",
+        "DETAIL_DRILLCORES": "Drillcores",
+        "DETAIL_LOCALITY_SYNONYMS": "Locality synonyms",
+        "DETAIL_STRATOTYPE": "Stratotype",
+        "DETAIL_STRATIGRAPHY_SYNONYMS": "Stratigraphy synonyms",
+        "DETAIL_DOWNLOAD": "Download data",
+        "DETAIL_RELATIONS": "Related persons and institutions",
+        "DETAIL_IDENTIFIERS": "Related identifiers",
+        "DETAIL_GEOLOCATIONS": "Related geolocations"
+
     },
     "GLOBAL_SEARCH_INFO" : "Global search shows max 100 results. To get more information please use extended search.",
     "GLOBAL_SEARCH_NO_INFO": "Your quick search returned no results. Please use extended search and select, which kind of information you are searching.",

@@ -17,6 +17,7 @@ var constructor = function ($scope, $state,$stateParams, applicationService, con
     }
 
     function onEntityData(response) {
+        console.log(response);
         vm.results = response.data.results[0];
         vm.relatedData = response.data.related_data;
         vm.fields = Object.keys(vm.results);

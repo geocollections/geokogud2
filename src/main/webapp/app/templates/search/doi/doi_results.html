@@ -8,7 +8,7 @@
     <table class="table table-bordered table-hover" id="table-search">
         <thead class="thead-default">
         <tr>
-            <th><sort-field value = "id" name="SEARCH.DOI.TABLE.ID"></sort-field></th>
+            <!--<th><sort-field value = "id" name="SEARCH.DOI.TABLE.ID"></sort-field></th>-->
             <th><sort-field value = "identifier" name="SEARCH.DOI.TABLE.DOI"></sort-field></th>
             <th><sort-field value = "reference__author" name="SEARCH.DOI.TABLE.AUTHOR"></sort-field></th>
             <th><sort-field value = "reference__year" name="SEARCH.DOI.TABLE.YEAR"></sort-field></th>
@@ -19,7 +19,7 @@
         </thead>
         <tbody>
         <tr data-ng-repeat="entity in response.results">
-            <td data-title="{{ 'SEARCH.DOI.TABLE.ID' | translate }}">{{entity.id}}</td>
+            <!--<td data-title="{{ 'SEARCH.DOI.TABLE.ID' | translate }}">{{entity.id}}</td>-->
             <td data-title="{{ 'SEARCH.DOI.TABLE.DOI' | translate }}">
                 <a href data-ng-click="ctrl.service.openInNewWindow({object:'doi',id:entity.id})">{{entity.identifier}}</a>
             </td>
