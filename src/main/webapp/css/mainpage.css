@@ -620,6 +620,35 @@ table tr > td:first-child {
 
 
 
+/****************************
+ ***  ABOUT STYLES START  ***
+ ****************************/
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .padding-left-0-about {
+        padding-left: 0;
+    }
+
+    .margin-top-10-about {
+        margin-top: 10px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .padding-left-0-about {
+        padding-left: 0;
+    }
+
+    .margin-top-10-about {
+        margin-top: 10px;
+    }
+}
+
+/****************************
+ ***   ABOUT STYLES END   ***
+ ****************************/
+
+
 .export-buttons {
     margin: 20px 0;
 }
