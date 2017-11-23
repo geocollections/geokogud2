@@ -649,6 +649,21 @@ table tr > td:first-child {
  ****************************/
 
 
+
+/********************************
+ *** INPUT FIELD STYLES START ***
+ ********************************/
+
+.searchCriterion input {
+    color: #FF2F00;
+    font-weight: bold;
+}
+
+/********************************
+ ***  INPUT FIELD STYLES END  ***
+ ********************************/
+
+
 .export-buttons {
     margin: 20px 0;
 }

@@ -1,6 +1,6 @@
 angular.module('geoApp').directive('autocompleteField', function () {
     return {
-        template: "<input type='text' class='form-control input-sm' data-ng-model='field' " +
+        template: "<input type='text' class='form-control input-md' data-ng-model='field' " +
         "placeholder='{{placeholderText}}' " +
         "data-uib-typeahead='entity[localizedValue] for entity in factory.autocompleteSearch(table,$viewValue,localizedValue)' " +
         "data-typeahead-min-length='2' data-typeahead-on-select='entitySelected($item, $model)' typeahead-loading='isLoading'/>" +
