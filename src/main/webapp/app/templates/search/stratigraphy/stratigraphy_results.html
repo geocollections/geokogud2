@@ -32,6 +32,7 @@
             <td data-title="{{ 'SEARCH.STRATIGRAPHY.TABLE.SCOPE' | translate }}"><localize data-ng-if="entity.scope__value != null || entity.scope__value_en != null" et="entity.scope__value" en="entity.scope__value_en"/></td>
             <td data-title="{{ 'SEARCH.STRATIGRAPHY.TABLE.AGE' | translate }}"><localize data-ng-if="entity.age_chronostratigraphy__stratigraphy != null || entity.age_chronostratigraphy__stratigraphy != null" et="entity.age_chronostratigraphy__stratigraphy" en="entity.age_chronostratigraphy__stratigraphy_en"/></td>
             <td data-title="{{ 'SEARCH.STRATIGRAPHY.TABLE.AGE_MA' | translate }}">{{entity.age_base}}<br>{{entity.age_top}}</td>
+            <!-- TODO: Opens wrong id because correct id is not coming through -->
             <td data-title="{{ 'SEARCH.STRATIGRAPHY.TABLE.BELONGS_TO' | translate }}">
                 <a data-ng-if="entity.parent__stratigraphy != null && entity.parent__stratigraphy_en != null" href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.id})">
                     <localize et="entity.parent__stratigraphy" en="entity.parent__stratigraphy_en"/>

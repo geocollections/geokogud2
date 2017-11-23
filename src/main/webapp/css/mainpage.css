@@ -354,8 +354,9 @@ table tr > td:first-child {
 	margin: 40px;
 }
 
+/* FAQ button reveals picture (photo archive) */
 .content img {
-	max-width: 100%;
+	max-width: 50%;
 }
 
 .content .dateAdded {
@@ -664,9 +665,17 @@ table tr > td:first-child {
  ********************************/
 
 
+
+/* export_buttons.html style */
 .export-buttons {
     margin: 20px 0;
 }
+
+/* Preparation_results.html Number link style */
+.bold-link {
+    font-weight: bold;
+}
+
 
 /*!* Uncomment to make picture move with the screen but needs fixing *!*/
 /*@media (min-width: 768px) {*/
