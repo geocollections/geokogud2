@@ -500,5 +500,6 @@
     },
     "GLOBAL_SEARCH_INFO" : "Globaalne otsing kuvab maksimaalselt 100 tulemust. Rohkemate andmete kuvamiseks palun kasutage detailotsingut.",
     "GLOBAL_SEARCH_NO_INFO": "Teie kiire otsing ei tagastanud ühtegi tulemust. Palun kasutage detailotsingut ja valige, missugust informatsiooni otsida soovite.",
-    "DETAILVIEW_TABLE_HEADER": "Üldinfo"
+    "DETAILVIEW_TABLE_HEADER": "Üldinfo",
+    "ABOUT_MIDDLE": "Geokogud Eestis"
 }

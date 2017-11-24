@@ -23,9 +23,15 @@
         </thead>
         <tbody>
         <tr data-ng-repeat="entity in response.results">
-            <td id="first-table-element" data-title="{{ 'SEARCH.SAMPLES.ID' | translate }}">{{entity.id}}</td>
+            <td style="font-weight: normal" id="first-table-element" data-title="{{ 'SEARCH.SAMPLES.ID' | translate }}">
+                {{entity.id}}
+            </td>
             <td data-title="{{ 'SEARCH.SAMPLES.INSTITUTE' | translate }}">{{entity.database__acronym}}</td>
-            <td data-title="{{ 'SEARCH.SAMPLES.NUMBER' | translate }}"><a href data-ng-click="ctrl.service.openInNewWindow({object:'sample',id:entity.id})"><first-not-null values="[entity.number, entity.id]"/></a></td>
+            <td data-title="{{ 'SEARCH.SAMPLES.NUMBER' | translate }}">
+                <a class="bold-link" href data-ng-click="ctrl.service.openInNewWindow({object:'sample',id:entity.id})">
+                    <first-not-null values="[entity.number, entity.id]"/>
+                </a>
+            </td>
             <td data-title="">{{entity.number_additional}}</td>
             <td data-title="{{ 'SEARCH.SAMPLES.LOCALITY' | translate }}"><a href data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:entity.locality_id})"><localize en="entity.locality__locality_en" et="entity.locality__locality"/></a></td>
             <td data-title="{{ 'SEARCH.SAMPLES.DEPTH_M' | translate }}">{{entity.depth}}</td>

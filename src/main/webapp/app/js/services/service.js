@@ -204,7 +204,7 @@ var constructor = function (utils, configuration, $window, $location) {
     }
 
     function openUrlInNewWindow(params) {
-        $window.open(params.url, '', 'width=750,height=750,scrollbars, resizable');
+        $window.open(params.url, '', 'width=600,height=750,scrollbars, resizable');
     }
 
     return service;

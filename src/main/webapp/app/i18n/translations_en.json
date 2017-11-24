@@ -501,5 +501,6 @@
     },
     "GLOBAL_SEARCH_INFO" : "Global search shows max 100 results. To get more information please use extended search.",
     "GLOBAL_SEARCH_NO_INFO": "Your quick search returned no results. Please use extended search and select, which kind of information you are searching.",
-    "DETAILVIEW_TABLE_HEADER": "General info"
+    "DETAILVIEW_TABLE_HEADER": "General info",
+    "ABOUT_MIDDLE": "Geocollections in Estonia"
 }

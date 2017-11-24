@@ -245,15 +245,15 @@
                 </table>
             </div>
 
-            <div class="col-sm-6" data-ng-if="detailCtrl.locality.latitude && detailCtrl.locality.longitude">
+            <div class="col-sm-6" data-ng-if="detailCtrl.results.locality__latitude && detailCtrl.results.locality__longitude">
                 <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
                 <div id='hoverbox' class='coupontooltip'>
                     <div id='hoversystem'></div>
                     <div id='hoverstat'></div>
                 </div>
-                <locality-map x = "detailCtrl.locality.latitude" y = "detailCtrl.locality.longitude" name = "detailCtrl.locality.localityEn" fid = "detailCtrl.locality.localityId"></locality-map>
-                <a href data-ng-click="detailCtrl.service.showGoogleMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude, detailCtrl.locality.localityEn)">Google Maps</a></span>
-                &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude)" data-ng-if="detailCtrl.locality.countryEn == 'Estonia'">Maa-amet / Estonian Land Board</a>
+                <locality-map x = "detailCtrl.results.locality__latitude" y = "detailCtrl.results.locality__longitude" name = "detailCtrl.results.locality__locality_en" fid = "detailCtrl.results.locality_id"></locality-map>
+                <a href data-ng-click="detailCtrl.service.showGoogleMap(detailCtrl.results.locality__latitude, detailCtrl.results.locality__longitude, detailCtrl.results.locality__country__value_en)">Google Maps</a></span>
+                &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.results.locality__latitude, detailCtrl.results.locality__longitude)" data-ng-if="detailCtrl.results.locality__country__value_en == 'Estonia'">Maa-amet / Estonian Land Board</a>
             </div>
 
             <div class="col-sm-6" data-ng-if="detailCtrl.specimenIdentifications.length > 0">
@@ -271,7 +271,9 @@
                     </thead>
                     <tbody>
                     <tr style="cursor: pointer; " data-ng-repeat="entity in detailCtrl.specimenIdentifications">
-                        <td><a href="http://fossiilid.info/{{entity.id}}">{{entity.taxon__taxon}}</a></td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+entity.taxon_id})">{{entity.taxon__taxon}}</a>
+                        </td>
                         <td>{{entity.soil_horizon}}</td>
                         <td></td>
                         <td>{{entity.date_added  | date:dateFormat}}</td>

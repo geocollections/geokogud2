@@ -120,7 +120,12 @@
                         -->
                         <tr>
                             <td><localize-label et="'API_TRANSLATION.DOI.LICENCE__LICENCE_EN'" en="'API_TRANSLATION.DOI.LICENCE__LICENCE_EN'"/></td>
-                            <td><a href="{{detailCtrl.results.licence__licence_url_en}}"><localize et="detailCtrl.results.licence__licence_en" en="detailCtrl.results.licence__licence_en"/></a></td></tr>
+                            <td>
+                                <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.results.licence__licence_url_en})">
+                                    <localize et="detailCtrl.results.licence__licence_en" en="detailCtrl.results.licence__licence_en"/>
+                                </a>
+                            </td>
+                        </tr>
 
                         <tr data-ng-if="detailCtrl.results.date_added && detailCtrl.results.date_added != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.DATE_ADDED ' | translate }}</td><td> {{detailCtrl.results.date_added  | date:dateFormat}}</td></tr>
                         <tr data-ng-if="detailCtrl.results.date_changed && detailCtrl.results.date_changed != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.DATE_CHANGED ' | translate }}</td><td> {{detailCtrl.results.date_changed  | date:dateFormat}}</td></tr>

@@ -8,7 +8,7 @@
     <table class="table table-bordered table-hover" id="table-search">
         <thead class="thead-default">
         <tr>
-            <th><sort-field value = "id" name="SEARCH.SPECIMENS.ID"></sort-field></th>
+            <!--<th><sort-field value = "id" name="SEARCH.SPECIMENS.ID"></sort-field></th>-->
             <th><sort-field value = "specimen_id" name="SEARCH.SPECIMENS.NUMBER"></sort-field></th>
             <th><sort-field value = "specimen_nr" name="SEARCH.SPECIMENS.OLD_SPECIMEN_NUMBER"></sort-field></th>
             <th><sort-field value = "specimenidentification__name" name="SEARCH.SPECIMENS.NAME_PART_ELEMENT"></sort-field></th>
@@ -22,7 +22,9 @@
         </thead>
         <tbody>
         <tr data-ng-repeat="entity in response.results track by $index">
-            <td data-title="{{ 'SEARCH.SPECIMENS.ID' | translate }}"><a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:entity.id})">{{entity.id}}</a></td>
+            <!--<td data-title="{{ 'SEARCH.SPECIMENS.ID' | translate }}">-->
+                <!--<a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:entity.id})">{{entity.id}}</a>-->
+            <!--</td>-->
             <td data-title="{{ 'SEARCH.SPECIMENS.NUMBER' | translate }}"><a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:entity.id})">{{entity.coll__number | split:' ':0}} {{entity.specimen_id}}</a></td>
             <td data-title="{{ 'SEARCH.SPECIMENS.OLD_SPECIMEN_NUMBER' | translate }}"><!--<first-not-null values="[entity.coll__number, entity.coll_id]"/>-->{{entity.specimen_nr}}</td>
             <td data-title="{{ 'SEARCH.SPECIMENS.NAME_PART_ELEMENT' | translate }}">
