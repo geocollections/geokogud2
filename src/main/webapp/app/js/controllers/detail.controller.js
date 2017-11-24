@@ -13,7 +13,7 @@ var constructor = function ($scope, $state,$stateParams, applicationService, con
 
     /**
      *
-     * type and id are for example : locality and 22860
+     * type and id are for example: locality and 22860
      */
     function searchEntity () {
         vm.detailLoadingHandler.start();

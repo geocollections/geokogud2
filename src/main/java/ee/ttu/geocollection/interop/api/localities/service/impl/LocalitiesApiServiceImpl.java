@@ -101,8 +101,10 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
                 .returnId()
                 .returnLocalityBase()
                 .returnLocalityBaseEn()
+                .returnLocalityBaseId()
                 .returnLocalityTop()
-                .returnLocalityTopEn();
+                .returnLocalityTopEn()
+                .returnLocalityTopId();
     }
 
     @Override

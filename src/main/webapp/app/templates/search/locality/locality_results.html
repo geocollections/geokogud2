@@ -36,18 +36,21 @@
             <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.LATITUDE' | translate }}">{{entity.latitude}}</td>
             <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.LONGITUDE' | translate }}">{{entity.longitude}}</td>
             <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.VERTICAL_EXTENT' | translate }}">{{entity.depth}}</td>
-            <!-- TODO: ID not coming through -->
+
             <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.STRATIGRAPHY_BASE' | translate }}">
-                <!--<a href data-ng-click="ctrl.service.openInNewWindow({object:'locality', id:stratigraphy_base_id})">-->
+                <a data-ng-if="entity.stratigraphy_base_id != null" href
+                   data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy', id:entity.stratigraphy_base_id})">
                     <localize en="entity.stratigraphy_base__stratigraphy_en" et="entity.stratigraphy_base__stratigraphy"/>
-                <!--</a>-->
+                </a>
             </td>
-            <!-- TODO: ID not coming through -->
+
             <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.STRATIGRAPHY_TOP' | translate }}">
-                <!--<a href data-ng-click="ctrl.service.openInNewWindow({object:'locality', id:stratigraphy_top_id})">-->
+                <a data-ng-if="entity.stratigraphy_top_id != null" href
+                   data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy', id:entity.stratigraphy_top_id})">
                     <localize en="entity.stratigraphy_top__stratigraphy_en" et="entity.stratigraphy_top__stratigraphy"/>
-                <!--</a>-->
+                </a>
             </td>
+
             <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.DRILLCORE' | translate }}"></td>
             <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.IMAGES' | translate }}"><span data-ng-if="entity.locality_image_thumbnail.count > 0">+</span></td>
             <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.MAP' | translate }}"><span data-ng-if="entity.latitude != null && entity.longitude != null">+</span></td>
