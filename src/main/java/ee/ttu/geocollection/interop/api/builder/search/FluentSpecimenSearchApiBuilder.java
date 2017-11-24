@@ -140,5 +140,15 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
         return this;
     }
 
+    public FluentSpecimenSearchApiBuilder returnSpecimenidentificationTaxonTaxon() {
+        addReturningField(SPECIMENIDENTIFICATION__TAXON__TAXON);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder returnSpecimenidentificationTaxonId() {
+        addReturningField(SPECIMENIDENTIFICATION__TAXON_ID);
+        return this;
+    }
+
 
 }

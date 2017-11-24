@@ -193,7 +193,9 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .returnLocalityId()
                 .returnStratigraphyId()
                 .returnLatitutde()
-                .returnLongitude();
+                .returnLongitude()
+                .returnSpecimenidentificationTaxonTaxon()
+                .returnSpecimenidentificationTaxonId();
     }
 
     @Override

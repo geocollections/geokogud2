@@ -3,6 +3,9 @@ package ee.ttu.geocollection.interop.api.builder;
 public class ApiFields {
     public static final String ID = "id";
 
+    // Fields used in SPECIMEN search
+    public static final String SPECIMENIDENTIFICATION__TAXON_ID = "specimenidentification__taxon_id";
+
     // SOIL search
     public static final String SITE = "site";
     public static final String AREA_NAME = "area_name";
