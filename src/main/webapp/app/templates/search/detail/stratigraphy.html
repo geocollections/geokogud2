@@ -72,7 +72,16 @@
                     <tr data-ng-if="detailCtrl.results.parent__stratigraphy_en && detailCtrl.results.parent__stratigraphy_en != null"><td>{{'API_TRANSLATION.STRATIGRAPHY.PARENT__STRATIGRAPHY_EN ' | translate }} </td><td> {{detailCtrl.results.parent__stratigraphy_en}}</td></tr>
                     -->
                     <tr data-ng-if="(detailCtrl.results.parent__stratigraphy && detailCtrl.results.parent__stratigraphy != null) || (detailCtrl.results.parent__stratigraphy_en && detailCtrl.results.parent__stratigraphy_en != null) ">
-                        <td><localize-label et="'API_TRANSLATION.STRATIGRAPHY.PARENT__STRATIGRAPHY'" en="'API_TRANSLATION.STRATIGRAPHY.PARENT__STRATIGRAPHY_EN'"/></td><td><localize et="detailCtrl.results.parent__stratigraphy" en="detailCtrl.results.parent__stratigraphy_en"/></td>
+                        <td>
+                            <localize-label et="'API_TRANSLATION.STRATIGRAPHY.PARENT__STRATIGRAPHY'"
+                                            en="'API_TRANSLATION.STRATIGRAPHY.PARENT__STRATIGRAPHY_EN'"/>
+                        </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: detailCtrl.results.parent_id})">
+                                <localize et="detailCtrl.results.parent__stratigraphy"
+                                          en="detailCtrl.results.parent__stratigraphy_en"/>
+                            </a>
+                        </td>
                     </tr>
 
 
@@ -80,7 +89,16 @@
                     <tr data-ng-if="detailCtrl.results.age_top && detailCtrl.results.age_top != null"><td>{{'API_TRANSLATION.STRATIGRAPHY.AGE_TOP ' | translate }} </td><td> {{detailCtrl.results.age_top}}</td></tr>
 
                     <tr data-ng-if="(detailCtrl.results.age_chronostratigraphy__stratigraphy && detailCtrl.results.age_chronostratigraphy__stratigraphy != null) || (detailCtrl.results.age_chronostratigraphy__stratigraphy_en && detailCtrl.results.age_chronostratigraphy__stratigraphy_en != null) ">
-                        <td><localize-label et="'API_TRANSLATION.STRATIGRAPHY.AGE_CHRONOSTRATIGRAPHY__STRATIGRAPHY'" en="'API_TRANSLATION.STRATIGRAPHY.AGE_CHRONOSTRATIGRAPHY__STRATIGRAPHY_EN'"/></td><td><localize et="detailCtrl.results.age_chronostratigraphy__stratigraphy" en="detailCtrl.results.age_chronostratigraphy__stratigraphy_en"/></td>
+                        <td>
+                            <localize-label et="'API_TRANSLATION.STRATIGRAPHY.AGE_CHRONOSTRATIGRAPHY__STRATIGRAPHY'"
+                                            en="'API_TRANSLATION.STRATIGRAPHY.AGE_CHRONOSTRATIGRAPHY__STRATIGRAPHY_EN'"/>
+                        </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: detailCtrl.results.age_chronostratigraphy_id})">
+                                <localize et="detailCtrl.results.age_chronostratigraphy__stratigraphy"
+                                          en="detailCtrl.results.age_chronostratigraphy__stratigraphy_en"/>
+                            </a>
+                        </td>
                     </tr>
                     <!--<tr data-ng-if="detailCtrl.results.age_chronostratigraphy__stratigraphy && detailCtrl.results.age_chronostratigraphy__stratigraphy != null"><td>{{'API_TRANSLATION.STRATIGRAPHY.AGE_CHRONOSTRATIGRAPHY__STRATIGRAPHY ' | translate }} </td><td> {{detailCtrl.results.age_chronostratigraphy__stratigraphy}}</td></tr>
                     <tr data-ng-if="detailCtrl.results.age_chronostratigraphy__stratigraphy_en && detailCtrl.results.age_chronostratigraphy__stratigraphy_en != null"><td>{{'API_TRANSLATION.STRATIGRAPHY.AGE_CHRONOSTRATIGRAPHY__STRATIGRAPHY_EN ' | translate }} </td><td> {{detailCtrl.results.age_chronostratigraphy__stratigraphy_en}}</td></tr>

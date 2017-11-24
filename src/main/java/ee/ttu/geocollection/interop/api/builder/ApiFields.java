@@ -151,6 +151,7 @@ public class ApiFields {
     public static final String MAAAMET_PA_ID = "maaamet_pa_id";
     public static final String LOCALITYSYNONYM_SYNONYM = "localitysynonym__synonym";
 
+    // Stratigraphy search
     public static final String STRATIGRAPHY = "stratigraphy";
     public static final String STRATIGRAPHY_EN = "stratigraphy_en";
     public static final String INDEX_MAIN = "index_main";
@@ -181,8 +182,10 @@ public class ApiFields {
     public static final String KIND__VALUE_EN = "kind__value_en";
     public static final String PARENT_STRATIGRAPHY = "parent__stratigraphy";
     public static final String PARENT_STRATIGRAPHY_EN = "parent__stratigraphy_en";
+    public static final String PARENT_ID = "parent_id";
     public static final String AGE_CHRONOSTRATIGRAPHY_STRATIGRAPHY = "age_chronostratigraphy__stratigraphy";
     public static final String AGE_CHRONOSTRATIGRAPHY_STRATIGRAPHY_EN = "age_chronostratigraphy__stratigraphy_en";
+    public static final String AGE_CHRONOSTRATIGRAPHY_ID = "age_chronostratigraphy_id";
 
     //Analyses search
     public static final String ANALYSIS_METHOD__ANALYSIS_METHOD = "analysis_method__analysis_method";

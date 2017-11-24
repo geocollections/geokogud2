@@ -36,10 +36,12 @@ public class StratigraphyApiServiceImpl implements StratigraphyApiService {
         "index_additional_html",
         "parent__stratigraphy",
         "parent__stratigraphy_en",
+        "parent_id",
         "age_base",
         "age_top",
         "age_chronostratigraphy__stratigraphy",
         "age_chronostratigraphy__stratigraphy_en",
+        "age_chronostratigraphy_id",
         "age_reference__reference",
         "etymon",
         "etymon_en",
@@ -78,7 +80,9 @@ public class StratigraphyApiServiceImpl implements StratigraphyApiService {
                 .queryIndex(searchCriteria.getIndex())
                 .queryAgeBase(searchCriteria.getAgeMinY())
                 .queryLithology(searchCriteria.getMainLithology())
-                .queryAuthor(searchCriteria.getAuthor());
+                .queryAuthor(searchCriteria.getAuthor())
+                .returnAgeChronostratigraphyId()
+                .returnParentId();
     }
 
     @Override

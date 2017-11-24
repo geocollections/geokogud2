@@ -54,4 +54,14 @@ public class FluentStratigraphySearchApiBuilder extends FluentSearchApiBuilder<F
         buildMultiSearch(ageChronostratigraphy, AGE_CHRONOSTRATIGRAPHY_STRATIGRAPHY, AGE_CHRONOSTRATIGRAPHY_STRATIGRAPHY_EN);
         return this;
     }
+
+    public FluentStratigraphySearchApiBuilder returnParentId() {
+        addReturningField(PARENT_ID);
+        return this;
+    }
+
+    public FluentStratigraphySearchApiBuilder returnAgeChronostratigraphyId() {
+        addReturningField(AGE_CHRONOSTRATIGRAPHY_ID);
+        return this;
+    }
 }
