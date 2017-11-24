@@ -11,9 +11,13 @@ var constructor = function ($scope, $state,$stateParams, applicationService, con
 
     searchEntity();
 
+    /**
+     *
+     * type and id are for example : locality and 22860
+     */
     function searchEntity () {
         vm.detailLoadingHandler.start();
-        applicationService.getEntity($stateParams.type,$stateParams.id,onEntityData, onDetailError)
+        applicationService.getEntity($stateParams.type, $stateParams.id, onEntityData, onDetailError)
     }
 
     function onEntityData(response) {
@@ -21,6 +25,7 @@ var constructor = function ($scope, $state,$stateParams, applicationService, con
         vm.results = response.data.results[0];
         vm.relatedData = response.data.related_data;
         vm.fields = Object.keys(vm.results);
+        console.log(vm.fields);
         vm.imageUrl = (['specimenImage','photoArchive'].indexOf($stateParams.type) > -1 ? vm.service.composeImageUrl(vm.results) : null);
         vm.externalImagePath = (['specimenImage','photoArchive'].indexOf($stateParams.type) > -1  ? vm.service.composeExternalImagePath(vm.results) : null);
         vm.files = (['doi'].indexOf($stateParams.type) > -1 ? composeFileInfo(response.data.results) : []);

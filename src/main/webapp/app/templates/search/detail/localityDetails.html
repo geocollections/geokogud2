@@ -60,15 +60,36 @@
                     <tr data-ng-if="detailCtrl.results.remarks_location && detailCtrl.results.remarks_location != null"><td>{{'API_TRANSLATION.LOCALITY.REMARKS_LOCATION ' |translate }}</td><td>{{detailCtrl.results.remarks_location}}</td></tr>
 
                     <tr data-ng-if="(detailCtrl.results.stratigraphy_base__stratigraphy && detailCtrl.results.stratigraphy_base__stratigraphy != null) || (detailCtrl.results.stratigraphy_base__stratigraphy_en && detailCtrl.results.stratigraphy_base__stratigraphy_en != null) ">
-                        <td><localize-label et="'API_TRANSLATION.LOCALITY.STRATIGRAPHY_BASE__STRATIGRAPHY'" en="'API_TRANSLATION.LOCALITY.STRATIGRAPHY_BASE__STRATIGRAPHY_EN'"/></td><td><localize et="detailCtrl.results.stratigraphy_base__stratigraphy" en="detailCtrl.results.stratigraphy_base__stratigraphy_en"/></td>
+                        <td>
+                            <localize-label et="'API_TRANSLATION.LOCALITY.STRATIGRAPHY_BASE__STRATIGRAPHY'"
+                                            en="'API_TRANSLATION.LOCALITY.STRATIGRAPHY_BASE__STRATIGRAPHY_EN'"/>
+                        </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: detailCtrl.results.stratigraphy_base_id})">
+                                <localize et="detailCtrl.results.stratigraphy_base__stratigraphy"
+                                          en="detailCtrl.results.stratigraphy_base__stratigraphy_en"/>
+                            </a>
+                        </td>
                     </tr>
                     <!--<tr data-ng-if="detailCtrl.results.stratigraphy_base__stratigraphy_en && detailCtrl.results.stratigraphy_base__stratigraphy_en != null"><td>{{'API_TRANSLATION.LOCALITY.STRATIGRAPHY_BASE__STRATIGRAPHY_EN ' |translate }}</td><td>{{detailCtrl.results.stratigraphy_base__stratigraphy_en}}</td></tr>
                     <tr data-ng-if="detailCtrl.results.stratigraphy_base__stratigraphy && detailCtrl.results.stratigraphy_base__stratigraphy != null"><td>{{'API_TRANSLATION.LOCALITY.STRATIGRAPHY_BASE__STRATIGRAPHY ' |translate }}</td><td>{{detailCtrl.results.stratigraphy_base__stratigraphy}}</td></tr>
                     -->
-                    <tr data-ng-if="detailCtrl.results.stratigraphy_base_id && detailCtrl.results.stratigraphy_base_id != null"><td>{{'API_TRANSLATION.LOCALITY.STRATIGRAPHY_BASE_ID ' |translate }}</td><td>{{detailCtrl.results.stratigraphy_base_id}}</td></tr>
+                    <tr data-ng-if="detailCtrl.results.stratigraphy_base_id && detailCtrl.results.stratigraphy_base_id != null">
+                        <td>{{'API_TRANSLATION.LOCALITY.STRATIGRAPHY_BASE_ID ' |translate }}</td>
+                        <td>{{detailCtrl.results.stratigraphy_base_id}}</td>
+                    </tr>
 
                     <tr data-ng-if="(detailCtrl.results.stratigraphy_top__stratigraphy && detailCtrl.results.stratigraphy_top__stratigraphy != null) || (detailCtrl.results.stratigraphy_top__stratigraphy_en && detailCtrl.results.stratigraphy_top__stratigraphy_en != null) ">
-                        <td><localize-label et="'API_TRANSLATION.LOCALITY.STRATIGRAPHY_TOP__STRATIGRAPHY'" en="'API_TRANSLATION.LOCALITY.STRATIGRAPHY_TOP__STRATIGRAPHY_EN'"/></td><td><localize et="detailCtrl.results.stratigraphy_top__stratigraphy" en="detailCtrl.results.stratigraphy_top__stratigraphy_en"/></td>
+                        <td>
+                            <localize-label et="'API_TRANSLATION.LOCALITY.STRATIGRAPHY_TOP__STRATIGRAPHY'"
+                                            en="'API_TRANSLATION.LOCALITY.STRATIGRAPHY_TOP__STRATIGRAPHY_EN'"/>
+                        </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: detailCtrl.results.stratigraphy_top_id})">
+                                <localize et="detailCtrl.results.stratigraphy_top__stratigraphy"
+                                          en="detailCtrl.results.stratigraphy_top__stratigraphy_en"/>
+                            </a>
+                        </td>
                     </tr>
                     <!--<tr data-ng-if="detailCtrl.results.stratigraphy_top__stratigraphy && detailCtrl.results.stratigraphy_top__stratigraphy != null"><td>{{'API_TRANSLATION.LOCALITY.STRATIGRAPHY_TOP__STRATIGRAPHY ' |translate }}</td><td>{{detailCtrl.results.stratigraphy_top__stratigraphy}}</td></tr>
                     <tr data-ng-if="detailCtrl.results.stratigraphy_top__stratigraphy_en && detailCtrl.results.stratigraphy_top__stratigraphy_en != null"><td>{{'API_TRANSLATION.LOCALITY.STRATIGRAPHY_TOP__STRATIGRAPHY_EN ' |translate }}</td><td>{{detailCtrl.results.stratigraphy_top__stratigraphy_en}}</td></tr>

@@ -54,9 +54,11 @@ var constructor = function (utils, configuration, $window, $location) {
         return utils.decodeMapUrl();
     };
     service.getEntity = function (searchType, id, callback, error) {
-        console.log(searchType);
+        console.log("searchType: " + searchType);
+        console.log("id: " + id);
+        // console.log("callback: " + callback);
         var url = getDetailUrl(searchType);
-        console.log(url);
+        console.log("url: " + url);
         utils.httpGet(url + "/" + id, null, callback, error);
     };
 

@@ -9,6 +9,9 @@ var constructor = function ($http, $location, configuration) {
     };
 
     service.httpGet = function (url, data, successCb, errorCb, headers) {
+        console.log("GET REQUEST url: " + url);
+        console.log("GET REQUEST data: " + data);
+        console.log("GET REQUEST headers: " + headers);
         var config = {
             "params": data,
             "headers": headers ? headers : {},
@@ -155,6 +158,8 @@ var constructor = function ($http, $location, configuration) {
     service.decodeUrl = function(){
         if( Object.keys($location.$$search).length === 0) return null;
         var urlParams = $location.$$search, currentTable = $location.$$path.split('/')[1], searchParams = {};
+        console.log("urlParams" + JSON.stringify(urlParams));
+        console.log("currentTable " + currentTable);
         angular.forEach(Object.keys(urlParams), function(attr){
             if(attr != 'currentTable' && attr != 'sortdir' && attr != 'dbs[]' && configuration.urlHelper[currentTable]) {
                 angular.forEach(Object.keys(configuration.urlHelper[currentTable].fields), function(a) {
@@ -228,6 +233,7 @@ var constructor = function ($http, $location, configuration) {
                 }
             }
         });
+        console.log("searchParams: " + JSON.stringify(searchParams));
         return searchParams;
     };
     function getLookUpType(attr){
@@ -251,7 +257,7 @@ var constructor = function ($http, $location, configuration) {
             }
         }
 
-        $http(config).then(successCallback, errorCallback);
+        var x = $http(config).then(successCallback, errorCallback);
 
         function successCallback(response, status, headers, config) {
             service.isFunction(successCb) && successCb(response, status, headers, config);
