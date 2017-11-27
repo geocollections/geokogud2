@@ -311,7 +311,9 @@
             "SAMPLE__LOCALITY__LOCALITY_EN":"Leiukoht (EN)",
             "SAMPLE__LOCALITY__DEPTH":"Sügavus m",
             "SAMPLE__STRATIGRAPHY__STRATIGRAPHY":"Stratigraafia",
-            "SAMPLE__STRATIGRAPHY__STRATIGRAPHY_EN":"Stratigraafia (EN)"
+            "SAMPLE__STRATIGRAPHY__STRATIGRAPHY_EN":"Stratigraafia (EN)",
+            "SAMPLE__LITHOSTRATIGRAPHY__STRATIGRAPHY":"Litostratigraafia",
+            "SAMPLE__LITHOSTRATIGRAPHY__STRATIGRAPHY_EN":"Litostratigraafia (EN)"
         },
         "PREPARATION" :     {
             "DETAIL_FORM_NAME" : "Mikrofauna preparaat nr.",

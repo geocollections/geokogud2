@@ -34,7 +34,10 @@ public class AnalysesApiServiceImpl implements AnalysesApiService {
             "sample__locality__depth",
             "sample__stratigraphy__stratigraphy",
             "sample__stratigraphy__stratigraphy_en",
-            "sample__stratigraphy_id");
+            "sample__stratigraphy_id",
+            "sample__lithostratigraphy__stratigraphy",
+            "sample__lithostratigraphy__stratigraphy_en",
+            "sample__lithostratigraphy_id");
 
     @Override
     public ApiResponse findAnalyses(AnalysesSearchCriteria searchCriteria) {
@@ -59,6 +62,8 @@ public class AnalysesApiServiceImpl implements AnalysesApiService {
                 .returnStratigraphyId()
                 .returnLithostratigraphyId()
                 .returnLocalityId()
+                .returnLithostratigraphy()
+                .returnLithostratigraphyEn()
                 .buildFullQuery();
         return apiService.searchRawEntities("analysis", searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }

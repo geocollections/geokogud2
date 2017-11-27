@@ -173,7 +173,7 @@
                     <tr>
                         <th>Type</th>
                         <th>Description</th>
-                  <!--      <th>Format</th>-->
+                        <th>Format</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -181,7 +181,7 @@
                         <tr style="cursor: pointer; " data-ng-repeat="entity in detailCtrl.files">
                             <td>Data file</td>
                             <td>{{detailCtrl.results['identifier']}}</td>
-                  <!--          <td>{{detailCtrl.results['formats'] | split:';':$index}}</td>-->
+                            <td>{{detailCtrl.results['formats'] | split:';':$index}}</td>
                             <td><a href target="_self" ng-href="{{detailCtrl.service.getDownloadLink(entity.fileName)}}"
                                  >Download</a></td>
                         </tr>
@@ -260,7 +260,7 @@
                 </table>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-6" data-ng-if="detailCtrl.doiGeolocation.length > 0">
                 <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
                 <div id='hoverbox' class='coupontooltip'>
                     <div id='hoversystem'></div>

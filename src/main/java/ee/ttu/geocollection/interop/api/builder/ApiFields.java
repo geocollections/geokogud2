@@ -209,6 +209,14 @@ public class ApiFields {
     public static final String SAMPLE_LOCALITY_ID = "sample__locality_id";
     public static final String SAMPLE_STRATIGRAPHY_ID = "sample__stratigraphy_id";
     public static final String SAMPLE_LITHOSTRATIGRAPHY_ID = "sample__lithostratigraphy_id";
+    public static final String SAMPLE_LITHOSTRATIGRAPHY__STRATIGRAPHY = "sample__lithostratigraphy__stratigraphy";
+    public static final String SAMPLE_LITHOSTRATIGRAPHY__STRATIGRAPHY_EN = "sample__lithostratigraphy__stratigraphy_en";
+
+    /**
+     * PREPARATION search
+     */
+    public static final String SAMPLE__LOCALITY__ID = "sample__locality__id";
+    public static final String SAMPLE__STRATIGRAPHY__ID = "sample__stratigraphy__id";
 
     /**
      * Used in WebNewsApiServiceImpl class

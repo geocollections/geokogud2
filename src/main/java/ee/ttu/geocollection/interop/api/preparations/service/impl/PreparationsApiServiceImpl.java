@@ -23,6 +23,7 @@ public class PreparationsApiServiceImpl implements PreparationsApiService{
             "preparation_number",
             "sample__locality__locality",
             "sample__locality__locality_en",
+            "sample__locality__id",
             "sample__depth",
             "sample__depth_interval",
             "sample__agent_collected__agent",
@@ -31,6 +32,7 @@ public class PreparationsApiServiceImpl implements PreparationsApiService{
             "sample__agent_collected_free",
             "sample__stratigraphy__stratigraphy",
             "sample__stratigraphy__stratigraphy_en",
+            "sample__stratigraphy__id",
             "sample__stratigraphy_free",
             "sample__lithostratigraphy__stratigraphy",
             "sample__lithostratigraphy__stratigraphy_en",
@@ -56,6 +58,8 @@ public class PreparationsApiServiceImpl implements PreparationsApiService{
                 .queryStratigraphyEn(searchCriteria.getStratigraphyEn())
                 .queryDepth(searchCriteria.getDepthSince())
                 .queryDepth(searchCriteria.getDepthTo())
+                .returnSampleLocalityId()
+                .returnSampleStratigraphyId()
                 .buildDefaultFieldsQuery();
         return apiService.searchRawEntities("preparation", searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }

@@ -318,7 +318,9 @@
             "SAMPLE__LOCALITY__LOCALITY_EN":"Locality",
             "SAMPLE__LOCALITY__DEPTH":"Depth m",
             "SAMPLE__STRATIGRAPHY__STRATIGRAPHY":"Stratigraphy (ET)",
-            "SAMPLE__STRATIGRAPHY__STRATIGRAPHY_EN":"Stratigraphy"
+            "SAMPLE__STRATIGRAPHY__STRATIGRAPHY_EN":"Stratigraphy",
+            "SAMPLE__LITHOSTRATIGRAPHY__STRATIGRAPHY":"Lithostratigraphy (ET)",
+            "SAMPLE__LITHOSTRATIGRAPHY__STRATIGRAPHY_EN":"Lithostratigraphy"
         },
         "PREPARATION" :     {
             "DETAIL_FORM_NAME" : "Microfossil preparation No.",

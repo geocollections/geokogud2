@@ -2,6 +2,8 @@ package ee.ttu.geocollection.interop.api.builder.search;
 
 import ee.ttu.geocollection.domain.SearchField;
 
+import static ee.ttu.geocollection.interop.api.builder.ApiFields.*;
+
 public class FluentPreparationSearchApiBuilder extends FluentSearchApiBuilder<FluentPreparationSearchApiBuilder> {
     public static FluentPreparationSearchApiBuilder aRequest() {
         return new FluentPreparationSearchApiBuilder();
@@ -43,5 +45,16 @@ public class FluentPreparationSearchApiBuilder extends FluentSearchApiBuilder<Fl
         buildFieldParameters("sample__agent_collected__agent", text);
         return this;
     }
+
+    public FluentPreparationSearchApiBuilder returnSampleLocalityId() {
+        addReturningField(SAMPLE__LOCALITY__ID);
+        return this;
+    }
+
+    public FluentPreparationSearchApiBuilder returnSampleStratigraphyId() {
+        addReturningField(SAMPLE__STRATIGRAPHY__ID);
+        return this;
+    }
+
 
 }

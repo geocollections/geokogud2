@@ -88,6 +88,16 @@ public class FluentAnalysesApiBuilder  extends FluentSearchApiBuilder<FluentAnal
         return this;
     }
 
+    public FluentAnalysesApiBuilder returnLithostratigraphy(){
+        addReturningField(SAMPLE_LITHOSTRATIGRAPHY__STRATIGRAPHY);
+        return this;
+    }
+
+    public FluentAnalysesApiBuilder returnLithostratigraphyEn(){
+        addReturningField(SAMPLE_LITHOSTRATIGRAPHY__STRATIGRAPHY_EN);
+        return this;
+    }
+
     public FluentAnalysesApiBuilder returnLithostratigraphyId(){
         addReturningField(SAMPLE_LITHOSTRATIGRAPHY_ID);
         return this;
