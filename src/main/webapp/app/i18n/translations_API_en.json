@@ -418,7 +418,7 @@
         "DOI" :  {
             "ID":"ID",
             "IDENTIFIER":"DOI",
-            "CREATORS":"Author",
+            "CREATORS":"Author(s)",
             "PUBLISHER":"Publisher",
             "PUBLICATION_YEAR":"Year",
             "ABSTRACT":"Abstract",
@@ -429,7 +429,7 @@
             "REFERENCE__VOLUME":"Volume",
             "REFERENCE__PAGES":"Pages",
             "RESOURCE_TYPE__VALUE":"Resource type",
-            "RESOURCE":"Topic",
+            "RESOURCE":"Resource topic",
             "METHODS":"Methods",
             "VERSION":"Version",
             "SIZES":"Size",
@@ -442,11 +442,14 @@
             "LICENCE__LICENCE_URL_EN":"Licence URL",
             "DATASET__NAME":"Dataset (ET)",
             "DATASET__NAME_EN":"Dataset",
-            "DATE_ADDED":"Date added",
-            "DATE_CHANGED":"Date changed",
-            "DATACITE_CREATED":"Datacite added",
-            "DATACITE_UPDATED":"Datacite changed",
-            "DOIATTACHMENT__ATTACHMENT__FILENAME":"File name"
+            "DATE_ADDED":"SARV created",
+            "DATE_CHANGED":"SARV updated",
+            "DATACITE_CREATED":"Datacite created",
+            "DATACITE_UPDATED":"Datacite updated",
+            "DOIATTACHMENT__ATTACHMENT__FILENAME":"File name",
+            "TITLE": "Title",
+            "CITATION": "Citation",
+            "RELATED_REFERENCE": "Related reference"
         }
     },
     "ERROR" : {

@@ -24,6 +24,7 @@ public class DoiApiServiceImpl implements DoiApiService {
             "publisher",
             "publication_year",
             "abstract",
+            "title",
             "reference__author",
             "reference__year",
             "reference__title",
@@ -48,7 +49,10 @@ public class DoiApiServiceImpl implements DoiApiService {
             "date_changed",
             "datacite_created",
             "datacite_updated",
-            "doiattachment__attachment__filename"
+            "doiattachment__attachment__filename",
+            "reference__reference",
+            "reference_id",
+            "dataset_id"
     );
 
     @Override
@@ -63,6 +67,9 @@ public class DoiApiServiceImpl implements DoiApiService {
                 .queryAuthor(searchCriteria.getAuthor())
                 .queryAbstract(searchCriteria.getAbstractText())
                 .queryInstitutions(searchCriteria.getDbs())
+                .returnReferenceId()
+                .returnDatasetId()
+                .returnReference()
                 .buildDefaultFieldsQuery();
         return apiService.searchRawEntities("doi", searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }

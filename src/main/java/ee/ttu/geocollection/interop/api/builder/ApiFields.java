@@ -57,6 +57,9 @@ public class ApiFields {
     public static final String PUBLISHER = "publisher";
     public static final String REFERENCEYEAR = "reference__year";
     public static final String REFERENCEAUTHOR = "reference__author";
+    public static final String REFERENCE_ID = "reference_id";
+    public static final String REFERENCE_REFERENCE = "reference__reference";
+    public static final String DATASET_ID = "dataset_id";
 
     // Reference search
     public static final String REFERENCE = "reference";

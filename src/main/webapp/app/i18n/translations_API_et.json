@@ -411,7 +411,7 @@
         "DOI" :  {
             "ID":"ID",
             "IDENTIFIER":"DOI",
-            "CREATORS":"Autor",
+            "CREATORS":"Autor(id)",
             "PUBLISHER":"Kirjastus",
             "PUBLICATION_YEAR":"Aasta",
             "ABSTRACT":"Abstrakt",
@@ -437,9 +437,12 @@
             "DATASET__NAME_EN":"Andmekogu (EN)",
             "DATE_ADDED":"Kirje lisatud",
             "DATE_CHANGED":"Kirje uuendatud",
-            "DATACITE_CREATED":"DataCite registreerimine",
+            "DATACITE_CREATED":"DataCite lisatud",
             "DATACITE_UPDATED":"DataCite uuendamine",
-            "DOIATTACHMENT__ATTACHMENT__FILENAME":"Faili nimi"
+            "DOIATTACHMENT__ATTACHMENT__FILENAME":"Faili nimi",
+            "TITLE": "Pealkiri",
+            "CITATION": "Tsiteerimine",
+            "RELATED_REFERENCE": "Seotud kirjandus"
         }
     },
     "ERROR" : {

@@ -44,4 +44,19 @@ public class FluentDoiSearchApiBuilder extends FluentSearchApiBuilder<FluentDoiS
         return this;
     }
 
+    public FluentDoiSearchApiBuilder returnReferenceId() {
+        addReturningField(REFERENCE_ID);
+        return this;
+    }
+
+    public FluentDoiSearchApiBuilder returnReference() {
+        addReturningField(REFERENCE_REFERENCE);
+        return this;
+    }
+
+    public FluentDoiSearchApiBuilder returnDatasetId() {
+        addReturningField(DATASET_ID);
+        return this;
+    }
+
 }
