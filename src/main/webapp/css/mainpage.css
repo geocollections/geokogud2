@@ -524,6 +524,7 @@ table tr > td:first-child {
 .table-header-styles tr td:first-child {
     background-color: #eceeef;
     font-size: smaller;
+    vertical-align: middle;
 }
 
 .styles-for-table-headers {
@@ -614,6 +615,14 @@ table tr > td:first-child {
         padding-right: 24%;
     }
 }
+
+/* DOI START */
+
+.related-break-all {
+    word-break: break-all;
+}
+
+/* DOI END */
 
 /*******************************
  ***  DETAILVIEW STYLES END  ***
