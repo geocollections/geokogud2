@@ -16,6 +16,7 @@ var constructor = function (utils, configuration, $window, $location) {
     service.pageSetUp = configuration.pageSetUp;
     service.location = $location;
 
+    service.openDoiInNewWindow = openDoiInNewWindow;
     service.openInNewWindow = openInNewWindow;
     service.openUrlInNewWindow = openUrlInNewWindow;
     service.showGoogleMap = showGoogleMap;
@@ -182,6 +183,10 @@ var constructor = function (utils, configuration, $window, $location) {
             default : break;
         }
         return root;
+    }
+
+    function openDoiInNewWindow(params) {
+        $window.open('http://dx.doi.org/' + params.doi, '', 'width=600,height=750,scrollbars, resizable');
     }
 
     function showGoogleMap(lat, lon, localityName) {

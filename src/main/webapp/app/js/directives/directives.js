@@ -546,7 +546,7 @@ angular.module('geoApp')
                 var watcher = $scope.$watch('localities', function () {
                     if ($scope.localities === undefined) return;
 
-                    console.log($scope.localities);
+                    // console.log($scope.localities);
                     // at this point it is defined, map can be initialized
                     init();
                     // delete watcher if appropriate
