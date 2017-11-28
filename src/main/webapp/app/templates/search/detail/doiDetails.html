@@ -31,10 +31,58 @@
                         <!--<td> {{ 'API_TRANSLATION.DOI.ID ' | translate }} </td>-->
                         <!--<td>{{detailCtrl.results.id}}</td>-->
                     <!--</tr>-->
-
-                    <tr>
+<!-- reference__author,reference__year,reference__title,reference__journal__journal_short,reference__volume,reference__pages,reference__doi -->
+                    <tr data-ng-if="detailCtrl.results.creators != null &&
+                    detailCtrl.results.reference__author != null && detailCtrl.results.reference__year != null
+                    && detailCtrl.results.reference__title != null && detailCtrl.results.reference__journal__journal_short != null
+                    && detailCtrl.results.reference__volume != null && detailCtrl.results.reference__pages != null
+                    && detailCtrl.results.reference__doi != null">
                         <td> {{ 'API_TRANSLATION.DOI.CITATION' | translate }} </td>
-                        <td></td>
+                        <td>
+                            {{ detailCtrl.results.creators
+                            + " ("
+                            + detailCtrl.results.publication_year
+                            + "): "
+                            + detailCtrl.results.title
+                            + ". "
+                            + detailCtrl.results.publisher
+                            + ". doi:"
+                            + detailCtrl.results.identifier
+                            + ". Supplement to: "
+                            + detailCtrl.results.reference__author
+                            + " ("
+                            + detailCtrl.results.reference__year
+                            + "): "
+                            + detailCtrl.results.reference__title
+                            + ". "
+                            + detailCtrl.results.reference__journal__journal_short
+                            + " "
+                            + detailCtrl.results.reference__volume
+                            + ": "
+                            + detailCtrl.results.reference__pages
+                            + ". doi:"
+                            + detailCtrl.results.reference__doi
+                            + ". " }}
+                        </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.creators != null &&
+                    (detailCtrl.results.reference__author == null || detailCtrl.results.reference__year == null
+                    || detailCtrl.results.reference__title == null || detailCtrl.results.reference__journal__journal_short == null
+                    || detailCtrl.results.reference__volume == null || detailCtrl.results.reference__pages == null
+                    || detailCtrl.results.reference__doi == null)">
+                        <td> {{ 'API_TRANSLATION.DOI.CITATION' | translate }} </td>
+                        <td>
+                            {{ detailCtrl.results.creators
+                            + " ("
+                            + detailCtrl.results.publication_year
+                            + "): "
+                            + detailCtrl.results.title
+                            + ". "
+                            + detailCtrl.results.publisher
+                            + ". doi:"
+                            + detailCtrl.results.identifier }}
+                        </td>
                     </tr>
 
                     <tr data-ng-if="detailCtrl.results.identifier && detailCtrl.results.identifier != null">
@@ -120,36 +168,6 @@
                         </td>
                     </tr>
 
-                    <!--<tr data-ng-if="detailCtrl.results.reference__author && detailCtrl.results.reference__author != null " >-->
-                        <!--<td> {{ 'API_TRANSLATION.DOI.REFERENCE__AUTHOR ' | translate }} </td>-->
-                        <!--<td>{{detailCtrl.results.reference__author}}</td>-->
-                    <!--</tr>-->
-                    <!--<tr data-ng-if="detailCtrl.results.reference__year && detailCtrl.results.reference__year != null " >-->
-                        <!--<td> {{ 'API_TRANSLATION.DOI.REFERENCE__YEAR ' | translate }} </td>-->
-                        <!--<td>{{detailCtrl.results.reference__year}}</td>-->
-                    <!--</tr>-->
-                    <!--<tr data-ng-if="detailCtrl.results.reference__title && detailCtrl.results.reference__title != null " >-->
-                        <!--<td> {{ 'API_TRANSLATION.DOI.REFERENCE__TITLE ' | translate }} </td>-->
-                        <!--<td>{{detailCtrl.results.reference__title}}</td>-->
-                    <!--</tr>-->
-                    <!--<tr data-ng-if="detailCtrl.results.reference__journal__journal_short && detailCtrl.results.reference__journal__journal_short != null " >-->
-                        <!--<td> {{ 'API_TRANSLATION.DOI.REFERENCE__JOURNAL__JOURNAL_SHORT ' | translate }} </td>-->
-                        <!--<td>{{detailCtrl.results.reference__journal__journal_short}}</td>-->
-                    <!--</tr>-->
-                    <!--<tr data-ng-if="detailCtrl.results.reference__volume && detailCtrl.results.reference__volume != null " >-->
-                        <!--<td> {{ 'API_TRANSLATION.DOI.REFERENCE__VOLUME ' | translate }} </td>-->
-                        <!--<td>{{detailCtrl.results.reference__volume}}</td>-->
-                    <!--</tr>-->
-                    <!--<tr data-ng-if="detailCtrl.results.reference__pages && detailCtrl.results.reference__pages != null " >-->
-                        <!--<td> {{ 'API_TRANSLATION.DOI.REFERENCE__PAGES ' | translate }} </td>-->
-                        <!--<td>{{detailCtrl.results.reference__pages}}</td>-->
-                    <!--</tr>-->
-
-                    <!--<tr data-ng-if="detailCtrl.results.language__value && detailCtrl.results.language__value != null " ><td> {{ 'API_TRANSLATION.DOI.LANGUAGE__VALUE ' | translate }} </td><td>{{detailCtrl.results.language__value}}</td></tr>
-                    <tr data-ng-if="detailCtrl.results.language__value_en && detailCtrl.results.language__value_en != null " ><td> {{ 'API_TRANSLATION.DOI.LANGUAGE__VALUE_EN ' | translate }} </td><td>{{detailCtrl.results.language__value_en}}</td></tr>-->
-
-
-
                     <tr>
                         <td>
                             <localize-label et="'API_TRANSLATION.DOI.LICENCE__LICENCE_EN'" en="'API_TRANSLATION.DOI.LICENCE__LICENCE_EN'"/>
@@ -182,14 +200,6 @@
                             </a>
                         </td>
                     </tr>
-
-                   <!-- <tr data-ng-if="detailCtrl.results.licence__licence_en && detailCtrl.results.licence__licence_en != null " ><td> {{ 'API_TRANSLATION.DOI.LICENCE__LICENCE_EN ' | translate }} </td><td>{{detailCtrl.results.licence__licence_en}}</td></tr>
-                    <tr data-ng-if="detailCtrl.results.licence__licence_url_en && detailCtrl.results.licence__licence_url_en != null " ><td> {{ 'API_TRANSLATION.DOI.LICENCE__LICENCE_URL_EN ' | translate }} </td><td>{{detailCtrl.results.licence__licence_url_en}}</td></tr>
--->
-
-                     <!--<tr data-ng-if="detailCtrl.results.dataset__name && detailCtrl.results.dataset__name != null " ><td> {{ 'API_TRANSLATION.DOI.DATASET__NAME ' | translate }} </td><td>{{detailCtrl.results.dataset__name}}</td></tr>
-                     <tr data-ng-if="detailCtrl.results.dataset__name_en && detailCtrl.results.dataset__name_en != null " ><td> {{ 'API_TRANSLATION.DOI.DATASET__NAME_EN ' | translate }} </td><td>{{detailCtrl.results.dataset__name_en}}</td></tr>
-                     -->
                     <tr data-ng-if="detailCtrl.results.date_added && detailCtrl.results.date_added != null " >
                         <td> {{ 'API_TRANSLATION.DOI.DATE_ADDED ' | translate }} </td>
                         <td>{{detailCtrl.results.date_added | date:'MMM d, yyyy HH:mm:ss'}}</td>
@@ -206,11 +216,7 @@
                         <td> {{ 'API_TRANSLATION.DOI.DATACITE_UPDATED ' | translate }} </td>
                         <td>{{detailCtrl.results.datacite_updated | date:'MMM d, yyyy HH:mm:ss'}}</td>
                     </tr>
-                    <!--<tr data-ng-if="detailCtrl.results.doiattachment__attachment__filename && detailCtrl.results.doiattachment__attachment__filename != null " >-->
-                        <!--<td> {{ 'API_TRANSLATION.DOI.DOIATTACHMENT__ATTACHMENT__FILENAME ' | translate }} </td>-->
-                        <!--&lt;!&ndash; word-break style otherwise table overflows its parent div and overlaps other tables because file name is too long &ndash;&gt;-->
-                        <!--<td style="word-break: break-all"> {{ detailCtrl.results.doiattachment__attachment__filename }} </td>-->
-                    <!--</tr>-->
+
                     </tbody>
                 </table>
             </div>
@@ -231,8 +237,9 @@
                             <td>Data file</td>
                             <td>{{detailCtrl.results['title']}}</td>
                             <td>{{detailCtrl.results['formats'] | split:';':$index}}</td>
-                            <td><a href target="_self" ng-href="{{detailCtrl.service.getDownloadLink(entity.fileName)}}"
-                                 >Download</a></td>
+                            <td>
+                                <a href target="_self" ng-href="{{detailCtrl.service.getDownloadLink(entity.fileName)}}">Download</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -266,8 +273,8 @@
                         <th>Relation</th>
                         <th>Identifier</th>
                         <th>Value</th>
-                  <!--      <th>Remark</th>
-                        <th>Link</th>-->
+                        <th>Remark</th>
+                        <!--<th>Link</th>-->
                     </tr>
                     </thead>
                     <tbody>
@@ -277,8 +284,7 @@
                         <td data-ng-if="entity.identifier_type__value != 'URL'">{{entity.value}}</td>
                         <td data-ng-if="entity.identifier_type__value == 'URL'">
                             <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:entity.value})">{{entity.value}}</a></td>
-                       <!-- <td>???</td>
-                        <td>???</td>-->
+                        <td>{{ entity.remarks }}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -291,8 +297,7 @@
                     <tr>
                         <th>Named place</th>
                         <th>Point (Lat Long)</th>
-                     <!--   <th>Relation</th>
-                        <th>Bounding box</th>-->
+                        <th>Bounding box</th>
                         <th>Locality from database</th>
                     </tr>
                     </thead>
@@ -300,10 +305,13 @@
                     <tr style="cursor: pointer; " data-ng-repeat="entity in detailCtrl.doiGeolocation">
                         <td>{{entity.place}}</td>
                         <td>{{entity.point}}</td>
-                   <!--     <td>???</td>
-                        <td>???</td>-->
-                        <td>  <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'locality',id:entity.locality_id})">
-                            <localize en="entity.locality__locality_en" et="entity.locality__locality"/></a></td>
+                        <td>{{entity.box}}</td>
+                        <td>
+                            <a href data-ng-if="entity.locality_id && entity.locality_id != null"
+                               data-ng-click="detailCtrl.service.openInNewWindow({object:'locality',id:entity.locality_id})">
+                                <localize en="entity.locality__locality_en" et="entity.locality__locality"/>
+                            </a>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

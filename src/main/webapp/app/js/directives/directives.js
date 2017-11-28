@@ -509,7 +509,7 @@ angular.module('geoApp')
 
                     if (feature) {
                         //window.location = '/locality/' + feature.fid;
-                        window.open('/locality/' + feature.fid, '', 'width=750,height=750,scrollbars, resizable');
+                        window.open('/locality/' + feature.fid, '', 'width=600,height=750,scrollbars, resizable');
                     }
                     else {
                         document.getElementById('hoverbox').style.display = 'none';
@@ -537,7 +537,7 @@ angular.module('geoApp')
     function () {
         return {
             scope: {
-                localities: '='
+                localities: '=',
             },
             restrict: 'AE',
             replace: true,
@@ -546,6 +546,7 @@ angular.module('geoApp')
                 var watcher = $scope.$watch('localities', function () {
                     if ($scope.localities === undefined) return;
 
+                    console.log($scope.localities);
                     // at this point it is defined, map can be initialized
                     init();
                     // delete watcher if appropriate
@@ -628,7 +629,13 @@ angular.module('geoApp')
                         var centroidLL = ol.proj.transform([Number(locality.longitude), Number(locality.latitude)], 'EPSG:4326', 'EPSG:3857');
                         var centroidPoint = new ol.geom.Point(centroidLL);
                         var feature = new ol.Feature({geometry: centroidPoint});
-                        feature.name = locality.localityEng;
+
+                        if (locality.localityEng == null) {
+                            feature.name = locality.place;
+                        } else {
+                            feature.name = locality.localityEng;
+                        }
+
                         feature.fid = locality.fid;
                         $scope.vectorSource.addFeature(feature);
                     });
@@ -657,10 +664,16 @@ angular.module('geoApp')
                     $scope.olMap.on('click', function (evt) {
                         displayFeatureInfo(evt.pixel);
                     }); //Useful for touch-based viewing, e.g. on iPhone.
-                    $scope.olMap.on('click', function (evt) {
-                        openLoc(evt.pixel);
-                    });
+
+
+                    // Can't click if ID is missing
+                    if ($scope.vectorSource.getFeatures()[0].fid !== null) {
+                        $scope.olMap.on('click', function (evt) {
+                            openLoc(evt.pixel);
+                        });
+                    }
                 }
+
 
 
                 /*
@@ -677,7 +690,7 @@ angular.module('geoApp')
 
                     if (feature) {
                         //window.location = '/locality/' + feature.fid;
-                        window.open('#/locality/' + feature.fid, '', 'width=750,height=750,scrollbars, resizable');
+                        window.open('/locality/' + feature.fid, '', 'width=600,height=750,scrollbars, resizable');
                     }
                     else {
                         document.getElementById('hoverbox').style.display = 'none';
@@ -1045,12 +1058,12 @@ angular.module('geoApp')
                                 var fid, pikk;
                                 if (fid = feature.get('fid')) {
                                     //document.getElementById('hoversystem').innerHTML = name;
-                                    window.open('/locality/' + fid, '', 'width=750,height=750,scrollbars, resizable');
+                                    window.open('/locality/' + fid, '', 'width=600,height=750,scrollbars, resizable');
                                 } else if (pikk = feature.get('features').length) {
                                     if (pikk == 1) {
                                         fid = feature.get('features')[0].get('fid');
                                         //document.getElementById('hoversystem').innerHTML = name;
-                                        window.open('/locality/' + fid, '', 'width=750,height=750,scrollbars, resizable');
+                                        window.open('/locality/' + fid, '', 'width=600,height=750,scrollbars, resizable');
                                     }
                                 }
                             }

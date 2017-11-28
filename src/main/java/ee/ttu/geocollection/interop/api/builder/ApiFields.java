@@ -60,6 +60,7 @@ public class ApiFields {
     public static final String REFERENCE_ID = "reference_id";
     public static final String REFERENCE_REFERENCE = "reference__reference";
     public static final String DATASET_ID = "dataset_id";
+    public static final String REFERENCE__DOI = "reference__doi";
 
     // Reference search
     public static final String REFERENCE = "reference";

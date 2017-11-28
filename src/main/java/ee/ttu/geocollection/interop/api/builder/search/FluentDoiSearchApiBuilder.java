@@ -59,4 +59,9 @@ public class FluentDoiSearchApiBuilder extends FluentSearchApiBuilder<FluentDoiS
         return this;
     }
 
+    public FluentDoiSearchApiBuilder returnReferenceDoi() {
+        addReturningField(REFERENCE__DOI);
+        return this;
+    }
+
 }

@@ -52,7 +52,8 @@ public class DoiApiServiceImpl implements DoiApiService {
             "doiattachment__attachment__filename",
             "reference__reference",
             "reference_id",
-            "dataset_id"
+            "dataset_id",
+            "reference__doi"
     );
 
     @Override
@@ -70,6 +71,7 @@ public class DoiApiServiceImpl implements DoiApiService {
                 .returnReferenceId()
                 .returnDatasetId()
                 .returnReference()
+                .returnReferenceDoi()
                 .buildDefaultFieldsQuery();
         return apiService.searchRawEntities("doi", searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }

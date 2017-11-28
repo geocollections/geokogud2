@@ -58,7 +58,8 @@ var constructor = function ($scope, $state,$stateParams, applicationService, con
                 longitude: location.point.split(' ')[1],
                 localityEng: location.locality__locality_en,
                 localityEt: location.locality__locality,
-                fid: ""
+                fid: location.locality_id,
+                place: location.place
             })
         });
         return localities;
