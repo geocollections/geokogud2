@@ -234,7 +234,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <tr style="cursor: pointer;" data-ng-repeat="entity in detailCtrl.files">
+                            <tr data-ng-repeat="entity in detailCtrl.files">
                                 <td>
                                     <localize et="entity.dataType" en="entity.dataTypeEn" />
                                 </td>
@@ -261,7 +261,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr style="cursor: pointer; " data-ng-repeat="entity in detailCtrl.doiAgent">
+                        <tr data-ng-repeat="entity in detailCtrl.doiAgent">
                             <td>{{entity.name}}</td>
                             <td>{{entity.affiliation}}</td>
                             <td>{{entity.agent_type__value}}</td>
@@ -285,7 +285,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr style="cursor: pointer; " data-ng-repeat="entity in detailCtrl.doiRelatedIdentifier">
+                        <tr data-ng-repeat="entity in detailCtrl.doiRelatedIdentifier">
                             <td>{{entity.relation_type__value}}</td>
                             <td>{{entity.identifier_type__value}}</td>
                             <td class="related-break-all">{{entity.value}}</td>
@@ -319,7 +319,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr style="cursor: pointer; " data-ng-repeat="entity in detailCtrl.doiGeolocation">
+                        <tr data-ng-repeat="entity in detailCtrl.doiGeolocation">
                             <td>{{entity.place}}</td>
                             <td>{{entity.point}}</td>
                             <td data-ng-if="detailCtrl.doiGeolocation.box != null">{{entity.box}}</td>
