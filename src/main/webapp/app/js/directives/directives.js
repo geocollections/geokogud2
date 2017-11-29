@@ -373,7 +373,7 @@ angular.module('geoApp')
             },
             restrict: 'AE',
             replace: true,
-            template: '<div id="map" style="height: 300px; width:99%; max-width: 1980px; padding: 0px; border: solid 1px #999; margin: 0;"></div>',
+            template: '<div id="map" style="height: 300px; width:99%; max-width: 1980px; max-height: 500px; padding: 0px; border: solid 1px #999; margin: 0;"></div>',
             controller: ['$scope', function ($scope) {
                 var watcher = $scope.$watch('x', function () {
                     if ($scope.x === undefined) return;
@@ -541,7 +541,7 @@ angular.module('geoApp')
             },
             restrict: 'AE',
             replace: true,
-            template: '<div id="map"></div>',
+            template: '<div style="max-height: 500px" id="map"></div>',
             controller: ['$scope', function ($scope) {
                 var watcher = $scope.$watch('localities', function () {
                     if ($scope.localities === undefined) return;
