@@ -102,8 +102,8 @@ var constructor = function ($scope, $state,$stateParams, applicationService, con
     function composeFileInfo(results) {
         var files = [];
         angular.forEach(results, function(r) {
-            if(r.doiattachment__attachment__filename != null) {
-                files.push({fileName : r.doiattachment__attachment__filename});
+            if(r.doiattachment__attachment__filename != null) {                 // added 29.11.2017
+                files.push({fileName : r.doiattachment__attachment__filename, description : r.doiattachment__attachment__description});
             }
         });
         return files;

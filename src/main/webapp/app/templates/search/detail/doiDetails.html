@@ -159,10 +159,12 @@
                         <td>{{detailCtrl.results.sizes}}</td>
                     </tr>
 
-                    <tr data-ng-if="detailCtrl.results.copyright_agent__agent && detailCtrl.results.copyright_agent__agent != null " >
+                    <tr data-ng-if="detailCtrl.results.copyright_agent__institution_name != null
+                        && detailCtrl.results.copyright_agent__institution_name_en != null " >
                         <td> {{ 'API_TRANSLATION.DOI.COPYRIGHT_AGENT__AGENT ' | translate }} </td>
                         <td>
-                            {{ detailCtrl.results.copyright_agent__agent }}
+                            <localize et="detailCtrl.results.copyright_agent__institution_name"
+                                      en="detailCtrl.results.copyright_agent__institution_name_en" />
                         </td>
                     </tr>
 
@@ -232,9 +234,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <tr style="cursor: pointer; " data-ng-repeat="entity in detailCtrl.files">
+                            <tr style="cursor: pointer;" data-ng-repeat="entity in detailCtrl.files">
                                 <td>Data file</td>
-                                <td>{{detailCtrl.results['title']}}</td>
+                                <td>{{entity.description}} </td>
                                 <td>{{detailCtrl.results['formats'] | split:';':$index}}</td>
                                 <td>
                                     <a href target="_self" ng-href="{{detailCtrl.service.getDownloadLink(entity.fileName)}}">Download</a>
