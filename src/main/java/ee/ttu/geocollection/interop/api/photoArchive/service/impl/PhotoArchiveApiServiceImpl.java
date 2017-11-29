@@ -60,7 +60,19 @@ public class PhotoArchiveApiServiceImpl implements PhotoArchiveApiService{
             "date_changed",
             "user_added",
             "user_changed",
-            "database__acronym"
+            "database__acronym",
+            "device_digitised__name",
+            "agent_digitised",
+            "date_digitised",
+            "date_digitised_free",
+            "locality__longitude",
+            "locality__latitude",
+            "longitude",
+            "latitude",
+            "agent_digitised__forename",
+            "agent_digitised__surename",
+            "agent_digitised__date_added",
+            "copyright_agent__agent"
     );
 
     @Autowired

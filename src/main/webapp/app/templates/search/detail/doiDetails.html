@@ -67,10 +67,10 @@
                     </tr>
 
                     <tr data-ng-if="detailCtrl.results.creators != null &&
-                    (detailCtrl.results.reference__author == null || detailCtrl.results.reference__year == null
-                    || detailCtrl.results.reference__title == null || detailCtrl.results.reference__journal__journal_short == null
-                    || detailCtrl.results.reference__volume == null || detailCtrl.results.reference__pages == null
-                    || detailCtrl.results.reference__doi == null)">
+                    (detailCtrl.results.reference__author === null || detailCtrl.results.reference__year === null
+                    || detailCtrl.results.reference__title === null || detailCtrl.results.reference__journal__journal_short === null
+                    || detailCtrl.results.reference__volume === null || detailCtrl.results.reference__pages === null
+                    || detailCtrl.results.reference__doi === null)">
                         <td> {{ 'API_TRANSLATION.DOI.CITATION' | translate }} </td>
                         <td>
                             {{ detailCtrl.results.creators
@@ -200,19 +200,19 @@
                     </tr>
                     <tr data-ng-if="detailCtrl.results.date_added && detailCtrl.results.date_added != null " >
                         <td> {{ 'API_TRANSLATION.DOI.DATE_ADDED ' | translate }} </td>
-                        <td>{{detailCtrl.results.date_added | date:'MMM d, yyyy HH:mm:ss'}}</td>
+                        <td>{{detailCtrl.results.date_added | date:dateFormat}}</td>
                     </tr>
                     <tr data-ng-if="detailCtrl.results.date_changed && detailCtrl.results.date_changed != null " >
                         <td> {{ 'API_TRANSLATION.DOI.DATE_CHANGED ' | translate }} </td>
-                        <td>{{detailCtrl.results.date_changed | date:'MMM d, yyyy HH:mm:ss'}}</td>
+                        <td>{{detailCtrl.results.date_changed | date:dateFormat}}</td>
                     </tr>
                     <tr data-ng-if="detailCtrl.results.datacite_created && detailCtrl.results.datacite_created != null " >
                         <td> {{ 'API_TRANSLATION.DOI.DATACITE_CREATED ' | translate }} </td>
-                        <td>{{detailCtrl.results.datacite_created | date:'MMM d, yyyy HH:mm:ss'}}</td>
+                        <td>{{detailCtrl.results.datacite_created | date:dateFormat}}</td>
                     </tr>
                     <tr data-ng-if="detailCtrl.results.datacite_updated && detailCtrl.results.datacite_updated != null " >
                         <td> {{ 'API_TRANSLATION.DOI.DATACITE_UPDATED ' | translate }} </td>
-                        <td>{{detailCtrl.results.datacite_updated | date:'MMM d, yyyy HH:mm:ss'}}</td>
+                        <td>{{detailCtrl.results.datacite_updated | date:dateFormat}}</td>
                     </tr>
 
                     </tbody>

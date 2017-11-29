@@ -345,7 +345,7 @@
         },
         "PHOTO_ARCHIVE" :  {
             "ID":"ID",
-            "FILENAME":"Faili nimi",
+            "FILENAME":"Failinimi",
             "DATE_TAKEN":"Aeg",
             "AUTHOR__AGENT":"Autor",
             "LOCALITY_ID":"Leiukoha ID",
@@ -384,7 +384,12 @@
             "DATE_CHANGED":"Kirje uuendatud",
             "USER_ADDED":"Lisas",
             "USER_CHANGED":"Uuendas",
-            "DATABASE__ACRONYM":"Asutus"
+            "DATABASE__ACRONYM":"Asutus",
+            "AGENT_DIGITISED":"Digiteerija",
+            "DATE_DIGITISED":"Digit. aeg",
+            "DATE_DIGITISED_FREE":"Digit. aeg",
+            "DEVICE_DIGITISED__NAME":"Digit. vahend",
+            "PHOTO_NUMBER": "Foto No."
         },
         "SOIL" :  {
             "DETAIL_FORM_NAME" : "Mullakaeve",

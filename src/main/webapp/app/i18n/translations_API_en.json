@@ -391,7 +391,12 @@
             "DATE_CHANGED":"Date changed",
             "USER_ADDED":"Added by",
             "USER_CHANGED":"Changed by",
-            "DATABASE__ACRONYM":"Institution"
+            "DATABASE__ACRONYM":"Institution",
+            "AGENT_DIGITISED":"Person digitised",
+            "DATE_DIGITISED":"Date digitised",
+            "DATE_DIGITISED_FREE":"Date digitised",
+            "DEVICE_DIGITISED__NAME":"Device digit.",
+            "PHOTO_NUMBER": "Photo No."
         },
         "SOIL" :  {
             "DETAIL_FORM_NAME" : "Microfossil preparation No. ",
