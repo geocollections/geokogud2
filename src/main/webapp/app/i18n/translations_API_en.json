@@ -453,7 +453,18 @@
             "DOIATTACHMENT__ATTACHMENT__FILENAME":"File name",
             "TITLE": "Title",
             "CITATION": "Citation",
-            "RELATED_REFERENCE": "Related reference"
+            "RELATED_REFERENCE": "Related reference",
+            "DESCRIPTION":"Description",
+            "TYPE": "Type",
+            "NAME": "Name",
+            "AFFILIATION": "Affiliation",
+            "RELATION": "Relation",
+            "RELATED_IDENTIFIER": "Identifier",
+            "VALUE": "Value",
+            "REMARKS": "Remarks",
+            "PLACE": "Named place",
+            "POINT": "Point (Lat Long)",
+            "LOCALITY_DB": "Locality from database"
         }
     },
     "ERROR" : {

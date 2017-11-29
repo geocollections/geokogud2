@@ -446,7 +446,18 @@
             "DOIATTACHMENT__ATTACHMENT__FILENAME":"Faili nimi",
             "TITLE": "Pealkiri",
             "CITATION": "Tsiteerimine",
-            "RELATED_REFERENCE": "Seotud kirjandus"
+            "RELATED_REFERENCE": "Seotud kirjandus",
+            "DESCRIPTION":"Kirjeldus",
+            "TYPE": "Tüüp",
+            "NAME": "Nimi",
+            "AFFILIATION": "Kuuluvus",
+            "RELATION": "Seos",
+            "RELATED_IDENTIFIER": "Identifikaator",
+            "VALUE": "Väärtus",
+            "REMARKS":"Lisainfo",
+            "PLACE": "Nimetatud koht",
+            "POINT": "Punkt (Laiusk. Pikkusk.)",
+            "LOCALITY_DB": "Lokaliteet andmebaasist"
         }
     },
     "ERROR" : {

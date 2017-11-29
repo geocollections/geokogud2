@@ -54,6 +54,8 @@ public class DoiApiServiceImpl implements DoiApiService {
             "doiattachment__attachment__filename",
             "doiattachment__attachment__description",
             "doiattachment__attachment__description_en",
+            "doiattachment__attachment__type__value",
+            "doiattachment__attachment__type__value_en",
             "reference__reference",
             "reference_id",
             "dataset_id",

@@ -103,7 +103,12 @@ var constructor = function ($scope, $state,$stateParams, applicationService, con
         var files = [];
         angular.forEach(results, function(r) {
             if(r.doiattachment__attachment__filename != null) {                 // added 29.11.2017
-                files.push({fileName : r.doiattachment__attachment__filename, description : r.doiattachment__attachment__description});
+                files.push({
+                    fileName : r.doiattachment__attachment__filename,
+                    description : r.doiattachment__attachment__description,
+                    dataType : r.doiattachment__attachment__type__value,
+                    dataTypeEn : r.doiattachment__attachment__type__value_en
+                });
             }
         });
         return files;

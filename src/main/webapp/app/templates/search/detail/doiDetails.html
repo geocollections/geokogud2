@@ -227,15 +227,17 @@
                     <table class="table table-bordered table-hover">
                         <thead class="styles-for-table-headers">
                         <tr>
-                            <th>Type</th>
-                            <th>Description</th>
-                            <th>Format</th>
+                            <th> {{ 'API_TRANSLATION.DOI.TYPE' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.DOI.DESCRIPTION' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.DOI.FORMATS' | translate }} </th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
                             <tr style="cursor: pointer;" data-ng-repeat="entity in detailCtrl.files">
-                                <td>Data file</td>
+                                <td>
+                                    <localize et="entity.dataType" en="entity.dataTypeEn" />
+                                </td>
                                 <td>{{entity.description}} </td>
                                 <td>{{detailCtrl.results['formats'] | split:';':$index}}</td>
                                 <td>
@@ -253,9 +255,9 @@
                     <table class="table table-bordered table-hover">
                         <thead class="styles-for-table-headers">
                         <tr>
-                            <th>Name</th>
-                            <th>Affiliation</th>
-                            <th>Relation</th>
+                            <th> {{ 'API_TRANSLATION.DOI.NAME' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.DOI.AFFILIATION' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.DOI.RELATION' | translate }} </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -275,10 +277,10 @@
                     <table class="table table-bordered table-hover">
                         <thead class="styles-for-table-headers">
                         <tr>
-                            <th>Relation</th>
-                            <th>Identifier</th>
-                            <th>Value</th>
-                            <th>Remarks</th>
+                            <th> {{ 'API_TRANSLATION.DOI.RELATION' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.DOI.RELATED_IDENTIFIER' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.DOI.VALUE' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.DOI.REMARKS' | translate }} </th>
                             <th>Link</th>
                         </tr>
                         </thead>
@@ -310,10 +312,10 @@
                     <table class="table table-bordered table-hover">
                         <thead class="styles-for-table-headers">
                         <tr>
-                            <th>Named place</th>
-                            <th>Point (Lat Long)</th>
+                            <th> {{ 'API_TRANSLATION.DOI.PLACE' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.DOI.POINT' | translate }} </th>
                             <th data-ng-if="detailCtrl.doiGeolocation.box != null">Bounding box</th>
-                            <th>Locality from database</th>
+                            <th> {{ 'API_TRANSLATION.DOI.LOCALITY_DB' | translate }} </th>
                         </tr>
                         </thead>
                         <tbody>
