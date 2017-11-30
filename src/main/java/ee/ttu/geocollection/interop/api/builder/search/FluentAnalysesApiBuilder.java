@@ -108,6 +108,11 @@ public class FluentAnalysesApiBuilder  extends FluentSearchApiBuilder<FluentAnal
         return this;
     }
 
+    public FluentAnalysesApiBuilder returnSampleNumber(){
+        addReturningField(SAMPLE_NUMBER);
+        return this;
+    }
+
     @Override
     FluentAnalysesApiBuilder getThis() { return this; }
 }

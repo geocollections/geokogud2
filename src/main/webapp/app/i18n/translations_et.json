@@ -166,7 +166,7 @@
             },
             "TABLE": {
                 "ID": "ID",
-                "SAMPLE_ID": "@:SEARCH.ANALYSES.IDENTIFIERS.SAMPLE_ID",
+                "SAMPLE_ID": "Proov #",
                 "LOCALITY": "@:SEARCH.ANALYSES.LOCATION.LOCALITY",
                 "DEPTH_M": "@:SEARCH.ANALYSES.LOCATION.DEPTH_M",
                 "STRATIGRAPHY": "@:SEARCH.ANALYSES.LOCATION.STRATIGRAPHY",
@@ -289,7 +289,7 @@
         "ANALYSES": {
             "HEADING": "Analüüsid",
             "IDENTIFIERS": {
-                "NUMBER": "Proov #",
+                "NUMBER": "Number",
                 "SAMPLE_ID": "Number",
                 "BED_NAME_INDEX": ""
             },
@@ -307,6 +307,7 @@
                 "CONTENT": "Komponendi sisaldus"
             },
             "TABLE": {
+                "SAMPLE_ID": "Proov #",
                 "LOCALITY": "@:SEARCH.ANALYSES.LOCATION.LOCALITY",
                 "DEPTH_M": "@:SEARCH.ANALYSES.LOCATION.DEPTH_M",
                 "STRATIGRAPHY": "@:SEARCH.ANALYSES.LOCATION.STRATIGRAPHY",
@@ -314,8 +315,7 @@
                 "BED_ID": "Ase ID",
                 "METHOD": "Metoodika",
                 "LAB": "Lab.",
-                "ID": "ID",
-                "SAMPLE_ID": "@:SEARCH.ANALYSES.IDENTIFIERS.SAMPLE_ID"
+                "ID": "ID"
             }
         },
         "PREPARATIONS": {
@@ -396,7 +396,7 @@
                 "YEAR": "Aasta",
                 "TITLE": "Pealkiri",
                 "TYPE": "Tüüp",
-                "DATACITE_REGISTRATION": "DataCite registration",
+                "DATACITE_REGISTRATION": "DataCite registreerimine",
                 "ID": "ID",
                 "DOI": "DOI"
             }

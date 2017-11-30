@@ -64,6 +64,7 @@ public class AnalysesApiServiceImpl implements AnalysesApiService {
                 .returnLocalityId()
                 .returnLithostratigraphy()
                 .returnLithostratigraphyEn()
+                .returnSampleNumber()
                 .buildFullQuery();
         return apiService.searchRawEntities("analysis", searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }

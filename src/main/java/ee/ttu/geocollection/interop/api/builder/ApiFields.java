@@ -215,6 +215,7 @@ public class ApiFields {
     public static final String SAMPLE_LITHOSTRATIGRAPHY_ID = "sample__lithostratigraphy_id";
     public static final String SAMPLE_LITHOSTRATIGRAPHY__STRATIGRAPHY = "sample__lithostratigraphy__stratigraphy";
     public static final String SAMPLE_LITHOSTRATIGRAPHY__STRATIGRAPHY_EN = "sample__lithostratigraphy__stratigraphy_en";
+    public static final String SAMPLE_NUMBER = "sample__number";
 
     /**
      * PREPARATION search

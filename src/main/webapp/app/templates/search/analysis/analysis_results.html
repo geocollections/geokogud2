@@ -21,11 +21,17 @@
         </thead>
         <tbody>
         <tr data-ng-repeat="entity in response.results">
+
             <td data-title="{{ 'SEARCH.ANALYSES.TABLE.ID'| translate }}">
                 <a href data-ng-click="ctrl.service.openInNewWindow({object:'analysis',id:entity.id})">{{entity.id}}</a>
             </td>
+
             <td data-title="{{ 'SEARCH.ANALYSES.TABLE.SAMPLE_ID'| translate }}">
-                <a href data-ng-click="ctrl.service.openInNewWindow({object:'sample',id:entity.sample})">
+                <a href data-ng-if="entity.sample__number != null" data-ng-click="ctrl.service.openInNewWindow({object:'sample',id:entity.sample})">
+                    {{entity.sample__number}}
+                </a>
+
+                <a href data-ng-if="entity.sample__number === null" data-ng-click="ctrl.service.openInNewWindow({object:'sample',id:entity.sample})">
                     {{entity.sample}}
                 </a>
             </td>
