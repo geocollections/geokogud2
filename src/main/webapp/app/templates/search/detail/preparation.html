@@ -121,15 +121,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr data-ng-repeat="entity in detailCtrl.preparationTaxons">
-                            <td>
+                        <tr data-ng-repeat="entity in detailCtrl.preparationTaxons | orderBy: '-taxonFrequency'">
+                            <td data-ng-if="entity.taxonId != null">
                                 <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+entity.taxonId})">
-                                    {{entity.taxonName}}
+                                    <i>{{entity.taxonTaxon}}</i>
                                 </a>
                             </td>
-                            <td>{{entity.taxonFrequency}}</td>
-                            <td></td>
-                            <td>{{entity.taxonRemarks}}</td>
+                            <td data-ng-if="entity.taxonId === null">
+                                <i> {{ entity.taxonName }} </i>
+                            </td>
+                            <td> {{ entity.taxonFrequency }} </td>
+                            <td data-ng-if="entity.percent > 0"> {{ entity.percent }} </td>
+                            <td data-ng-if="detailCtrl.results.taxonlist__frequency === null"></td>
+                            <td> {{ entity.taxonRemarks }} </td>
                         </tr>
                     </tbody>
                 </table>

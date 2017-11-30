@@ -117,16 +117,28 @@ var constructor = function ($scope, $state,$stateParams, applicationService, con
 
     function composeTaxonListInfo(results) {
         var preparationTaxons = [];
-        console.log(results);
+        var numOfSpecimen = 0;
+        var percent = 0;
+
+        angular.forEach(results, function (specimen) {
+           numOfSpecimen += specimen.taxonlist__frequency;
+        });
+
         angular.forEach(results, function(data) {
-            if (data.taxonlist__taxon__id != null) {
+            percent = ((data.taxonlist__frequency * 100) / numOfSpecimen).toFixed(1);
+
+            console.log(numOfSpecimen);
+            if (data.taxonlist__taxon__id != null || data.taxonlist__name != null) {
                 preparationTaxons.push({
                     taxonId: data.taxonlist__taxon__id,
-                    taxonName: data.taxonlist__taxon__taxon,
+                    taxonTaxon: data.taxonlist__taxon__taxon,
                     taxonFrequency: data.taxonlist__frequency,
-                    taxonRemarks: data.taxonlist__taxon__remarks
+                    taxonRemarks: data.taxonlist__taxon__remarks,
+                    taxonName: data.taxonlist__name,
+                    percent: percent
                 });
             }
+
         });
         return preparationTaxons;
     }

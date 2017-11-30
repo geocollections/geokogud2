@@ -47,7 +47,8 @@ public class PreparationsApiServiceImpl implements PreparationsApiService{
             "taxonlist__taxon__id",
             "taxonlist__taxon__taxon",
             "taxonlist__taxon__remarks",
-            "taxonlist__frequency"
+            "taxonlist__frequency",
+            "taxonlist__name"
     );
 
     @Autowired
