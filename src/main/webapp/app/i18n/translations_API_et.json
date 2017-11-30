@@ -318,7 +318,7 @@
         "PREPARATION" :     {
             "DETAIL_FORM_NAME" : "Mikrofauna preparaat nr.",
             "ID":"ID",
-            "SAMPLE_ID":"Proovi ID",
+            "SAMPLE_ID":"Proov #",
             "PREPARATION_NUMBER":"Number",
             "SAMPLE__LOCALITY__LOCALITY":"Leiukoht",
             "SAMPLE__LOCALITY__LOCALITY_EN":"Leiukoht (EN)",
@@ -341,7 +341,11 @@
             "DATE_ADDED":"Kirje sisestatud",
             "DATE_CHANGED":"Kirje muudetud",
             "USER_ADDED":"Lisas",
-            "USER_CHANGED":"Uuendas"
+            "USER_CHANGED":"Uuendas",
+            "TAXONS": "Taksonite nimekiri",
+            "TAXONS_NAME":"Nimi (txt)",
+            "TAXONS_FREQUENCY": "Arvukus",
+            "TAXONS_REMARKS": "Lisainfo"
         },
         "PHOTO_ARCHIVE" :  {
             "ID":"ID",

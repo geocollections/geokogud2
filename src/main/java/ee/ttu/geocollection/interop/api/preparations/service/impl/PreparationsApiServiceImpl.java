@@ -15,8 +15,7 @@ import java.util.Map;
 
 @Service
 public class PreparationsApiServiceImpl implements PreparationsApiService{
-    @Autowired
-    private ApiService apiService;
+
     private List<String> fields = Arrays.asList(
             "id",
             "sample_id",
@@ -44,8 +43,16 @@ public class PreparationsApiServiceImpl implements PreparationsApiService{
             "date_added",
             "date_changed",
             "user_added",
-            "user_changed"
+            "user_changed",
+            "taxonlist__taxon__id",
+            "taxonlist__taxon__taxon",
+            "taxonlist__taxon__remarks",
+            "taxonlist__frequency"
     );
+
+    @Autowired
+    private ApiService apiService;
+
     @Override
     public ApiResponse findPreparations(PreparationsSearchCriteria searchCriteria)  {
 

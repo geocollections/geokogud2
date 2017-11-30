@@ -22,10 +22,6 @@
                         <td entity-field-name name="'API_TRANSLATION.PREPARATION.'+field | uppercase"></td>
                         <td entity-field-value name = "field" value="detailCtrl.results[field]" values = "detailCtrl.results"></td>
                     </tr>-->
-             <tr data-ng-if="detailCtrl.results.id && detailCtrl.results.id != null" >
-                 <td>{{ 'API_TRANSLATION.PREPARATION.ID ' | translate }}</td>
-                 <td> {{detailCtrl.results.id}}</td>
-             </tr>
 
              <!--<tr data-ng-if="" >-->
                  <!--<td>{{ 'API_TRANSLATION.PREPARATION.SAMPLE_ID ' | translate }}</td>-->
@@ -34,11 +30,11 @@
                  <!--</td>-->
              <!--</tr>-->
 
-             <tr data-ng-if="detailCtrl.results.preparation_number && detailCtrl.results.preparation_number != null && detailCtrl.results.sample_id && detailCtrl.results.sample_id != null" >
-                 <td>{{ 'API_TRANSLATION.PREPARATION.PREPARATION_NUMBER ' | translate }}</td>
+             <tr data-ng-if="detailCtrl.results.sample_id && detailCtrl.results.sample_id != null" >
+                 <td>{{ 'API_TRANSLATION.PREPARATION.SAMPLE_ID ' | translate }}</td>
                  <td>
                      <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'sample',id:detailCtrl.results.sample_id})">
-                         {{detailCtrl.results.preparation_number}}
+                         {{detailCtrl.results.sample_id}}
                      </a>
                  </td>
              </tr>
@@ -55,6 +51,20 @@
                      </a>
                  </td>
              </tr>
+
+             <tr data-ng-if="(detailCtrl.results.sample__stratigraphy__stratigraphy && detailCtrl.results.sample__stratigraphy__stratigraphy != null) || (detailCtrl.results.sample__stratigraphy__stratigraphy_en && detailCtrl.results.sample__stratigraphy__stratigraphy_en != null) ">
+                 <td>
+                     <localize-label et="'API_TRANSLATION.PREPARATION.SAMPLE__STRATIGRAPHY__STRATIGRAPHY'"
+                                     en="'API_TRANSLATION.PREPARATION.SAMPLE__STRATIGRAPHY__STRATIGRAPHY_EN'"/>
+                 </td>
+                 <td>
+                     <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'stratigraphy',id:detailCtrl.results.sample__stratigraphy__id})">
+                         <localize et="detailCtrl.results.sample__stratigraphy__stratigraphy"
+                                   en="detailCtrl.results.sample__stratigraphy__stratigraphy_en"/>
+                     </a>
+                 </td>
+             </tr>
+
             <!-- <tr data-ng-if="detailCtrl.results.sample__locality__locality && detailCtrl.results.sample__locality__locality != null" ><td>{{ 'API_TRANSLATION.PREPARATION.SAMPLE__LOCALITY__LOCALITY ' | translate }}</td><td> {{detailCtrl.results.sample__locality__locality}}</td></tr>
              <tr data-ng-if="detailCtrl.results.sample__locality__locality_en && detailCtrl.results.sample__locality__locality_en != null" ><td>{{ 'API_TRANSLATION.PREPARATION.SAMPLE__LOCALITY__LOCALITY_EN ' | translate }}</td><td> {{detailCtrl.results.sample__locality__locality_en}}</td></tr>
              -->
@@ -65,18 +75,6 @@
              <tr data-ng-if="detailCtrl.results.sample__agent_collected__surename && detailCtrl.results.sample__agent_collected__surename != null" ><td>{{ 'API_TRANSLATION.PREPARATION.SAMPLE__AGENT_COLLECTED__SURENAME ' | translate }}</td><td> {{detailCtrl.results.sample__agent_collected__surename}}</td></tr>
              <tr data-ng-if="detailCtrl.results.sample__agent_collected_free && detailCtrl.results.sample__agent_collected_free != null" ><td>{{ 'API_TRANSLATION.PREPARATION.SAMPLE__AGENT_COLLECTED_FREE ' | translate }}</td><td> {{detailCtrl.results.sample__agent_collected_free}}</td></tr>
 
-             <tr data-ng-if="(detailCtrl.results.sample__stratigraphy__stratigraphy && detailCtrl.results.sample__stratigraphy__stratigraphy != null) || (detailCtrl.results.sample__stratigraphy__stratigraphy_en && detailCtrl.results.sample__stratigraphy__stratigraphy_en != null) ">
-                 <td>
-                     <localize-label et="'API_TRANSLATION.PREPARATION.SAMPLE__STRATIGRAPHY__STRATIGRAPHY'"
-                                     en="'API_TRANSLATION.PREPARATION.SAMPLE__STRATIGRAPHY__STRATIGRAPHY_EN'"/>
-                 </td>
-                 <td>
-                     <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'stratigraphy',id:detailCtrl.results.sample__stratigraphy__id})">
-                        <localize et="detailCtrl.results.sample__stratigraphy__stratigraphy"
-                                  en="detailCtrl.results.sample__stratigraphy__stratigraphy_en"/>
-                     </a>
-                 </td>
-             </tr>
              <!--<tr data-ng-if="detailCtrl.results.sample__stratigraphy__stratigraphy && detailCtrl.results.sample__stratigraphy__stratigraphy != null" ><td>{{ 'API_TRANSLATION.PREPARATION.SAMPLE__STRATIGRAPHY__STRATIGRAPHY ' | translate }}</td><td> {{detailCtrl.results.sample__stratigraphy__stratigraphy}}</td></tr>
              <tr data-ng-if="detailCtrl.results.sample__stratigraphy__stratigraphy_en && detailCtrl.results.sample__stratigraphy__stratigraphy_en != null" ><td>{{ 'API_TRANSLATION.PREPARATION.SAMPLE__STRATIGRAPHY__STRATIGRAPHY_EN ' | translate }}</td><td> {{detailCtrl.results.sample__stratigraphy__stratigraphy_en}}</td></tr>
              -->
@@ -99,17 +97,44 @@
              <tr data-ng-if="detailCtrl.results.storage__location_location && detailCtrl.results.storage__location_location != null" ><td>{{ 'API_TRANSLATION.PREPARATION.STORAGE__LOCATION_LOCATION ' | translate }}</td><td> {{detailCtrl.results.storage__location_location}}</td></tr>
              <tr data-ng-if="detailCtrl.results.date_added && detailCtrl.results.date_added != null" >
                  <td>{{ 'API_TRANSLATION.PREPARATION.DATE_ADDED ' | translate }}</td>
-                 <td> {{detailCtrl.results.date_added | date:'MMM d, yyyy HH:mm:ss'}}</td>
+                 <td> {{detailCtrl.results.date_added | date:dateFormat}}</td>
              </tr>
              <tr data-ng-if="detailCtrl.results.date_changed && detailCtrl.results.date_changed != null" >
                  <td>{{ 'API_TRANSLATION.PREPARATION.DATE_CHANGED ' | translate }}</td>
-                 <td> {{detailCtrl.results.date_changed | date:'MMM d, yyyy HH:mm:ss'}}</td>
+                 <td> {{detailCtrl.results.date_changed | date:dateFormat}}</td>
              </tr>
              <tr data-ng-if="detailCtrl.results.user_added && detailCtrl.results.user_added != null" ><td>{{ 'API_TRANSLATION.PREPARATION.USER_ADDED ' | translate }}</td><td> {{detailCtrl.results.user_added}}</td></tr>
              <tr data-ng-if="detailCtrl.results.user_changed && detailCtrl.results.user_changed != null" ><td>{{ 'API_TRANSLATION.PREPARATION.USER_CHANGED ' | translate }}</td><td> {{detailCtrl.results.user_changed}}</td></tr>
                     </tbody>
                 </table>
             </div>
+
+            <div class="col-lg-6" data-ng-if="detailCtrl.preparationTaxons.length > 0">
+                <h2> {{ 'API_TRANSLATION.PREPARATION.TAXONS' | translate }} </h2>
+                <table class="table table-bordered table-hover">
+                    <thead class="styles-for-table-headers">
+                        <tr>
+                            <td>{{ 'API_TRANSLATION.PREPARATION.TAXONS_NAME ' | translate }}</td>
+                            <td>{{ 'API_TRANSLATION.PREPARATION.TAXONS_FREQUENCY ' | translate }}</td>
+                            <td>%</td>
+                            <td>{{ 'API_TRANSLATION.PREPARATION.TAXONS_REMARKS ' | translate }}</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="entity in detailCtrl.preparationTaxons">
+                            <td>
+                                <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+entity.taxonId})">
+                                    {{entity.taxonName}}
+                                </a>
+                            </td>
+                            <td>{{entity.taxonFrequency}}</td>
+                            <td></td>
+                            <td>{{entity.taxonRemarks}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
 
     </div>

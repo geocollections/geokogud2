@@ -539,6 +539,14 @@ table tr > td:first-child {
     box-shadow: 0 0px 0px;
 }
 
+/* Fix for detail view tables, for example on
+ preparation detail view when window is made wider
+ then margin-bottom went to 20px which came from
+ tables.less. This rule fixed that. */
+.detailview-page .col-lg-6 .table-bordered {
+    margin-bottom: 0px;
+}
+
 /* Title styles for detailview */
 .detailview-title {
     padding-top: 10px;

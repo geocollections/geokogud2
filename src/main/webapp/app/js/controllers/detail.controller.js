@@ -29,7 +29,7 @@ var constructor = function ($scope, $state,$stateParams, applicationService, con
         vm.imageUrl = (['specimenImage','photoArchive'].indexOf($stateParams.type) > -1 ? vm.service.composeImageUrl(vm.results) : null);
         vm.externalImagePath = (['specimenImage','photoArchive'].indexOf($stateParams.type) > -1  ? vm.service.composeExternalImagePath(vm.results) : null);
         vm.files = (['doi'].indexOf($stateParams.type) > -1 ? composeFileInfo(response.data.results) : []);
-
+        vm.preparationTaxons = (['preparations'].indexOf($stateParams.type) > -1 ? composeTaxonListInfo(response.data.results) : []);
 
         vm.detailLoadingHandler.stop();
         getLocality();
@@ -101,17 +101,34 @@ var constructor = function ($scope, $state,$stateParams, applicationService, con
 
     function composeFileInfo(results) {
         var files = [];
+        console.log(results);
         angular.forEach(results, function(r) {
-            if(r.doiattachment__attachment__filename != null) {                 // added 29.11.2017
+            if(r.doiattachment__attachment__filename != null) {
                 files.push({
                     fileName : r.doiattachment__attachment__filename,
-                    description : r.doiattachment__attachment__description,
-                    dataType : r.doiattachment__attachment__type__value,
-                    dataTypeEn : r.doiattachment__attachment__type__value_en
+                    description : r.doiattachment__attachment__description,  // added 29.11.2017
+                    dataType : r.doiattachment__attachment__type__value,     // added 29.11.2017
+                    dataTypeEn : r.doiattachment__attachment__type__value_en // added 29.11.2017
                 });
             }
         });
         return files;
+    }
+
+    function composeTaxonListInfo(results) {
+        var preparationTaxons = [];
+        console.log(results);
+        angular.forEach(results, function(data) {
+            if (data.taxonlist__taxon__id != null) {
+                preparationTaxons.push({
+                    taxonId: data.taxonlist__taxon__id,
+                    taxonName: data.taxonlist__taxon__taxon,
+                    taxonFrequency: data.taxonlist__frequency,
+                    taxonRemarks: data.taxonlist__taxon__remarks
+                });
+            }
+        });
+        return preparationTaxons;
     }
 
     function reload(id) {

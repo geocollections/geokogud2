@@ -221,6 +221,7 @@ public class ApiFields {
      */
     public static final String SAMPLE__LOCALITY__ID = "sample__locality__id";
     public static final String SAMPLE__STRATIGRAPHY__ID = "sample__stratigraphy__id";
+    public static final String TAXONLIST__TAXON__ID = "taxonlist__taxon__id";
 
     /**
      * Used in WebNewsApiServiceImpl class

@@ -325,7 +325,7 @@
         "PREPARATION" :     {
             "DETAIL_FORM_NAME" : "Microfossil preparation No.",
             "ID":"ID",
-            "SAMPLE_ID":"Sample ID",
+            "SAMPLE_ID":"Sample #",
             "PREPARATION_NUMBER":"Number",
             "SAMPLE__LOCALITY__LOCALITY":"Locality (ET)",
             "SAMPLE__LOCALITY__LOCALITY_EN":"Locality",
@@ -348,7 +348,11 @@
             "DATE_ADDED":"Date added",
             "DATE_CHANGED":"Date changed",
             "USER_ADDED":"Added by",
-            "USER_CHANGED":"Changed by"
+            "USER_CHANGED":"Changed by",
+            "TAXONS": "List of taxa",
+            "TAXONS_NAME":"Name (txt)",
+            "TAXONS_FREQUENCY": "Frequency",
+            "TAXONS_REMARKS": "Remarks"
         },
         "PHOTO_ARCHIVE" :  {
             "ID":"ID",

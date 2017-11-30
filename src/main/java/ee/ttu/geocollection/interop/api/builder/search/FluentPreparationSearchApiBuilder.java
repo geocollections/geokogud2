@@ -1,6 +1,7 @@
 package ee.ttu.geocollection.interop.api.builder.search;
 
 import ee.ttu.geocollection.domain.SearchField;
+import ee.ttu.geocollection.interop.api.preparations.service.impl.PreparationsApiServiceImpl;
 
 import static ee.ttu.geocollection.interop.api.builder.ApiFields.*;
 
@@ -55,6 +56,4 @@ public class FluentPreparationSearchApiBuilder extends FluentSearchApiBuilder<Fl
         addReturningField(SAMPLE__STRATIGRAPHY__ID);
         return this;
     }
-
-
 }
