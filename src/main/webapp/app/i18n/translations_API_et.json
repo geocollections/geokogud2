@@ -323,7 +323,10 @@
             "AGENT__AGENT": "Isik/Asutus",
             "DATABASE__NAME": "Omanik (asutus)",
             "DATABASE__NAME_EN": "Omanik (asutus) (ET)",
-            "MATERIAL": "Materjal"
+            "MATERIAL": "Materjal",
+            "LAB_ANALYSIS_NUMBER": "Labori analüüsi nr.",
+            "MASS": "Mass",
+            "COUNTED_GRAINS": "Loetud terasid, punkte jne"
         },
         "PREPARATION" :     {
             "DETAIL_FORM_NAME" : "Mikrofauna preparaat nr.",

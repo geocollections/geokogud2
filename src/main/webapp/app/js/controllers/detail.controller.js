@@ -1,5 +1,5 @@
 var module = angular.module("geoApp");
-var constructor = function ($scope, $state,$stateParams, applicationService, configuration, bsLoadingOverlayService, errorService) {
+var constructor = function ($scope, $state, $stateParams, applicationService, configuration, bsLoadingOverlayService, errorService) {
     var vm = this;
 
     vm.service = applicationService;

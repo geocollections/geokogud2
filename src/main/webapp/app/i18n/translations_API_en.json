@@ -330,7 +330,10 @@
             "AGENT__AGENT": "Person/Institution",
             "DATABASE__NAME": "Owner (institution) (ET)",
             "DATABASE__NAME_EN": "Owner (institution)",
-            "MATERIAL": "Material"
+            "MATERIAL": "Material",
+            "LAB_ANALYSIS_NUMBER": "Lab analysis No.",
+            "MASS": "Mass",
+            "COUNTED_GRAINS": "Counted grains, points etc"
         },
         "PREPARATION" :     {
             "DETAIL_FORM_NAME" : "Microfossil preparation No.",

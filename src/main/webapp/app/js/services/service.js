@@ -22,6 +22,7 @@ var constructor = function (utils, configuration, $window, $location) {
     service.showGoogleMap = showGoogleMap;
     service.showEstonianLandBoardMap = showEstonianLandBoardMap;
     service.getTranslationRoot = getTranslationRoot;
+    service.getCountsForAnalysisDetailView = getCountsForAnalysisDetailView;
 
     service.toggle = function (el,array) {
         utils.toggleInArray(el,array)
@@ -212,6 +213,16 @@ var constructor = function (utils, configuration, $window, $location) {
 
     function openUrlInNewWindow(params) {
         $window.open(params.url, '', 'width=600,height=750,scrollbars, resizable');
+    }
+
+    function getCountsForAnalysisDetailView(relatedData) {
+        var numOfCounts = 0;
+        angular.forEach(relatedData, function(result) {
+            if (result.name.includes("Counts [grains]")) {
+                numOfCounts += result.value;
+            }
+        });
+        return numOfCounts;
     }
 
     return service;

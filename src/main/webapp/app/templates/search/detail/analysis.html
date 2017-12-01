@@ -50,10 +50,24 @@
                         <td> {{detailCtrl.results.instrument_txt}}</td>
                     </tr>
 
-                    <!--TODO: mass-->
+                    <tr data-ng-if="detailCtrl.results.mass && detailCtrl.results.mass != null">
+                        <td> {{ 'API_TRANSLATION.ANALYSIS.MASS' | translate }} </td>
+                        <td> {{ detailCtrl.results.mass }} </td>
+                    </tr>
+
                     <!--TODO: mass_unit-->
-                    <!--TODO: counts-->
-                    <!--TODO: lab_analysis_number-->
+
+                    <tr data-ng-if="detailCtrl.analysisResults.length > 0">
+                        <td> {{ 'API_TRANSLATION.ANALYSIS.COUNTED_GRAINS' | translate }} </td>
+                        <td data-ng-if="detailCtrl.service.getCountsForAnalysisDetailView(detailCtrl.analysisResults) > 0">
+                            {{ detailCtrl.service.getCountsForAnalysisDetailView(detailCtrl.analysisResults) }}
+                        </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.lab_analysis_number && detailCtrl.results.lab_analysis_number != null">
+                        <td> {{ 'API_TRANSLATION.ANALYSIS.LAB_ANALYSIS_NUMBER' | translate }} </td>
+                        <td> {{ detailCtrl.results.lab_analysis_number }} </td>
+                    </tr>
 
                     <tr data-ng-if="detailCtrl.results.material && detailCtrl.results.material != null">
                         <td> {{ 'API_TRANSLATION.ANALYSIS.MATERIAL' | translate }} </td>
@@ -182,7 +196,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="entity in detailCtrl.analysisResults | orderBy: '+value'">
+                        <tr ng-repeat="entity in detailCtrl.analysisResults | orderBy: '-value'">
                             <td> {{ entity.name }} </td>
                             <td> {{ entity.value }} </td>
                             <td> {{ entity.value_bin }} </td>
