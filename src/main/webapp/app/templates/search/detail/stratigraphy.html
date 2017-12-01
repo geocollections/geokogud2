@@ -6,9 +6,12 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="detailview-title">
-                    <h3>
-                        <localize et="detailCtrl.results.stratigraphy" en="detailCtrl.results.stratigraphy_en"/></h3>
-                    <h4><em>(ID: {{detailCtrl.results.id}})</em></h4>
+                    <h2>
+                        <localize et="detailCtrl.results.stratigraphy" en="detailCtrl.results.stratigraphy_en"/>
+                    </h2>
+                    <h4>
+                        <em>(ID: {{detailCtrl.results.id}})</em>
+                    </h4>
                 </div>
             </div>
         </div>
@@ -16,25 +19,36 @@
         <div class="row">
             <div class="col-sm-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
 
-                <!--<div class="detailview-title">-->
-                    <!--<h3>-->
-                        <!--<localize et="detailCtrl.results.stratigraphy" en="detailCtrl.results.stratigraphy_en"/></h3>-->
-                    <!--<h4><em>(ID: {{detailCtrl.results.id}})</em></h4>-->
-                <!--</div>-->
 
                 <h3> {{ 'DETAILVIEW_TABLE_HEADER' | translate }} </h3>
                 <table class="table table-bordered table-hover table-header-styles">
                     <thead>
                     </thead>
                     <tbody>
-                    <!--<tr data-ng-repeat="field in detailCtrl.fields" data-ng-if="detailCtrl.results[field] != null  && detailCtrl.results[field] != ''&& detailCtrl.isIncludedField(field)">
-                        <td entity-field-name name="'API_TRANSLATION.STRATIGRAPHY.'+field | uppercase"></td>
-                        <td entity-field-value name = "field" value="detailCtrl.results[field]" values = "detailCtrl.results"></td>
-                    </tr>-->
-                    <tr data-ng-if="detailCtrl.results.id && detailCtrl.results.id != null"><td>{{'API_TRANSLATION.STRATIGRAPHY.ID ' | translate }} </td><td> {{detailCtrl.results.id}}</td></tr>
-                    <tr data-ng-if="(detailCtrl.results.stratigraphy && detailCtrl.results.stratigraphy != null) || (detailCtrl.results.stratigraphy_en && detailCtrl.results.stratigraphy_en != null) ">
-                        <td><localize-label et="'API_TRANSLATION.STRATIGRAPHY.STRATIGRAPHY'" en="'API_TRANSLATION.STRATIGRAPHY.STRATIGRAPHY_EN'"/></td><td><localize et="detailCtrl.results.stratigraphy" en="detailCtrl.results.stratigraphy_en"/></td>
+
+                    <tr data-ng-if="(detailCtrl.results.stratigraphy && detailCtrl.results.stratigraphy != null)
+                        || (detailCtrl.results.stratigraphy_en && detailCtrl.results.stratigraphy_en != null) ">
+                        <td>
+                            <localize-label et="'API_TRANSLATION.STRATIGRAPHY.STRATIGRAPHY'" en="'API_TRANSLATION.STRATIGRAPHY.STRATIGRAPHY_EN'"/>
+                        </td>
+                        <td><localize et="detailCtrl.results.stratigraphy" en="detailCtrl.results.stratigraphy_en"/>
+                        </td>
                     </tr>
+
+                    <tr data-ng-if="(detailCtrl.results.parent__stratigraphy && detailCtrl.results.parent__stratigraphy != null) || (detailCtrl.results.parent__stratigraphy_en && detailCtrl.results.parent__stratigraphy_en != null) ">
+                        <td>
+                            <localize-label et="'API_TRANSLATION.STRATIGRAPHY.PARENT__STRATIGRAPHY'"
+                                            en="'API_TRANSLATION.STRATIGRAPHY.PARENT__STRATIGRAPHY_EN'"/>
+                        </td>
+                        <td>
+                            <a href data-ng-if="detailCtrl.results.parent_id != null"
+                               data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: detailCtrl.results.parent_id})">
+                                <localize et="detailCtrl.results.parent__stratigraphy"
+                                          en="detailCtrl.results.parent__stratigraphy_en"/>
+                            </a>
+                        </td>
+                    </tr>
+
                     <!--<
                     tr data-ng-if="detailCtrl.results.stratigraphy && detailCtrl.results.stratigraphy != null"><td>{{'API_TRANSLATION.STRATIGRAPHY.STRATIGRAPHY ' | translate }} </td><td> {{detailCtrl.results.stratigraphy}}</td></tr>
                     <tr data-ng-if="detailCtrl.results.stratigraphy_en && detailCtrl.results.stratigraphy_en != null"><td>{{'API_TRANSLATION.STRATIGRAPHY.STRATIGRAPHY_EN ' | translate }} </td><td> {{detailCtrl.results.stratigraphy_en}}</td></tr>
@@ -71,18 +85,6 @@
                     <!--<tr data-ng-if="detailCtrl.results.parent__stratigraphy && detailCtrl.results.parent__stratigraphy != null"><td>{{'API_TRANSLATION.STRATIGRAPHY.PARENT__STRATIGRAPHY ' | translate }} </td><td> {{detailCtrl.results.parent__stratigraphy}}</td></tr>
                     <tr data-ng-if="detailCtrl.results.parent__stratigraphy_en && detailCtrl.results.parent__stratigraphy_en != null"><td>{{'API_TRANSLATION.STRATIGRAPHY.PARENT__STRATIGRAPHY_EN ' | translate }} </td><td> {{detailCtrl.results.parent__stratigraphy_en}}</td></tr>
                     -->
-                    <tr data-ng-if="(detailCtrl.results.parent__stratigraphy && detailCtrl.results.parent__stratigraphy != null) || (detailCtrl.results.parent__stratigraphy_en && detailCtrl.results.parent__stratigraphy_en != null) ">
-                        <td>
-                            <localize-label et="'API_TRANSLATION.STRATIGRAPHY.PARENT__STRATIGRAPHY'"
-                                            en="'API_TRANSLATION.STRATIGRAPHY.PARENT__STRATIGRAPHY_EN'"/>
-                        </td>
-                        <td>
-                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: detailCtrl.results.parent_id})">
-                                <localize et="detailCtrl.results.parent__stratigraphy"
-                                          en="detailCtrl.results.parent__stratigraphy_en"/>
-                            </a>
-                        </td>
-                    </tr>
 
 
                     <tr data-ng-if="detailCtrl.results.age_base && detailCtrl.results.age_base != null"><td>{{'API_TRANSLATION.STRATIGRAPHY.AGE_BASE ' | translate }} </td><td> {{detailCtrl.results.age_base}}</td></tr>

@@ -488,6 +488,9 @@
             "RESULTS_VALUE_BIN": "Measured value (bin)",
             "RESULTS_VALUE_TXT": "Measured value (txt)"
         },
+        "STRATIGRAPHY": {
+
+        },
         "NEXT": "NEXT",
         "PREVIOUS": "PREVIOUS",
         "DETAIL_MAP": "Map",
