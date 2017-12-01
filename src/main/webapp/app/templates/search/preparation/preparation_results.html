@@ -12,8 +12,12 @@
             <th><sort-field value = "preparation_number" name="SEARCH.PREPARATIONS.TABLE.NUMBER"></sort-field></th>
             <th><sort-field value = "sample__locality__locality,sample__locality__locality_en" name="SEARCH.PREPARATIONS.TABLE.LOCALITY"></sort-field></th>
             <th><sort-field value = "sample__depth" name="SEARCH.PREPARATIONS.TABLE.DEPTH_M"></sort-field></th>
-            <th><sort-field value = "sample__stratigraphy__stratigraphy,sample__stratigraphy__stratigraphy_en" name="SEARCH.PREPARATIONS.TABLE.STRATIGRAPHY"></sort-field> | <em>{{
-                'SEARCH.PREPARATIONS.TABLE.LITHOSTRATIGRAPHY' | translate }}</em></th>
+            <th>
+                <sort-field value = "sample__stratigraphy__stratigraphy,sample__stratigraphy__stratigraphy_en"
+                            name="SEARCH.PREPARATIONS.TABLE.STRATIGRAPHY">
+
+                </sort-field> | <em>{{ 'SEARCH.PREPARATIONS.TABLE.LITHOSTRATIGRAPHY' | translate }}</em>
+            </th>
             <th><sort-field value = "sample__agent_collected__agent" name="SEARCH.PREPARATIONS.TABLE.COLLECTOR"></sort-field></th>
             <th><sort-field value = "sample__mass" name="SEARCH.PREPARATIONS.TABLE.WEIGHT"/></th>
             <!--  <th>{{ 'SEARCH.PREPARATIONS.TABLE.MORE_INFO' | translate }}</th>-->
@@ -32,8 +36,15 @@
             </td>
             <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.DEPTH_M' | translate }}">{{entity.sample__depth}} <span ng-if="entity.sample__depth_interval != null && entity.sample__depth_interval != ''">({{entity.sample__depth_interval}})</span></td>
             <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.STRATIGRAPHY' | translate }}">
-                <localize data-ng-if="entity.sample__stratigraphy__stratigraphy != null || entity.sample__stratigraphy__stratigraphy_en != null" et="entity.sample__stratigraphy__stratigraphy" en="entity.sample__stratigraphy__stratigraphy_en"/>
-                | <em><localize data-ng-if="entity.sample__stratigraphy__stratigraphy != null || entity.sample__stratigraphy__stratigraphy_en != null" et="entity.sample__lithostratigraphy__stratigraphy" en="entity.sample__lithostratigraphy__stratigraphy_en"/></em>
+                <localize data-ng-if="entity.sample__stratigraphy__stratigraphy != null || entity.sample__stratigraphy__stratigraphy_en != null"
+                          et="entity.sample__stratigraphy__stratigraphy"
+                          en="entity.sample__stratigraphy__stratigraphy_en"/>
+                <span ng-show="entity.sample__stratigraphy__stratigraphy != null && entity.sample__lithostratigraphy__stratigraphy != null">|</span>
+                <em>
+                    <localize data-ng-if="entity.sample__lithostratigraphy__stratigraphy != null || entity.sample__lithostratigraphy__stratigraphy_en != null"
+                          et="entity.sample__lithostratigraphy__stratigraphy"
+                          en="entity.sample__lithostratigraphy__stratigraphy_en"/>
+                </em>
             </td>
             <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.COLLECTOR' | translate }}">{{entity.sample__agent_collected__agent}}</td>
             <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.WEIGHT' | translate }}">{{entity.sample__mass}}</td>

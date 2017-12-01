@@ -557,6 +557,11 @@ table tr > td:first-child {
     margin-bottom: 10px;
 }
 
+/* overrides default h2 margin top 20 px */
+.detailview-title h2 {
+    margin-top: 10px;
+}
+
 #detailview-navbar-brand {
     font-size: 14px;
     color: #F05F40;

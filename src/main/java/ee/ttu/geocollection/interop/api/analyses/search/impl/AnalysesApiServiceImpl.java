@@ -37,7 +37,25 @@ public class AnalysesApiServiceImpl implements AnalysesApiService {
             "sample__stratigraphy_id",
             "sample__lithostratigraphy__stratigraphy",
             "sample__lithostratigraphy__stratigraphy_en",
-            "sample__lithostratigraphy_id");
+            "sample__lithostratigraphy_id",
+            "mass",
+            "lab_analysis_number",
+            "material",
+            "agent__agent",
+            "agent__agent",
+            "sample__number",
+            "sample__parent_sample",
+            "lab_txt",
+            "sample__locality_free",
+            "sample__depth",
+            "sample__depth_interval",
+            "sample__stratigraphy_bed",
+            "sample__stratigraphy_free",
+            "date_added",
+            "date_changed",
+            "database__name",
+            "database__name_en"
+            );
 
     @Override
     public ApiResponse findAnalyses(AnalysesSearchCriteria searchCriteria) {
