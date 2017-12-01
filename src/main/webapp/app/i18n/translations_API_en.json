@@ -329,7 +329,8 @@
             "DATE_CHANGED":"Date changed",
             "AGENT__AGENT": "Person/Institution",
             "DATABASE__NAME": "Owner (institution) (ET)",
-            "DATABASE__NAME_EN": "Owner (institution)"
+            "DATABASE__NAME_EN": "Owner (institution)",
+            "MATERIAL": "Material"
         },
         "PREPARATION" :     {
             "DETAIL_FORM_NAME" : "Microfossil preparation No.",

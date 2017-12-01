@@ -54,7 +54,11 @@
                     <!--TODO: mass_unit-->
                     <!--TODO: counts-->
                     <!--TODO: lab_analysis_number-->
-                    <!--TODO: material-->
+
+                    <tr data-ng-if="detailCtrl.results.material && detailCtrl.results.material != null">
+                        <td> {{ 'API_TRANSLATION.ANALYSIS.MATERIAL' | translate }} </td>
+                        <td> {{ detailCtrl.results.material }} </td>
+                    </tr>
 
                     <tr data-ng-if="detailCtrl.results.agent__agent && detailCtrl.results.agent__agent != null" >
                         <td> {{ 'API_TRANSLATION.ANALYSIS.AGENT__AGENT ' | translate }} </td>
@@ -123,11 +127,6 @@
                         </td>
                     </tr>
 
-                    <tr data-ng-if="detailCtrl.results.sample__stratigraphy_free && detailCtrl.results.sample__stratigraphy_free != null">
-                        <td> {{ 'API_TRANSLATION.ANALYSIS.SAMPLE__STRATIGRAPHY_FREE' | translate }} </td>
-                        <td> {{ detailCtrl.results.sample__stratigraphy_free }} </td>
-                    </tr>
-
                     <tr data-ng-if="detailCtrl.results.sample__lithostratigraphy_id != null">
                         <td>
                             <localize-label et="'API_TRANSLATION.ANALYSIS.SAMPLE__LITHOSTRATIGRAPHY__STRATIGRAPHY'"
@@ -139,6 +138,11 @@
                                           en="detailCtrl.results.sample__lithostratigraphy__stratigraphy_en"/>
                             </a>
                         </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.sample__stratigraphy_free && detailCtrl.results.sample__stratigraphy_free != null">
+                        <td> {{ 'API_TRANSLATION.ANALYSIS.SAMPLE__STRATIGRAPHY_FREE' | translate }} </td>
+                        <td> {{ detailCtrl.results.sample__stratigraphy_free }} </td>
                     </tr>
 
                     <tr data-ng-if="detailCtrl.results.database__name && detailCtrl.results.database__name != null
@@ -165,6 +169,29 @@
                 </table>
 
             </div>
+
+            <div class="col-lg-6" data-ng-if="detailCtrl.analysisResults.length > 0">
+                <h2> {{ 'DETAIL.ANALYSIS.RESULTS' | translate }} </h2>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td> {{ 'DETAIL.ANALYSIS.RESULTS_NAME' | translate }} </td>
+                            <td> {{ 'DETAIL.ANALYSIS.RESULTS_VALUE' | translate }} </td>
+                            <td> {{ 'DETAIL.ANALYSIS.RESULTS_VALUE_BIN' | translate }} </td>
+                            <td> {{ 'DETAIL.ANALYSIS.RESULTS_VALUE_TXT' | translate }} </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="entity in detailCtrl.analysisResults | orderBy: '+value'">
+                            <td> {{ entity.name }} </td>
+                            <td> {{ entity.value }} </td>
+                            <td> {{ entity.value_bin }} </td>
+                            <td> {{ entity.value_txt }} </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
 
     </div>

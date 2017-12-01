@@ -1,6 +1,7 @@
 package ee.ttu.geocollection.interop.api.builder.search;
 
 import ee.ttu.geocollection.domain.SearchField;
+import ee.ttu.geocollection.interop.api.analyses.search.impl.AnalysesApiServiceImpl;
 
 import static ee.ttu.geocollection.interop.api.builder.ApiFields.*;
 public class FluentAnalysesApiBuilder  extends FluentSearchApiBuilder<FluentAnalysesApiBuilder> {

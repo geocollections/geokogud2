@@ -322,7 +322,8 @@
             "DATE_CHANGED":"Kirje muudetud",
             "AGENT__AGENT": "Isik/Asutus",
             "DATABASE__NAME": "Omanik (asutus)",
-            "DATABASE__NAME_EN": "Omanik (asutus) (ET)"
+            "DATABASE__NAME_EN": "Omanik (asutus) (ET)",
+            "MATERIAL": "Materjal"
         },
         "PREPARATION" :     {
             "DETAIL_FORM_NAME" : "Mikrofauna preparaat nr.",

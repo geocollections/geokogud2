@@ -15,8 +15,9 @@ import java.util.Map;
 
 @Service
 public class AnalysesApiServiceImpl implements AnalysesApiService {
-    @Autowired
-    private ApiService apiService;
+
+    public static final String ANALYSIS_RESULTS = "analysis_results";
+
     private List<String> fields = Arrays.asList(
             "id",
             "analysis_method__analysis_method",
@@ -56,7 +57,6 @@ public class AnalysesApiServiceImpl implements AnalysesApiService {
             "database__name",
             "database__name_en"
             );
-
     @Override
     public ApiResponse findAnalyses(AnalysesSearchCriteria searchCriteria) {
         String requestParams = FluentAnalysesApiBuilder.aRequest()
@@ -87,10 +87,14 @@ public class AnalysesApiServiceImpl implements AnalysesApiService {
         return apiService.searchRawEntities("analysis", searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
+    @Autowired
+    private ApiService apiService;
+
     @Override
     public Map findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
+                .relatedData(ANALYSIS_RESULTS)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity("analysis", requestParams);

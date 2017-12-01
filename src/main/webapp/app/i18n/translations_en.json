@@ -481,6 +481,13 @@
             "DATE": "Date",
             "LINK": "Link"
         },
+        "ANALYSIS": {
+            "RESULTS": "Analyses results",
+            "RESULTS_NAME": "Variable",
+            "RESULTS_VALUE": "Measured value",
+            "RESULTS_VALUE_BIN": "Measured value (bin)",
+            "RESULTS_VALUE_TXT": "Measured value (txt)"
+        },
         "NEXT": "NEXT",
         "PREVIOUS": "PREVIOUS",
         "DETAIL_MAP": "Map",

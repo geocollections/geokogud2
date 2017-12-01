@@ -481,6 +481,13 @@
             "DATE": "Aeg",
             "LINK": "Link"
         },
+        "ANALYSIS": {
+            "RESULTS": "Analüüside tulemused",
+            "RESULTS_NAME": "Muutuja",
+            "RESULTS_VALUE": "Väärtus",
+            "RESULTS_VALUE_TXT": "Väärtus (bin)",
+            "RESULTS_VALUE_BIN": "Väärtus (txt)"
+        },
         "NEXT": "JÄRGMINE",
         "PREVIOUS": "EELMINE",
         "DETAIL_MAP": "Kaart",
