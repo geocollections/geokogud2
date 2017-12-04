@@ -20,6 +20,7 @@ public class ReferenceApiServiceImpl implements ReferenceApiService {
 
     public static final String REFERENCE_TABLE = "reference";
     public static final String LOCALITY_REFERENCE_TABLE = "locality_reference";
+    public static final String ATTACHMENT_LINK_TABLE = "attachment_link";
 
     private List<String> fields = Arrays.asList(
         "id",
@@ -76,6 +77,7 @@ public class ReferenceApiServiceImpl implements ReferenceApiService {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
                 .relatedData(LOCALITY_REFERENCE_TABLE)
+                .relatedData(ATTACHMENT_LINK_TABLE)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(REFERENCE_TABLE, requestParams);

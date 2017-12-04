@@ -273,7 +273,10 @@
             "SECTIONS_DESCRIBED": "Sections described",
             "FIGURES": "Figs.",
             "LOCALITY": "Locality",
-            "LOCALITY_PAGES": "Pgs."
+            "LOCALITY_PAGES": "Pgs.",
+            "LINKED_FILES": "Linked files",
+            "TYPE": "Type",
+            "DESCRIPTION": "Description"
         },
         "STRATIGRAPHY" : {
             "ID":"ID",

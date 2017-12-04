@@ -97,6 +97,7 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             vm.localityReferences = vm.relatedData["locality_reference"];
             vm.localitySynonyms = vm.relatedData["locality_synonym"];
             vm.analysisResults = vm.relatedData["analysis_results"];
+            vm.attachmentLink = vm.relatedData["attachment_link"];
         }
     }
 

@@ -266,7 +266,10 @@
             "SECTIONS_DESCRIBED": "Kirjeldatud läbilõiked",
             "FIGURES": "Joon.",
             "LOCALITY": "Leiukoht",
-            "LOCALITY_PAGES": "lk."
+            "LOCALITY_PAGES": "lk.",
+            "LINKED_FILES": "Seotud failid",
+            "TYPE": "Tüüp",
+            "DESCRIPTION": "Kirjeldus"
         },
         "STRATIGRAPHY" : {
             "ID":"ID",
