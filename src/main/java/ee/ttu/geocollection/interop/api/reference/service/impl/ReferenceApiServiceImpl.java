@@ -32,9 +32,11 @@ public class ReferenceApiServiceImpl implements ReferenceApiService {
         "journal_additional",
         "volume",
         "book",
+        "book_original",
         "pages",
         "doi",
         "remarks",
+        "abstract",
         "type__value",
         "type__value_en"
     );

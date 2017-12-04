@@ -265,7 +265,8 @@
             "DOI":"DOI",
             "REMARKS":"Remarks",
             "TYPE__VALUE":"Source type (ET)",
-            "TYPE__VALUE_EN":"Source type"
+            "TYPE__VALUE_EN":"Source type",
+            "ABSTRACT": "Abstract"
         },
         "STRATIGRAPHY" : {
             "ID":"ID",

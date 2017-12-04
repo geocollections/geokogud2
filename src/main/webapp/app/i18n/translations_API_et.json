@@ -258,7 +258,8 @@
             "DOI":"DOI",
             "REMARKS":"Lisainfo",
             "TYPE__VALUE":"Allika tüüp",
-            "TYPE__VALUE_EN":"Allika tüüp (EN)"
+            "TYPE__VALUE_EN":"Allika tüüp (EN)",
+            "ABSTRACT": "Abstrakt"
         },
         "STRATIGRAPHY" : {
             "ID":"ID",
