@@ -259,7 +259,14 @@
             "REMARKS":"Lisainfo",
             "TYPE__VALUE":"Allika tüüp",
             "TYPE__VALUE_EN":"Allika tüüp (EN)",
-            "ABSTRACT": "Abstrakt"
+            "ABSTRACT": "Abstrakt",
+            "NUMBER": "Number",
+            "PUBLISHER": "Kirjastaja",
+            "PUBLISHER_PLACE": "kirjastaja asukoht",
+            "SECTIONS_DESCRIBED": "Kirjeldatud läbilõiked",
+            "FIGURES": "Joon.",
+            "LOCALITY": "Leiukoht",
+            "LOCALITY_PAGES": "lk."
         },
         "STRATIGRAPHY" : {
             "ID":"ID",

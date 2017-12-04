@@ -17,7 +17,10 @@ import java.util.Map;
 
 @Service
 public class ReferenceApiServiceImpl implements ReferenceApiService {
+
     public static final String REFERENCE_TABLE = "reference";
+    public static final String LOCALITY_REFERENCE_TABLE = "locality_reference";
+
     private List<String> fields = Arrays.asList(
         "id",
         "reference",
@@ -37,6 +40,9 @@ public class ReferenceApiServiceImpl implements ReferenceApiService {
         "doi",
         "remarks",
         "abstract",
+        "publisher",
+        "publisher_place",
+        "number",
         "type__value",
         "type__value_en"
     );
@@ -69,6 +75,7 @@ public class ReferenceApiServiceImpl implements ReferenceApiService {
     public Map findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
+                .relatedData(LOCALITY_REFERENCE_TABLE)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(REFERENCE_TABLE, requestParams);

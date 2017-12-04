@@ -54,8 +54,15 @@
                         <td> {{ detailCtrl.results.book_original }} </td>
                     </tr>
 
-                    <!--TODO: publisher-->
-                    <!--TODO: publisher_place-->
+                    <tr data-ng-if="detailCtrl.results.publisher && detailCtrl.results.publisher != null">
+                        <td> {{ 'API_TRANSLATION.REFERENCE.PUBLISHER' | translate }} </td>
+                        <td> {{ detailCtrl.results.publisher }} </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.publisher_place && detailCtrl.results.publisher_place != null">
+                        <td> {{ 'API_TRANSLATION.REFERENCE.PUBLISHER_PLACE' | translate }} </td>
+                        <td> {{ detailCtrl.results.publisher_place }} </td>
+                    </tr>
 
                     <tr data-ng-if="detailCtrl.results.journal__journal_name && detailCtrl.results.journal__journal_name != null">
                         <td> {{ 'API_TRANSLATION.REFERENCE.JOURNAL__JOURNAL_NAME ' | translate }} </td>
@@ -73,7 +80,10 @@
                         <td> {{ detailCtrl.results.volume }} </td>
                     </tr>
 
-                    <!-- TODO: number -->
+                    <tr data-ng-if="detailCtrl.results.number && detailCtrl.results.number != null">
+                        <td> {{ 'API_TRANSLATION.REFERENCE.NUMBER' | translate }} </td>
+                        <td> {{ detailCtrl.results.number }} </td>
+                    </tr>
 
                     <tr data-ng-if="detailCtrl.results.pages && detailCtrl.results.pages != null">
                         <td> {{ 'API_TRANSLATION.REFERENCE.PAGES ' | translate }} </td>
@@ -127,6 +137,39 @@
 
                 </table>
             </div>
+
+            <div class="col-lg-6" data-ng-if="detailCtrl.localityReferences.length > 0">
+                <h2> {{ 'API_TRANSLATION.REFERENCE.SECTIONS_DESCRIBED' | translate }} </h2>
+                <table class="table table-hover table-bordered">
+                    <thead class="styles-for-table-headers">
+                        <tr>
+                            <td> {{ 'API_TRANSLATION.REFERENCE.LOCALITY' | translate }} </td>
+                            <td> {{ 'API_TRANSLATION.REFERENCE.LOCALITY_PAGES' | translate }} </td>
+                            <td> {{ 'API_TRANSLATION.REFERENCE.FIGURES' | translate }} </td>
+                            <td> {{ 'API_TRANSLATION.REFERENCE.REMARKS' | translate }} </td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr data-ng-repeat="entity in detailCtrl.localityReferences">
+                            <td data-ng-if="(entity.locality__id && entity.locality__id != null)
+                                && entity.locality__locality && entity.locality__locality != null">
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'locality', id: entity.locality__id})">
+                                    <localize en="entity.locality__locality_en" et="entity.locality__locality" />
+                                </a>
+                            </td>
+                            <td data-ng-if="entity.locality__id === null && entity.locality__locality != null && entity.locality__locality_id != null">
+                                <localize en="entity.locality__locality_en" et="entity.locality__locality" />
+
+                            </td>
+                            <td> {{ entity.pages }} </td>
+                            <td> {{ entity.figures }} </td>
+                            <td> {{ entity.remarks }} </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
 
     </div>

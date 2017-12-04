@@ -266,7 +266,14 @@
             "REMARKS":"Remarks",
             "TYPE__VALUE":"Source type (ET)",
             "TYPE__VALUE_EN":"Source type",
-            "ABSTRACT": "Abstract"
+            "ABSTRACT": "Abstract",
+            "NUMBER": "Number",
+            "PUBLISHER": "Publisher",
+            "PUBLISHER_PLACE": "Publisher's location",
+            "SECTIONS_DESCRIBED": "Sections described",
+            "FIGURES": "Figs.",
+            "LOCALITY": "Locality",
+            "LOCALITY_PAGES": "Pgs."
         },
         "STRATIGRAPHY" : {
             "ID":"ID",
