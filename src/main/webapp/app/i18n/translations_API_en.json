@@ -205,8 +205,8 @@
                 "PARAGRAPH_FOUR": "To show detailed information follow the links in the results table."
             },
             "ID":"ID",
-            "ASUSTUSYKSUS__ASUSTUSYKSUS_EN":"Village (ET)",
-            "ASUSTUSYKSUS__ASUSTUSYKSUS":"Village",
+            "ASUSTUSYKSUS__ASUSTUSYKSUS_EN":"Village",
+            "ASUSTUSYKSUS__ASUSTUSYKSUS":"Village (ET)",
             "COUNTRY__VALUE_EN":"Country",
             "COUNTRY__VALUE":"Country (ET)",
             "DEPTH":"Depth",
