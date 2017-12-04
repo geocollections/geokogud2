@@ -301,7 +301,19 @@
             "COLOR_CODE_CGMW":"CGMW color code",
             "LITHOLOGY":"Lithology (ET)",
             "LITHOLOGY_EN":"Lithology",
-            "AUTHOR_FREE":"Author"
+            "AUTHOR_FREE":"Author",
+            "REFERENCE": "Reference",
+            "REFERENCE_PAGES": "Pages",
+            "REFERENCE_REMARKS": "Remarks",
+            "STRATOTYPE_TYPE": "Type",
+            "STRATOTYPE_LOCALITY": "Locality",
+            "STRATOTYPE_DEPTH": "Depth (m)",
+            "STRATOTYPE_REFERENCE": "Reference",
+            "STRATOTYPE_REMARKS": "Remarks",
+            "SYNONYM": "Synonym",
+            "SYNONYM_LANG": "Language",
+            "SYNONYM_REFERENCE": "Reference",
+            "SYNONYM_REMARKS": "Remarks"
         },
         "ANALYSIS":  {
             "ID":"ID",

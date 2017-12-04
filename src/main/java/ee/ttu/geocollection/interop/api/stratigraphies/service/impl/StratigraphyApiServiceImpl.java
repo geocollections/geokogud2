@@ -43,6 +43,7 @@ public class StratigraphyApiServiceImpl implements StratigraphyApiService {
         "age_chronostratigraphy__stratigraphy_en",
         "age_chronostratigraphy_id",
         "age_reference__reference",
+        "age_reference__id",
         "etymon",
         "etymon_en",
         "region",
