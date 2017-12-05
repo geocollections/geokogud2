@@ -69,7 +69,7 @@
 
 
                 <div class="row" ng-if="detailCtrl.results.id" style="padding: 15px;">
-                    <a class="pull-left" href data-ng-click="detailCtrl.reload(detailCtrl.results.id -1)">
+                    <a class="pull-left" href data-ng-click="detailCtrl.reload(detailCtrl.results.id - 1)">
                         {{ 'DETAIL.PREVIOUS'| translate }}
                     </a>
                     <a class="pull-right" href data-ng-click="detailCtrl.reload(detailCtrl.results.id + 1)">
@@ -98,4 +98,4 @@
     </div>
 </div>
 
-<div ng-include="'app/templates/main/partial/detailview_footer.html'">
+<div ng-include="'app/templates/main/partial/detailview_footer.html'"></div>

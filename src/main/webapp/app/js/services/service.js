@@ -24,6 +24,7 @@ var constructor = function (utils, configuration, $window, $location) {
     service.getTranslationRoot = getTranslationRoot;
     service.getCountsForAnalysisDetailView = getCountsForAnalysisDetailView;
     service.searchAllSpecimenInLocality = searchAllSpecimenInLocality;
+    service.getDrillcoreImageUrl = getDrillcoreImageUrl;
 
     service.toggle = function (el,array) {
         utils.toggleInArray(el,array)
@@ -97,6 +98,11 @@ var constructor = function (utils, configuration, $window, $location) {
     service.getDownloadLink = function (fileName) {
         return "http://geokogud.info/files/"+fileName.substring(0,2)+"/"+fileName;
     };
+
+    function getDrillcoreImageUrl(params) {
+        var imageUrl = "https://geokogud.info/" + params.database + "/drillcore_image/" + params.id + "/preview/";
+        return imageUrl + params.filename;
+    }
 
     function composeSpecimenExternalPath(imageData) {
         //http://geokogud.info/di.php?f=/data/git/images/specimen/663/663-6.jpg&w=400

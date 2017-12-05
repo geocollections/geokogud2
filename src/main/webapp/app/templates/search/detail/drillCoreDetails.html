@@ -120,42 +120,52 @@
 
             <div class="col-sm-12">
                 <h2>{{ 'DETAIL.DRILLCORE.DRILLCORE_BOXES'| translate }}</h2>
-                <table data-ng-repeat="box in detailCtrl.drillcoreBoxes" style="float:left; margin: 0px 20px">
-                    <tr>
-                        <td>
-                            <h3>{{ 'DETAIL.DRILLCORE.BOX_NUMBER'| translate }} {{box.number}}</h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>{{ 'DETAIL.DRILLCORE.SINCE'| translate }}:</td>
-                        <td>{{box.depth_start}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ 'DETAIL.DRILLCORE.TO'| translate }}:</td>
-                        <td>{{box.depth_end}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ 'DETAIL.DRILLCORE.STRATIGRAPHY_TOP'| translate }}:</td>
-                        <td>
-                            <localize et="box.stratigraphy_top__stratigraphy" en="box.stratigraphy_top__stratigraphy_en" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>{{ 'DETAIL.DRILLCORE.STRATIGRAPHY_BASE'| translate }}:</td>
-                        <td>
-                            <localize et="box.stratigraphy_base__stratigraphy" en="box.stratigraphy_base__stratigraphy_en" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'corebox',id:box.id})">
-                                <img style="max-width:200px; max-height: 250px" src="http://www.underconsideration.com/wordit/wordit_archives/0401_empty_Darrel_Austin.jpg" />
-                                     <!--src="http://{{box.drillcoreimage__url}}"-->
-                            </a>
-                        </td>
-                    </tr>
+                <table class="table-bordered table-hover drillcore-tables" data-ng-repeat="box in detailCtrl.drillcoreBoxes">
+                    <tbody>
+                        <tr>
+                            <td id="drillcore-box-heading" colspan="2">
+                                <h3 class="margin-top-10">{{ 'DETAIL.DRILLCORE.BOX_NUMBER'| translate }} {{box.number}}</h3>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ 'DETAIL.DRILLCORE.SINCE'| translate }}:</td>
+                            <td>{{box.depth_start}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ 'DETAIL.DRILLCORE.TO'| translate }}:</td>
+                            <td>{{box.depth_end}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ 'DETAIL.DRILLCORE.STRATIGRAPHY_TOP'| translate }}:</td>
+                            <td>
+                                <localize et="box.stratigraphy_top__stratigraphy" en="box.stratigraphy_top__stratigraphy_en" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ 'DETAIL.DRILLCORE.STRATIGRAPHY_BASE'| translate }}:</td>
+                            <td>
+                                <localize et="box.stratigraphy_base__stratigraphy" en="box.stratigraphy_base__stratigraphy_en" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td id="drillcore-image-background" colspan="2">
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'corebox',id:box.id})">
+                                    <img src="{{detailCtrl.service.getDrillcoreImageUrl({
+                                            database: detailCtrl.results.database__acronym.toLowerCase(),
+                                            id: detailCtrl.results.id,
+                                            filename: box.drillcoreimage__image})}}" />
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
+
         </div>
 
     </div>

@@ -638,6 +638,15 @@ table tr > td:first-child {
 /* DOI END */
 
 
+/* PHOTO ARCHIVE START */
+
+.window-size {
+    width:100%;
+}
+
+/* PHOTO ARCHIVE END */
+
+
 /* LOCALITY START */
 
 /* otherwise specimen search link has too big gap */
@@ -646,6 +655,44 @@ table tr > td:first-child {
 }
 
 /* LOCALITY END */
+
+
+/* DRILLCORE START */
+
+.drillcore-tables {
+    float: left;
+    margin: 5px 20px;
+}
+
+.drillcore-tables td {
+    padding: 8px;
+}
+
+.drillcore-tables tbody tr td:first-child {
+    background-color: #eceeef;
+    font-size: smaller;
+}
+
+#drillcore-box-heading {
+    background-color: #FFFFFF;
+    text-align: center;
+    border-left: 1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+    border-right: 1px solid #FFFFFF;
+}
+
+#drillcore-image-background {
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    text-align: center;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+/* DRILLCORE END */
+
 
 /*******************************
  ***  DETAILVIEW STYLES END  ***
