@@ -211,7 +211,7 @@
             "COUNTRY__VALUE":"Country (ET)",
             "DEPTH":"Depth",
             "EELIS":"EELIS",
-            "ELEVATION":"Elevation",
+            "ELEVATION":"Elevation (m)",
             "LATITUDE":"Latitude (dec. deg.)",
             "LOCALITY_EN":"Locality",
             "LOCALITY":"Locality (ET)",

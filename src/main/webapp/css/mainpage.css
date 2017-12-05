@@ -637,6 +637,16 @@ table tr > td:first-child {
 
 /* DOI END */
 
+
+/* LOCALITY START */
+
+/* otherwise specimen search link has too big gap */
+.margin-bottom-5 {
+    margin-bottom: 5px;
+}
+
+/* LOCALITY END */
+
 /*******************************
  ***  DETAILVIEW STYLES END  ***
  *******************************/

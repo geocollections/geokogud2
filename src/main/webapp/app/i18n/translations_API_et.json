@@ -204,7 +204,7 @@
             "COUNTRY__VALUE":"Riik",
             "DEPTH":"Sügavus",
             "EELIS":"EELIS",
-            "ELEVATION":"Kõrgus",
+            "ELEVATION":"Abs. kõrgus (m)",
             "LATITUDE":"Laiuskraad",
             "LOCALITY_EN":"Nimi (EN)",
             "LOCALITY":"Nimi",
