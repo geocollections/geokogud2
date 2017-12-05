@@ -478,8 +478,9 @@
             "FILENAME": "Falinimi",
             "LOCALITY": "Leiukoht",
             "AUTHOR": "Autor",
-            "DATE": "Aeg",
+            "DATE": "Kuupäev",
             "LINK": "Link",
+            "DESCRIPTION": "Kirjeldus",
             "REFERENCE_HEADING": "Viited lokaliteedile",
             "REFERENCE": "Viide",
             "REFERENCE_PAGES": "Lk.",
@@ -490,7 +491,8 @@
             "ID": "ID",
             "STRATIGRAPHY": "Stratigraafia",
             "STRATIGRAPHY_REMARKS": "Stratigraafia lisainfo",
-            "SPECIMEN": "Eksemplarid"
+            "SPECIMEN": "Eksemplarid",
+            "ALL_SPECIMEN": "Kuva kõik eksemplarid"
         },
         "ANALYSIS": {
             "RESULTS": "Analüüside tulemused",

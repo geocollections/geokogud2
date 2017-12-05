@@ -253,21 +253,19 @@
                     <table class="table table-bordered table-hover">
                         <thead class="styles-for-table-headers">
                         <tr>
-                            <th>{{'DETAIL.LOCALITY.TYPE ' |translate }}</th>
-                            <th>{{'DETAIL.LOCALITY.FILENAME ' |translate }}</th>
-                            <th>{{'DETAIL.LOCALITY.LOCALITY ' |translate }}</th>
-                            <th>{{'DETAIL.LOCALITY.AUTHOR ' |translate }}</th>
-                            <th>{{'DETAIL.LOCALITY.DATE ' |translate }}</th>
-                            <th>{{'DETAIL.LOCALITY.LINK ' |translate }}</th>
+                            <th>{{'DETAIL.LOCALITY.DATE' | translate }}</th>
+                            <th>{{'DETAIL.LOCALITY.AUTHOR' | translate }}</th>
+                            <th>{{'DETAIL.LOCALITY.DESCRIPTION' | translate }}</th>
+                            <th>{{'DETAIL.LOCALITY.TYPE' | translate }}</th>
+                            <th>{{'DETAIL.LOCALITY.LINK ' | translate }}</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr style="cursor: pointer; " data-ng-repeat="entity in detailCtrl.images">
-                            <td><localize et="entity.type__value" en="entity.type__value_en"/></td>
-                            <td>{{entity.filename}}</td>
-                            <td><a href data-ng-click="detailCtrl.service.openInNewWindow({object:'locality',id:entity.locality_id})"><localize et="entity.locality__locality" en="entity.locality__locality_en"/></a></td>
-                            <td>{{entity.author__forename}} {{entity.author__surename}}</td>
+                        <tr data-ng-repeat="entity in detailCtrl.images">
                             <td>{{entity.date_added | date:dateFormat}}</td>
+                            <td>{{entity.author__forename}} {{entity.author__surename}}</td>
+                            <td>{{entity.description}}</td>
+                            <td><localize et="entity.type__value" en="entity.type__value_en"/></td>
                             <td><a href data-ng-click="detailCtrl.service.openInNewWindow({object:'image',id:entity.id})"><img src="http://geokogud.info/git/image/{{entity.imageset__imageset_series}}/{{entity.imageset__imageset_number}}/preview/{{entity.filename}}"></a></td>
                         </tr>
                         </tbody>
@@ -311,26 +309,39 @@
 
                         <tbody>
                         <tr data-ng-repeat="specimen in detailCtrl.specimens">
-                            <td>
-                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen',id:specimen.id})"
-                                   data-ng-if="specimen.id != null">
+
+                            <td data-ng-if="specimen.id != null">
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen',id:specimen.id})">
                                     {{specimen.id}}
                                 </a>
                             </td>
+
                             <td>
-                                <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+specimen.specimenidentification__taxon_id})">
+                                <a href data-ng-if="specimen.specimenidentification__taxon__taxon != null && specimen.specimenidentification__taxon_id != null"
+                                   data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+specimen.specimenidentification__taxon_id})">
                                     {{specimen.specimenidentification__taxon__taxon}}
                                 </a>
                             </td>
+
+                            <!--<td href data-ng-if="(specimen.specimenidentification__taxon__taxon == null && specimen.specimenidentification__taxon_id == null)-->
+                                <!--&& specimen.specimenidentification__name != null">-->
+                                <!--{{specimen.specimenidentification__name}}-->
+                            <!--</td>-->
+
+                            <!-- TODO: taxon_taxon -> name -> mineral_name + mineral_formula -> specimen_identification_geology_name -->
+
                             <td>
-                                <localize et="specimen.stratigraphy__stratigraphy" en="stratigraphy__stratigraphy_en" />
+                                <a data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: specimen.stratigraphy__id})"
+                                   href ng-if="specimen.stratigraphy__id != null">
+                                    <localize et="specimen.stratigraphy__stratigraphy" en="specimen.stratigraphy__stratigraphy_en" />
+                                </a>
                             </td>
-                            <td> {{ specimen.stratigraphy__remarks }} </td>
+                            <td> {{ specimen.stratigraphy_free }} </td>
                         </tr>
                         </tbody>
                     </table>
 
-                    <a href="">TODO: Show all specimens</a>
+                    <a href="">TODO: {{ 'DETAIL.LOCALITY.ALL_SPECIMEN' | translate }} (number of specimen in that locality)</a>
                 </div>
 
                 <div data-ng-if="detailCtrl.localityReferences.length > 0">

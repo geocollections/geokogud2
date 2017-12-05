@@ -480,6 +480,7 @@
             "AUTHOR": "Author",
             "DATE": "Date",
             "LINK": "Link",
+            "DESCRIPTION": "Description",
             "REFERENCE_HEADING": "References to locality",
             "REFERENCE": "Reference",
             "REFERENCE_PAGES": "Pgs.",
@@ -490,7 +491,8 @@
             "ID": "ID",
             "STRATIGRAPHY": "Stratigraphy",
             "STRATIGRAPHY_REMARKS": "Stratigraphy remarks",
-            "SPECIMEN": "Specimens"
+            "SPECIMEN": "Specimens",
+            "ALL_SPECIMEN": "Show all specimens"
         },
         "ANALYSIS": {
             "RESULTS": "Analyses results",
