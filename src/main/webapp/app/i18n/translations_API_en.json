@@ -173,7 +173,7 @@
         },
         "DRILL_CORE" : {
             "ID":"ID",
-            "DRILLCORE":"Drillcore (ET)",
+            "DRILLCORE":"Name (ET)",
             "LOCALITY__COUNTRY__VALUE":"Country (ET)",
             "LOCALITY__COUNTRY__VALUE_EN":"Country",
             "LOCALITY__LATITUDE":"Latitude",
@@ -183,7 +183,7 @@
             "BOX_NUMBERS":"Box numbers",
             "STORAGE__LOCATION":"Storage",
             "LOCALITY_ID":"Locality ID",
-            "DRILLCORE_EN":"Drillcore",
+            "DRILLCORE_EN":"Name",
             "DEPOSITORY__VALUE":"Depository (ET)",
             "DEPOSITORY__VALUE_EN":"Depository",
             "NUMBER_METERS":"Meters in box",

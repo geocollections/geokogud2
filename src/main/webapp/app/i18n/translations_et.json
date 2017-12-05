@@ -454,11 +454,11 @@
     "DETAIL": {
         "DRILLCORE": {
             "DRILLCORE_BOXES": "Puursüdamiku kastid",
-            "BOX_NUMBER": "kast nr.",
-            "SINCE": "Algus(m)",
-            "TO": "Lõpp(m)",
-            "STRATIGRAPHY_TOP": "Stratigraafia ülem.",
-            "STRATIGRAPHY_BASE": "Stratigraphy alum."
+            "BOX_NUMBER": "Kast nr.",
+            "SINCE": "Algus (m)",
+            "TO": "Lõpp (m)",
+            "STRATIGRAPHY_TOP": "Strat. ül.",
+            "STRATIGRAPHY_BASE": "Strat. al."
         },
         "CORE_BOX": {
             "LOCALITY": "Leiukoht",

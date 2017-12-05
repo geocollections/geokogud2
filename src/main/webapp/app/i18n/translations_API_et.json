@@ -174,7 +174,7 @@
         "DRILL_CORE" : {
             "DETAIL_FORM_NAME" : "",
             "ID":"ID",
-            "DRILLCORE":"Puursüdamikdamik",
+            "DRILLCORE":"Nimi",
             "LOCALITY__COUNTRY__VALUE":"Riik",
             "LOCALITY__COUNTRY__VALUE_EN":"Riik (EN)",
             "LOCALITY__LATITUDE":"Laiuskraad",
@@ -184,7 +184,7 @@
             "BOX_NUMBERS":"Kastinumbrid",
             "STORAGE__LOCATION":"Hoiukoht",
             "LOCALITY_ID":"Leiukoha ID",
-            "DRILLCORE_EN":"Puursüdamik (EN)",
+            "DRILLCORE_EN":"Nimi (EN)",
             "DEPOSITORY__VALUE":"Hoidla",
             "DEPOSITORY__VALUE_EN":"Hoidla (EN)",
             "NUMBER_METERS":"Meetreid kastis",
