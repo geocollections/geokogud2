@@ -308,7 +308,7 @@
                         </thead>
 
                         <tbody>
-                        <tr data-ng-repeat="specimen in detailCtrl.specimens">
+                        <tr data-ng-repeat="specimen in detailCtrl.specimens | limitTo:10">
 
                             <td data-ng-if="specimen.id != null">
                                 <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen',id:specimen.id})">
@@ -339,9 +339,12 @@
                             <td> {{ specimen.stratigraphy_free }} </td>
                         </tr>
                         </tbody>
+
                     </table>
 
-                    <a href="">TODO: {{ 'DETAIL.LOCALITY.ALL_SPECIMEN' | translate }} (number of specimen in that locality)</a>
+                    <a href data-ng-click="detailCtrl.service.searchAllSpecimenInLocality({locality: detailCtrl.results.locality})" target="_self">
+                        {{ 'DETAIL.LOCALITY.ALL_SPECIMEN' | translate}} ({{detailCtrl.specimens.length}})
+                    </a>
                 </div>
 
                 <div data-ng-if="detailCtrl.localityReferences.length > 0">

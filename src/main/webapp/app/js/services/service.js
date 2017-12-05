@@ -23,6 +23,7 @@ var constructor = function (utils, configuration, $window, $location) {
     service.showEstonianLandBoardMap = showEstonianLandBoardMap;
     service.getTranslationRoot = getTranslationRoot;
     service.getCountsForAnalysisDetailView = getCountsForAnalysisDetailView;
+    service.searchAllSpecimenInLocality = searchAllSpecimenInLocality;
 
     service.toggle = function (el,array) {
         utils.toggleInArray(el,array)
@@ -227,6 +228,10 @@ var constructor = function (utils, configuration, $window, $location) {
             }
         });
         return numOfCounts;
+    }
+
+    function searchAllSpecimenInLocality(params) {
+        $window.open("http://arendus2.geokogud.info/specimen?specimen_number_1=1&specimen_number=&collection_id_1=5&collection_id=&classification_1=1&classification=&taxon_1=1&taxon=&name_geology_1=1&name_geology=&country_1=1&country=&locality_1=5&locality=" + params.locality + "&stratigraphy_1=1&stratigraphy=&id_1=5&id=&fossil_1=1&fossil=&agent_1=1&agent=&reference_1=1&reference=&original_type_1=1&original_type=&part_1=1&part=&tags_1=1&tags=&dbs%5B%5D=1&dbs%5B%5D=2&dbs%5B%5D=3&dbs%5B%5D=4&dbs%5B%5D=5&dbs%5B%5D=6&currentTable=specimen&maxSize=5&sort=id&sortdir=DESC");
     }
 
     return service;
