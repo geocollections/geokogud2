@@ -479,7 +479,14 @@
             "LOCALITY": "Leiukoht",
             "AUTHOR": "Autor",
             "DATE": "Aeg",
-            "LINK": "Link"
+            "LINK": "Link",
+            "REFERENCE_HEADING": "Viited lokaliteedile",
+            "REFERENCE": "Viide",
+            "REFERENCE_PAGES": "Lk.",
+            "REFERENCE_FIGURES": "Joon.",
+            "REFERENCE_REMARKS": "Lisainfo",
+            "SYNONYMS_HEADING": "Nime sünonüümid",
+            "SYNONYMS": "Nimi"
         },
         "ANALYSIS": {
             "RESULTS": "Analüüside tulemused",

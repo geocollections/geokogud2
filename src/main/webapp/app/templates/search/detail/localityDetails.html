@@ -196,49 +196,42 @@
 
                     <!-- TODO: drillcore -->
 
+                    <tr data-ng-if="detailCtrl.results.localitystratigraphy__stratigraphy__stratigraphy_en
+                        && detailCtrl.results.localitystratigraphy__stratigraphy__stratigraphy_en != null">
+                        <td> {{ 'API_TRANSLATION.LOCALITY.LOCALITYSTRATIGRAPHY__STRATIGRAPHY__STRATIGRAPHY_EN ' | translate }}</td>
+                        <td> {{ detailCtrl.results.localitystratigraphy__stratigraphy__stratigraphy_en }} </td>
+                    </tr>
 
-                    <!--<tr data-ng-if="detailCtrl.results.asustusyksus__asustusyksus_en && detailCtrl.results.ASUSTUSYKSUS__ASUSTUSYKSUS_EN != null"><td>{{'API_TRANSLATION.LOCALITY.asustusyksus__asustusyksus_en ' |translate }}</td><td>{{detailCtrl.results.asustusyksus__asustusyksus_en}}</td></tr>
-                    <tr data-ng-if="detailCtrl.results.asustusyksus__asustusyksus && detailCtrl.results.ASUSTUSYKSUS__ASUSTUSYKSUS != null"><td>{{'API_TRANSLATION.LOCALITY.asustusyksus__asustusyksus ' |translate }}</td><td>{{detailCtrl.results.asustusyksus__asustusyksus}}</td></tr>
-                    -->
+                    <tr data-ng-if="detailCtrl.results.maaamet_pa_id && detailCtrl.results.maaamet_pa_id != null">
+                        <td> {{ 'API_TRANSLATION.LOCALITY.MAAAMET_PA_ID ' | translate }} </td>
+                        <td> {{ detailCtrl.results.maaamet_pa_id }} </td>
+                    </tr>
 
+                    <tr data-ng-if="detailCtrl.results.eelis && detailCtrl.results.eelis != null">
+                        <td> {{ 'API_TRANSLATION.LOCALITY.EELIS ' | translate }} </td>
+                        <td> {{ detailCtrl.results.eelis }} </td>
+                    </tr>
 
+                    <tr data-ng-if="detailCtrl.results.remarks && detailCtrl.results.remarks != null">
+                        <td> {{ 'API_TRANSLATION.LOCALITY.REMARKS ' | translate }} </td>
+                        <td> {{ detailCtrl.results.remarks }} </td>
+                    </tr>
 
+                    <tr data-ng-if="detailCtrl.results.user_added && detailCtrl.results.user_added != null">
+                        <td> {{ 'API_TRANSLATION.LOCALITY.USER_ADDED ' | translate }} </td>
+                        <td> {{ detailCtrl.results.user_added }} </td>
+                    </tr>
 
-                    <!--<tr data-ng-if="detailCtrl.results.locality_en && detailCtrl.results.locality_en != null"><td>{{'API_TRANSLATION.LOCALITY.LOCALITY_EN ' |translate }}</td><td>{{detailCtrl.results.locality_en}}</td></tr>
-                    <tr data-ng-if="detailCtrl.results.locality && detailCtrl.results.locality != null"><td>{{'API_TRANSLATION.LOCALITY.LOCALITY ' |translate }}</td><td>{{detailCtrl.results.locality}}</td></tr>
-                    -->
+                    <tr data-ng-if="detailCtrl.results.date_added && detailCtrl.results.date_added != null">
+                        <td> {{ 'API_TRANSLATION.LOCALITY.DATE_ADDED ' | translate }} </td>
+                        <td> {{ detailCtrl.results.date_added | date:dateFormat }} </td>
+                    </tr>
 
-                    <!--<tr data-ng-if="detailCtrl.results.maakond__maakond_en && detailCtrl.results.maakond__maakond_en != null"><td>{{'API_TRANSLATION.LOCALITY.MAAKOND__MAAKOND_EN ' |translate }}</td><td>{{detailCtrl.results.maakond__maakond_en}}</td></tr>
-                    <tr data-ng-if="detailCtrl.results.maakond__maakond && detailCtrl.results.maakond__maakond != null"><td>{{'API_TRANSLATION.LOCALITY.MAAKOND__MAAKOND ' |translate }}</td><td>{{detailCtrl.results.maakond__maakond}}</td></tr>
--->
+                    <tr data-ng-if="detailCtrl.results.date_changed && detailCtrl.results.date_changed != null">
+                        <td> {{ 'API_TRANSLATION.LOCALITY.DATE_CHANGED ' | translate }} </td>
+                        <td> {{ detailCtrl.results.date_changed | date:dateFormat }} </td>
+                    </tr>
 
-
-                    <!--<tr data-ng-if="detailCtrl.results.stratigraphy_base__stratigraphy_en && detailCtrl.results.stratigraphy_base__stratigraphy_en != null"><td>{{'API_TRANSLATION.LOCALITY.STRATIGRAPHY_BASE__STRATIGRAPHY_EN ' |translate }}</td><td>{{detailCtrl.results.stratigraphy_base__stratigraphy_en}}</td></tr>
-                    <tr data-ng-if="detailCtrl.results.stratigraphy_base__stratigraphy && detailCtrl.results.stratigraphy_base__stratigraphy != null"><td>{{'API_TRANSLATION.LOCALITY.STRATIGRAPHY_BASE__STRATIGRAPHY ' |translate }}</td><td>{{detailCtrl.results.stratigraphy_base__stratigraphy}}</td></tr>
-                    -->
-                    <tr data-ng-if="detailCtrl.results.localitystratigraphy__stratigraphy__stratigraphy_en && detailCtrl.results.localitystratigraphy__stratigraphy__stratigraphy_en != null"><td>{{'API_TRANSLATION.LOCALITY.LOCALITYSTRATIGRAPHY__STRATIGRAPHY__STRATIGRAPHY_EN ' |translate }}</td><td>{{detailCtrl.results.localitystratigraphy__stratigraphy__stratigraphy_en}}</td></tr>
-
-
-                    <!--<tr data-ng-if="detailCtrl.results.type__value_en && detailCtrl.results.type__value_en != null"><td>{{'API_TRANSLATION.LOCALITY.TYPE__VALUE_EN ' |translate }}</td><td>{{detailCtrl.results.type__value_en}}</td></tr>
-                    <tr data-ng-if="detailCtrl.results.type__value && detailCtrl.results.type__value != null"><td>{{'API_TRANSLATION.LOCALITY.TYPE__VALUE ' |translate }}</td><td>{{detailCtrl.results.type__value}}</td></tr>
-                    -->
-
-
-                    <!--<tr data-ng-if="detailCtrl.results.vald__vald_en && detailCtrl.results.vald__vald_en != null"><td>{{'API_TRANSLATION.LOCALITY.VALD__VALD_EN ' |translate }}</td><td>{{detailCtrl.results.vald__vald_en}}</td></tr>
-                    <tr data-ng-if="detailCtrl.results.vald__vald && detailCtrl.results.vald__vald != null"><td>{{'API_TRANSLATION.LOCALITY.VALD__VALD ' |translate }}</td><td>{{detailCtrl.results.vald__vald}}</td></tr>
-                    -->
-
-                   <!-- <tr data-ng-if="detailCtrl.results.coord_det_method__value && detailCtrl.results.coord_det_method__value != null"><td>{{'API_TRANSLATION.LOCALITY.COORD_DET_METHOD__VALUE ' |translate }}</td><td>{{detailCtrl.results.coord_det_method__value}}</td></tr>
-                    <tr data-ng-if="detailCtrl.results.coord_det_method__value_en && detailCtrl.results.coord_det_method__value_en != null"><td>{{'API_TRANSLATION.LOCALITY.COORD_DET_METHOD__VALUE_EN ' |translate }}</td><td>{{detailCtrl.results.coord_det_method__value_en}}</td></tr>
-                    -->
-                    <tr data-ng-if="detailCtrl.results.maaamet_pa_id && detailCtrl.results.maaamet_pa_id != null"><td>{{'API_TRANSLATION.LOCALITY.MAAAMET_PA_ID ' |translate }}</td><td>{{detailCtrl.results.maaamet_pa_id}}</td></tr>
-
-                    <tr data-ng-if="detailCtrl.results.eelis && detailCtrl.results.eelis != null"><td>{{'API_TRANSLATION.LOCALITY.EELIS ' |translate }}</td><td>{{detailCtrl.results.eelis}}</td></tr>
-
-                    <tr data-ng-if="detailCtrl.results.remarks && detailCtrl.results.remarks != null"><td>{{'API_TRANSLATION.LOCALITY.REMARKS ' |translate }}</td><td>{{detailCtrl.results.remarks}}</td></tr>
-                    <tr data-ng-if="detailCtrl.results.user_added && detailCtrl.results.user_added != null"><td>{{'API_TRANSLATION.LOCALITY.USER_ADDED ' |translate }}</td><td>{{detailCtrl.results.user_added}}</td></tr>
-                    <tr data-ng-if="detailCtrl.results.date_added && detailCtrl.results.date_added != null"><td>{{'API_TRANSLATION.LOCALITY.DATE_ADDED ' |translate }}</td><td>{{detailCtrl.results.date_added | date:dateFormat}}</td></tr>
-                    <tr data-ng-if="detailCtrl.results.date_changed && detailCtrl.results.date_changed != null"><td>{{'API_TRANSLATION.LOCALITY.DATE_CHANGED ' |translate }}</td><td>{{detailCtrl.results.date_changed | date:dateFormat}}</td></tr>
                 </table>
             </div>
 
@@ -256,7 +249,7 @@
                     </thead>
 
                     <tbody>
-                        <tr style="cursor: pointer; " data-ng-repeat="specimen in detailCtrl.specimens">
+                        <tr data-ng-repeat="specimen in detailCtrl.specimens">
                             <td>
                                 <a href data-ng-click="openInNewWindow({object:'specimen',id:specimen.id})">{{specimen.id}}</a>
                             </td>
@@ -310,18 +303,18 @@
             </div>
 
             <div class="col-sm-6" data-ng-if="detailCtrl.localitySynonyms.length > 0">
-                <h3> {{ 'DETAIL.DETAIL_LOCALITY_SYNONYMS' | translate }} </h3>
+                <h3> {{ 'DETAIL.LOCALITY.SYNONYMS_HEADING' | translate }} </h3>
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
                     <tr>
-                        <th>Synonym</th>
-                        <th>Reference</th>
-                        <th>Pages</th>
-                        <th>Remarks</th>
+                        <th> {{ 'DETAIL.LOCALITY.SYNONYMS' | translate }} </th>
+                        <th> {{ 'DETAIL.LOCALITY.REFERENCE' | translate }} </th>
+                        <th> {{ 'DETAIL.LOCALITY.REFERENCE_PAGES' | translate }} </th>
+                        <th> {{ 'DETAIL.LOCALITY.REFERENCE_REMARKS' | translate }} </th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr style="cursor: pointer; " data-ng-repeat="entity in detailCtrl.localitySynonyms">
+                    <tr data-ng-repeat="entity in detailCtrl.localitySynonyms">
                         <td>{{entity.synonym}}</td>
                         <td>{{entity.reference__reference}}</td>
                         <td>{{entity.pages}}</td>
@@ -332,18 +325,18 @@
             </div>
 
             <div class="col-sm-6" data-ng-if="detailCtrl.localityReferences.length > 0">
-                <h3> {{ 'DETAIL.DETAIL_REFERENCES' | translate }} </h3>
+                <h3> {{ 'DETAIL.LOCALITY.REFERENCE_HEADING' | translate }} </h3>
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
                     <tr>
-                        <th>Reference</th>
-                        <th>Pages</th>
-                        <th>Figures</th>
-                        <th>Remarks</th>
+                        <th> {{ 'DETAIL.LOCALITY.REFERENCE' | translate }} </th>
+                        <th> {{ 'DETAIL.LOCALITY.REFERENCE_PAGES' | translate }} </th>
+                        <th> {{ 'DETAIL.LOCALITY.REFERENCE_FIGURES' | translate }} </th>
+                        <th> {{ 'DETAIL.LOCALITY.REFERENCE_REMARKS' | translate }} </th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr style="cursor: pointer; " data-ng-repeat="entity in detailCtrl.localityReferences">
+                    <tr data-ng-repeat="entity in detailCtrl.localityReferences">
                         <td>
                             <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference', id: entity.reference_id})">{{entity.reference__reference}}</a>
                         <td>{{ entity.pages }}</td>
@@ -365,7 +358,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr style="cursor: pointer; " data-ng-repeat="entity in detailCtrl.drillcores">
+                    <tr data-ng-repeat="entity in detailCtrl.drillcores">
                         <td><a href data-ng-click="detailCtrl.service.openInNewWindow({object:'drillcore',id:entity.id})">{{entity.drillcore}}</a></td>
                         <td>???</td>
                         <td>???</td>

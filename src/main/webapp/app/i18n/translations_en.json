@@ -479,7 +479,14 @@
             "LOCALITY": "Locality",
             "AUTHOR": "Author",
             "DATE": "Date",
-            "LINK": "Link"
+            "LINK": "Link",
+            "REFERENCE_HEADING": "References to locality",
+            "REFERENCE": "Reference",
+            "REFERENCE_PAGES": "Pgs.",
+            "REFERENCE_FIGURES": "Figs.",
+            "REFERENCE_REMARKS": "Remarks",
+            "SYNONYMS_HEADING": "Synonyms",
+            "SYNONYMS": "Name"
         },
         "ANALYSIS": {
             "RESULTS": "Analyses results",
