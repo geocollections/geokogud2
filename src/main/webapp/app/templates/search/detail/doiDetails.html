@@ -221,8 +221,8 @@
                 </table>
             </div>
 
-            <div class="col-sm-6" data-ng-if="detailCtrl.files.length > 0">
-                <!--<div data-ng-if="detailCtrl.files.length > 0">-->
+            <div class="col-sm-6">
+                <div data-ng-if="detailCtrl.files.length > 0">
                     <h3> {{ 'DETAIL.DETAIL_DOWNLOAD' | translate }} </h3>
                     <table class="table table-bordered table-hover">
                         <thead class="styles-for-table-headers">
@@ -246,7 +246,7 @@
                             </tr>
                         </tbody>
                     </table>
-                <!--</div>-->
+                </div>
             <!--</div>-->
 
             <!--<div class="col-sm-6" data-ng-if="detailCtrl.doiAgent.length > 0">-->
@@ -344,6 +344,7 @@
                     </div>
                     <localities-map localities="detailCtrl.localities"></localities-map>
                 </div>
+
             </div>
 
             <div class="col-sm-12" data-ng-if="false">

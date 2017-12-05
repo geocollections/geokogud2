@@ -18,6 +18,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import static ee.ttu.geocollection.interop.api.builder.ApiFields.*;
+
 @Service
 public class LocalitiesApiServiceImpl implements LocalitiesApiService {
 
@@ -78,11 +80,7 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
         String requestParams = prepareCommonFields(searchCriteria)
                 .queryId(searchCriteria.getId())
                 .buildFullQuery();
-        return apiService.searchRawEntities(
-                LOCALITY_TABLE,
-                searchCriteria.getPage(),
-                searchCriteria.getSortField(),
-                requestParams);
+        return apiService.searchRawEntities(LOCALITY_TABLE, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
     private FluentLocalitySearchApiBuilder prepareCommonFields(LocalitySearchCriteria searchCriteria) {
@@ -124,6 +122,7 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
                 .relatedData("drillcore")
                 .relatedData("locality_reference")
                 .relatedData("locality_synonym")
+                .relatedData("specimen")
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(LOCALITY_TABLE, requestParams);

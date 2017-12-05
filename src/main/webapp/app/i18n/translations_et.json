@@ -486,7 +486,11 @@
             "REFERENCE_FIGURES": "Joon.",
             "REFERENCE_REMARKS": "Lisainfo",
             "SYNONYMS_HEADING": "Nime sünonüümid",
-            "SYNONYMS": "Nimi"
+            "NAME": "Nimi",
+            "ID": "ID",
+            "STRATIGRAPHY": "Stratigraafia",
+            "STRATIGRAPHY_REMARKS": "Stratigraafia lisainfo",
+            "SPECIMEN": "Eksemplarid"
         },
         "ANALYSIS": {
             "RESULTS": "Analüüside tulemused",

@@ -235,136 +235,147 @@
                 </table>
             </div>
 
-            <div class="col-sm-6" data-ng-if="detailCtrl.specimens.length > 0">
-                <h3> {{ 'DETAIL.DETAIL_SPECIMEN' }} | translate </h3>
+            <div class="col-sm-6">
 
-                <table class="table table-bordered table-hover">
-                    <thead class="styles-for-table-headers">
+                <div data-ng-if="detailCtrl.locality.latitude && detailCtrl.locality.longitude">
+                    <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
+                    <div id='hoverbox' class='coupontooltip'>
+                        <div id='hoversystem'></div>
+                        <div id='hoverstat'></div>
+                    </div>
+                    <locality-map x = "detailCtrl.locality.latitude" y = "detailCtrl.locality.longitude" name = "detailCtrl.locality.localityEn" fid = "detailCtrl.locality.localityId"></locality-map>
+                    <a href data-ng-click="detailCtrl.service.showGoogleMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude, detailCtrl.locality.localityEn)">Google Maps</a></span>
+                    &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude)">Maa-amet / Estonian Land Board</a>
+                </div>
+
+                <div data-ng-if="detailCtrl.images.length > 0">
+                    <h3> {{ 'DETAIL.DETAIL_LINKED_FILES'| translate }} </h3>
+                    <table class="table table-bordered table-hover">
+                        <thead class="styles-for-table-headers">
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Stratigraphy</th>
-                            <th>Stratigraphy remarks</th>
+                            <th>{{'DETAIL.LOCALITY.TYPE ' |translate }}</th>
+                            <th>{{'DETAIL.LOCALITY.FILENAME ' |translate }}</th>
+                            <th>{{'DETAIL.LOCALITY.LOCALITY ' |translate }}</th>
+                            <th>{{'DETAIL.LOCALITY.AUTHOR ' |translate }}</th>
+                            <th>{{'DETAIL.LOCALITY.DATE ' |translate }}</th>
+                            <th>{{'DETAIL.LOCALITY.LINK ' |translate }}</th>
                         </tr>
-                    </thead>
+                        </thead>
+                        <tbody>
+                        <tr style="cursor: pointer; " data-ng-repeat="entity in detailCtrl.images">
+                            <td><localize et="entity.type__value" en="entity.type__value_en"/></td>
+                            <td>{{entity.filename}}</td>
+                            <td><a href data-ng-click="detailCtrl.service.openInNewWindow({object:'locality',id:entity.locality_id})"><localize et="entity.locality__locality" en="entity.locality__locality_en"/></a></td>
+                            <td>{{entity.author__forename}} {{entity.author__surename}}</td>
+                            <td>{{entity.date_added | date:dateFormat}}</td>
+                            <td><a href data-ng-click="detailCtrl.service.openInNewWindow({object:'image',id:entity.id})"><img src="http://geokogud.info/git/image/{{entity.imageset__imageset_series}}/{{entity.imageset__imageset_number}}/preview/{{entity.filename}}"></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                    <tbody>
+                <div data-ng-if="detailCtrl.localitySynonyms.length > 0">
+                    <h3> {{ 'DETAIL.LOCALITY.SYNONYMS_HEADING' | translate }} </h3>
+                    <table class="table table-bordered table-hover">
+                        <thead class="styles-for-table-headers">
+                        <tr>
+                            <th> {{ 'DETAIL.LOCALITY.NAME' | translate }} </th>
+                            <th> {{ 'DETAIL.LOCALITY.REFERENCE' | translate }} </th>
+                            <th> {{ 'DETAIL.LOCALITY.REFERENCE_PAGES' | translate }} </th>
+                            <th> {{ 'DETAIL.LOCALITY.REFERENCE_REMARKS' | translate }} </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr data-ng-repeat="entity in detailCtrl.localitySynonyms">
+                            <td>{{entity.synonym}}</td>
+                            <td>{{entity.reference__reference}}</td>
+                            <td>{{entity.pages}}</td>
+                            <td>{{entity.remarks}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div data-ng-if="detailCtrl.specimens.length > 0">
+                    <h3> {{ 'DETAIL.LOCALITY.SPECIMEN' | translate }} </h3>
+
+                    <table class="table table-bordered table-hover">
+                        <thead class="styles-for-table-headers">
+                        <tr>
+                            <th> {{ 'DETAIL.LOCALITY.ID' | translate }} </th>
+                            <th> {{ 'DETAIL.LOCALITY.NAME' | translate }} </th>
+                            <th> {{ 'DETAIL.LOCALITY.STRATIGRAPHY' | translate }} </th>
+                            <th> {{ 'DETAIL.LOCALITY.STRATIGRAPHY_REMARKS' | translate }} </th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
                         <tr data-ng-repeat="specimen in detailCtrl.specimens">
                             <td>
-                                <a href data-ng-click="openInNewWindow({object:'specimen',id:specimen.id})">{{specimen.id}}</a>
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen',id:specimen.id})"
+                                   data-ng-if="specimen.id != null">
+                                    {{specimen.id}}
+                                </a>
                             </td>
                             <td>
-                                <a href="http://fossiilid.info/{{specimen.taxonId}}">{{specimen.taxon}}</a>
+                                <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+specimen.specimenidentification__taxon_id})">
+                                    {{specimen.specimenidentification__taxon__taxon}}
+                                </a>
                             </td>
-                            <td>{{specimen.stratigraphy}}</td>
-                            <td>stratigraphy_free</td>
+                            <td>
+                                <localize et="specimen.stratigraphy__stratigraphy" en="stratigraphy__stratigraphy_en" />
+                            </td>
+                            <td> {{ specimen.stratigraphy__remarks }} </td>
                         </tr>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
 
-            <a href="">Show all specimens ???</a>
-            </div>
-
-            <div class="col-sm-6" data-ng-if="detailCtrl.locality.latitude && detailCtrl.locality.longitude">
-                <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
-                <div id='hoverbox' class='coupontooltip'>
-                    <div id='hoversystem'></div>
-                    <div id='hoverstat'></div>
+                    <a href="">TODO: Show all specimens</a>
                 </div>
-                <locality-map x = "detailCtrl.locality.latitude" y = "detailCtrl.locality.longitude" name = "detailCtrl.locality.localityEn" fid = "detailCtrl.locality.localityId"></locality-map>
-                <a href data-ng-click="detailCtrl.service.showGoogleMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude, detailCtrl.locality.localityEn)">Google Maps</a></span>
-                &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude)">Maa-amet / Estonian Land Board</a>
-            </div>
 
-            <div class="col-sm-6" data-ng-if="detailCtrl.images.length > 0">
-                <h3> {{ 'DETAIL.DETAIL_LINKED_FILES'| translate }} </h3>
-                <table class="table table-bordered table-hover">
-                    <thead class="styles-for-table-headers">
-                    <tr>
-                        <th>{{'DETAIL.LOCALITY.TYPE ' |translate }}</th>
-                        <th>{{'DETAIL.LOCALITY.FILENAME ' |translate }}</th>
-                        <th>{{'DETAIL.LOCALITY.LOCALITY ' |translate }}</th>
-                        <th>{{'DETAIL.LOCALITY.AUTHOR ' |translate }}</th>
-                        <th>{{'DETAIL.LOCALITY.DATE ' |translate }}</th>
-                        <th>{{'DETAIL.LOCALITY.LINK ' |translate }}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr style="cursor: pointer; " data-ng-repeat="entity in detailCtrl.images">
-                        <td><localize et="entity.type__value" en="entity.type__value_en"/></td>
-                        <td>{{entity.filename}}</td>
-                        <td><a href data-ng-click="detailCtrl.service.openInNewWindow({object:'locality',id:entity.locality_id})"><localize et="entity.locality__locality" en="entity.locality__locality_en"/></a></td>
-                        <td>{{entity.author__forename}} {{entity.author__surename}}</td>
-                        <td>{{entity.date_added | date:dateFormat}}</td>
-                        <td><a href data-ng-click="detailCtrl.service.openInNewWindow({object:'image',id:entity.id})"><img src="http://geokogud.info/git/image/{{entity.imageset__imageset_series}}/{{entity.imageset__imageset_number}}/preview/{{entity.filename}}"></a></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+                <div data-ng-if="detailCtrl.localityReferences.length > 0">
+                    <h3> {{ 'DETAIL.LOCALITY.REFERENCE_HEADING' | translate }} </h3>
+                    <table class="table table-bordered table-hover">
+                        <thead class="styles-for-table-headers">
+                        <tr>
+                            <th> {{ 'DETAIL.LOCALITY.REFERENCE' | translate }} </th>
+                            <th> {{ 'DETAIL.LOCALITY.REFERENCE_PAGES' | translate }} </th>
+                            <th> {{ 'DETAIL.LOCALITY.REFERENCE_FIGURES' | translate }} </th>
+                            <th> {{ 'DETAIL.LOCALITY.REFERENCE_REMARKS' | translate }} </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr data-ng-repeat="entity in detailCtrl.localityReferences">
+                            <td>
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference', id: entity.reference_id})">{{entity.reference__reference}}</a>
+                            <td>{{ entity.pages }}</td>
+                            <td>{{ entity.figures }}</td>
+                            <td>{{ entity.remarks }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-            <div class="col-sm-6" data-ng-if="detailCtrl.localitySynonyms.length > 0">
-                <h3> {{ 'DETAIL.LOCALITY.SYNONYMS_HEADING' | translate }} </h3>
-                <table class="table table-bordered table-hover">
-                    <thead class="styles-for-table-headers">
-                    <tr>
-                        <th> {{ 'DETAIL.LOCALITY.SYNONYMS' | translate }} </th>
-                        <th> {{ 'DETAIL.LOCALITY.REFERENCE' | translate }} </th>
-                        <th> {{ 'DETAIL.LOCALITY.REFERENCE_PAGES' | translate }} </th>
-                        <th> {{ 'DETAIL.LOCALITY.REFERENCE_REMARKS' | translate }} </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr data-ng-repeat="entity in detailCtrl.localitySynonyms">
-                        <td>{{entity.synonym}}</td>
-                        <td>{{entity.reference__reference}}</td>
-                        <td>{{entity.pages}}</td>
-                        <td>{{entity.remarks}}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+                <div data-ng-if="detailCtrl.drillcores.length > 0">
+                    <h3> {{ 'DETAIL.DETAIL_DRILLCORES' | translate }} </h3>
+                    <table class="table table-bordered table-hover">
+                        <thead class="styles-for-table-headers">
+                        <tr>
+                            <th>Drillcore</th>
+                            <th>???</th>
+                            <th>???</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr data-ng-repeat="entity in detailCtrl.drillcores">
+                            <td><a href data-ng-click="detailCtrl.service.openInNewWindow({object:'drillcore',id:entity.id})">{{entity.drillcore}}</a></td>
+                            <td>???</td>
+                            <td>???</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-            <div class="col-sm-6" data-ng-if="detailCtrl.localityReferences.length > 0">
-                <h3> {{ 'DETAIL.LOCALITY.REFERENCE_HEADING' | translate }} </h3>
-                <table class="table table-bordered table-hover">
-                    <thead class="styles-for-table-headers">
-                    <tr>
-                        <th> {{ 'DETAIL.LOCALITY.REFERENCE' | translate }} </th>
-                        <th> {{ 'DETAIL.LOCALITY.REFERENCE_PAGES' | translate }} </th>
-                        <th> {{ 'DETAIL.LOCALITY.REFERENCE_FIGURES' | translate }} </th>
-                        <th> {{ 'DETAIL.LOCALITY.REFERENCE_REMARKS' | translate }} </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr data-ng-repeat="entity in detailCtrl.localityReferences">
-                        <td>
-                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference', id: entity.reference_id})">{{entity.reference__reference}}</a>
-                        <td>{{ entity.pages }}</td>
-                        <td>{{ entity.figures }}</td>
-                        <td>{{ entity.remarks }}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="col-lg-6" data-ng-if="detailCtrl.drillcores.length > 0">
-                <h3> {{ 'DETAIL.DETAIL_DRILLCORES' | translate }} </h3>
-                <table class="table table-bordered table-hover">
-                    <thead class="styles-for-table-headers">
-                    <tr>
-                        <th>Drillcore</th>
-                        <th>???</th>
-                        <th>???</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr data-ng-repeat="entity in detailCtrl.drillcores">
-                        <td><a href data-ng-click="detailCtrl.service.openInNewWindow({object:'drillcore',id:entity.id})">{{entity.drillcore}}</a></td>
-                        <td>???</td>
-                        <td>???</td>
-                    </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
 

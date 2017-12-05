@@ -486,7 +486,11 @@
             "REFERENCE_FIGURES": "Figs.",
             "REFERENCE_REMARKS": "Remarks",
             "SYNONYMS_HEADING": "Synonyms",
-            "SYNONYMS": "Name"
+            "NAME": "Name",
+            "ID": "ID",
+            "STRATIGRAPHY": "Stratigraphy",
+            "STRATIGRAPHY_REMARKS": "Stratigraphy remarks",
+            "SPECIMEN": "Specimens"
         },
         "ANALYSIS": {
             "RESULTS": "Analyses results",
