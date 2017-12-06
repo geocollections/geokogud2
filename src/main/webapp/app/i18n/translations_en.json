@@ -470,10 +470,16 @@
             "TO": "End (m)",
             "DEPTH": "Reference depths",
             "STRATIGRAPHY_TOP": "Stratigraphy top",
+            "STRATIGRAPHY_TOP_FREE": "Stratigraphy top",
             "STRATIGRAPHY_BASE": "Stratigraphy base",
+            "STRATIGRAPHY_BASE_FREE": "Stratigraphy base",
             "STRATIGRAPHY": "Stratigraphy",
             "ADDITIONAL": "Remarks",
-            "PHOTO": "Photo"
+            "PHOTO": "Photo",
+            "LOCATION": "Location code",
+            "REMARKS": "Remarks",
+            "DATE_ADDED": "Date added",
+            "DATE_CHANGED": "Date changed"
         },
         "LOCALITY": {
             "TYPE": "Type",

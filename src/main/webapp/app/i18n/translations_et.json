@@ -470,10 +470,16 @@
             "TO": "Lõpp (m)",
             "DEPTH": "Sügavused",
             "STRATIGRAPHY_TOP": "Stratigraafia ülem.",
+            "STRATIGRAPHY_TOP_FREE": "Stratigraafia ülem.",
             "STRATIGRAPHY_BASE": "Stratigraphy alum.",
+            "STRATIGRAPHY_BASE_FREE": "Stratigraphy alum.",
             "STRATIGRAPHY": "Stratigraphy",
             "ADDITIONAL": "Lisainfo",
-            "PHOTO": "Foto"
+            "PHOTO": "Foto",
+            "LOCATION": "Asukoha kood",
+            "REMARKS": "Lisainfo",
+            "DATE_ADDED": "Kirje sisestatud",
+            "DATE_CHANGED": "Kirje muudetud"
         },
         "LOCALITY": {
             "TYPE": "Tüüp",

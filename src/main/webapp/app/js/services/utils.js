@@ -212,6 +212,7 @@ var constructor = function ($http, $location, configuration) {
         if(urlParams["page"] != null) {
             searchParams["page"] = Number(urlParams["page"]);
         }
+        // TODO: Drillcore search broken here,
         angular.forEach(configuration.urlHelper.specialFields, function(specialField) {
             if(urlParams[specialField + "_1"] != null && urlParams[specialField] != null) {
                 var specialFieldLookUpType = urlParams[specialField + "_1"].split(" ");

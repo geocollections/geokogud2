@@ -26,8 +26,6 @@
                 </div>
 
                 <table class="table table-bordered table-hover table-header-styles">
-                    <thead>
-                    </thead>
 
                     <tbody>
                         <tr data-ng-if="detailCtrl.results.id && detailCtrl.results.id != null">
@@ -81,8 +79,13 @@
                             </td>
                         </tr>
 
+                        <tr data-ng-if="detailCtrl.results.stratigraphy_top_free && detailCtrl.results.stratigraphy_top_free != null">
+                            <td> {{ 'DETAIL.CORE_BOX.STRATIGRAPHY_TOP_FREE'| translate }} </td>
+                            <td> {{ detailCtrl.results.stratigraphy_top_free }} </td>
+                        </tr>
+
                         <tr data-ng-if="detailCtrl.results.stratigraphy_base__stratigraphy && detailCtrl.results.stratigraphy_base__stratigraphy != null
-                        || detailCtrl.results.stratigraphy_base__stratigraphy_en && detailCtrl.results.stratigraphy_base__stratigraphy_en != null">
+                            || detailCtrl.results.stratigraphy_base__stratigraphy_en && detailCtrl.results.stratigraphy_base__stratigraphy_en != null">
                             <td>{{ 'DETAIL.CORE_BOX.STRATIGRAPHY_BASE'| translate }}</td>
                             <td>
                                 <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: detailCtrl.results.stratigraphy_base_id})">
@@ -90,6 +93,31 @@
                                               en="detailCtrl.results.stratigraphy_base__stratigraphy_en"/>
                                 </a>
                             </td>
+                        </tr>
+
+                        <tr data-ng-if="detailCtrl.results.stratigraphy_base_free && detailCtrl.results.stratigraphy_base_free != null">
+                            <td> {{ 'DETAIL.CORE_BOX.STRATIGRAPHY_BASE_FREE'| translate }} </td>
+                            <td> {{ detailCtrl.results.stratigraphy_base_free }} </td>
+                        </tr>
+
+                        <tr data-ng-if="detailCtrl.results.location && detailCtrl.results.location != null">
+                            <td> {{ 'DETAIL.CORE_BOX.LOCATION'| translate }} </td>
+                            <td> {{ detailCtrl.results.location }} </td>
+                        </tr>
+
+                        <tr data-ng-if="detailCtrl.results.remarks && detailCtrl.results.remarks != null">
+                            <td> {{ 'DETAIL.CORE_BOX.REMARKS'| translate }} </td>
+                            <td> {{ detailCtrl.results.remarks }} </td>
+                        </tr>
+
+                        <tr data-ng-if="detailCtrl.results.date_added && detailCtrl.results.date_added != null">
+                            <td> {{ 'DETAIL.CORE_BOX.DATE_ADDED'| translate }} </td>
+                            <td> {{ detailCtrl.results.date_added | date:dateFormat }} </td>
+                        </tr>
+
+                        <tr data-ng-if="detailCtrl.results.date_changed && detailCtrl.results.date_changed != null">
+                            <td> {{ 'DETAIL.CORE_BOX.DATE_CHANGED'| translate }} </td>
+                            <td> {{ detailCtrl.results.date_changed | date:dateFormat }} </td>
                         </tr>
 
                     </tbody>
