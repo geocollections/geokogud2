@@ -16,6 +16,15 @@
                     <h4> {{ 'DETAIL.DRILLCORE.BOX_NUMBER'| translate }} {{ detailCtrl.results.number }} </h4>
                 </div>
 
+                <div class="row core-box-previous-next" ng-if="detailCtrl.results.id">
+                    <a class="pull-left" href data-ng-click="detailCtrl.reload(detailCtrl.results.id - 1)">
+                        {{ 'DETAIL.PREVIOUS'| translate }}
+                    </a>
+                    <a class="pull-right" href data-ng-click="detailCtrl.reload(detailCtrl.results.id + 1)">
+                        {{ 'DETAIL.NEXT'| translate }}
+                    </a>
+                </div>
+
                 <table class="table table-bordered table-hover table-header-styles">
                     <thead>
                     </thead>
@@ -86,26 +95,34 @@
                     </tbody>
                 </table>
 
+                <div class="row core-box-image">
 
-                <div class="row" ng-if="detailCtrl.results.id" style="padding: 15px;">
-                    <a class="pull-left" href data-ng-click="detailCtrl.reload(detailCtrl.results.id - 1)">
-                        {{ 'DETAIL.PREVIOUS'| translate }}
-                    </a>
-                    <a class="pull-right" href data-ng-click="detailCtrl.reload(detailCtrl.results.id + 1)">
-                        {{ 'DETAIL.NEXT'| translate }}
-                    </a>
-                </div>
+                    <div class="col-sm-12">
+                        <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.coreboxImageUrl})"
+                           title="{{detailCtrl.coreboxImageUrl}}">
+                            <img spinner-load ng-src="{{detailCtrl.service.getDrillcoreImageUrl({
+                                database: detailCtrl.results.database__acronym,
+                                id: detailCtrl.results.drillcore__id,
+                                filename: detailCtrl.results.drillcoreimage__image,
+                                preview: true})}}">
+                        </a>
+                    </div>
 
+                    <div class="photo-author">
+                        {{ 'DETAIL.CORE_BOX.PHOTO' | translate }}:
+                        {{detailCtrl.results.drillcoreimage__agent__agent}} {{detailCtrl.results.drillcoreimage__image_date | date:dateFormat}}
+                    </div>
 
-                <div class="row" style="text-align: center">
+                    <div class="col-sm-12">
+                        {{'API_TRANSLATION.PHOTO_ARCHIVE.SIZE ' | translate }}:
+                        <a href="{{detailCtrl.externalCoreboxImagePath}}600" target="_blank">600px</a>
+                        | <a href="{{detailCtrl.externalCoreboxImagePath}}1024" target="_blank">1024px</a>
+                        | <a href="{{detailCtrl.externalCoreboxImagePath}}1440" target="_blank">1440px</a>
+                        | <a href="{{detailCtrl.externalCoreboxImagePath}}1600" target="_blank">1600px</a>
+                        | <a href="{{detailCtrl.externalCoreboxImagePath}}1920" target="_blank">1920px</a>
+                        | <a href="{{detailCtrl.coreboxImageUrl}}" target="_blank">Original</a>
+                    </div>
 
-                    <img src="{{detailCtrl.service.getDrillcoreImageUrl({
-                            database: detailCtrl.results.database__acronym,
-                            id: detailCtrl.results.drillcore__id,
-                            filename: detailCtrl.results.drillcoreimage__image,
-                            preview: true})}}">
-
-                    <div>{{ 'DETAIL.CORE_BOX.PHOTO' | translate }}: {{detailCtrl.results.drillcoreimage__agent__agent}} {{detailCtrl.results.drillcoreimage__image_date | date:dateFormat}}</div>
                 </div>
 
 

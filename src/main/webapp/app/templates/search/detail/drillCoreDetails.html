@@ -154,8 +154,8 @@
 
                         <tr>
                             <td id="drillcore-image-background" colspan="2">
-                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'corebox',id:box.id})" alt="tere" title="{{ 'DETAIL.DRILLCORE.COREBOX_DETAILS' | translate }}">
-                                    <img src="{{detailCtrl.service.getDrillcoreImageUrl({
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'corebox',id:box.id})" title="{{ 'DETAIL.DRILLCORE.COREBOX_DETAILS' | translate }}">
+                                    <img ng-src="{{detailCtrl.service.getDrillcoreImageUrl({
                                             database: detailCtrl.results.database__acronym,
                                             id: detailCtrl.results.id,
                                             filename: box.drillcoreimage__image,

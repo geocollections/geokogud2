@@ -701,6 +701,26 @@ table tr > td:first-child {
 /* DRILLCORE END */
 
 
+/* COREBOX START */
+
+.core-box-previous-next {
+    padding: 0 15px;
+    margin-bottom: 10px;
+}
+
+.core-box-image {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.photo-author {
+    font-size: smaller;
+    margin-bottom: 5px;
+}
+
+/* COREBOX END */
+
+
 /*******************************
  ***  DETAILVIEW STYLES END  ***
  *******************************/

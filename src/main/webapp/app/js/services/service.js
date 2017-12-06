@@ -95,10 +95,28 @@ var constructor = function (utils, configuration, $window, $location) {
             return composeImageExternalPath(imageData)
         }
     };
+
     service.getDownloadLink = function (fileName) {
         return "http://geokogud.info/files/"+fileName.substring(0,2)+"/"+fileName;
     };
 
+    // Used only on corebox detail view
+    service.composeCoreboxImageUrl = function (imageData) {
+        console.log(imageData);
+        var imageUrl = "https://geokogud.info/" + imageData.database__acronym.toLowerCase() + "/drillcore_image/" + imageData.drillcore__id + "/";
+        return imageUrl + imageData.drillcoreimage__image;
+    };
+
+    service.composeExternalCoreboxImagePath = function (imageData) {
+        var imageUrl = "http://geokogud.info/di.php?f=/var/www/"
+            + imageData.database__acronym.toLowerCase() + "/"
+            + "drillcore_image/"
+            + imageData.drillcore__id + "/"
+            + imageData.drillcoreimage__image + "&w=";
+        return imageUrl;
+    };
+
+    // Used on drillcore detail view to show corebox images which come from related_data
     function getDrillcoreImageUrl(params) {
         if (params.database != null) {
             var imageUrl = "https://geokogud.info/" + params.database.toLowerCase() + "/drillcore_image/" + params.id;
@@ -230,6 +248,7 @@ var constructor = function (utils, configuration, $window, $location) {
     }
 
     function openUrlInNewWindow(params) {
+        console.log(params.url);
         $window.open(params.url, '', 'width=600,height=750,scrollbars, resizable');
     }
 

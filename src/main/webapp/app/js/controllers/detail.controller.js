@@ -36,6 +36,8 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
         getRelatedData();
         vm.localities = (['doi'].indexOf($stateParams.type) > -1 ? getLocalities(): []);
 
+        vm.coreboxImageUrl = (['corebox'].indexOf($stateParams.type) > -1  ? vm.service.composeCoreboxImageUrl(vm.results) : null);
+        vm.externalCoreboxImagePath = (['corebox'].indexOf($stateParams.type) > -1  ? vm.service.composeExternalCoreboxImagePath(vm.results) : null);
     }
 
     function onDetailError(error) {
