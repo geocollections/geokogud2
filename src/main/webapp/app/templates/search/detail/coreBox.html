@@ -17,6 +17,7 @@
                 </div>
 
                 <div class="row core-box-previous-next" ng-if="detailCtrl.results.id">
+                    <!-- TODO: Also should work when pressing left and right arrow keys -->
                     <a class="pull-left" href data-ng-click="detailCtrl.reload(detailCtrl.results.id - 1)">
                         {{ 'DETAIL.PREVIOUS'| translate }}
                     </a>

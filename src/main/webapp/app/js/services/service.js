@@ -107,6 +107,7 @@ var constructor = function (utils, configuration, $window, $location) {
         return imageUrl + imageData.drillcoreimage__image;
     };
 
+    // Used onlt on corebox detail view for different sizes
     service.composeExternalCoreboxImagePath = function (imageData) {
         var imageUrl = "http://geokogud.info/di.php?f=/var/www/"
             + imageData.database__acronym.toLowerCase() + "/"
@@ -148,6 +149,7 @@ var constructor = function (utils, configuration, $window, $location) {
             + imageData.imageset__imageset_series + "/"
             + imageData.imageset__imageset_number + "/"
             + imageData.filename;
+        console.log(imageUrl);
         return imageUrl;
     }
 

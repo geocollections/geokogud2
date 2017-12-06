@@ -12,7 +12,6 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
     searchEntity();
 
     /**
-     *
      * type and id are for example: locality and 22860
      */
     function searchEntity () {
