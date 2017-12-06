@@ -238,7 +238,9 @@
             "REMARKS":"Lisainfo",
             "USER_ADDED":"Kasutaja",
             "DATE_ADDED":"Kirje lisatud",
-            "DATE_CHANGED":"Kirje muudetud"
+            "DATE_CHANGED":"Kirje muudetud",
+            "DRILLCORE": "Puursüdamik",
+            "COREBOX": "südamikukast(i)"
         },
         "REFERENCE" : {
             "ID":"ID",

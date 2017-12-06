@@ -195,6 +195,14 @@
                     </tr>
 
                     <!-- TODO: drillcore -->
+                    <tr data-ng-if="detailCtrl.drillcores.length > 0" ng-repeat="entity in detailCtrl.drillcores | limitTo:1">
+                        <td> {{ 'API_TRANSLATION.LOCALITY.DRILLCORE' | translate }} </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'drillcore',id:entity.id})">
+                                {{entity.boxes}} {{ 'API_TRANSLATION.LOCALITY.COREBOX' | translate }}
+                            </a>
+                        </td>
+                    </tr>
 
                     <tr data-ng-if="detailCtrl.results.localitystratigraphy__stratigraphy__stratigraphy_en
                         && detailCtrl.results.localitystratigraphy__stratigraphy__stratigraphy_en != null">

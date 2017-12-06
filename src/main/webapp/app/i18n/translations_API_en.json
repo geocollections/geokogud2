@@ -245,7 +245,9 @@
             "REMARKS":"Remarks",
             "USER_ADDED":"User",
             "DATE_ADDED":"Record added",
-            "DATE_CHANGED":"Record changed"
+            "DATE_CHANGED":"Record changed",
+            "DRILLCORE": "Drillcore",
+            "COREBOX": "core box(es)"
         },
         "REFERENCE" : {
             "ID":"ID",
