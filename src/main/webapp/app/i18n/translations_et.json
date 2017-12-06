@@ -465,14 +465,15 @@
             "LOCALITY": "Leiukoht",
             "ID": "Südamikukasti ID",
             "NUMBER": "Number",
-            "INBOX": "m kastis",
-            "SINCE": "Algus(m)",
-            "TO": "Lõpp(m)",
+            "INBOX": "Meetreid kastis",
+            "SINCE": "Algus (m)",
+            "TO": "Lõpp (m)",
             "DEPTH": "Sügavused",
             "STRATIGRAPHY_TOP": "Stratigraafia ülem.",
             "STRATIGRAPHY_BASE": "Stratigraphy alum.",
             "STRATIGRAPHY": "Stratigraphy",
-            "ADDITIONAL": "Lisainfo"
+            "ADDITIONAL": "Lisainfo",
+            "PHOTO": "Foto"
         },
         "LOCALITY": {
             "TYPE": "Tüüp",

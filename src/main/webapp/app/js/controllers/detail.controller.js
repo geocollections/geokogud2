@@ -64,16 +64,21 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
         });
         return localities;
     }
+
+    // Needed for map
     function getLocality() {
-        var localityFields = configuration.detailFieldsConfig[$stateParams.type].locality;
-        if(localityFields) {
-            vm.locality = {
-                latitude : vm.results[localityFields.lat],
-                longitude : vm.results[localityFields.lon],
-                localityId : vm.results[localityFields.id],
-                localityEn : vm.results[localityFields.value_en],
-                countryEn : vm.results[localityFields.country]
-            };
+        // Does not run if on corebox detail view
+        if ($stateParams.type !== "corebox") {
+            var localityFields = configuration.detailFieldsConfig[$stateParams.type].locality;
+            if (localityFields) {
+                vm.locality = {
+                    latitude: vm.results[localityFields.lat],
+                    longitude: vm.results[localityFields.lon],
+                    localityId: vm.results[localityFields.id],
+                    localityEn: vm.results[localityFields.value_en],
+                    countryEn: vm.results[localityFields.country]
+                };
+            }
         }
     }
 

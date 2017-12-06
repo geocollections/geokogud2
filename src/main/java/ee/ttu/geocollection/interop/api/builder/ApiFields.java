@@ -123,6 +123,8 @@ public class ApiFields {
     public static final String LOCALITY_LONGITUDE = "locality__longitude";
     public static final String DEPTH = "depth";
     public static final String BOXES = "boxes";
+    public static final String DRILLCORE_ID = "drillcore__id";
+    public static final String DRILLCORE_LOCALITY = "drillcore__locality";
 
     // Locality search
     public static final String LOCALITY_STRATIGRAPHY = "localitystratigraphy__stratigraphy__stratigraphy_en";

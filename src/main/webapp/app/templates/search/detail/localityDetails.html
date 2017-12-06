@@ -196,9 +196,14 @@
                     
                     <tr data-ng-if="detailCtrl.drillcores.length > 0" ng-repeat="entity in detailCtrl.drillcores | limitTo:1">
                         <td> {{ 'API_TRANSLATION.LOCALITY.DRILLCORE' | translate }} </td>
-                        <td>
+                        <td data-ng-if="entity.boxes != null">
                             <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'drillcore',id:entity.id})">
                                 {{entity.boxes}} {{ 'API_TRANSLATION.LOCALITY.COREBOX' | translate }}
+                            </a>
+                        </td>
+                        <td data-ng-if="entity.boxes == null">
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'drillcore',id:entity.id})">
+                                0 {{ 'API_TRANSLATION.LOCALITY.COREBOX' | translate }}
                             </a>
                         </td>
                     </tr>
@@ -349,7 +354,7 @@
 
                     </table>
 
-                    <a href data-ng-click="detailCtrl.service.searchAllSpecimenInLocality({locality: detailCtrl.results.locality})" target="_self">
+                    <a href data-ng-click="detailCtrl.service.searchAllSpecimenInLocality({locality: detailCtrl.results.locality})" target="_blank">
                         {{ 'DETAIL.LOCALITY.ALL_SPECIMEN' | translate}} ({{detailCtrl.specimens.length}})
                     </a>
                 </div>

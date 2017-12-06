@@ -118,7 +118,7 @@
 
         <div class="row">
 
-            <div class="col-sm-12">
+            <div class="col-sm-12" data-ng-if="detailCtrl.drillcoreBoxes.length > 0">
                 <h2>{{ 'DETAIL.DRILLCORE.DRILLCORE_BOXES'| translate }}</h2>
                 <table class="table-bordered table-hover drillcore-tables" data-ng-repeat="box in detailCtrl.drillcoreBoxes">
                     <tbody>
@@ -129,24 +129,24 @@
                         </tr>
 
                         <tr>
-                            <td>{{ 'DETAIL.DRILLCORE.SINCE'| translate }}:</td>
+                            <td>{{ 'DETAIL.DRILLCORE.SINCE'| translate }}</td>
                             <td>{{box.depth_start}}</td>
                         </tr>
 
                         <tr>
-                            <td>{{ 'DETAIL.DRILLCORE.TO'| translate }}:</td>
+                            <td>{{ 'DETAIL.DRILLCORE.TO'| translate }}</td>
                             <td>{{box.depth_end}}</td>
                         </tr>
 
                         <tr>
-                            <td>{{ 'DETAIL.DRILLCORE.STRATIGRAPHY_TOP'| translate }}:</td>
+                            <td>{{ 'DETAIL.DRILLCORE.STRATIGRAPHY_TOP'| translate }}</td>
                             <td>
                                 <localize et="box.stratigraphy_top__stratigraphy" en="box.stratigraphy_top__stratigraphy_en" />
                             </td>
                         </tr>
 
                         <tr>
-                            <td>{{ 'DETAIL.DRILLCORE.STRATIGRAPHY_BASE'| translate }}:</td>
+                            <td>{{ 'DETAIL.DRILLCORE.STRATIGRAPHY_BASE'| translate }}</td>
                             <td>
                                 <localize et="box.stratigraphy_base__stratigraphy" en="box.stratigraphy_base__stratigraphy_en" />
                             </td>
@@ -156,9 +156,10 @@
                             <td id="drillcore-image-background" colspan="2">
                                 <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'corebox',id:box.id})" alt="tere" title="{{ 'DETAIL.DRILLCORE.COREBOX_DETAILS' | translate }}">
                                     <img src="{{detailCtrl.service.getDrillcoreImageUrl({
-                                            database: detailCtrl.results.database__acronym.toLowerCase(),
+                                            database: detailCtrl.results.database__acronym,
                                             id: detailCtrl.results.id,
-                                            filename: box.drillcoreimage__image})}}" />
+                                            filename: box.drillcoreimage__image,
+                                            preview:true})}}" />
                                 </a>
                             </td>
                         </tr>

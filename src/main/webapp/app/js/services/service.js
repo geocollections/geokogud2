@@ -100,8 +100,15 @@ var constructor = function (utils, configuration, $window, $location) {
     };
 
     function getDrillcoreImageUrl(params) {
-        var imageUrl = "https://geokogud.info/" + params.database + "/drillcore_image/" + params.id + "/preview/";
-        return imageUrl + params.filename;
+        if (params.database != null) {
+            var imageUrl = "https://geokogud.info/" + params.database.toLowerCase() + "/drillcore_image/" + params.id;
+            if (params.preview) {
+                imageUrl +=  "/preview/";
+            } else {
+                imageUrl += "/";
+            }
+            return imageUrl + params.filename;
+        }
     }
 
     function composeSpecimenExternalPath(imageData) {

@@ -465,14 +465,15 @@
             "LOCALITY": "Locality",
             "ID": "Corebox ID",
             "NUMBER": "Number",
-            "INBOX": "m in box",
+            "INBOX": "Meters in box",
             "SINCE": "Start (m)",
             "TO": "End (m)",
             "DEPTH": "Reference depths",
             "STRATIGRAPHY_TOP": "Stratigraphy top",
             "STRATIGRAPHY_BASE": "Stratigraphy base",
             "STRATIGRAPHY": "Stratigraphy",
-            "ADDITIONAL": "Remarks"
+            "ADDITIONAL": "Remarks",
+            "PHOTO": "Photo"
         },
         "LOCALITY": {
             "TYPE": "Type",

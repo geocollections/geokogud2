@@ -9,12 +9,10 @@
                  bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
 
                 <div class="detailview-title">
-                    <h3>
-                        <label>
-                            <localize en="detailCtrl.results.drillcore__drillcore_en"
-                                      et="detailCtrl.results.drillcore__drillcore"/>
-                        </label>
-                    </h3>
+                    <h2>
+                        <localize en="detailCtrl.results.drillcore__drillcore_en"
+                                  et="detailCtrl.results.drillcore__drillcore"/>
+                    </h2>
                     <h4> {{ 'DETAIL.DRILLCORE.BOX_NUMBER'| translate }} {{ detailCtrl.results.number }} </h4>
                 </div>
 
@@ -23,47 +21,68 @@
                     </thead>
 
                     <tbody>
-                        <tr>
+                        <tr data-ng-if="detailCtrl.results.id && detailCtrl.results.id != null">
                             <td> {{ 'DETAIL.CORE_BOX.ID'| translate }} </td>
                             <td> {{ detailCtrl.results.id }} </td>
                         </tr>
-                        <tr>
+
+                        <tr data-ng-if="detailCtrl.results.drillcore__drillcore_en && detailCtrl.results.drillcore__drillcore_en != null
+                            || detailCtrl.results.drillcore__drillcore && detailCtrl.results.drillcore__drillcore != null">
                             <td>{{ 'DETAIL.CORE_BOX.LOCALITY'| translate }}</td>
                             <td>
-                                <localize en="detailCtrl.results.drillcore__drillcore_en" et="detailCtrl.results.drillcore__drillcore"/>
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'locality', id: detailCtrl.results.drillcore__locality})">
+                                    <localize en="detailCtrl.results.drillcore__drillcore_en" et="detailCtrl.results.drillcore__drillcore"/>
+                                </a>
                             </td>
                         </tr>
-                        <tr>
+
+                        <tr data-ng-if="detailCtrl.results.number && detailCtrl.results.number != null">
                             <td>{{ 'DETAIL.CORE_BOX.NUMBER'| translate }}</td>
-                            <td>{{detailCtrl.results.number}}</td></tr>
-                        <tr>
+                            <td>{{detailCtrl.results.number}}</td>
+                        </tr>
+
+                        <tr data-ng-if="detailCtrl.results.number_meters && detailCtrl.results.number_meters != null">
                             <td>{{ 'DETAIL.CORE_BOX.INBOX'| translate }}</td>
-                            <td>{{detailCtrl.results.number_meters}}</td></tr>
-                        <tr>
+                            <td>{{detailCtrl.results.number_meters}}</td>
+                        </tr>
+
+                        <tr data-ng-if="detailCtrl.results.depth_start && detailCtrl.results.depth_start != null">
                             <td>{{ 'DETAIL.CORE_BOX.SINCE'| translate }}</td>
-                            <td>{{detailCtrl.results.depth_start}}</td></tr>
-                        <tr>
+                            <td>{{detailCtrl.results.depth_start}}</td>
+                        </tr>
+
+                        <tr data-ng-if="detailCtrl.results.depth_end && detailCtrl.results.depth_end != null">
                             <td>{{ 'DETAIL.CORE_BOX.TO'| translate }}</td>
-                            <td>{{detailCtrl.results.depth_end}}</td></tr>
-                        <tr>
+                            <td>{{detailCtrl.results.depth_end}}</td>
+                        </tr>
+
+                        <tr data-ng-if="detailCtrl.results.depth_other && detailCtrl.results.depth_other != null">
                             <td>{{ 'DETAIL.CORE_BOX.DEPTH'| translate }}</td>
-                            <td>{{detailCtrl.results.depth_other}}</td></tr>
-                        <tr>
+                            <td>{{detailCtrl.results.depth_other}}</td>
+                        </tr>
+
+                        <tr data-ng-if="detailCtrl.results.stratigraphy_top__stratigraphy && detailCtrl.results.stratigraphy_top__stratigraphy != null
+                            || detailCtrl.results.stratigraphy_top__stratigraphy_en && detailCtrl.results.stratigraphy_top__stratigraphy_en != null">
                             <td>{{ 'DETAIL.CORE_BOX.STRATIGRAPHY_TOP'| translate }}</td>
                             <td>
-                                <localize et="detailCtrl.results.stratigraphy_top__stratigraphy"
-                                          en="detailCtrl.results.stratigraphy_top__stratigraphy_en"/>
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: detailCtrl.results.stratigraphy_top_id})">
+                                    <localize et="detailCtrl.results.stratigraphy_top__stratigraphy"
+                                              en="detailCtrl.results.stratigraphy_top__stratigraphy_en"/>
+                                </a>
                             </td>
                         </tr>
-                        <tr>
+
+                        <tr data-ng-if="detailCtrl.results.stratigraphy_base__stratigraphy && detailCtrl.results.stratigraphy_base__stratigraphy != null
+                        || detailCtrl.results.stratigraphy_base__stratigraphy_en && detailCtrl.results.stratigraphy_base__stratigraphy_en != null">
                             <td>{{ 'DETAIL.CORE_BOX.STRATIGRAPHY_BASE'| translate }}</td>
                             <td>
-                                <localize et="detailCtrl.results.stratigraphy_base__stratigraphy"
-                                          en="detailCtrl.results.stratigraphy_base__stratigraphy_en"/>
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: detailCtrl.results.stratigraphy_base_id})">
+                                    <localize et="detailCtrl.results.stratigraphy_base__stratigraphy"
+                                              en="detailCtrl.results.stratigraphy_base__stratigraphy_en"/>
+                                </a>
                             </td>
                         </tr>
-                        <!--<tr><td>{{ 'DETAIL.CORE_BOX.ADDITIONAL'| translate }}</td><td>???</td></tr>
--->
+
                     </tbody>
                 </table>
 
@@ -79,10 +98,14 @@
 
 
                 <div class="row" style="text-align: center">
-                    <a href="{{'http://' + detailCtrl.results.drillcoreimage__url}}">
-                        <img style="max-width:300px;max-height: 350px" src="{{'http://' + detailCtrl.results.drillcoreimage__url}}">
-                    </a>
-                    <div>Foto: {{detailCtrl.results.drillcoreimage__agent__agent}} {{detailCtrl.results.drillcoreimage__image_date}}</div>
+
+                    <img src="{{detailCtrl.service.getDrillcoreImageUrl({
+                            database: detailCtrl.results.database__acronym,
+                            id: detailCtrl.results.drillcore__id,
+                            filename: detailCtrl.results.drillcoreimage__image,
+                            preview: true})}}">
+
+                    <div>{{ 'DETAIL.CORE_BOX.PHOTO' | translate }}: {{detailCtrl.results.drillcoreimage__agent__agent}} {{detailCtrl.results.drillcoreimage__image_date | date:dateFormat}}</div>
                 </div>
 
 
