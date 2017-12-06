@@ -458,7 +458,8 @@
             "SINCE": "Start (m)",
             "TO": "End (m)",
             "STRATIGRAPHY_TOP": "Strat. top",
-            "STRATIGRAPHY_BASE": "Strat. base"
+            "STRATIGRAPHY_BASE": "Strat. base",
+            "COREBOX_DETAILS": "Click for box details"
         },
         "CORE_BOX": {
             "LOCALITY": "Locality",

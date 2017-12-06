@@ -193,8 +193,7 @@
                         <td> {{ 'API_TRANSLATION.LOCALITY.STRATIGRAPHY_BASE_FREE ' |translate }} </td>
                         <td> {{ detailCtrl.results.stratigraphy_base_free }} </td>
                     </tr>
-
-                    <!-- TODO: drillcore -->
+                    
                     <tr data-ng-if="detailCtrl.drillcores.length > 0" ng-repeat="entity in detailCtrl.drillcores | limitTo:1">
                         <td> {{ 'API_TRANSLATION.LOCALITY.DRILLCORE' | translate }} </td>
                         <td>

@@ -683,12 +683,19 @@ table tr > td:first-child {
 
 #drillcore-image-background {
     background-color: #FFFFFF;
-    border: 1px solid #FFFFFF;
+    /*border: 1px solid #FFFFFF;*/
+    border-bottom: 1px solid #FFFFFF;
     text-align: center;
 }
 
 .margin-top-10 {
     margin-top: 10px;
+}
+
+#core-box-author {
+    background-color: #FFFFFF;
+    padding-top: 0;
+    font-weight: normal;
 }
 
 /* DRILLCORE END */

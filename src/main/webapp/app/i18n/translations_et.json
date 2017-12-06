@@ -458,7 +458,8 @@
             "SINCE": "Algus (m)",
             "TO": "Lõpp (m)",
             "STRATIGRAPHY_TOP": "Strat. ül.",
-            "STRATIGRAPHY_BASE": "Strat. al."
+            "STRATIGRAPHY_BASE": "Strat. al.",
+            "COREBOX_DETAILS": "Kliki, et näha kasti üksikasju"
         },
         "CORE_BOX": {
             "LOCALITY": "Leiukoht",
