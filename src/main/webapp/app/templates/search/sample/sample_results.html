@@ -15,9 +15,12 @@
             <th><sort-field value = "locality__locality,locality__locality_en" name="SEARCH.SAMPLES.LOCALITY"></sort-field></th>
             <th><sort-field value = "depth" name="SEARCH.SAMPLES.DEPTH_M"></sort-field></th>
             <th></th>
-            <th><sort-field value = "stratigraphy__stratigraphy,stratigraphy__stratigraphy_en" name="SEARCH.SAMPLES.STRATIGRAPHY"></sort-field></th>
+            <th>
+                <sort-field value = "stratigraphy__stratigraphy,stratigraphy__stratigraphy_en" name="SEARCH.SAMPLES.STRATIGRAPHY"></sort-field>
+                 | <em> {{ 'SEARCH.SAMPLES.LITHOSTRATIGRAPHY' | translate }} </em>
+            </th>
             <th><sort-field value = "agent_collected__agent" name="SEARCH.SAMPLES.COLLECTOR"></sort-field></th>
-            <th><sort-field value = "analyzed" name="SEARCH.SAMPLES.ANAL"></sort-field></th>
+            <th><sort-field value = "analyzed" name="SEARCH.SAMPLES.ANALYSED"></sort-field></th>
             <th><sort-field value = "mass" name="SEARCH.SAMPLES.WEIGHT"></sort-field></th>
         </tr>
         </thead>
@@ -40,9 +43,15 @@
                 <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.stratigraphy_id})">
                     <localize en="entity.stratigraphy__stratigraphy_en" et="entity.stratigraphy__stratigraphy"/>
                 </a>
+                <span ng-show="entity.stratigraphy__stratigraphy != null && entity.lithostratigraphy__stratigraphy != null">|</span>
+                <em>
+                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.lithostratigraphy_id})">
+                        <localize en="entity.lithostratigraphy__stratigraphy_en" et="entity.lithostratigraphy__stratigraphy" />
+                    </a>
+                </em>
             </td>
             <td data-title="{{ 'SEARCH.SAMPLES.COLLECTOR' | translate }}"><first-not-null values="[entity.agent_collected__agent, agent_collected_free]"/></td>
-            <td data-title="{{ 'SEARCH.SAMPLES.ANAL' | translate }}"><make-boolean-readable boolean-value="entity.analyzed"/></td>
+            <td data-title="{{ 'SEARCH.SAMPLES.ANALYSED' | translate }}"><make-boolean-readable boolean-value="entity.analyzed"/></td>
             <td data-title="{{ 'SEARCH.SAMPLES.WEIGHT' | translate }}">{{entity.mass}}</td>
         </tr>
         </tbody>

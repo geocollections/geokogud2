@@ -139,4 +139,9 @@ public class FluentSampleSearchApiBuilder extends FluentSearchApiBuilder<FluentS
         addReturningField(STRATIGRAPHY_ID);
         return this;
     }
+
+    public FluentSampleSearchApiBuilder returnLithostratigraphyId() {
+        addReturningField(LITHOSTRATIGRAPHY_ID);
+        return this;
+    }
 }

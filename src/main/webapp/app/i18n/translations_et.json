@@ -219,7 +219,8 @@
             "LOCALITY": "Leiukoht",
             "ADMIN_UNIT": "Admin. üksus",
             "INSTITUTE": "Inst.",
-            "ANAL": "Analüüsitud"
+            "ANALYSED": "Analüüsitud",
+            "LITHOSTRATIGRAPHY": "Litostratigraafia"
         },
         "DRILL_CORES": {
             "HEADING": "Puursüdamikud",

@@ -219,7 +219,8 @@
             "LOCALITY": "Locality",
             "ADMIN_UNIT": "Admin. unit",
             "INSTITUTE": "Inst.",
-            "ANAL": "Analyzed"
+            "ANALYSED": "Analyzed",
+            "LITHOSTRATIGRAPHY": "Lithostratigraphy"
         },
         "DRILL_CORES": {
             "HEADING": "Drill cores",

@@ -71,6 +71,7 @@ public class SamplesApiServiceImpl implements SamplesApiService {
         System.err.println(searchCriteria.getId());
         String requestParams = prepareCommonFields(searchCriteria)
                 .queryId(searchCriteria.getId()).andReturn()
+//                .buildDefaultFieldsQuery();
                 .buildFullQuery();
         return apiService.searchRawEntities(
                 SAMPLE_TABLE,
@@ -101,7 +102,8 @@ public class SamplesApiServiceImpl implements SamplesApiService {
                 .returnAnalyzed()
                 .returnLocalityId()
                 .returnStratigraphyId()
-                .returnDateChanged();
+                .returnDateChanged()
+                .returnLithostratigraphyId();
     }
 
     @Override

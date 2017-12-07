@@ -25,6 +25,7 @@ public class ApiFields {
     public static final String STRATIGRAPHY_STRATIGRAPHY = "stratigraphy__stratigraphy";
     public static final String STRATIGRAPHY_STRATIGRAPHY_ENG = "stratigraphy__stratigraphy_en";
     public static final String STRATIGRAPHY_REMARKS = "stratigraphy__remarks";
+    public static final String LITHOSTRATIGRAPHY_ID = "lithostratigraphy_id";
     public static final String STRATIGRAPHY_FREE = "stratigraphy_free";
     public static final String STRATIGRAPHY_BED = "stratigraphy_bed";
     public static final String LOCATION = "location";
