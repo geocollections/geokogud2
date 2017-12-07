@@ -23,6 +23,7 @@ public class SamplesApiServiceImpl implements SamplesApiService {
             "id",
             "number",
             "number_additional",
+            "number_field",
             "locality_id",
             "locality__locality",
             "locality__locality_en",
@@ -58,7 +59,16 @@ public class SamplesApiServiceImpl implements SamplesApiService {
             "series_id",
             "database__acronym",
             "date_added",
-            "date_changed"
+            "date_changed",
+            "parent_sample",
+            "x1",
+            "y1",
+            "sample_purpose__value",
+            "sample_purpose__value_en",
+            "fossils",
+            "palaeontology",
+            "analysis",
+            "owner__agent"
     );
 
     @Autowired

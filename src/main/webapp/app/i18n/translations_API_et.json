@@ -157,8 +157,8 @@
             "AGENT_COLLECTED_FREE":"Koguja",
             "DATE_COLLECTED":"Kogumise aeg",
             "DATE_COLLECTED_FREE":"Kogumise aeg",
-            "DEPTH":"Sügavus",
-            "DEPTH_INTERVAL":"Sügavus kuni",
+            "DEPTH":"Sügavus (m)",
+            "DEPTH_INTERVAL":"Sügavus(m,intervalli korral)",
             "CLASSIFICATION_ROCK__NAME":"Kivim",
             "CLASSIFICATION_ROCK__NAME_EN":"Kivim ingl. k.",
             "ROCK":"Kivim",
@@ -168,7 +168,7 @@
             "REMARKS":"Lisainfo",
             "SERIES_ID":"Prooviseeria",
             "DATABASE__ACRONYM":"Asutuse kood",
-            "DATE_ADDED":"Kirje lisatud",
+            "DATE_ADDED":"Kirje sisestatud",
             "DATE_CHANGED":"Kirje muudetud"
         },
         "DRILL_CORE" : {

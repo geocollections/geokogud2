@@ -157,8 +157,8 @@
             "AGENT_COLLECTED_FREE":"Collector",
             "DATE_COLLECTED":"Date collected",
             "DATE_COLLECTED_FREE":"Date collected",
-            "DEPTH":"Depth",
-            "DEPTH_INTERVAL":"Depth to",
+            "DEPTH":"Depth (m)",
+            "DEPTH_INTERVAL":"Depth (m, interval)",
             "CLASSIFICATION_ROCK__NAME":"Rock (ET)",
             "CLASSIFICATION_ROCK__NAME_EN":"Rock",
             "ROCK":"Rock (ET)",
@@ -168,7 +168,7 @@
             "REMARKS":"Remarks",
             "SERIES_ID":"Sample series",
             "DATABASE__ACRONYM":"Institution code",
-            "DATE_ADDED":"Record added",
+            "DATE_ADDED":"Record inserted",
             "DATE_CHANGED":"Record changed"
         },
         "DRILL_CORE" : {
