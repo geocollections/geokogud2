@@ -20,6 +20,8 @@ import java.util.Map;
 public class SamplesApiServiceImpl implements SamplesApiService {
     private static final String SAMPLE_TABLE = "sample";
     private static final String TAXON_LIST_TABLE = "taxon_list";
+    private static final String ANALYSIS_TABLE = "analysis";
+
     private List<String> fields = Arrays.asList(
             "id",
             "number",
@@ -122,6 +124,7 @@ public class SamplesApiServiceImpl implements SamplesApiService {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
                 .relatedData(TAXON_LIST_TABLE)
+                .relatedData(ANALYSIS_TABLE)
           /*      .returnId()
                 .returnLocality()
                 .returnLocalityEn()

@@ -266,6 +266,7 @@
 
                 <div data-ng-if="detailCtrl.taxonList.length > 0">
                     <h3>  {{ 'SEARCH.SAMPLES.TAXON_HEADING' | translate }}  </h3>
+
                     <table class="table table-bordered table-hover">
                         <thead class="styles-for-table-headers">
                             <tr>
@@ -275,6 +276,7 @@
                                 <td> {{ 'API_TRANSLATION.SAMPLE.TAXON_REMARKS' | translate }} </td>
                             </tr>
                         </thead>
+                        <tbody>
                             <tr ng-repeat="taxon in detailCtrl.taxonList">
                                 <td>
                                     <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+taxon.taxon_id})">
@@ -285,11 +287,49 @@
                                 <td> {{ taxon.frequency }} </td>
                                 <td> {{ taxon.remarks }} </td>
                             </tr>
-
-                        <tbody>
-
                         </tbody>
                     </table>
+
+                </div>
+
+                <div data-ng-if="detailCtrl.analysis.length > 0">
+                    <h3>  {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_HEADING' | translate }}  </h3>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="styles-for-table-headers">
+                                <tr>
+                                    <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_ID' | translate }} </td>
+                                    <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_METHOD' | translate }} </td>
+                                    <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_METHOD_DETAILS' | translate }} </td>
+                                    <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_MASS' | translate }} </td>
+                                    <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_DATE' | translate }} </td>
+                                    <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_LAB' | translate }} </td>
+                                    <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_AGENT' | translate }} </td>
+                                    <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_LOCATION' | translate }} </td>
+                                    <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_REMARKS' | translate }} </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="entity in detailCtrl.analysis">
+                                    <td>
+                                        <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'analysis', id:entity.id})">
+                                            {{ entity.id }}
+                                        </a>
+                                    </td>
+                                    <td><localize et="entity.analysis_method__analysis_method" en="entity.analysis_method__analysis_method_en" /></td>
+                                    <td><localize et="entity.method_details" en="entity.method_details_en" /></td>
+                                    <td> {{ entity.mass }} </td>
+                                    <td data-ng-if="entity.date && entity.date != null"> {{ entity.date }} </td>
+                                    <td data-ng-if="entity.date == null"> {{ entity.date_free }} </td>
+                                    <td> {{ entity.lab_txt }} </td>
+                                    <td> {{ entity.agent__agent }} </td>
+                                    <td> {{ entity.location }} </td>
+                                    <td> {{ entity.remarks }} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
                 </div>
 

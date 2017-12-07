@@ -182,7 +182,17 @@
             "PARENT_SAMPLE": "Parent sample ID",
             "TAXON_NAME": "Name",
             "TAXON_FREQUENCY": "Frequency",
-            "TAXON_REMARKS": "Remarks"
+            "TAXON_REMARKS": "Remarks",
+            "ANALYSIS_HEADING": "Analyses and procedures",
+            "ANALYSIS_ID": "ID",
+            "ANALYSIS_METHOD": "Method",
+            "ANALYSIS_METHOD_DETAILS": "Method details",
+            "ANALYSIS_MASS": "Weight (g)",
+            "ANALYSIS_DATE": "Started (date)",
+            "ANALYSIS_LAB": "Lab.",
+            "ANALYSIS_AGENT": "Person/Institution",
+            "ANALYSIS_LOCATION": "Storage",
+            "ANALYSIS_REMARKS": "Remarks"
         },
         "DRILL_CORE" : {
             "ID":"ID",

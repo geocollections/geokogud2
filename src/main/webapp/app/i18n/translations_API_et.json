@@ -186,7 +186,17 @@
             "PARENT_SAMPLE": "Algse proovi ID",
             "TAXON_NAME": "Nimi",
             "TAXON_FREQUENCY": "Arvukus",
-            "TAXON_REMARKS": "Lisainfo"
+            "TAXON_REMARKS": "Lisainfo",
+            "ANALYSIS_HEADING": "Analüüsid ja protseduurid",
+            "ANALYSIS_ID": "ID",
+            "ANALYSIS_METHOD": "Metoodika",
+            "ANALYSIS_METHOD_DETAILS": "Met. täpsustus",
+            "ANALYSIS_MASS": "Mass (g)",
+            "ANALYSIS_DATE": "Alustatud",
+            "ANALYSIS_LAB": "Lab.",
+            "ANALYSIS_AGENT": "Isik/Asutus",
+            "ANALYSIS_LOCATION": "Hoiukoht",
+            "ANALYSIS_REMARKS": "Lisainfo"
         },
         "DRILL_CORE" : {
             "DETAIL_FORM_NAME" : "",
