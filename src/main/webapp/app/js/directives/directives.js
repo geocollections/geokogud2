@@ -130,6 +130,28 @@ angular.module('geoApp')
             }
         });
     };
+}).directive('ngArrowLeft', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 37) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.ngArrowLeft);
+                });
+                event.preventDefault();
+            }
+        });
+    };
+}).directive('ngArrowRight', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 39) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.ngArrowRight);
+                });
+                event.preventDefault();
+            }
+        });
+    };
 }).directive('showPreview', function () {
     return {
         template: '<img class="previewImage" ng-src="{{previewImageUrl}}" spinner-load />',

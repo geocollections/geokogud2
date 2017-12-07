@@ -1,6 +1,6 @@
 <div ng-include="'app/templates/main/partial/detailview_header.html'"></div>
 
-<div class="panel detailview-page">
+<div tabindex="1" style="outline: 0" ng-arrow-left="detailCtrl.reload(detailCtrl.results.id - 1)" ng-arrow-right="detailCtrl.reload(detailCtrl.results.id + 1)" class="panel detailview-page">
     <div class="panel-body">
 
         <div class="row">
@@ -15,6 +15,8 @@
                     </h2>
                     <h4> {{ 'DETAIL.DRILLCORE.BOX_NUMBER'| translate }} {{ detailCtrl.results.number }} </h4>
                 </div>
+
+                <!--<input ng-keydown="detailCtrl.reload(detailCtrl.results.id + 1)" />-->
 
                 <div class="row core-box-previous-next" ng-if="detailCtrl.results.id">
                     <!-- TODO: Also should work when pressing left and right arrow keys -->
