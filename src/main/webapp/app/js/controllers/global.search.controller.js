@@ -79,20 +79,34 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
      */
     function onGlobalDataLoaded(result) {
         if (!result.data) return;
-        result.data.forEach(function (response) {
 
-            /* Chooses table with info to be active TODO: should be changed to first table with info to be active */
-            if (response.table !== null) {
-                $scope.selectedTab = response.table;
-            }
+        // Number of possible tabs
+        if (result.data.length <= 7) {
 
-            $scope.searchResults[response.table] = response;
-            if (response.table === $scope.selectedTab) {
-                $scope.response.results = response.results;
-                $scope.response.related_data = response.related_data;
-            }
-        });
-        vm.searchLoadingHandler.stop();
+            result.data.forEach(function (response) {
+
+                /* Chooses table with info to be active TODO: should be changed to first table with info to be active */
+                if (response.table !== null) {
+                    $scope.selectedTab = response.table;
+                }
+
+                $scope.searchResults[response.table] = response;
+                if (response.table === $scope.selectedTab) {
+                    $scope.response.results = response.results;
+                    $scope.response.related_data = response.related_data;
+                }
+            });
+            vm.searchLoadingHandler.stop();
+
+        } else {
+            // Search fails
+            // TODO: make nice error page why search failed
+            $state.go("/");
+                $(function(){
+                    $('#globalQuery').val('');
+
+                });
+        }
     }
 
     /**
