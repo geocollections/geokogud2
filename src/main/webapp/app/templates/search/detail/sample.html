@@ -28,14 +28,20 @@
                         <td> {{ detailCtrl.results.number }} </td>
                     </tr>
 
-                    <!--TODO: number_field-->
+                    <tr data-ng-if="detailCtrl.results.number_field && detailCtrl.results.number_field != null ">
+                        <td> {{ 'API_TRANSLATION.SAMPLE.NUMBER_FIELD ' | translate }} </td>
+                        <td> {{ detailCtrl.results.number_field }} </td>
+                    </tr>
 
                     <tr data-ng-if="detailCtrl.results.number_additional && detailCtrl.results.number_additional != null ">
                         <td> {{ 'API_TRANSLATION.SAMPLE.NUMBER_ADDITIONAL ' | translate }} </td>
                         <td> {{ detailCtrl.results.number_additional }} </td>
                     </tr>
 
-                    <!--TODO: parent_sample_id-->
+                    <tr data-ng-if="detailCtrl.results.parent_sample && detailCtrl.results.parent_sample != null ">
+                        <td> {{ 'API_TRANSLATION.SAMPLE.PARENT_SAMPLE ' | translate }} </td>
+                        <td> {{ detailCtrl.results.parent_sample }} </td>
+                    </tr>
 
                     <tr data-ng-if="(detailCtrl.results.locality__locality && detailCtrl.results.locality__locality != null)
                         || (detailCtrl.results.locality__locality_en && detailCtrl.results.locality__locality_en != null) ">
@@ -76,8 +82,15 @@
                         <td> {{ detailCtrl.results.locality__longitude }} </td>
                     </tr>
 
-                    <!--TODO: x1-->
-                    <!--TODO: y1-->
+                    <tr data-ng-if="detailCtrl.results.x1 && detailCtrl.results.x1 != null ">
+                        <td> {{ 'API_TRANSLATION.SAMPLE.X1 ' | translate }} </td>
+                        <td> {{ detailCtrl.results.x1 }} </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.y1 && detailCtrl.results.y1 != null ">
+                        <td> {{ 'API_TRANSLATION.SAMPLE.Y1 ' | translate }} </td>
+                        <td> {{ detailCtrl.results.y1 }} </td>
+                    </tr>
 
                     <tr data-ng-if="detailCtrl.results.depth && detailCtrl.results.depth != null ">
                         <td> {{ 'API_TRANSLATION.SAMPLE.DEPTH ' | translate }} </td>
@@ -116,7 +129,11 @@
                         </td>
                     </tr>
 
-                    <!--TODO: stratigraphy_free-->
+                    <tr data-ng-if="detailCtrl.results.stratigraphy_free && detailCtrl.results.stratigraphy_free != null ">
+                        <td> {{ 'API_TRANSLATION.SAMPLE.STRATIGRAPHY_FREE ' | translate }} </td>
+                        <td> {{ detailCtrl.results.stratigraphy_free }} </td>
+                    </tr>
+
 
                     <tr data-ng-if="detailCtrl.results.stratigraphy_bed && detailCtrl.results.stratigraphy_bed != null ">
                         <td> {{ 'API_TRANSLATION.SAMPLE.STRATIGRAPHY_BED ' | translate }} </td>
@@ -148,7 +165,15 @@
                         <td> {{ detailCtrl.results.mass }} </td>
                     </tr>
 
-                    <!--TODO: sample_purpose-->
+                    <tr data-ng-if="detailCtrl.results.sample_purpose__value && detailCtrl.results.sample_purpose__value != null
+                        || detailCtrl.results.sample_purpose__value_en && detailCtrl.results.sample_purpose__value_en != null">
+                        <td>
+                            <localize-label et="'API_TRANSLATION.SAMPLE.PURPOSE_VALUE'" en="'API_TRANSLATION.SAMPLE.PURPOSE_VALUE_EN'"/>
+                        </td>
+                        <td>
+                            <localize et="detailCtrl.results.sample_purpose__value" en="detailCtrl.results.sample_purpose__value_en"/>
+                        </td>
+                    </tr>
 
                     <tr data-ng-if="detailCtrl.results.location && detailCtrl.results.location != null ">
                         <td> {{ 'API_TRANSLATION.SAMPLE.LOCATION ' | translate }} </td>
@@ -182,33 +207,36 @@
                         <td> {{ detailCtrl.results.soil_horizon }} </td>
                     </tr>
 
-                    <!--TODO: fossils-->
-                    <!--TODO: palaeontology-->
-                    <!--TODO: analysis return boolean 0 or 1 i need to give certain string value-->
+
+                    <tr data-ng-if="detailCtrl.results.fossils && detailCtrl.results.fossils != null ">
+                        <td> {{ 'API_TRANSLATION.SAMPLE.FOSSILS' | translate }} </td>
+                        <td> {{ detailCtrl.results.fossils }} </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.palaeontology && detailCtrl.results.palaeontology != null ">
+                        <td> {{ 'API_TRANSLATION.SAMPLE.PALAEONTOLOGY' | translate }} </td>
+                        <td> {{ detailCtrl.results.palaeontology }} </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.analysis != null ">
+                        <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS ' | translate }} </td>
+                        <td data-ng-if="detailCtrl.results.analysis">
+                            {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_RESULTS_TRUE ' | translate }}
+                        </td>
+                    </tr>
 
                     <tr data-ng-if="detailCtrl.results.remarks && detailCtrl.results.remarks != null ">
                         <td> {{ 'API_TRANSLATION.SAMPLE.REMARKS ' | translate }} </td>
                         <td> {{ detailCtrl.results.remarks }} </td>
                     </tr>
 
-                    <!--TODO: parent_specimen_id-->
-                    <!--TODO: owner_agent-->
+                    <!--TODO: parent_specimen_id, api 500 error on that field-->
 
-                    <!--<tr data-ng-if="detailCtrl.results.locality__country__value && detailCtrl.results.locality__country__value != null "><td> {{'API_TRANSLATION.SAMPLE.LOCALITY__COUNTRY__VALUE ' | translate }}</td><td> {{detailCtrl.results.locality__country__value}}</td></tr>
-                    <tr data-ng-if="detailCtrl.results.locality__country__value_en && detailCtrl.results.locality__country__value_en != null "><td> {{'API_TRANSLATION.SAMPLE.LOCALITY__COUNTRY__VALUE_EN ' | translate }}</td><td> {{detailCtrl.results.locality__country__value_en}}</td></tr>
-                    -->
-
-                    <!--<tr data-ng-if="(detailCtrl.results.locality__country__value && detailCtrl.results.locality__country__value != null) || (detailCtrl.results.locality__country__value_en && detailCtrl.results.locality__country__value_en != null) ">-->
-                        <!--<td><localize-label et="'API_TRANSLATION.SAMPLE.LOCALITY__COUNTRY__VALUE'" en="'API_TRANSLATION.SAMPLE.LOCALITY__COUNTRY__VALUE_EN'"/></td><td><localize et="detailCtrl.results.locality__country__value" en="detailCtrl.results.locality__country__value_en"/></td>-->
-                    <!--</tr>-->
-
-
-
-                    <!--<tr data-ng-if="detailCtrl.results.soil_site__latitude && detailCtrl.results.soil_site__latitude != null "><td> {{'API_TRANSLATION.SAMPLE.SOIL_SITE__LATITUDE ' | translate }}</td><td> {{detailCtrl.results.soil_site__latitude}}</td></tr>-->
-                    <!--<tr data-ng-if="detailCtrl.results.soil_site__longitude && detailCtrl.results.soil_site__longitude != null "><td> {{'API_TRANSLATION.SAMPLE.SOIL_SITE__LONGITUDE ' | translate }}</td><td> {{detailCtrl.results.soil_site__longitude}}</td></tr>-->
-                    <!---->
-                    <!--<tr data-ng-if="detailCtrl.results.series_id && detailCtrl.results.series_id != null "><td> {{'API_TRANSLATION.SAMPLE.SERIES_ID ' | translate }}</td><td> {{detailCtrl.results.series_id}}</td></tr>-->
-
+                    <tr data-ng-if="detailCtrl.results.owner__agent && detailCtrl.results.owner__agent != null ">
+                        <td> {{ 'API_TRANSLATION.SAMPLE.OWNER_AGENT ' | translate }} </td>
+                        <td> {{ detailCtrl.results.owner__agent }} </td>
+                    </tr>
+                    
                     <tr data-ng-if="detailCtrl.results.date_added && detailCtrl.results.date_added != null ">
                         <td> {{ 'API_TRANSLATION.SAMPLE.DATE_ADDED ' | translate }} </td>
                         <td> {{ detailCtrl.results.date_added | date:dateFormat }} </td>
