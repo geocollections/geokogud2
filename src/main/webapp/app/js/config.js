@@ -208,10 +208,10 @@ module.config(function($stateProvider, $urlRouterProvider) {
             controller: "DetailController as detailCtrl",
             params: {type: "doi"}
     })
-        // .state('error', {
-        //     url: '/errorr',
-        //     templateUrl: 'app/templates/main/partial/default.error.html'
-        // })
+        .state('error', {
+            url: '/error',
+            templateUrl: 'app/templates/main/partial/default.error.html'
+        })
 
     //main page
         .state('news', {

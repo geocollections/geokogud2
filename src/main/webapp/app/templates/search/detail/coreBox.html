@@ -16,8 +16,6 @@
                     <h4> {{ 'DETAIL.DRILLCORE.BOX_NUMBER'| translate }} {{ detailCtrl.results.number }} </h4>
                 </div>
 
-                <!--<input ng-keydown="detailCtrl.reload(detailCtrl.results.id + 1)" />-->
-
                 <div class="row core-box-previous-next" ng-if="detailCtrl.results.id">
                     <a class="pull-left" href data-ng-click="detailCtrl.reload(detailCtrl.results.id - 1)">
                         {{ 'DETAIL.PREVIOUS'| translate }}
