@@ -100,7 +100,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
 
         } else {
             // Search fails
-            // TODO: make nice error page why search failed
+            // TODO: make nice error page why search failed.
             $state.go("/");
                 $(function(){
                     $('#globalQuery').val('');
