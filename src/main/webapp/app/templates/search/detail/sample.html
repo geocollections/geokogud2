@@ -236,7 +236,7 @@
                         <td> {{ 'API_TRANSLATION.SAMPLE.OWNER_AGENT ' | translate }} </td>
                         <td> {{ detailCtrl.results.owner__agent }} </td>
                     </tr>
-                    
+
                     <tr data-ng-if="detailCtrl.results.date_added && detailCtrl.results.date_added != null ">
                         <td> {{ 'API_TRANSLATION.SAMPLE.DATE_ADDED ' | translate }} </td>
                         <td> {{ detailCtrl.results.date_added | date:dateFormat }} </td>
@@ -251,15 +251,48 @@
                 </table>
             </div>
 
-            <div class="col-sm-6" data-ng-if="detailCtrl.locality.latitude && detailCtrl.locality.longitude">
-                <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
-                <div id='hoverbox' class='coupontooltip'>
-                    <div id='hoversystem'></div>
-                    <div id='hoverstat'></div>
+            <div class="col-sm-6">
+
+                <div data-ng-if="detailCtrl.locality.latitude && detailCtrl.locality.longitude">
+                    <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
+                    <div id='hoverbox' class='coupontooltip'>
+                        <div id='hoversystem'></div>
+                        <div id='hoverstat'></div>
+                    </div>
+                    <locality-map x = "detailCtrl.locality.latitude" y = "detailCtrl.locality.longitude" name = "detailCtrl.locality.localityEn" fid = "detailCtrl.locality.localityId"></locality-map>
+                    <a href data-ng-click="detailCtrl.service.showGoogleMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude, detailCtrl.locality.localityEn)">Google Maps</a></span>
+                    &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude)">Maa-amet / Estonian Land Board</a>
                 </div>
-                <locality-map x = "detailCtrl.locality.latitude" y = "detailCtrl.locality.longitude" name = "detailCtrl.locality.localityEn" fid = "detailCtrl.locality.localityId"></locality-map>
-                <a href data-ng-click="detailCtrl.service.showGoogleMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude, detailCtrl.locality.localityEn)">Google Maps</a></span>
-                &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude)">Maa-amet / Estonian Land Board</a>
+
+                <div data-ng-if="detailCtrl.taxonList.length > 0">
+                    <h3>  {{ 'SEARCH.SAMPLES.TAXON_HEADING' | translate }}  </h3>
+                    <table class="table table-bordered table-hover">
+                        <thead class="styles-for-table-headers">
+                            <tr>
+                                <td> {{ 'API_TRANSLATION.SAMPLE.TAXON_NAME' | translate }} </td>
+                                <td> {{ 'API_TRANSLATION.SAMPLE.TAXON_NAME' | translate }} </td>
+                                <td> {{ 'API_TRANSLATION.SAMPLE.TAXON_FREQUENCY' | translate }} </td>
+                                <td> {{ 'API_TRANSLATION.SAMPLE.TAXON_REMARKS' | translate }} </td>
+                            </tr>
+                        </thead>
+                            <tr ng-repeat="taxon in detailCtrl.taxonList">
+                                <td>
+                                    <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+taxon.taxon_id})">
+                                        {{ taxon.taxon__taxon }}
+                                    </a>
+                                </td>
+                                <td> {{ taxon.name }} </td>
+                                <td> {{ taxon.frequency }} </td>
+                                <td> {{ taxon.remarks }} </td>
+                            </tr>
+
+                        <tbody>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
             </div>
         </div>
 

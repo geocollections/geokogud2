@@ -220,7 +220,8 @@
             "ADMIN_UNIT": "Admin. unit",
             "INSTITUTE": "Inst.",
             "ANALYSED": "Analyzed",
-            "LITHOSTRATIGRAPHY": "Lithostratigraphy"
+            "LITHOSTRATIGRAPHY": "Lithostratigraphy",
+            "TAXON_HEADING": "Species identified"
         },
         "DRILL_CORES": {
             "HEADING": "Drill cores",

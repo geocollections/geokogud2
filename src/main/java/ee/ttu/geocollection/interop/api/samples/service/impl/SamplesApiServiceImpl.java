@@ -19,6 +19,7 @@ import java.util.Map;
 @Service
 public class SamplesApiServiceImpl implements SamplesApiService {
     private static final String SAMPLE_TABLE = "sample";
+    private static final String TAXON_LIST_TABLE = "taxon_list";
     private List<String> fields = Arrays.asList(
             "id",
             "number",
@@ -120,6 +121,7 @@ public class SamplesApiServiceImpl implements SamplesApiService {
     public Map findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
+                .relatedData(TAXON_LIST_TABLE)
           /*      .returnId()
                 .returnLocality()
                 .returnLocalityEn()

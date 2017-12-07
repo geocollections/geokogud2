@@ -220,7 +220,8 @@
             "ADMIN_UNIT": "Admin. üksus",
             "INSTITUTE": "Inst.",
             "ANALYSED": "Analüüsitud",
-            "LITHOSTRATIGRAPHY": "Litostratigraafia"
+            "LITHOSTRATIGRAPHY": "Litostratigraafia",
+            "TAXON_HEADING": "Proovist määratud taksonid"
         },
         "DRILL_CORES": {
             "HEADING": "Puursüdamikud",

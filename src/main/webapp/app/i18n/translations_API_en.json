@@ -179,7 +179,10 @@
             "ANALYSIS": "Analysed",
             "PARENT_SPECIMEN_ID": "Parent specimen ID",
             "OWNER_AGENT": "Owner (institution)",
-            "PARENT_SAMPLE": "Parent sample ID"
+            "PARENT_SAMPLE": "Parent sample ID",
+            "TAXON_NAME": "Name",
+            "TAXON_FREQUENCY": "Frequency",
+            "TAXON_REMARKS": "Remarks"
         },
         "DRILL_CORE" : {
             "ID":"ID",

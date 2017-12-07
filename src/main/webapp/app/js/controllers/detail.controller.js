@@ -112,6 +112,7 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             vm.analysisResults = vm.relatedData["analysis_results"];
             vm.attachmentLink = vm.relatedData["attachment_link"];
             vm.specimens = vm.relatedData["specimen"];
+            vm.taxonList = vm.relatedData["taxon_list"];
         }
     }
 

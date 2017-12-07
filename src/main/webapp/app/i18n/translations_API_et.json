@@ -183,7 +183,10 @@
             "OWNER_AGENT": "Omanik (asutus)",
             "ANALYSIS_RESULTS_TRUE": "On tehtud mineral., litol. keemil. vm uuring",
             "ANALYSIS_RESULTS_FALSE": "Ei ole analüüsitud",
-            "PARENT_SAMPLE": "Algse proovi ID"
+            "PARENT_SAMPLE": "Algse proovi ID",
+            "TAXON_NAME": "Nimi",
+            "TAXON_FREQUENCY": "Arvukus",
+            "TAXON_REMARKS": "Lisainfo"
         },
         "DRILL_CORE" : {
             "DETAIL_FORM_NAME" : "",
