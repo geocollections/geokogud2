@@ -71,8 +71,10 @@
                         <localize en="entity.stratigraphy__stratigraphy_en" et="entity.stratigraphy__stratigraphy"/>
                     </a>
 
-                    <div ng-if="entity.stratigraphy__stratigraphy_en == null && entity.stratigraphy__stratigraphy == null
-                        && entity.stratigraphy_free != null"> {{ entity.stratigraphy_free }} </div>
+                    <span ng-if="entity.stratigraphy__stratigraphy_en == null && entity.stratigraphy__stratigraphy == null
+                        || entity.lithostratigraphy__stratigraphy_en == null && entity.lithostratigraphy__stratigraphy == null">
+                        {{ entity.stratigraphy_free }}
+                    </span>
 
                     <span ng-show="entity.stratigraphy__stratigraphy != null && entity.lithostratigraphy__stratigraphy != null">|</span>
 
