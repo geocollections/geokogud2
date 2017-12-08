@@ -82,12 +82,38 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
 
         // Number of possible tabs
         if (result.data.length <= 7) {
+            // var neededArray = ["taxon","image","stratigraphy","reference","locality","sample","specimen"];
+            // var incomingArray = ["locality","image","reference","sample","specimen","stratigraphy","taxon"];
+            // var counter = 0;
 
             result.data.forEach(function (response) {
 
                 /* Chooses table with info to be active TODO: should be changed to first table with info to be active */
+                console.log(response.table);
                 if (response.table !== null) {
+                    // var currentTabId = neededArray.indexOf(response.table);
+                    // var TabId = incomingArray.indexOf(response.table);
+                    //
+                    // console.log(currentTabId);
+                    // var myId;
+                    // if (response.table == "taxon" && (counter > neededArray.indexOf($scope.selectedTab))) {
+                    //     $scope.selectedTab = response.table;
+                    // } else if (response.table == "image" && (counter > neededArray.indexOf($scope.selectedTab))) {
+                    //     $scope.selectedTab = response.table;
+                    // } else if (response.table == "stratigraphy" && (counter > neededArray.indexOf($scope.selectedTab))) {
+                    //     $scope.selectedTab = response.table;
+                    // } else if (response.table == "reference" && (counter > neededArray.indexOf($scope.selectedTab))) {
+                    //     $scope.selectedTab = response.table;
+                    // } else if (response.table == "locality" && (counter > neededArray.indexOf($scope.selectedTab))) {
+                    //     $scope.selectedTab = response.table;
+                    // } else if (response.table == "sample" && (counter > neededArray.indexOf($scope.selectedTab))) {
+                    //     $scope.selectedTab = response.table;
+                    // } else if (response.table == "specimen" && (counter > neededArray.indexOf($scope.selectedTab))) {
+                    //     $scope.selectedTab = response.table;
+                    // }
+
                     $scope.selectedTab = response.table;
+                    // counter += 1;
                 }
 
                 $scope.searchResults[response.table] = response;

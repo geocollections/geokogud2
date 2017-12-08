@@ -87,16 +87,20 @@ public class SearchController extends ControllerHelper {
     @PostMapping(value = "/specimen")
     public ApiResponse searchSpecimen(@RequestBody SpecimenSearchCriteria specimenSearchCriteria) {
         ApiResponse specimens = specimenApiService.findSpecimen(specimenSearchCriteria);
-        if (specimens.getResult() != null) {
-            asynchService.doAsynchCallsForEachResult(
-                    specimens,
-                    specimen ->
-                            () -> specimenApiService.findSpecimenImage(
-                                    new SearchField(specimen.get("specimen_id").toString(), LookUpType.exact)),
-                    specimen ->
-                            receivedImage -> specimen.put("specimen_image_thumbnail", receivedImage));
 
-        }
+        // EDIT START removed double call, because it made application too slow 08.12.2017
+//        if (specimens.getResult() != null) {
+//            asynchService.doAsynchCallsForEachResult(
+//                    specimens,
+//                    specimen ->
+//                            () -> specimenApiService.findSpecimenImage(
+//                                    new SearchField(specimen.get("specimen_id").toString(), LookUpType.exact)),
+//                    specimen ->
+//                            receivedImage -> specimen.put("specimen_image_thumbnail", receivedImage));
+//
+//        }
+        //EDIT END
+
  /*       if(specimenSearchCriteria.getSearchImages() != null
                 && specimenSearchCriteria.getSearchImages().getName() != null
                 && specimenSearchCriteria.getSearchImages().getName().equals("true")) {
