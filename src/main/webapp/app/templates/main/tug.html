@@ -4,8 +4,8 @@
             <!-- University of Tartu, Museum of Geology -->
             <h2 class="section-heading text-center">TUG</h2>
             <hr class="primary">
-            <h3 class="header-collection">{{ 'TUG.TUG_TITLE' | translate }}</h3>
-            <div>{{ 'TUG.PARAGRAPH_ONE' | translate }}</div>
+            <h3 class="header-collection" ng-bind-html="main.getTitle(main.tug)"></h3>
+            <div ng-bind-html="main.getContent(main.tug)"></div>
         </div>
     </div>
 </div>

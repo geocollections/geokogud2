@@ -51,6 +51,8 @@ var constructor = function (configuration, $translate, $http, applicationService
             vm.aboutSecondColumn = getWebPageById(57, "aboutSecondColumn");
             vm.aboutThirdColumn = getWebPageById(58, "aboutThirdColumn");
             vm.git = getWebPageById(44, "git");
+            vm.tug = getWebPageById(63, "tug");
+            vm.elm = getWebPageById(64, "elm");
             vm.searchTips = getWebPageById(43, "searchTips");
             vm.drillCoreSearch = getWebPageById(53, "drillCoreSearch");
             vm.protoArchiveQuery = getWebPageById(54, "protoArchiveQuery");
@@ -76,6 +78,8 @@ var constructor = function (configuration, $translate, $http, applicationService
             else if (page == "aboutSecondColumn") { vm.aboutSecondColumn = result; }
             else if (page == "aboutThirdColumn") { vm.aboutThirdColumn = result; }
             else if (page == "git") { vm.git = result;}
+            else if (page == "tug") { vm.tug = result;}
+            else if (page == "elm") { vm.elm = result;}
             else if (page == "searchTips") { vm.searchTips = result; }
             else if (page == "drillCoreSearch") { vm.drillCoreSearch = result; }
             else if (page == "protoArchiveQuery") { vm.protoArchiveQuery = result; }
