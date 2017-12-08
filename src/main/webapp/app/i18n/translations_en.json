@@ -199,7 +199,8 @@
             "STATUS": "Status",
             "IMAGES": "Images",
             "OLD_SPECIMEN_NUMBER": "Old specimen #",
-            "DEPTH_M": ""
+            "DEPTH_M": "",
+            "LITHOSTRATIGRAPHY": "Lithostratigraphy"
         },
         "SAMPLES": {
             "HEADING": "Samples",

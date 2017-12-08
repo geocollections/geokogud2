@@ -162,7 +162,6 @@ angular.module('geoApp')
         link: function (scope) {
             scope.$watch('imgUrl', function(newValue) {
                 if(newValue) {
-                    console.log(newValue);
                     var foundHttp = newValue.match(/http:/);
                     var lastSlashPosition = newValue.lastIndexOf('/');
                     scope.previewImageUrl = (foundHttp ? "" : "http://") + newValue.substring(0, lastSlashPosition) + '/preview' +newValue.substring(lastSlashPosition);

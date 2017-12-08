@@ -163,7 +163,8 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
     public ApiResponse findSpecimen(SpecimenSearchCriteria searchCriteria)  {
         String requestParams = prepareCommonFields(searchCriteria)
                 .queryId(searchCriteria.getId()).andReturn()
-                .buildFullQuery();
+                .buildDefaultFieldsQuery();
+//                .buildFullQuery();
         return apiService.searchRawEntities(SPECIMEN_TABLE, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
@@ -188,7 +189,6 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .queryFossilMineralRock(searchCriteria.getFossilMineralRock())
                 .queryAdminUnit(searchCriteria.getAdminUnit())
                 .queryInstitutions(searchCriteria.getDbs()).andReturn()
-                .returnTaxonFields()
                 .returnDatabaseName()
                 .returnLocalityId()
                 .returnStratigraphyId()
@@ -203,6 +203,8 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
         String requestParams = FluentSpecimenImageSearchApiBuilder.aRequest()
                 .querySpecimenIdForUrl(specimenId).andReturn()
                 .returnImageUrl()
+                .returnImage()
+                .returnDatabaseAcronym()
                 .returnId()
                 .buildFullQuery();
         return apiService.searchRawEntities(SPECIMEN_IMAGE_TABLE, 2,1, new SortField(), requestParams);

@@ -199,7 +199,8 @@
             "STATUS": "Staatus",
             "IMAGES": "Pildid",
             "OLD_SPECIMEN_NUMBER": "Vana nr.",
-            "DEPTH_M": ""
+            "DEPTH_M": "",
+            "LITHOSTRATIGRAPHY": "Litostratigraafia"
         },
         "SAMPLES": {
             "HEADING": "Proovid",

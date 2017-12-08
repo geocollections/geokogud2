@@ -178,6 +178,8 @@ public class ApiFields {
     public static final String TAXON_TAXON = "taxon__taxon";
     public static final String NAME = "name";
     public static final String IMAGE_URL = "image_url";
+    public static final String IMAGE = "image";
+    public static final String SPECIMEN__DATABASE__ACRONYM = "specimen__database__acronym";
     public static final String COLL__NUMBER = "coll__number";
     public static final String COLL_ID = "coll_id";
     public static final String CLASSIFICATION__CLASS_FIELD = "classification__class_field";

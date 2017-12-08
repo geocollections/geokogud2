@@ -22,6 +22,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         $scope.totalItems = result.data.count;
 
         if((['specimens', 'localities'].indexOf($stateParams.type) > -1)) $scope.images = composeImageStructure(result.data);
+        if((['localities'].indexOf($stateParams.type) > -1)) $scope.images = composeImageStructure(result.data);
         if((['photoArchive'].indexOf($stateParams.type) > -1)) $scope.images = composeImageArchiveStructure(result.data);
 
         $scope.windowWidth = "innerWidth" in window ? window.innerWidth : document.documentElement.offsetWidth;

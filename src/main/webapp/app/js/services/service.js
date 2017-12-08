@@ -103,11 +103,13 @@ var constructor = function (utils, configuration, $window, $location) {
     // Used only on corebox detail view
     service.composeCoreboxImageUrl = function (imageData) {
         console.log(imageData);
-        var imageUrl = "https://geokogud.info/" + imageData.database__acronym.toLowerCase() + "/drillcore_image/" + imageData.drillcore__id + "/";
-        return imageUrl + imageData.drillcoreimage__image;
+        if (imageData.database__acronym != null) {
+            var imageUrl = "https://geokogud.info/" + imageData.database__acronym.toLowerCase() + "/drillcore_image/" + imageData.drillcore__id + "/";
+            return imageUrl + imageData.drillcoreimage__image;
+        }
     };
 
-    // Used onlt on corebox detail view for different sizes
+    // Used only on corebox detail view for different sizes
     service.composeExternalCoreboxImagePath = function (imageData) {
         var imageUrl = "http://geokogud.info/di.php?f=/var/www/"
             + imageData.database__acronym.toLowerCase() + "/"
