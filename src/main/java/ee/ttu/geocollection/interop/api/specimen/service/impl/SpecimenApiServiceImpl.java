@@ -157,11 +157,11 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
             "specimen_id",
             "type__value_en",
             "type__value",
-            "kind__value_en",
-            "status__value",
-            "status__value_en",
-            "original_status__value",
-            "original_status__value_en"
+            "kind__value_en"
+//            "status__value", // API gives 400 error on these fields
+//            "status__value_en"
+//            "original_status__value",
+//            "original_status__value_en"
     );
 
     @Autowired

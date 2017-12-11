@@ -86,21 +86,18 @@ public class SearchController extends ControllerHelper {
 
     @PostMapping(value = "/specimen")
     public ApiResponse searchSpecimen(@RequestBody SpecimenSearchCriteria specimenSearchCriteria) {
-//        ApiResponse specimens = specimenApiService.findSpecimen(specimenSearchCriteria);
-        return specimenApiService.findSpecimen(specimenSearchCriteria);
+        ApiResponse specimens = specimenApiService.findSpecimen(specimenSearchCriteria);
 
-        // EDIT START removed double call, because it made application too slow 08.12.2017
-//        if (specimens.getResult() != null) {
-//            asynchService.doAsynchCallsForEachResult(
-//                    specimens,
-//                    specimen ->
-//                            () -> specimenApiService.findSpecimenImage(
-//                                    new SearchField(specimen.get("specimen_id").toString(), LookUpType.exact)),
-//                    specimen ->
-//                            receivedImage -> specimen.put("specimen_image_thumbnail", receivedImage));
-//
-//        }
-        //EDIT END
+        if (specimens.getResult() != null) {
+            asynchService.doAsynchCallsForEachResult(
+                    specimens,
+                    specimen ->
+                            () -> specimenApiService.findSpecimenImage(
+                                    new SearchField(specimen.get("specimen_id").toString(), LookUpType.exact)),
+                    specimen ->
+                            receivedImage -> specimen.put("specimen_image_thumbnail", receivedImage));
+
+        }
 
  /*       if(specimenSearchCriteria.getSearchImages() != null
                 && specimenSearchCriteria.getSearchImages().getName() != null
@@ -120,7 +117,7 @@ public class SearchController extends ControllerHelper {
 
         }*/
 
-//        return specimens;
+        return specimens;
     }
     private ApiResponse iterateImages(Map<String, Object> specimen, SpecimenSearchCriteria specimenSearchCriteria) {
         specimenSearchCriteria.setSpecimenNumber(new SearchField(
