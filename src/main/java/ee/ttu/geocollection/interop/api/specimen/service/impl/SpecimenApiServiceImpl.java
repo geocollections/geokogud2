@@ -150,12 +150,19 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
             "original_status__value",
             "original_status__value_en",
             "part",
+            "remarks",
+            "remarks_collecting",
             "date_added",
             "date_changed",
             "specimen_id",
             "type__value_en",
             "type__value",
-            "kind__value_en");
+            "kind__value_en",
+            "status__value",
+            "status__value_en",
+            "original_status__value",
+            "original_status__value_en"
+    );
 
     @Autowired
     private ApiService apiService;
