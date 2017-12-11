@@ -1,7 +1,6 @@
 var module = angular.module("geoApp");
 
 /**
- *
  * @param configuration from config.json
  * @param applicationService everything from service.js
  * @param WebPagesFactory from utils.js
@@ -72,7 +71,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
      * If no data then return empty.
      * Iterates through data elements aka tables.
      * Every searchResults "tableName" equals to responses "tableName" data.
-     * And if response "tablename" equals selected
+     * And if response "tableName" equals selected
      * tabs then data is saved to $scope.response.
      * After loading the search overlay is removed.
      * @param result Response from search query
@@ -82,46 +81,22 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
 
         // Number of possible tabs
         if (result.data.length <= 7) {
-            // var neededArray = ["taxon","image","stratigraphy","reference","locality","sample","specimen"];
-            // var incomingArray = ["locality","image","reference","sample","specimen","stratigraphy","taxon"];
-            // var counter = 0;
+            console.log(result.data);
 
-            result.data.forEach(function (response) {
+            var sortedResult = sortIntoRightQueue(result);
 
-                /* Chooses table with info to be active TODO: should be changed to first table with info to be active */
-                console.log(response.table);
-                if (response.table !== null) {
-                    // var currentTabId = neededArray.indexOf(response.table);
-                    // var TabId = incomingArray.indexOf(response.table);
-                    //
-                    // console.log(currentTabId);
-                    // var myId;
-                    // if (response.table == "taxon" && (counter > neededArray.indexOf($scope.selectedTab))) {
-                    //     $scope.selectedTab = response.table;
-                    // } else if (response.table == "image" && (counter > neededArray.indexOf($scope.selectedTab))) {
-                    //     $scope.selectedTab = response.table;
-                    // } else if (response.table == "stratigraphy" && (counter > neededArray.indexOf($scope.selectedTab))) {
-                    //     $scope.selectedTab = response.table;
-                    // } else if (response.table == "reference" && (counter > neededArray.indexOf($scope.selectedTab))) {
-                    //     $scope.selectedTab = response.table;
-                    // } else if (response.table == "locality" && (counter > neededArray.indexOf($scope.selectedTab))) {
-                    //     $scope.selectedTab = response.table;
-                    // } else if (response.table == "sample" && (counter > neededArray.indexOf($scope.selectedTab))) {
-                    //     $scope.selectedTab = response.table;
-                    // } else if (response.table == "specimen" && (counter > neededArray.indexOf($scope.selectedTab))) {
-                    //     $scope.selectedTab = response.table;
-                    // }
+            for (var data in sortedResult) {
+                // Null check is already been done in sortIntoRightQueue function
+                // Last result is going to be active tab because it is already sorted into correct queue
+                $scope.selectedTab = sortedResult[data].table;
 
-                    $scope.selectedTab = response.table;
-                    // counter += 1;
+                $scope.searchResults[sortedResult[data].table] = sortedResult[data];
+                if (sortedResult[data].table === $scope.selectedTab) {
+                    $scope.response.results = sortedResult[data].results;
+                    $scope.response.related_data = sortedResult[data].related_data;
                 }
+            }
 
-                $scope.searchResults[response.table] = response;
-                if (response.table === $scope.selectedTab) {
-                    $scope.response.results = response.results;
-                    $scope.response.related_data = response.related_data;
-                }
-            });
             vm.searchLoadingHandler.stop();
 
         } else {
@@ -130,9 +105,41 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
             $state.go("/");
                 $(function(){
                     $('#globalQuery').val('');
-
                 });
         }
+    }
+
+    /**
+     * Sorts result into needed order
+     * @param unsortedResult raw response from back-end
+     * @returns sorted result in the order of tabs in front-end
+     */
+    function sortIntoRightQueue(unsortedResult) {
+        var sortedResult = {};
+
+        unsortedResult.data.forEach(function (response) {
+            if (response.table != null) {
+
+                // Using reversed order because when looping next time it chooses the last one to be active tab
+                if (response.table == "taxon") {
+                    sortedResult[0] = response;
+                } else if (response.table == "image") {
+                    sortedResult[1] = response;
+                } else if (response.table == "stratigraphy") {
+                    sortedResult[2] = response;
+                } else if (response.table == "reference") {
+                    sortedResult[3] = response;
+                } else if (response.table == "locality") {
+                    sortedResult[4] = response;
+                } else if (response.table == "sample") {
+                    sortedResult[5] = response;
+                } else if (response.table == "specimen") {
+                    sortedResult[6] = response;
+                }
+            }
+        });
+
+        return sortedResult;
     }
 
     /**
