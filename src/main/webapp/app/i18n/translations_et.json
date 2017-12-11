@@ -455,6 +455,15 @@
         "INSTITUTIONS": "Asutused"
     },
     "DETAIL": {
+        "SPECIMEN": {
+            "IDENTIFICATION_NAME": "Nimi",
+            "IDENTIFICATION_DET": "Det.",
+            "IDENTIFICATION_DATE": "Aeg",
+            "IDENTIFICATION_REFERENCE": "Viide",
+            "IDENTIFICATION_TYPE": "tüüp",
+            "IDENTIFICATION_REMARKS": "Lisainfo",
+            "IDENTIFICATION_CURRENT": "Eelistatud"
+        },
         "DRILLCORE": {
             "DRILLCORE_BOXES": "Puursüdamiku kastid",
             "BOX_NUMBER": "Kast nr.",

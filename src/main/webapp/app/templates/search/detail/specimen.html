@@ -418,84 +418,95 @@
                 </table>
             </div>
 
-            <div class="col-sm-6" data-ng-if="detailCtrl.results.locality__latitude && detailCtrl.results.locality__longitude">
-                <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
-                <div id='hoverbox' class='coupontooltip'>
-                    <div id='hoversystem'></div>
-                    <div id='hoverstat'></div>
+            <div class="col-sm-6" >
+                <div data-ng-if="detailCtrl.results.locality__latitude && detailCtrl.results.locality__longitude">
+                    <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
+                    <div id='hoverbox' class='coupontooltip'>
+                        <div id='hoversystem'></div>
+                        <div id='hoverstat'></div>
+                    </div>
+                    <locality-map x = "detailCtrl.results.locality__latitude" y = "detailCtrl.results.locality__longitude" name = "detailCtrl.results.locality__locality_en" fid = "detailCtrl.results.locality_id"></locality-map>
+                    <a href data-ng-click="detailCtrl.service.showGoogleMap(detailCtrl.results.locality__latitude, detailCtrl.results.locality__longitude, detailCtrl.results.locality__country__value_en)">Google Maps</a></span>
+                    &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.results.locality__latitude, detailCtrl.results.locality__longitude)" data-ng-if="detailCtrl.results.locality__country__value_en == 'Estonia'">Maa-amet / Estonian Land Board</a>
                 </div>
-                <locality-map x = "detailCtrl.results.locality__latitude" y = "detailCtrl.results.locality__longitude" name = "detailCtrl.results.locality__locality_en" fid = "detailCtrl.results.locality_id"></locality-map>
-                <a href data-ng-click="detailCtrl.service.showGoogleMap(detailCtrl.results.locality__latitude, detailCtrl.results.locality__longitude, detailCtrl.results.locality__country__value_en)">Google Maps</a></span>
-                &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.results.locality__latitude, detailCtrl.results.locality__longitude)" data-ng-if="detailCtrl.results.locality__country__value_en == 'Estonia'">Maa-amet / Estonian Land Board</a>
-            </div>
 
-            <div class="col-sm-6" data-ng-if="detailCtrl.specimenIdentifications.length > 0">
-                <h3> {{ 'DETAIL.DETAIL_IDENTIFICATIONS' | translate }} </h3>
-                <table class="table table-bordered table-hover">
-                    <thead class="styles-for-table-headers">
-                    <tr>
-                        <th>Name</th>
-                        <th>Formula</th>
-                        <th>Det.</th>
-                        <th>Date added?</th>
-                        <th>Reference</th>
-                        <th>Remarks</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr style="cursor: pointer; " data-ng-repeat="entity in detailCtrl.specimenIdentifications">
-                        <td>
-                            <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+entity.taxon_id})">{{entity.taxon__taxon}}</a>
-                        </td>
-                        <td>{{entity.soil_horizon}}</td>
-                        <td></td>
-                        <td>{{entity.date_added  | date:dateFormat}}</td>
-                        <td>{{entity.reference__reference}}</td>
-                        <td>{{entity.remarks}}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+                <div data-ng-if="detailCtrl.specimenIdentifications.length > 0">
+                    <h3> {{ 'DETAIL.DETAIL_IDENTIFICATIONS' | translate }} </h3>
+                    <table class="table table-bordered table-hover">
+                        <thead class="styles-for-table-headers">
+                        <tr>
+                            <th> {{ 'DETAIL.SPECIMEN.IDENTIFICATION_NAME' | translate }} </th>
+                            <th> {{ 'DETAIL.SPECIMEN.IDENTIFICATION_DET' | translate }} </th>
+                            <th> {{ 'DETAIL.SPECIMEN.IDENTIFICATION_DATE' | translate }} </th>
+                            <th> {{ 'DETAIL.SPECIMEN.IDENTIFICATION_REFERENCE' | translate }} </th>
+                            <th> {{ 'DETAIL.SPECIMEN.IDENTIFICATION_TYPE' | translate }} </th>
+                            <th> {{ 'DETAIL.SPECIMEN.IDENTIFICATION_REMARKS' | translate }} </th>
+                            <th> {{ 'DETAIL.SPECIMEN.IDENTIFICATION_CURRENT' | translate }} </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr data-ng-repeat="entity in detailCtrl.specimenIdentifications">
+                            <td>
+                                <span>
+                                    <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+entity.taxon_id})">{{entity.taxon__taxon}}</a>
+                                </span>
+                                <span data-ng-if="entity.name && entity.name != null">
+                                    | {{ entity.name }}
+                                </span>
+                            </td>
+                            <td>{{entity.det}}</td> <!--TODO -->
+                            <td>{{entity.date_added  | date:dateFormat}}</td>
+                            <td>{{entity.reference__reference}}</td>
+                            <td>{{entity.type}}</td> <!--TODO -->
+                            <td>{{entity.remarks}}</td>
+                            <td>{{entity.curernt}}</td> <!--TODO -->
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-            <div class="col-sm-6" data-ng-if="detailCtrl.specimenReference.length > 0">
-                <h3> {{ 'DETAIL.DETAIL_REFERENCES' | translate }} </h3>
-                <table class="table table-bordered table-hover">
-                    <thead class="styles-for-table-headers">
-                    <tr>
-                        <th>Reference</th>
-                        <th>Pages</th>
-                        <th>Figures</th>
-                        <th>DOI</th>
-                        <th>Remarks</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr style="cursor: pointer; " data-ng-repeat="entity in detailCtrl.specimenReference">
-                        <td><a href data-ng-click="detailCtrl.service.openInNewWindow({object:'reference',id:entity.reference_id})">{{entity.reference__reference}}</a></td>
-                        <td>{{entity.pages}}</td>
-                        <td>{{entity.figures}}</td>
-                        <td>{{entity.reference__doi}}</td>
-                        <td>{{entity.remarks}}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
 
-            <div class="col-sm-6" data-ng-if="detailCtrl.specimenImage.length > 0">
-                <h3> {{ 'DETAIL.DETAIL_IMAGES' | translate }} </h3>
-                <table class="table table-bordered table-hover">
-                    <thead>
-                    </thead>
-                    <tbody>
-                    <tr style="cursor: pointer; ">
-                        <td  data-ng-repeat="entity in detailCtrl.specimenImage">
-                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image', id:entity.id})">
-                                <show-preview img-url="entity.image_url"/>
-                            </a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div data-ng-if="detailCtrl.specimenReference.length > 0">
+                    <h3> {{ 'DETAIL.DETAIL_REFERENCES' | translate }} </h3>
+                    <table class="table table-bordered table-hover">
+                        <thead class="styles-for-table-headers">
+                        <tr>
+                            <th>Reference</th>
+                            <th>Pages</th>
+                            <th>Figures</th>
+                            <th>DOI</th>
+                            <th>Remarks</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr data-ng-repeat="entity in detailCtrl.specimenReference">
+                            <td><a href data-ng-click="detailCtrl.service.openInNewWindow({object:'reference',id:entity.reference_id})">{{entity.reference__reference}}</a></td>
+                            <td>{{entity.pages}}</td>
+                            <td>{{entity.figures}}</td>
+                            <td>{{entity.reference__doi}}</td>
+                            <td>{{entity.remarks}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div data-ng-if="detailCtrl.specimenImage.length > 0">
+                    <h3> {{ 'DETAIL.DETAIL_IMAGES' | translate }} </h3>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td  data-ng-repeat="entity in detailCtrl.specimenImage">
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image', id:entity.id})">
+                                    <show-preview img-url="entity.image_url"/>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
 

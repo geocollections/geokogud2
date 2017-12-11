@@ -455,6 +455,15 @@
         "INSTITUTIONS": "Institutions"
     },
     "DETAIL": {
+        "SPECIMEN": {
+            "IDENTIFICATION_NAME": "Name",
+            "IDENTIFICATION_DET": "Det.",
+            "IDENTIFICATION_DATE": "Date",
+            "IDENTIFICATION_REFERENCE": "Reference",
+            "IDENTIFICATION_TYPE": "Type",
+            "IDENTIFICATION_REMARKS": "Remarks",
+            "IDENTIFICATION_CURRENT": "Current"
+        },
         "DRILLCORE": {
             "DRILLCORE_BOXES": "Drill core boxes",
             "BOX_NUMBER": "Box no.",
