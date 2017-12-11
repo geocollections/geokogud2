@@ -555,6 +555,8 @@ table tr > td:first-child {
     background-color: #eceeef; /* New color? */
     text-align: center;
     margin-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 /* overrides default h2 margin top 20 px */

@@ -86,7 +86,8 @@ public class SearchController extends ControllerHelper {
 
     @PostMapping(value = "/specimen")
     public ApiResponse searchSpecimen(@RequestBody SpecimenSearchCriteria specimenSearchCriteria) {
-        ApiResponse specimens = specimenApiService.findSpecimen(specimenSearchCriteria);
+//        ApiResponse specimens = specimenApiService.findSpecimen(specimenSearchCriteria);
+        return specimenApiService.findSpecimen(specimenSearchCriteria);
 
         // EDIT START removed double call, because it made application too slow 08.12.2017
 //        if (specimens.getResult() != null) {
@@ -119,7 +120,7 @@ public class SearchController extends ControllerHelper {
 
         }*/
 
-        return specimens;
+//        return specimens;
     }
     private ApiResponse iterateImages(Map<String, Object> specimen, SpecimenSearchCriteria specimenSearchCriteria) {
         specimenSearchCriteria.setSpecimenNumber(new SearchField(

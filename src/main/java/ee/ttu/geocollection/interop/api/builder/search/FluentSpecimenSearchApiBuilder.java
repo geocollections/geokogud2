@@ -150,5 +150,9 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
         return this;
     }
 
+//    public FluentSpecimenSearchApiBuilder returnImageFields() {
+//        return returnRelatedData(SpecimenApiServiceImpl.SPECIMEN_IMAGE_TABLE, SPECIMEN__DATABASE__ACRONYM, IMAGE_URL, IMAGE);
+//    }
+
 
 }

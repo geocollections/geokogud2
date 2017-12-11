@@ -64,6 +64,7 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
             "locality__type__value_en",
             "locality__vald__vald",
             "locality__vald__vald_en",
+//            "locality_free",
             "depth",
             "depth_interval",
             "sample__agent_collected__agent",
@@ -150,8 +151,10 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
             "original_status__value_en",
             "part",
             "date_added",
+            "date_changed",
             "specimen_id",
             "type__value_en",
+            "type__value",
             "kind__value_en");
 
     @Autowired
