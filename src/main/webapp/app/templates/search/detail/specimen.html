@@ -524,7 +524,45 @@
 
                 <!-- TODO: Analysis-->
                 <!-- TODO: AnalysisResults-->
-                <!-- TODO: Attachments-->
+
+                <div class="table-responsive" data-ng-if="detailCtrl.attachmentLink.length > 0">
+                    <h3> {{ 'DETAIL.SPECIMEN.ATTACHMENT_HEADING' | translate }} </h3>
+                    <table class="table table-bordered table-hover">
+                        <thead class="styles-for-table-headers">
+                        <tr>
+                            <th> {{ 'DETAIL.SPECIMEN.ATTACHMENT_TYPE' | translate }} </th>
+                            <th> {{ 'DETAIL.SPECIMEN.ATTACHMENT_FORMAT' | translate }} </th>
+                            <th> {{ 'DETAIL.SPECIMEN.ATTACHMENT_DESCRIPTION' | translate }} </th>
+                            <th> {{ 'DETAIL.SPECIMEN.ATTACHMENT_AUTHOR' | translate }} </th>
+                            <th> {{ 'DETAIL.SPECIMEN.ATTACHMENT_DATE' | translate }} </th>
+                            <th> {{ 'DETAIL.SPECIMEN.ATTACHMENT_LINK' | translate }} </th>
+                            <th>DOI</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr data-ng-repeat="entity in detailCtrl.attachmentLink">
+                            <td>
+                                <localize en="entity.attachment__type__value_en" et="entity.attachment__type__value" />
+                            </td>
+                            <td>{{detailCtrl.service.getAttachmentFormatFromFilename({filename: entity.attachment__filename})}}</td>
+                            <td>
+                                <localize en="entity.attachment__description_en" et="entity.attachment__description" />
+                            </td>
+                            <td>
+                                <div data-ng-if="entity.attachment__author__agent != null">{{entity.attachment__author__agent}}</div>
+                                <div data-ng-if="entity.attachment__author__agent == null">{{entity.attachment__author_free}}</div>
+                            </td>
+                            <td>{{entity.attachment__date_added}}</td>
+                            <td style="word-break: break-all">
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({objecy: 'attachment', id: entity.attachment__id})">
+                                    {{entity.attachment__filename}}
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
 

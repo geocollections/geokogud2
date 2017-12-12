@@ -475,7 +475,14 @@
             "GEOLOGY_AGENT": "Det.",
             "GEOLOGY_DATE": "Aeg",
             "GEOLOGY_REFERENCE": "Viide",
-            "GEOLOGY_REMARKS": "Lisainfo"
+            "GEOLOGY_REMARKS": "Lisainfo",
+            "ATTACHMENT_HEADING": "Lingid",
+            "ATTACHMENT_TYPE": "Tüüp",
+            "ATTACHMENT_FORMAT": "Formaat",
+            "ATTACHMENT_DESCRIPTION": "Kirjeldus",
+            "ATTACHMENT_AUTHOR": "Autor",
+            "ATTACHMENT_DATE": "Aeg",
+            "ATTACHMENT_LINK": "Link"
         },
         "DRILLCORE": {
             "DRILLCORE_BOXES": "Puursüdamiku kastid",

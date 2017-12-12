@@ -475,7 +475,14 @@
             "GEOLOGY_AGENT": "Det.",
             "GEOLOGY_DATE": "Date",
             "GEOLOGY_REFERENCE": "Reference",
-            "GEOLOGY_REMARKS": "Remarks"
+            "GEOLOGY_REMARKS": "Remarks",
+            "ATTACHMENT_HEADING": "Attachments",
+            "ATTACHMENT_TYPE": "Type",
+            "ATTACHMENT_FORMAT": "Format",
+            "ATTACHMENT_DESCRIPTION": "Description",
+            "ATTACHMENT_AUTHOR": "Author",
+            "ATTACHMENT_DATE": "Date",
+            "ATTACHMENT_LINK": "Link"
         },
         "DRILLCORE": {
             "DRILLCORE_BOXES": "Drill core boxes",
