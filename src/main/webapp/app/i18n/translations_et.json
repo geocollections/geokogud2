@@ -468,7 +468,14 @@
             "REFERENCE": "Viide",
             "REFERENCE_PAGES": "Lk.",
             "REFERENCE_FIGURES": "Joon.",
-            "REFERENCE_REMARKS": "Lisainfo"
+            "REFERENCE_REMARKS": "Lisainfo",
+            "GEOLOGY_HEADING": "Määrangud (mineraalid ja kivimid)",
+            "GEOLOGY_NAME": "Nimi",
+            "GEOLOGY_FORMULA": "Valem",
+            "GEOLOGY_AGENT": "Det.",
+            "GEOLOGY_DATE": "Aeg",
+            "GEOLOGY_REFERENCE": "Viide",
+            "GEOLOGY_REMARKS": "Lisainfo"
         },
         "DRILLCORE": {
             "DRILLCORE_BOXES": "Puursüdamiku kastid",

@@ -468,7 +468,14 @@
             "REFERENCE": "Reference",
             "REFERENCE_PAGES": "Pgs.",
             "REFERENCE_FIGURES": "Figs.",
-            "REFERENCE_REMARKS": "Remarks"
+            "REFERENCE_REMARKS": "Remarks",
+            "GEOLOGY_HEADING": "Identifications (minerals and rock)",
+            "GEOLOGY_NAME": "Name",
+            "GEOLOGY_FORMULA": "Formula",
+            "GEOLOGY_AGENT": "Det.",
+            "GEOLOGY_DATE": "Date",
+            "GEOLOGY_REFERENCE": "Reference",
+            "GEOLOGY_REMARKS": "Remarks"
         },
         "DRILLCORE": {
             "DRILLCORE_BOXES": "Drill core boxes",

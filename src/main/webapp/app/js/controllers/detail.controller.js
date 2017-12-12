@@ -114,6 +114,7 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             vm.specimens = vm.relatedData["specimen"];
             vm.taxonList = vm.relatedData["taxon_list"];
             vm.analysis = vm.relatedData["analysis"];
+            vm.specimenIdentificationGeology = vm.relatedData["specimen_identification_geology"];
         }
     }
 

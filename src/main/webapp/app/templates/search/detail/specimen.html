@@ -409,7 +409,7 @@
 
                 <div class="table-responsive" data-ng-if="detailCtrl.specimenIdentifications.length > 0">
                     <h3> {{ 'DETAIL.SPECIMEN.IDENTIFICATION_HEADING' | translate }} </h3>
-                    <table class="table table-bordered table-hover table-responsive">
+                    <table class="table table-bordered table-hover">
                         <thead class="styles-for-table-headers">
                         <tr>
                             <th> {{ 'DETAIL.SPECIMEN.IDENTIFICATION_NAME' | translate }} </th>
@@ -454,6 +454,43 @@
                     </table>
                 </div>
 
+                <div class="table-responsive" data-ng-if="detailCtrl.specimenIdentificationGeology.length > 0">
+                    <h3> {{ 'DETAIL.SPECIMEN.GEOLOGY_HEADING' | translate }} </h3>
+                    <table class="table table-bordered table-hover">
+                        <thead class="styles-for-table-headers">
+                        <tr>
+                            <td> {{ 'DETAIL.SPECIMEN.GEOLOGY_NAME' | translate }} </td>
+                            <td> {{ 'DETAIL.SPECIMEN.GEOLOGY_FORMULA' | translate }} </td>
+                            <td> {{ 'DETAIL.SPECIMEN.GEOLOGY_AGENT' | translate }} </td>
+                            <td> {{ 'DETAIL.SPECIMEN.GEOLOGY_DATE' | translate }} </td>
+                            <td> {{ 'DETAIL.SPECIMEN.GEOLOGY_REFERENCE' | translate }} </td>
+                            <td> {{ 'DETAIL.SPECIMEN.GEOLOGY_REMARKS' | translate }} </td>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr data-ng-repeat="entity in detailCtrl.specimenIdentificationGeology">
+                            <td>
+                                <localize en="entity.name_en" et="entity.name" />
+                                <span data-ng-if="(entity.rock__name && entity.rock__name != null)
+                                            || (entity.rock__name_en && entity.rock__name_en != null)">
+                                         | <localize et="entity.rock__name" en="entity.rock__name_en" />
+                                    </span>
+                            </td>
+                            <td>{{entity.formula}}</td> <!-- TODO: get formula somewhere -->
+                            <td>{{entity.agent__agent}}</td>
+                            <td>{{entity.date_added | date:dateFormat}}</td>
+                            <td>
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference',id: entity.reference_id})">
+                                    {{entity.reference__reference}}
+                                </a>
+                            </td>
+                            <td>{{entity.remarks}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <div class="table-responsive" data-ng-if="detailCtrl.specimenReference.length > 0">
                     <h3> {{ 'DETAIL.SPECIMEN.REFERENCE_HEADING' | translate }} </h3>
                     <table class="table table-bordered table-hover">
@@ -484,6 +521,11 @@
                         </tbody>
                     </table>
                 </div>
+
+                <!-- TODO: Analysis-->
+                <!-- TODO: AnalysisResults-->
+                <!-- TODO: Attachments-->
+
             </div>
 
             <div class="col-sm-6" >
@@ -494,7 +536,7 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td  data-ng-repeat="entity in detailCtrl.specimenImage">
+                            <td data-ng-repeat="entity in detailCtrl.specimenImage">
                                 <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image', id:entity.id})">
                                     <show-preview img-url="entity.image_url"/>
                                 </a>

@@ -24,6 +24,7 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
     public static final String SPECIMEN_IMAGE_TABLE = "specimen_image";
     public static final String SPECIMEN_IDENTIFICATION_TABLE = "specimen_identification";
     public static final String SPECIMEN_REFERENCE_TABLE = "specimen_reference";
+    public static final String SPECIMEN_IDENTIFICATION_GEOLOGY = "specimen_identification_geology";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -235,6 +236,7 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .relatedData(SPECIMEN_IDENTIFICATION_TABLE)
                 .relatedData(SPECIMEN_IMAGE_TABLE)
                 .relatedData(SPECIMEN_REFERENCE_TABLE)
+                .relatedData(SPECIMEN_IDENTIFICATION_GEOLOGY)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(SPECIMEN_TABLE, requestParams);
