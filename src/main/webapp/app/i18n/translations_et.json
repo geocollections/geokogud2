@@ -456,13 +456,19 @@
     },
     "DETAIL": {
         "SPECIMEN": {
+            "IDENTIFICATION_HEADING": "Määrangud",
             "IDENTIFICATION_NAME": "Nimi",
             "IDENTIFICATION_DET": "Det.",
             "IDENTIFICATION_DATE": "Aeg",
             "IDENTIFICATION_REFERENCE": "Viide",
             "IDENTIFICATION_TYPE": "tüüp",
             "IDENTIFICATION_REMARKS": "Lisainfo",
-            "IDENTIFICATION_CURRENT": "Eelistatud"
+            "IDENTIFICATION_CURRENT": "Eelistatud",
+            "REFERENCE_HEADING": "Viited eksemplarile",
+            "REFERENCE": "Viide",
+            "REFERENCE_PAGES": "Lk.",
+            "REFERENCE_FIGURES": "Joon.",
+            "REFERENCE_REMARKS": "Lisainfo"
         },
         "DRILLCORE": {
             "DRILLCORE_BOXES": "Puursüdamiku kastid",
