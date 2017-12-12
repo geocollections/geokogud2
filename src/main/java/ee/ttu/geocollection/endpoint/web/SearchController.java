@@ -134,17 +134,19 @@ public class SearchController extends ControllerHelper {
 
     @PostMapping(value = "/drillcore")
     public ApiResponse searchDrillCores(@RequestBody DrillCoreSearchCriteria searchCriteria) {
-        ApiResponse drillCores =  drillCoreApiService.findDrillCore(searchCriteria);
-        if (drillCores.getResult() != null) {
-            asynchService.doAsynchCallsForEachResult(
-                    drillCores,
-                    drillCore ->
-                            () -> drillCoreApiService.findDrillCoreImage(
-                                    new SearchField(drillCore.get("id").toString(), LookUpType.exact)),
-                    drillCore ->
-                            receivedImage -> drillCore.put("drill_core_image_thumbnail", receivedImage));
-        }
-        return drillCores;
+        return drillCoreApiService.findDrillCore(searchCriteria);
+        //EDIT 12.12.2017 commented code becuase it is not used and server threw code 500
+//        ApiResponse drillCores =  drillCoreApiService.findDrillCore(searchCriteria);
+//        if (drillCores.getResult() != null) {
+//            asynchService.doAsynchCallsForEachResult(
+//                    drillCores,
+//                    drillCore ->
+//                            () -> drillCoreApiService.findDrillCoreImage(
+//                                    new SearchField(drillCore.get("id").toString(), LookUpType.exact)),
+//                    drillCore ->
+//                            receivedImage -> drillCore.put("drill_core_image_thumbnail", receivedImage));
+//        }
+//        return drillCores;
     }
 
     @PostMapping(value = "/locality")
