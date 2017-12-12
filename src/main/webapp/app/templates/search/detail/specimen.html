@@ -168,18 +168,18 @@
                     </tr>
 
                     <tr data-ng-if="detailCtrl.results.date_collected != null && detailCtrl.results.date_collected">
-                        <td> {{ ' API_TRANSLATION.SPECIMEN.DATE_COLLECTED' | translate }} </td>
+                        <td> {{ 'API_TRANSLATION.SPECIMEN.DATE_COLLECTED' | translate }} </td>
                         <td> {{ detailCtrl.results.date_collected }} </td>
                     </tr>
 
                     <tr data-ng-if="detailCtrl.results.date_collected_free!= null && detailCtrl.results.date_collected_free">
-                        <td> {{' API_TRANSLATION.SPECIMEN.DATE_COLLECTED_FREE' | translate }} </td>
+                        <td> {{ 'API_TRANSLATION.SPECIMEN.DATE_COLLECTED_FREE' | translate }} </td>
                         <td> {{detailCtrl.results.date_collected_free }} </td>
                     </tr>
 
                     <tr data-ng-if="detailCtrl.results.remarks_collecting != null && detailCtrl.results.remarks_collecting
                         && detailCtrl.results.remarks == null">
-                        <td> {{' API_TRANSLATION.REMARKS_COLLECTING' | translate }} </td>
+                        <td> {{ 'API_TRANSLATION.SPECIMEN.REMARKS_COLLECTING' | translate }} </td>
                         <td> {{detailCtrl.results.remarks_collecting }} </td>
                     </tr>
 
@@ -189,14 +189,14 @@
                     </tr>
 
                     <tr data-ng-if="detailCtrl.results.sample__number != null && detailCtrl.results.sample__number">
-                        <td> {{ ' API_TRANSLATION.SPECIMEN.SAMPLE__NUMBER' | translate }} </td>
+                        <td> {{ 'API_TRANSLATION.SPECIMEN.SAMPLE__NUMBER' | translate }} </td>
                         <td> {{ detailCtrl.results.sample__number }} </td>
                     </tr>
 
                     <!--TODO: Sample number txt-->
 
                     <tr data-ng-if="detailCtrl.results.sample__mass != null && detailCtrl.results.sample__mass">
-                        <td> {{ ' API_TRANSLATION.SPECIMEN.SAMPLE__MASS' | translate }} </td>
+                        <td> {{ 'API_TRANSLATION.SPECIMEN.SAMPLE__MASS' | translate }} </td>
                         <td> {{ detailCtrl.results.sample__mass }} </td>
                     </tr>
 
@@ -431,7 +431,7 @@
                                     | {{ entity.name }}
                                 </span>
                             </td>
-                            <td>{{entity.det}}</td> <!--TODO -->
+                            <td>{{entity.agent__agent}}</td> <!--TODO -->
                             <td>{{entity.date_added  | date:dateFormat}}</td>
                             <td>
                                 <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference', id: entity.reference_id})">
@@ -442,7 +442,13 @@
                                 <localize et="entity.identification_type__value" en="entity.identification_type__value_en" />
                             </td>
                             <td>{{entity.remarks}}</td>
-                            <td>{{entity.current}}</td> <!--TODO -->
+                            <td>
+                                <div data-ng-if="entity.current == true">
+                                    +
+                                </div>
+                                <div data-ng-if="entity.current == false">
+                                    -
+                                </div>
                         </tr>
                         </tbody>
                     </table>
