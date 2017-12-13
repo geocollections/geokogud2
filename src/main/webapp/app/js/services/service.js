@@ -25,6 +25,7 @@ var constructor = function (utils, configuration, $window, $location) {
     service.getCountsForAnalysisDetailView = getCountsForAnalysisDetailView;
     service.searchAllSpecimenInLocality = searchAllSpecimenInLocality;
     service.getDrillcoreImageUrl = getDrillcoreImageUrl;
+    service.composeSpecimenImageUrl = composeSpecimenImageUrl;
     service.getAttachmentFormatFromFilename = getAttachmentFormatFromFilename;
 
     service.toggle = function (el,array) {
@@ -83,8 +84,13 @@ var constructor = function (utils, configuration, $window, $location) {
         console.log(readyUrl);
         if(readyUrl) return readyUrl;
         if(imageData.image_url) return imageData.image_url;
-        var imageUrl = "http://geokogud.info/" + imageData.database__acronym.toLowerCase() + "/image/";
-        return imageUrl + imageData.imageset__imageset_series + "/" + imageData.imageset__imageset_number + "/" + imageData.filename;
+        if (imageData.database__acronym != null) {
+            var imageUrl = "http://geokogud.info/" + imageData.database__acronym.toLowerCase()
+                + "/image/" + imageData.imageset__imageset_series
+                + "/" + imageData.imageset__imageset_number
+                + "/" + imageData.filename;
+        }
+        return imageUrl;
     };
 
     service.composeExternalImagePath = function(imageData) {
@@ -112,11 +118,13 @@ var constructor = function (utils, configuration, $window, $location) {
 
     // Used only on corebox detail view for different sizes
     service.composeExternalCoreboxImagePath = function (imageData) {
-        var imageUrl = "http://geokogud.info/di.php?f=/var/www/"
-            + imageData.database__acronym.toLowerCase() + "/"
-            + "drillcore_image/"
-            + imageData.drillcore__id + "/"
-            + imageData.drillcoreimage__image + "&w=";
+        if (imageData.database__acronym != null) {
+            var imageUrl = "http://geokogud.info/di.php?f=/var/www/"
+                + imageData.database__acronym.toLowerCase() + "/"
+                + "drillcore_image/"
+                + imageData.drillcore__id + "/"
+                + imageData.drillcoreimage__image + "&w=";
+        }
         return imageUrl;
     };
 
@@ -133,25 +141,40 @@ var constructor = function (utils, configuration, $window, $location) {
         }
     }
 
+    function composeSpecimenImageUrl(params) {
+        if (params.imageUrl != null) {
+            var imageUrl = params.imageUrl;
+        } else {
+            if (params.database != null) {
+                var imageUrl = "geokogud.info/" + params.database.toLowerCase() + "/specimen_image/" + params.image;
+            }
+        }
+        return imageUrl;
+    }
+
     function composeSpecimenExternalPath(imageData) {
         //http://geokogud.info/di.php?f=/data/git/images/specimen/663/663-6.jpg&w=400
         var applicationUrl = buildApplicationUrl();
-        var imageUrl = applicationUrl
-            + "specimenImg/"
-            + imageData.specimen__database__acronym.toLowerCase() + "/"
-            + imageData.image;
+        if (imageData.specimen__database__acronym != null) {
+            var imageUrl = applicationUrl
+                + "specimenImg/"
+                + imageData.specimen__database__acronym.toLowerCase() + "/"
+                + imageData.image;
+        }
         return imageUrl;
     }
 
     function composeImageExternalPath(imageData) {
         //http://geokogud.info/di.php?f=/var/www/git/image/OH/OH07-1/OH07-1-4.jpg
         var applicationUrl = buildApplicationUrl();
-        var imageUrl = applicationUrl
-            + "img/"
-            + imageData.database__acronym.toLowerCase() + "/"
-            + imageData.imageset__imageset_series + "/"
-            + imageData.imageset__imageset_number + "/"
-            + imageData.filename;
+        if (imageData.database__acronym != null) {
+            var imageUrl = applicationUrl
+                + "img/"
+                + imageData.database__acronym.toLowerCase() + "/"
+                + imageData.imageset__imageset_series + "/"
+                + imageData.imageset__imageset_number + "/"
+                + imageData.filename;
+        }
         console.log(imageUrl);
         return imageUrl;
     }
@@ -257,6 +280,7 @@ var constructor = function (utils, configuration, $window, $location) {
         $window.open(params.url, '', 'width=600,height=750,scrollbars, resizable');
     }
 
+    // Used in analysis detail view for analysis results, counts total number of grains.
     function getCountsForAnalysisDetailView(relatedData) {
         var numOfCounts = 0;
         angular.forEach(relatedData, function(result) {
@@ -267,10 +291,13 @@ var constructor = function (utils, configuration, $window, $location) {
         return numOfCounts;
     }
 
+    // Open new window with new search url for specimens.
     function searchAllSpecimenInLocality(params) {
         $window.open("http://arendus2.geokogud.info/specimen?specimen_number_1=1&specimen_number=&collection_id_1=5&collection_id=&classification_1=1&classification=&taxon_1=1&taxon=&name_geology_1=1&name_geology=&country_1=1&country=&locality_1=5&locality=" + params.locality + "&stratigraphy_1=1&stratigraphy=&id_1=5&id=&fossil_1=1&fossil=&agent_1=1&agent=&reference_1=1&reference=&original_type_1=1&original_type=&part_1=1&part=&tags_1=1&tags=&dbs%5B%5D=1&dbs%5B%5D=2&dbs%5B%5D=3&dbs%5B%5D=4&dbs%5B%5D=5&dbs%5B%5D=6&currentTable=specimen&maxSize=5&sort=id&sortdir=DESC");
     }
 
+    // Used in specimen detail view when there are attachments like 154421451fsa548a.jpg
+    // then it takes the 4 last chars aka format.
     function getAttachmentFormatFromFilename(params) {
         if (params.filename != null) {
             return params.filename.substring(params.filename.length, -4);

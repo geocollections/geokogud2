@@ -723,6 +723,21 @@ table tr > td:first-child {
 /* COREBOX END */
 
 
+/* SPECIMEN START */
+
+#image-preview-detail {
+    text-align: center;
+    border-top: 0;
+}
+
+#image-preview-detail img {
+    max-height: none;
+    max-width: none;
+}
+
+/* SPECIMEN END */
+
+
 /*******************************
  ***  DETAILVIEW STYLES END  ***
  *******************************/
@@ -783,6 +798,28 @@ table tr > td:first-child {
 .bold-link {
     font-weight: bold;
 }
+
+
+
+
+/************************
+ *** TABLE VIEW START ***
+ ***************** ******/
+
+
+/* SPECIMEN START */
+
+.image-preview {
+    text-align: center;
+}
+
+/* SPECIMEN END */
+
+
+/************************
+ ***  TABLE VIEW END  ***
+ ************************/
+
 
 
 /*!* Uncomment to make picture move with the screen but needs fixing *!*/

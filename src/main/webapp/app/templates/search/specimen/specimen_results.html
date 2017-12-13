@@ -100,13 +100,13 @@
                               et="entity.original_status__value" en="entity.original_status__value_en"/>
                 </td>
 
-                <td data-title="{{ 'SEARCH.SPECIMENS.IMAGES' | translate }}">
+                <td class="image-preview" data-title="{{ 'SEARCH.SPECIMENS.IMAGES' | translate }}">
                     <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:entity.id})">
                         <show-preview data-ng-if="entity.specimen_image_thumbnail.count > 0"
-                                      img-url="'geokogud.info/'
-                                      + entity.specimen_image_thumbnail.results[0].specimen__database__acronym.toLowerCase()
-                                      + '/specimen_image/'
-                                      + entity.specimen_image_thumbnail.results[0].image"/>
+                                      img-url="ctrl.service.composeSpecimenImageUrl({
+                                            database: entity.specimen_image_thumbnail.results[0].specimen__database__acronym,
+                                            image: entity.specimen_image_thumbnail.results[0].image,
+                                            imageUrl: entity.specimen_image_thumbnail.results[0].image_url})"/>
                     </a>
                 </td>
 
