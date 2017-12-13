@@ -735,6 +735,10 @@ table tr > td:first-child {
     max-width: none;
 }
 
+#image-preview-detail a:hover {
+    opacity: 0.8;
+}
+
 /* SPECIMEN END */
 
 
