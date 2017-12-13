@@ -177,7 +177,8 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .queryId(searchCriteria.getId()).andReturn()
                 .buildDefaultFieldsQuery();
 //                .buildFullQuery();
-        return apiService.searchRawEntities(SPECIMEN_TABLE, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
+        return apiService.searchRawEntities(SPECIMEN_TABLE, 15, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
+//        return apiService.searchRawEntitiesUsingSolr(SPECIMEN_TABLE,30, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
     private FluentSpecimenSearchApiBuilder prepareCommonFields(SpecimenSearchCriteria searchCriteria) {

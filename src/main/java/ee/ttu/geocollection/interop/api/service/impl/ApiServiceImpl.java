@@ -117,6 +117,30 @@ public class ApiServiceImpl implements ApiService {
         return response.getBody();
     }
 
+//    @Override
+//    public ApiResponse searchRawEntitiesUsingSolr(String tableName, int paginateBy, int page, SortField sortfield, String requestParams) {
+//        String url = "http://193.40.102.11:8983/solr/" + tableName
+//                + "/select?q=160&facet=true&rows=" + paginateBy
+//                + "&sort=date_added%20DESC&start=0";
+//
+//        logger.trace("Searching from solr: " + url);
+//
+//
+//        try {
+//            ApiResponse response = restTemplate.getForObject(new URI(url), ApiResponse.class);
+//            if (response != null) {
+//                response.setTable(tableName);
+//            }
+//            return response;
+//        } catch (HttpMessageNotReadableException e) {
+//            throw new AppException(AppError.BAD_REQUEST, e);
+//        } catch (HttpServerErrorException e) {
+//            throw new AppException(AppError.ERROR_API_UNAVAILABLE, e);
+//        } catch (URISyntaxException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+
     /**
      * Adds nothing or "-" sign for api to understand if ordering is ascending or descending
      * @param order which is either ASCENDING or DESCENDING
