@@ -35,6 +35,7 @@ public class PreparationsApiServiceImpl implements PreparationsApiService{
             "sample__stratigraphy_free",
             "sample__lithostratigraphy__stratigraphy",
             "sample__lithostratigraphy__stratigraphy_en",
+            "sample__lithostratigraphy_id",
             "classification__class_field",
             "classification__class_en",
             "location",

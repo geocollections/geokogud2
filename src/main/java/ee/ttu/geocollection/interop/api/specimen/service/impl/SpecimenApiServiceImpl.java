@@ -135,9 +135,9 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
             "stratigraphy__stratigraphy",
             "stratigraphy__stratigraphy_en",
             "stratigraphy_free",
-            "specimenidentification__name",
-            "specimenidentification__taxon_id",
-            "specimenidentification__taxon__taxon",
+//            "specimenidentification__name",
+//            "specimenidentification__taxon_id",
+//            "specimenidentification__taxon__taxon",
             //"specimenidentification__taxon__author_year",
             //"specimenidentification__taxon__parent__taxon",
             //"specimenidentification__taxon__fossil_group__taxon",
@@ -177,6 +177,7 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .queryId(searchCriteria.getId()).andReturn()
                 .buildDefaultFieldsQuery();
 //                .buildFullQuery();
+        // Had to lower the pagination size because default 30 made it too slow.
         return apiService.searchRawEntities(SPECIMEN_TABLE, 15, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
 //        return apiService.searchRawEntitiesUsingSolr(SPECIMEN_TABLE,30, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
