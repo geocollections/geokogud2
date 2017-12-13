@@ -178,7 +178,7 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .buildDefaultFieldsQuery();
 //                .buildFullQuery();
         // Had to lower the pagination size because default 30 made it too slow.
-        return apiService.searchRawEntities(SPECIMEN_TABLE, 15, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
+        return apiService.searchRawEntities(SPECIMEN_TABLE, 10, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
 //        return apiService.searchRawEntitiesUsingSolr(SPECIMEN_TABLE,30, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
