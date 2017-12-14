@@ -30,9 +30,6 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             vm.imageUrl = (['specimenImage', 'photoArchive'].indexOf($stateParams.type) > -1 ? vm.service.composeImageUrl(vm.results) : null);
             vm.externalImagePath = (['specimenImage', 'photoArchive'].indexOf($stateParams.type) > -1 ? vm.service.composeExternalImagePath(vm.results) : null);
             vm.files = (['doi'].indexOf($stateParams.type) > -1 ? composeFileInfo(response.data.results) : []);
-            vm.preparationTaxons = (['preparations'].indexOf($stateParams.type) > -1 ? composeTaxonListInfo(response.data.results) : []);
-
-            vm.numOfSpecimens = (['preparations'].indexOf($stateParams.type) > -1 ? sumNumberOfSpecimens(response.data.relatedData) : []);
 
             vm.detailLoadingHandler.stop();
             getLocality();
@@ -41,6 +38,11 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
 
             vm.coreboxImageUrl = (['corebox'].indexOf($stateParams.type) > -1 ? vm.service.composeCoreboxImageUrl(vm.results) : null);
             vm.externalCoreboxImagePath = (['corebox'].indexOf($stateParams.type) > -1 ? vm.service.composeExternalCoreboxImagePath(vm.results) : null);
+
+            if (vm.relatedData != null) {
+                vm.numOfSpecimens = (['preparations'].indexOf($stateParams.type) > -1 ? sumNumberOfSpecimens(vm.relatedData) : []);
+                vm.preparationTaxons = (['preparations'].indexOf($stateParams.type) > -1 ? composeTaxonListInfo(vm.relatedData) : []);
+            }
 
         } else {
             // TODO: Do something if no response, fix error template or something.
@@ -139,7 +141,7 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
 
     function sumNumberOfSpecimens(results) {
         var numOfSpecimen = 0;
-        angular.forEach(results, function (preparation) {
+        angular.forEach(results.preparation_taxa, function (preparation) {
             numOfSpecimen += preparation.frequency;
         });
         return numOfSpecimen;
@@ -147,27 +149,19 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
 
     function composeTaxonListInfo(results) {
         var preparationTaxons = [];
-        var numOfSpecimen = 0;
+        var numOfSpecimen = sumNumberOfSpecimens(results);
         var percent = 0;
 
-        angular.forEach(results, function (specimen) {
-           numOfSpecimen += specimen.taxonlist__frequency;
-        });
+        angular.forEach(results.preparation_taxa, function(data) {
+            percent = ((data.frequency * 100) / numOfSpecimen).toFixed(1);
+            console.log(percent);
 
-        angular.forEach(results, function(data) {
-            percent = ((data.taxonlist__frequency * 100) / numOfSpecimen).toFixed(1);
-
-            console.log(numOfSpecimen);
-            if (data.taxonlist__taxon__id != null || data.taxonlist__name != null) {
-                preparationTaxons.push({
-                    taxonId: data.taxonlist__taxon__id,
-                    taxonTaxon: data.taxonlist__taxon__taxon,
-                    taxonFrequency: data.taxonlist__frequency,
-                    taxonRemarks: data.taxonlist__taxon__remarks,
-                    taxonName: data.taxonlist__name,
-                    percent: percent
-                });
-            }
+            preparationTaxons.push({
+                name: data.name,
+                frequency: data.frequency,
+                percent: percent,
+                remarks: data.remarks
+            });
 
         });
         return preparationTaxons;

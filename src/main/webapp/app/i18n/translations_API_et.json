@@ -433,7 +433,8 @@
             "TAXONS": "Taksonite nimekiri",
             "TAXONS_NAME":"Nimi (txt)",
             "TAXONS_FREQUENCY": "Arvukus",
-            "TAXONS_REMARKS": "Lisainfo"
+            "TAXONS_REMARKS": "Lisainfo",
+            "NUMBER_OF_SPECIMENS": "Eksemplaride arv"
         },
         "PHOTO_ARCHIVE" :  {
             "ID":"ID",

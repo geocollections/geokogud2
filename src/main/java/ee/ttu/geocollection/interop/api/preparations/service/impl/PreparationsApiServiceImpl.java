@@ -60,12 +60,12 @@ public class PreparationsApiServiceImpl implements PreparationsApiService{
             "date_added",
             "date_changed",
             "user_added",
-            "user_changed",
-            "taxonlist__taxon__id",
-            "taxonlist__taxon__taxon",
-            "taxonlist__taxon__remarks",
-            "taxonlist__frequency",
-            "taxonlist__name"
+            "user_changed"
+//            "taxonlist__taxon__id",
+//            "taxonlist__taxon__taxon",
+//            "taxonlist__taxon__remarks",
+//            "taxonlist__frequency",
+//            "taxonlist__name"
     );
 
     @Autowired

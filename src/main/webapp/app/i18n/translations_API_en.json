@@ -436,7 +436,8 @@
             "TAXONS": "List of taxa",
             "TAXONS_NAME":"Name (txt)",
             "TAXONS_FREQUENCY": "Frequency",
-            "TAXONS_REMARKS": "Remarks"
+            "TAXONS_REMARKS": "Remarks",
+            "NUMBER_OF_SPECIMENS": "Number of specimens"
         },
         "PHOTO_ARCHIVE" :  {
             "ID":"ID",

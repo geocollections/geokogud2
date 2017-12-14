@@ -147,7 +147,11 @@
                              </td>
                          </tr>
 
-                         <!--TODO: num of specimens-->
+                         <tr data-ng-if="detailCtrl.preparationTaxa.length > 0">
+                             <td> {{ 'API_TRANSLATION.PREPARATION.NUMBER_OF_SPECIMENS' | translate }} </td>
+                             <td> {{ detailCtrl.numOfSpecimens }} </td>
+                         </tr>
+
                          <!--TODO: specimens per gram-->
 
                          <tr data-ng-if="(detailCtrl.results.identification_agent__agent && detailCtrl.results.identification_agent__agent != null)">
@@ -211,36 +215,6 @@
                 <h3> {{ 'API_TRANSLATION.PREPARATION.TAXONS' | translate }} </h3>
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
-                        <tr>
-                            <td>{{ 'API_TRANSLATION.PREPARATION.TAXONS_NAME ' | translate }}</td>
-                            <td>{{ 'API_TRANSLATION.PREPARATION.TAXONS_FREQUENCY ' | translate }}</td>
-                            <td>%</td>
-                            <td>{{ 'API_TRANSLATION.PREPARATION.TAXONS_REMARKS ' | translate }}</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr data-ng-repeat="entity in detailCtrl.preparationTaxons | orderBy: '-taxonFrequency'">
-                            <td data-ng-if="entity.taxonId != null">
-                                <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+entity.taxonId})">
-                                    <i>{{entity.taxonTaxon}}</i>
-                                </a>
-                            </td>
-                            <td data-ng-if="entity.taxonId === null">
-                                <i> {{ entity.taxonName }} </i>
-                            </td>
-                            <td> {{ entity.taxonFrequency }} </td>
-                            <td data-ng-if="entity.percent > 0"> {{ entity.percent }} </td>
-                            <td data-ng-if="detailCtrl.results.taxonlist__frequency === null"></td>
-                            <td> {{ entity.taxonRemarks }} </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="col-lg-6" data-ng-if="detailCtrl.preparationTaxa.length > 0">
-                <h3> {{ 'API_TRANSLATION.PREPARATION.TAXONS' | translate }} </h3>
-                <table class="table table-bordered table-hover">
-                    <thead class="styles-for-table-headers">
                     <tr>
                         <td>{{ 'API_TRANSLATION.PREPARATION.TAXONS_NAME ' | translate }}</td>
                         <td>{{ 'API_TRANSLATION.PREPARATION.TAXONS_FREQUENCY ' | translate }}</td>
@@ -249,12 +223,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr data-ng-repeat="entity in detailCtrl.preparationTaxa | orderBy: '-frequency'">
+                    <tr data-ng-repeat="entity in detailCtrl.preparationTaxons | orderBy: '-frequency'">
                         <td>
                             <i> {{ entity.name }} </i>
                         </td>
                         <td> {{ entity.frequency }} </td>
-                        <td> {{ detailCtrl.service.calculatePreparationTaxaPercent({table:detailCtrl.preparationTaxa }) }} </td>
+                        <td> {{ entity.percent }} </td>
                         <td> {{ entity.remarks }} </td>
                     </tr>
                     </tbody>
