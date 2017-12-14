@@ -808,7 +808,16 @@ table tr > td:first-child {
 
 /************************
  *** TABLE VIEW START ***
- ***************** ******/
+ ************************/
+
+
+/* UNIVERSAL START */
+
+.no-results {
+    margin: 3% 0;
+}
+
+/* UNIVERSAL END*/
 
 
 /* SPECIMEN START */
@@ -818,6 +827,16 @@ table tr > td:first-child {
 }
 
 /* SPECIMEN END */
+
+
+/* PHOTO ARCHIVE START */
+
+.no-results-image img {
+    max-width: 50%;
+    text-align: center;
+}
+
+/* PHOTO ARCHIVE END */
 
 
 /************************

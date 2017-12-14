@@ -116,7 +116,7 @@
         "TITLE": ""
     },
     "SEARCH": {
-        "NO_RESULTS": "No results found",
+        "NO_RESULTS": "Your search returned no matching records. Please check your search criteria and read the tips below",
         "CRITERIA": {
           "HEADING": {
             "PRIMARY":"Search criteria",

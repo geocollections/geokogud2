@@ -1,58 +1,66 @@
 
-<div class="row">
-    <div class="col-xs-6" ng-include="'app/templates/search/partial/export_buttons.html'"></div>
-    <div class="col-xs-6" ng-include="'app/templates/search/partial/pagination.html'"></div>
+<div data-ng-if="response.results != null">
+    <div class="row">
+        <div class="col-xs-6" ng-include="'app/templates/search/partial/export_buttons.html'"></div>
+        <div class="col-xs-6" ng-include="'app/templates/search/partial/pagination.html'"></div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="table-search">
+            <thead class="thead-default">
+            <tr>
+                <th><sort-field value = "id" name="SEARCH.PREPARATIONS.TABLE.ID"></sort-field></th>
+                <th><sort-field value = "preparation_number" name="SEARCH.PREPARATIONS.TABLE.NUMBER"></sort-field></th>
+                <th><sort-field value = "sample__locality__locality,sample__locality__locality_en" name="SEARCH.PREPARATIONS.TABLE.LOCALITY"></sort-field></th>
+                <th><sort-field value = "sample__depth" name="SEARCH.PREPARATIONS.TABLE.DEPTH_M"></sort-field></th>
+                <th>
+                    <sort-field value = "sample__stratigraphy__stratigraphy,sample__stratigraphy__stratigraphy_en"
+                                name="SEARCH.PREPARATIONS.TABLE.STRATIGRAPHY">
+
+                    </sort-field> | <em>{{ 'SEARCH.PREPARATIONS.TABLE.LITHOSTRATIGRAPHY' | translate }}</em>
+                </th>
+                <th><sort-field value = "sample__agent_collected__agent" name="SEARCH.PREPARATIONS.TABLE.COLLECTOR"></sort-field></th>
+                <th><sort-field value = "sample__mass" name="SEARCH.PREPARATIONS.TABLE.WEIGHT"/></th>
+                <!--  <th>{{ 'SEARCH.PREPARATIONS.TABLE.MORE_INFO' | translate }}</th>-->
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-ng-repeat="entity in response.results">
+                <td style="font-weight: normal" data-title="{{ 'SEARCH.PREPARATIONS.TABLE.ID' | translate }}">{{entity.id}}</td>
+                <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.NUMBER' | translate }}">
+                    <a class="bold-link" href data-ng-click="ctrl.service.openInNewWindow({object:'preparation',id:entity.id})">{{entity.preparation_number}}</a>
+                </td>
+                <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.LOCALITY' | translate }}">
+                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:entity.sample__locality__id})">
+                        <localize data-ng-if="entity.sample__locality__locality != null || entity.sample__locality__locality_en != null" et="entity.sample__locality__locality" en="entity.sample__locality__locality_en"/>
+                    </a>
+                </td>
+                <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.DEPTH_M' | translate }}">{{entity.sample__depth}} <span ng-if="entity.sample__depth_interval != null && entity.sample__depth_interval != ''">({{entity.sample__depth_interval}})</span></td>
+                <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.STRATIGRAPHY' | translate }}">
+                    <localize data-ng-if="entity.sample__stratigraphy__stratigraphy != null || entity.sample__stratigraphy__stratigraphy_en != null"
+                              et="entity.sample__stratigraphy__stratigraphy"
+                              en="entity.sample__stratigraphy__stratigraphy_en"/>
+                    <span ng-show="entity.sample__stratigraphy__stratigraphy != null && entity.sample__lithostratigraphy__stratigraphy != null">|</span>
+                    <em>
+                        <localize data-ng-if="entity.sample__lithostratigraphy__stratigraphy != null || entity.sample__lithostratigraphy__stratigraphy_en != null"
+                                  et="entity.sample__lithostratigraphy__stratigraphy"
+                                  en="entity.sample__lithostratigraphy__stratigraphy_en"/>
+                    </em>
+                </td>
+                <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.COLLECTOR' | translate }}">{{entity.sample__agent_collected__agent}}</td>
+                <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.WEIGHT' | translate }}">{{entity.sample__mass}}</td>
+                <!--<td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.MORE_INFO' | translate }}">???</td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div ng-include="'app/templates/search/partial/pagination.html'"></div>
 </div>
 
-<div class="table-responsive">
-    <table class="table table-bordered table-hover" id="table-search">
-        <thead class="thead-default">
-        <tr>
-            <th><sort-field value = "id" name="SEARCH.PREPARATIONS.TABLE.ID"></sort-field></th>
-            <th><sort-field value = "preparation_number" name="SEARCH.PREPARATIONS.TABLE.NUMBER"></sort-field></th>
-            <th><sort-field value = "sample__locality__locality,sample__locality__locality_en" name="SEARCH.PREPARATIONS.TABLE.LOCALITY"></sort-field></th>
-            <th><sort-field value = "sample__depth" name="SEARCH.PREPARATIONS.TABLE.DEPTH_M"></sort-field></th>
-            <th>
-                <sort-field value = "sample__stratigraphy__stratigraphy,sample__stratigraphy__stratigraphy_en"
-                            name="SEARCH.PREPARATIONS.TABLE.STRATIGRAPHY">
-
-                </sort-field> | <em>{{ 'SEARCH.PREPARATIONS.TABLE.LITHOSTRATIGRAPHY' | translate }}</em>
-            </th>
-            <th><sort-field value = "sample__agent_collected__agent" name="SEARCH.PREPARATIONS.TABLE.COLLECTOR"></sort-field></th>
-            <th><sort-field value = "sample__mass" name="SEARCH.PREPARATIONS.TABLE.WEIGHT"/></th>
-            <!--  <th>{{ 'SEARCH.PREPARATIONS.TABLE.MORE_INFO' | translate }}</th>-->
-        </tr>
-        </thead>
-        <tbody>
-        <tr data-ng-repeat="entity in response.results">
-            <td style="font-weight: normal" data-title="{{ 'SEARCH.PREPARATIONS.TABLE.ID' | translate }}">{{entity.id}}</td>
-            <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.NUMBER' | translate }}">
-                <a class="bold-link" href data-ng-click="ctrl.service.openInNewWindow({object:'preparation',id:entity.id})">{{entity.preparation_number}}</a>
-            </td>
-            <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.LOCALITY' | translate }}">
-                <a href data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:entity.sample__locality__id})">
-                    <localize data-ng-if="entity.sample__locality__locality != null || entity.sample__locality__locality_en != null" et="entity.sample__locality__locality" en="entity.sample__locality__locality_en"/>
-                </a>
-            </td>
-            <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.DEPTH_M' | translate }}">{{entity.sample__depth}} <span ng-if="entity.sample__depth_interval != null && entity.sample__depth_interval != ''">({{entity.sample__depth_interval}})</span></td>
-            <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.STRATIGRAPHY' | translate }}">
-                <localize data-ng-if="entity.sample__stratigraphy__stratigraphy != null || entity.sample__stratigraphy__stratigraphy_en != null"
-                          et="entity.sample__stratigraphy__stratigraphy"
-                          en="entity.sample__stratigraphy__stratigraphy_en"/>
-                <span ng-show="entity.sample__stratigraphy__stratigraphy != null && entity.sample__lithostratigraphy__stratigraphy != null">|</span>
-                <em>
-                    <localize data-ng-if="entity.sample__lithostratigraphy__stratigraphy != null || entity.sample__lithostratigraphy__stratigraphy_en != null"
-                          et="entity.sample__lithostratigraphy__stratigraphy"
-                          en="entity.sample__lithostratigraphy__stratigraphy_en"/>
-                </em>
-            </td>
-            <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.COLLECTOR' | translate }}">{{entity.sample__agent_collected__agent}}</td>
-            <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.WEIGHT' | translate }}">{{entity.sample__mass}}</td>
-            <!--<td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.MORE_INFO' | translate }}">???</td>-->
-        </tr>
-        </tbody>
-    </table>
-    <div class="col-lg-12 h4 panel-heading text-center" data-ng-if="response.results == null">{{ 'SEARCH.NO_RESULTS' | translate }}</div>
+<div class="row" data-ng-if="response.results == null">
+    <div class="col-lg-12 h3 panel-heading text-center no-results">{{ 'SEARCH.NO_RESULTS' | translate }}</div>
+    <div class="col-lg-12">
+        <div class="col-lg-12" ng-bind-html="main.getContent(main.searchTips)"></div>
+    </div>
 </div>
-
-<div ng-include="'app/templates/search/partial/pagination.html'"></div>
