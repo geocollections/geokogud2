@@ -40,8 +40,10 @@ var constructor = function ($http, $location, configuration) {
         };
         service.httpRequest(url, config, successCb, errorCb)
     };
+
     service.composeUrl = function(data) {
         var url = "", currentTable = $location.$$path.split('/')[1];
+
         if(currentTable == "map") {
             angular.forEach(Object.values(data.filters), function (attr) {
                 if (configuration.urlHelper[currentTable]) {
@@ -59,8 +61,10 @@ var constructor = function ($http, $location, configuration) {
             angular.forEach(Object.keys(data), function (attr) {
                 if (attr != 'sortField' && attr != 'dbs' && configuration.urlHelper[currentTable]) {
                     var fieldName = configuration.urlHelper[currentTable].fields[attr];
-                    console.log(configuration.urlHelper[currentTable]);
                     if (fieldName) url += fieldName + "_1=" + configuration.urlHelper['lookUpType'][data[attr].lookUpType] + "&" + fieldName + "=" + (data[attr].name ? data[attr].name : "") + "&";
+                    console.log(url);
+                    console.log(fieldName);
+                    console.log(configuration.urlHelper['lookUpType'][data[attr].lookUpType]);
                 }
             });
             if (url != "") {
@@ -113,12 +117,7 @@ var constructor = function ($http, $location, configuration) {
                         if (data[specialField + "Since"].name != null && data[specialField + "Since"].lookUpType != null && data[specialField + "To"].name != null && data[specialField + "To"].lookUpType != null) {
                             console.log(url);
                             url += "&" + specialField + "_1=" + data[specialField + 'Since'].lookUpType + "+" + data[specialField + 'To'].lookUpType + "&" + specialField + "=" + data[specialField + "Since"].name + "+" + data[specialField + 'To'].name;
-                            console.log(url);
                         } else if (data[specialField + "Since"].name != null && data[specialField + "Since"].lookUpType != null) {
-                            console.log(data[specialField + 'Since'].lookUpType);
-                            console.log(data[specialField + 'To'].lookUpType);
-                            console.log(data[specialField + 'Since'].name);
-                            console.log(data[specialField + 'To'].name);
                             url += "&" + specialField + "_1=" + data[specialField + 'Since'].lookUpType + "&" + specialField + "=" + data[specialField + "Since"].name;
                         } else if (data[specialField + "To"].name != null && data[specialField + "To"].lookUpType != null) {
                             url += "&" + specialField + "_1=" + data[specialField + 'To'].lookUpType + "&" + specialField + "=" + data[specialField + "To"].name;
@@ -219,33 +218,30 @@ var constructor = function ($http, $location, configuration) {
         if(urlParams["page"] != null) {
             searchParams["page"] = Number(urlParams["page"]);
         }
-        // TODO: Drillcore search broken here, paneb valesse kohta, gte ja lte on samas indeksis
+        // TODO: Drillcore search broken, List instead of String
         angular.forEach(configuration.urlHelper.specialFields, function(specialField) {
             console.log(specialField);
             if(urlParams[specialField + "_1"] != null && urlParams[specialField] != null) {
+
                 console.log(urlParams);
                 console.log(urlParams[specialField]);
                 console.log(urlParams[specialField + "_1"]);
-                // Edited following code on 13.12.2017
-                // var specialFieldLookUpType = urlParams[specialField + "_1"].split(" ");
-                // var specialFieldName = urlParams[specialField].split(" ");
+
+                var specialFieldLookUpType = urlParams[specialField + "_1"].split(" ");
+                var specialFieldName = urlParams[specialField].split(" ");
                 if(specialField == "publication_year") {
                     specialField = "year";
                 }
-                if(urlParams[specialField][0] != null) {
+                if(specialFieldName[0] != null) {
                     searchParams[specialField + "Since"] = {
-                        lookUpType: urlParams[specialField + "_1"][0],
-                        name: Number(urlParams[specialField][0])
-                        // lookUpType: specialFieldLookUpType[0],
-                        // name: Number(specialFieldName[0])
+                        lookUpType: specialFieldLookUpType[0],
+                        name: Number(specialFieldName[0])
                     }
                 }
-                if(urlParams[specialField][1] != null) {
+                if(specialFieldName[1] != null) {
                     searchParams[specialField + "To"] = {
-                        lookUpType: urlParams[specialField + "_1"][1],
-                        name: Number(urlParams[specialField][1])
-                        // lookUpType: specialFieldLookUpType[1],
-                        // name: Number(specialFieldName[1])
+                        lookUpType: specialFieldLookUpType[1],
+                        name: Number(specialFieldName[1])
                     }
                 }
             }
@@ -274,7 +270,7 @@ var constructor = function ($http, $location, configuration) {
             }
         }
 
-        var x = $http(config).then(successCallback, errorCallback);
+        $http(config).then(successCallback, errorCallback);
 
         function successCallback(response, status, headers, config) {
             service.isFunction(successCb) && successCb(response, status, headers, config);

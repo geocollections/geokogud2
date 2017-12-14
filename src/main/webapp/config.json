@@ -117,8 +117,7 @@
           "country": "country",
           "county": "county",
           "stratigraphy": "stratigraphy",
-          "storageLocation": "location",
-          "boxesSince": "boxes"
+          "storageLocation": "location"
         }
         },
       "sample" : {
