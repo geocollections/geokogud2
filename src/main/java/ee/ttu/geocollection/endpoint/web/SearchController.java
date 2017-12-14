@@ -87,6 +87,7 @@ public class SearchController extends ControllerHelper {
     @PostMapping(value = "/specimen")
     public ApiResponse searchSpecimen(@RequestBody SpecimenSearchCriteria specimenSearchCriteria) {
         ApiResponse specimens = specimenApiService.findSpecimen(specimenSearchCriteria);
+        // TODO: Find better way to show images
 
         if (specimens.getResult() != null) {
             asynchService.doAsynchCallsForEachResult(

@@ -16,6 +16,8 @@ import java.util.Map;
 @Service
 public class PreparationsApiServiceImpl implements PreparationsApiService{
 
+    public static final String PREPARATION_TAXA = "preparation_taxa";
+
     private List<String> fields = Arrays.asList(
             "id",
             "sample_id",
@@ -36,6 +38,20 @@ public class PreparationsApiServiceImpl implements PreparationsApiService{
             "sample__lithostratigraphy__stratigraphy",
             "sample__lithostratigraphy__stratigraphy_en",
             "sample__lithostratigraphy_id",
+            "sample_palaeontology__method__value",
+            "sample_palaeontology__method__value_en",
+            "sample_palaeontology__method_details",
+            "sample_palaeontology__mass",
+            "sample_palaeontology__date_start",
+            "sample_palaeontology__date_end",
+            "sample_palaeontology__date_free",
+            "sample_palaeontology__agent__agent",
+            "sample_palaeontology__location",
+            "sample_palaeontology__remarks",
+            "identification_agent__agent",
+            "identification_date",
+            "identification_remarks",
+            "remarks",
             "classification__class_field",
             "classification__class_en",
             "location",
@@ -76,6 +92,7 @@ public class PreparationsApiServiceImpl implements PreparationsApiService{
     public Map findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
+                .relatedData(PREPARATION_TAXA)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity("preparation", requestParams);

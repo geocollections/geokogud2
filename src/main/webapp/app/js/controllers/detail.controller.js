@@ -32,6 +32,8 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             vm.files = (['doi'].indexOf($stateParams.type) > -1 ? composeFileInfo(response.data.results) : []);
             vm.preparationTaxons = (['preparations'].indexOf($stateParams.type) > -1 ? composeTaxonListInfo(response.data.results) : []);
 
+            vm.numOfSpecimens = (['preparations'].indexOf($stateParams.type) > -1 ? sumNumberOfSpecimens(response.data.relatedData) : []);
+
             vm.detailLoadingHandler.stop();
             getLocality();
             getRelatedData();
@@ -115,6 +117,7 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             vm.taxonList = vm.relatedData["taxon_list"];
             vm.analysis = vm.relatedData["analysis"];
             vm.specimenIdentificationGeology = vm.relatedData["specimen_identification_geology"];
+            vm.preparationTaxa = vm.relatedData["preparation_taxa"];
         }
     }
 
@@ -132,6 +135,14 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             }
         });
         return files;
+    }
+
+    function sumNumberOfSpecimens(results) {
+        var numOfSpecimen = 0;
+        angular.forEach(results, function (preparation) {
+            numOfSpecimen += preparation.frequency;
+        });
+        return numOfSpecimen;
     }
 
     function composeTaxonListInfo(results) {
