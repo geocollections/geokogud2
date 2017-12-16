@@ -94,7 +94,7 @@ public class SearchController extends ControllerHelper {
                     specimens,
                     specimen ->
                             () -> specimenApiService.findSpecimenImage(
-                                    new SearchField(specimen.get("specimen_id").toString(), LookUpType.exact)),
+                                    new SearchField(specimen.get("id").toString(), LookUpType.exact)),
                     specimen ->
                             receivedImage -> specimen.put("specimen_image_thumbnail", receivedImage));
 
