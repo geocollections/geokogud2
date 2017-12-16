@@ -116,15 +116,30 @@ var constructor = function (utils, configuration, $window, $location) {
         }
     };
 
+    // // Used only on corebox detail view for different sizes
+    // service.composeExternalCoreboxImagePath = function (imageData) {
+    //     if (imageData.database__acronym != null) {
+    //         var imageUrl = "http://geokogud.info/di.php?f=/var/www/"
+    //             + imageData.database__acronym.toLowerCase() + "/"
+    //             + "drillcore_image/"
+    //             + imageData.drillcore__id + "/"
+    //             + imageData.drillcoreimage__image + "&w=";
+    //     }
+    //     return imageUrl;
+    // };
+
     // Used only on corebox detail view for different sizes
-    service.composeExternalCoreboxImagePath = function (imageData) {
+    service.composeExternalCoreboxImagePath = function(imageData) {
+        //http://geokogud.info/di.php?f=/var/www/git/drillcore_image/477/477_1.jpg&w=600
+        var applicationUrl = buildApplicationUrl();
         if (imageData.database__acronym != null) {
-            var imageUrl = "http://geokogud.info/di.php?f=/var/www/"
+            var imageUrl = applicationUrl
+                + "drillcoreImg/"
                 + imageData.database__acronym.toLowerCase() + "/"
-                + "drillcore_image/"
                 + imageData.drillcore__id + "/"
-                + imageData.drillcoreimage__image + "&w=";
+                + imageData.drillcoreimage__image;
         }
+        console.log(imageUrl);
         return imageUrl;
     };
 

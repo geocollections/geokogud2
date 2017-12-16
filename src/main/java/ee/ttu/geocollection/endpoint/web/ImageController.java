@@ -1,6 +1,8 @@
 package ee.ttu.geocollection.endpoint.web;
 
 import ee.ttu.geocollection.core.domain.AppConfig;
+import ee.ttu.geocollection.interop.api.service.impl.ApiServiceImpl;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.logging.Logger;
 
 @RestController
 public class ImageController {
@@ -26,6 +29,7 @@ public class ImageController {
     private static final String IMAGES = "images";
     private static final String IMAGE = "image";
     private static final String SPECIMEN = "specimen";
+    private static final String DRILLCORE_IMAGE = "drillcore_image";
 
     private static final String LEGACY_WIDTH = "&w=";
 
@@ -70,6 +74,27 @@ public class ImageController {
                         + DELIMITER + imageName;
         if (appConfig.useLegacyImageResolver) {
             return fetchImageFromLegacyApp(imagePath, width);
+        } else {
+            return fetchImageFromLocalStorage(imagePath, width);
+        }
+    }
+
+    @GetMapping(value = "/drillcoreImg/{dbAcronym}/{collectionNumber}/{imageName}/{width}", produces = MediaType.IMAGE_JPEG_VALUE)
+    public byte[] retrieveCoreBoxImage(
+            @PathVariable String dbAcronym,
+            @PathVariable String collectionNumber,
+            @PathVariable String imageName,
+            @PathVariable Integer width) throws IOException {
+        String imagePath =
+                IMAGE_PREFIX
+                    + DELIMITER + dbAcronym
+                    + DELIMITER + DRILLCORE_IMAGE
+                    + DELIMITER + collectionNumber
+                    + DELIMITER + imageName;
+        final org.slf4j.Logger logger = LoggerFactory.getLogger(ApiServiceImpl.class);
+        logger.trace("IMAGE PATH: " + imagePath);
+        if (appConfig.useLegacyImageResolver) {
+            return  fetchImageFromLegacyApp(imagePath, width);
         } else {
             return fetchImageFromLocalStorage(imagePath, width);
         }
