@@ -38,7 +38,7 @@ var constructor = function ($http, $location, configuration) {
             "url": url
             //"params": params ? params : ""
         };
-        service.httpRequest(url, config, successCb, errorCb)
+        service.httpRequest(url, config, successCb, errorCb);
     };
 
     service.composeUrl = function(data) {

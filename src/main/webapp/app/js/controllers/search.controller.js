@@ -17,6 +17,11 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     $scope.isInstitutionsCollapsed = true;
 
     function onSearchData(result) {
+
+        // console.log(localStorage.getItem('specimenNumber'));
+        // document.getElementById('inputSpecimenNumber').value = localStorage.getItem("specimenNumber");
+        //
+
         console.log(result);
         $scope.pageSize = 30;
         $scope.totalItems = result.data.count;
@@ -102,6 +107,9 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     }
 
     $scope.search = function () {
+
+        // saveSearchToLocalStorage();
+
         $scope.showImages = $scope.searchParameters.searchImages && $scope.searchParameters.searchImages.name ? true : false;
         vm.searchLoadingHandler.start();
         applicationService.getList($stateParams.type, $scope.searchParameters, onSearchData, onSearchError);
@@ -188,6 +196,12 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
             localityEt: locality,
             fid: locality_id
         });
+    }
+
+    function saveSearchToLocalStorage() {
+        if ($('#inputSpecimenNumber').val() != "") {
+            localStorage.setItem("specimenNumber", $('#inputSpecimenNumber').val());
+        }
     }
 
 };
