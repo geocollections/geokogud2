@@ -123,6 +123,7 @@
                 top: 100
             }
         });
-        // $("#globalQuery").focus();
+        // Non mobile devices will focus on global input field
+        if (!/Mobi/.test(navigator.userAgent)) $("#globalQuery").focus();
     });
 </script>
