@@ -64,9 +64,6 @@ var constructor = function ($http, $location, configuration) {
                 if (attr != 'sortField' && attr != 'dbs' && configuration.urlHelper[currentTable]) {
                     var fieldName = configuration.urlHelper[currentTable].fields[attr];
                     if (fieldName) url += fieldName + "_1=" + configuration.urlHelper['lookUpType'][data[attr].lookUpType] + "&" + fieldName + "=" + (data[attr].name ? data[attr].name : "") + "&";
-                    console.log(url);
-                    console.log(fieldName);
-                    console.log(configuration.urlHelper['lookUpType'][data[attr].lookUpType]);
                 }
             });
             if (url != "") {

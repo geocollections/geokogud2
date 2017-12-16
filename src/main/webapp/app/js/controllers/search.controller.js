@@ -118,12 +118,22 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     }
 
     $scope.searchDefault = function () {
-        $scope.searchParameters = {
-            sortField: {sortBy: "id", order: "DESCENDING"},
-            dbs: vm.service.departments.map(function (department) {
-                return department.code;
-            })
-        };
+        if ((['photoArchive'].indexOf($stateParams.type) > -1)) {
+            $scope.searchParameters = {
+                sortField: {sortBy: "id", order: "DESCENDING"},
+                searchImages: {lookUpType: "exact", name: true},
+                dbs: vm.service.departments.map(function (department) {
+                    return department.code;
+                })
+            };
+        } else {
+            $scope.searchParameters = {
+                sortField: {sortBy: "id", order: "DESCENDING"},
+                dbs: vm.service.departments.map(function (department) {
+                    return department.code;
+                })
+            };
+        }
         $scope.sortByAsc = true;
         $scope.search();
     };
