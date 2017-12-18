@@ -195,51 +195,67 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
 
     function addSearchDataToLocalStorage(searchParameters) {
         if (typeof(localStorage) !== 'undefined') {
-            console.log("Adding to localstorage: " + $stateParams.type);
+            var stringifiedParameters = JSON.stringify(searchParameters);
+            var defaultParameters = '{"sortField":{"sortBy":"id","order":"DESCENDING"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"]}';
+            var defaultPhotoArchiveParameters = '{"sortField":{"sortBy":"id","order":"DESCENDING"},"searchImages":{"lookUpType":"exact","name":true},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"]}';
 
             if(['specimens'].indexOf($stateParams.type) > -1) {
-                // var specimen = {};
-                console.log("search parameters: ");
-                console.log(searchParameters);
-                // if (searchParameters !== "{\"sortField\":{\"sortBy\":\"id\",\"order\":\"DESCENDING\"},\"dbs\":[\"GIT\",\"TUG\",\"ELM\",\"TUGO\",\"MUMU\",\"EGK\"]}") {
+                if (stringifiedParameters !== defaultParameters) {
                     localStorage.setItem("specimens", JSON.stringify(searchParameters));
-                // }
+                }
             }
 
             if(['samples'].indexOf($stateParams.type) > -1) {
-
+                if (stringifiedParameters !== defaultParameters) {
+                    localStorage.setItem("samples", JSON.stringify(searchParameters));
+                }
             }
 
             if(['drillCores'].indexOf($stateParams.type) > -1) {
-
+                if (stringifiedParameters !== defaultParameters) {
+                    localStorage.setItem("drillCores", JSON.stringify(searchParameters));
+                }
             }
 
             if(['localities'].indexOf($stateParams.type) > -1) {
-
+                if (stringifiedParameters !== defaultParameters) {
+                    localStorage.setItem("localities", JSON.stringify(searchParameters));
+                }
             }
 
             if(['references'].indexOf($stateParams.type) > -1) {
-
+                if (stringifiedParameters !== defaultParameters) {
+                    localStorage.setItem("references", JSON.stringify(searchParameters));
+                }
             }
 
             if(['stratigraphy'].indexOf($stateParams.type) > -1) {
-
-
+                if (stringifiedParameters !== defaultParameters) {
+                    localStorage.setItem("stratigraphy", JSON.stringify(searchParameters));
+                }
             }
             if(['analyses'].indexOf($stateParams.type) > -1) {
-
+                if (stringifiedParameters !== defaultParameters) {
+                    localStorage.setItem("analyses", JSON.stringify(searchParameters));
+                }
             }
 
             if(['preparations'].indexOf($stateParams.type) > -1) {
-
+                if (stringifiedParameters !== defaultParameters) {
+                    localStorage.setItem("preparations", JSON.stringify(searchParameters));
+                }
             }
 
             if(['photoArchive'].indexOf($stateParams.type) > -1) {
-
+                if (stringifiedParameters !== defaultPhotoArchiveParameters) {
+                    localStorage.setItem("photoArchive", JSON.stringify(searchParameters));
+                }
             }
 
             if(['doi'].indexOf($stateParams.type) > -1) {
-
+                if (stringifiedParameters !== defaultParameters) {
+                    localStorage.setItem("doi", JSON.stringify(searchParameters));
+                }
             }
 
         }
