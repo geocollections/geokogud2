@@ -17,9 +17,6 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     $scope.isInstitutionsCollapsed = true;
 
     function onSearchData(result) {
-
-        // getSearchDataFromLocalStorage();
-
         console.log(result);
         $scope.pageSize = 30;
         $scope.totalItems = result.data.count;
@@ -152,7 +149,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     };
 
     $scope.resetSearch = function () {
-        // TODO: taking too long and not clearing inputs, before it was also taking too long.
+        // TODO: Reset is taking too long in some cases
         if ((['photoArchive'].indexOf($stateParams.type) > -1)) {
             $scope.searchParameters = {
                 sortField: {sortBy: "id", order: "DESCENDING"},
@@ -170,6 +167,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
             };
         }
         $scope.sortByAsc = true;
+
         localStorage.removeItem($stateParams.type);
         $scope.searchWithoutLocalStorage();
     };
@@ -232,54 +230,13 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
             var defaultParameters = '{"sortField":{"sortBy":"id","order":"DESCENDING"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"]}';
             var defaultPhotoArchiveParameters = '{"sortField":{"sortBy":"id","order":"DESCENDING"},"searchImages":{"lookUpType":"exact","name":true},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"]}';
 
-            if(['specimens'].indexOf($stateParams.type) > -1) {
-                if (stringifiedParameters !== defaultParameters) {
-                    localStorage.setItem("specimens", JSON.stringify(searchParameters));
+            if([$stateParams.type].indexOf($stateParams.type) > -1 && $stateParams.type === "photoArchive") {
+                if(stringifiedParameters !== defaultPhotoArchiveParameters) {
+                    localStorage.setItem($stateParams.type, JSON.stringify(searchParameters));
                 }
-            }
-            if(['samples'].indexOf($stateParams.type) > -1) {
-                if (stringifiedParameters !== defaultParameters) {
-                    localStorage.setItem("samples", JSON.stringify(searchParameters));
-                }
-            }
-            if(['drillCores'].indexOf($stateParams.type) > -1) {
-                if (stringifiedParameters !== defaultParameters) {
-                    localStorage.setItem("drillCores", JSON.stringify(searchParameters));
-                }
-            }
-            if(['localities'].indexOf($stateParams.type) > -1) {
-                if (stringifiedParameters !== defaultParameters) {
-                    localStorage.setItem("localities", JSON.stringify(searchParameters));
-                }
-            }
-            if(['references'].indexOf($stateParams.type) > -1) {
-                if (stringifiedParameters !== defaultParameters) {
-                    localStorage.setItem("references", JSON.stringify(searchParameters));
-                }
-            }
-            if(['stratigraphy'].indexOf($stateParams.type) > -1) {
-                if (stringifiedParameters !== defaultParameters) {
-                    localStorage.setItem("stratigraphy", JSON.stringify(searchParameters));
-                }
-            }
-            if(['analyses'].indexOf($stateParams.type) > -1) {
-                if (stringifiedParameters !== defaultParameters) {
-                    localStorage.setItem("analyses", JSON.stringify(searchParameters));
-                }
-            }
-            if(['preparations'].indexOf($stateParams.type) > -1) {
-                if (stringifiedParameters !== defaultParameters) {
-                    localStorage.setItem("preparations", JSON.stringify(searchParameters));
-                }
-            }
-            if(['photoArchive'].indexOf($stateParams.type) > -1) {
-                if (stringifiedParameters !== defaultPhotoArchiveParameters) {
-                    localStorage.setItem("photoArchive", JSON.stringify(searchParameters));
-                }
-            }
-            if(['doi'].indexOf($stateParams.type) > -1) {
-                if (stringifiedParameters !== defaultParameters) {
-                    localStorage.setItem("doi", JSON.stringify(searchParameters));
+            } else if([$stateParams.type].indexOf($stateParams.type) > -1) {
+                if(stringifiedParameters !== defaultParameters) {
+                    localStorage.setItem($stateParams.type, JSON.stringify(searchParameters));
                 }
             }
         }
@@ -289,35 +246,8 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         if (typeof(localStorage) !== 'undefined') {
             console.log("Getting from localStorage: " + $stateParams.type);
 
-            if(['specimens'].indexOf($stateParams.type) > -1 && localStorage['specimens'] != null) {
-                $scope.searchParameters = JSON.parse(localStorage.getItem("specimens"));
-            }
-            if(['samples'].indexOf($stateParams.type) > -1 && localStorage['samples'] != null) {
-                $scope.searchParameters = JSON.parse(localStorage.getItem("samples"));
-            }
-            if(['drillCores'].indexOf($stateParams.type) > -1 && localStorage['drillCores'] != null) {
-                $scope.searchParameters = JSON.parse(localStorage.getItem("drillCores"));
-            }
-            if(['localities'].indexOf($stateParams.type) > -1 && localStorage['localities'] != null) {
-                $scope.searchParameters = JSON.parse(localStorage.getItem("localities"));
-            }
-            if(['references'].indexOf($stateParams.type) > -1 && localStorage['references'] != null) {
-                $scope.searchParameters = JSON.parse(localStorage.getItem("references"));
-            }
-            if(['stratigraphy'].indexOf($stateParams.type) > -1 && localStorage['stratigraphy'] != null) {
-                $scope.searchParameters = JSON.parse(localStorage.getItem("stratigraphy"));
-            }
-            if(['analyses'].indexOf($stateParams.type) > -1 && localStorage['analyses'] != null) {
-                $scope.searchParameters = JSON.parse(localStorage.getItem("analyses"));
-            }
-            if(['preparations'].indexOf($stateParams.type) > -1 && localStorage['preparations'] != null) {
-                $scope.searchParameters = JSON.parse(localStorage.getItem("preparations"));
-            }
-            if(['photoArchive'].indexOf($stateParams.type) > -1 && localStorage['photoArchive'] != null) {
-                $scope.searchParameters = JSON.parse(localStorage.getItem("photoArchive"));
-            }
-            if(['doi'].indexOf($stateParams.type) > -1 && localStorage['doi'] != null) {
-                $scope.searchParameters = JSON.parse(localStorage.getItem("doi"));
+            if([$stateParams.type].indexOf($stateParams.type) > -1 && localStorage[$stateParams.type] != null) {
+                $scope.searchParameters = JSON.parse(localStorage.getItem($stateParams.type));
             }
         }
     }
