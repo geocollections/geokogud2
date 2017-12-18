@@ -170,6 +170,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
             };
         }
         $scope.sortByAsc = true;
+        localStorage.removeItem($stateParams.type);
         $scope.searchWithoutLocalStorage();
     };
 
