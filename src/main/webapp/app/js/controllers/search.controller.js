@@ -17,6 +17,9 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     $scope.isInstitutionsCollapsed = true;
 
     function onSearchData(result) {
+
+        getSearchDataFromLocalStorage();
+
         console.log(result);
         $scope.pageSize = 30;
         $scope.totalItems = result.data.count;
@@ -266,13 +269,13 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
             console.log("Getting from localstorage: " + $stateParams.type);
             if(['specimens'].indexOf($stateParams.type) > -1 && localStorage['specimens'] != null) {
                 var specimen = JSON.parse(localStorage.getItem("specimens"));
-                $('#inputSpecimenNumber').val("tere");
 
                 console.log(specimen);
                 console.log(specimen.hasOwnProperty("specimenNumber"));
                 if (specimen.hasOwnProperty("specimenNumber")) {
-                    console.log("YOOYOYOYOYOYOOYYOYOY" + specimen.specimenNumber.name);
+                    console.log("YOOYOYOYOYOYOOYYOYOY " + specimen.specimenNumber.name);
                     $('#inputSpecimenNumber').val(specimen.specimenNumber.name);
+                    $('#inputSpecimenNumber').attr('value', specimen.specimenNumber.name);
                 }
             }
         }
