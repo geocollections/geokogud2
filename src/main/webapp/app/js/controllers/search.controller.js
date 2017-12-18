@@ -17,11 +17,6 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     $scope.isInstitutionsCollapsed = true;
 
     function onSearchData(result) {
-
-        // console.log(localStorage.getItem('specimenNumber'));
-        // document.getElementById('inputSpecimenNumber').value = localStorage.getItem("specimenNumber");
-        //
-
         console.log(result);
         $scope.pageSize = 30;
         $scope.totalItems = result.data.count;
@@ -108,7 +103,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
 
     $scope.search = function () {
 
-        // saveSearchToLocalStorage();
+        addSearchDataToLocalStorage($scope.searchParameters);
 
         $scope.showImages = $scope.searchParameters.searchImages && $scope.searchParameters.searchImages.name ? true : false;
         vm.searchLoadingHandler.start();
@@ -198,9 +193,72 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         });
     }
 
-    function saveSearchToLocalStorage() {
-        if ($('#inputSpecimenNumber').val() != "") {
-            localStorage.setItem("specimenNumber", $('#inputSpecimenNumber').val());
+    function addSearchDataToLocalStorage(searchParameters) {
+        if (typeof(localStorage) !== 'undefined') {
+            console.log("Adding to localstorage: " + $stateParams.type);
+
+            if(['specimens'].indexOf($stateParams.type) > -1) {
+                // var specimen = {};
+                console.log("search parameters: ");
+                console.log(searchParameters);
+                // if (searchParameters !== "{\"sortField\":{\"sortBy\":\"id\",\"order\":\"DESCENDING\"},\"dbs\":[\"GIT\",\"TUG\",\"ELM\",\"TUGO\",\"MUMU\",\"EGK\"]}") {
+                    localStorage.setItem("specimens", JSON.stringify(searchParameters));
+                // }
+            }
+
+            if(['samples'].indexOf($stateParams.type) > -1) {
+
+            }
+
+            if(['drillCores'].indexOf($stateParams.type) > -1) {
+
+            }
+
+            if(['localities'].indexOf($stateParams.type) > -1) {
+
+            }
+
+            if(['references'].indexOf($stateParams.type) > -1) {
+
+            }
+
+            if(['stratigraphy'].indexOf($stateParams.type) > -1) {
+
+
+            }
+            if(['analyses'].indexOf($stateParams.type) > -1) {
+
+            }
+
+            if(['preparations'].indexOf($stateParams.type) > -1) {
+
+            }
+
+            if(['photoArchive'].indexOf($stateParams.type) > -1) {
+
+            }
+
+            if(['doi'].indexOf($stateParams.type) > -1) {
+
+            }
+
+        }
+    }
+
+    function getSearchDataFromLocalStorage() {
+        if (typeof(localStorage) !== 'undefined') {
+            console.log("Getting from localstorage: " + $stateParams.type);
+            if(['specimens'].indexOf($stateParams.type) > -1 && localStorage['specimens'] != null) {
+                var specimen = JSON.parse(localStorage.getItem("specimens"));
+                $('#inputSpecimenNumber').val("tere");
+
+                console.log(specimen);
+                console.log(specimen.hasOwnProperty("specimenNumber"));
+                if (specimen.hasOwnProperty("specimenNumber")) {
+                    console.log("YOOYOYOYOYOYOOYYOYOY" + specimen.specimenNumber.name);
+                    $('#inputSpecimenNumber').val(specimen.specimenNumber.name);
+                }
+            }
         }
     }
 
