@@ -50,6 +50,8 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         }
         vm.searchLoadingHandler.stop();
 
+        // Gets search criteria from local and session storage.
+        // getSearchDataFromSessionStorage();
         getSearchDataFromLocalStorage();
 
         /* $('html, body').animate({
@@ -149,7 +151,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     };
 
     $scope.resetSearch = function () {
-        // TODO: Reset is taking too long in some cases
+        // TODO: FIX reset, reloading is not an option
         if ((['photoArchive'].indexOf($stateParams.type) > -1)) {
             $scope.searchParameters = {
                 sortField: {sortBy: "id", order: "DESCENDING"},
@@ -168,8 +170,10 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         }
         $scope.sortByAsc = true;
 
+        sessionStorage.removeItem("searchParams");
         localStorage.removeItem($stateParams.type);
         $scope.searchWithoutLocalStorage();
+        // $window.location.reload();
     };
 
     $scope.addRemoveInstitution = function (institution) {
@@ -248,6 +252,14 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
 
             if([$stateParams.type].indexOf($stateParams.type) > -1 && localStorage[$stateParams.type] != null) {
                 $scope.searchParameters = JSON.parse(localStorage.getItem($stateParams.type));
+            }
+        }
+    }
+
+    function getSearchDataFromSessionStorage() {
+        if (typeof(sessionStorage) !== 'undefined') {
+            if (sessionStorage["searchParams"] != null) {
+                $scope.searchParameters = JSON.parse(sessionStorage.getItem("searchParams"));
             }
         }
     }

@@ -27,6 +27,8 @@ var constructor = function ($http, $location, configuration) {
             var searchCriteria = service.decodeUrl();
             if(searchCriteria != null) {
                 data = searchCriteria;
+                // Adds parameters from url to session storage
+                sessionStorage.setItem("searchParams", JSON.stringify(searchCriteria));
             }
         } else {
             service.composeUrl(data);
