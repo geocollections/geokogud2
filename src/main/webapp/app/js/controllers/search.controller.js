@@ -50,9 +50,9 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         }
         vm.searchLoadingHandler.stop();
 
-        // Gets search criteria from local and session storage.
-        getSearchDataFromSessionStorage();
+        // Session storage overrides localStorage data, because of order.
         getSearchDataFromLocalStorage();
+        getSearchDataFromSessionStorage();
 
         /* $('html, body').animate({
              scrollTop: ($("#searches").offset().top - 50)
@@ -171,7 +171,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         $scope.sortByAsc = true;
 
         $scope.searchWithoutLocalStorage();
-        sessionStorage.removeItem("searchParams");
+        sessionStorage.removeItem($stateParams.type + "Search");
         localStorage.removeItem($stateParams.type);
         // $window.location.reload();
     };
@@ -259,7 +259,8 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     function getSearchDataFromSessionStorage() {
         if (typeof(sessionStorage) !== 'undefined') {
             if (sessionStorage["searchParams"] != null) {
-                $scope.searchParameters = JSON.parse(sessionStorage.getItem("searchParams"));
+
+                $scope.searchParameters = JSON.parse(sessionStorage.getItem($stateParams.type + "Search"));
             }
         }
     }

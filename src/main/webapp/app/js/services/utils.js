@@ -1,6 +1,6 @@
 var module = angular.module('geoApp');
 
-var constructor = function ($http, $location, configuration) {
+var constructor = function ($http, $stateParams, $location, configuration) {
 
     var service = {};
 
@@ -28,7 +28,7 @@ var constructor = function ($http, $location, configuration) {
             if(searchCriteria != null) {
                 data = searchCriteria;
                 // Adds parameters from url to session storage
-                sessionStorage.setItem("searchParams", JSON.stringify(searchCriteria));
+                sessionStorage.setItem($stateParams.type + "Search", JSON.stringify(searchCriteria));
             }
         } else {
             service.composeUrl(data);
@@ -300,7 +300,7 @@ var constructor = function ($http, $location, configuration) {
     return service;
 };
 
-constructor.$inject = ['$http', '$location', 'configuration'];
+constructor.$inject = ['$http', '$stateParams' ,'$location', 'configuration'];
 
 module.service('utils', constructor);
 
