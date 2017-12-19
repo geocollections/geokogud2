@@ -51,7 +51,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         vm.searchLoadingHandler.stop();
 
         // Gets search criteria from local and session storage.
-        // getSearchDataFromSessionStorage();
+        getSearchDataFromSessionStorage();
         getSearchDataFromLocalStorage();
 
         /* $('html, body').animate({
@@ -170,9 +170,9 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         }
         $scope.sortByAsc = true;
 
+        $scope.searchWithoutLocalStorage();
         sessionStorage.removeItem("searchParams");
         localStorage.removeItem($stateParams.type);
-        $scope.searchWithoutLocalStorage();
         // $window.location.reload();
     };
 
