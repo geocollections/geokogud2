@@ -71,7 +71,8 @@
                                                          ng-model="searchParameters.classification.lookUpType"></selecthierarchy>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.classification.name" table="specimen" en="classification__class_en" et="classification__class_field"/>
+                                        <!--<autocomplete-field ng-model="searchParameters.classification.name" table="specimen" en="classification__class_en" et="classification__class_field"/>-->
+                                        <autocomplete-field ng-model="searchParameters.classification.name" table="classification" en="class_en" et="class_field"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -81,7 +82,7 @@
                                                        ng-model="searchParameters.fossilName.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.fossilName.name" table="specimen" en="fossil__value_en" et="fossil__value"/>
+                                        <autocomplete-field ng-model="searchParameters.fossilName.name" table="taxon" en="null" et="taxon"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
