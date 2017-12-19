@@ -179,18 +179,31 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     };
 
     $scope.getLocalities = function (list) {
+        console.log(list);
+
         $scope.localities = [];
         if (list) {
             angular.forEach(list, function (el) {
-                if (el.locality__latitude != null && el.locality__longitude != null && el.locality__locality_en != null && el.locality__locality != null && el.locality_id != null) {
-                    //console.log("in if");
+                console.log(['localities'].indexOf($stateParams.type) > -1);
+                if (['drillCores'].indexOf($stateParams.type > -1)) {
                     addToLocalities(el.locality__latitude, el.locality__longitude, el.locality__locality_en, el.locality__locality, el.locality_id);
-                } else if (noneIsNull(el.latitude, el.longitude, el.locality_en, el.locality, el.id)) {
-                  //  console.log("else if")
-                    addToLocalities(el.latitude, el.longitude, el.locality_en, el.locality, el.id);
-                } else if(noneIsNull(el.latitude, el.longitude, '', '', '')) {
-                    addToLocalities(el.latitude, el.longitude, '', '', null);
                 }
+                if (['localities'].indexOf($stateParams.type) > -1) {
+                    console.log("fix");
+                    addToLocalities(el.latitude, el.longitude, el.locality_en, el.locality, el.id);
+                }
+                // addToLocalities(el.locality__latitude, el.locality__longitude, el.locality__locality_en, el.locality__locality, el.locality_id);
+
+                // if (el.locality__latitude != null && el.locality__longitude != null && el.locality__locality_en != null && el.locality__locality != null && el.locality_id != null) {
+                //     console.log("first");
+                //     addToLocalities(el.locality__latitude, el.locality__longitude, el.locality__locality_en, el.locality__locality, el.locality_id);
+                // } else if (noneIsNull(el.latitude, el.longitude, el.locality_en, el.locality, el.id)) {
+                //     console.log("second");
+                //     // addToLocalities(el.latitude, el.longitude, el.locality_en, el.locality, el.id);
+                // } else if(noneIsNull(el.latitude, el.longitude, '', '', '')) {
+                //     console.log("last");
+                //     addToLocalities(el.latitude, el.longitude, '', '', null);
+                // }
             })
         }
         return $scope.localities;
@@ -201,6 +214,11 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     }
 
     function addToLocalities(latitude, longitude, locality_en, locality, locality_id) {
+        console.log("lat: " + latitude
+            + " lon: " + longitude
+            + " loc: " + locality_en
+            + " loc_en: " + locality
+            + " id: " + locality_id);
         $scope.localities.push({
             latitude: latitude,
             longitude: longitude,
@@ -247,34 +265,34 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     }
 
     function resetSearchParametersToDefault() {
-        if (['specimens'].indexOf($stateParams.type > -1)) {
+        if (['specimens'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse('{"sortField":{"sortBy":"id","order":"DESCENDING"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],"searchImages":{"lookUpType":"exact","name":null},"specimenNumber":{"lookUpType":"icontains"},"collectionNumber":{"lookUpType":"iexact"},"classification":{"lookUpType":"icontains"},"fossilName":{"lookUpType":"icontains"},"mineralRock":{"lookUpType":"icontains"},"adminUnit":{"lookUpType":"icontains"},"locality":{"lookUpType":"icontains"},"stratigraphy":{"lookUpType":"icontains"},"id":{"lookUpType":"iexact"},"fossilMineralRock":{"lookUpType":"icontains"},"collector":{"lookUpType":"icontains"},"reference":{"lookUpType":"icontains"},"typeStatus":{"lookUpType":"icontains"},"partOfFossil":{"lookUpType":"icontains"},"keyWords":{"lookUpType":"icontains"},"maxSize":5}');
         }
-        if (['samples'].indexOf($stateParams.type > -1)) {
+        if (['samples'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse('{"sortField":{"sortBy":"id","order":"DESCENDING"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],"sampleNumber":{"lookUpType":"icontains"},"locality":{"lookUpType":"icontains"},"stratigraphy":{"lookUpType":"icontains"},"stratigraphyBed":{"lookUpType":"icontains"},"agent":{"lookUpType":"icontains"},"id":{"lookUpType":"iexact"},"country":{"lookUpType":"icontains"},"location":{"lookUpType":"icontains"},"taxon":{"lookUpType":"icontains"},"frequency":{"lookUpType":"iexact"},"analysisMethod":{"lookUpType":"icontains"},"component":{"lookUpType":"icontains"},"content":{"lookUpType":"iexact"},"maxSize":5}');
         }
-        if (['drillCores'].indexOf($stateParams.type > -1)) {
+        if (['drillCores'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse('{"sortField":{"sortBy":"id","order":"DESCENDING"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],"drillcore":{"lookUpType":"icontains"},"country":{"lookUpType":"icontains"},"stratigraphy":{"lookUpType":"icontains"},"storageLocation":{"lookUpType":"icontains"},"id":{"lookUpType":"iexact"},"adminUnit":{"lookUpType":"icontains"},"maxSize":5}');
         }
-        if (['localities'].indexOf($stateParams.type > -1)) {
+        if (['localities'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse('{"sortField":{"sortBy":"id","order":"DESCENDING"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],"searchImages":{"lookUpType":"exact","name":null},"locality":{"lookUpType":"icontains"},"number":{"lookUpType":"icontains"},"country":{"lookUpType":"icontains"},"adminUnit":{"lookUpType":"icontains"},"stratigraphy":{"lookUpType":"icontains"},"reference":{"lookUpType":"icontains"},"id":{"lookUpType":"iexact"},"maPaId":{"lookUpType":"iexact"},"latitude":{"lookUpType":"iexact"},"longitude":{"lookUpType":"iexact"},"maxSize":5}');
         }
-        if (['references'].indexOf($stateParams.type > -1)) {
+        if (['references'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse('{"sortField":{"sortBy":"id","order":"DESCENDING"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],"id":{"lookUpType":"iexact"},"author":{"lookUpType":"icontains"},"title":{"lookUpType":"icontains"},"journal":{"lookUpType":"icontains"},"book":{"lookUpType":"iexact"},"maxSize":5}');
         }
-        if (['stratigraphy'].indexOf($stateParams.type > -1)) {
+        if (['stratigraphy'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse('{"id":{"lookUpType":"iexact"},"stratigraphy":{"lookUpType":"icontains"},"index":{"lookUpType":"icontains"},"ageMinY":{"lookUpType":"iexact"},"mainLithology":{"lookUpType":"icontains"},"author":{"lookUpType":"icontains"},"sortField":{"sortBy":"id","order":"DESCENDING"},"maxSize":5}');
         }
-        if (['analyses'].indexOf($stateParams.type > -1)) {
+        if (['analyses'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse('{"id":{"lookUpType":"iexact"},"locality":{"lookUpType":"icontains"},"stratigraphy":{"lookUpType":"icontains"},"stratigraphyBed":{"lookUpType":"icontains"},"analysisMethod":{"lookUpType":"icontains"},"XXX":{"lookUpType":"icontains"},"methodDetails":{"lookUpType":"iexact"},"sample":{"lookUpType":"icontains"},"adminUnit":{"lookUpType":"icontains"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],"sortField":{"sortBy":"id","order":"DESCENDING"},"maxSize":5}');
         }
-        if (['preparations'].indexOf($stateParams.type > -1)) {
+        if (['preparations'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse('{"number":{"lookUpType":"icontains"},"locality":{"lookUpType":"icontains"},"stratigraphy":{"lookUpType":"icontains"},"collector":{"lookUpType":"icontains"},"description":{"lookUpType":"icontains"},"speciesRecovered":{"lookUpType":"icontains"},"speciesFrequency":{"lookUpType":"iexact"},"sortField":{"sortBy":"id","order":"DESCENDING"},"maxSize":5}');
         }
         if (['photoArchive'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse('{"sortField":{"sortBy":"id","order":"DESCENDING"},"searchImages":{"lookUpType":"exact","name":true},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],"locality":{"lookUpType":"icontains"},"people":{"lookUpType":"icontains"},"keywords":{"lookUpType":"icontains"},"adminUnit":{"lookUpType":"icontains"},"imageNumber":{"lookUpType":"icontains"},"authorAgent":{"lookUpType":"icontains"},"maxSize":5}');
         }
-        if (['doi'].indexOf($stateParams.type > -1)) {
+        if (['doi'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse('{"doi":{"lookUpType":"icontains"},"title":{"lookUpType":"icontains"},"publishedBy":{"lookUpType":"icontains"},"author":{"lookUpType":"icontains"},"abstractText":{"lookUpType":"icontains"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],"sortField":{"sortBy":"id","order":"DESCENDING"},"maxSize":5}');
         }
     }
