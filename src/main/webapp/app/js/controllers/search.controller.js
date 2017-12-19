@@ -184,12 +184,16 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         $scope.localities = [];
         if (list) {
             angular.forEach(list, function (el) {
-                console.log(['localities'].indexOf($stateParams.type) > -1);
-                if (['drillCores'].indexOf($stateParams.type > -1)) {
+                if (['specimens'].indexOf($stateParams.type) > -1) {
+                    addToLocalities(el.latitude, el.longitude, el.locality_en, el.locality, el.id);
+                }
+                if (['samples'].indexOf($stateParams.type) > -1) {
+                    addToLocalities(el.locality__latitude, el.locality__longitude, el.locality__locality_en, el.locality__locality, el.locality_id);
+                }
+                if (['drillCores'].indexOf($stateParams.type) > -1) {
                     addToLocalities(el.locality__latitude, el.locality__longitude, el.locality__locality_en, el.locality__locality, el.locality_id);
                 }
                 if (['localities'].indexOf($stateParams.type) > -1) {
-                    console.log("fix");
                     addToLocalities(el.latitude, el.longitude, el.locality_en, el.locality, el.id);
                 }
                 // addToLocalities(el.locality__latitude, el.locality__longitude, el.locality__locality_en, el.locality__locality, el.locality_id);

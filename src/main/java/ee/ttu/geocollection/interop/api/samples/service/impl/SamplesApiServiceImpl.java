@@ -116,7 +116,9 @@ public class SamplesApiServiceImpl implements SamplesApiService {
                 .returnLocalityId()
                 .returnStratigraphyId()
                 .returnDateChanged()
-                .returnLithostratigraphyId();
+                .returnLithostratigraphyId()
+                .returnLocalitylatitude()
+                .returnLocalitylongitude();
     }
 
     @Override

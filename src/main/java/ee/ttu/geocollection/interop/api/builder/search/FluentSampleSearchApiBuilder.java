@@ -144,4 +144,15 @@ public class FluentSampleSearchApiBuilder extends FluentSearchApiBuilder<FluentS
         addReturningField(LITHOSTRATIGRAPHY_ID);
         return this;
     }
+
+    public FluentSampleSearchApiBuilder returnLocalitylongitude() {
+        addReturningField(LOCALITY_LONGITUDE);
+        return this;
+    }
+
+    public FluentSampleSearchApiBuilder returnLocalitylatitude() {
+        addReturningField(LOCALITY_LATITUDE);
+        return this;
+    }
+
 }
