@@ -18,7 +18,8 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
 
     function onSearchData(result) {
         console.log(result);
-        $scope.pageSize = 30;
+        // $scope.pageSize = 30;
+        $scope.pageSize = 10;
         $scope.totalItems = result.data.count;
 
         if((['specimens', 'localities'].indexOf($stateParams.type) > -1)) $scope.images = composeImageStructure(result.data);
@@ -280,6 +281,6 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
 
 };
 
-constructor.$inject = ["$scope","$stateParams", "configuration", "$http", 'ApplicationService', '$window', '$translate', 'SearchFactory', 'ErrorService', 'bsLoadingOverlayService'];
+constructor.$inject = ["$scope", "$stateParams", "configuration", "$http", 'ApplicationService', '$window', '$translate', 'SearchFactory', 'ErrorService', 'bsLoadingOverlayService'];
 
 module.controller("SearchController", constructor);

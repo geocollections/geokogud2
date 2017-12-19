@@ -91,7 +91,8 @@
                                                        ng-model="searchParameters.mineralRock.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.mineralRock.name" table="specimen" en="sample__rock_en" et="sample__rock"/>
+                                        <!--<autocomplete-field ng-model="searchParameters.mineralRock.name" table="specimen" en="sample__rock_en" et="sample__rock"/>-->
+                                        <autocomplete-field ng-model="searchParameters.mineralRock.name" table="sample" en="rock_en" et="rock"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -111,7 +112,8 @@
                                                        ng-model="searchParameters.locality.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.locality.name" table="specimen" en="locality__locality_en" et="locality__locality"/>
+                                        <!--<autocomplete-field ng-model="searchParameters.locality.name" table="specimen" en="locality__locality_en" et="locality__locality"/>-->
+                                        <autocomplete-field ng-model="searchParameters.locality.name" table="locality" en="locality_en" et="locality"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -121,7 +123,8 @@
                                                          ng-model="searchParameters.stratigraphy.lookUpType"></selecthierarchy>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.stratigraphy.name" table="specimen" en="stratigraphy__stratigraphy_en" et="stratigraphy__stratigraphy"/>
+                                        <!--<autocomplete-field ng-model="searchParameters.stratigraphy.name" table="specimen" en="stratigraphy__stratigraphy_en" et="stratigraphy__stratigraphy"/>-->
+                                        <autocomplete-field ng-model="searchParameters.stratigraphy.name" table="stratigraphy" en="stratigraphy_en" et="stratigraphy"/>
                                     </div>
                                 </div>
                             </div>

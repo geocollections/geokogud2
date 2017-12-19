@@ -294,7 +294,7 @@
             "IDENTIFIERS": {
                 "NUMBER": "Number",
                 "SAMPLE_ID": "Number",
-                "BED_NAME_INDEX": ""
+                "BED_NAME_INDEX": "Ase ID"
             },
             "LOCATION": {
                 "LOCALITY": "Leiukoht",

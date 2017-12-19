@@ -42,7 +42,8 @@
                                                        ng-model="searchParameters.locality.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.locality.name" table="analysis" en="sample__locality__locality_en" et="sample__locality__locality"/>
+                                        <!--<autocomplete-field ng-model="searchParameters.locality.name" table="analysis" en="sample__locality__locality_en" et="sample__locality__locality"/>-->
+                                        <autocomplete-field ng-model="searchParameters.locality.name" table="locality" en="locality_en" et="locality"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -61,12 +62,13 @@
                                                          ng-model="searchParameters.stratigraphy.lookUpType"></selecthierarchy>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.stratigraphy.name" table="analysis" en="sample__stratigraphy__stratigraphy_en" et="sample__stratigraphy__stratigraphy"/>
+                                        <!--<autocomplete-field ng-model="searchParameters.stratigraphy.name" table="analysis" en="sample__stratigraphy__stratigraphy_en" et="sample__stratigraphy__stratigraphy"/>-->
+                                        <autocomplete-field ng-model="searchParameters.stratigraphy.name" table="stratigraphy" en="stratigraphy_en" et="stratigraphy"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
-                                        <b>{{ 'SEARCH.ANALYSES.IDENTIFIERS.BED_NAME_INDEX'| translate }}</b>
+                                        <b>{{ 'SEARCH.ANALYSES.IDENTIFIERS.BED_NAME_INDEX' | translate }}</b>
                                         <selectdefault custom-css="searchCriterionType"
                                                        ng-model="searchParameters.stratigraphyBed.lookUpType"></selectdefault>
                                     </div>

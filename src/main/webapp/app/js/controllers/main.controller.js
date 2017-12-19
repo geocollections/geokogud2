@@ -38,7 +38,7 @@ var constructor = function (configuration, $translate, $http, applicationService
      * like news and different columns and so on
      */
     function asyncLoadData () {
-        if(!isDetailForm() && !isGlobalSearch()) {
+        if(!isDetailForm() && !isGlobalSearch() && !isSearch()) {
 
             // Uses function from service.js which gets news using httpGet() from /webnews
             applicationService.getNews(onNewsData);
