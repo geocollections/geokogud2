@@ -136,14 +136,14 @@
                             <figure class="margin-bottom-20">
 
                                 <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:col.image.id})">
-                                    <show-preview img-url="ctrl.service.composeImageUrl(col.image)" class="img-responsive"/>
+                                    <show-preview img-author="col.image.author__agent" img-date-taken="col.image.date_taken" img-url="ctrl.service.composeImageUrl(col.image)" class="img-responsive"/>
 
                                     <div class="img-gallery-author">
                                         <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:col.image.id})">
                                             <first-not-null class="font-smaller" values="[col.image.locality__locality, col.image.locality__locality_en]"/>
                                         </a>
-                                        <br>
-                                        <div>{{col.image.author__agent}} {{col.image.date_taken}}</div>
+                                        <!--<br>-->
+                                        <!--<div>{{col.image.author__agent}} {{col.image.date_taken}}</div>-->
                                     </div>
                                 </a>
                             </figure>

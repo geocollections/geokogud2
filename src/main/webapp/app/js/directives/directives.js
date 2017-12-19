@@ -154,12 +154,28 @@ angular.module('geoApp')
     };
 }).directive('showPreview', function () {
     return {
-        template: '<img class="previewImage" ng-src="{{previewImageUrl}}" spinner-load />',
+        template: '<img title="{{title}}" class="previewImage" ng-src="{{previewImageUrl}}" spinner-load />',
         restrict: 'E',
         scope: {
-            imgUrl: '='
+            imgUrl: '=',
+            imgAuthor: '=',
+            imgDateTaken: '='
         },
         link: function (scope) {
+            scope.$watch('[imgAuthor, imgDateTaken]', function (newVal) {
+                if (newVal) {
+                    console.log(newVal[0]);
+                    var author = "";
+                    var dateTaken = "";
+                    if (newVal[0] && newVal[0] != null) {
+                        author = newVal[0];
+                    }
+                    if (newVal[1] && newVal[1] != null) {
+                        dateTaken = newVal[1];
+                    }
+                    scope.title = author + " " + dateTaken;
+            }
+            });
             scope.$watch('imgUrl', function(newValue) {
                 if(newValue) {
                     var foundHttp = newValue.match(/http:/);
