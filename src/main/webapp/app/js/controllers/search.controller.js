@@ -59,7 +59,6 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         // Session storage overrides localStorage data, because of order.
         // getSearchDataFromLocalStorage();
         // getSearchDataFromSessionStorage();
-
         // This here populates input fields
         var searchParamsLocal = getSearchDataFromLocalStorage();
         if (typeof(searchParamsLocal) !== 'undefined') {
@@ -170,6 +169,18 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         //     $scope.searchParameters = searchParamsLocal;
         // }
         /*** Get parameters from local and session storage END ***/
+
+        var searchParamsLocal = getSearchDataFromLocalStorage();
+        var searchParamsSession = getSearchDataFromSessionStorage();
+        // olemas 'object', ei ole olemas 'undefined'
+        if (typeof(searchParamsSession) !== 'undefined') {
+            console.log("first");
+            $scope.searchParameters = searchParamsSession;
+        }
+        if (typeof(searchParamsSession) === 'undefined' && typeof(searchParamsLocal) !== 'undefined') {
+            console.log("second");
+            $scope.searchParameters = searchParamsLocal;
+        }
 
         $scope.sortByAsc = true;
         $scope.search();
