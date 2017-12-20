@@ -1,8 +1,22 @@
 <div class="row search-buttons">
-    <button id="btn-form-reset" type="submit" title="{{ 'RESET_BUTTON' | translate }}" class="btn btn-sm btn-danger" data-ng-click="resetSearch()">
-        <i class="glyphicon glyphicon-erase"></i><span class="hidden-sm">{{ 'SEARCH.RESET_FORM'| translate }}</span>
-    </button>
-    <button id="btn-form-send" type="submit" title="{{ 'SEND_QUERY_BUTTON' | translate }}" class="btn btn-sm btn-primary" data-ng-click="search()">
-        <i class="glyphicon glyphicon-search"></i><span> {{ 'SEARCH.SEND_QUERY'| translate }}</span>
-    </button>
+    <span>
+        <button type="submit" value="showHint" title="{{ 'FAQ_BUTTON' | translate }}" class="btn btn-info btn-sm" data-ng-click="showHint()">
+            <i class="glyphicon glyphicon-question-sign"></i>
+            <span class="hide-faq-button"> {{ 'SEARCH.FAQ' | translate }}</span>
+        </button>
+    </span>
+
+    <span>
+        <button id="btn-form-reset" type="submit" title="{{ 'RESET_BUTTON' | translate }}" class="btn btn-sm btn-danger" data-ng-click="resetSearch()">
+            <i class="glyphicon glyphicon-erase"></i>
+            <span class="hide-reset-button"> {{ 'SEARCH.RESET_FORM'| translate }}</span>
+        </button>
+    </span>
+
+    <span>
+        <button id="btn-form-send" type="submit" title="{{ 'SEND_QUERY_BUTTON' | translate }}" class="btn btn-sm btn-primary" data-ng-click="search()">
+            <i class="glyphicon glyphicon-search"></i>
+            <span class="hide-send-button"> {{ 'SEARCH.SEND_QUERY'| translate }}</span>
+        </button>
+    </span>
 </div>

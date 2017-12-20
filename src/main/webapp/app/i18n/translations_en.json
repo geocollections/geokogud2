@@ -450,7 +450,7 @@
         "SHOW_MAP": "Show map",
         "SEARCH_IMAGES": "Search images",
         "FOUND_IMAGES": "Images on page",
-        "RESET_FORM": "Reset",
+        "RESET_FORM": "Reset fields",
         "SEND_QUERY": "Send query",
         "INSTITUTIONS": "Institutions"
     },
@@ -566,6 +566,7 @@
     "GLOBAL_SEARCH_NO_INFO": "Your quick search returned no results. Please use extended search and select, which kind of information you are searching.",
     "DETAILVIEW_TABLE_HEADER": "General info",
     "ABOUT_MIDDLE": "Geocollections in Estonia",
+    "FAQ_BUTTON": "Shows hints",
     "RESET_BUTTON": "Clears search fields",
     "SEND_QUERY_BUTTON": "Sends request with inserted data"
 }

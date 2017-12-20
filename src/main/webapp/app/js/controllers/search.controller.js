@@ -121,7 +121,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     $scope.search = function () {
         $scope.showImages = $scope.searchParameters.searchImages && $scope.searchParameters.searchImages.name ? true : false;
         vm.searchLoadingHandler.start();
-        addSearchDataToLocalStorage($scope.searchParameters);
+        // addSearchDataToLocalStorage($scope.searchParameters);
         applicationService.getList($stateParams.type, $scope.searchParameters, onSearchData, onSearchError);
     };
 

@@ -811,6 +811,42 @@ table tr > td:first-child {
  ************************/
 
 
+/* BUTTON SEARCH START */
+
+@media (max-width: 1460px) and (min-width: 1351px) {
+    .hide-faq-button {
+        display: none!important;
+    }
+}
+
+@media (max-width: 1350px) and (min-width: 768px){
+    .hide-reset-button {
+        display: none!important;
+    }
+    
+}
+
+@media (max-width: 1030px) and (min-width: 768px){
+    .hide-faq-button {
+        display: none!important;
+    }
+}
+
+@media (max-width: 920px) and (min-width: 768px){
+    .hide-send-button {
+        display: none!important;
+    }
+}
+
+@media (max-width: 375px) {
+    .hide-faq-button, .hide-reset-button, .hide-send-button {
+        display: none!important;
+    }
+}
+
+/* BUTTON SEARCH END */
+
+
 /* UNIVERSAL START */
 
 .no-results {
