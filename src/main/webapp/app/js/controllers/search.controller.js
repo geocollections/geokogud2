@@ -60,6 +60,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         // getSearchDataFromLocalStorage();
         // getSearchDataFromSessionStorage();
 
+        // This here populates input fields
         var searchParamsLocal = getSearchDataFromLocalStorage();
         if (typeof(searchParamsLocal) !== 'undefined') {
             $scope.searchParameters = searchParamsLocal;
@@ -163,6 +164,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         }
 
         /*** Get parameters from local and session storage START ***/
+        // Uncomment for automatic search with saved parameters, not 100% atm
         // var searchParamsLocal = getSearchDataFromLocalStorage();
         // if (typeof(searchParamsLocal) !== 'undefined') {
         //     $scope.searchParameters = searchParamsLocal;
@@ -240,9 +242,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         if (typeof(localStorage) !== 'undefined') {
             var stringifiedParameters = JSON.stringify(searchParameters);
             console.log(stringifiedParameters);
-            // var defaultParameters = '{"sortField":{"sortBy":"id","order":"DESCENDING"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],"maxSize":5,"page":1}';
             var defaultParameters = '{"sortField":{"sortBy":"id","order":"DESCENDING"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"]}';
-            // var defaultPhotoArchiveParameters = '{"sortField":{"sortBy":"id","order":"DESCENDING"},"searchImages":{"lookUpType":"exact","name":true},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],"maxSize":5,"page":1}';
             var defaultPhotoArchiveParameters = '{"sortField":{"sortBy":"id","order":"DESCENDING"},"searchImages":{"lookUpType":"exact","name":true},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"]}';
 
             if([$stateParams.type].indexOf($stateParams.type) > -1 && $stateParams.type === "photoArchive") {
