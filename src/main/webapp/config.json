@@ -1,6 +1,6 @@
 {
   "pageSetUp": {
-    "pageSize":100,
+    "pageSize":30,
     "debugMode": false
   },
 
@@ -330,7 +330,8 @@
                   {"code": "EGK", "label": "EGK"}],
 
 
-  "apiUrl" : "https://api.arendus.geokogud.info",
+  "apiDeveloperUrl" : "https://api.arendus.geokogud.info",
+  "apiUrl" : "https://api2.geokogud.info",
   "fossilsUrl" : "http://fossiilid.info/",
   "ermasUrl" : "http://ermas.geokogud.info/",
   "elmUrl" : "http://www.loodusmuuseum.ee/",

@@ -53,11 +53,15 @@ var constructor = function (configuration, $translate, $http, applicationService
             vm.git = getWebPageById(44, "git");
             vm.tug = getWebPageById(63, "tug");
             vm.elm = getWebPageById(64, "elm");
+        }
+        if (isSearch()) {
             vm.searchTips = getWebPageById(43, "searchTips");
             vm.drillCoreSearch = getWebPageById(53, "drillCoreSearch");
             vm.protoArchiveQuery = getWebPageById(54, "protoArchiveQuery");
             vm.doiIdentifiers = getWebPageById(55, "doiIdentifiers");
         }
+
+
     }
 
     /**

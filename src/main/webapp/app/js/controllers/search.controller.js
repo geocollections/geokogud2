@@ -18,8 +18,12 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
 
     function onSearchData(result) {
         console.log(result);
-        // $scope.pageSize = 30;
-        $scope.pageSize = 10;
+        if (['specimens'].indexOf($stateParams.type) > -1) {
+            // Temporary change because of speed
+            $scope.pageSize = 10
+        } else {
+            $scope.pageSize = 30;
+        }
         $scope.totalItems = result.data.count;
 
         if((['specimens', 'localities'].indexOf($stateParams.type) > -1)) $scope.images = composeImageStructure(result.data);
@@ -47,13 +51,19 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         $scope.response = result.data;
 
         if ($scope.isMapHidden) {
-            $scope.getLocalities($scope.response);
+            console.log("im here");
+            $scope.getLocalities($scope.response.results);
         }
         vm.searchLoadingHandler.stop();
 
         // Session storage overrides localStorage data, because of order.
-        getSearchDataFromLocalStorage();
-        getSearchDataFromSessionStorage();
+        // getSearchDataFromLocalStorage();
+        // getSearchDataFromSessionStorage();
+
+        var searchParamsLocal = getSearchDataFromLocalStorage();
+        if (typeof(searchParamsLocal) !== 'undefined') {
+            $scope.searchParameters = searchParamsLocal;
+        }
 
         /* $('html, body').animate({
              scrollTop: ($("#searches").offset().top - 50)
@@ -134,6 +144,8 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         if ((['photoArchive'].indexOf($stateParams.type) > -1)) {
             $scope.searchParameters = {
                 sortField: {sortBy: "id", order: "DESCENDING"},
+                // maxSize: 5,
+                // page: 1,
                 searchImages: {lookUpType: "exact", name: true},
                 dbs: vm.service.departments.map(function (department) {
                     return department.code;
@@ -142,11 +154,21 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         } else {
             $scope.searchParameters = {
                 sortField: {sortBy: "id", order: "DESCENDING"},
+                // maxSize: 5,
+                // page: 1,
                 dbs: vm.service.departments.map(function (department) {
                     return department.code;
                 })
             };
         }
+
+        /*** Get parameters from local and session storage START ***/
+        // var searchParamsLocal = getSearchDataFromLocalStorage();
+        // if (typeof(searchParamsLocal) !== 'undefined') {
+        //     $scope.searchParameters = searchParamsLocal;
+        // }
+        /*** Get parameters from local and session storage END ***/
+
         $scope.sortByAsc = true;
         $scope.search();
     };
@@ -182,40 +204,22 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         console.log(list);
 
         $scope.localities = [];
-        if (list) {
+        if (list && list != null) {
             angular.forEach(list, function (el) {
-                if (['specimens'].indexOf($stateParams.type) > -1) {
-                    addToLocalities(el.locality__latitude, el.locality__longitude, el.locality__locality_en, el.locality__locality, el.locality_id);
-                }
-                if (['samples'].indexOf($stateParams.type) > -1) {
-                    addToLocalities(el.locality__latitude, el.locality__longitude, el.locality__locality_en, el.locality__locality, el.locality_id);
-                }
-                if (['drillCores'].indexOf($stateParams.type) > -1) {
-                    addToLocalities(el.locality__latitude, el.locality__longitude, el.locality__locality_en, el.locality__locality, el.locality_id);
-                }
                 if (['localities'].indexOf($stateParams.type) > -1) {
-                    addToLocalities(el.latitude, el.longitude, el.locality_en, el.locality, el.id);
+                    if (el.latitude != null && el.longitude != null) {
+                        addToLocalities(el.latitude, el.longitude, el.locality_en, el.locality, el.id);
+                    }
+                } else {
+                    // Specimens, samples, drillCores
+                    if (el.locality__longitude != null && el.locality__latitude != null) {
+                        addToLocalities(el.locality__latitude, el.locality__longitude, el.locality__locality_en, el.locality__locality, el.locality_id);
+                    }
                 }
-                // addToLocalities(el.locality__latitude, el.locality__longitude, el.locality__locality_en, el.locality__locality, el.locality_id);
-
-                // if (el.locality__latitude != null && el.locality__longitude != null && el.locality__locality_en != null && el.locality__locality != null && el.locality_id != null) {
-                //     console.log("first");
-                //     addToLocalities(el.locality__latitude, el.locality__longitude, el.locality__locality_en, el.locality__locality, el.locality_id);
-                // } else if (noneIsNull(el.latitude, el.longitude, el.locality_en, el.locality, el.id)) {
-                //     console.log("second");
-                //     // addToLocalities(el.latitude, el.longitude, el.locality_en, el.locality, el.id);
-                // } else if(noneIsNull(el.latitude, el.longitude, '', '', '')) {
-                //     console.log("last");
-                //     addToLocalities(el.latitude, el.longitude, '', '', null);
-                // }
             })
         }
         return $scope.localities;
     };
-
-    function noneIsNull(latitude, longitude, locality_en, locality, locality_id) {
-        return latitude != null && longitude != null && locality_en != null && locality != null && locality_id != null;
-    }
 
     function addToLocalities(latitude, longitude, locality_en, locality, locality_id) {
         console.log("lat: " + latitude
@@ -235,16 +239,19 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     function addSearchDataToLocalStorage(searchParameters) {
         if (typeof(localStorage) !== 'undefined') {
             var stringifiedParameters = JSON.stringify(searchParameters);
+            console.log(stringifiedParameters);
+            // var defaultParameters = '{"sortField":{"sortBy":"id","order":"DESCENDING"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],"maxSize":5,"page":1}';
             var defaultParameters = '{"sortField":{"sortBy":"id","order":"DESCENDING"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"]}';
+            // var defaultPhotoArchiveParameters = '{"sortField":{"sortBy":"id","order":"DESCENDING"},"searchImages":{"lookUpType":"exact","name":true},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],"maxSize":5,"page":1}';
             var defaultPhotoArchiveParameters = '{"sortField":{"sortBy":"id","order":"DESCENDING"},"searchImages":{"lookUpType":"exact","name":true},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"]}';
 
             if([$stateParams.type].indexOf($stateParams.type) > -1 && $stateParams.type === "photoArchive") {
                 if(stringifiedParameters !== defaultPhotoArchiveParameters) {
-                    localStorage.setItem($stateParams.type, JSON.stringify(searchParameters));
+                    localStorage.setItem($stateParams.type, stringifiedParameters);
                 }
             } else if([$stateParams.type].indexOf($stateParams.type) > -1) {
                 if(stringifiedParameters !== defaultParameters) {
-                    localStorage.setItem($stateParams.type, JSON.stringify(searchParameters));
+                    localStorage.setItem($stateParams.type, stringifiedParameters);
                 }
             }
         }
@@ -252,10 +259,10 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
 
     function getSearchDataFromLocalStorage() {
         if (typeof(localStorage) !== 'undefined') {
-            console.log("Getting from localStorage: " + $stateParams.type);
-
             if([$stateParams.type].indexOf($stateParams.type) > -1 && localStorage[$stateParams.type] != null) {
-                $scope.searchParameters = JSON.parse(localStorage.getItem($stateParams.type));
+                var searchParams = JSON.parse(localStorage.getItem($stateParams.type));
+                // $scope.searchParameters = searchParams;
+                return searchParams;
             }
         }
     }
@@ -263,7 +270,9 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     function getSearchDataFromSessionStorage() {
         if (typeof(sessionStorage) !== 'undefined') {
             if (sessionStorage[$stateParams.type + "Search"] != null) {
-                $scope.searchParameters = JSON.parse(sessionStorage.getItem($stateParams.type + "Search"));
+                var searchParams = JSON.parse(sessionStorage.getItem($stateParams.type + "Search"));
+                // $scope.searchParameters = searchParams;
+                return searchParams;
             }
         }
     }

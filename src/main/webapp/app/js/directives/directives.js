@@ -164,7 +164,6 @@ angular.module('geoApp')
         link: function (scope) {
             scope.$watch('[imgAuthor, imgDateTaken]', function (newVal) {
                 if (newVal) {
-                    console.log(newVal[0]);
                     var author = "";
                     var dateTaken = "";
                     if (newVal[0] && newVal[0] != null) {

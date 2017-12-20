@@ -28,7 +28,10 @@ var constructor = function ($http, $stateParams, $location, configuration) {
             if(searchCriteria != null) {
                 data = searchCriteria;
                 // Adds parameters from url to session storage
-                sessionStorage.setItem($stateParams.type + "Search", JSON.stringify(searchCriteria));
+                // sessionStorage.setItem($stateParams.type + "Search", JSON.stringify(searchCriteria));
+                if (typeof(localStorage) !== 'undefined') {
+                    localStorage.setItem($stateParams.type, JSON.stringify(searchCriteria));
+                }
             }
         } else {
             service.composeUrl(data);
