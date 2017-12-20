@@ -8,16 +8,19 @@
                     <h3 class="search-heading"><span data-toggle="tooltip" data-placement="bottom"
                                                      title="{{ 'SEARCH.STRATIGRAPHY.HEADING' | translate }}">{{ 'SEARCH.STRATIGRAPHY.STRATIGRAPHY' | translate }}</span> <span
                             class="badge badge-info">{{response.count}}</span>
-                        <button type="submit" value="showHint" class="btn btn-info btn-sm pull-right"
-                                data-ng-click="showHint()">
-                            <span class="glyphicon glyphicon-question-sign"></span> {{ 'SEARCH.FAQ' | translate }}
-                        </button>
+                        <!--<button type="submit" value="showHint" class="btn btn-info btn-sm pull-right"-->
+                                <!--data-ng-click="showHint()">-->
+                            <!--<span class="glyphicon glyphicon-question-sign"></span> {{ 'SEARCH.FAQ' | translate }}-->
+                        <!--</button>-->
                     </h3>
                 </div>
                 <div class="visible-xs">
                     <div class="row search-hint" ng-bind-html="main.getContent(main.searchTips)" data-ng-if="isHintHidden"></div>
                 </div>
                 <form ng-enter="search()">
+
+                    <div ng-include="'app/templates/search/partial/button.search.html'"></div>
+
                     <div class="row">
                         <div class="panel-heading searchGroupHeading"
                              ng-click="isIdentifierFieldsCollapsed = !isIdentifierFieldsCollapsed">
