@@ -20,7 +20,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         console.log(result);
         if (['specimens'].indexOf($stateParams.type) > -1) {
             // Temporary change because of speed
-            $scope.pageSize = 10
+            $scope.pageSize = 25
         } else {
             $scope.pageSize = 30;
         }
@@ -50,10 +50,13 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         });
         $scope.response = result.data;
 
+        console.log("THIS IS HINT: " + $scope.isHintHidden);
+        console.log("THIS IS MAP: " + $scope.isMapHidden);
         if ($scope.isMapHidden) {
             console.log("im here");
             $scope.getLocalities($scope.response.results);
         }
+
         vm.searchLoadingHandler.stop();
 
         // Session storage overrides localStorage data, because of order.
@@ -124,12 +127,6 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         applicationService.getList($stateParams.type, $scope.searchParameters, onSearchData, onSearchError);
     };
 
-    $scope.searchWithoutLocalStorage = function () {
-        $scope.showImages = $scope.searchParameters.searchImages && $scope.searchParameters.searchImages.name ? true : false;
-        vm.searchLoadingHandler.start();
-        applicationService.getList($stateParams.type, $scope.searchParameters, onSearchData, onSearchError);
-    };
-
     function onSearchError(error) {
         if(configuration.pageSetUp.debugMode) errorService.commonErrorHandler(error);
         setEmptyResponse();
@@ -163,24 +160,11 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         }
 
         /*** Get parameters from local and session storage START ***/
-        // Uncomment for automatic search with saved parameters, not 100% atm
-        // var searchParamsLocal = getSearchDataFromLocalStorage();
-        // if (typeof(searchParamsLocal) !== 'undefined') {
-        //     $scope.searchParameters = searchParamsLocal;
-        // }
-        /*** Get parameters from local and session storage END ***/
-
         var searchParamsLocal = getSearchDataFromLocalStorage();
-        var searchParamsSession = getSearchDataFromSessionStorage();
-        // olemas 'object', ei ole olemas 'undefined'
-        if (typeof(searchParamsSession) !== 'undefined') {
-            console.log("first");
-            $scope.searchParameters = searchParamsSession;
-        }
-        if (typeof(searchParamsSession) === 'undefined' && typeof(searchParamsLocal) !== 'undefined') {
-            console.log("second");
+        if (typeof(searchParamsLocal) !== 'undefined') {
             $scope.searchParameters = searchParamsLocal;
         }
+        /*** Get parameters from local and session storage END ***/
 
         $scope.sortByAsc = true;
         $scope.search();
@@ -215,8 +199,9 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
 
     $scope.getLocalities = function (list) {
         console.log(list);
-
         $scope.localities = [];
+
+        console.log($scope.localities);
         if (list && list != null) {
             angular.forEach(list, function (el) {
                 if (['localities'].indexOf($stateParams.type) > -1) {
