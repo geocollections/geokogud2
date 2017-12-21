@@ -49,12 +49,21 @@
 
                     <!--TODO: parent specimen id-->
 
-                    <tr data-ng-if="detailCtrl.results.kind__value_en != null && detailCtrl.results.kind__value_en">
+                    <!--<tr data-ng-if="detailCtrl.results.kind__value_en != null && detailCtrl.results.kind__value_en">-->
+                        <!--<td>-->
+                            <!--<localize-label et="'API_TRANSLATION.SPECIMEN.KIND__VALUE'" en="'API_TRANSLATION.SPECIMEN.KIND__VALUE_EN'" />-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<localize et="detailCtrl.results.kind__value" en="detailCtrl.results.kind__value_en" />-->
+                        <!--</td>-->
+                    <!--</tr>-->
+
+                    <tr data-ng-if="detailCtrl.results.fossil__value_en != null && detailCtrl.results.fossil__value_en">
                         <td>
                             <localize-label et="'API_TRANSLATION.SPECIMEN.KIND__VALUE'" en="'API_TRANSLATION.SPECIMEN.KIND__VALUE_EN'" />
                         </td>
                         <td>
-                            <localize et="detailCtrl.results.kind__value" en="detailCtrl.results.kind__value_en" />
+                            <localize et="detailCtrl.results.fossil__value" en="detailCtrl.results.fossil__value_en" />
                         </td>
                     </tr>
 
@@ -68,7 +77,14 @@
                         </td>
                     </tr>
 
-                    <!--TODO: class? -->
+                    <tr data-ng-if="detailCtrl.results.classification__class_field != null && detailCtrl.results.classification__class_en != null">
+                        <td>
+                            <localize-label et="'API_TRANSLATION.SPECIMEN.CLASSIFICATION__CLASS_FIELD'" en="'API_TRANSLATION.SPECIMEN.CLASSIFICATION__CLASS_EN'" />
+                        </td>
+                        <td>
+                            <localize et="detailCtrl.results.classification__class_field" en="detailCtrl.results.classification__class_en" />
+                        </td>
+                    </tr>
 
                     <tr data-ng-if="detailCtrl.results.part!= null && detailCtrl.results.part">
                         <td> {{ ' API_TRANSLATION.SPECIMEN.PART' | translate }} </td>

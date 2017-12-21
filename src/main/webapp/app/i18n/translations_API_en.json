@@ -2,8 +2,8 @@
     "API_TRANSLATION": {
         "SPECIMEN" :   {
             "ID":"ID",
-            "CLASSIFICATION__CLASS_FIELD":"Classification (ET)",
-            "CLASSIFICATION__CLASS_EN":"Classification",
+            "CLASSIFICATION__CLASS_FIELD":"Group (ET)",
+            "CLASSIFICATION__CLASS_EN":"Group",
             "COLL_ID":"Collection ID",
             "COLL__NAME":"Collection nr.",
             "COLL__NUMBER":"Collection nr.",
@@ -128,7 +128,6 @@
             "PART":"Part/element",
             "DATE_ADDED":"Record inserted",
             "DATE_CHANGED":"Record changed",
-            "SPECIMEN_ID":"Specimen nr.",
             "TYPE__VALUE":"Type (ET)",
             "TYPE__VALUE_EN":"Type",
             "KIND__VALUE": "Fossil/rock/mineral (ET)",

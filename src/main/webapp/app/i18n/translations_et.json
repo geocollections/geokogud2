@@ -447,7 +447,8 @@
                 "LOCALITY": "Leiukoht"
             }
         },
-        "SHOW_MAP": "Näita kaardil",
+        "SHOW_MAP": "Näitab kaarti",
+        "SHOW_MAP_BUTTON": "Näita kaarti",
         "SEARCH_IMAGES": "Otsi pilte",
         "FOUND_IMAGES": "Pilte lehel",
         "RESET_FORM": "Puhasta väljad",

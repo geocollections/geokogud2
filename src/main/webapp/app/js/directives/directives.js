@@ -573,7 +573,7 @@ angular.module('geoApp')
     function () {
         return {
             scope: {
-                localities: '=',
+                localities: '='
             },
             restrict: 'AE',
             replace: true,

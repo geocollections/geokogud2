@@ -40,12 +40,21 @@
                 <td data-title="{{ 'SEARCH.SPECIMENS.NAME_PART_ELEMENT' | translate }}">
                     <div data-ng-if="entity.specimen_identifications.count > 0">
                         <a href data-ng-click="ctrl.service.openUrlInNewWindow({url:'http://fossiilid.info/' + entity.specimen_identifications.results[0].taxon_id})">
-                            {{entity.specimen_identifications.results[0].taxon__taxon}}
+                            <i>{{entity.specimen_identifications.results[0].taxon__taxon}}</i>
                         </a>
                         <span data-ng-if="(entity.specimen_identifications.results[0].name && entity.specimen_identifications.results[0].name != null)
-                            && entity.specimen_identifications.results[0].taxon__taxon != entity.specimen_identifications.results[0].name">
-                            | {{entity.specimen_identifications.results[0].name}}
+                            && entity.specimen_identifications.results[0].name != entity.specimen_identifications.results[0].taxon__taxon">
+                            | <i>{{entity.specimen_identifications.results[0].name}}</i>
                         </span>
+                    </div>
+
+                    <div data-ng-if="entity.specimen_identification_geologies.count > 0">
+                        <a href data-ng-click="ctrl.service.openUrlInNewWindow({url:'http://www.kivid.info/' + entity.specimen_identification_geologies.results[0].rock_id})">
+                            <localize et="entity.specimen_identification_geologies.results[0].rock__name" en="entity.specimen_identification_geologies.results[0].rock__name_en"/>
+                            <span ng-if="entity.specimen_identification_geologies.results[0].rock__name == null && entity.specimen_identification_geologies.results[0].rock__name_en == null">
+                                <localize et="entity.specimen_identification_geologies.results[0].name" en="entity.specimen_identification_geologies.results[0].name_en"/>
+                            </span>
+                        </a>
                     </div>
                 </td>
 

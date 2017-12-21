@@ -28,7 +28,7 @@ public class ApiServiceImpl implements ApiService {
 
     /**
      * to specify the number of records per page: ?paginate_by=$paginate_by
-     * Pagination is currently to 30
+     * Pagination is currently set to 30
      */
     private static final int PAGINATE_BY = 30;
     private static final Logger logger = LoggerFactory.getLogger(ApiServiceImpl.class);

@@ -50,6 +50,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         });
         $scope.response = result.data;
 
+
         console.log("THIS IS HINT: " + $scope.isHintHidden);
         console.log("THIS IS MAP: " + $scope.isMapHidden);
         if ($scope.isMapHidden) {
@@ -193,7 +194,9 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     };
 
     $scope.showMap = function () {
+        console.log($scope.isMapHidden);
         $scope.isMapHidden = !$scope.isMapHidden;
+        console.log($scope.isMapHidden);
         $scope.getLocalities($scope.response.results);
     };
 

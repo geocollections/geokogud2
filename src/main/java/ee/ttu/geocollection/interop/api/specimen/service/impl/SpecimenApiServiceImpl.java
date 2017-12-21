@@ -5,6 +5,7 @@ import ee.ttu.geocollection.domain.SortField;
 import ee.ttu.geocollection.indexing.IndexingProperties;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
+import ee.ttu.geocollection.interop.api.builder.search.FluentSpecimenIdentificationGeologiesSearchApiBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentSpecimenIdentificationSearchApiBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentSpecimenImageSearchApiBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentSpecimenSearchApiBuilder;
@@ -237,6 +238,20 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .returnCurrent()
                 .buildFullQuery();
         return apiService.searchRawEntities(SPECIMEN_IDENTIFICATION_TABLE, 1, 1, new SortField(), requestParams);
+    }
+
+    @Override
+    public ApiResponse findSpecimenIdentificationGeologies(SearchField specimenId) {
+        String requestParams = FluentSpecimenIdentificationGeologiesSearchApiBuilder.aRequest()
+                .querySpecimenIdForUrl(specimenId).andReturn()
+                .returnRockName()
+                .returnRockNameEn()
+                .returnRockId()
+//                .returnRockMindatId() TODO: idk 500 error???
+                .returnName()
+                .returnNameEn()
+                .buildFullQuery();
+        return apiService.searchRawEntities(SPECIMEN_IDENTIFICATION_GEOLOGY, 1,1, new SortField(), requestParams);
     }
 
     @Override

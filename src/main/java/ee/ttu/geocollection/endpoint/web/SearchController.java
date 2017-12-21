@@ -108,6 +108,15 @@ public class SearchController extends ControllerHelper {
                     specimen ->
                             receivedIdentification -> specimen.put("specimen_identifications", receivedIdentification));
 
+            // Call for specimen identification geologies
+            asynchService.doAsynchCallsForEachResult(
+                    specimens,
+                    specimen ->
+                            () -> specimenApiService.findSpecimenIdentificationGeologies(
+                                    new SearchField(specimen.get("id").toString(), LookUpType.exact)),
+                    specimen ->
+                            receivedIdentificationGeologies -> specimen.put("specimen_identification_geologies", receivedIdentificationGeologies));
+
 //            asynchService.doAsynchCallsForEachResult(
 //                    specimens,
 //                    specimen ->

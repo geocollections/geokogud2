@@ -447,7 +447,8 @@
                 "LOCALITY": "Locality"
             }
         },
-        "SHOW_MAP": "Show map",
+        "SHOW_MAP": "Shows map",
+        "SHOW_MAP_BUTTON": "Show map",
         "SEARCH_IMAGES": "Search images",
         "FOUND_IMAGES": "Images on page",
         "RESET_FORM": "Reset fields",

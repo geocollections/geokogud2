@@ -14,6 +14,8 @@ public interface SpecimenApiService {
 
     ApiResponse findSpecimenIdentification(SearchField specimenId) ;
 
+    ApiResponse findSpecimenIdentificationGeologies(SearchField specimenId) ;
+
     Map findRawSpecimenImageById(Long id);
     Map findRawById(Long id);
 

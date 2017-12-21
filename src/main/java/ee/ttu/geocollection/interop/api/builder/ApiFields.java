@@ -234,6 +234,15 @@ public class ApiFields {
     public static final String CURRENT = "current";
 
     /**
+     * SPECIMEN_IDENTIFICATION_GEOLOGY search
+     */
+    public static final String ROCK__NAME = "rock__name";
+    public static final String ROCK__NAME_EN = "rock__name_en";
+    public static final String ROCK_ID = "rock_id";
+    public static final String NAME_EN = "name_en";
+    public static final String ROCK__MINDAT_ID = "rock__mindat_id";
+
+    /**
      * PREPARATION search
      */
     public static final String SAMPLE__LOCALITY__ID = "sample__locality__id";

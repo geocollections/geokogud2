@@ -2,8 +2,8 @@
     "API_TRANSLATION": {
         "SPECIMEN" :   {
             "ID":"ID",
-            "CLASSIFICATION__CLASS_FIELD":"Klassifikatsioon",
-            "CLASSIFICATION__CLASS_EN":"Klassifikatsioon (EN)",
+            "CLASSIFICATION__CLASS_FIELD":"Rühm",
+            "CLASSIFICATION__CLASS_EN":"Rühm (EN)",
             "COLL_ID":"Kollektsiooni ID",
             "COLL__NAME":"Kollektsioon",
             "COLL__NUMBER":"Kollektsiooni nr.",
@@ -128,7 +128,6 @@
             "PART":"Osis/element",
             "DATE_ADDED":"Kirje sisestatud",
             "DATE_CHANGED":"Kirje muudetud",
-            "SPECIMEN_ID":"Eksemplari nr.",
             "TYPE__VALUE":"Tüüp",
             "TYPE__VALUE_EN":"Tüüp (EN)",
             "KIND__VALUE": "Fossiil/kivim/mineraal",

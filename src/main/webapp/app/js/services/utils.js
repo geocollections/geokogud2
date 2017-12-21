@@ -54,8 +54,6 @@ var constructor = function ($http, $stateParams, $location, configuration) {
     service.composeUrl = function(data) {
         var url = "", currentTable = $location.$$path.split('/')[1];
 
-        console.log(data);
-
         if(currentTable == "map") {
             angular.forEach(Object.values(data.filters), function (attr) {
                 if (configuration.urlHelper[currentTable]) {
@@ -229,7 +227,6 @@ var constructor = function ($http, $stateParams, $location, configuration) {
         }
 
         angular.forEach(configuration.urlHelper.specialFields, function(specialField) {
-            console.log(specialField);
             if(urlParams[specialField + "_1"] != null && urlParams[specialField] != null) {
 
                 console.log(urlParams);
@@ -255,7 +252,6 @@ var constructor = function ($http, $stateParams, $location, configuration) {
                 }
             }
         });
-        console.log("searchParams: " + JSON.stringify(searchParams));
         return searchParams;
     };
     function getLookUpType(attr){
