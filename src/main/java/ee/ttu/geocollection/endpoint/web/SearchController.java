@@ -87,8 +87,9 @@ public class SearchController extends ControllerHelper {
     @PostMapping(value = "/specimen")
     public ApiResponse searchSpecimen(@RequestBody SpecimenSearchCriteria specimenSearchCriteria) {
         ApiResponse specimens = specimenApiService.findSpecimen(specimenSearchCriteria);
-        // TODO: Find better way to show images
+        // TODO: Find better way to show images, group_by is not working in API
 
+        // Call for specimen images
         if (specimens.getResult() != null) {
             asynchService.doAsynchCallsForEachResult(
                     specimens,
@@ -97,6 +98,23 @@ public class SearchController extends ControllerHelper {
                                     new SearchField(specimen.get("id").toString(), LookUpType.exact)),
                     specimen ->
                             receivedImage -> specimen.put("specimen_image_thumbnail", receivedImage));
+
+            // Call for specimen identifications
+            asynchService.doAsynchCallsForEachResult(
+                    specimens,
+                    specimen ->
+                            () -> specimenApiService.findSpecimenIdentification(
+                                    new SearchField(specimen.get("id").toString(), LookUpType.exact)),
+                    specimen ->
+                            receivedIdentification -> specimen.put("specimen_identifications", receivedIdentification));
+
+//            asynchService.doAsynchCallsForEachResult(
+//                    specimens,
+//                    specimen ->
+//                            () -> specimenApiService.findSpecimenIdentification(
+//                                    new SearchField(specimen.get("id").toString(), LookUpType.exact)),
+//                    specimen ->
+//                            receivedIdentification -> specimen.put("specimen_identification_item", receivedIdentification));
 
         }
 

@@ -38,17 +38,15 @@
                 <td data-title="{{ 'SEARCH.SPECIMENS.OLD_SPECIMEN_NUMBER' | translate }}"> {{ entity.specimen_nr }} </td>
 
                 <td data-title="{{ 'SEARCH.SPECIMENS.NAME_PART_ELEMENT' | translate }}">
-                    <span data-ng-if="entity.specimenidentification__taxon_id != null && entity.specimenidentification__taxon__taxon != null">
-                        <a href data-ng-click="ctrl.service.openUrlInNewWindow({url:'http://fossiilid.info/' + entity.specimenidentification__taxon_id})">
-                            {{entity.specimenidentification__taxon__taxon}}
+                    <div data-ng-if="entity.specimen_identifications.count > 0">
+                        <a href data-ng-click="ctrl.service.openUrlInNewWindow({url:'http://fossiilid.info/' + entity.specimen_identifications.results[0].taxon_id})">
+                            {{entity.specimen_identifications.results[0].taxon__taxon}}
                         </a>
-                    </span>
-
-                    <!-- TODO: not sure if right field  sometimes is (classification__class_field)-->
-                    <span data-ng-if="entity.specimenidentification__name && entity.specimenidentification__name != null">
-                         | {{ entity.specimenidentification__name }}
-                    </span>
-
+                        <span data-ng-if="(entity.specimen_identifications.results[0].name && entity.specimen_identifications.results[0].name != null)
+                            && entity.specimen_identifications.results[0].taxon__taxon != entity.specimen_identifications.results[0].name">
+                            | {{entity.specimen_identifications.results[0].name}}
+                        </span>
+                    </div>
                 </td>
 
                 <td data-title="{{ 'SEARCH.SPECIMENS.LOCALITY' | translate }}">
@@ -56,10 +54,7 @@
                         <a href data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:entity.locality_id})">
                             <localize et="entity.locality__locality" en="entity.locality__locality_en"/>
                         </a>
-                    </div>
-
-                    <div data-ng-if="entity.locality__locality == null && entity.locality__locality_en == null">
-                        {{ entity.locality_free }}
+                        <span data-ng-if="entity.locality_free && entity.locality_free != null"> {{entity.locality_free}}</span>
                     </div>
                 </td>
 

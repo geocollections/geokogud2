@@ -228,6 +228,12 @@ public class ApiFields {
     public static final String ANALYSISRESULTS_VALUE_TXT = "value_txt";
 
     /**
+     * SPECIMEN_IDENTIFICATION search
+     */
+    public static final String TAXON__TAXON = "taxon__taxon";
+    public static final String CURRENT = "current";
+
+    /**
      * PREPARATION search
      */
     public static final String SAMPLE__LOCALITY__ID = "sample__locality__id";

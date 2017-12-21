@@ -5,6 +5,7 @@ import ee.ttu.geocollection.domain.SortField;
 import ee.ttu.geocollection.indexing.IndexingProperties;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
+import ee.ttu.geocollection.interop.api.builder.search.FluentSpecimenIdentificationSearchApiBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentSpecimenImageSearchApiBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentSpecimenSearchApiBuilder;
 import ee.ttu.geocollection.interop.api.service.ApiService;
@@ -221,7 +222,21 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .returnDatabaseAcronym()
                 .returnId()
                 .buildFullQuery();
-        return apiService.searchRawEntities(SPECIMEN_IMAGE_TABLE, 2,1, new SortField(), requestParams);
+//        return apiService.searchRawEntities(SPECIMEN_IMAGE_TABLE, 2,1, new SortField(), requestParams); EDIT 21.12.2017
+        return apiService.searchRawEntities(SPECIMEN_IMAGE_TABLE, 1,1, new SortField(), requestParams);
+    }
+
+    @Override
+    public ApiResponse findSpecimenIdentification(SearchField specimenId) {
+        String requestParams = FluentSpecimenIdentificationSearchApiBuilder.aRequest()
+                .querySpecimenIdForUrl(specimenId).andReturn()
+                .whereCurrentIsTrue()
+                .returnTaxonTaxon()
+                .returnName()
+                .returnTaxonId()
+                .returnCurrent()
+                .buildFullQuery();
+        return apiService.searchRawEntities(SPECIMEN_IDENTIFICATION_TABLE, 1, 1, new SortField(), requestParams);
     }
 
     @Override

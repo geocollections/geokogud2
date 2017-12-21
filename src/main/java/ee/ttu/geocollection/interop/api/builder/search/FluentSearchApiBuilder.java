@@ -139,4 +139,13 @@ public abstract class FluentSearchApiBuilder<B extends FluentSearchApiBuilder<B>
     String booleanToString(Boolean flag) {
         return flag ? "1" : "0";
     }
+
+    /**
+     * Custom String field name and value which are used in request URL
+     * @param fieldName Field in API which is given a value
+     * @param value Value which is given to certain field name
+     */
+    void addFieldNameAndValue(String fieldName, String value) {
+        query += "&" + fieldName + "=" + value;
+    }
 }
