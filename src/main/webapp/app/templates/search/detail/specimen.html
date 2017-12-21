@@ -9,9 +9,9 @@
                     <h2>
                         <span data-ng-if="detailCtrl.results.coll__number">{{detailCtrl.results.coll__number | split:' ':0}}</span>
                         {{detailCtrl.results.specimen_id}}
-                        <span data-ng-if="detailCtrl.results.specimenidentification__taxon__taxon && detailCtrl.results.specimenidentification__taxon__taxon != null">
-                            <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+detailCtrl.results.specimenidentification__taxon_id})">
-                                {{detailCtrl.results.specimenidentification__taxon__taxon}}
+                        <span data-ng-repeat="entity in detailCtrl.specimenIdentifications" data-ng-if="detailCtrl.specimenIdentifications.length > 0">
+                            <a href ng-if="entity.current == true" data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+entity.taxon_id})">
+                                {{ entity.taxon__taxon }}
                             </a>
                         </span>
                     </h2>
@@ -428,7 +428,7 @@
                                 <span>
                                     <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+entity.taxon_id})">{{entity.taxon__taxon}}</a>
                                 </span>
-                                    <span data-ng-if="entity.name && entity.name != null">
+                                    <span data-ng-if="(entity.name && entity.name != null) && entity.name != entity.taxon__taxon">
                                     | {{ entity.name }}
                                 </span>
                                 </td>
