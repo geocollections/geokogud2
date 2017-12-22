@@ -48,13 +48,20 @@
                         </span>
                     </div>
 
-                    <div data-ng-if="entity.specimen_identification_geologies.count > 0">
-                        <a href data-ng-click="ctrl.service.openUrlInNewWindow({url:'http://www.kivid.info/' + entity.specimen_identification_geologies.results[0].rock_id})">
-                            <localize et="entity.specimen_identification_geologies.results[0].rock__name" en="entity.specimen_identification_geologies.results[0].rock__name_en"/>
-                            <span ng-if="entity.specimen_identification_geologies.results[0].rock__name == null && entity.specimen_identification_geologies.results[0].rock__name_en == null">
-                                <localize et="entity.specimen_identification_geologies.results[0].name" en="entity.specimen_identification_geologies.results[0].name_en"/>
-                            </span>
+                    <!-- Currently both are links because rock__name is mostly null. -->
+                    <div data-ng-repeat="item in entity.specimen_identification_geologies.results" data-ng-if="entity.specimen_identification_geologies.count > 0">
+                        <a href data-ng-click="ctrl.service.openUrlInNewWindow({url:'http://www.kivid.info/' + item.rock_id})">
+                            <localize et="item.rock__name" en="item.rock__name_en"/>
                         </a>
+
+                        <span ng-show="item.rock__name != null && item.name != null">|</span>
+
+                        <span ng-if="((item.name && item.name != null) || (item.name_en && item.name_en != null))
+                            && ((item.rock__name != item.name) || (item.rock__name_en != item.name_en))">
+                            <a href data-ng-click="ctrl.service.openUrlInNewWindow({url:'http://www.kivid.info/' + item.rock_id})">
+                                <localize et="item.name" en="item.name_en"/>
+                            </a>
+                        </span>
                     </div>
                 </td>
 

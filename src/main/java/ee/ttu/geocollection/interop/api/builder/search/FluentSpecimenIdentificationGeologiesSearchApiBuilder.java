@@ -20,6 +20,11 @@ public class FluentSpecimenIdentificationGeologiesSearchApiBuilder extends Fluen
         return this;
     }
 
+    public FluentSpecimenIdentificationGeologiesSearchApiBuilder whereCurrentIsTrue() {
+        addFieldNameAndValue("current", "true");
+        return this;
+    }
+
     public FluentSpecimenIdentificationGeologiesSearchApiBuilder returnRockName() {
         addReturningField(ROCK__NAME);
         return this;
@@ -45,8 +50,8 @@ public class FluentSpecimenIdentificationGeologiesSearchApiBuilder extends Fluen
         return this;
     }
 
-    public FluentSpecimenIdentificationGeologiesSearchApiBuilder returnRockMindatId() {
-        addReturningField(ROCK__MINDAT_ID);
+    public FluentSpecimenIdentificationGeologiesSearchApiBuilder returnCurrent() {
+        addReturningField(CURRENT);
         return this;
     }
 

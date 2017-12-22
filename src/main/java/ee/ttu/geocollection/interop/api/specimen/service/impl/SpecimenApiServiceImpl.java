@@ -244,14 +244,15 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
     public ApiResponse findSpecimenIdentificationGeologies(SearchField specimenId) {
         String requestParams = FluentSpecimenIdentificationGeologiesSearchApiBuilder.aRequest()
                 .querySpecimenIdForUrl(specimenId).andReturn()
+                .whereCurrentIsTrue()
                 .returnRockName()
                 .returnRockNameEn()
                 .returnRockId()
-//                .returnRockMindatId() TODO: idk 500 error???
                 .returnName()
                 .returnNameEn()
+                .returnCurrent()
                 .buildFullQuery();
-        return apiService.searchRawEntities(SPECIMEN_IDENTIFICATION_GEOLOGY, 1,1, new SortField(), requestParams);
+        return apiService.searchRawEntities(SPECIMEN_IDENTIFICATION_GEOLOGY, 5,1, new SortField(), requestParams);
     }
 
     @Override
