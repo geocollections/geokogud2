@@ -441,12 +441,12 @@
                             <tbody>
                             <tr data-ng-repeat="entity in detailCtrl.specimenIdentifications">
                                 <td>
-                                <span>
-                                    <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+entity.taxon_id})">{{entity.taxon__taxon}}</a>
-                                </span>
-                                    <span data-ng-if="(entity.name && entity.name != null) && entity.name != entity.taxon__taxon">
-                                    | {{ entity.name }}
-                                </span>
+                                    <span>
+                                        <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+entity.taxon_id})">{{entity.taxon__taxon}}</a>
+                                    </span>
+                                        <span data-ng-if="(entity.name && entity.name != null) && entity.name != entity.taxon__taxon">
+                                        | {{ entity.name }}
+                                    </span>
                                 </td>
                                 <td>{{entity.agent__agent}}</td> <!--TODO -->
                                 <td>{{entity.date_added  | date:dateFormat}}</td>
@@ -490,9 +490,11 @@
                             <tbody>
                             <tr data-ng-repeat="entity in detailCtrl.specimenIdentificationGeology">
                                 <td>
-                                    <localize en="entity.name_en" et="entity.name" />
-                                    <span data-ng-if="(entity.rock__name && entity.rock__name != null)
-                                            || (entity.rock__name_en && entity.rock__name_en != null)">
+                                    <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://kivid.info/'+entity.rock_id})">
+                                        <localize en="entity.name_en" et="entity.name" />
+                                    </a>
+                                    <span data-ng-if="((entity.rock__name && entity.rock__name != null) || (entity.rock__name_en && entity.rock__name_en != null))
+                                        && ((entity.name != entity.rock__name) || (entity.name_en != entity.rock__name_en))">
                                          | <localize et="entity.rock__name" en="entity.rock__name_en" />
                                     </span>
                                 </td>

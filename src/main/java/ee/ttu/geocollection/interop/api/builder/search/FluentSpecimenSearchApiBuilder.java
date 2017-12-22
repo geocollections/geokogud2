@@ -62,7 +62,7 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
     }
 
     public FluentSpecimenSearchApiBuilder queryMineralRock(SearchField mineralRock) {
-        buildFieldParameters("specimenidentificationgeologies__name", mineralRock);
+        buildMultiSearch(mineralRock, SPECIMENIDENTIFICATIONGEOLOGIES__NAME, SPECIMENIDENTIFICATIONGEOLOGIES__NAME_EN);
         return this;
     }
 

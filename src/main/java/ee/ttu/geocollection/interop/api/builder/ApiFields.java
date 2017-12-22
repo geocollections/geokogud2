@@ -191,6 +191,8 @@ public class ApiFields {
     public static final String SPECIMENREFERENCE__REFERENCE__TITLE = "specimenreference__reference__title";
     public static final String SPECIMENIDENTIFICATION__NAME = "specimenidentification__name";
     public static final String SPECIMENIDENTIFICATION__TAXON__TAXON = "specimenidentification__taxon__taxon";
+    public static final String SPECIMENIDENTIFICATIONGEOLOGIES__NAME = "specimenidentificationgeologies__name";
+    public static final String SPECIMENIDENTIFICATIONGEOLOGIES__NAME_EN = "specimenidentificationgeologies__name_en";
     public static final String KIND__VALUE = "kind__value";
     public static final String KIND__VALUE_EN = "kind__value_en";
     public static final String PARENT_STRATIGRAPHY = "parent__stratigraphy";
