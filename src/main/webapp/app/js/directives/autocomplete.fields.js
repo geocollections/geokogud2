@@ -16,7 +16,7 @@ angular.module('geoApp').directive('autocompleteField', function () {
                                                                                                         $translate, ApplicationService, SearchFactory) {
             $scope.factory = SearchFactory;
             $scope.$watch('[et, en]', function(newValue) {
-                $scope.placeholderText = $translate.use() === 'et' ? "alusta otsing..." : "input search parameter...";
+                $scope.placeholderText = $translate.use() === 'et' ? "otsi..." : "search...";
                 if($scope.et !== 'null' && $scope.en !== 'null') {
                     $scope.localizedValue = $translate.use() === 'et' ? newValue[0] : newValue[1];
                 } else {
@@ -25,7 +25,7 @@ angular.module('geoApp').directive('autocompleteField', function () {
             }, true);
 
             $rootScope.$on('$translateChangeSuccess', function() {
-                $scope.placeholderText = $translate.use() === 'et' ? "alusta otsing..." : "input search parameter...";
+                $scope.placeholderText = $translate.use() === 'et' ? "otsi..." : "search...";
                 if($scope.et !== 'null' && $scope.en !== 'null') {
                     $scope.localizedValue = $translate.use() === 'et' ? $scope.et : $scope.en;
                 } else {
