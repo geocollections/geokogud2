@@ -54,7 +54,7 @@
                             <localize et="item.rock__name" en="item.rock__name_en"/>
                         </a>
 
-                        <span ng-show="item.rock__name != null && item.name != null">|</span>
+                        <span ng-show="(item.rock__name && item.rock__name != null) && (item.name && item.name != null)">|</span>
 
                         <span ng-if="((item.name && item.name != null) || (item.name_en && item.name_en != null))
                             && ((item.rock__name != item.name) || (item.rock__name_en != item.name_en))">

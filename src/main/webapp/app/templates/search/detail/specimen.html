@@ -493,9 +493,13 @@
                                     <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://kivid.info/'+entity.rock_id})">
                                         <localize en="entity.name_en" et="entity.name" />
                                     </a>
+
+                                    <span ng-show="(entity.name && entity.name != null) && (entity.rock__name && entity.rock__name != null)
+                                        || (entity.name_en && entity.name_en != null) && (entity.rock__name_en && entity.rock__name_en != null)">|</span>
+
                                     <span data-ng-if="((entity.rock__name && entity.rock__name != null) || (entity.rock__name_en && entity.rock__name_en != null))
                                         && ((entity.name != entity.rock__name) || (entity.name_en != entity.rock__name_en))">
-                                         | <localize et="entity.rock__name" en="entity.rock__name_en" />
+                                         <localize et="entity.rock__name" en="entity.rock__name_en" />
                                     </span>
                                 </td>
                                 <td>{{entity.formula}}</td> <!-- TODO: get formula somewhere -->
