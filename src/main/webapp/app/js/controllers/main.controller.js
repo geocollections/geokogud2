@@ -34,7 +34,7 @@ var constructor = function (configuration, $translate, $http, applicationService
 
     /**
      * Loads all the useful wepage content unless it's
-     * global search or new "pop-up" window. Webpage content
+     * global search or detail view. Webpage content
      * like news and different columns and so on
      */
     function asyncLoadData () {
@@ -55,10 +55,16 @@ var constructor = function (configuration, $translate, $http, applicationService
             vm.elm = getWebPageById(64, "elm");
         }
         if (isSearch()) {
-            vm.searchTips = getWebPageById(43, "searchTips");
-            vm.drillCoreSearch = getWebPageById(53, "drillCoreSearch");
-            vm.protoArchiveQuery = getWebPageById(54, "protoArchiveQuery");
-            vm.doiIdentifiers = getWebPageById(55, "doiIdentifiers");
+            // Every search view has own certain FAQ
+            if ($state.current.name == "drillcores") {
+                vm.drillCoreSearch = getWebPageById(53, "drillCoreSearch");
+            } else if ($state.current.name == "photoArchives") {
+                vm.protoArchiveQuery = getWebPageById(54, "protoArchiveQuery");
+            } else if ($state.current.name == "dois") {
+                vm.doiIdentifiers = getWebPageById(55, "doiIdentifiers");
+            } else {
+                vm.searchTips = getWebPageById(43, "searchTips");
+            }
         }
 
 
