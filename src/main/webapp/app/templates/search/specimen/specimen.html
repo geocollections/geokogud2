@@ -65,8 +65,9 @@
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.COLLECTION_NUMBER' | translate }}</b>
-                                        <selectexact custom-css="searchCriterionType"
-                                                     ng-model="searchParameters.collectionNumber.lookUpType"></selectexact>
+                                        <!--<selectexact custom-css="searchCriterionType" ng-model="searchParameters.collectionNumber.lookUpType"></selectexact>-->
+                                        <selecttemporary custom-css="searchCriterionType"
+                                                      ng-model="searchParameters.collectionNumber.lookUpType"></selecttemporary>
                                     </div>
                                     <div class="col-md-12 medium-padding">
                                         <input type="text" ng-model="searchParameters.collectionNumber.name"
@@ -107,7 +108,7 @@
                                 </div>
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
-                                        <b>{{ 'SEARCH.SPECIMENS.ADMIN_UNIT' | translate }}</b>
+                                        <b>{{ 'SEARCH.SPECIMENS.COUNTRY_COUNTY_PARISH' | translate }}</b>
                                         <selectdefault custom-css="searchCriterionType"
                                                        ng-model="searchParameters.adminUnit.lookUpType"></selectdefault>
                                     </div>
@@ -159,18 +160,18 @@
                                         <input type="text" ng-model="searchParameters.id.name" class="form-control"/>
                                     </div>
                                 </div>
-
-                                <div class="row searchCriterion">
-                                    <div class="col-md-12  medium-padding">
-                                        <b>{{ 'SEARCH.SPECIMENS.FOSSIL_MINERAL_ROCK' | translate }}</b>
-                                        <selectdefault custom-css="searchCriterionType"
-                                                       ng-model="searchParameters.fossilMineralRock.lookUpType"></selectdefault>
-                                    </div>
-                                    <div class="col-md-12 medium-padding">
-                                        <input type="text" ng-model="searchParameters.fossilMineralRock.name"
-                                               class="form-control"/>
-                                    </div>
-                                </div>
+                                <!-- REMOVED TEMPORARILY 22.12.2017 -->
+                                <!--<div class="row searchCriterion">-->
+                                    <!--<div class="col-md-12  medium-padding">-->
+                                        <!--<b>{{ 'SEARCH.SPECIMENS.FOSSIL_MINERAL_ROCK' | translate }}</b>-->
+                                        <!--<selectdefault custom-css="searchCriterionType"-->
+                                                       <!--ng-model="searchParameters.fossilMineralRock.lookUpType"></selectdefault>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-md-12 medium-padding">-->
+                                        <!--<input type="text" ng-model="searchParameters.fossilMineralRock.name"-->
+                                               <!--class="form-control"/>-->
+                                    <!--</div>-->
+                                <!--</div>-->
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.DEPHT_M' | translate }}</b>
@@ -197,7 +198,8 @@
                                                        ng-model="searchParameters.reference.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <input type="text" ng-model="searchParameters.reference.name" class="form-control"/>
+                                        <autocomplete-field ng-model="searchParameters.reference.name" table="specimen_reference" en="null" et="reference__reference"/>
+                                        <!--<input type="text" ng-model="searchParameters.reference.name" class="form-control"/>-->
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">

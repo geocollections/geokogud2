@@ -26,7 +26,7 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
     }
 
     public FluentSpecimenSearchApiBuilder queryLocality(SearchField locality) {
-        buildMultiSearch(locality, LOCALITY_LOCALITY, LOCALITY_LOCALITY_EN);
+        buildMultiSearch(locality, LOCALITY_LOCALITY, LOCALITY_LOCALITY_EN, LOCALITY_FREE);
         return this;
     }
 
@@ -62,12 +62,18 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
     }
 
     public FluentSpecimenSearchApiBuilder queryMineralRock(SearchField mineralRock) {
-        buildMultiSearch(mineralRock, SPECIMENIDENTIFICATIONGEOLOGIES__NAME, SPECIMENIDENTIFICATIONGEOLOGIES__NAME_EN);
+        buildMultiSearch(
+                mineralRock,
+                SPECIMENIDENTIFICATIONGEOLOGIES__NAME,
+                SPECIMENIDENTIFICATIONGEOLOGIES__NAME_EN,
+                SPECIMENIDENTIFICATIONGEOLOGIES__ROCK__NAME,
+                SPECIMENIDENTIFICATIONGEOLOGIES__ROCK__NAME_EN);
         return this;
     }
 
     public FluentSpecimenSearchApiBuilder queryCollectionNumber(SearchField collectionNumber) {
-        buildMultiSearch(collectionNumber, COLL__NUMBER, COLL_ID);
+        buildFieldParameters(COLL__NUMBER, collectionNumber);
+//        buildMultiSearch(collectionNumber, COLL__NUMBER);
         return this;
     }
 
@@ -92,7 +98,11 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
     }
 
     public FluentSpecimenSearchApiBuilder queryReference(SearchField reference) {
-        buildMultiSearch(reference, SPECIMENREFERENCE__REFERENCE__AUTHOR, SPECIMENREFERENCE__REFERENCE__TITLE, AGENT_COLLECTED__SURENAME);
+        buildMultiSearch(
+                reference,
+                SPECIMENREFERENCE__REFERENCE__AUTHOR,
+                SPECIMENREFERENCE__REFERENCE__TITLE,
+                SPECIMENREFERENCE__REFERENCE__REFERENCE);
         return this;
     }
 

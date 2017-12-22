@@ -58,9 +58,7 @@
 
                         <span ng-if="((item.name && item.name != null) || (item.name_en && item.name_en != null))
                             && ((item.rock__name != item.name) || (item.rock__name_en != item.name_en))">
-                            <a href data-ng-click="ctrl.service.openUrlInNewWindow({url:'http://www.kivid.info/' + item.rock_id})">
-                                <i><localize et="item.name" en="item.name_en"/></i>
-                            </a>
+                            <i><localize et="item.name" en="item.name_en"/></i>
                         </span>
                     </div>
                 </td>

@@ -184,6 +184,41 @@ angular.module('geoApp')
             }, true);
         }
     };
+}).directive('selecttemporary', function ($translate) {
+    return {
+        template:
+        '<select class="{{selectCss}}" ng-model="field">' +
+        '<option value="icontains" selected="selected">{{ \'SEARCH.SELECT.CONTAINS\' | translate }}</option>' +
+        '<option value="iexact">{{ \'SEARCH.SELECT.EQUALS\' | translate }}</option>' +
+        /*         '<option value="doesnotexact">{{ \'SEARCH.SELECT.DOESNOTEQUAL\' | translate }}</option>' +*/
+        '<option value="gt">{{ \'SEARCH.SELECT.GREATERTHAN\' | translate }}</option>' +
+        '<option value="lt">{{ \'SEARCH.SELECT.SMALLERTHAN\' | translate }}</option>' +
+        '<option value="in">{{ \'SEARCH.SELECT.ISINLIST\' | translate }}</option>' +
+        '<option value="range">{{ \'SEARCH.SELECT.ISBWETWEEN\' | translate }}</option>' +
+        '</select>',
+        restrict: 'E',
+        scope: {
+            field: '=?ngModel',
+            customCss: '@'
+        },
+        link: function (scope) {
+            scope.selectCss = angular.isUndefined(scope.customCss) ? 'col-md-4 form-control' : scope.customCss;
+            scope.idOptions = [
+                {name: 'contains', value: 'icontains'},
+                {name: 'equals', value: 'iexact'},
+                /*        {name: 'does not equal', value: 'doesnotexact'},*/
+                {name: 'greater than', value: 'gt'},
+                {name: 'smaller than', value: 'lt'},
+                {name: 'is in list', value: 'in'},
+                {name: 'is between', value: 'range'}
+            ];
+
+            scope.$watch('field', function (data) {
+                if (data) return;
+                scope.field = scope.idOptions[0].value;
+            });
+        }
+    };
 }).directive('selectexact', function ($translate) {
         return {
             template:
