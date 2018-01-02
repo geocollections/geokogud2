@@ -82,11 +82,18 @@ var constructor = function (utils, configuration, $window, $location) {
     service.composeImageUrl = function(imageData, readyUrl) {
         if(readyUrl) return readyUrl;
         if(imageData.image_url) return imageData.image_url;
+        // For photo archive image
         if (imageData.database__acronym != null) {
             var imageUrl = "http://geokogud.info/" + imageData.database__acronym.toLowerCase()
                 + "/image/" + imageData.imageset__imageset_series
                 + "/" + imageData.imageset__imageset_number
                 + "/" + imageData.filename;
+        }
+        // For specimen image
+        if (imageData.specimen__database__acronym != null) {
+            var imageUrl = "http://geokogud.info/" + imageData.specimen__database__acronym.toLowerCase()
+                + "/specimen_image/"
+                + "/" + imageData.image;
         }
         return imageUrl;
     };
