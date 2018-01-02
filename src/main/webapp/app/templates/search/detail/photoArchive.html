@@ -4,8 +4,7 @@
     <div class="panel-body">
 
         <div class="row" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
-            <!--<div class="col-sm-6" data-ng-if="detailCtrl.results.filename != null">-->
-            <div class="col-sm-6">
+            <div class="col-sm-6" data-ng-if="detailCtrl.results.filename != null">
                 <h2 data-ng-if="detailCtrl.results.image_number != null">
                     {{ 'API_TRANSLATION.PHOTO_ARCHIVE.PHOTO_NUMBER ' | translate }} {{ detailCtrl.results.image_number }}
                 </h2>

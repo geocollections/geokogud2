@@ -43,7 +43,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('specimenImage.view', {
             url: "/specimen_image/:id",
-            templateUrl: "app/templates/search/detail/photoArchive.html",
+            templateUrl: "app/templates/search/detail/specimenImage.html",
             controller: "DetailController as detailCtrl",
             params: {type: "specimenImage"}
     })
