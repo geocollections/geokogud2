@@ -166,7 +166,7 @@ flyway {
 }
 
 bootRun {
-    jvmArgs = ["-Duser.timezone=Europe/Tallinn"]
+    jvmArgs = ['-Xms1024m', '-Xmx4096m', "-Duser.timezone=Europe/Tallinn"]
     systemProperties = System.properties
 }
 
