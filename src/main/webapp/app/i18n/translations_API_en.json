@@ -139,6 +139,17 @@
             "STATUS_VALUE": "Status value (ET)",
             "STATUS_VALUE_EN": "Status value"
         },
+        "SPECIMEN_IMAGE": {
+            "PHOTO_NUMBER": "Specimen image No.",
+            "ID": "ID",
+            "SPECIMEN_ID": "Specimen number",
+            "NAME": "Name",
+            "LOCALITY": "Locality (ET)",
+            "LOCALITY_EN": "Locality",
+            "STRATIGRAPHY": "Stratigraphy (ET)",
+            "STRATIGRAPHY_EN": "Stratigraphy",
+            "TAGS": "Tags"
+        },
         "SAMPLE" : {
             "DETAIL_FORM_NAME" : "Sample #",
             "ID":"ID",

@@ -208,6 +208,17 @@
             "ANALYSIS_LOCATION": "Hoiukoht",
             "ANALYSIS_REMARKS": "Lisainfo"
         },
+        "SPECIMEN_IMAGE": {
+            "PHOTO_NUMBER": "Säiliku foto nr.",
+            "ID": "ID",
+            "SPECIMEN_ID": "Eksemplari nr",
+            "NAME": "Nimi",
+            "LOCALITY": "Leiukoht",
+            "LOCALITY_EN": "Leiukoht (EN)",
+            "STRATIGRAPHY": "Stratigraafia",
+            "STRATIGRAPHY_EN": "Stratigraafia (EN)",
+            "TAGS": "Sildid"
+        },
         "DRILL_CORE" : {
             "DETAIL_FORM_NAME" : "",
             "ID":"ID",
