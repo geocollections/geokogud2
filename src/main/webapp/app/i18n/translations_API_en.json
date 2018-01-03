@@ -141,6 +141,7 @@
         },
         "SPECIMEN_IMAGE": {
             "PHOTO_NUMBER": "Specimen image No.",
+            "PHOTO": "Specimen image",
             "ID": "ID",
             "SPECIMEN_ID": "Specimen number",
             "NAME": "Name",
@@ -511,7 +512,8 @@
             "DATE_DIGITISED":"Date digitised",
             "DATE_DIGITISED_FREE":"Date digitised",
             "DEVICE_DIGITISED__NAME":"Device digit.",
-            "PHOTO_NUMBER": "Photo No."
+            "PHOTO_NUMBER": "Photo No.",
+            "PHOTO": "Photo"
         },
         "SOIL" :  {
             "DETAIL_FORM_NAME" : "Microfossil preparation No. ",

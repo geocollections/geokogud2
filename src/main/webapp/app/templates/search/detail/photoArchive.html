@@ -3,11 +3,19 @@
 <div class="panel detailview-page">
     <div class="panel-body">
 
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="detailview-title">
+                    <h2>
+                        {{ 'API_TRANSLATION.PHOTO_ARCHIVE.PHOTO_NUMBER ' | translate }} {{ detailCtrl.results.image_number }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+
         <div class="row" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
             <div class="col-sm-6" data-ng-if="detailCtrl.results.filename != null">
-                <h2 data-ng-if="detailCtrl.results.image_number != null">
-                    {{ 'API_TRANSLATION.PHOTO_ARCHIVE.PHOTO_NUMBER ' | translate }} {{ detailCtrl.results.image_number }}
-                </h2>
+                <h3> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.PHOTO' | translate }} </h3>
 
                 <img spinner-load ng-src="{{detailCtrl.imageUrl}}" class="window-size"/>
                 {{'API_TRANSLATION.PHOTO_ARCHIVE.SIZE ' | translate }}:
@@ -19,12 +27,12 @@
                 | <a href="{{detailCtrl.imageUrl}}" target="_blank">Original</a>
             </div>
             <div class="col-sm-6" data-ng-if="detailCtrl.results.fileName === null">
-                <h2>TODO: nice error message or default error picture.</h2>
+                <h3>TODO: nice error message or default error picture.</h3>
             </div>
 
             <div class="col-sm-6">
                 <table class="table table-bordered table-hover table-header-styles">
-                    <h2> {{ 'DETAILVIEW_TABLE_HEADER' | translate }} </h2>
+                    <h3> {{ 'DETAILVIEW_TABLE_HEADER' | translate }} </h3>
                     <thead>
                     </thead>
                     <tbody>
@@ -199,64 +207,11 @@
                             <td> {{detailCtrl.results.date_changed  | date:dateFormat }}</td>
                         </tr>
 
-                        <!--<tr data-ng-if="detailCtrl.results.locality_id && detailCtrl.results.locality_id != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY_ID ' | translate }}</td><td> {{detailCtrl.results.locality_id}}</td></tr>-->
-
-                        <!--<tr data-ng-if="detailCtrl.results.locality__locality && detailCtrl.results.locality__locality != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY__LOCALITY ' | translate }}</td><td> {{detailCtrl.results.locality__locality}}</td></tr>-->
-                        <!--<tr data-ng-if="detailCtrl.results.locality__locality_en && detailCtrl.results.locality__locality_en != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY__LOCALITY_EN ' | translate }}</td><td> {{detailCtrl.results.locality__locality_en}}</td></tr>-->
-
-                        <!--<tr data-ng-if="(detailCtrl.results.locality__country__value && detailCtrl.results.locality__country__value != null) || (detailCtrl.results.locality__country__value_en && detailCtrl.results.locality__country__value_en != null) ">-->
-                            <!--<td><localize-label et="'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY__COUNTRY__VALUE'" en="'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY__COUNTRY__VALUE_EN'"/></td><td><localize et="detailCtrl.results.locality__country__value" en="detailCtrl.results.locality__country__value_en"/></td>-->
-                        <!--</tr>-->
-                        <!-- - -->
-                        <!--<tr data-ng-if="detailCtrl.results.locality__country__value && detailCtrl.results.locality__country__value != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY__COUNTRY__VALUE ' | translate }}</td><td> {{detailCtrl.results.locality__country__value}}</td></tr>-->
-                        <!--<tr data-ng-if="detailCtrl.results.locality__country__value_en && detailCtrl.results.locality__country__value_en != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY__COUNTRY__VALUE_EN ' | translate }}</td><td> {{detailCtrl.results.locality__country__value_en}}</td></tr>-->
-
-                        <!--<tr data-ng-if="(detailCtrl.results.locality__maakond__maakond && detailCtrl.results.locality__maakond__maakond != null) || (detailCtrl.results.locality__maakond__maakond_en && detailCtrl.results.locality__maakond__maakond_en != null) ">-->
-                            <!--<td><localize-label et="'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY__MAAKOND__MAAKOND'" en="'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY__MAAKOND__MAAKOND_EN'"/></td><td><localize et="detailCtrl.results.locality__maakond__maakond" en="detailCtrl.results.locality__maakond__maakond_en"/></td>-->
-                        <!--</tr>-->
-
-                        <!--<tr data-ng-if="detailCtrl.results.locality__maakond__maakond && detailCtrl.results.locality__maakond__maakond != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY__MAAKOND__MAAKOND ' | translate }}</td><td> {{detailCtrl.results.locality__maakond__maakond}}</td></tr>-->
-                        <!--<tr data-ng-if="detailCtrl.results.locality__maakond__maakond_en && detailCtrl.results.locality__maakond__maakond_en != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY__MAAKOND__MAAKOND_EN ' | translate }}</td><td> {{detailCtrl.results.locality__maakond__maakond_en}}</td></tr>-->
-
-                        <!--<tr data-ng-if="(detailCtrl.results.locality__vald__vald && detailCtrl.results.locality__vald__vald != null) || (detailCtrl.results.locality__vald__vald_en && detailCtrl.results.locality__vald__vald_en != null) ">-->
-                            <!--<td><localize-label et="'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY__VALD__VALD'" en="'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY__VALD__VALD_EN'"/></td><td><localize et="detailCtrl.results.locality__vald__vald" en="detailCtrl.results.locality__vald__vald_en"/></td>-->
-                        <!--</tr>-->
-
-                        <!--<tr data-ng-if="detailCtrl.results.locality__vald__vald && detailCtrl.results.locality__vald__vald != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY__VALD__VALD ' | translate }}</td><td> {{detailCtrl.results.locality__vald__vald}}</td></tr>-->
-                        <!--<tr data-ng-if="detailCtrl.results.locality__vald__vald_en && detailCtrl.results.locality__vald__vald_en != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY__VALD__VALD_EN ' | translate }}</td><td> {{detailCtrl.results.locality__vald__vald_en}}</td></tr>-->
-
-                        <!--<tr data-ng-if="(detailCtrl.results.locality__asustusyksus__asustusyksus && detailCtrl.results.locality__asustusyksus__asustusyksus != null) || (detailCtrl.results.locality__asustusyksus__asustusyksus_en && detailCtrl.results.locality__asustusyksus__asustusyksus_en != null) ">-->
-                            <!--<td><localize-label et="'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY__ASUSTUSYKSUS__ASUSTUSYKSUS'" en="'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY__ASUSTUSYKSUS__ASUSTUSYKSUS_EN'"/></td><td><localize et="detailCtrl.results.locality__asustusyksus__asustusyksus" en="detailCtrl.results.locality__asustusyksus__asustusyksus_en"/></td>-->
-                        <!--</tr>-->
-
-                        <!--<tr data-ng-if="detailCtrl.results.locality__asustusyksus__asustusyksus && detailCtrl.results.locality__asustusyksus__asustusyksus != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY__ASUSTUSYKSUS__ASUSTUSYKSUS ' | translate }}</td><td> {{detailCtrl.results.locality__asustusyksus__asustusyksus}}</td></tr>-->
-                        <!--<tr data-ng-if="detailCtrl.results.locality__asustusyksus__asustusyksus_en && detailCtrl.results.locality__asustusyksus__asustusyksus_en != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.LOCALITY__ASUSTUSYKSUS__ASUSTUSYKSUS_EN ' | translate }}</td><td> {{detailCtrl.results.locality__asustusyksus__asustusyksus_en}}</td></tr>-->
-
-                        <!--<tr data-ng-if="detailCtrl.results.image_number && detailCtrl.results.image_number != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.IMAGE_NUMBER ' | translate }}</td><td> {{detailCtrl.results.image_number}}</td></tr>-->
-                        <!--<tr data-ng-if="detailCtrl.results.imageset__imageset_number && detailCtrl.results.imageset__imageset_number != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.IMAGESET__IMAGESET_NUMBER ' | translate }}</td><td> {{detailCtrl.results.imageset__imageset_number}}</td></tr>-->
-                        <!--<tr data-ng-if="detailCtrl.results.imageset__imageset_series && detailCtrl.results.imageset__imageset_series != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.IMAGESET__IMAGESET_SERIES ' | translate }}</td><td> {{detailCtrl.results.imageset__imageset_series}}</td></tr>-->
-
-                        <!--<tr data-ng-if="(detailCtrl.results.category__value && detailCtrl.results.category__value != null) || (detailCtrl.results.category__value_en && detailCtrl.results.category__value_en != null) ">-->
-                            <!--<td><localize-label et="'API_TRANSLATION.PHOTO_ARCHIVE.CATEGORY__VALUE'" en="'API_TRANSLATION.PHOTO_ARCHIVE.CATEGORY__VALUE_EN'"/></td><td><localize et="detailCtrl.results.category__value" en="detailCtrl.results.category__value_en"/></td>-->
-                        <!--</tr>-->
-
-                        <!--<tr data-ng-if="detailCtrl.results.category__value && detailCtrl.results.category__value != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.CATEGORY__VALUE ' | translate }}</td><td> {{detailCtrl.results.category__value}}</td></tr>-->
-                        <!--<tr data-ng-if="detailCtrl.results.category__value_en && detailCtrl.results.category__value_en != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.CATEGORY__VALUE_EN ' | translate }}</td><td> {{detailCtrl.results.category__value_en}}</td></tr>-->
-
-                        <!--<tr data-ng-if="detailCtrl.results.type__value && detailCtrl.results.type__value != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.TYPE__VALUE ' | translate }}</td><td> {{detailCtrl.results.type__value}}</td></tr>-->
-                        <!--<tr data-ng-if="detailCtrl.results.type__value_en && detailCtrl.results.type__value_en != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.TYPE__VALUE_EN ' | translate }}</td><td> {{detailCtrl.results.type__value_en}}</td></tr>-->
-
-                        <!--<tr data-ng-if="detailCtrl.results.licence__licence_en && detailCtrl.results.licence__licence_en != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.LICENCE__LICENCE_EN ' | translate }}</td><td> {{detailCtrl.results.licence__licence_en}}</td></tr>-->
-                        <!--<tr data-ng-if="detailCtrl.results.licence__licence_url_en && detailCtrl.results.licence__licence_url_en != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.LICENCE__LICENCE_URL_EN ' | translate }}</td><td> {{detailCtrl.results.licence__licence_url_en}}</td></tr>-->
-                        <!---->
-                        <!--<tr data-ng-if="detailCtrl.results.user_added && detailCtrl.results.user_added != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.USER_ADDED ' | translate }}</td><td> {{detailCtrl.results.user_added}}</td></tr>-->
-                        <!--<tr data-ng-if="detailCtrl.results.user_changed && detailCtrl.results.user_changed != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.USER_CHANGED ' | translate }}</td><td> {{detailCtrl.results.user_changed}}</td></tr>-->
-                        <!--<tr data-ng-if="detailCtrl.results.database__acronym && detailCtrl.results.database__acronym != null" > <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.DATABASE__ACRONYM ' | translate }}</td><td> {{detailCtrl.results.database__acronym}}</td></tr>-->
                     </tbody>
                 </table>
 
                 <div data-ng-if="detailCtrl.results.locality__latitude && detailCtrl.results.locality__longitude">
-                    <h2> {{ 'DETAIL.DETAIL_MAP' | translate }} </h2>
+                    <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
                     <div id='hoverbox' class='coupontooltip'>
                         <div id='hoversystem'></div>
                         <div id='hoverstat'></div>

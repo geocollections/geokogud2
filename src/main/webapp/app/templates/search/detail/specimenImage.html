@@ -3,11 +3,19 @@
 <div class="panel detailview-page">
     <div class="panel-body">
 
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="detailview-title">
+                    <h2>
+                        {{ 'API_TRANSLATION.SPECIMEN_IMAGE.PHOTO_NUMBER ' | translate }} {{ detailCtrl.results.id }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+
         <div class="row" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
-            <div class="col-lg-6" data-ng-if="detailCtrl.results.image != null || detailCtrl.results.image_url != null">
-                <h2 data-ng-if="detailCtrl.results.id != null">
-                    {{ 'API_TRANSLATION.SPECIMEN_IMAGE.PHOTO_NUMBER' | translate }} {{ detailCtrl.results.id }}
-                </h2>
+            <div class="col-sm-6" data-ng-if="detailCtrl.results.image != null || detailCtrl.results.image_url != null">
+                <h3> {{ 'API_TRANSLATION.SPECIMEN_IMAGE.PHOTO' | translate }} </h3>
 
                 <img spinner-load ng-src="{{detailCtrl.imageUrl}}" class="window-size"/>
                 {{'API_TRANSLATION.PHOTO_ARCHIVE.SIZE ' | translate }}:
@@ -18,13 +26,13 @@
                 | <a href="{{detailCtrl.externalImagePath}}/1920" target="_blank">1920px</a>
                 | <a href="{{detailCtrl.imageUrl}}" target="_blank">Original</a>
             </div>
-            <div class="col-lg-6" data-ng-if="detailCtrl.results.image === null && detailCtrl.results.image_url === null">
-                <h2>TODO: nice error message or default error picture.</h2>
+            <div class="col-sm-6" data-ng-if="detailCtrl.results.image === null && detailCtrl.results.image_url === null">
+                <h3>TODO: nice error message or default error picture.</h3>
             </div>
 
-            <div class="col-lg-6">
+            <div class="col-sm-6">
                 <table class="table table-bordered table-hover table-header-styles">
-                    <h2> {{ 'DETAILVIEW_TABLE_HEADER' | translate }} </h2>
+                    <h3> {{ 'DETAILVIEW_TABLE_HEADER' | translate }} </h3>
                     <thead>
                     </thead>
                     <tbody>

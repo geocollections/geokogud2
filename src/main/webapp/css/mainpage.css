@@ -652,6 +652,15 @@ table tr > td:first-child {
 /* PHOTO ARCHIVE END */
 
 
+/* PREPARATION START */
+
+.detailview-title div {
+    font-size: 18px;
+}
+
+/* PREPARATION END */
+
+
 /* LOCALITY START */
 
 /* otherwise specimen search link has too big gap */

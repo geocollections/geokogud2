@@ -12,6 +12,7 @@
                     </h2>
                 </div>
 
+                <h3> {{ 'DETAILVIEW_TABLE_HEADER' | translate }} </h3>
                 <table class="table table-bordered table-hover table-header-styles">
 
                     <tr data-ng-if="detailCtrl.results.id && detailCtrl.results.id != null">
@@ -139,7 +140,7 @@
             </div>
 
             <div class="col-lg-6" data-ng-if="detailCtrl.localityReferences.length > 0">
-                <h2> {{ 'API_TRANSLATION.REFERENCE.SECTIONS_DESCRIBED' | translate }} </h2>
+                <h3> {{ 'API_TRANSLATION.REFERENCE.SECTIONS_DESCRIBED' | translate }} </h3>
                 <table class="table table-hover table-bordered">
                     <thead class="styles-for-table-headers">
                         <tr>
@@ -171,7 +172,7 @@
             </div>
 
             <div class="col-lg-6" data-ng-if="detailCtrl.attachmentLink.length > 0">
-                <h2> {{ 'API_TRANSLATION.REFERENCE.LINKED_FILES' | translate }} </h2>
+                <h3> {{ 'API_TRANSLATION.REFERENCE.LINKED_FILES' | translate }} </h3>
                 <table class="table table-hover table-bordered">
                     <thead class="styles-for-table-headers">
                         <tr>
