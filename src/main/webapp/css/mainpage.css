@@ -735,7 +735,7 @@ table tr > td:first-child {
     max-width: none;
 }
 
-#image-preview-detail a:hover {
+#image-preview-detail img:hover {
     opacity: 0.8;
 }
 

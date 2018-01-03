@@ -420,13 +420,12 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td id="image-preview-detail" data-ng-repeat="entity in detailCtrl.specimenImage">
-                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image', id:entity.id})">
-                                        <show-preview id="specimen-detail-image" img-url="detailCtrl.service.composeSpecimenImageUrl({
-                                                        database: entity.specimen__database__acronym,
-                                                        image: entity.image,
-                                                        imageUrl:entity.image_ur})"/>
-                                    </a>
+                                <td style="cursor: pointer;" id="image-preview-detail" data-ng-repeat="entity in detailCtrl.specimenImage"
+                                    data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image', id:entity.id})">
+                                    <show-preview id="specimen-detail-image" img-url="detailCtrl.service.composeSpecimenImageUrl({
+                                                      database: entity.specimen__database__acronym,
+                                                      image: entity.image,
+                                                      imageUrl:entity.image_ur})"/>
                                 </td>
                             </tr>
                             </tbody>
