@@ -11,7 +11,8 @@ var module = angular.module("geoApp",
         'ngAnimate',
         'ui.select2',
         'ngStorage',
-        'bsLoadingOverlay'
+        'bsLoadingOverlay',
+        'ngPageTitle'
     ]);
 
 module.config(function ($translateProvider, $locationProvider) {
