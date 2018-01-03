@@ -742,10 +742,10 @@ table tr > td:first-child {
     border-top: 0;
 }
 
-#image-preview-detail img {
-    max-height: none;
-    max-width: none;
-}
+/*#image-preview-detail img {*/
+    /*max-height: none;*/
+    /*max-width: none;*/
+/*}*/
 
 #image-preview-detail img:hover {
     opacity: 0.8;
