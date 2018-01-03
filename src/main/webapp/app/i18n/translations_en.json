@@ -483,7 +483,8 @@
             "ATTACHMENT_DESCRIPTION": "Description",
             "ATTACHMENT_AUTHOR": "Author",
             "ATTACHMENT_DATE": "Date",
-            "ATTACHMENT_LINK": "Link"
+            "ATTACHMENT_LINK": "Link",
+            "IMAGE_DETAILS": "Click for image details"
         },
         "DRILLCORE": {
             "DRILLCORE_BOXES": "Drill core boxes",

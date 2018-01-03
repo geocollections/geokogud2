@@ -184,6 +184,38 @@ angular.module('geoApp')
             }, true);
         }
     };
+}).directive('showPreviewSpecimen', function () {
+    return {
+        template: '<img title="{{title}}" class="previewImage" ng-src="{{previewImageUrl}}" spinner-load />',
+        restrict: 'E',
+        scope: {
+            imgUrl: '=',
+            imgTitle: '=',
+            titleLang: '='
+        },
+        controller: ['$scope','$translate', '$rootScope', function ($scope, $translate, $rootScope) {
+            $scope.$watch('imgTitle', function (newVal) {
+                if (newVal) {
+                    var imgID = newVal;
+                    var engText = "Click for image no. " + imgID + " details";
+                    var estText = "Kliki, et näha pildi nr. " + imgID + " üksikasju";
+                    $scope.title = $translate.use() === 'et' ? estText : engText;
+
+                    $rootScope.$on('$translateChangeSuccess', function () {
+                        $scope.title = $translate.use() === 'et' ? estText : engText;
+                    });
+                }
+            });
+
+            $scope.$watch('imgUrl', function(newValue) {
+                if(newValue) {
+                    var foundHttp = newValue.match(/http:/);
+                    var lastSlashPosition = newValue.lastIndexOf('/');
+                    $scope.previewImageUrl = (foundHttp ? "" : "http://") + newValue.substring(0, lastSlashPosition) + '/preview' + newValue.substring(lastSlashPosition);
+                    }
+                }, true);
+        }]
+    };
 }).directive('selecttemporary', function ($translate) {
     return {
         template:

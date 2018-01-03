@@ -483,7 +483,8 @@
             "ATTACHMENT_DESCRIPTION": "Kirjeldus",
             "ATTACHMENT_AUTHOR": "Autor",
             "ATTACHMENT_DATE": "Aeg",
-            "ATTACHMENT_LINK": "Link"
+            "ATTACHMENT_LINK": "Link",
+            "IMAGE_DETAILS": "Kliki, et näha pildi üksikasju"
         },
         "DRILLCORE": {
             "DRILLCORE_BOXES": "Puursüdamiku kastid",
