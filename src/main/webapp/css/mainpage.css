@@ -565,8 +565,10 @@ table tr > td:first-child {
 }
 
 #detailview-navbar-brand {
-    font-size: 14px;
     color: #F05F40;
+    font-size: 13.5px;
+    font-weight: 700;
+    margin: 0;
 }
 
 #detailview-navbar-list a:hover {
@@ -609,7 +611,8 @@ table tr > td:first-child {
 
     #detailview-navbar-brand {
         color: #F05F40;
-        font-size: 14px;
+        font-size: 13.5px;
+        padding-left: 0;
     }
 
     #detailview-navbar-list a, #detailview-navbar-list a:focus {
@@ -878,6 +881,8 @@ table tr > td:first-child {
 /************************
  ***  TABLE VIEW END  ***
  ************************/
+
+/* ALL H1 TAGS */
 
 
 

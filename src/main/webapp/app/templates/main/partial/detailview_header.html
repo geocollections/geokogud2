@@ -1,7 +1,9 @@
-<nav id="detailview-navbar" class="navbar navbar-default navbar-fixed-top"> <!-- navbar-default -->
+<nav id="detailview-navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a id="detailview-navbar-brand" class="navbar-brand page-scroll" href="/">{{ 'INDEX.GEOCOLLECTIONS_TITLE' | translate }}</a>
+            <a href="/">
+                <h1 id="detailview-navbar-brand" class="navbar-brand page-scroll">{{ 'INDEX.GEOCOLLECTIONS_TITLE' | translate }}</h1>
+            </a>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#navbar-collapse">
                 <span class="sr-only">Menu</span>
@@ -97,32 +99,3 @@
         </div>
     </div>
 </nav>
-<!--<div class="header-content">-->
-    <!--<div class="header-content-inner">-->
-        <!--<h1 id="homeHeading">{{ 'INDEX.GEOCOLLECTIONS_HEADER' | translate }}</h1>-->
-        <!--<hr>-->
-        <!--<form class="navbar-form" role="search" ng-show="!main.isDetailForm()">-->
-            <!--<div class="input-group input-group-lg">-->
-                <!--<input id="globalQuery" type="text" class="form-control input-lg"-->
-                       <!--placeholder="{{ 'INDEX.SEARCH_FIELD_TEXT' | translate }}" ng-model="$parent.globalQuery">-->
-                <!--<div class="input-group-btn">-->
-                    <!--<button class="btn btn-primary btn-lg" type="submit" ui-sref="global({query: globalQuery})">-->
-                        <!--<i class="fa fa-search sr-icons" aria-hidden="true"></i>-->
-                    <!--</button>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</form>-->
-        <!--<a ng-show="!main.isDetailForm()" href data-ui-sref="samples" id="button-extended-search">{{ 'INDEX.EXTENDED_SEARCH_LINK' | translate }}</a>-->
-    <!--</div>-->
-<!--</div>-->
-<!--<script>-->
-    <!--jQuery(document).ready(function ($) {-->
-        <!--// Offset for Main Navigation after 100px-->
-        <!--$('#mainNav').affix({-->
-            <!--offset: {-->
-                <!--top: 100-->
-            <!--}-->
-        <!--});-->
-        <!--$("#globalQuery").focus();-->
-    <!--});-->
-<!--</script>-->
