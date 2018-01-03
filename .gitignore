@@ -1,1 +1,6 @@
 src/main/webapp/lib
+.gradle
+build/
+phantomjs/
+*.log
+.idea
