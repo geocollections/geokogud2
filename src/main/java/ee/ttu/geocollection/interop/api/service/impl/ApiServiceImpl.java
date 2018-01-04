@@ -103,7 +103,10 @@ public class ApiServiceImpl implements ApiService {
     public Map searchByField(String table, String term, String searchField) {
         String url = apiUrl + "/" + table + "/" + "?paginate_by=" + PAGINATE_BY
                 + "&format=json&fields=" + searchField + "&multi_search=value:"+term+";fields:"+searchField+";lookuptype:icontains"
-                + "&group_by="+searchField;
+                + "&distinct=true";
+//                Made changes because of that issue.
+//                https://github.com/geocollections/geokogud2/issues/55
+//                + "&group_by="+searchField;
 
         logger.trace(url);
         HttpHeaders headers = new HttpHeaders();
