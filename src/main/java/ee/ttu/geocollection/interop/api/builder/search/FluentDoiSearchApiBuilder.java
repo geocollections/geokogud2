@@ -20,7 +20,9 @@ public class FluentDoiSearchApiBuilder extends FluentSearchApiBuilder<FluentDoiS
     }
 
     public FluentDoiSearchApiBuilder queryTitle(SearchField title) {
-        buildFieldParameters(REFERENCETITLE, title);
+//        buildFieldParameters(REFERENCETITLE, title);
+//        BUG FIX: changed field name to 'title'.
+        buildFieldParameters(TITLE, title);
         return this;
     }
 
