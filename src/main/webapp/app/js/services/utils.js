@@ -122,7 +122,14 @@ var constructor = function ($http, $stateParams, $location, configuration) {
                     // if(specialField == "year" && currentTable == "doi") {
                     //     specialField = "publication_year";
                     // }
-                    console.log(specialField);
+                    console.log(data);
+                    console.log("SINCE START");
+                    console.log(data[specialField + "Since"]);
+                    console.log("SINCE END");
+                    console.log("------------------");
+                    console.log("TO START");
+                    console.log(data[specialField + "To"]);
+                    console.log("TO END");
                     if(data[specialField + "Since"] != null && data[specialField + "To"] != null) {
                         if (data[specialField + "Since"].name != null && data[specialField + "Since"].lookUpType != null && data[specialField + "To"].name != null && data[specialField + "To"].lookUpType != null) {
                             console.log(url);
@@ -141,6 +148,13 @@ var constructor = function ($http, $stateParams, $location, configuration) {
                             url += "&" + specialField + "_1=" + data[specialField + 'To'].lookUpType + "&" + specialField + "=" + data[specialField + "To"].name;
                         }
                     }
+                    console.log("SINCE START");
+                    console.log(data[specialField + "Since"]);
+                    console.log("SINCE END");
+                    console.log("------------------");
+                    console.log("TO START");
+                    console.log(data[specialField + "To"]);
+                    console.log("TO END");
                 });
             }
         }
@@ -241,12 +255,21 @@ var constructor = function ($http, $stateParams, $location, configuration) {
                 if(specialField == "publication_year") {
                     specialField = "year";
                 }
+
                 if(specialFieldName[0] != null) {
-                    searchParams[specialField + "Since"] = {
-                        lookUpType: specialFieldLookUpType[0],
-                        name: Number(specialFieldName[0])
+                    if (specialFieldLookUpType[0] === "gte") {
+                        searchParams[specialField + "Since"] = {
+                            lookUpType: specialFieldLookUpType[0],
+                            name: Number(specialFieldName[0])
+                        }
+                    } else if (specialFieldLookUpType[0] === "lte") {
+                        searchParams[specialField + "To"] = {
+                            lookUpType: specialFieldLookUpType[0],
+                            name: Number(specialFieldName[0])
+                        }
                     }
                 }
+
                 if(specialFieldName[1] != null) {
                     searchParams[specialField + "To"] = {
                         lookUpType: specialFieldLookUpType[1],
