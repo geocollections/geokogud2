@@ -117,9 +117,12 @@ var constructor = function ($http, $stateParams, $location, configuration) {
                     url += "&sort="+ data.sortField.sortBy +"&sortdir=ASC";
                 }
                 angular.forEach(configuration.urlHelper.specialFields, function(specialField) {
-                    if(specialField == "year" && currentTable == "doi") {
-                        specialField = "publication_year";
-                    }
+                    // BUG FIX: Commented it because year field was not working but now url won't work in geokogud.info
+                    // TODO: Maybe try to change year to publication_year in url
+                    // if(specialField == "year" && currentTable == "doi") {
+                    //     specialField = "publication_year";
+                    // }
+                    console.log(specialField);
                     if(data[specialField + "Since"] != null && data[specialField + "To"] != null) {
                         if (data[specialField + "Since"].name != null && data[specialField + "Since"].lookUpType != null && data[specialField + "To"].name != null && data[specialField + "To"].lookUpType != null) {
                             console.log(url);

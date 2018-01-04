@@ -32,7 +32,9 @@ public class FluentDoiSearchApiBuilder extends FluentSearchApiBuilder<FluentDoiS
     }
 
     public FluentDoiSearchApiBuilder queryYear(SearchField year) {
-        buildFieldParameters(REFERENCEYEAR, year);
+//        buildFieldParameters(REFERENCEYEAR, year);
+//        BIG FIX: changed field name to 'publication_year'
+        buildFieldParameters(PUBLICATION_YEAR, year);
         return this;
     }
 

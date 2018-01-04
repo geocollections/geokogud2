@@ -58,6 +58,7 @@ public class ApiFields {
     public static final String REFERENCETITLE = "reference__title";
     public static final String PUBLISHER = "publisher";
     public static final String REFERENCEYEAR = "reference__year";
+    public static final String PUBLICATION_YEAR = "publication_year";
     public static final String REFERENCEAUTHOR = "reference__author";
     public static final String CREATORS = "creators";
     public static final String REFERENCE_ID = "reference_id";
