@@ -21,7 +21,7 @@ public class FluentDoiSearchApiBuilder extends FluentSearchApiBuilder<FluentDoiS
 
     public FluentDoiSearchApiBuilder queryTitle(SearchField title) {
 //        buildFieldParameters(REFERENCETITLE, title);
-//        BUG FIX: changed field name to 'title'.
+//        BUG FIX: changed field name to 'title'
         buildFieldParameters(TITLE, title);
         return this;
     }
@@ -37,7 +37,9 @@ public class FluentDoiSearchApiBuilder extends FluentSearchApiBuilder<FluentDoiS
     }
 
     public FluentDoiSearchApiBuilder queryAuthor(SearchField author) {
-        buildFieldParameters(REFERENCEAUTHOR, author);
+//        buildFieldParameters(REFERENCEAUTHOR, author);
+//        BUG FIX: changed field name to 'creators'
+        buildFieldParameters(CREATORS, author);
         return this;
     }
 
