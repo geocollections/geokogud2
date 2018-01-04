@@ -122,14 +122,6 @@ var constructor = function ($http, $stateParams, $location, configuration) {
                     // if(specialField == "year" && currentTable == "doi") {
                     //     specialField = "publication_year";
                     // }
-                    console.log(data);
-                    console.log("SINCE START");
-                    console.log(data[specialField + "Since"]);
-                    console.log("SINCE END");
-                    console.log("------------------");
-                    console.log("TO START");
-                    console.log(data[specialField + "To"]);
-                    console.log("TO END");
                     if(data[specialField + "Since"] != null && data[specialField + "To"] != null) {
                         if (data[specialField + "Since"].name != null && data[specialField + "Since"].lookUpType != null && data[specialField + "To"].name != null && data[specialField + "To"].lookUpType != null) {
                             console.log(url);
@@ -148,13 +140,6 @@ var constructor = function ($http, $stateParams, $location, configuration) {
                             url += "&" + specialField + "_1=" + data[specialField + 'To'].lookUpType + "&" + specialField + "=" + data[specialField + "To"].name;
                         }
                     }
-                    console.log("SINCE START");
-                    console.log(data[specialField + "Since"]);
-                    console.log("SINCE END");
-                    console.log("------------------");
-                    console.log("TO START");
-                    console.log(data[specialField + "To"]);
-                    console.log("TO END");
                 });
             }
         }
@@ -256,6 +241,7 @@ var constructor = function ($http, $stateParams, $location, configuration) {
                     specialField = "year";
                 }
 
+                // Double check because if only 'lte' value is entered its index is also 0. 
                 if(specialFieldName[0] != null) {
                     if (specialFieldLookUpType[0] === "gte") {
                         searchParams[specialField + "Since"] = {
