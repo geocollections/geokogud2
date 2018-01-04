@@ -48,7 +48,7 @@
                                                          ng-model="searchParameters.stratigraphy.lookUpType"></selecthierarchy>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.stratigraphy.name" table="stratigraphy" en="stratigraphy_en" et="stratigraphy"/>
+                                        <autocomplete-field ng-model="searchParameters.stratigraphy.name" sort-by="{{searchParameters.stratigraphy.lookUpType}}" table="stratigraphy" en="stratigraphy_en" et="stratigraphy"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -78,7 +78,7 @@
                                                        ng-model="searchParameters.mainLithology.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.mainLithology.name" table="stratigraphy" en="lithology_en" et="lithology"/>
+                                        <autocomplete-field ng-model="searchParameters.mainLithology.name" sort-by="{{searchParameters.mainLithology.lookUpType}}" table="stratigraphy" en="lithology_en" et="lithology"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -88,7 +88,7 @@
                                                        ng-model="searchParameters.author.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.author.name" table="stratigraphy" en="null" et="author_free"/>
+                                        <autocomplete-field ng-model="searchParameters.author.name" sort-by="{{searchParameters.author.lookUpType}}" table="stratigraphy" en="null" et="author_free"/>
                                     </div>
                                 </div>
                             </div>

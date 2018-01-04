@@ -316,8 +316,12 @@ module.filter('split', function() {
 
 module.factory("SearchFactory", ['$http', 'configuration', function($http, configuration) {
     return {
-        autocompleteSearch: function (table, term, searchField) {
-            return $http.get(configuration.autocompleteUrl, {params:{table: table, term: term, searchField: searchField}})
+        autocompleteSearch: function (table, term, sortField, searchField) {
+            console.log(table);
+            console.log(term);
+            console.log(sortField);
+            console.log(searchField);
+            return $http.get(configuration.autocompleteUrl, {params:{table: table, term: term, sortField: sortField, searchField: searchField}})
                 .then(function (response) {
                     return response.data.results;
                 });

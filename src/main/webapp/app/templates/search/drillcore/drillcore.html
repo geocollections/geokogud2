@@ -50,7 +50,7 @@
                                                        ng-model="searchParameters.drillcore.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.drillcore.name" table="drillcore" en="drillcore_en" et="drillcore"/>
+                                        <autocomplete-field ng-model="searchParameters.drillcore.name" sort-by="{{searchParameters.drillcore.lookUpType}}" table="drillcore" en="drillcore_en" et="drillcore"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -69,7 +69,8 @@
                                                          ng-model="searchParameters.stratigraphy.lookUpType"></selecthierarchy>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.stratigraphy.name" table="drillcore" en="locality__localitystratigraphy__stratigraphy__stratigraphy_en" et="locality__localitystratigraphy__stratigraphy__stratigraphy"/>
+                                        <!--TODO: filtering not working correctly, probably because of field name-->
+                                        <autocomplete-field ng-model="searchParameters.stratigraphy.name" sort-by="{{searchParameters.stratigraphy.lookUpType}}" table="drillcore" en="locality__localitystratigraphy__stratigraphy__stratigraphy_en" et="locality__localitystratigraphy__stratigraphy__stratigraphy"/>
                                         <!--<autocomplete-field ng-model="searchParameters.stratigraphy.name" table="stratigraphy" en="stratigraphy_en" et="stratigraphy"/>-->
                                     </div>
                                 </div>
@@ -80,7 +81,7 @@
                                                        ng-model="searchParameters.storageLocation.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.storageLocation.name" table="drillcore" en="null" et="storage__location"/>
+                                        <autocomplete-field ng-model="searchParameters.storageLocation.name" sort-by="{{searchParameters.storageLocation.lookUpType}}" table="drillcore" en="null" et="storage__location"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -126,7 +127,7 @@
                                                        ng-model="searchParameters.adminUnit.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.adminUnit.name" table="drillcore" en="locality__locality_en" et="locality__locality"/>
+                                        <autocomplete-field ng-model="searchParameters.adminUnit.name" sort-by="{{searchParameters.adminUnit.lookUpType}}" table="drillcore" en="locality__locality_en" et="locality__locality"/>
                                     </div>
                                 </div>
                             </div>

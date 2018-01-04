@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="col-md-12 medium-padding">
                                         <!--<autocomplete-field ng-model="searchParameters.locality.name" table="analysis" en="sample__locality__locality_en" et="sample__locality__locality"/>-->
-                                        <autocomplete-field ng-model="searchParameters.locality.name" table="locality" en="locality_en" et="locality"/>
+                                        <autocomplete-field ng-model="searchParameters.locality.name" sort-by="{{searchParameters.locality.lookUpType}}" table="locality" en="locality_en" et="locality"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -66,7 +66,7 @@
                                     </div>
                                     <div class="col-md-12 medium-padding">
                                         <!--<autocomplete-field ng-model="searchParameters.stratigraphy.name" table="analysis" en="sample__stratigraphy__stratigraphy_en" et="sample__stratigraphy__stratigraphy"/>-->
-                                        <autocomplete-field ng-model="searchParameters.stratigraphy.name" table="stratigraphy" en="stratigraphy_en" et="stratigraphy"/>
+                                        <autocomplete-field ng-model="searchParameters.stratigraphy.name" sort-by="{{searchParameters.stratigraphy.lookUpType}}" table="stratigraphy" en="stratigraphy_en" et="stratigraphy"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -76,7 +76,7 @@
                                                        ng-model="searchParameters.stratigraphyBed.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.stratigraphyBed.name" table="analysis" en="null" et="sample__stratigraphy_bed"/>
+                                        <autocomplete-field ng-model="searchParameters.stratigraphyBed.name" sort-by="{{searchParameters.stratigraphyBed.lookUpType}}" table="analysis" en="null" et="sample__stratigraphy_bed"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -86,7 +86,7 @@
                                                        ng-model="searchParameters.analysisMethod.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.analysisMethod.name" table="analysis" en="analysis_method__method_en" et="analysis_method__analysis_method"/>
+                                        <autocomplete-field ng-model="searchParameters.analysisMethod.name" sort-by="{{searchParameters.analysisMethod.lookUpType}}" table="analysis" en="analysis_method__method_en" et="analysis_method__analysis_method"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">

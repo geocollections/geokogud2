@@ -48,7 +48,8 @@
                                                        ng-model="searchParameters.title.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.title.name" table="doi" en="null" et="reference__title"/>
+                                        <!--TODO: change reference__title to doi title-->
+                                        <autocomplete-field ng-model="searchParameters.title.name" sort-by="{{searchParameters.title.lookUpType}}" table="doi" en="null" et="reference__title"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -58,7 +59,7 @@
                                                        ng-model="searchParameters.publishedBy.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.publishedBy.name" table="doi" en="null" et="publisher"/>
+                                        <autocomplete-field ng-model="searchParameters.publishedBy.name" sort-by="{{searchParameters.publishedBy.lookUpType}}" table="doi" en="null" et="publisher"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -77,7 +78,7 @@
                                                        ng-model="searchParameters.author.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.author.name" table="doi" en="null" et="reference__author"/>
+                                        <autocomplete-field ng-model="searchParameters.author.name" sort-by="{{searchParameters.author.lookUpType}}" table="doi" en="null" et="reference__author"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">

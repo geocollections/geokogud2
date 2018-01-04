@@ -2,13 +2,14 @@ angular.module('geoApp').directive('autocompleteField', function () {
     return {
         template: "<input type='text' class='form-control input-md' data-ng-model='field' " +
         "placeholder='{{placeholderText}}' " +
-        "data-uib-typeahead='entity[localizedValue] for entity in factory.autocompleteSearch(table,$viewValue,localizedValue)' " +
+        "data-uib-typeahead='entity[localizedValue] for entity in factory.autocompleteSearch(table,$viewValue,sortBy,localizedValue)' " +
         "data-typeahead-min-length='2' data-typeahead-on-select='entitySelected($item, $model)' typeahead-loading='isLoading'/>" +
         "<span ng-if='!!isLoading'><img src='img/loader.gif' width='20' height='20' /></span>",
         restrict: 'AE',
         scope: {
             table: '@',
             field: '=?ngModel',
+            sortBy: '@',
             et: '@',
             en: '@'
         },

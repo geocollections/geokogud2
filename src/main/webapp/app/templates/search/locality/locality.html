@@ -53,7 +53,7 @@
                                                        ng-model="searchParameters.locality.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.locality.name" table="locality" en="locality_en" et="locality"/>
+                                        <autocomplete-field ng-model="searchParameters.locality.name" sort-by="{{searchParameters.locality.lookUpType}}" table="locality" en="locality_en" et="locality"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -73,7 +73,7 @@
                                                        ng-model="searchParameters.country.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.country.name" table="locality" en="country__value_en" et="country__value"/>
+                                        <autocomplete-field ng-model="searchParameters.country.name" sort-by="{{searchParameters.country.lookUpType}}" table="locality" en="country__value_en" et="country__value"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -104,6 +104,7 @@
                                                        ng-model="searchParameters.reference.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
+                                        <!--TODO: enable reference search-->
                                         <input type="text" ng-model="searchParameters.reference.name" class="form-control"
                                                data-ng-disabled="true"/>
                                     </div>

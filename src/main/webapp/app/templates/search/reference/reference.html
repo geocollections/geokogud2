@@ -46,7 +46,7 @@
                                                        ng-model="searchParameters.author.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.author.name" table="reference" en="null" et="author"/>
+                                        <autocomplete-field ng-model="searchParameters.author.name" sort-by="{{searchParameters.author.lookUpType}}" table="reference" en="null" et="author"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -66,7 +66,7 @@
                                                        ng-model="searchParameters.title.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.title.name" table="reference" en="null" et="title"/>
+                                        <autocomplete-field ng-model="searchParameters.title.name" sort-by="{{searchParameters.title.lookUpType}}" table="reference" en="null" et="title"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -76,7 +76,7 @@
                                                        ng-model="searchParameters.journal.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.journal.name" table="reference" en="null" et="journal__journal_name"/>
+                                        <autocomplete-field ng-model="searchParameters.journal.name" sort-by="{{searchParameters.journal.lookUpType}}" table="reference" en="null" et="journal__journal_name"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -86,7 +86,7 @@
                                                      ng-model="searchParameters.book.lookUpType"></selectexact>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.book.name" table="reference" en="null" et="book"/>
+                                        <autocomplete-field ng-model="searchParameters.book.name" sort-by="{{searchParameters.book.lookUpType}}" table="reference" en="null" et="book"/>
                                     </div>
                                 </div>
                             </div>

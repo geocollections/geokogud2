@@ -80,8 +80,9 @@ public class SearchController extends ControllerHelper {
     public Map findDoiById(
             @RequestParam("table") String table,
             @RequestParam("term") String term,
+            @RequestParam("sortField") String sortField,
             @RequestParam("searchField") String searchField) {
-        return apiService.searchByField(table, term, searchField);
+        return apiService.searchByField(table, term, sortField, searchField);
     }
 
     @PostMapping(value = "/specimen")

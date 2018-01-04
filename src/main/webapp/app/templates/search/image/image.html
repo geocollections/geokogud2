@@ -42,7 +42,7 @@
                                                        ng-model="searchParameters.locality.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.locality.name" table="image" en="locality__locality_en" et="locality__locality"/>
+                                        <autocomplete-field ng-model="searchParameters.locality.name" sort-by="{{searchParameters.locality.lookUpType}}" table="image" en="locality__locality_en" et="locality__locality"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -101,7 +101,7 @@
                                                        ng-model="searchParameters.authorAgent.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.authorAgent.name" table="image" en="null" et="author__agent"/>
+                                        <autocomplete-field ng-model="searchParameters.authorAgent.name" sort-by="{{searchParameters.authorAgent.lookUpType}}" table="image" en="null" et="author__agent"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">

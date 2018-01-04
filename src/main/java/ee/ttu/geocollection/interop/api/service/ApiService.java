@@ -40,10 +40,11 @@ public interface ApiService {
      *
      * @param table
      * @param term
+     * @param sortField
      * @param searchField
      * @return
      */
-    Map searchByField(String table, String term, String searchField);
+    Map searchByField(String table, String term, String sortField, String searchField);
 
 //    ApiResponse searchRawEntitiesUsingSolr(String tableName, int paginateBy, int page, SortField sordtfield, String requestParams);
 }
