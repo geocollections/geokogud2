@@ -241,7 +241,7 @@ var constructor = function ($http, $stateParams, $location, configuration) {
                     specialField = "year";
                 }
 
-                // Double check because if only 'lte' value is entered its index is also 0. 
+                // Double check because if only 'lte' value is entered its index is also 0.
                 if(specialFieldName[0] != null) {
                     if (specialFieldLookUpType[0] === "gte") {
                         searchParams[specialField + "Since"] = {

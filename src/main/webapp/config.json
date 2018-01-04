@@ -13,7 +13,10 @@
       "iendswith" : 3,
       "doesnotcontain" : 4,
       "in" : 9,
-      "hierarchy" : 11
+      "hierarchy" : 11,
+      "gt": 6,
+      "lt": 7,
+      "range": 8
     },
     "common" : {
       "dbs" : "",
