@@ -865,6 +865,11 @@ table tr > td:first-child {
     margin: 3% 0;
 }
 
+/* FIX: Overrides(blue) default dropdown menu active color */
+.dropdown-menu > .active > a {
+    background-color: #F05F40;
+}
+
 /* UNIVERSAL END*/
 
 
