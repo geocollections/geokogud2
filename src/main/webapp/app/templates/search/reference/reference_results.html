@@ -31,13 +31,11 @@
                 <td data-title="{{ 'SEARCH.REFERENCES.TABLE.TITLE' | translate }}">{{entity.title}}</td>
                 <td data-title="{{ 'SEARCH.REFERENCES.TABLE.JOURNAL_BOOK' | translate }}">{{entity.journal__journal_name}}</td>
                 <td data-title="{{ 'SEARCH.REFERENCES.TABLE.PP' | translate }}">{{entity.pages}}</td>
-                <td data-ng-if="entity.doi.includes('http')" data-title="{{ 'SEARCH.REFERENCES.TABLE.DOI' | translate }}">
-                    <a href data-ng-click="ctrl.service.openUrlInNewWindow({url: entity.doi})">
+                <td data-title="{{ 'SEARCH.REFERENCES.TABLE.DOI' | translate }}">
+                    <a href data-ng-if="entity.doi.includes('http')" data-ng-click="ctrl.service.openUrlInNewWindow({url: entity.doi})">
                         {{entity.doi}}
                     </a>
-                </td>
-                <td data-ng-if="entity.doi.includes('DOI')" data-title="{{ 'SEARCH.REFERENCES.TABLE.DOI' | translate }}">
-                    <a href data-ng-click="ctrl.service.openDoiInNewWindow({doi: entity.doi})">
+                    <a href data-ng-if="entity.doi.includes('DOI')" data-ng-click="ctrl.service.openDoiInNewWindow({doi: entity.doi})">
                         {{entity.doi}}
                     </a>
                 </td>
