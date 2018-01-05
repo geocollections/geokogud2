@@ -267,7 +267,9 @@
                 "AUTHOR": "Author",
                 "YEAR": "Year",
                 "TITLE": "Title"
-            }
+            },
+            "SINCE": "since",
+            "TO": "to"
         },
         "STRATIGRAPHY": {
             "STRATIGRAPHY": "Stratigraphy",

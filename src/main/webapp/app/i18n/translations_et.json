@@ -267,7 +267,9 @@
                 "AUTHOR": "Autor",
                 "YEAR": "Aasta",
                 "TITLE": "Pealkiri"
-            }
+            },
+            "SINCE": "alates",
+            "TO": "kuni"
         },
         "STRATIGRAPHY": {
             "STRATIGRAPHY": "Stratigraafia",
