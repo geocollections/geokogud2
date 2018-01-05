@@ -29,7 +29,15 @@
                 <td data-title="{{ 'SEARCH.REFERENCES.TABLE.AUTHOR' | translate }}">{{entity.author}}</td>
                 <td data-title="{{ 'SEARCH.REFERENCES.TABLE.YEAR' | translate }}">{{entity.year}}</td>
                 <td data-title="{{ 'SEARCH.REFERENCES.TABLE.TITLE' | translate }}">{{entity.title}}</td>
-                <td data-title="{{ 'SEARCH.REFERENCES.TABLE.JOURNAL_BOOK' | translate }}">{{entity.journal__journal_name}}</td>
+                <td data-title="{{ 'SEARCH.REFERENCES.TABLE.JOURNAL_BOOK' | translate }}">
+                    <span data-ng-if="entity.journal__journal_name != null">
+                        {{entity.journal__journal_name}}
+                    </span>
+                    <span ng-show="entity.journal__journal_name != null && (entity.book && entity.book != null)">/</span>
+                    <span data-ng-if="entity.book && entity.book != null">
+                        {{entity.book}}
+                    </span>
+                </td>
                 <td data-title="{{ 'SEARCH.REFERENCES.TABLE.PP' | translate }}">{{entity.pages}}</td>
                 <td data-title="{{ 'SEARCH.REFERENCES.TABLE.DOI' | translate }}">
                     <a href data-ng-if="entity.doi.includes('http')" data-ng-click="ctrl.service.openUrlInNewWindow({url: entity.doi})">

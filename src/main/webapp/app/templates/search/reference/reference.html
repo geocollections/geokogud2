@@ -82,8 +82,8 @@
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.REFERENCES.BOOK' | translate }}</b>
-                                        <selectexact custom-css="searchCriterionType"
-                                                     ng-model="searchParameters.book.lookUpType"></selectexact>
+                                        <selectdefault custom-css="searchCriterionType"
+                                                     ng-model="searchParameters.book.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
                                         <autocomplete-field ng-model="searchParameters.book.name" sort-by="{{searchParameters.book.lookUpType}}" table="reference" en="null" et="book"/>
