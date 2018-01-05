@@ -54,6 +54,11 @@ public class FluentGeoApiDetailsBuilder {
         return this;
     }
 
+    public FluentGeoApiDetailsBuilder returnCustomField(String fieldName) {
+        addReturningField(fieldName);
+        return this;
+    }
+
     private void addReturningField(String field) {
         returningFields += returningFields.isEmpty() ? field : "," + field;
     }
