@@ -870,6 +870,13 @@ table tr > td:first-child {
     background-color: #F05F40;
 }
 
+/* Makes dropdown-menus look nice */
+.dropdown-menu {
+    max-height: 300px;
+    max-width: 600px;
+    overflow-y: auto;
+}
+
 /* UNIVERSAL END*/
 
 
