@@ -177,8 +177,8 @@
                                         <b>{{ 'SEARCH.SPECIMENS.DEPHT_M' | translate }}</b>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <interval-field ng-model= "searchParameters.depthSince" lookup="gte"></interval-field >
-                                        <interval-field ng-model= "searchParameters.depthTo" lookup="lte"></interval-field >
+                                        <interval-field placeholder="{{'PLACEHOLDER_MIN' | translate}}" ng-model= "searchParameters.depthSince" lookup="gte"></interval-field >
+                                        <interval-field placeholder="{{'PLACEHOLDER_MAX' | translate}}" ng-model= "searchParameters.depthTo" lookup="lte"></interval-field >
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -237,8 +237,8 @@
                                         <b>{{ 'SEARCH.SPECIMENS.REG_DATE' | translate }}</b>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <common-datetimepicker ng-model="searchParameters.regDateStart" lookup="gte"></common-datetimepicker>
-                                        <common-datetimepicker ng-model="searchParameters.regDateEnd" lookup="lte"></common-datetimepicker>
+                                        <common-datetimepicker placeholder="{{'PLACEHOLDER_SINCE' | translate}}" ng-model="searchParameters.regDateStart" lookup="gte"></common-datetimepicker>
+                                        <common-datetimepicker placeholder="{{'PLACEHOLDER_TO' | translate}}" ng-model="searchParameters.regDateEnd" lookup="lte"></common-datetimepicker>
                                     </div>
                                 </div>
                             </div>

@@ -80,8 +80,8 @@
                                         <b>{{ 'SEARCH.PHOTO_ARCHIVE.DATE' | translate }}</b>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <common-datetimepicker ng-model="searchParameters.dateTakenSince" lookup="gte"></common-datetimepicker>
-                                        <common-datetimepicker ng-model="searchParameters.dateTakenTo" lookup="lte"></common-datetimepicker>
+                                        <common-datetimepicker placeholder="{{'PLACEHOLDER_SINCE' | translate}}" ng-model="searchParameters.dateTakenSince" lookup="gte"></common-datetimepicker>
+                                        <common-datetimepicker placeholder="{{'PLACEHOLDER_TO' | translate}}" ng-model="searchParameters.dateTakenTo" lookup="lte"></common-datetimepicker>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -111,8 +111,8 @@
                                                      ng-model="searchParameters.sizeXY1.lookUpType"></selectexact>-->
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <interval-field ng-model= "searchParameters.sizeXYSince" lookup="gte"></interval-field >
-                                        <interval-field ng-model= "searchParameters.sizeXYTo" lookup="lte"></interval-field >
+                                        <interval-field placeholder="{{'PLACEHOLDER_MIN' | translate}}" ng-model= "searchParameters.sizeXYSince" lookup="gte"></interval-field >
+                                        <interval-field placeholder="{{'PLACEHOLDER_MAX' | translate}}" ng-model= "searchParameters.sizeXYTo" lookup="lte"></interval-field >
                                     </div>
                                 </div>
                             </div>

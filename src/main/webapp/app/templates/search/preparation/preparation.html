@@ -58,8 +58,8 @@
                                                      ng-model="searchParameters.depth.type"></selectexact>-->
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <interval-field ng-model= "searchParameters.depthSince" lookup="gte"></interval-field >
-                                        <interval-field ng-model= "searchParameters.depthTo" lookup="lte"></interval-field >
+                                        <interval-field placeholder="{{'PLACEHOLDER_MIN' | translate}}" ng-model= "searchParameters.depthSince" lookup="gte"></interval-field >
+                                        <interval-field placeholder="{{'PLACEHOLDER_MAX' | translate}}" ng-model= "searchParameters.depthTo" lookup="lte"></interval-field >
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">

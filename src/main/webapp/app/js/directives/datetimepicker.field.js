@@ -1,13 +1,14 @@
 angular.module('geoApp').directive('commonDatetimepicker', function () {
     return {
-        template: '<span class=\'col-md-6 form-group\'><input type=\"text\" class=\"form-control\" placeholder=\"\"' +
+        template: '<span class=\'col-md-6 form-group\'><input type=\"text\" class=\"form-control\" placeholder=\"\{{placeholder}}"' +
         ' data-ng-model=\"field.name\" data-uib-datepicker-popup=\"{{dateFormat}}\" ' +
         'data-is-open=\"fromDate.open\" data-datepicker-options=\"datePickerOptions\" ' +
         'data-ng-click=\"fromDate.open = true\"/></span> ',
         restrict: 'AE',
         scope: {
             field: '=?ngModel',
-            lookup: '@'
+            lookup: '@',
+            placeholder: '@'
         },
         controller: ['$scope', function ($scope) {
             $scope.$watch('field.name', function(newValue){

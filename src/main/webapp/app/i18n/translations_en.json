@@ -267,9 +267,7 @@
                 "AUTHOR": "Author",
                 "YEAR": "Year",
                 "TITLE": "Title"
-            },
-            "SINCE": "since",
-            "TO": "to"
+            }
         },
         "STRATIGRAPHY": {
             "STRATIGRAPHY": "Stratigraphy",
@@ -597,5 +595,9 @@
     "ABOUT_MIDDLE": "Geocollections in Estonia",
     "FAQ_BUTTON": "Shows hints",
     "RESET_BUTTON": "Clears search fields",
-    "SEND_QUERY_BUTTON": "Sends request with inserted data"
+    "SEND_QUERY_BUTTON": "Sends request with inserted data",
+    "PLACEHOLDER_SINCE": "since",
+    "PLACEHOLDER_TO": "to",
+    "PLACEHOLDER_MIN": "min",
+    "PLACEHOLDER_MAX": "max"
 }

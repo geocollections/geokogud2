@@ -267,9 +267,7 @@
                 "AUTHOR": "Autor",
                 "YEAR": "Aasta",
                 "TITLE": "Pealkiri"
-            },
-            "SINCE": "alates",
-            "TO": "kuni"
+            }
         },
         "STRATIGRAPHY": {
             "STRATIGRAPHY": "Stratigraafia",
@@ -596,5 +594,9 @@
     "ABOUT_MIDDLE": "Geokogud Eestis",
     "FAQ_BUTTON": "Kuvab vihjed",
     "RESET_BUTTON": "Puhastab otsingu väljad",
-    "SEND_QUERY_BUTTON": "Saadab päringu sisestatud infoga"
+    "SEND_QUERY_BUTTON": "Saadab päringu sisestatud infoga",
+    "PLACEHOLDER_SINCE": "alates",
+    "PLACEHOLDER_TO": "kuni",
+    "PLACEHOLDER_MIN": "min",
+    "PLACEHOLDER_MAX": "max"
 }
