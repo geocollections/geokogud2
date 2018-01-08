@@ -27,10 +27,16 @@ public class FluentPreparationSearchApiBuilder extends FluentSearchApiBuilder<Fl
         buildFieldParameters("sample__locality__locality_en", text);
         return this;
     }
+
     public FluentPreparationSearchApiBuilder queryDepth(SearchField text) {
-        buildFieldParameters("sample__depth_interval", text);
+        buildMultiSearch(text, SAMPLE_DEPTH, SAMPLE_DEPTH_INTERVAL);
         return this;
     }
+
+//    public FluentPreparationSearchApiBuilder queryDepth(SearchField text) {
+//        buildFieldParameters("sample__depth_interval", text);
+//        return this;
+//    }
 
     public FluentPreparationSearchApiBuilder queryStratigraphy(SearchField text) {
         buildFieldParameters("sample__stratigraphy__stratigraphy", text);
