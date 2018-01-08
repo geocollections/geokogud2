@@ -235,31 +235,57 @@ var constructor = function ($http, $stateParams, $location, configuration) {
                 console.log(urlParams[specialField]);
                 console.log(urlParams[specialField + "_1"]);
 
-                var specialFieldLookUpType = urlParams[specialField + "_1"].split(" ");
                 var specialFieldName = urlParams[specialField].split(" ");
+                var specialFieldLookUpType = urlParams[specialField + "_1"].split(" ");
                 if(specialField == "publication_year") {
                     specialField = "year";
                 }
+                // console.log(specialFieldName[0]);
+                // console.log(specialFieldLookUpType[0]);
+                // console.log(specialFieldName[1]);
+                // console.log(specialFieldLookUpType[1]);
+                // console.log(specialField);
 
                 // Double check because if only 'lte' value is entered its index is also 0.
                 if(specialFieldName[0] != null) {
                     if (specialFieldLookUpType[0] === "gte") {
-                        searchParams[specialField + "Since"] = {
-                            lookUpType: specialFieldLookUpType[0],
-                            name: Number(specialFieldName[0])
+                        if (specialField === "dateTaken") {
+                            searchParams[specialField + "Since"] = {
+                                lookUpType: specialFieldLookUpType[0],
+                                name: specialFieldName[0]
+                            }
+                        } else {
+                            searchParams[specialField + "Since"] = {
+                                lookUpType: specialFieldLookUpType[0],
+                                name: Number(specialFieldName[0])
+                            }
                         }
                     } else if (specialFieldLookUpType[0] === "lte") {
-                        searchParams[specialField + "To"] = {
-                            lookUpType: specialFieldLookUpType[0],
-                            name: Number(specialFieldName[0])
+                        if (specialField === "dateTaken") {
+                            searchParams[specialField + "To"] = {
+                                lookUpType: specialFieldLookUpType[0],
+                                name: specialFieldName[0]
+                            }
+                        } else {
+                            searchParams[specialField + "To"] = {
+                                lookUpType: specialFieldLookUpType[0],
+                                name: Number(specialFieldName[0])
+                            }
                         }
                     }
                 }
 
                 if(specialFieldName[1] != null) {
-                    searchParams[specialField + "To"] = {
-                        lookUpType: specialFieldLookUpType[1],
-                        name: Number(specialFieldName[1])
+                    if (specialField === "dateTaken") {
+                        searchParams[specialField + "To"] = {
+                            lookUpType: specialFieldLookUpType[1],
+                            name: specialFieldName[1]
+                        }
+                    } else {
+                        searchParams[specialField + "To"] = {
+                            lookUpType: specialFieldLookUpType[1],
+                            name: Number(specialFieldName[1])
+                        }
                     }
                 }
             }

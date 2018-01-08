@@ -1,6 +1,7 @@
 angular.module('geoApp').directive('commonDatetimepicker', function () {
     return {
-        template: '<span class=\'col-md-6 form-group\'><input type=\"text\" class=\"form-control\" placeholder=\"\{{placeholder}}"' +
+        // TODO: Show date correctly, not in placeholder.
+        template: '<span class=\'col-md-6 form-group\'><input type=\"text\" class=\"form-control\" placeholder=\"\{{field.name}}"' +
         ' data-ng-model=\"field.name\" data-uib-datepicker-popup=\"{{dateFormat}}\" ' +
         'data-is-open=\"fromDate.open\" data-datepicker-options=\"datePickerOptions\" ' +
         'data-ng-click=\"fromDate.open = true\"/></span> ',
@@ -12,7 +13,15 @@ angular.module('geoApp').directive('commonDatetimepicker', function () {
         },
         controller: ['$scope', function ($scope) {
             $scope.$watch('field.name', function(newValue){
-                if(newValue) $scope.field.lookUpType = $scope.lookup;
+                if(newValue) {
+                    console.log(newValue);
+                    var date = new Date(newValue);
+                    var yyyy = date.getFullYear();
+                    var MM = date.getMonth() + 1;
+                    var dd = date.getDate();
+                    $scope.field.name = yyyy + "-" + MM + "-" + dd;
+                    $scope.field.lookUpType = $scope.lookup;
+                }
             });
 
         }]

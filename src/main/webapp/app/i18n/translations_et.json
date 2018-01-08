@@ -598,5 +598,7 @@
     "PLACEHOLDER_SINCE": "alates",
     "PLACEHOLDER_TO": "kuni",
     "PLACEHOLDER_MIN": "min",
-    "PLACEHOLDER_MAX": "max"
+    "PLACEHOLDER_MAX": "max",
+    "PLACEHOLDER_X": "x",
+    "PLACEHOLDER_Y": "y"
 }

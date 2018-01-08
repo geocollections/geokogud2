@@ -16,6 +16,8 @@
       "hierarchy" : 11,
       "gt": 6,
       "lt": 7,
+      "gte": 12,
+      "lte": 13,
       "range": 8
     },
     "common" : {
@@ -49,7 +51,6 @@
           "people": "people",
           "keywords": "keywords",
           "adminUnit": "county",
-          "dateTakenSince": "date_start",
           "imageNumber": "number",
           "authorAgent": "author",
           "sizeXYSince": "size"
@@ -161,7 +162,7 @@
           }
       },
       "specialFields" : [
-        "depth", "mass", "year", "boxes", "size", "publication_year"
+        "depth", "mass", "year", "boxes", "size", "publication_year", "dateTaken"
       ],
     "searchWithOutDBS": [
       "soilsite", "preparation", "stratigraphy", "reference", "locality"

@@ -1,11 +1,12 @@
  angular.module('geoApp').directive('intervalField', function () {
     return {
-        template: "<span class='col-md-6 form-group'><input placeholder='{{placeholder}}' type='number' ng-model='field.name' class='form-control'/></span>",
+        template: "<span class='col-md-6 form-group'><input data-ng-disabled='{{disabled}}' placeholder='{{placeholder}}' type='number' ng-model='field.name' class='form-control'/></span>",
         restrict: 'AE',
         scope: {
             field: '=?ngModel',
             lookup: '@',
-            placeholder: '@'
+            placeholder: '@',
+            disabled: '@'
         },
         controller: ['$scope', function ($scope) {
             $scope.$watch('field.name', function(newValue){
