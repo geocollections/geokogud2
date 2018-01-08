@@ -53,7 +53,14 @@ public class FluentPhotoArchiveSearchApiBuilder extends FluentSearchApiBuilder<F
     public FluentPhotoArchiveSearchApiBuilder queryCountry(SearchField adminUnit) {
         buildMultiSearch(
                 adminUnit,
-                LOCALITY_COUNTRY, LOCALITY_COUNTRY_ENG, LOCALITY__MAAKOND__MAAKOND_EN, LOCALITY__VALD__VALD, LOCALITY__ASUSTUSYKSUS__ASUSTUSYKSUS);
+                LOCALITY_COUNTRY,
+                LOCALITY_COUNTRY_ENG,
+                LOCALITY__MAAKOND__MAAKOND,
+                LOCALITY__MAAKOND__MAAKOND_EN,
+                LOCALITY__VALD__VALD,
+                LOCALITY__VALD__VALD_ENG,
+                LOCALITY__ASUSTUSYKSUS__ASUSTUSYKSUS,
+                LOCALITY__ASUSTUSYKSUS__ASUSTUSYKSUS_EN);
         return this;
     }
 

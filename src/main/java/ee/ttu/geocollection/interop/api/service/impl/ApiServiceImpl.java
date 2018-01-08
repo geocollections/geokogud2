@@ -46,7 +46,7 @@ public class ApiServiceImpl implements ApiService {
 
     @Override
     public Map findRawEntity(String tableName, String requestParams) {
-        String url = apiUrl + "/" + tableName + "/" + requestParams;
+        String url = apiUrl + "/" + tableName + "/" + requestParams + "&format=json";
 
         HttpHeaders headers = new HttpHeaders();
         String requestId = MDC.get("REQUEST_UUID");

@@ -352,7 +352,7 @@
             "AUTHOR": "Author",
             "IMAGE_SIZE": "Image size",
             "LOCALITY": "Locality",
-            "ADMIN_UNIT": "Admin. unit",
+            "COUNTRY_COUNTY_PARISH": "Country/County/Parish",
             "TABLE": {
                 "NUMBER": "Number",
                 "AUTHOR": "Author",
