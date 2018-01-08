@@ -52,8 +52,7 @@
           "keywords": "keywords",
           "adminUnit": "county",
           "imageNumber": "number",
-          "authorAgent": "author",
-          "sizeXYSince": "size"
+          "authorAgent": "author"
         }
       },
       "preparation": {

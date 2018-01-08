@@ -100,8 +100,8 @@ public class PhotoArchiveApiServiceImpl implements PhotoArchiveApiService{
                 .queryPeople(searchCriteria.getPeople())
                 .queryLocality(searchCriteria.getLocality())
                 .queryCountry(searchCriteria.getAdminUnit())
-                .querySize(searchCriteria.getSizeXYSince())
-                .querySize(searchCriteria.getSizeXYTo())
+                .querySizeX(searchCriteria.getSizeSince())
+                .querySizeY(searchCriteria.getSizeTo())
                 .queryInstitutions(searchCriteria.getDbs());
     }
 

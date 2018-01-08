@@ -260,7 +260,7 @@ var constructor = function ($http, $stateParams, $location, configuration) {
                                 name: Number(specialFieldName[0])
                             }
                         }
-                    } else if (specialFieldLookUpType[0] === "lte") {
+                    } else if (specialFieldLookUpType[0] === "lte" || specialFieldLookUpType[0] === "gt") {
                         if (specialField === "dateTaken") {
                             searchParams[specialField + "To"] = {
                                 lookUpType: specialFieldLookUpType[0],

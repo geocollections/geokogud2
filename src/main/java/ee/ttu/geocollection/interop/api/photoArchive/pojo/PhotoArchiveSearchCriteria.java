@@ -20,8 +20,8 @@ public class PhotoArchiveSearchCriteria implements PageableSearchCriteria{
     private SearchField imageNumber;
     private SearchField people;
     private SearchField adminUnit;
-    private SearchField sizeXYSince;
-    private SearchField sizeXYTo;
+    private SearchField sizeSince;
+    private SearchField sizeTo;
 
     private List<String> dbs;
 
@@ -33,20 +33,20 @@ public class PhotoArchiveSearchCriteria implements PageableSearchCriteria{
         this.dbs = dbs;
     }
 
-    public SearchField getSizeXYSince() {
-        return sizeXYSince;
+    public SearchField getSizeSince() {
+        return sizeSince;
     }
 
-    public void setSizeXYSince(SearchField sizeXYSince) {
-        this.sizeXYSince = sizeXYSince;
+    public void setSizeSince(SearchField sizeSince) {
+        this.sizeSince = sizeSince;
     }
 
-    public SearchField getSizeXYTo() {
-        return sizeXYTo;
+    public SearchField getSizeTo() {
+        return sizeTo;
     }
 
-    public void setSizeXYTo(SearchField sizeXYTo) {
-        this.sizeXYTo = sizeXYTo;
+    public void setSizeTo(SearchField sizeTo) {
+        this.sizeTo = sizeTo;
     }
 
     public SearchField getAdminUnit() {
