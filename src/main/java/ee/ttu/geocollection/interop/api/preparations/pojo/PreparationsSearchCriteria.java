@@ -13,7 +13,6 @@ public class PreparationsSearchCriteria {
     private SearchField depthTo;
     private SearchField stratigraphy;
     private SearchField collector;
-    private SearchField description;
     private SearchField speciesRecovered;
     private SearchField speciesFrequency;
 
@@ -79,14 +78,6 @@ public class PreparationsSearchCriteria {
 
     public void setCollector(SearchField collector) {
         this.collector = collector;
-    }
-
-    public SearchField getDescription() {
-        return description;
-    }
-
-    public void setDescription(SearchField description) {
-        this.description = description;
     }
 
     public SearchField getSpeciesRecovered() {

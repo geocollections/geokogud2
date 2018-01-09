@@ -229,8 +229,8 @@ public class ApiFields {
     public static final String SAMPLE_LITHOSTRATIGRAPHY__STRATIGRAPHY = "sample__lithostratigraphy__stratigraphy";
     public static final String SAMPLE_LITHOSTRATIGRAPHY__STRATIGRAPHY_EN = "sample__lithostratigraphy__stratigraphy_en";
     public static final String SAMPLE_NUMBER = "sample__number";
-    public static final String ANALYSISRESULTS_NAME = "name";
-    public static final String ANALYSISRESULTS_VALUE = "value";
+    public static final String ANALYSISRESULTS__NAME = "analysisresults__name";
+    public static final String ANALYSISRESULTS__VALUE = "analysisresults__value";
     public static final String ANALYSISRESULTS_VALUE_BIN = "value_bin";
     public static final String ANALYSISRESULTS_VALUE_TXT = "value_txt";
 

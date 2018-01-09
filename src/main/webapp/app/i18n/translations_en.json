@@ -298,7 +298,7 @@
             },
             "LOCATION": {
                 "LOCALITY": "Locality",
-                "ADMIN_UNIT": "Admin. unit",
+                "COUNTRY_COUNTY_PARISH": "Country/County/Parish",
                 "DEPTH_M": "Depth (m)",
                 "STRATIGRAPHY": "Stratigraphy",
                 "LOCATION": "Location"

@@ -154,7 +154,7 @@
             "LOCATION": {
                 "LOCATION": "Leiukoht",
                 "LOCALITY": "Leiukoht",
-                "ADMIN_UNIT": "Admin. üksus",
+                "COUNTRY_COUNTY_PARISH": "Riik/Maakond/Vald",
                 "DEPTH_M": "Sügavus (m)",
                 "STRATIGRAPHY": "Stratigraafia"
             },

@@ -6,20 +6,54 @@ import ee.ttu.geocollection.interop.api.analyses.search.impl.AnalysesApiServiceI
 import static ee.ttu.geocollection.interop.api.builder.ApiFields.*;
 public class FluentAnalysesApiBuilder  extends FluentSearchApiBuilder<FluentAnalysesApiBuilder> {
 
+    @Override
+    FluentAnalysesApiBuilder getThis() { return this; }
+
     public static FluentAnalysesApiBuilder aRequest() {
         return new FluentAnalysesApiBuilder();
     }
 
-    public FluentAnalysesApiBuilder querySample(SearchField sample) {
-        buildFieldParameters(SAMPLE, sample);
+    public FluentAnalysesApiBuilder queryLocality(SearchField location) {
+        buildMultiSearch(location, SAMPLE_LOCALITY_LOCALITY, SAMPLE_LOCALITY_LOCALITY_EN, SAMPLE_LOCALITY_FREE);
         return this;
     }
+
+    public FluentAnalysesApiBuilder queryDepth(SearchField depth) {
+        buildMultiSearch(depth, SAMPLE_DEPTH, SAMPLE_DEPTH_INTERVAL);
+        return this;
+    }
+
+    public FluentAnalysesApiBuilder queryStratigraphy(SearchField stratigraphy) {
+        buildMultiSearch(stratigraphy,
+                "sample__stratigraphy__stratigraphy",
+                "sample__stratigraphy__stratigraphy_en",
+                "sample__lithostratigraphy__stratigraphy",
+                "sample__lithostratigraphy__stratigraphy_en");
+        return this;
+    }
+
     public FluentAnalysesApiBuilder queryStratigraphyBed(SearchField field) {
         buildFieldParameters(SAMPLE_STRATIGRAPHY_BED, field);
         return this;
     }
-    public FluentAnalysesApiBuilder queryLocality(SearchField location) {
-        buildMultiSearch(location, SAMPLE_LOCALITY_LOCALITY, SAMPLE_LOCALITY_LOCALITY_EN, SAMPLE_LOCALITY_FREE);
+
+    public FluentAnalysesApiBuilder queryAnalysisMethod(SearchField analysisMethod) {
+        buildMultiSearch(analysisMethod, ANALYSIS_METHOD__ANALYSIS_METHOD, ANALYSIS_METHOD__METHOD_EN);
+        return this;
+    }
+
+    public FluentAnalysesApiBuilder queryComponentAnalysed(SearchField component) {
+        buildFieldParameters(ANALYSISRESULTS__NAME, component);
+        return this;
+    }
+
+    public FluentAnalysesApiBuilder queryContent(SearchField content) {
+        buildFieldParameters(ANALYSISRESULTS__VALUE, content);
+        return this;
+    }
+
+    public FluentAnalysesApiBuilder querySample(SearchField sample) {
+        buildFieldParameters(SAMPLE, sample);
         return this;
     }
 
@@ -35,51 +69,32 @@ public class FluentAnalysesApiBuilder  extends FluentSearchApiBuilder<FluentAnal
                 "sample__locality__asustusyksus__asustusyksus_en");
         return this;
     }
+    //        return this;
+    //        buildFieldParameters(DATE_FREE, dateFree);
+    //    public FluentAnalysesApiBuilder queryDateFree(SearchField dateFree) {
+    //    }
+    //        return this;
+    //        buildFieldParameters(DATE, date);
+    //    public FluentAnalysesApiBuilder queryDate(SearchField date) {
+    //
+    //    }
+    //        return this;
+    //        buildFieldParameters(INSTRUMENT_TXT, instrumentTxt);
+    //    public FluentAnalysesApiBuilder queryInstrumentTxt(SearchField instrumentTxt) {
+    //    }
+    //        return this;
+    //        buildFieldParameters(INSTRUMENT, instrument);
+    //    public FluentAnalysesApiBuilder queryInstrument(SearchField instrument) {
+    //    }
+    //        return this;
+    //        buildFieldParameters(LAB, lab);
+    //    public FluentAnalysesApiBuilder queryLab(SearchField lab) {
+    //    }
+    //        return this;
+    //        buildFieldParameters(METHOD_DETAILS, methodDetails);
+//    public FluentAnalysesApiBuilder queryMethodDetails(SearchField methodDetails) {
 
-    public FluentAnalysesApiBuilder queryStratigraphy(SearchField stratigraphy) {
-        buildMultiSearch(stratigraphy,
-                "sample__stratigraphy__stratigraphy",
-                "sample__stratigraphy__stratigraphy_en",
-                "sample__lithostratigraphy__stratigraphy",
-                "sample__lithostratigraphy__stratigraphy_en");
-        return this;
-    }
-
-    public FluentAnalysesApiBuilder queryDepth(SearchField depth) {
-        buildMultiSearch(depth, SAMPLE_DEPTH, SAMPLE_DEPTH_INTERVAL);
-        return this;
-    }
-
-    public FluentAnalysesApiBuilder queryAnalysisMethod(SearchField analysisMethod) {
-        buildMultiSearch(analysisMethod, ANALYSIS_METHOD__ANALYSIS_METHOD, ANALYSIS_METHOD__METHOD_EN);
-        return this;
-    }
-
-    public FluentAnalysesApiBuilder queryMethodDetails(SearchField methodDetails) {
-        buildFieldParameters(METHOD_DETAILS, methodDetails);
-        return this;
-    }
-    public FluentAnalysesApiBuilder queryLab(SearchField lab) {
-        buildFieldParameters(LAB, lab);
-        return this;
-    }
-    public FluentAnalysesApiBuilder queryInstrument(SearchField instrument) {
-        buildFieldParameters(INSTRUMENT, instrument);
-        return this;
-    }
-    public FluentAnalysesApiBuilder queryInstrumentTxt(SearchField instrumentTxt) {
-        buildFieldParameters(INSTRUMENT_TXT, instrumentTxt);
-        return this;
-    }
-
-    public FluentAnalysesApiBuilder queryDate(SearchField date) {
-        buildFieldParameters(DATE, date);
-        return this;
-    }
-    public FluentAnalysesApiBuilder queryDateFree(SearchField dateFree) {
-        buildFieldParameters(DATE_FREE, dateFree);
-        return this;
-    }
+//    }
 
     public FluentAnalysesApiBuilder returnStratigraphyId(){
         addReturningField(SAMPLE_STRATIGRAPHY_ID);
@@ -111,6 +126,4 @@ public class FluentAnalysesApiBuilder  extends FluentSearchApiBuilder<FluentAnal
         return this;
     }
 
-    @Override
-    FluentAnalysesApiBuilder getThis() { return this; }
 }

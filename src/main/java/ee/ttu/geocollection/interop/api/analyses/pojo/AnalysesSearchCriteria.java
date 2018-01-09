@@ -10,21 +10,22 @@ public class AnalysesSearchCriteria {
     private SortField sortField;
 
     private SearchField id;
-    private SearchField sample;
-    private SearchField stratigraphyBed;
     private SearchField locality;
-    private SearchField adminUnit;
     private SearchField depthSince;
     private SearchField depthTo;
     private SearchField stratigraphy;
+    private SearchField stratigraphyBed;
     private SearchField analysisMethod;
-    private SearchField methodDetails;
-    private SearchField lab;
-    private SearchField instrument;
-    private SearchField instrumentTxt;
-
-    private SearchField date;
-    private SearchField dateFree;
+    private SearchField componentAnalysed;
+    private SearchField content;
+    private SearchField sample;
+    private SearchField adminUnit;
+//    private SearchField methodDetails;
+//    private SearchField lab;
+//    private SearchField instrument;
+//    private SearchField instrumentTxt;
+//    private SearchField date;
+//    private SearchField dateFree;
 
     private List<String> dbs;
 
@@ -110,31 +111,47 @@ public class AnalysesSearchCriteria {
 
     public void setAnalysisMethod(SearchField analysisMethod) { this.analysisMethod = analysisMethod; }
 
-    public SearchField getMethodDetails() { return methodDetails; }
-
-    public void setMethodDetails(SearchField methodDetails) { this.methodDetails = methodDetails; }
-
-    public SearchField getLab() { return lab; }
-
-    public void setLab(SearchField lab) { this.lab = lab; }
-
-    public SearchField getInstrument() { return instrument; }
-
-    public void setInstrument(SearchField instrument) { this.instrument = instrument; }
-
-    public SearchField getInstrumentTxt() { return instrumentTxt; }
-
-    public void setInstrumentTxt(SearchField instrumentTxt) { this.instrumentTxt = instrumentTxt; }
-
+//    public SearchField getMethodDetails() { return methodDetails; }
+//
+//    public void setMethodDetails(SearchField methodDetails) { this.methodDetails = methodDetails; }
+//
+//    public SearchField getLab() { return lab; }
+//
+//    public void setLab(SearchField lab) { this.lab = lab; }
+//
+//    public SearchField getInstrument() { return instrument; }
+//
+//    public void setInstrument(SearchField instrument) { this.instrument = instrument; }
+//
+//    public SearchField getInstrumentTxt() { return instrumentTxt; }
+//
+//    public void setInstrumentTxt(SearchField instrumentTxt) { this.instrumentTxt = instrumentTxt; }
+//
     public SearchField getSample() { return sample; }
 
     public void setSample(SearchField sample) { this.sample = sample; }
+//
+//    public SearchField getDate() { return date; }
+//
+//    public void setDate(SearchField date) { this.date = date; }
+//
+//    public SearchField getDateFree() { return dateFree; }
+//
+//    public void setDateFree(SearchField dateFree) { this.dateFree = dateFree; }
 
-    public SearchField getDate() { return date; }
+    public SearchField getComponentAnalysed() {
+        return componentAnalysed;
+    }
 
-    public void setDate(SearchField date) { this.date = date; }
+    public void setComponentAnalysed(SearchField componentAnalysed) {
+        this.componentAnalysed = componentAnalysed;
+    }
 
-    public SearchField getDateFree() { return dateFree; }
+    public SearchField getContent() {
+        return content;
+    }
 
-    public void setDateFree(SearchField dateFree) { this.dateFree = dateFree; }
+    public void setContent(SearchField content) {
+        this.content = content;
+    }
 }

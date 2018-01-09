@@ -81,7 +81,6 @@ public class PreparationsApiServiceImpl implements PreparationsApiService{
                 .queryDepth(searchCriteria.getDepthTo())
                 .queryStratigraphy(searchCriteria.getStratigraphy())
                 .queryCollector(searchCriteria.getCollector())
-//                .queryDescription(searchCriteria.getDescription())
                 .querySpeciesRecovered(searchCriteria.getSpeciesRecovered())
                 .querySpeciesFrequency(searchCriteria.getSpeciesFrequency())
                 .returnSampleLocalityId()
@@ -89,6 +88,7 @@ public class PreparationsApiServiceImpl implements PreparationsApiService{
                 .buildDefaultFieldsQuery();
         return apiService.searchRawEntities("preparation", searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
+
     @Override
     public Map findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()

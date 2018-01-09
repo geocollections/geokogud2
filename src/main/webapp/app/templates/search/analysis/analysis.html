@@ -92,19 +92,19 @@
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.ANALYSES.ANALYSIS.COMPONENT_ANALYZED'| translate }}</b>
-                                        <selectdefault custom-css="searchCriterionType" ng-model="searchParameters.XXX.lookUpType"/>
+                                        <selectdefault custom-css="searchCriterionType" ng-model="searchParameters.componentAnalysed.lookUpType"/>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.XXX.name" sort-by="{{searchParameters.XXX.lookUpType}}" table="analysis_results" en="null" et="name"/>
+                                        <autocomplete-field ng-model="searchParameters.componentAnalysed.name" sort-by="{{searchParameters.componentAnalysed.lookUpType}}" table="analysis_results" en="null" et="name"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.ANALYSES.ANALYSIS.CONTENT'| translate }}</b>
-                                        <selectexact custom-css="searchCriterionType" ng-model="searchParameters.methodDetails.lookUpType" />
+                                        <selectexact custom-css="searchCriterionType" ng-model="searchParameters.content.lookUpType" />
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <input type="text" ng-model="searchParameters.methodDetails.name" class="form-control" />
+                                        <input type="text" ng-model="searchParameters.content.name" class="form-control" />
                                     </div>
                                 </div>
                             </div>
@@ -132,7 +132,7 @@
                                 </div>
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
-                                        <b>{{ 'SEARCH.ANALYSES.LOCATION.ADMIN_UNIT'| translate }}</b>
+                                        <b>{{ 'SEARCH.ANALYSES.LOCATION.COUNTRY_COUNTY_PARISH'| translate }}</b>
                                         <selectdefault custom-css="searchCriterionType"
                                                        ng-model="searchParameters.adminUnit.lookUpType"></selectdefault>
                                     </div>

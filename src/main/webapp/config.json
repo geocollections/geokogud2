@@ -69,14 +69,14 @@
       "analysis": {
         "fields": {
           "id": "sample_number",
-          "sample": "sample_id",
           "locality": "locality",
-          "adminUnit": "country",
           "stratigraphy": "stratigraphy",
           "stratigraphyBed": "stratigraphy_bed",
           "analysisMethod": "analysis",
-          "XXX": "component",
-          "methodDetails": "content"
+          "componentAnalysed": "component",
+          "content": "content",
+          "sample": "sample_id",
+          "adminUnit": "country"
         }
       },
       "stratigraphy": {
