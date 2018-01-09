@@ -16,7 +16,7 @@ public class FluentPreparationSearchApiBuilder extends FluentSearchApiBuilder<Fl
     }
 
     public FluentPreparationSearchApiBuilder queryNumber(SearchField text) {
-        buildFieldParameters("preparation_number", text);
+        buildFieldParameters(PREPARATION_NUMBER, text);
         return this;
     }
     public FluentPreparationSearchApiBuilder queryLocality(SearchField text) {
@@ -35,7 +35,10 @@ public class FluentPreparationSearchApiBuilder extends FluentSearchApiBuilder<Fl
     }
 
     public FluentPreparationSearchApiBuilder queryCollector(SearchField text) {
-        buildFieldParameters("sample__agent_collected__agent", text);
+        buildMultiSearch(text,
+                SAMPLE__AGENT_COLLECTED__AGENT,
+                SAMPLE__AGENT_COLLECTED__FORENAME,
+                SAMPLE__AGENT_COLLECTED__SURENAME);
         return this;
     }
 
