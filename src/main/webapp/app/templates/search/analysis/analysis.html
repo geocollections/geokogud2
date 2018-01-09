@@ -95,7 +95,7 @@
                                         <selectdefault custom-css="searchCriterionType" ng-model="searchParameters.XXX.lookUpType"/>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <input type="text" ng-model="searchParameters.XXX.name" class="form-control" data-ng-disabled="true"/>
+                                        <autocomplete-field ng-model="searchParameters.XXX.name" sort-by="{{searchParameters.XXX.lookUpType}}" table="analysis_results" en="null" et="name"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -104,7 +104,7 @@
                                         <selectexact custom-css="searchCriterionType" ng-model="searchParameters.methodDetails.lookUpType" />
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <input type="text" ng-model="searchParameters.methodDetails.name" class="form-control" data-ng-disabled="true"/>
+                                        <input type="text" ng-model="searchParameters.methodDetails.name" class="form-control" />
                                     </div>
                                 </div>
                             </div>
