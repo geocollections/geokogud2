@@ -18,7 +18,6 @@ public class AnalysesSearchCriteria {
     private SearchField depthTo;
     private SearchField stratigraphy;
     private SearchField analysisMethod;
-    private SearchField analysisMethodEng;
     private SearchField methodDetails;
     private SearchField lab;
     private SearchField instrument;
@@ -110,10 +109,6 @@ public class AnalysesSearchCriteria {
     public SearchField getAnalysisMethod() { return analysisMethod; }
 
     public void setAnalysisMethod(SearchField analysisMethod) { this.analysisMethod = analysisMethod; }
-
-    public SearchField getAnalysisMethodEng() { return analysisMethodEng; }
-
-    public void setAnalysisMethodEng(SearchField analysisMethodEng) { this.analysisMethodEng = analysisMethodEng; }
 
     public SearchField getMethodDetails() { return methodDetails; }
 

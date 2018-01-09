@@ -51,13 +51,10 @@ public class FluentAnalysesApiBuilder  extends FluentSearchApiBuilder<FluentAnal
     }
 
     public FluentAnalysesApiBuilder queryAnalysisMethod(SearchField analysisMethod) {
-        buildFieldParameters(ANALYSIS_METHOD__ANALYSIS_METHOD, analysisMethod);
+        buildMultiSearch(analysisMethod, ANALYSIS_METHOD__ANALYSIS_METHOD, ANALYSIS_METHOD__METHOD_EN);
         return this;
     }
-    public FluentAnalysesApiBuilder queryAnalysisMethodEng(SearchField analysisMethodEng) {
-        buildFieldParameters(ANALYSIS_METHOD__METHOD_EN, analysisMethodEng);
-        return this;
-    }
+
     public FluentAnalysesApiBuilder queryMethodDetails(SearchField methodDetails) {
         buildFieldParameters(METHOD_DETAILS, methodDetails);
         return this;

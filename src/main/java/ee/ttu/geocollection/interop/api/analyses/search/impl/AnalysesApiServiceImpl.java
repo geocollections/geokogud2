@@ -69,7 +69,6 @@ public class AnalysesApiServiceImpl implements AnalysesApiService {
                 .queryAdminUnit(searchCriteria.getAdminUnit())
                 .queryStratigraphy(searchCriteria.getStratigraphy()).andReturn()
                 .queryAnalysisMethod(searchCriteria.getAnalysisMethod()).andReturn()
-                .queryAnalysisMethodEng(searchCriteria.getAnalysisMethodEng()).andReturn()
                 .queryMethodDetails(searchCriteria.getMethodDetails())
                 .queryLab(searchCriteria.getLab()).andReturn()
                 .queryInstrument(searchCriteria.getInstrument())

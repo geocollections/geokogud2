@@ -68,7 +68,10 @@
                     </em>
                 </td>
                 <td data-title="{{ 'SEARCH.ANALYSES.TABLE.BED_ID'| translate }}">{{entity.sample__stratigraphy_bed}}</td>
-                <td data-title="{{ 'SEARCH.ANALYSES.TABLE.METHOD'| translate }}"><localize data-ng-if="entity.analysis_method__analysis_method != null || entity.analysis_method__method_en != null" et="entity.analysis_method__analysis_method" en="entity.analysis_method__method_en"/></td>
+                <td data-title="{{ 'SEARCH.ANALYSES.TABLE.METHOD'| translate }}">
+                    <localize data-ng-if="entity.analysis_method__analysis_method != null || entity.analysis_method__method_en != null"
+                              et="entity.analysis_method__analysis_method" en="entity.analysis_method__method_en"/>
+                </td>
                 <td data-title="{{ 'SEARCH.ANALYSES.TABLE.LAB'| translate }}">{{entity.lab}}</td>
             </tr>
             </tbody>
