@@ -58,7 +58,7 @@
 
                     <!--TODO: mass_unit-->
 
-                    <tr data-ng-if="detailCtrl.analysisResults.length > 0">
+                    <tr data-ng-if="detailCtrl.analysisResults.length > 0 && detailCtrl.service.getCountsForAnalysisDetailView(detailCtrl.analysisResults) > 0">
                         <td> {{ 'API_TRANSLATION.ANALYSIS.COUNTED_GRAINS' | translate }} </td>
                         <td data-ng-if="detailCtrl.service.getCountsForAnalysisDetailView(detailCtrl.analysisResults) > 0">
                             {{ detailCtrl.service.getCountsForAnalysisDetailView(detailCtrl.analysisResults) }}

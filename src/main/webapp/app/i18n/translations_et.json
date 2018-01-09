@@ -165,7 +165,7 @@
                 "CONTENT": "Komponendi sisaldus"
             },
             "TABLE": {
-                "ID": "ID",
+                "ID": "Analüüsi ID",
                 "SAMPLE_ID": "Proov #",
                 "LOCALITY": "@:SEARCH.ANALYSES.LOCATION.LOCALITY",
                 "DEPTH_M": "@:SEARCH.ANALYSES.LOCATION.DEPTH_M",
@@ -292,7 +292,7 @@
         "ANALYSES": {
             "HEADING": "Analüüsid",
             "IDENTIFIERS": {
-                "NUMBER": "Number",
+                "NUMBER": "Analüüsi ID",
                 "SAMPLE_ID": "Number",
                 "BED_NAME_INDEX": "Ase ID"
             },
@@ -318,7 +318,7 @@
                 "BED_ID": "Ase ID",
                 "METHOD": "Metoodika",
                 "LAB": "Lab.",
-                "ID": "ID"
+                "ID": "Analüüsi ID"
             }
         },
         "PREPARATIONS": {
