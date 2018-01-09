@@ -42,6 +42,16 @@ public class FluentPreparationSearchApiBuilder extends FluentSearchApiBuilder<Fl
         return this;
     }
 
+    public FluentPreparationSearchApiBuilder querySpeciesRecovered(SearchField text) {
+        buildFieldParameters(PREPARATIONTAXA__NAME, text);
+        return this;
+    }
+
+    public FluentPreparationSearchApiBuilder querySpeciesFrequency(SearchField text) {
+        buildFieldParameters(PREPARATIONTAXA__FREQUENCY, text);
+        return this;
+    }
+
     public FluentPreparationSearchApiBuilder returnSampleLocalityId() {
         addReturningField(SAMPLE__LOCALITY__ID);
         return this;
