@@ -9,11 +9,9 @@ public class PreparationsSearchCriteria {
 
     private SearchField number;
     private SearchField locality;
-    private SearchField localityEn;
     private SearchField depthSince;
     private SearchField depthTo;
     private SearchField stratigraphy;
-    private SearchField stratigraphyEn;
     private SearchField collector;
     private SearchField description;
     private SearchField speciesRecovered;
@@ -33,22 +31,6 @@ public class PreparationsSearchCriteria {
 
     public void setSortField(SortField sortField) {
         this.sortField = sortField;
-    }
-
-    public SearchField getLocalityEn() {
-        return localityEn;
-    }
-
-    public void setLocalityEn(SearchField localityEn) {
-        this.localityEn = localityEn;
-    }
-
-    public SearchField getStratigraphyEn() {
-        return stratigraphyEn;
-    }
-
-    public void setStratigraphyEn(SearchField stratigraphyEn) {
-        this.stratigraphyEn = stratigraphyEn;
     }
 
     public SearchField getNumber() {

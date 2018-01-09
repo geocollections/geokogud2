@@ -254,6 +254,8 @@ public class ApiFields {
      */
     public static final String SAMPLE__LOCALITY__ID = "sample__locality__id";
     public static final String SAMPLE__STRATIGRAPHY__ID = "sample__stratigraphy__id";
+    public static final String SAMPLE__STRATIGRAPHY__STRATIGRAPHY = "sample__stratigraphy__stratigraphy";
+    public static final String SAMPLE__STRATIGRAPHY__STRATIGRAPHY_EN = "sample__stratigraphy__stratigraphy_en";
     public static final String TAXONLIST__TAXON__ID = "taxonlist__taxon__id";
 
     /**

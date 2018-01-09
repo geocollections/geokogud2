@@ -20,11 +20,7 @@ public class FluentPreparationSearchApiBuilder extends FluentSearchApiBuilder<Fl
         return this;
     }
     public FluentPreparationSearchApiBuilder queryLocality(SearchField text) {
-        buildFieldParameters("sample__locality__locality", text);
-        return this;
-    }
-    public FluentPreparationSearchApiBuilder queryLocalityEn(SearchField text) {
-        buildFieldParameters("sample__locality__locality_en", text);
+        buildMultiSearch(text, SAMPLE_LOCALITY_LOCALITY, SAMPLE_LOCALITY_LOCALITY_EN);
         return this;
     }
 
@@ -33,18 +29,8 @@ public class FluentPreparationSearchApiBuilder extends FluentSearchApiBuilder<Fl
         return this;
     }
 
-//    public FluentPreparationSearchApiBuilder queryDepth(SearchField text) {
-//        buildFieldParameters("sample__depth_interval", text);
-//        return this;
-//    }
-
     public FluentPreparationSearchApiBuilder queryStratigraphy(SearchField text) {
-        buildFieldParameters("sample__stratigraphy__stratigraphy", text);
-        return this;
-    }
-
-    public FluentPreparationSearchApiBuilder queryStratigraphyEn(SearchField text) {
-        buildFieldParameters("sample__stratigraphy__stratigraphy_en", text);
+        buildMultiSearch(text, SAMPLE__STRATIGRAPHY__STRATIGRAPHY, SAMPLE__STRATIGRAPHY__STRATIGRAPHY_EN);
         return this;
     }
 
