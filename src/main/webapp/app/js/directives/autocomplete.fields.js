@@ -4,7 +4,8 @@ angular.module('geoApp').directive('autocompleteField', function () {
         "placeholder='{{placeholderText}}' " +
         "data-uib-typeahead='entity[localizedValue] for entity in factory.autocompleteSearch(table,$viewValue,sortBy,localizedValue)' " +
         "data-typeahead-min-length='1' data-typeahead-on-select='entitySelected($item, $model)' typeahead-loading='isLoading'/>" +
-        "<span ng-if='!!isLoading'><img src='img/loader.gif' width='20' height='20' /></span>",
+        "<span ng-if='!!isLoading'></span>",
+        // "<span ng-if='!!isLoading'><img src='img/loader.gif' width='20' height='20' /></span>", TODO: Image was affecting input field, made ui feel like stuttering. Image should be relative or something like that
         restrict: 'AE',
         scope: {
             table: '@',
