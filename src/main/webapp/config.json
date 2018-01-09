@@ -74,7 +74,7 @@
           "stratigraphyBed": "stratigraphy_bed",
           "analysisMethod": "analysis",
           "componentAnalysed": "component",
-          "content": "content",
+          "componentContent": "content",
           "sample": "sample_id",
           "adminUnit": "country"
         }

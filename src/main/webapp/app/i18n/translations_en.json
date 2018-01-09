@@ -307,7 +307,7 @@
                 "PANEL_TITLE": "Analysis",
                 "TYPE": "Type of analysis",
                 "COMPONENT_ANALYZED": "Component analysed",
-                "CONTENT": "Content"
+                "CONTENT": "Component's content"
             },
             "TABLE": {
                 "LOCALITY": "@:SEARCH.ANALYSES.LOCATION.LOCALITY",
