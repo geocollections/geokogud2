@@ -67,6 +67,20 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         var searchParamsLocal = getSearchDataFromLocalStorage();
         if (typeof(searchParamsLocal) !== 'undefined') {
             $scope.searchParameters = searchParamsLocal;
+
+            // If institutions are not all ticked then show
+            if ($scope.searchParameters.dbs.length < 6) {
+                $scope.isInstitutionsCollapsed = false;
+            }
+
+            // If additional criteria is filled then show it
+            if ((['analyses'].indexOf($stateParams.type) > -1)) {
+                if ($scope.searchParameters.sample.name != null || $scope.searchParameters.adminUnit.name != null) {
+                    $scope.isLocationFieldsCollapsed = false;
+                }
+            }
+
+
         }
 
         /* $('html, body').animate({
