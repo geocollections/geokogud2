@@ -53,7 +53,7 @@ public class FluentAnalysesApiBuilder  extends FluentSearchApiBuilder<FluentAnal
     }
 
     public FluentAnalysesApiBuilder querySample(SearchField sample) {
-        buildFieldParameters(SAMPLE, sample);
+        buildFieldParameters(SAMPLE__ID, sample);
         return this;
     }
 

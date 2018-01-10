@@ -215,6 +215,7 @@ public class ApiFields {
     public static final String INSTRUMENT = "instrument";
     public static final String INSTRUMENT_TXT = "instrument_txt";
     public static final String SAMPLE = "sample";
+    public static final String SAMPLE__ID = "sample__id";
     public static final String DATE = "date";
     public static final String DATE_FREE = "date_free";
     public static final String SAMPLE_STRATIGRAPHY_BED = "sample__stratigraphy_bed";
