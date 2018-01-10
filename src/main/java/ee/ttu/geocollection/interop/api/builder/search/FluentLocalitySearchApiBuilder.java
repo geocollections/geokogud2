@@ -16,13 +16,37 @@ public class FluentLocalitySearchApiBuilder extends FluentSearchApiBuilder<Fluen
         return this;
     }
 
+    public FluentLocalitySearchApiBuilder queryLocality(SearchField locality) {
+        buildMultiSearch(locality, LOCALITY_ENG, LOCALITY);
+        return this;
+    }
+
     public FluentLocalitySearchApiBuilder queryNumber(SearchField id) {
-        buildFieldParameters(NUMBER, id);
+        buildFieldParameters(ID, id);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder queryCountry(SearchField id) {
+        buildMultiSearch(id, COUNTRY, COUNTRY_ENG);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder queryAdminUnit(SearchField id) {
+        buildMultiSearch(id,
+                COUNTRY, COUNTRY_ENG,
+                COUNTY, COUNTY_ENG,
+                PARISH, PARISH_EN,
+                ASUSTUSYKSUS, ASUSTUSYKSUS_EN);
         return this;
     }
 
     public FluentLocalitySearchApiBuilder queryStratigraphy(SearchField id) {
-        buildFieldParameters(LOCALITY_STRATIGRAPHY, id);
+        buildMultiSearch(id, LOCALITY_STRATIGRAPHY, LOCALITY_STRATIGRAPHY_EN);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder queryReference(SearchField id) {
+        buildFieldParameters(LOCALITYREFERENCE__REFERENCE__REFERENCE, id);
         return this;
     }
 
@@ -31,30 +55,12 @@ public class FluentLocalitySearchApiBuilder extends FluentSearchApiBuilder<Fluen
         return this;
     }
 
-    public FluentLocalitySearchApiBuilder queryLocality(SearchField locality) {
-        buildMultiSearch(locality, LOCALITY_ENG, LOCALITY);
-        return this;
-    }
-
-    public FluentLocalitySearchApiBuilder queryCountry(SearchField id) {
-        buildFieldParameters(COUNTRY, id);
-        return this;
-    }
-    public FluentLocalitySearchApiBuilder queryAdminUnit(SearchField id) {
-        buildFieldParameters(ADMIN_UNIT, id);
-        return this;
-    }
     public FluentLocalitySearchApiBuilder queryLatitude(SearchField id) {
         buildFieldParameters(LATITUDE, id);
         return this;
     }
 
     public FluentLocalitySearchApiBuilder queryLongitude(SearchField id) {
-        buildFieldParameters(LONGITUDE, id);
-        return this;
-    }
-
-    public FluentLocalitySearchApiBuilder queryVerticalExtend(SearchField id) {
         buildFieldParameters(LONGITUDE, id);
         return this;
     }

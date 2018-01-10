@@ -420,7 +420,7 @@
                 "LOCATION": "Location",
                 "LOCALITY": "Locality",
                 "COUNTRY": "Country",
-                "ADMIN_UNIT": "Admin. unit",
+                "COUNTRY_COUNTY_PARISH": "Riik/Maakond/Vald",
                 "LATITUDE": "Latitude (dec. deg.)",
                 "LONGITUDE": "Longitude (dec. deg.)",
                 "VERTICAL_EXTENT": "Vertical extent (m)"

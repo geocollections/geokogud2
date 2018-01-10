@@ -101,17 +101,17 @@
       },
       "locality": {
         "fields": {
-          "id": "ID",
           "locality": "locality",
           "number": "number",
           "country": "country",
           "adminUnit": "county",
-          "latitude": "latitude",
-          "longitude": "longitude",
-          "verticalExtentSince": "vertical_extent",
           "stratigraphy": "stratigraphy",
           "reference": "reference",
-          "maPaId": "maaamet_pa_id"
+          "id": "ID",
+          "maPaId": "maaamet_pa_id",
+          "latitude": "latitude",
+          "longitude": "longitude",
+          "verticalExtentSince": "vertical_extent"
         }
       },
       "drillcore": {

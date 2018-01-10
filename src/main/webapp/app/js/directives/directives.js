@@ -761,7 +761,7 @@ angular.module('geoApp')
                     $scope.olMap.addLayer($scope.layerData);
                     $scope.olMap.getViewport().addEventListener('mousemove', function (evt) {
                         var pixel = $scope.olMap.getEventPixel(evt);
-                        displayFeatureInfo(pixel); //OLESJA
+                        displayFeatureInfo(pixel);
                     });
 
                     var extent = $scope.layerData.getSource().getExtent();

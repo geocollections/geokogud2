@@ -420,7 +420,7 @@
                 "LOCATION": "Leiukoht",
                 "LOCALITY": "Leiukoht",
                 "COUNTRY": "Riik",
-                "ADMIN_UNIT": "Admin. üksus",
+                "COUNTRY_COUNTY_PARISH": "Country/County/Parish",
                 "LATITUDE": "Laiuskraad",
                 "LONGITUDE": "Pikkuskraad",
                 "VERTICAL_EXTENT": "Läbilõike ulatus, m"

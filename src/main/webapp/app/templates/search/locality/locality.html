@@ -5,11 +5,9 @@
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
                 <div class="row">
-                    <h3 class="search-heading">{{ 'SEARCH.LOCATILIES.HEADING' | translate }} <span class="badge badge-info">{{response.count}}</span>
-                        <!--<button type="submit" value="showHint" class="btn btn-info btn-sm pull-right"-->
-                                <!--data-ng-click="showHint()">-->
-                            <!--<span class="glyphicon glyphicon-question-sign"></span> {{ 'SEARCH.FAQ' | translate }}-->
-                        <!--</button>-->
+                    <h3 class="search-heading">
+                        {{ 'SEARCH.LOCATILIES.HEADING' | translate }}
+                        <span class="badge badge-info">{{response.count}}</span>
                     </h3>
                 </div>
                 <div class="row">
@@ -78,7 +76,7 @@
                                 </div>
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
-                                        <b>{{ 'SEARCH.LOCALITIES.LOCATION.ADMIN_UNIT' | translate }}</b>
+                                        <b>{{ 'SEARCH.LOCALITIES.LOCATION.COUNTRY_COUNTY_PARISH' | translate }}</b>
                                         <selectdefault custom-css="searchCriterionType"
                                                        ng-model="searchParameters.adminUnit.lookUpType"></selectdefault>
                                     </div>
@@ -94,7 +92,11 @@
                                                          ng-disabled="true"></selecthierarchy>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <input type="text" ng-model="searchParameters.stratigraphy.name" class="form-control"/>
+                                        <!--TODO: autocomplete not working properly-->
+                                        <autocomplete-field ng-model="searchParameters.stratigraphy.name" sort-by="{{searchParameters.stratigraphy.lookUpType}}"
+                                                            table="locality_stratigraphy"
+                                                            en="stratigraphy__stratigraphy_en"
+                                                            et="stratigraphy__stratigraphy" />
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -105,8 +107,9 @@
                                     </div>
                                     <div class="col-md-12 medium-padding">
                                         <!--TODO: enable reference search-->
-                                        <input type="text" ng-model="searchParameters.reference.name" class="form-control"
-                                               data-ng-disabled="true"/>
+                                        <autocomplete-field ng-model="searchParameters.reference.name" sort-by="{{searchParameters.reference.lookUpType}}"
+                                                            table="locality_reference" en="null" et="reference__reference" />
+                                        <!--<input type="text" ng-model="searchParameters.reference.name" class="form-control"/>-->
                                     </div>
                                 </div>
                             </div>

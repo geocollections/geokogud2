@@ -130,7 +130,8 @@ public class ApiFields {
     public static final String DRILLCORE_LOCALITY = "drillcore__locality";
 
     // Locality search
-    public static final String LOCALITY_STRATIGRAPHY = "localitystratigraphy__stratigraphy__stratigraphy_en";
+    public static final String LOCALITY_STRATIGRAPHY_EN = "localitystratigraphy__stratigraphy__stratigraphy_en";
+    public static final String LOCALITY_STRATIGRAPHY = "localitystratigraphy__stratigraphy__stratigraphy";
     public static final String LOCALITY_STRATIGRAPHY_TOP_EN = "stratigraphy_top__stratigraphy_en";
     public static final String LOCALITY_STRATIGRAPHY_TOP = "stratigraphy_top__stratigraphy";
     public static final String LOCALITY_STRATIGRAPHY_TOP_ID = "stratigraphy_top_id";
@@ -143,10 +144,12 @@ public class ApiFields {
     public static final String LOCALITY_FREE = "locality_free";
     public static final String COUNTRY = "country__value";
     public static final String COUNTRY_ENG = "country__value_en";
-    public static final String ADMIN_UNIT = "maakond__maakond";
-    public static final String ADMIN_UNIT_ENG = "maakond__maakond_en";
-    public static final String VALD = "vald__vald";
+    public static final String COUNTY = "maakond__maakond";
+    public static final String COUNTY_ENG = "maakond__maakond_en";
+    public static final String PARISH = "vald__vald";
+    public static final String PARISH_EN = "vald__vald_en";
     public static final String ASUSTUSYKSUS = "asustusyksus__asustusyksus";
+    public static final String ASUSTUSYKSUS_EN = "asustusyksus__asustusyksus_en";
     public static final String ELEVATION = "elevation";
     public static final String COORD_SYSTEM = "coord_system";
     public static final String COORD_X = "coordx";
@@ -163,6 +166,7 @@ public class ApiFields {
     public static final String EELIS = "eelis";
     public static final String MAAAMET_PA_ID = "maaamet_pa_id";
     public static final String LOCALITYSYNONYM_SYNONYM = "localitysynonym__synonym";
+    public static final String LOCALITYREFERENCE__REFERENCE__REFERENCE = "localityreference__reference__reference";
 
     // Stratigraphy search
     public static final String STRATIGRAPHY = "stratigraphy";
