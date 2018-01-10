@@ -22,7 +22,7 @@ public class FluentLocalitySearchApiBuilder extends FluentSearchApiBuilder<Fluen
     }
 
     public FluentLocalitySearchApiBuilder queryNumber(SearchField id) {
-        buildFieldParameters(ID, id);
+        buildFieldParameters(NUMBER, id);
         return this;
     }
 
@@ -50,7 +50,7 @@ public class FluentLocalitySearchApiBuilder extends FluentSearchApiBuilder<Fluen
         return this;
     }
 
-    public FluentLocalitySearchApiBuilder queryMaId(SearchField id) {
+    public FluentLocalitySearchApiBuilder queryMaPaId(SearchField id) {
         buildFieldParameters(MA_ID, id);
         return this;
     }

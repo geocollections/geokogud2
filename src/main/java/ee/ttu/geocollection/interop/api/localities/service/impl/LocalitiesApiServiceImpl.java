@@ -91,7 +91,7 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
                 .queryAdminUnit(searchCriteria.getAdminUnit()).andReturn()
                 .queryStratigraphy(searchCriteria.getStratigraphy())
                 .queryReference(searchCriteria.getReference())
-                .queryMaId(searchCriteria.getMaId()).andReturn()
+                .queryMaPaId(searchCriteria.getMaPaId()).andReturn()
                 .queryLatitude(searchCriteria.getLatitude()).andReturn()
                 .queryLongitude(searchCriteria.getLongitude()).andReturn()
                 .queryDepth(searchCriteria.getVerticalExtentSince()).andReturn()

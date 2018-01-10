@@ -12,7 +12,7 @@ public class LocalitySearchCriteria implements PageableSearchCriteria{
     private SearchField stratigraphy;
     private SearchField number;
     private SearchField reference;
-    private SearchField maId;
+    private SearchField maPaId;
     private SearchField locality;
     private SearchField country;
     private SearchField adminUnit;
@@ -69,12 +69,12 @@ public class LocalitySearchCriteria implements PageableSearchCriteria{
         this.locality = locality;
     }
 
-    public SearchField getMaId() {
-        return maId;
+    public SearchField getMaPaId() {
+        return maPaId;
     }
 
-    public void setMaId(SearchField maId) {
-        this.maId = maId;
+    public void setMaPaId(SearchField maPaId) {
+        this.maPaId = maPaId;
     }
 
     public SearchField getReference() {

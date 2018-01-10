@@ -61,7 +61,8 @@
                                                        ng-model="searchParameters.number.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <input type="text" ng-model="searchParameters.number.name" class="form-control"/>
+                                        <autocomplete-field ng-model="searchParameters.number.name" sort-by="{{searchParameters.number.lookUpType}}" table="locality" en="null" et="number"/>
+                                        <!--<input type="text" ng-model="searchParameters.number.name" class="form-control"/>-->
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -109,7 +110,6 @@
                                         <!--TODO: enable reference search-->
                                         <autocomplete-field ng-model="searchParameters.reference.name" sort-by="{{searchParameters.reference.lookUpType}}"
                                                             table="locality_reference" en="null" et="reference__reference" />
-                                        <!--<input type="text" ng-model="searchParameters.reference.name" class="form-control"/>-->
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@
                                                      ng-model="searchParameters.latitude.lookUpType"></selectexact>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <input type="text" ng-model="searchParameters.latitude.value" class="form-control"/>
+                                        <input type="text" ng-model="searchParameters.latitude.name" class="form-control"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">
@@ -162,7 +162,7 @@
                                                      ng-model="searchParameters.longitude.lookUpType"></selectexact>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <input type="text" ng-model="searchParameters.longitude.value" class="form-control"/>
+                                        <input type="text" ng-model="searchParameters.longitude.name" class="form-control"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">

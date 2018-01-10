@@ -111,7 +111,8 @@
           "maPaId": "maaamet_pa_id",
           "latitude": "latitude",
           "longitude": "longitude",
-          "verticalExtentSince": "vertical_extent"
+          "verticalExtentSince": "vertical_extent_since",
+          "verticalExtentTo": "vertical_extent_to"
         }
       },
       "drillcore": {

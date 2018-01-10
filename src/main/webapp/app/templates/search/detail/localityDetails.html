@@ -216,7 +216,11 @@
 
                     <tr data-ng-if="detailCtrl.results.maaamet_pa_id && detailCtrl.results.maaamet_pa_id != null">
                         <td> {{ 'API_TRANSLATION.LOCALITY.MAAAMET_PA_ID ' | translate }} </td>
-                        <td> {{ detailCtrl.results.maaamet_pa_id }} </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://geoportaal.maaamet.ee/index.php?&action=viewPA&page_id=382&pa_id='+detailCtrl.results.maaamet_pa_id})">
+                                {{ detailCtrl.results.maaamet_pa_id }}
+                            </a>
+                        </td>
                     </tr>
 
                     <tr data-ng-if="detailCtrl.results.eelis && detailCtrl.results.eelis != null">
@@ -296,7 +300,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr data-ng-repeat="entity in detailCtrl.localitySynonyms">
+                        <tr data-ng-repeat="entity in detailCtrl.localitySynonyms" data-ng-if="entity.synonym && entity.synonym != null">
                             <td>{{entity.synonym}}</td>
                             <td>{{entity.reference__reference}}</td>
                             <td>{{entity.pages}}</td>
@@ -382,25 +386,25 @@
                     </table>
                 </div>
 
-                <div data-ng-if="detailCtrl.drillcores.length > 0">
-                    <h3> {{ 'DETAIL.DETAIL_DRILLCORES' | translate }} </h3>
-                    <table class="table table-bordered table-hover">
-                        <thead class="styles-for-table-headers">
-                        <tr>
-                            <th>Drillcore</th>
-                            <th>???</th>
-                            <th>???</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr data-ng-repeat="entity in detailCtrl.drillcores">
-                            <td><a href data-ng-click="detailCtrl.service.openInNewWindow({object:'drillcore',id:entity.id})">{{entity.drillcore}}</a></td>
-                            <td>???</td>
-                            <td>???</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <!--<div data-ng-if="detailCtrl.drillcores.length > 0">-->
+                    <!--<h3> {{ 'DETAIL.DETAIL_DRILLCORES' | translate }} </h3>-->
+                    <!--<table class="table table-bordered table-hover">-->
+                        <!--<thead class="styles-for-table-headers">-->
+                        <!--<tr>-->
+                            <!--<th>Drillcore</th>-->
+                            <!--<th>???</th>-->
+                            <!--<th>???</th>-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+                        <!--<tr data-ng-repeat="entity in detailCtrl.drillcores">-->
+                            <!--<td><a href data-ng-click="detailCtrl.service.openInNewWindow({object:'drillcore',id:entity.id})">{{entity.drillcore}}</a></td>-->
+                            <!--<td>???</td>-->
+                            <!--<td>???</td>-->
+                        <!--</tr>-->
+                        <!--</tbody>-->
+                    <!--</table>-->
+                <!--</div>-->
 
             </div>
         </div>
