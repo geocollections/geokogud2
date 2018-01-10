@@ -58,7 +58,8 @@
                                                        ng-model="searchParameters.index.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <input type="text" ng-model="searchParameters.index.name" class="form-control"/>
+                                        <autocomplete-field ng-model="searchParameters.index.name" sort-by="{{searchParameters.index.lookUpType}}" table="stratigraphy" en="null" et="index_main,index_additional" />
+                                        <!--<input type="text" ng-model="searchParameters.index.name" class="form-control"/>-->
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">

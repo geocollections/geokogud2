@@ -69,8 +69,10 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
             $scope.searchParameters = searchParamsLocal;
 
             // If institutions are not all ticked then show
-            if ($scope.searchParameters.dbs.length < 6) {
-                $scope.isInstitutionsCollapsed = false;
+            if ($scope.searchParameters.dbs != null) {
+                if ($scope.searchParameters.dbs.length < 6) {
+                    $scope.isInstitutionsCollapsed = false;
+                }
             }
 
             // If additional criteria is filled then show it
@@ -78,6 +80,18 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
                 if ($scope.searchParameters.sample.name != null || $scope.searchParameters.adminUnit.name != null) {
                     $scope.isLocationFieldsCollapsed = false;
                 }
+            }
+            if ((['localities'].indexOf($stateParams.type) > -1)) {
+                //    TODO: Add searchparameter fields
+            }
+            if ((['drillcores'].indexOf($stateParams.type) > -1)) {
+                //    TODO: Add searchparameter fields
+            }
+            if ((['samples'].indexOf($stateParams.type) > -1)) {
+                //    TODO: Add searchparameter fields
+            }
+            if ((['specimens'].indexOf($stateParams.type) > -1)) {
+                //    TODO: Add searchparameter fields
             }
 
 

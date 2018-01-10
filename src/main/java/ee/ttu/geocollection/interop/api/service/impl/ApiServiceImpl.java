@@ -101,14 +101,16 @@ public class ApiServiceImpl implements ApiService {
 
     @Override
     public Map searchByField(String table, String term, String sortField, String searchField) {
-        String url = apiUrl + "/" + table + "/" + "?paginate_by=" + PAGINATE_BY
-//                Removed multi search because it is not really needed and made sortField dynamic
-//                + "&format=json&fields=" + searchField + "&multi_search=value:"+term+";fields:"+searchField+";lookuptype:icontains"
-                + "&format=json&fields=" + searchField + "&" + searchField + "__" + sortField + "=" + term
-                + "&distinct=true";
-//                Made changes because of that issue.
-//                https://github.com/geocollections/geokogud2/issues/55
-//                + "&group_by="+searchField;
+        String url;
+        if (searchField.contains(",")) { // Multiple fields autocomplete
+            url = apiUrl + "/" + table + "/" + "?paginate_by=" + PAGINATE_BY
+                    + "&format=json&distinct=true&fields="
+                    + searchField
+                    + "&multi_search=value:"+term+";fields:"+searchField+";lookuptype:" + sortField;
+        } else { // Single field autocomplete
+            url = apiUrl + "/" + table + "/" + "?paginate_by=" + PAGINATE_BY
+                + "&format=json&distinct=true&fields=" + searchField + "&" + searchField + "__" + sortField + "=" + term;
+        }
 
         logger.trace(url);
         HttpHeaders headers = new HttpHeaders();
