@@ -84,15 +84,11 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
             }
             if ((['localities'].indexOf($stateParams.type) > -1)) {
                 console.log($scope.searchParameters);
-                if ($scope.searchParameters.id.name != null ||
-                    $scope.searchParameters.maPaId.name != null ||
-                    $scope.searchParameters.latitude.name != null ||
-                    $scope.searchParameters.longitude.name != null ||
-                    $scope.searchParameters.verticalExtentSince.name != null ||
-                    $scope.searchParameters.verticalExtentTo.name != null) {
+                if ($scope.searchParameters.id.name != null || $scope.searchParameters.maPaId.name != null ||
+                    $scope.searchParameters.latitude.name != null || $scope.searchParameters.longitude.name != null ||
+                    $scope.searchParameters.verticalExtentSince.name != null || $scope.searchParameters.verticalExtentTo.name != null) {
                     $scope.isLocationFieldsCollapsed = false;
                 }
-                //    TODO: Add searchparameter fields
             }
             if ((['drillcores'].indexOf($stateParams.type) > -1)) {
                 //    TODO: Add searchparameter fields

@@ -46,7 +46,13 @@ public class ApiServiceImpl implements ApiService {
 
     @Override
     public Map findRawEntity(String tableName, String requestParams) {
-        String url = apiUrl + "/" + tableName + "/" + requestParams + "&format=json";
+        String url;
+        if (tableName.equals("drillcore_box")) {
+            url = apiUrl + "/" + tableName + "/" + requestParams + "?format=json";
+
+        } else {
+            url = apiUrl + "/" + tableName + "/" + requestParams + "&format=json";
+        }
 
         HttpHeaders headers = new HttpHeaders();
         String requestId = MDC.get("REQUEST_UUID");
