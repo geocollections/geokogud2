@@ -137,9 +137,12 @@
                                                        ng-model="searchParameters.adminUnit.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <input type="text" ng-model="searchParameters.adminUnit.name" class="form-control"/>
-                                        <!--<autocomplete-field ng-model="searchParameters.adminUnit.name" table="analysis" en="sample__stratigraphy__stratigraphy_en" et="sample__stratigraphy__stratigraphy"/>
-                                    -->
+                                        <!--<input type="text" ng-model="searchParameters.adminUnit.name" class="form-control"/>-->
+                                        <autocomplete-field ng-model="searchParameters.adminUnit.name"
+                                                            sort-by="{{searchParameters.adminUnit.lookUpType}}"
+                                                            table="analysis"
+                                                            en="sample__locality__country__value_en,sample__locality__maakond__maakond_en,sample__locality__vald__vald_en,sample__locality__asustusyksus__asustusyksus_en"
+                                                            et="sample__locality__country__value,sample__locality__maakond__maakond,sample__locality__vald__vald,sample__locality__asustusyksus__asustusyksus"/>
                                     </div>
                                 </div>
                             </div>

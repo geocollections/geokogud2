@@ -7,18 +7,19 @@
   "urlHelper" : {
     "lookUpType" : {
       "icontains" : 1,
-      "iexact" :5,
-      "exact" :5,
       "istartswith" : 2,
       "iendswith" : 3,
       "doesnotcontain" : 4,
+      "iexact" :5,
+      "exact" :5,
+      "doesnotexact": 6,
+      "gt": 7,
+      "lt": 8,
       "in" : 9,
+      "range": 10,
       "hierarchy" : 11,
-      "gt": 6,
-      "lt": 7,
       "gte": 12,
-      "lte": 13,
-      "range": 8
+      "lte": 13
     },
     "common" : {
       "dbs" : "",
