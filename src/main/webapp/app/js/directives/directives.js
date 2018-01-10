@@ -514,7 +514,10 @@ angular.module('geoApp')
                             new ol.control.ScaleLine({units: "metric"}),
                             new ol.control.FullScreen()
                         ]),
-                        interactions: ol.interaction.defaults({mouseWheelZoom: true}), // changed to true 29.11.2017
+                        // interactions: ol.interaction.defaults({mouseWheelZoom: true}), // changed to true 29.11.2017
+                        interactions: ol.interaction.defaults().extend([
+                            new ol.interaction.DragRotateAndZoom()
+                        ]),
                         view: new ol.View({
                             projection: "EPSG:3857",
                             center: ol.proj.transform([$scope.y, $scope.x], 'EPSG:4326', 'EPSG:3857'),
@@ -686,6 +689,9 @@ angular.module('geoApp')
                             }).extend([
                                 new ol.control.ScaleLine({units: "metric"}),
                                 new ol.control.FullScreen()
+                            ]),
+                            interactions: ol.interaction.defaults().extend([
+                                new ol.interaction.DragRotateAndZoom()
                             ]),
                             view: new ol.View({
                                 projection: "EPSG:3857",

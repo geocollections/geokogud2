@@ -70,9 +70,9 @@ public class StratigraphyApiServiceImpl implements StratigraphyApiService {
                 .buildDefaultFieldsQuery();
         return apiService.searchRawEntities(
                 STRATIGRAPHY_TABLE,
-                    searchCriteria.getPage(),
-                    searchCriteria.getSortField(),
-                    requestParams);
+                searchCriteria.getPage(),
+                searchCriteria.getSortField(),
+                requestParams);
     }
 
     private FluentStratigraphySearchApiBuilder prepareCommonFields(StratigraphySearchCriteria searchCriteria) {
