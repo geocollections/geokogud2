@@ -5,13 +5,11 @@
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
                 <div class="row">
-                    <h3 class="search-heading"><span data-toggle="tooltip" data-placement="bottom"
-                                                     title="{{ 'SEARCH.STRATIGRAPHY.HEADING' | translate }}">{{ 'SEARCH.STRATIGRAPHY.STRATIGRAPHY' | translate }}</span> <span
-                            class="badge badge-info">{{response.count}}</span>
-                        <!--<button type="submit" value="showHint" class="btn btn-info btn-sm pull-right"-->
-                                <!--data-ng-click="showHint()">-->
-                            <!--<span class="glyphicon glyphicon-question-sign"></span> {{ 'SEARCH.FAQ' | translate }}-->
-                        <!--</button>-->
+                    <h3 class="search-heading">
+                        <span data-toggle="tooltip" data-placement="bottom" title="{{ 'SEARCH.STRATIGRAPHY.HEADING' | translate }}">
+                            {{ 'SEARCH.STRATIGRAPHY.STRATIGRAPHY' | translate }}
+                        </span>
+                        <span class="badge badge-info">{{response.count}}</span>
                     </h3>
                 </div>
                 <div class="visible-xs">
@@ -58,8 +56,9 @@
                                                        ng-model="searchParameters.index.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.index.name" sort-by="{{searchParameters.index.lookUpType}}" table="stratigraphy" en="null" et="index_main,index_additional" />
-                                        <!--<input type="text" ng-model="searchParameters.index.name" class="form-control"/>-->
+                                        <!--TODO: have to make autocomplete working for multiple fields-->
+                                        <!--<autocomplete-field ng-model="searchParameters.index.name" sort-by="{{searchParameters.index.lookUpType}}" table="stratigraphy" en="null" et="index_main,index_additional" />-->
+                                        <input type="text" ng-model="searchParameters.index.name" class="form-control"/>
                                     </div>
                                 </div>
                                 <div class="row searchCriterion">

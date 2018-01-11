@@ -95,7 +95,12 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
                 }
             }
             if ((['samples'].indexOf($stateParams.type) > -1)) {
-                //    TODO: Add searchparameter fields
+                if ($scope.searchParameters.id.name != null || $scope.searchParameters.country.name != null ||
+                    $scope.searchParameters.location.name != null || $scope.searchParameters.taxon.name != null ||
+                    $scope.searchParameters.frequency.name != null || $scope.searchParameters.analysisMethod.name != null ||
+                    $scope.searchParameters.component.name != null || $scope.searchParameters.content.name != null) {
+                    $scope.isLocationFieldsCollapsed = false;
+                }
             }
             if ((['specimens'].indexOf($stateParams.type) > -1)) {
                 //    TODO: Add searchparameter fields

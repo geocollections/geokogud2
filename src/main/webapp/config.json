@@ -127,19 +127,19 @@
         },
       "sample" : {
         "fields": {
-          "agent": "agent",
-          "analysisMethod": "analysis",
-          "component": "component",
-          "content": "content",
-          "country": "country",
-          "frequency": "frequency",
-          "id": "id",
-          "locality": "locality",
-          "location": "location",
           "sampleNumber": "sample_number",
+          "locality": "locality",
           "stratigraphy": "stratigraphy",
           "stratigraphyBed": "stratigraphy_bed",
-          "taxon": "taxon"
+          "agent": "agent",
+          "id": "id",
+          "country": "country",
+          "location": "location",
+          "taxon": "taxon",
+          "frequency": "frequency",
+          "analysisMethod": "analysis",
+          "component": "component",
+          "content": "content"
         }
       },
       "specimen": {

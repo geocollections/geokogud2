@@ -137,12 +137,12 @@
                                                        ng-model="searchParameters.adminUnit.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <!--<input type="text" ng-model="searchParameters.adminUnit.name" class="form-control"/>-->
-                                        <autocomplete-field ng-model="searchParameters.adminUnit.name"
-                                                            sort-by="{{searchParameters.adminUnit.lookUpType}}"
-                                                            table="analysis"
-                                                            en="sample__locality__country__value_en,sample__locality__maakond__maakond_en,sample__locality__vald__vald_en,sample__locality__asustusyksus__asustusyksus_en"
-                                                            et="sample__locality__country__value,sample__locality__maakond__maakond,sample__locality__vald__vald,sample__locality__asustusyksus__asustusyksus"/>
+                                        <input type="text" ng-model="searchParameters.adminUnit.name" class="form-control"/>
+                                        <!--<autocomplete-field ng-model="searchParameters.adminUnit.name"-->
+                                                            <!--sort-by="{{searchParameters.adminUnit.lookUpType}}"-->
+                                                            <!--table="locality"-->
+                                                            <!--en="country__value_en,maakond__maakond_en,vald__vald_en,asustusyksus__asustusyksus_en,country__iso_code"-->
+                                                            <!--et="country__value,maakond__maakond,vald__vald,asustusyksus__asustusyksus,country__iso_code"/>-->
                                     </div>
                                 </div>
                             </div>

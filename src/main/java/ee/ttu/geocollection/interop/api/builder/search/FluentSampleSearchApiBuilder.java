@@ -25,6 +25,17 @@ public class FluentSampleSearchApiBuilder extends FluentSearchApiBuilder<FluentS
         return this;
     }
 
+    public FluentSampleSearchApiBuilder queryLocality(SearchField location) {
+        buildMultiSearch(location, LOCALITY_LOCALITY, LOCALITY_LOCALITY_EN, LOCALITY_FREE);
+        return this;
+    }
+
+    @Override
+    public FluentSampleSearchApiBuilder queryDepth(SearchField depth) {
+        buildMultiSearch(depth, DEPTH, DEPTH_INTERVAL);
+        return this;
+    }
+
     public FluentSampleSearchApiBuilder queryStratigraphy(SearchField stratigraphy) {
         buildMultiSearch(stratigraphy,
                 STRATIGRAPHY_STRATIGRAPHY,
@@ -36,12 +47,24 @@ public class FluentSampleSearchApiBuilder extends FluentSearchApiBuilder<FluentS
     }
 
     public FluentSampleSearchApiBuilder queryStratigraphyBed(SearchField stratigraphyBed) {
-        buildMultiSearch(stratigraphyBed, STRATIGRAPHY_BED, STRATIGRAPHY_STRATIGRAPHY_ENG);
+        buildMultiSearch(stratigraphyBed,
+                STRATIGRAPHY_BED,
+                STRATIGRAPHY_FREE,
+                LITHOSTRATIGRAPHY__STRATIGRAPHY,
+                LITHOSTRATIGRAPHY__STRATIGRAPHY_ENG);
         return this;
     }
 
-    public FluentSampleSearchApiBuilder queryLocality(SearchField location) {
-        buildMultiSearch(location, LOCALITY_LOCALITY, LOCALITY_LOCALITY_EN, LOCALITY_FREE);
+    public FluentSampleSearchApiBuilder queryAgent(SearchField agent) {
+        buildMultiSearch(agent,
+                AGENT_COLLECTED,
+                AGENT_COLLECTED__FORENAME,
+                AGENT_COLLECTED__SURENAME);
+        return this;
+    }
+
+    public FluentSampleSearchApiBuilder queryMass(SearchField mass) {
+        buildFieldParameters(MASS, mass);
         return this;
     }
 
@@ -59,24 +82,8 @@ public class FluentSampleSearchApiBuilder extends FluentSearchApiBuilder<FluentS
         return this;
     }
 
-    @Override
-    public FluentSampleSearchApiBuilder queryDepth(SearchField depth) {
-        buildMultiSearch(depth, DEPTH, DEPTH_INTERVAL);
-        return this;
-    }
-
-    public FluentSampleSearchApiBuilder querySoilSiteId(SearchField soilSiteId) {
-        buildFieldParameters(SOIL_SITE_ID, soilSiteId);
-        return this;
-    }
-
-    public FluentSampleSearchApiBuilder queryMass(SearchField mass) {
-        buildFieldParameters(MASS, mass);
-        return this;
-    }
-
-    public FluentSampleSearchApiBuilder queryAgent(SearchField agent) {
-        buildFieldParameters(AGENT_COLLECTED, agent);
+    public FluentSampleSearchApiBuilder queryLocation(SearchField location) {
+        buildFieldParameters(LOCATION, location);
         return this;
     }
 
@@ -85,13 +92,13 @@ public class FluentSampleSearchApiBuilder extends FluentSearchApiBuilder<FluentS
         return this;
     }
 
-    public FluentSampleSearchApiBuilder queryAnalysisMethod(SearchField analysisMethod) {
-        buildMultiSearch(analysisMethod, ANALYSIS_METHOD, ANALYSIS_METHOD_EN);
+    public FluentSampleSearchApiBuilder queryFrequency(SearchField agent) {
+        buildFieldParameters(TAXONLIST__FREQUENCY, agent);
         return this;
     }
 
-    public FluentSampleSearchApiBuilder queryFrequency(SearchField agent) {
-        buildFieldParameters(TAXONLIST__FREQUENCY, agent);
+    public FluentSampleSearchApiBuilder queryAnalysisMethod(SearchField analysisMethod) {
+        buildMultiSearch(analysisMethod, ANALYSIS_METHOD, ANALYSIS_METHOD_EN);
         return this;
     }
 
@@ -122,11 +129,6 @@ public class FluentSampleSearchApiBuilder extends FluentSearchApiBuilder<FluentS
 
     public FluentSampleSearchApiBuilder returnAnalyzed() {
         addReturningField(ANALYZED);
-        return this;
-    }
-
-    public FluentSampleSearchApiBuilder queryLocation(SearchField location) {
-        buildFieldParameters(LOCATION, location);
         return this;
     }
 
