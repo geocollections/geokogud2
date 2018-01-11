@@ -17,7 +17,7 @@ public class AnalysesSearchCriteria {
     private SearchField stratigraphyBed;
     private SearchField analysisMethod;
     private SearchField componentAnalysed;
-    private SearchField componentContent;
+    private SearchField content;
     private SearchField sample;
     private SearchField adminUnit;
 //    private SearchField methodDetails;
@@ -148,10 +148,10 @@ public class AnalysesSearchCriteria {
     }
 
     public SearchField getContent() {
-        return componentContent;
+        return content;
     }
 
-    public void setContent(SearchField componentContent) {
-        this.componentContent = componentContent;
+    public void setContent(SearchField content) {
+        this.content = content;
     }
 }

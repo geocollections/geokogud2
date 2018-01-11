@@ -2,37 +2,32 @@
 <section id="sectionSearch">
     <div id="searches" ng-include="'app/templates/main/partial/search.html'"></div>
     <div class="container-fluid" bs-loading-overlay bs-loading-overlay-reference-id="searchView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
+
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
+
                 <div class="row">
-                    <h3 class="search-heading">{{ 'SEARCH.SPECIMENS.HEADING' | translate }} <span class="badge badge-info">{{response.count}}</span>
-                        <!--<button type="submit" value="showHint" class="btn btn-info btn-sm pull-right"-->
-                                <!--data-ng-click="showHint()">-->
-                            <!--<span class="glyphicon glyphicon-question-sign"></span> {{ 'SEARCH.FAQ' | translate }}-->
-                        <!--</button>-->
+                    <h3 class="search-heading">{{ 'SEARCH.SPECIMENS.HEADING' | translate }}
+                        <span class="badge badge-info">{{response.count}}</span>
                     </h3>
                 </div>
+
                 <div class="row">
                     <div class="checkbox">
-                        <!--<div class="col-lg-12">-->
-                            <!--<button class="btn btn-info btn-sm" type="submit" value="showMap" title="{{ 'SEARCH.SHOW_MAP' | translate }}" data-ng-click="showMap()">-->
-                                <!--<i class="cr-icon gylphicon glyphicon-ok"></i>-->
-                                <!--<span>{{ 'SEARCH.SHOW_MAP_BUTTON' | translate }}</span>-->
-                            <!--</button>-->
-                        <!--</div>-->
                         <label>
-                            <input type="checkbox"
-                                   value="showMap"
-                                   data-ng-click="showMap()">
+                            <input type="checkbox" value="showMap" data-ng-click="showMap()">
                             <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                             {{ 'SEARCH.SHOW_MAP' | translate }}
                         </label>
                     </div>
                 </div>
+
                 <div class="visible-xs">
                     <div class="row search-hint" ng-bind-html="main.getContent(main.searchTips)" data-ng-if="isHintHidden"></div>
                 </div>
+
                 <form ng-enter="search()">
+
                     <div class="row">
                         <div class="checkbox">
                             <checkbox-field name = 'SEARCH.SEARCH_IMAGES' ng-model="searchParameters.searchImages"></checkbox-field>
@@ -49,8 +44,10 @@
                                 <section-opened-icon is-opened="isIdentifierFieldsCollapsed"/>
                             </h4>
                         </div>
+
                         <div uib-collapse="isIdentifierFieldsCollapsed">
                             <div class="well well-lg">
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.NUMBER' | translate }}</b>
@@ -58,10 +55,10 @@
                                                        ng-model="searchParameters.specimenNumber.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <input id="inputSpecimenNumber" type="text" ng-model="searchParameters.specimenNumber.name"
-                                               class="form-control"/>
+                                        <input type="text" ng-model="searchParameters.specimenNumber.name" class="form-control"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.COLLECTION_NUMBER' | translate }}</b>
@@ -70,10 +67,12 @@
                                                       ng-model="searchParameters.collectionNumber.lookUpType"></selecttemporary>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <input type="text" ng-model="searchParameters.collectionNumber.name"
-                                               class="form-control"/>
+                                        <autocomplete-field ng-model="searchParameters.collectionNumber.name" sort-by="{{searchParameters.collectionNumber.lookUpType}}"
+                                                            table="collection" en="null" et="number"/>
+                                        <!--<input type="text" ng-model="searchParameters.collectionNumber.name" class="form-control"/>-->
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.CLASSIFICATION_NUMBER' | translate }}</b>
@@ -85,6 +84,7 @@
                                         <autocomplete-field ng-model="searchParameters.classification.name" sort-by="{{searchParameters.classification.lookUpType}}" table="classification" en="class_en" et="class_field"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.NAME_OF_ROCK' | translate }}</b>
@@ -95,6 +95,7 @@
                                         <autocomplete-field ng-model="searchParameters.fossilName.name" sort-by="{{searchParameters.fossilName.lookUpType}}" table="taxon" en="null" et="taxon"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.MINERAL_ROCK' | translate }}</b>
@@ -106,6 +107,7 @@
                                         <autocomplete-field ng-model="searchParameters.mineralRock.name" sort-by="{{searchParameters.mineralRock.lookUpType}}" table="rock" en="name_en" et="name"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.COUNTRY_COUNTY_PARISH' | translate }}</b>
@@ -113,9 +115,14 @@
                                                        ng-model="searchParameters.adminUnit.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
+                                        <!--<autocomplete-field ng-model="searchParameters.adminUnit.name" sort-by="{{searchParameters.adminUnit.lookUpType}}"-->
+                                                            <!--table="locality"-->
+                                                            <!--en="country__value_en,maakond__maakond_en,vald__vald_en,asustusyksus__asustusyksus_en,country__iso_code"-->
+                                                            <!--et="country__value,maakond__maakond,vald__vald,asustusyksus__asustusyksus,country__iso_code"/>-->
                                         <input type="text" ng-model="searchParameters.adminUnit.name" class="form-control"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.LOCALITY' | translate }}</b>
@@ -127,6 +134,7 @@
                                         <autocomplete-field ng-model="searchParameters.locality.name" sort-by="{{searchParameters.locality.lookUpType}}" table="locality" en="locality_en" et="locality"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.STRATIGRAPHY' | translate }}</b>
@@ -138,9 +146,11 @@
                                         <autocomplete-field ng-model="searchParameters.stratigraphy.name" sort-by="{{searchParameters.stratigraphy.lookUpType}}" table="stratigraphy" en="stratigraphy_en" et="stratigraphy"/>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="panel-heading searchGroupHeading"
                              ng-click="isLocationFieldsCollapsed = !isLocationFieldsCollapsed">
@@ -148,8 +158,10 @@
                                 <section-opened-icon is-opened="isLocationFieldsCollapsed"/>
                             </h4>
                         </div>
+
                         <div uib-collapse="isLocationFieldsCollapsed">
                             <div class="well well-lg">
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.ID' | translate }}</b>
@@ -160,6 +172,7 @@
                                         <input type="text" ng-model="searchParameters.id.name" class="form-control"/>
                                     </div>
                                 </div>
+
                                 <!-- REMOVED TEMPORARILY 22.12.2017 -->
                                 <!--<div class="row searchCriterion">-->
                                     <!--<div class="col-md-12  medium-padding">-->
@@ -172,6 +185,7 @@
                                                <!--class="form-control"/>-->
                                     <!--</div>-->
                                 <!--</div>-->
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.DEPHT_M' | translate }}</b>
@@ -181,6 +195,7 @@
                                         <interval-field placeholder="{{'PLACEHOLDER_MAX' | translate}}" ng-model= "searchParameters.depthTo" lookup="lte"></interval-field >
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.COLLECTOR' | translate }}</b>
@@ -191,6 +206,7 @@
                                         <autocomplete-field ng-model="searchParameters.collector.name" sort-by="{{searchParameters.collector.lookUpType}}" table="specimen" en="null" et="agent_collected__agent"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.REFERENCE' | translate }}</b>
@@ -199,9 +215,9 @@
                                     </div>
                                     <div class="col-md-12 medium-padding">
                                         <autocomplete-field ng-model="searchParameters.reference.name" sort-by="{{searchParameters.reference.lookUpType}}" table="specimen_reference" en="null" et="reference__reference"/>
-                                        <!--<input type="text" ng-model="searchParameters.reference.name" class="form-control"/>-->
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.TYPE_STATUS' | translate }}</b>
@@ -212,6 +228,7 @@
                                         <autocomplete-field ng-model="searchParameters.typeStatus.name" sort-by="{{searchParameters.typeStatus.lookUpType}}" table="specimen" en="original_status__value_en" et="original_status__value"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.PART_OF_FOSSIL' | translate }}</b>
@@ -219,9 +236,11 @@
                                                        ng-model="searchParameters.partOfFossil.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <input type="text" ng-model="searchParameters.partOfFossil.name" class="form-control"/>
+                                        <autocomplete-field ng-model="searchParameters.partOfFossil.name" sort-by="{{searchParameters.partOfFossil.lookUpType}}"
+                                                            table="specimen" en="null" et="part" />
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.KEYWORDS' | translate }}</b>
@@ -232,15 +251,28 @@
                                         <input type="text" ng-model="searchParameters.keyWords.name" class="form-control"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.REG_DATE' | translate }}</b>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <common-datetimepicker placeholder="{{'PLACEHOLDER_SINCE' | translate}}" ng-model="searchParameters.regDateStart" lookup="gte"></common-datetimepicker>
-                                        <common-datetimepicker placeholder="{{'PLACEHOLDER_TO' | translate}}" ng-model="searchParameters.regDateEnd" lookup="lte"></common-datetimepicker>
+                                        <common-datetimepicker placeholder="{{'PLACEHOLDER_SINCE' | translate}}" ng-model="searchParameters.dateTakenSince" lookup="gte"></common-datetimepicker>
+                                        <common-datetimepicker placeholder="{{'PLACEHOLDER_TO' | translate}}" ng-model="searchParameters.dateTakenTo" lookup="lte"></common-datetimepicker>
                                     </div>
                                 </div>
+
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12  medium-padding">
+                                        <b>{{ 'SEARCH.SPECIMENS.ROCK_ID' | translate }}</b>
+                                        <selectexact custom-css="searchCriterionType"
+                                                     ng-model="searchParameters.rockId.lookUpType"></selectexact>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="text" ng-model="searchParameters.rockId.name" class="form-control"/>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

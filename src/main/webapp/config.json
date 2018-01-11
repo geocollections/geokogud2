@@ -75,7 +75,7 @@
           "stratigraphyBed": "stratigraphy_bed",
           "analysisMethod": "analysis",
           "componentAnalysed": "component",
-          "componentContent": "content",
+          "content": "content",
           "sample": "sample_id",
           "adminUnit": "country"
         }
@@ -144,7 +144,6 @@
       },
       "specimen": {
           "fields": {
-            "id": "id",
             "specimenNumber": "specimen_number",
             "collectionNumber": "collection_id",
             "classification": "classification",
@@ -154,12 +153,13 @@
             "adminUnit": "country",
             "locality": "locality",
             "stratigraphy": "stratigraphy",
+            "id": "id",
             "collector": "agent",
             "reference": "reference",
             "typeStatus": "original_type",
             "partOfFossil": "part",
             "keyWords": "tags",
-            "regDateStart": "date_added"
+            "rockId": "rock_id"
           }
       },
       "specialFields" : [

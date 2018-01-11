@@ -200,7 +200,8 @@
             "IMAGES": "Pildid",
             "OLD_SPECIMEN_NUMBER": "Vana nr.",
             "DEPTH_M": "",
-            "LITHOSTRATIGRAPHY": "Litostratigraafia"
+            "LITHOSTRATIGRAPHY": "Litostratigraafia",
+            "ROCK_ID": "Kivimi ID"
         },
         "SAMPLES": {
             "HEADING": "Proovid",

@@ -20,8 +20,47 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
         return this;
     }
 
+    public FluentSpecimenSearchApiBuilder queryCollectionNumber(SearchField collectionNumber) {
+        buildFieldParameters(COLL__NUMBER, collectionNumber);
+        return this;
+    }
+
     public FluentSpecimenSearchApiBuilder queryClassification(SearchField classification) {
         buildMultiSearch(classification, CLASSIFICATION__CLASS_FIELD, CLASSIFICATION__CLASS_EN);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryFossilMineralRock(SearchField fossilMineralRock) {
+        buildMultiSearch(fossilMineralRock, KIND__VALUE, KIND__VALUE_EN);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryNameOfFossil(SearchField nameOfFossil) {
+        buildMultiSearch(nameOfFossil, SPECIMENIDENTIFICATION__NAME, SPECIMENIDENTIFICATION__TAXON__TAXON);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryMineralRock(SearchField mineralRock) {
+        buildMultiSearch(
+                mineralRock,
+                SPECIMENIDENTIFICATIONGEOLOGIES__NAME,
+                SPECIMENIDENTIFICATIONGEOLOGIES__NAME_EN,
+                SPECIMENIDENTIFICATIONGEOLOGIES__ROCK__NAME,
+                SPECIMENIDENTIFICATIONGEOLOGIES__ROCK__NAME_EN);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryAdminUnit(SearchField adminUnit) {
+        buildMultiSearch(
+                adminUnit,
+                LOCALITY_COUNTRY,
+                LOCALITY_COUNTRY_ENG,
+                LOCALITY__MAAKOND__MAAKOND,
+                LOCALITY__MAAKOND__MAAKOND_EN,
+                LOCALITY__VALD__VALD,
+                LOCALITY__VALD__VALD_ENG,
+                LOCALITY__ASUSTUSYKSUS__ASUSTUSYKSUS,
+                LOCALITY__ASUSTUSYKSUS__ASUSTUSYKSUS_EN);
         return this;
     }
 
@@ -41,54 +80,9 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
         return this;
     }
 
-    public FluentSpecimenSearchApiBuilder queryAdminUnit(SearchField adminUnit) {
-        buildMultiSearch(
-                adminUnit,
-                LOCALITY_COUNTRY,
-                LOCALITY_COUNTRY_ENG,
-                LOCALITY__MAAKOND__MAAKOND,
-                LOCALITY__MAAKOND__MAAKOND_EN,
-                LOCALITY__VALD__VALD,
-                LOCALITY__VALD__VALD_ENG,
-                LOCALITY__ASUSTUSYKSUS__ASUSTUSYKSUS,
-                LOCALITY__ASUSTUSYKSUS__ASUSTUSYKSUS_EN);
-        return this;
-    }
-
     @Override
     public FluentSpecimenSearchApiBuilder queryDepth(SearchField depth) {
         buildMultiSearch(depth, DEPTH, DEPTH_INTERVAL);
-        return this;
-    }
-
-    public FluentSpecimenSearchApiBuilder queryMineralRock(SearchField mineralRock) {
-        buildMultiSearch(
-                mineralRock,
-                SPECIMENIDENTIFICATIONGEOLOGIES__NAME,
-                SPECIMENIDENTIFICATIONGEOLOGIES__NAME_EN,
-                SPECIMENIDENTIFICATIONGEOLOGIES__ROCK__NAME,
-                SPECIMENIDENTIFICATIONGEOLOGIES__ROCK__NAME_EN);
-        return this;
-    }
-
-    public FluentSpecimenSearchApiBuilder queryCollectionNumber(SearchField collectionNumber) {
-        buildFieldParameters(COLL__NUMBER, collectionNumber);
-//        buildMultiSearch(collectionNumber, COLL__NUMBER);
-        return this;
-    }
-
-    public FluentSpecimenSearchApiBuilder queryDateAdded(SearchField dateAdded) {
-        buildFieldParameters(DATA_ADDED, dateAdded);
-        return this;
-    }
-
-    public FluentSpecimenSearchApiBuilder queryPartOfFossil(SearchField partOfFossil) {
-        buildFieldParameters(PART, partOfFossil);
-        return this;
-    }
-
-    public FluentSpecimenSearchApiBuilder queryOriginalStatus(SearchField typeStatus) {
-        buildMultiSearch(typeStatus, ORIGINAL_STATUS__VALUE, ORIGINAL_STATUS__VALUE_EN);
         return this;
     }
 
@@ -106,18 +100,28 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
         return this;
     }
 
-    public FluentSpecimenSearchApiBuilder queryNameOfFossil(SearchField nameOfFossil) {
-        buildMultiSearch(nameOfFossil, SPECIMENIDENTIFICATION__NAME, SPECIMENIDENTIFICATION__TAXON__TAXON);
+    public FluentSpecimenSearchApiBuilder queryOriginalStatus(SearchField typeStatus) {
+        buildMultiSearch(typeStatus, ORIGINAL_STATUS__VALUE, ORIGINAL_STATUS__VALUE_EN);
         return this;
     }
 
-    public FluentSpecimenSearchApiBuilder queryFossilMineralRock(SearchField fossilMineralRock) {
-        buildMultiSearch(fossilMineralRock, KIND__VALUE, KIND__VALUE_EN);
+    public FluentSpecimenSearchApiBuilder queryPartOfFossil(SearchField partOfFossil) {
+        buildFieldParameters(PART, partOfFossil);
         return this;
     }
 
     public FluentSpecimenSearchApiBuilder queryKeywords(SearchField keyWords) {
         buildFieldParameters(TAGS, keyWords);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryDateAdded(SearchField dateAdded) {
+        buildFieldParameters(DATA_ADDED, dateAdded);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryRockId(SearchField rockId) {
+        buildFieldParameters(SPECIMENIDENTIFICATIONGEOLOGIES__ROCK__ID, rockId);
         return this;
     }
 

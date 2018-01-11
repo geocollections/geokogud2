@@ -10,7 +10,6 @@ public class SpecimenSearchCriteria implements PageableSearchCriteria{
     private int page = 1;
     private SortField sortField;
 
-    private SearchField id;
     private SearchField specimenNumber;
     private SearchField collectionNumber;
     private SearchField classification;
@@ -19,16 +18,18 @@ public class SpecimenSearchCriteria implements PageableSearchCriteria{
     private SearchField mineralRock;
     private SearchField adminUnit;
     private SearchField locality;
+    private SearchField stratigraphy;
     private SearchField depthSince;
     private SearchField depthTo;
-    private SearchField stratigraphy;
+    private SearchField id;
     private SearchField collector;
     private SearchField reference;
     private SearchField typeStatus;
     private SearchField partOfFossil;
     private SearchField keyWords;
-    private SearchField regDateStart;
-    private SearchField regDateEnd;
+    private SearchField dateTakenSince;
+    private SearchField dateTakenTo;
+    private SearchField rockId;
     private List<String> dbs;
     private SearchField searchImages;
 
@@ -184,20 +185,28 @@ public class SpecimenSearchCriteria implements PageableSearchCriteria{
         this.keyWords = keyWords;
     }
 
-    public SearchField getRegDateStart() {
-        return regDateStart;
+    public SearchField getDateTakenSince() {
+        return dateTakenSince;
     }
 
-    public void setRegDateStart(SearchField regDateStart) {
-        this.regDateStart = regDateStart;
+    public void setDateTakenSince(SearchField dateTakenSince) {
+        this.dateTakenSince = dateTakenSince;
     }
 
-    public SearchField getRegDateEnd() {
-        return regDateEnd;
+    public SearchField getDateTakenTo() {
+        return dateTakenTo;
     }
 
-    public void setRegDateEnd(SearchField regDateEnd) {
-        this.regDateEnd = regDateEnd;
+    public void setDateTakenTo(SearchField dateTakenTo) {
+        this.dateTakenTo = dateTakenTo;
+    }
+
+    public SearchField getRockId() {
+        return rockId;
+    }
+
+    public void setRockId(SearchField rockId) {
+        this.rockId = rockId;
     }
 
     @Override

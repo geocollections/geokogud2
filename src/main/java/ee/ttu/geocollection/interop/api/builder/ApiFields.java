@@ -5,6 +5,7 @@ public class ApiFields {
 
     // Fields used in SPECIMEN search
     public static final String SPECIMENIDENTIFICATION__TAXON_ID = "specimenidentification__taxon_id";
+    public static final String SPECIMENIDENTIFICATIONGEOLOGIES__ROCK__ID = "specimenidentificationgeologies__rock__id";
 
     // SOIL search
     public static final String SITE = "site";

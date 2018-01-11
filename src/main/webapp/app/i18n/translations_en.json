@@ -200,7 +200,8 @@
             "IMAGES": "Images",
             "OLD_SPECIMEN_NUMBER": "Old specimen #",
             "DEPTH_M": "",
-            "LITHOSTRATIGRAPHY": "Lithostratigraphy"
+            "LITHOSTRATIGRAPHY": "Lithostratigraphy",
+            "ROCK_ID": "Rock ID"
         },
         "SAMPLES": {
             "HEADING": "Samples",

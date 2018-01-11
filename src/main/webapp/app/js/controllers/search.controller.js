@@ -103,7 +103,13 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
                 }
             }
             if ((['specimens'].indexOf($stateParams.type) > -1)) {
-                //    TODO: Add searchparameter fields
+                // if ($scope.searchParameters.id.name != null || $scope.searchParameters.collector.name != null ||
+                //     $scope.searchParameters.reference.name != null || $scope.searchParameters.typeStatus.name != null ||
+                //     $scope.searchParameters.partOfFossil.name != null || $scope.searchParameters.keyWords.name != null ||
+                //     $scope.searchParameters.dateTakenSince.name != null || $scope.searchParameters.dateTakenSince.name != null ||
+                //     $scope.searchParameters.rockId.name != null) {
+                //     $scope.isLocationFieldsCollapsed = false;
+                // }
             }
 
 
@@ -318,7 +324,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
 
     function resetSearchParametersToDefault() {
         if (['specimens'].indexOf($stateParams.type) > -1) {
-            $scope.searchParameters = JSON.parse('{"sortField":{"sortBy":"id","order":"DESCENDING"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],"searchImages":{"lookUpType":"exact","name":null},"specimenNumber":{"lookUpType":"icontains"},"collectionNumber":{"lookUpType":"icontains"},"classification":{"lookUpType":"icontains"},"fossilName":{"lookUpType":"icontains"},"mineralRock":{"lookUpType":"icontains"},"adminUnit":{"lookUpType":"icontains"},"locality":{"lookUpType":"icontains"},"stratigraphy":{"lookUpType":"icontains"},"id":{"lookUpType":"iexact"},"fossilMineralRock":{"lookUpType":"icontains"},"collector":{"lookUpType":"icontains"},"reference":{"lookUpType":"icontains"},"typeStatus":{"lookUpType":"icontains"},"partOfFossil":{"lookUpType":"icontains"},"keyWords":{"lookUpType":"icontains"},"maxSize":5}');
+            $scope.searchParameters = JSON.parse('{"sortField":{"sortBy":"id","order":"DESCENDING"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],"searchImages":{"lookUpType":"exact","name":null},"specimenNumber":{"lookUpType":"icontains"},"collectionNumber":{"lookUpType":"icontains"},"classification":{"lookUpType":"icontains"},"fossilName":{"lookUpType":"icontains"},"mineralRock":{"lookUpType":"icontains"},"adminUnit":{"lookUpType":"icontains"},"locality":{"lookUpType":"icontains"},"stratigraphy":{"lookUpType":"icontains"},"id":{"lookUpType":"iexact"},"fossilMineralRock":{"lookUpType":"icontains"},"collector":{"lookUpType":"icontains"},"reference":{"lookUpType":"icontains"},"typeStatus":{"lookUpType":"icontains"},"partOfFossil":{"lookUpType":"icontains"},"keyWords":{"lookUpType":"icontains"},"dateTakenSince":{"lookUpType":"gte"},"dateTakenTo":{"lookUpType":"lte"},"rockId":{"lookUpType":"iexact"},"maxSize":5}');
         }
         if (['samples'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse('{"sortField":{"sortBy":"id","order":"DESCENDING"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],"sampleNumber":{"lookUpType":"icontains"},"locality":{"lookUpType":"icontains"},"stratigraphy":{"lookUpType":"icontains"},"stratigraphyBed":{"lookUpType":"icontains"},"agent":{"lookUpType":"icontains"},"id":{"lookUpType":"iexact"},"country":{"lookUpType":"icontains"},"location":{"lookUpType":"icontains"},"taxon":{"lookUpType":"icontains"},"frequency":{"lookUpType":"iexact"},"analysisMethod":{"lookUpType":"icontains"},"component":{"lookUpType":"icontains"},"content":{"lookUpType":"iexact"},"maxSize":5}');
