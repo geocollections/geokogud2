@@ -2,15 +2,15 @@ import org.apache.tools.ant.taskdefs.condition.Os
 
 buildscript {
     ext {
-        springBootVersion = '1.5.1.RELEASE'
+        springBootVersion = '1.5.9.RELEASE'
     }
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("io.spring.gradle:dependency-management-plugin:1.0.0.RELEASE")
-        classpath 'org.flywaydb:flyway-gradle-plugin:3.2.1'
+//        classpath("io.spring.gradle:dependency-management-plugin:1.0.0.RELEASE")
+//        classpath 'org.flywaydb:flyway-gradle-plugin:3.2.1'
     }
 }
 
@@ -19,8 +19,8 @@ apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'war'
 apply plugin: 'idea'
-apply plugin: 'io.spring.dependency-management'
-apply plugin: 'org.flywaydb.flyway'
+//apply plugin: 'io.spring.dependency-management'
+//apply plugin: 'org.flywaydb.flyway'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -71,7 +71,7 @@ sourceSets {
     }
 }
 dependencies {
-    ext.poiVersion = '3.14'
+    ext.poiVersion = '3.17'
 
     compile 'org.springframework.boot:spring-boot-starter-web'
 //    compile 'org.springframework.boot:spring-boot-devtools'
@@ -95,7 +95,7 @@ dependencies {
     compile('net.sf.ehcache:ehcache:2.10.0') {
         exclude group: 'commons-logging'
     }
-    compile 'org.flywaydb:flyway-core:3.2.1'
+//    compile 'org.flywaydb:flyway-core:3.2.1'
     compile 'org.apache.activemq:activemq-spring:5.11.1'
     compile 'commons-beanutils:commons-beanutils-core:1.8.3'
     compile 'org.ostermiller:utils:1.07.00'
@@ -124,7 +124,7 @@ dependencies {
 
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
 
-    compile group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.0.8'
+    compile group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.1.8'
     compile group: 'org.apache.lucene', name: 'lucene-core', version: '6.5.0'
     compile group: 'org.apache.lucene', name: 'lucene-grouping', version: '6.5.0'
 
@@ -158,12 +158,12 @@ clean {
     //delete sourceSets.generated.java.srcDirs
 }
 
-flyway {
-    url = 'jdbc:postgresql://localhost:5432/geodeesia'
-    user = 'geodeesia'
-    password = 'geodeesia'
-    outOfOrder = false
-}
+//flyway {
+//    url = 'jdbc:postgresql://localhost:5432/geodeesia'
+//    user = 'geodeesia'
+//    password = 'geodeesia'
+//    outOfOrder = false
+//}
 
 bootRun {
     jvmArgs = ["-Duser.timezone=Europe/Tallinn"]
@@ -171,7 +171,7 @@ bootRun {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.4.0'
+    gradleVersion = '4.4'
 }
 
 test {
