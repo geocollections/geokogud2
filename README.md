@@ -21,7 +21,7 @@ installed:
 
 ### Installing
 
-Install all libraries:
+Navigate to project folder and install all libraries:
 
 ```
 bower install
