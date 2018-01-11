@@ -45,22 +45,22 @@ public class DrillCoreApiServiceImpl implements DrillCoreApiService {
         "locality__locality_en"
     );
 
-    //https://api.arendus.geokogud.info/drillcore/?paginate_by=30&order_by=id&page=1&format=json
+    //https://api.arendus.geokogud.info/drillcore/?paginate_by=30&order_by=-id&page=1&format=json&distinct=true
     @Override
     public ApiResponse findDrillCore(DrillCoreSearchCriteria searchCriteria)  {
         String requestParams = FluentDrillCoreSearchApiBuilder.aRequest()
-                .queryId(searchCriteria.getId())
                 .queryDrillCore(searchCriteria.getDrillcore())
-                .queryBoxNumber(searchCriteria.getBoxNumber())
-                .queryStorageLocation(searchCriteria.getStorage())
-                .queryLocalityAdminUnit(searchCriteria.getAdminUnit())
                 .queryLocalityCountry(searchCriteria.getCountry())
                 .queryStratigraphy(searchCriteria.getStratigraphy())
-                .queryLocalityLatitude(searchCriteria.getLatitude())
-                .queryLocalityLongitude(searchCriteria.getLongitude())
+                .queryStorageLocation(searchCriteria.getStorageLocation())
                 .queryBoxes(searchCriteria.getBoxesSince())
                 .queryBoxes(searchCriteria.getBoxesTo())
-                .queryDepth(searchCriteria.getDepth())
+                .queryId(searchCriteria.getId())
+                .queryLocalityAdminUnit(searchCriteria.getAdminUnit())
+//                .queryBoxNumber(searchCriteria.getBoxNumber())
+//                .queryLocalityLatitude(searchCriteria.getLatitude())
+//                .queryLocalityLongitude(searchCriteria.getLongitude())
+//                .queryDepth(searchCriteria.getDepth())
                 .queryInstitutions(searchCriteria.getDbs())
                 .buildDefaultFieldsQuery();
         return apiService.searchRawEntities("drillcore", searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);

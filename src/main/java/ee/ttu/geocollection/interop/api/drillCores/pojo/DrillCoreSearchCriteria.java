@@ -11,7 +11,7 @@ public class DrillCoreSearchCriteria {
 
     private SearchField id;
     private SearchField drillcore;
-    private SearchField storage;
+    private SearchField storageLocation;
     private SearchField boxNumber;
     private SearchField country;
     private SearchField adminUnit;
@@ -73,12 +73,12 @@ public class DrillCoreSearchCriteria {
         this.drillcore = drillcore;
     }
 
-    public SearchField getStorage() {
-        return storage;
+    public SearchField getStorageLocation() {
+        return storageLocation;
     }
 
-    public void setStorage(SearchField storage) {
-        this.storage = storage;
+    public void setStorageLocation(SearchField storageLocation) {
+        this.storageLocation = storageLocation;
     }
 
     public SearchField getBoxNumber() {

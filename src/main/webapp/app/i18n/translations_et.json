@@ -232,7 +232,7 @@
             "STORAGE": "Hoiukoht",
             "BOX_COUNT": "Südamikukaste",
             "COUNTRY": "Riik",
-            "ADMIN_UNIT": "Admin. üksus",
+            "COUNTRY_COUNTY_PARISH": "Riik/Maakond/Vald",
             "TABLE": {
                 "DRILLCORE": "Puursüdamik",
                 "LATITUDE": "Laiuskraad",

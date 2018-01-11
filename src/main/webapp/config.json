@@ -117,12 +117,12 @@
       },
       "drillcore": {
         "fields": {
-          "id": "id",
           "drillcore": "drillcore",
           "country": "country",
-          "county": "county",
           "stratigraphy": "stratigraphy",
-          "storageLocation": "location"
+          "storageLocation": "location",
+          "id": "id",
+          "adminUnit": "county"
         }
         },
       "sample" : {

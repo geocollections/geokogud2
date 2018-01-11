@@ -232,7 +232,7 @@
             "STORAGE": "Storage",
             "BOX_COUNT": "Box count",
             "COUNTRY": "Country",
-            "ADMIN_UNIT": "Admin. unit",
+            "COUNTRY_COUNTY_PARISH": "Country/County/Parish",
             "TABLE": {
                 "DRILLCORE": "Drillcore",
                 "LATITUDE": "Latitude (deg. deg.)",
