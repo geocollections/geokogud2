@@ -15,6 +15,8 @@ public class ApiResponse {
     private String pageInfo;
     @JsonProperty("results")
     private List<Map<String, Object>> result;
+    @JsonProperty("response")
+    private Map response;
     @JsonProperty("related_data")
     private Map<String, List> relatedData;
 
@@ -56,6 +58,14 @@ public class ApiResponse {
 
     public void setResult(List<Map<String, Object>> result) {
         this.result = result;
+    }
+
+    public Map getResponse() {
+        return response;
+    }
+
+    public void setResponse(Map response) {
+        this.response = response;
     }
 
     public int extractCurrentPageNumber() {

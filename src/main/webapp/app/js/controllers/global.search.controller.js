@@ -47,7 +47,8 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
 
         $scope.response = {
             results: [],
-            related_data: {}
+            related_data: {},
+            count: 0
         };
         $scope.selectedTab = $stateParams.tab;
     }
@@ -83,19 +84,51 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         if (result.data.length <= 7) {
             console.log(result.data);
 
-            var sortedResult = sortIntoRightQueue(result);
+            for (var index in result.data) {
+                var response = result.data[index].response;
+                console.log(response.numFound);
 
-            for (var data in sortedResult) {
-                // Null check is already been done in sortIntoRightQueue function
-                // Last result is going to be active tab because it is already sorted into correct queue
-                $scope.selectedTab = sortedResult[data].table;
-
-                $scope.searchResults[sortedResult[data].table] = sortedResult[data];
-                if (sortedResult[data].table === $scope.selectedTab) {
-                    $scope.response.results = sortedResult[data].results;
-                    $scope.response.related_data = sortedResult[data].related_data;
+                if (index === "0") {
+                    $scope.selectedTab = "specimen";
+                } else if (index === "1") {
+                    $scope.selectedTab = "sample";
                 }
+
+                $scope.searchResults[$scope.selectedTab] = response.docs;
+
+                if ($scope.selectedTab === "specimen") {
+                    $scope.response.count = response.numFound;
+                    $scope.response.results = $scope.searchResults["specimen"];
+                } else if ($scope.selectedTab === "sample") {
+                    $scope.response.count = $scope.searchResults["sample"].numFound;
+                    $scope.response.results = $scope.searchResults["sample"];
+                }
+                console.log($scope.response);
+
             }
+
+            //
+            // for (var data in sortedResult) {
+            //     $scope.searchResults[sortedResult[data].table] = sortedResult[data];
+            //     if (sortedResult[data].table === $scope.selectedTab) {
+            //         $scope.response.results = sortedResult[data].results;
+            //         $scope.response.related_data = sortedResult[data].related_data;
+            //     }
+            // }
+            // var sortedResult = sortIntoRightQueue(result);
+            //
+            // for (var data in sortedResult) {
+            //     console.log(data);
+            //     // Null check is already been done in sortIntoRightQueue function
+            //     // Last result is going to be active tab because it is already sorted into correct queue
+            //     $scope.selectedTab = sortedResult[data].table;
+            //
+            //     $scope.searchResults[sortedResult[data].table] = sortedResult[data];
+            //     if (sortedResult[data].table === $scope.selectedTab) {
+            //         $scope.response.results = sortedResult[data].results;
+            //         $scope.response.related_data = sortedResult[data].related_data;
+            //     }
+            // }
 
             vm.searchLoadingHandler.stop();
 
@@ -178,7 +211,8 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
      */
     $scope.getResultsLength = function (tab) {
         if ($scope.searchResults[tab].results != null) {
-            return $scope.searchResults[tab].results.length;
+            // return $scope.searchResults[tab].results.length;
+            return $scope.searchResults[tab].results.count;
         } else {
             return 0;
         }

@@ -53,6 +53,7 @@ public class App extends SpringBootServletInitializer {
         });
         app.run(args);
 
+        // Bypasses certification problem START
         TrustManager[] trustAllCerts = new TrustManager[]{
                 new X509ExtendedTrustManager() {
                     @Override
@@ -83,6 +84,7 @@ public class App extends SpringBootServletInitializer {
         SSLContext sslContext = SSLContext.getInstance("SSL");
         sslContext.init(null, trustAllCerts, new SecureRandom());
         HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
+        // Bypasses certification problem END
     }
 
     @Override

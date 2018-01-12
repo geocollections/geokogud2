@@ -6,6 +6,8 @@ import ee.ttu.geocollection.indexing.GlobalSearchService;
 import ee.ttu.geocollection.indexing.IndexingProperties;
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,14 +20,20 @@ public class GlobalSearchServiceImpl implements GlobalSearchService {
 
     @Autowired
     private IndexingProperties indexingProperties;
+
     @Autowired
     private AppConfig appConfig;
 
     @Autowired
     private List<AbstractIndexingService> indexServices;
 
+    private static final Logger logger = LoggerFactory.getLogger(GlobalSearchServiceImpl.class);
+
     @Override
     public Iterable searchGlobally(String query) {
+
+        logger.trace("QUERY: " + query);
+
         if (indexingProperties.isIndexingEnabled()) {
             return Observable.fromIterable(indexServices)
                     .flatMap(abstractIndexingService ->

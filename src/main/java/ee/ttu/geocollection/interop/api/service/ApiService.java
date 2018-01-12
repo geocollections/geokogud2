@@ -46,5 +46,5 @@ public interface ApiService {
      */
     Map searchByField(String table, String term, String sortField, String searchField);
 
-//    ApiResponse searchRawEntitiesUsingSolr(String tableName, int paginateBy, int page, SortField sordtfield, String requestParams);
+    ApiResponse searchRawEntitiesUsingSolr(String tableName, int paginateBy, int page, SortField sordtfield, String requestParams);
 }

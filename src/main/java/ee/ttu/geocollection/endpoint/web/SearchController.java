@@ -6,6 +6,7 @@ import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.indexing.GlobalSearchService;
 import ee.ttu.geocollection.interop.api.AsynchService;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
+import ee.ttu.geocollection.interop.api.Response.SolrResponse;
 import ee.ttu.geocollection.interop.api.analyses.pojo.AnalysesSearchCriteria;
 import ee.ttu.geocollection.interop.api.analyses.search.AnalysesApiService;
 import ee.ttu.geocollection.interop.api.doi.pojo.DoiSearchCriteria;
@@ -21,12 +22,14 @@ import ee.ttu.geocollection.interop.api.preparations.pojo.PreparationsSearchCrit
 import ee.ttu.geocollection.interop.api.reference.pojo.ReferenceSearchCriteria;
 import ee.ttu.geocollection.interop.api.reference.service.ReferenceApiService;
 import ee.ttu.geocollection.interop.api.samples.pojo.SampleSearchCriteria;
+import ee.ttu.geocollection.interop.api.samples.service.SampleSolrService;
 import ee.ttu.geocollection.interop.api.samples.service.SamplesApiService;
 import ee.ttu.geocollection.interop.api.service.ApiService;
 import ee.ttu.geocollection.interop.api.soil.pojo.SoilSearchCriteria;
 import ee.ttu.geocollection.interop.api.soil.service.SoilApiService;
 import ee.ttu.geocollection.interop.api.specimen.pojo.SpecimenSearchCriteria;
 import ee.ttu.geocollection.interop.api.specimen.service.SpecimenApiService;
+import ee.ttu.geocollection.interop.api.specimen.service.SpecimenSolrService;
 import ee.ttu.geocollection.interop.api.stratigraphies.pojo.StratigraphySearchCriteria;
 import ee.ttu.geocollection.interop.api.stratigraphies.service.StratigraphyApiService;
 import org.slf4j.Logger;
@@ -34,6 +37,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 @RestController
@@ -42,39 +46,53 @@ public class SearchController extends ControllerHelper {
     private static final Logger logger = LoggerFactory.getLogger(SearchController.class);
 
     @Autowired
+    private ApiService apiService;
+    @Autowired
     private AsynchService asynchService;
+    @Autowired
+    private GlobalSearchService globalSearchService;
 
     @Autowired
-    private SamplesApiService samplesApiService;
+    private SpecimenSolrService specimenSolrService;
     @Autowired
-    private SoilApiService soilApiService;
+    private SampleSolrService sampleSolrService;
+
     @Autowired
     private SpecimenApiService specimenApiService;
     @Autowired
+    private SamplesApiService samplesApiService;
+    @Autowired
     private DrillCoreApiService drillCoreApiService;
     @Autowired
-    private ReferenceApiService referenceApiService;
-    @Autowired
-    private DoiApiService doiApiService;
-    @Autowired
-    private PhotoArchiveApiService photoArchiveApiService;
-    @Autowired
-    private PreparationsApiService preparationsApiService;
-    @Autowired
     private LocalitiesApiService localitiesApiService;
+    @Autowired
+    private ReferenceApiService referenceApiService;
     @Autowired
     private StratigraphyApiService stratigraphyApiService;
     @Autowired
     private AnalysesApiService analysesApiService;
     @Autowired
-    private ApiService apiService;
+    private PreparationsApiService preparationsApiService;
     @Autowired
-    private GlobalSearchService globalSearchService;
+    private PhotoArchiveApiService photoArchiveApiService;
+    @Autowired
+    private SoilApiService soilApiService;
+    @Autowired
+    private DoiApiService doiApiService;
 
     @GetMapping(value = "/global/{query}")
     public Iterable searchGlobally(@PathVariable String query) {
-        return globalSearchService.searchGlobally(query);
+        ArrayList<Map> responses = new ArrayList<>();
+        responses.add(specimenSolrService.findSpecimenByIndex(query));
+        responses.add(sampleSolrService.findSampleByIndex(query));
+        return responses;
+
+//        return globalSearchService.searchGlobally(query);
     }
+
+//    public Map searchGlobal(@PathVariable String query) {
+//        return globalSearchService.searchGlobally(query);
+//    }
 
     @GetMapping(value = "/autocomplete-field")
     public Map findDoiById(
@@ -84,6 +102,11 @@ public class SearchController extends ControllerHelper {
             @RequestParam("searchField") String searchField) {
         return apiService.searchByField(table, term, sortField, searchField);
     }
+
+//    @PostMapping(value = "/specimen")
+//    public Map searchSpecimenSolr(@RequestBody SpecimenSearchCriteria specimenSearchCriteria) {
+//        return specimenSolrService.findSpecimen(specimenSearchCriteria);
+//    }
 
     @PostMapping(value = "/specimen")
     public ApiResponse searchSpecimen(@RequestBody SpecimenSearchCriteria specimenSearchCriteria) {

@@ -11,6 +11,7 @@ import ee.ttu.geocollection.interop.api.reference.service.ReferenceApiService;
 import ee.ttu.geocollection.interop.api.samples.service.SamplesApiService;
 import ee.ttu.geocollection.interop.api.soil.service.SoilApiService;
 import ee.ttu.geocollection.interop.api.specimen.service.SpecimenApiService;
+import ee.ttu.geocollection.interop.api.specimen.service.SpecimenSolrService;
 import ee.ttu.geocollection.interop.api.stratigraphies.service.StratigraphyApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,6 +40,8 @@ public class DetailsController {
     @Autowired
     private SpecimenApiService specimenApiService;
     @Autowired
+    private SpecimenSolrService specimenSolrService;
+    @Autowired
     private StratigraphyApiService stratigraphyApiService;
     @Autowired
     private AnalysesApiService analysesApiService;
@@ -48,6 +51,7 @@ public class DetailsController {
     @RequestMapping(value = "/raw-specimen/{id}")
     public Map findRawSpecimenById(@PathVariable Long id) {
         return specimenApiService.findRawById(id);
+//        return specimenSolrService.findSpecimenById(id);
     }
 
     @RequestMapping(value = "/raw-specimen-image/{id}")

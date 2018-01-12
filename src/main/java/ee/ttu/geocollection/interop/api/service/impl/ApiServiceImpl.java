@@ -50,7 +50,10 @@ public class ApiServiceImpl implements ApiService {
         if (tableName.equals("drillcore_box")) {
             url = apiUrl + "/" + tableName + "/" + requestParams + "?format=json";
 
-        } else {
+        } else if (tableName.equals("specimen")) {
+            url = "http://193.40.102.11:8983/solr/specimen/select?q=*:*&rows=50";
+        }
+        else {
             url = apiUrl + "/" + tableName + "/" + requestParams + "&format=json";
         }
 
@@ -77,7 +80,7 @@ public class ApiServiceImpl implements ApiService {
                 + "?paginate_by=" + paginateBy + "&page=" + page
                 + "&order_by=" + getSortingDirection(sortField.getOrder()) + sortField.getSortBy()
                 + "&format=json&distinct=true"
-                + escapeParameters(requestParams);
+                + escapeParameters(requestParams);;
 
         logger.trace("Searching: " + url);
 
@@ -130,29 +133,29 @@ public class ApiServiceImpl implements ApiService {
         return response.getBody();
     }
 
-//    @Override
-//    public ApiResponse searchRawEntitiesUsingSolr(String tableName, int paginateBy, int page, SortField sortfield, String requestParams) {
-//        String url = "http://193.40.102.11:8983/solr/" + tableName
-//                + "/select?q=160&facet=true&rows=" + paginateBy
-//                + "&sort=date_added%20DESC&start=0";
-//
-//        logger.trace("Searching from solr: " + url);
-//
-//
-//        try {
-//            ApiResponse response = restTemplate.getForObject(new URI(url), ApiResponse.class);
-//            if (response != null) {
-//                response.setTable(tableName);
-//            }
-//            return response;
-//        } catch (HttpMessageNotReadableException e) {
-//            throw new AppException(AppError.BAD_REQUEST, e);
-//        } catch (HttpServerErrorException e) {
-//            throw new AppException(AppError.ERROR_API_UNAVAILABLE, e);
-//        } catch (URISyntaxException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    @Override
+    public ApiResponse searchRawEntitiesUsingSolr(String tableName, int paginateBy, int page, SortField sortfield, String requestParams) {
+        String url = "http://193.40.102.11:8983/solr/" + tableName
+                + "/select?q=160&facet=true&rows=" + paginateBy
+                + "&sort=date_added%20DESC&start=0";
+
+        logger.trace("Searching from solr: " + url);
+
+
+        try {
+            ApiResponse response = restTemplate.getForObject(new URI(url), ApiResponse.class);
+            if (response != null) {
+                response.setTable(tableName);
+            }
+            return response;
+        } catch (HttpMessageNotReadableException e) {
+            throw new AppException(AppError.BAD_REQUEST, e);
+        } catch (HttpServerErrorException e) {
+            throw new AppException(AppError.ERROR_API_UNAVAILABLE, e);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     /**
      * Adds nothing or "-" sign for api to understand if ordering is ascending or descending

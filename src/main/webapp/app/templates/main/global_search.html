@@ -28,8 +28,8 @@
             <div bs-loading-overlay bs-loading-overlay-reference-id="globalView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
-                    <div ng-if="selectedTab == 'specimen' && response.results.length > 0" non-isolated-include template-path="app/templates/search/specimen/specimen_results.html"></div>
-                    <div ng-if="selectedTab == 'sample' && response.results.length > 0" non-isolated-include template-path="app/templates/search/sample/sample_results.html"></div>
+                    <div ng-if="selectedTab == 'specimen'" non-isolated-include template-path="app/templates/search/specimen/specimen_results.html"></div>
+                    <div ng-if="selectedTab == 'sample'" non-isolated-include template-path="app/templates/search/sample/sample_results.html"></div>
                     <div ng-if="selectedTab == 'locality' && response.results.length > 0" non-isolated-include template-path="app/templates/search/locality/locality_results.html"></div>
                     <div ng-if="selectedTab == 'reference' && response.results.length > 0" non-isolated-include template-path="app/templates/search/reference/reference_results.html"></div>
                     <div ng-if="selectedTab == 'stratigraphy' && response.results.length > 0" non-isolated-include template-path="app/templates/search/stratigraphy/stratigraphy_results.html"></div>
