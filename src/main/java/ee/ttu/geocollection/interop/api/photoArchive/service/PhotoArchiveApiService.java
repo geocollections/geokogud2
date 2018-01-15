@@ -11,7 +11,5 @@ public interface PhotoArchiveApiService {
 
     Map findRawById(Long id);
 
-    ApiResponse findImagesForIndex(PhotoArchiveSearchCriteria searchCriteria);
-
     ApiResponse findImagesByIds(List<String> ids);
 }

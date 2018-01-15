@@ -19,7 +19,5 @@ public interface LocalitiesApiService {
 
     Map findLocalitiesSummaryFilter(LocalityMapFilter filters);
 
-    ApiResponse findLocalitiesForIndex(LocalitySearchCriteria searchCriteria);
-
     ApiResponse findLocalitiesByIds(Collection<String> ids);
 }

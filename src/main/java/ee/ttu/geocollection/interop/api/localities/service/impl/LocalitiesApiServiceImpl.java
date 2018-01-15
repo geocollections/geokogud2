@@ -1,7 +1,6 @@
 package ee.ttu.geocollection.interop.api.localities.service.impl;
 
 import ee.ttu.geocollection.domain.SortField;
-import ee.ttu.geocollection.indexing.IndexingProperties;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentLocalityImageSearchApiBuilder;
@@ -72,8 +71,6 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
 
     @Autowired
     private ApiService apiService;
-    @Autowired
-    private IndexingProperties indexingProperties;
 
     @Override
     public ApiResponse findLocality(LocalitySearchCriteria searchCriteria)  {
@@ -148,19 +145,6 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
         }
         requestParams += "format=json";
         return apiService.findRawEntity("locality_summary", requestParams);
-    }
-
-    @Override
-    public ApiResponse findLocalitiesForIndex(LocalitySearchCriteria searchCriteria) {
-        String requestParams = FluentLocalitySearchApiBuilder.aRequest()
-                .queryId(searchCriteria.getId()).andReturn()
-                .queryNumber(searchCriteria.getNumber()).andReturn()
-                .queryLocality(searchCriteria.getLocality()).andReturn()
-                .returnLocalitySynonym()
-                .returnDateChanged()
-                .buildFullQuery();
-        return apiService.searchRawEntities(
-                LOCALITY_TABLE, indexingProperties.getIndexingBatchSize(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
     @Override

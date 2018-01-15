@@ -12,7 +12,5 @@ public interface SamplesApiService {
 
     Map findRawById(Long id);
 
-    ApiResponse findSampleForIndex(SampleSearchCriteria searchCriteria);
-
     ApiResponse findSamplesByIds(Collection<String> ids);
 }

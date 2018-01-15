@@ -2,7 +2,6 @@ package ee.ttu.geocollection.interop.api.specimen.service.impl;
 
 import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.domain.SortField;
-import ee.ttu.geocollection.indexing.IndexingProperties;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.builder.ApiFields;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
@@ -171,8 +170,6 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
 
     @Autowired
     private ApiService apiService;
-    @Autowired
-    private IndexingProperties indexingProperties;
 
     @Override
     public ApiResponse findSpecimen(SpecimenSearchCriteria searchCriteria)  {
@@ -320,18 +317,6 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(SPECIMEN_TABLE, requestParams);
-    }
-
-    @Override
-    public ApiResponse findSpecimensForIndex(SpecimenSearchCriteria searchCriteria) {
-        String requestParams = FluentSpecimenSearchApiBuilder.aRequest()
-                .queryId(searchCriteria.getId()).andReturn()
-                .querySpecimenNumber(searchCriteria.getSpecimenNumber()).andReturn()
-                .queryNameOfFossil(searchCriteria.getFossilName()).andReturn()
-                .queryClassification(searchCriteria.getClassification()).andReturn()
-                .buildFullQuery();
-        return apiService.searchRawEntities(
-                SPECIMEN_TABLE, indexingProperties.getIndexingBatchSize(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
     @Override

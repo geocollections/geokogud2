@@ -1,7 +1,6 @@
 package ee.ttu.geocollection.interop.api.reference.service.impl;
 
 import ee.ttu.geocollection.domain.SortField;
-import ee.ttu.geocollection.indexing.IndexingProperties;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentReferenceSearchApiBuilder;
@@ -50,8 +49,6 @@ public class ReferenceApiServiceImpl implements ReferenceApiService {
 
     @Autowired
     private ApiService apiService;
-    @Autowired
-    private IndexingProperties indexingProperties;
 
     @Override
     public ApiResponse findReference(ReferenceSearchCriteria searchCriteria)  {
@@ -81,20 +78,6 @@ public class ReferenceApiServiceImpl implements ReferenceApiService {
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(REFERENCE_TABLE, requestParams);
-    }
-
-    @Override
-    public ApiResponse findReferencesForIndex(ReferenceSearchCriteria searchCriteria) {
-        String requestParams = FluentReferenceSearchApiBuilder.aRequest()
-                .queryId(searchCriteria.getId()).andReturn()
-                .queryAuthor(searchCriteria.getAuthor()).andReturn()
-                .queryTitle(searchCriteria.getTitle()).andReturn()
-                .queryYear(searchCriteria.getYearSince()).andReturn()
-                .queryReference(null).andReturn()
-                .returnDateChanged()
-                .buildFullQuery();
-        return apiService.searchRawEntities(
-                REFERENCE_TABLE, indexingProperties.getIndexingBatchSize(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package ee.ttu.geocollection.interop.api.stratigraphies.service.impl;
 
 import ee.ttu.geocollection.domain.SortField;
-import ee.ttu.geocollection.indexing.IndexingProperties;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentStratigraphySearchApiBuilder;
@@ -59,8 +58,6 @@ public class StratigraphyApiServiceImpl implements StratigraphyApiService {
     );
 
     @Autowired
-    private IndexingProperties indexingProperties;
-    @Autowired
     private ApiService apiService;
 
     @Override
@@ -96,19 +93,6 @@ public class StratigraphyApiServiceImpl implements StratigraphyApiService {
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(STRATIGRAPHY_TABLE, requestParams);
-    }
-
-    @Override
-    public ApiResponse findStratigraphyForIndex(StratigraphySearchCriteria searchCriteria) {
-        String requestParams = FluentStratigraphySearchApiBuilder.aRequest()
-                .queryId(searchCriteria.getId()).andReturn()
-                .queryStratigraphy(searchCriteria.getStratigraphy()).andReturn()
-                .queryIndex(searchCriteria.getIndex()).andReturn()
-                .queryParentStratigraphy(null).andReturn()
-                .queryAgeChronostratigraphy(null).andReturn()
-                .returnDateChanged()
-                .buildFullQuery();
-        return apiService.searchRawEntities(STRATIGRAPHY_TABLE, indexingProperties.getIndexingBatchSize(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
     @Override

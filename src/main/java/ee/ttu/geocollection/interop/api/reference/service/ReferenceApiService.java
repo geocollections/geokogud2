@@ -11,7 +11,5 @@ public interface ReferenceApiService {
 
     Map findRawById(Long id);
 
-    ApiResponse findReferencesForIndex(ReferenceSearchCriteria searchCriteria);
-
     ApiResponse findImagesByIds(List<String> ids);
 }

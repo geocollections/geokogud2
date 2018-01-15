@@ -1,7 +1,6 @@
 package ee.ttu.geocollection.interop.api.samples.service.impl;
 
 import ee.ttu.geocollection.domain.SortField;
-import ee.ttu.geocollection.indexing.IndexingProperties;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentSampleSearchApiBuilder;
@@ -76,8 +75,6 @@ public class SamplesApiServiceImpl implements SamplesApiService {
 
     @Autowired
     private ApiService apiService;
-    @Autowired
-    private IndexingProperties indexingProperties;
 
     @Override
     public ApiResponse findSample(SampleSearchCriteria searchCriteria) {
@@ -139,18 +136,6 @@ public class SamplesApiServiceImpl implements SamplesApiService {
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(SAMPLE_TABLE, requestParams);
-    }
-
-    @Override
-    public ApiResponse findSampleForIndex(SampleSearchCriteria searchCriteria) {
-        String requestParams = FluentSampleSearchApiBuilder.aRequest()
-                .queryId(searchCriteria.getId()).andReturn()
-                .queryNumber(searchCriteria.getSampleNumber()).andReturn()
-                .queryLocality(searchCriteria.getLocality()).andReturn()
-                .returnDateChanged()
-                .buildFullQuery();
-        return apiService.searchRawEntities
-                (SAMPLE_TABLE, indexingProperties.getIndexingBatchSize(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
     @Override

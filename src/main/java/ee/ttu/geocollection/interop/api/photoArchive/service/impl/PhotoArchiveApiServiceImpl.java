@@ -1,7 +1,6 @@
 package ee.ttu.geocollection.interop.api.photoArchive.service.impl;
 
 import ee.ttu.geocollection.domain.SortField;
-import ee.ttu.geocollection.indexing.IndexingProperties;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentPhotoArchiveSearchApiBuilder;
@@ -76,8 +75,6 @@ public class PhotoArchiveApiServiceImpl implements PhotoArchiveApiService{
     );
 
     @Autowired
-    private IndexingProperties indexingProperties;
-    @Autowired
     private ApiService apiService;
 
     //https://api.arendus.geokogud.info/image/?paginate_by=30&order_by=id&page=1&format=json&filename__isnull=false
@@ -112,17 +109,6 @@ public class PhotoArchiveApiServiceImpl implements PhotoArchiveApiService{
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(IMAGE_TABLE, requestParams);
-    }
-
-    @Override
-    public ApiResponse findImagesForIndex(PhotoArchiveSearchCriteria searchCriteria) {
-        String requestParams = FluentPhotoArchiveSearchApiBuilder.aRequest()
-                .queryId(searchCriteria.getId()).andReturn()
-                .queryNumber(searchCriteria.getImageNumber()).andReturn()
-                .queryKeywords(searchCriteria.getKeywords()).andReturn()
-                .returnDateChanged()
-                .buildFullQuery();
-        return apiService.searchRawEntities(IMAGE_TABLE, indexingProperties.getIndexingBatchSize(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
     @Override

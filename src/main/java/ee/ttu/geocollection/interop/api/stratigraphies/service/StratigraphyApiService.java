@@ -11,7 +11,5 @@ public interface StratigraphyApiService {
 
     Map findRawById(Long id);
 
-    ApiResponse findStratigraphyForIndex(StratigraphySearchCriteria searchCriteria);
-
     ApiResponse findStratigraphyByIds(List<String> ids);
 }
