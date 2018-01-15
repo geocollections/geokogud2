@@ -83,8 +83,8 @@ public class SearchController extends ControllerHelper {
     @GetMapping(value = "/global/{query}")
     public Iterable searchGlobally(@PathVariable String query) {
         ArrayList<SolrResponse> responses = new ArrayList<>();
-        responses.add(specimenSolrService.findSpecimenByIndex(query));
         responses.add(sampleSolrService.findSampleByIndex(query));
+        responses.add(specimenSolrService.findSpecimenByIndex(query));
         return responses;
 
 //        return globalSearchService.searchGlobally(query);

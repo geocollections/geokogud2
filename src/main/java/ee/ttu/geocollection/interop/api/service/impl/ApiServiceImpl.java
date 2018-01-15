@@ -50,10 +50,7 @@ public class ApiServiceImpl implements ApiService {
         if (tableName.equals("drillcore_box")) {
             url = apiUrl + "/" + tableName + "/" + requestParams + "?format=json";
 
-        } else if (tableName.equals("specimen")) {
-            url = "http://193.40.102.11:8983/solr/specimen/select?q=*:*&rows=50";
-        }
-        else {
+        } else {
             url = apiUrl + "/" + tableName + "/" + requestParams + "&format=json";
         }
 

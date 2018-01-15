@@ -37,9 +37,9 @@
                 <td data-title="{{ 'SEARCH.SPECIMENS.OLD_SPECIMEN_NUMBER' | translate }}"> {{ entity.specimen_number_old }} </td>
 
                 <td data-title="{{ 'SEARCH.SPECIMENS.NAME_PART_ELEMENT' | translate }}">
-                    <div data-ng-if="entity.specimen_identifications.count > 0">
-                        <a href data-ng-click="ctrl.service.openUrlInNewWindow({url:'http://fossiilid.info/' + entity.specimen_identifications.results[0].taxon_id})">
-                            <i>{{entity.specimen_identifications.results[0].taxon__taxon}}</i>
+                    <div>
+                        <a href data-ng-click="ctrl.service.openUrlInNewWindow({url:'http://fossiilid.info/' + entity.taxon_id})">
+                            <i>{{entity.taxon}}</i>
                         </a>
                         <span data-ng-if="(entity.specimen_identifications.results[0].name && entity.specimen_identifications.results[0].name != null)
                             && entity.specimen_identifications.results[0].name != entity.specimen_identifications.results[0].taxon__taxon">
@@ -48,61 +48,57 @@
                     </div>
 
                     <!-- Currently both are links because rock__name is mostly null. -->
-                    <div data-ng-repeat="item in entity.specimen_identification_geologies.results" data-ng-if="entity.specimen_identification_geologies.count > 0">
-                        <a href data-ng-click="ctrl.service.openUrlInNewWindow({url:'http://www.kivid.info/' + item.rock_id})">
-                            <localize et="item.rock__name" en="item.rock__name_en"/>
+                    <div>
+                        <a href data-ng-click="ctrl.service.openUrlInNewWindow({url:'http://www.kivid.info/' + entity.rock_id})">
+                            <localize et="entity.rock" en="entity.rock_en"/>
                         </a>
 
-                        <span ng-show="(item.rock__name && item.rock__name != null) && (item.name && item.name != null)">|</span>
+                        <span ng-show="(entity.rock || entity.rock_en) && (entity.rock_txt || entity.rock_txt_en)">|</span>
 
-                        <span ng-if="((item.name && item.name != null) || (item.name_en && item.name_en != null))
-                            && ((item.rock__name != item.name) || (item.rock__name_en != item.name_en))">
-                            <i><localize et="item.name" en="item.name_en"/></i>
+                        <span>
+                            <i><localize et="entity.rock_txt[0]" en="entity.rock_txt_en[0]"/></i>
                         </span>
                     </div>
                 </td>
 
                 <td data-title="{{ 'SEARCH.SPECIMENS.LOCALITY' | translate }}">
-                    <div data-ng-if="entity.locality__locality != null && entity.locality__locality_en != null">
+                    <div>
                         <a href data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:entity.locality_id})">
-                            <localize et="entity.locality__locality" en="entity.locality__locality_en"/>
+                            <localize et="entity.locality" en="entity.locality_en"/>
                         </a>
-                        <span data-ng-if="entity.locality_free && entity.locality_free != null"> {{entity.locality_free}}</span>
+                        <span data-ng-if="!entity.locality || !entity.locality_en"> {{entity.locality_free}}</span>
                     </div>
                 </td>
 
                 <td data-title="{{ 'SEARCH.SPECIMENS.DEPTH_M' | translate }}">
-                    {{entity.depth}}
-                    <span ng-if="entity.depth_interval != null && entity.depth_interval">({{ entity.depth_interval }})</span>
+                    <span>{{entity.depth}}</span>
+                    <span data-ng-if="entity.depth">({{ entity.depth_interval }})</span>
                 </td>
 
                 <td data-title="{{ 'SEARCH.SPECIMENS.STRATIGRAPHY' | translate }}">
                     <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.stratigraphy_id})">
-                        <localize en="entity.stratigraphy__stratigraphy_en" et="entity.stratigraphy__stratigraphy"/>
+                        <localize en="entity.stratigraphy_en" et="entity.stratigraphy"/>
                     </a>
 
-                    <span ng-if="entity.stratigraphy__stratigraphy_en == null && entity.stratigraphy__stratigraphy == null
-                        || entity.lithostratigraphy__stratigraphy_en == null && entity.lithostratigraphy__stratigraphy == null">
+                    <span data-ng-if="!entity.stratigraphy && !entity.stratigraphy_en">
                         {{ entity.stratigraphy_free }}
                     </span>
 
-                    <span ng-show="entity.stratigraphy__stratigraphy != null && entity.lithostratigraphy__stratigraphy != null">|</span>
+                    <span ng-show="(entity.stratigraphy || entity.stratigraphy_en || entity.stratigraphy_free) && entity.lithostratigraphy">
+                        |
+                    </span>
 
                     <em>
                         <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.lithostratigraphy_id})">
-                            <localize en="entity.lithostratigraphy__stratigraphy_en" et="entity.lithostratigraphy__stratigraphy"/>
+                            <localize en="entity.lithostratigraphy_en" et="entity.lithostratigraphy"/>
                         </a>
                     </em>
                 </td>
 
                 <td data-title="{{ 'SEARCH.SPECIMENS.COLLECTOR' | translate }}">
-                    <div data-ng-if="entity.agent_collected__agent != null">
-                        {{ entity.agent_collected__agent }}
-                    </div>
+                    <div >{{ entity.collector }}</div>
 
-                    <div data-ng-if="entity.agent_collected__agent == null">
-                        {{ entity.agent_collected__forename }} {{ agent_collected__surename }}
-                    </div>
+                    <div data-ng-if="!entity.collector">{{ entity.collector_full_name }}</div>
                 </td>
 
                 <td data-title="{{ 'SEARCH.SPECIMENS.STATUS' | translate }}">
@@ -112,11 +108,7 @@
 
                 <td class="image-preview" data-title="{{ 'SEARCH.SPECIMENS.IMAGES' | translate }}">
                     <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:entity.id})">
-                        <show-preview data-ng-if="entity.specimen_image_thumbnail.count > 0"
-                                      img-url="ctrl.service.composeSpecimenImageUrl({
-                                            database: entity.specimen_image_thumbnail.results[0].specimen__database__acronym,
-                                            image: entity.specimen_image_thumbnail.results[0].image,
-                                            imageUrl: entity.specimen_image_thumbnail.results[0].image_url})"/>
+                        <img class="previewImage" src="{{entity.image_preview_url}}" />
                     </a>
                 </td>
 

@@ -46,8 +46,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         addClientSorting();
 
         $scope.response = {
-            results: [],
-            count: 0
+            results: []
         };
         $scope.selectedTab = $stateParams.tab;
     }
@@ -83,8 +82,19 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         if (result.data.length <= 7) {
             console.log(result.data);
 
-            // Chooses first active tab
-            // $scope.selectedTab = result.data[0].table;
+            // var sortedResult = sortIntoRightQueue(result);
+
+            // for (var data in sortedResult) {
+            //     // Null check is already been done in sortIntoRightQueue function
+            //
+            //     // Last result is going to be active tab because it is already sorted into correct queue.
+            //     $scope.selectedTab = sortedResult[data].table;
+            //
+            //     $scope.searchResults[sortedResult[data].table] = sortedResult[data];
+            //     if (sortedResult[data].table === $scope.selectedTab) {
+            //         $scope.response.results = sortedResult[data].response.docs;
+            //     }
+            // }
 
             result.data.forEach(function (response) {
                 if (response.response.numFound > 0) {
@@ -93,7 +103,6 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
                     $scope.searchResults[response.table] = response;
                     if (response.table === $scope.selectedTab) {
                         $scope.response.results = response.response.docs;
-                        $scope.response.count = response.response.numFound;
                     }
                 }
             });
@@ -157,9 +166,8 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         $stateParams.tab = tabTitle;
         $scope.selectedTab = tabTitle;
         $state.go("global", {query: $stateParams.query, tab: tabTitle}, {location: "replace", inherit: false, notify: false});
-        if ($scope.searchResults[tabTitle] > 0) {
-            $scope.response.results = $scope.searchResults[tabTitle].response.docs;
-        }
+        $scope.response.results = $scope.searchResults[tabTitle].response.docs;
+        console.log($scope.response);
     };
 
 
@@ -199,8 +207,6 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
     };
 
     $scope.searchGlobally();
-    console.log($stateParams.tab);
-    $scope.selectTab($stateParams.tab);
 };
 
 constructor.$inject = [
