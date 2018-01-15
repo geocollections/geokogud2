@@ -65,9 +65,9 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         // getSearchDataFromSessionStorage();
         // This here populates input fields
 
-        var searchParamsLocal = getSearchDataFromLocalStorage();
-        if (typeof(searchParamsLocal) !== 'undefined') {
-            $scope.searchParameters = searchParamsLocal;
+        var searchParamsSession = getSearchDataFromSessionStorage();
+        if (typeof(searchParamsSession) !== 'undefined') {
+            $scope.searchParameters = searchParamsSession;
 
             // If institutions are not all ticked then show
             if ($scope.searchParameters.dbs != null) {
@@ -103,13 +103,13 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
                 }
             }
             if ((['specimens'].indexOf($stateParams.type) > -1)) {
-                // if ($scope.searchParameters.id.name != null || $scope.searchParameters.collector.name != null ||
-                //     $scope.searchParameters.reference.name != null || $scope.searchParameters.typeStatus.name != null ||
-                //     $scope.searchParameters.partOfFossil.name != null || $scope.searchParameters.keyWords.name != null ||
-                //     $scope.searchParameters.dateTakenSince.name != null || $scope.searchParameters.dateTakenSince.name != null ||
-                //     $scope.searchParameters.rockId.name != null) {
-                //     $scope.isLocationFieldsCollapsed = false;
-                // }
+                if ($scope.searchParameters.id.name != null || $scope.searchParameters.collector.name != null ||
+                    $scope.searchParameters.reference.name != null || $scope.searchParameters.typeStatus.name != null ||
+                    $scope.searchParameters.partOfFossil.name != null || $scope.searchParameters.keyWords.name != null ||
+                    $scope.searchParameters.dateTakenSince !== "undefined" || $scope.searchParameters.dateTakenTo.name !== "undefined" ||
+                    $scope.searchParameters.rockId.name != null) {
+                    $scope.isLocationFieldsCollapsed = false;
+                }
             }
 
 
@@ -170,7 +170,6 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     $scope.search = function () {
         $scope.showImages = $scope.searchParameters.searchImages && $scope.searchParameters.searchImages.name ? true : false;
         vm.searchLoadingHandler.start();
-        // addSearchDataToLocalStorage($scope.searchParameters);
         applicationService.getList($stateParams.type, $scope.searchParameters, onSearchData, onSearchError);
     };
 
@@ -188,8 +187,6 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         if ((['photoArchive'].indexOf($stateParams.type) > -1)) {
             $scope.searchParameters = {
                 sortField: {sortBy: "id", order: "DESCENDING"},
-                // maxSize: 5,
-                // page: 1,
                 searchImages: {lookUpType: "exact", name: true},
                 dbs: vm.service.departments.map(function (department) {
                     return department.code;
@@ -198,20 +195,18 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         } else {
             $scope.searchParameters = {
                 sortField: {sortBy: "id", order: "DESCENDING"},
-                // maxSize: 5,
-                // page: 1,
                 dbs: vm.service.departments.map(function (department) {
                     return department.code;
                 })
             };
         }
 
-        /*** Get parameters from local and session storage START ***/
-        var searchParamsLocal = getSearchDataFromLocalStorage();
-        if (typeof(searchParamsLocal) !== 'undefined') {
-            $scope.searchParameters = searchParamsLocal;
+        /*** Get parameters from session storage START ***/
+        var searchParamsSession = getSearchDataFromSessionStorage();
+        if (typeof(searchParamsSession) !== 'undefined') {
+            $scope.searchParameters = searchParamsSession;
         }
-        /*** Get parameters from local and session storage END ***/
+        /*** Get parameters from session storage END ***/
 
         $scope.sortByAsc = true;
         $scope.search();
@@ -220,8 +215,8 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     // Resets searchParameters to default search results.
     $scope.resetSearch = function () {
         resetSearchParametersToDefault();
-        sessionStorage.removeItem($stateParams.type + "Search");
-        localStorage.removeItem($stateParams.type);
+        sessionStorage.removeItem($stateParams.type);
+        // localStorage.removeItem($stateParams.type);
     };
 
     $scope.addRemoveInstitution = function (institution) {
@@ -283,8 +278,8 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         });
     }
 
-    function addSearchDataToLocalStorage(searchParameters) {
-        if (typeof(localStorage) !== 'undefined') {
+    function addSearchDataToSession(searchParameters) {
+        if (typeof(sessiomStorage) !== 'undefined') {
             var stringifiedParameters = JSON.stringify(searchParameters);
             console.log(stringifiedParameters);
             var defaultParameters = '{"sortField":{"sortBy":"id","order":"DESCENDING"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"]}';
@@ -292,30 +287,20 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
 
             if([$stateParams.type].indexOf($stateParams.type) > -1 && $stateParams.type === "photoArchive") {
                 if(stringifiedParameters !== defaultPhotoArchiveParameters) {
-                    localStorage.setItem($stateParams.type, stringifiedParameters);
+                    sessionStorage.setItem($stateParams.type, stringifiedParameters);
                 }
             } else if([$stateParams.type].indexOf($stateParams.type) > -1) {
                 if(stringifiedParameters !== defaultParameters) {
-                    localStorage.setItem($stateParams.type, stringifiedParameters);
+                    sessionStorage.setItem($stateParams.type, stringifiedParameters);
                 }
-            }
-        }
-    }
-
-    function getSearchDataFromLocalStorage() {
-        if (typeof(localStorage) !== 'undefined') {
-            if([$stateParams.type].indexOf($stateParams.type) > -1 && localStorage[$stateParams.type] != null) {
-                var searchParams = JSON.parse(localStorage.getItem($stateParams.type));
-                // $scope.searchParameters = searchParams;
-                return searchParams;
             }
         }
     }
 
     function getSearchDataFromSessionStorage() {
         if (typeof(sessionStorage) !== 'undefined') {
-            if (sessionStorage[$stateParams.type + "Search"] != null) {
-                var searchParams = JSON.parse(sessionStorage.getItem($stateParams.type + "Search"));
+            if([$stateParams.type].indexOf($stateParams.type) > -1 && sessionStorage[$stateParams.type] != null) {
+                var searchParams = JSON.parse(sessionStorage.getItem($stateParams.type));
                 // $scope.searchParameters = searchParams;
                 return searchParams;
             }

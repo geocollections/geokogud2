@@ -34,8 +34,8 @@ var constructor = function ($http, $stateParams, $location, configuration) {
                 console.log("------------------------------");
                 console.log(searchCriteria);
                 console.log("------------------------------");
-                if (typeof(localStorage) !== 'undefined') {
-                    localStorage.setItem($stateParams.type, JSON.stringify(searchCriteria));
+                if (typeof(sessionStorage) !== 'undefined') {
+                    sessionStorage.setItem($stateParams.type, JSON.stringify(searchCriteria));
                 }
             }
         } else {

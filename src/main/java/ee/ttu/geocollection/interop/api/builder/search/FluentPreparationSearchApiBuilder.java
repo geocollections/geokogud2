@@ -43,12 +43,12 @@ public class FluentPreparationSearchApiBuilder extends FluentSearchApiBuilder<Fl
     }
 
     public FluentPreparationSearchApiBuilder querySpeciesRecovered(SearchField text) {
-        buildFieldParameters(PREPARATIONTAXA__NAME, text);
+        buildFieldParameters(TAXONLIST__NAME, text);
         return this;
     }
 
     public FluentPreparationSearchApiBuilder querySpeciesFrequency(SearchField text) {
-        buildFieldParameters(PREPARATIONTAXA__FREQUENCY, text);
+        buildFieldParameters(TAXONLIST__FREQUENCY, text);
         return this;
     }
 

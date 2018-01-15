@@ -263,8 +263,7 @@ public class ApiFields {
     public static final String SAMPLE__STRATIGRAPHY__STRATIGRAPHY = "sample__stratigraphy__stratigraphy";
     public static final String SAMPLE__STRATIGRAPHY__STRATIGRAPHY_EN = "sample__stratigraphy__stratigraphy_en";
     public static final String PREPARATION_NUMBER = "preparation_number";
-    public static final String PREPARATIONTAXA__NAME = "preparationtaxa__name";
-    public static final String PREPARATIONTAXA__FREQUENCY = "preparationtaxa__frequency";
+    public static final String TAXONLIST__NAME = "taxonlist__name";
     public static final String SAMPLE__AGENT_COLLECTED__AGENT = "sample__agent_collected__agent";
     public static final String SAMPLE__AGENT_COLLECTED__FORENAME = "sample__agent_collected__forename";
     public static final String SAMPLE__AGENT_COLLECTED__SURENAME = "sample__agent_collected__surename";
