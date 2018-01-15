@@ -1,0 +1,136 @@
+
+<div data-ng-if="response.results != null">
+
+    <div class="row">
+        <div class="col-xs-6" ng-include="'app/templates/search/partial/export_buttons.html'"></div>
+        <div class="col-xs-6" ng-include="'app/templates/search/partial/pagination.html'" data-ng-if="!main.isGlobalSearch()"></div>
+    </div>
+
+    <div class="table-responsive" data-ng-if="!showImages">
+        <table class="table table-bordered table-hover" id="table-search">
+            <thead class="thead-default">
+            <tr>
+                <th><sort-field value = "specimen_id" name="SEARCH.SPECIMENS.NUMBER"></sort-field></th>
+                <th><sort-field value = "specimen_nr" name="SEARCH.SPECIMENS.OLD_SPECIMEN_NUMBER"></sort-field></th>
+                <th><sort-field value = "specimenidentification__name" name="SEARCH.SPECIMENS.NAME_PART_ELEMENT"></sort-field></th>
+                <th><sort-field value = "locality__locality,locality__locality_en" name="SEARCH.SPECIMENS.LOCALITY"></sort-field></th>
+                <th><sort-field value = "depth" name="SEARCH.SPECIMENS.DEPHT_M"></sort-field></th>
+                <th>
+                    <sort-field value = "stratigraphy__stratigraphy,stratigraphy__stratigraphy_en"
+                                name="SEARCH.SPECIMENS.STRATIGRAPHY">
+                    </sort-field> | <em> {{ 'SEARCH.SPECIMENS.LITHOSTRATIGRAPHY' | translate }} </em>
+                </th>
+                <th><sort-field value = "agent_collected__agent" name="SEARCH.SPECIMENS.COLLECTOR"></sort-field></th>
+                <th><sort-field value = "original_status__value,original_status__value_en" name="SEARCH.SPECIMENS.STATUS"></sort-field></th>
+                <th>{{ 'SEARCH.SPECIMENS.IMAGES' | translate }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-ng-repeat="entity in response.results">
+
+                <td data-title="{{ 'SEARCH.SPECIMENS.NUMBER' | translate }}">
+                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:entity.id})">
+                        {{ entity.collection_number | split:' ':0 }} {{ entity.specimen_number }}
+                    </a>
+                </td>
+
+                <td data-title="{{ 'SEARCH.SPECIMENS.OLD_SPECIMEN_NUMBER' | translate }}"> {{ entity.specimen_number_old }} </td>
+
+                <td data-title="{{ 'SEARCH.SPECIMENS.NAME_PART_ELEMENT' | translate }}">
+                    <div data-ng-if="entity.specimen_identifications.count > 0">
+                        <a href data-ng-click="ctrl.service.openUrlInNewWindow({url:'http://fossiilid.info/' + entity.specimen_identifications.results[0].taxon_id})">
+                            <i>{{entity.specimen_identifications.results[0].taxon__taxon}}</i>
+                        </a>
+                        <span data-ng-if="(entity.specimen_identifications.results[0].name && entity.specimen_identifications.results[0].name != null)
+                            && entity.specimen_identifications.results[0].name != entity.specimen_identifications.results[0].taxon__taxon">
+                            | <i>{{entity.specimen_identifications.results[0].name}}</i>
+                        </span>
+                    </div>
+
+                    <!-- Currently both are links because rock__name is mostly null. -->
+                    <div data-ng-repeat="item in entity.specimen_identification_geologies.results" data-ng-if="entity.specimen_identification_geologies.count > 0">
+                        <a href data-ng-click="ctrl.service.openUrlInNewWindow({url:'http://www.kivid.info/' + item.rock_id})">
+                            <localize et="item.rock__name" en="item.rock__name_en"/>
+                        </a>
+
+                        <span ng-show="(item.rock__name && item.rock__name != null) && (item.name && item.name != null)">|</span>
+
+                        <span ng-if="((item.name && item.name != null) || (item.name_en && item.name_en != null))
+                            && ((item.rock__name != item.name) || (item.rock__name_en != item.name_en))">
+                            <i><localize et="item.name" en="item.name_en"/></i>
+                        </span>
+                    </div>
+                </td>
+
+                <td data-title="{{ 'SEARCH.SPECIMENS.LOCALITY' | translate }}">
+                    <div data-ng-if="entity.locality__locality != null && entity.locality__locality_en != null">
+                        <a href data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:entity.locality_id})">
+                            <localize et="entity.locality__locality" en="entity.locality__locality_en"/>
+                        </a>
+                        <span data-ng-if="entity.locality_free && entity.locality_free != null"> {{entity.locality_free}}</span>
+                    </div>
+                </td>
+
+                <td data-title="{{ 'SEARCH.SPECIMENS.DEPTH_M' | translate }}">
+                    {{entity.depth}}
+                    <span ng-if="entity.depth_interval != null && entity.depth_interval">({{ entity.depth_interval }})</span>
+                </td>
+
+                <td data-title="{{ 'SEARCH.SPECIMENS.STRATIGRAPHY' | translate }}">
+                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.stratigraphy_id})">
+                        <localize en="entity.stratigraphy__stratigraphy_en" et="entity.stratigraphy__stratigraphy"/>
+                    </a>
+
+                    <span ng-if="entity.stratigraphy__stratigraphy_en == null && entity.stratigraphy__stratigraphy == null
+                        || entity.lithostratigraphy__stratigraphy_en == null && entity.lithostratigraphy__stratigraphy == null">
+                        {{ entity.stratigraphy_free }}
+                    </span>
+
+                    <span ng-show="entity.stratigraphy__stratigraphy != null && entity.lithostratigraphy__stratigraphy != null">|</span>
+
+                    <em>
+                        <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.lithostratigraphy_id})">
+                            <localize en="entity.lithostratigraphy__stratigraphy_en" et="entity.lithostratigraphy__stratigraphy"/>
+                        </a>
+                    </em>
+                </td>
+
+                <td data-title="{{ 'SEARCH.SPECIMENS.COLLECTOR' | translate }}">
+                    <div data-ng-if="entity.agent_collected__agent != null">
+                        {{ entity.agent_collected__agent }}
+                    </div>
+
+                    <div data-ng-if="entity.agent_collected__agent == null">
+                        {{ entity.agent_collected__forename }} {{ agent_collected__surename }}
+                    </div>
+                </td>
+
+                <td data-title="{{ 'SEARCH.SPECIMENS.STATUS' | translate }}">
+                    <localize data-ng-if="entity.original_status__value != null && entity.original_status__value_en != null"
+                              et="entity.original_status__value" en="entity.original_status__value_en"/>
+                </td>
+
+                <td class="image-preview" data-title="{{ 'SEARCH.SPECIMENS.IMAGES' | translate }}">
+                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:entity.id})">
+                        <show-preview data-ng-if="entity.specimen_image_thumbnail.count > 0"
+                                      img-url="ctrl.service.composeSpecimenImageUrl({
+                                            database: entity.specimen_image_thumbnail.results[0].specimen__database__acronym,
+                                            image: entity.specimen_image_thumbnail.results[0].image,
+                                            imageUrl: entity.specimen_image_thumbnail.results[0].image_url})"/>
+                    </a>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div ng-include="'app/templates/search/partial/pagination.html'" data-ng-if="!main.isGlobalSearch()"></div>
+</div>
+
+<div class="row" data-ng-if="response.results == null">
+    <div class="col-lg-12 h3 panel-heading text-center no-results">{{ 'SEARCH.NO_RESULTS' | translate }}</div>
+    <div class="col-lg-12">
+        <div class="col-lg-12" ng-bind-html="main.getContent(main.searchTips)"></div>
+    </div>
+</div>

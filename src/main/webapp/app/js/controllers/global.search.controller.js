@@ -154,9 +154,9 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         if (!tabTitle) {
             tabTitle = "specimen";
         }
-        $state.go("global", {query: $stateParams.query, tab: tabTitle}, {location: "replace", inherit: false, notify: false});
         $stateParams.tab = tabTitle;
         $scope.selectedTab = tabTitle;
+        $state.go("global", {query: $stateParams.query, tab: tabTitle}, {location: "replace", inherit: false, notify: false});
         if ($scope.searchResults[tabTitle] > 0) {
             $scope.response.results = $scope.searchResults[tabTitle].response.docs;
         }
