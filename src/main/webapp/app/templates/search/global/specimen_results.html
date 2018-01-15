@@ -41,9 +41,8 @@
                         <a href data-ng-click="ctrl.service.openUrlInNewWindow({url:'http://fossiilid.info/' + entity.taxon_id})">
                             <i>{{entity.taxon}}</i>
                         </a>
-                        <span data-ng-if="(entity.specimen_identifications.results[0].name && entity.specimen_identifications.results[0].name != null)
-                            && entity.specimen_identifications.results[0].name != entity.specimen_identifications.results[0].taxon__taxon">
-                            | <i>{{entity.specimen_identifications.results[0].name}}</i>
+                        <span data-ng-if="!entity.taxon && entity.taxon_txt[0]">
+                            | <i>{{entity.taxon_txt[0]}}</i>
                         </span>
                     </div>
 
@@ -72,7 +71,7 @@
 
                 <td data-title="{{ 'SEARCH.SPECIMENS.DEPTH_M' | translate }}">
                     <span>{{entity.depth}}</span>
-                    <span data-ng-if="entity.depth">({{ entity.depth_interval }})</span>
+                    <span data-ng-if="entity.depth && entity.depth_interval">({{ entity.depth_interval }})</span>
                 </td>
 
                 <td data-title="{{ 'SEARCH.SPECIMENS.STRATIGRAPHY' | translate }}">
