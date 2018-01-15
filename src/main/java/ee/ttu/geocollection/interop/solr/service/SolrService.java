@@ -1,7 +1,7 @@
-package ee.ttu.geocollection.interop.api.service;
+package ee.ttu.geocollection.interop.solr.service;
 
 import ee.ttu.geocollection.domain.SortField;
-import ee.ttu.geocollection.interop.api.Response.SolrResponse;
+import ee.ttu.geocollection.interop.solr.response.SolrResponse;
 
 import java.util.Map;
 

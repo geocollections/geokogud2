@@ -1,4 +1,4 @@
-package ee.ttu.geocollection.interop.api.Response;
+package ee.ttu.geocollection.interop.solr.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

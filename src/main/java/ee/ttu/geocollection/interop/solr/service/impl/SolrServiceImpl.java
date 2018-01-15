@@ -1,9 +1,9 @@
-package ee.ttu.geocollection.interop.api.service.impl;
+package ee.ttu.geocollection.interop.solr.service.impl;
 
 import com.google.common.net.UrlEscapers;
 import ee.ttu.geocollection.domain.SortField;
-import ee.ttu.geocollection.interop.api.Response.SolrResponse;
-import ee.ttu.geocollection.interop.api.service.SolrService;
+import ee.ttu.geocollection.interop.solr.response.SolrResponse;
+import ee.ttu.geocollection.interop.solr.service.SolrService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -51,7 +51,8 @@ public class SolrServiceImpl implements SolrService {
         String url = solrUrl + "/"
                 + tableName + "/select?q="
                 + escapeParameters(requestParams) + "&rows="
-                + paginateBy + "&sort=date_added%20desc";
+                + paginateBy;
+//                + "&sort=date_added%20desc"; messes up global search if sorting by date
 
         logger.trace("Searching: " + url);
 
