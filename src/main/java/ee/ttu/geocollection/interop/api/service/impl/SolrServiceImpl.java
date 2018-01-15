@@ -47,18 +47,35 @@ public class SolrServiceImpl implements SolrService {
     }
 
     @Override
-    public Map searchRawEntities(String tableName, int paginateBy, int page, SortField sortField, String requestParams) {
-        String url = solrUrl + "/" + tableName + "/select?q=*&rows=" + paginateBy + "&sort=date_added desc";
+    public SolrResponse searchRawEntities(String tableName, int paginateBy, int page, SortField sortField, String requestParams) {
+        String url = solrUrl + "/"
+                + tableName + "/select?q="
+                + escapeParameters(requestParams) + "&rows="
+                + paginateBy + "&sort=date_added%20desc";
 
         logger.trace("Searching: " + url);
 
-        HttpHeaders headers = new HttpHeaders();
-        String requestId = MDC.get("REQUEST_UUID");
-        if (requestId != null) {
-            headers.set("Trace_UUID", requestId);
+        try {
+
+            SolrResponse response = restTemplate.getForObject(new URI(url), SolrResponse.class);
+
+            if (response != null) {
+                response.setTable(tableName);
+            }
+
+            return response;
+
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
         }
-        HttpEntity<String> request = new HttpEntity<>(headers);
-        HttpEntity<Map> response = restTemplate.exchange(url, HttpMethod.GET, request, Map.class);
-        return response.getBody();
+    }
+
+    /**
+     * Returns the escaped form of a given string
+     * @param parameters String to be escaped
+     * @return returns the escaped form of String
+     */
+    private String escapeParameters(String parameters) {
+        return UrlEscapers.urlPathSegmentEscaper().escape(parameters);
     }
 }

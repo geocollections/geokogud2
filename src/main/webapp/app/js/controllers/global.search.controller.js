@@ -47,7 +47,6 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
 
         $scope.response = {
             results: [],
-            related_data: {},
             count: 0
         };
         $scope.selectedTab = $stateParams.tab;
@@ -84,52 +83,20 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         if (result.data.length <= 7) {
             console.log(result.data);
 
-            for (var index in result.data) {
-                var response = result.data[index].response;
-                console.log(response.numFound);
+            // Chooses first active tab
+            // $scope.selectedTab = result.data[0].table;
 
-                if (index === "0") {
-                    $scope.selectedTab = "specimen";
-                } else if (index === "1") {
-                    $scope.selectedTab = "sample";
+            result.data.forEach(function (response) {
+                if (response.response.numFound > 0) {
+                    $scope.selectedTab = response.table;
+
+                    $scope.searchResults[response.table] = response;
+                    if (response.table === $scope.selectedTab) {
+                        $scope.response.results = response.response.docs;
+                        $scope.response.count = response.response.numFound;
+                    }
                 }
-
-                $scope.searchResults[$scope.selectedTab] = response.docs;
-
-                if ($scope.selectedTab === "specimen") {
-                    $scope.response.count = response.numFound;
-                    $scope.response.results = $scope.searchResults["specimen"];
-                } else if ($scope.selectedTab === "sample") {
-                    $scope.response.count = $scope.searchResults["sample"].numFound;
-                    $scope.response.results = $scope.searchResults["sample"];
-                }
-                console.log($scope.response);
-
-            }
-
-            //
-            // for (var data in sortedResult) {
-            //     $scope.searchResults[sortedResult[data].table] = sortedResult[data];
-            //     if (sortedResult[data].table === $scope.selectedTab) {
-            //         $scope.response.results = sortedResult[data].results;
-            //         $scope.response.related_data = sortedResult[data].related_data;
-            //     }
-            // }
-            // var sortedResult = sortIntoRightQueue(result);
-            //
-            // for (var data in sortedResult) {
-            //     console.log(data);
-            //     // Null check is already been done in sortIntoRightQueue function
-            //     // Last result is going to be active tab because it is already sorted into correct queue
-            //     $scope.selectedTab = sortedResult[data].table;
-            //
-            //     $scope.searchResults[sortedResult[data].table] = sortedResult[data];
-            //     if (sortedResult[data].table === $scope.selectedTab) {
-            //         $scope.response.results = sortedResult[data].results;
-            //         $scope.response.related_data = sortedResult[data].related_data;
-            //     }
-            // }
-
+            });
             vm.searchLoadingHandler.stop();
 
         } else {
@@ -142,38 +109,40 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         }
     }
 
-    /**
-     * Sorts result into needed order
-     * @param unsortedResult raw response from back-end
-     * @returns sorted result in the order of tabs in front-end
-     */
-    function sortIntoRightQueue(unsortedResult) {
-        var sortedResult = {};
 
-        unsortedResult.data.forEach(function (response) {
-            if (response.table != null) {
-
-                // Using reversed order because when looping next time it chooses the last one to be active tab
-                if (response.table == "taxon") {
-                    sortedResult[0] = response;
-                } else if (response.table == "image") {
-                    sortedResult[1] = response;
-                } else if (response.table == "stratigraphy") {
-                    sortedResult[2] = response;
-                } else if (response.table == "reference") {
-                    sortedResult[3] = response;
-                } else if (response.table == "locality") {
-                    sortedResult[4] = response;
-                } else if (response.table == "sample") {
-                    sortedResult[5] = response;
-                } else if (response.table == "specimen") {
-                    sortedResult[6] = response;
-                }
-            }
-        });
-
-        return sortedResult;
-    }
+    // AFTER SOLR IT IS NOT NEEDED ANYMORE
+    // /**
+    //  * Sorts result into needed order
+    //  * @param unsortedResult raw response from back-end
+    //  * @returns sorted result in the order of tabs in front-end
+    //  */
+    // function sortIntoRightQueue(unsortedResult) {
+    //     var sortedResult = {};
+    //
+    //     unsortedResult.data.forEach(function (response) {
+    //         if (response.table != null) {
+    //
+    //             // Using reversed order because when looping next time it chooses the last one to be active tab
+    //             if (response.table == "taxon") {
+    //                 sortedResult[0] = response;
+    //             } else if (response.table == "image") {
+    //                 sortedResult[1] = response;
+    //             } else if (response.table == "stratigraphy") {
+    //                 sortedResult[2] = response;
+    //             } else if (response.table == "reference") {
+    //                 sortedResult[3] = response;
+    //             } else if (response.table == "locality") {
+    //                 sortedResult[4] = response;
+    //             } else if (response.table == "sample") {
+    //                 sortedResult[5] = response;
+    //             } else if (response.table == "specimen") {
+    //                 sortedResult[6] = response;
+    //             }
+    //         }
+    //     });
+    //
+    //     return sortedResult;
+    // }
 
     /**
      * Default will be specimen.
@@ -188,8 +157,9 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         $state.go("global", {query: $stateParams.query, tab: tabTitle}, {location: "replace", inherit: false, notify: false});
         $stateParams.tab = tabTitle;
         $scope.selectedTab = tabTitle;
-        $scope.response.results = $scope.searchResults[tabTitle].results;
-        $scope.response.related_data = $scope.searchResults[tabTitle].related_data;
+        if ($scope.searchResults[tabTitle] > 0) {
+            $scope.response.results = $scope.searchResults[tabTitle].response.docs;
+        }
     };
 
 
@@ -210,9 +180,9 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
      * @returns Integer value of results length
      */
     $scope.getResultsLength = function (tab) {
-        if ($scope.searchResults[tab].results != null) {
-            // return $scope.searchResults[tab].results.length;
-            return $scope.searchResults[tab].results.count;
+        if ($scope.searchResults[tab].response != null) {
+            // return $scope.searchResults[tab].response.docs.length; (100)
+            return $scope.searchResults[tab].response.numFound; // (total found)
         } else {
             return 0;
         }
@@ -229,6 +199,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
     };
 
     $scope.searchGlobally();
+    console.log($stateParams.tab);
     $scope.selectTab($stateParams.tab);
 };
 

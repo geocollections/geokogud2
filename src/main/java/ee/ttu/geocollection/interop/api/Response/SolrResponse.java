@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SolrResponse { // Currently not used, will see if I even need it.
+public class SolrResponse {
 
     private String table;
 

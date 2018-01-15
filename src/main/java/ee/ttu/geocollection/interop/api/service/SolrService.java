@@ -9,6 +9,6 @@ public interface SolrService {
 
     Map findRawEntity(String tableName, String requestParams);
 
-    Map searchRawEntities(String tableName, int paginateBy, int page, SortField sortField, String requestParams);
+    SolrResponse searchRawEntities(String tableName, int paginateBy, int page, SortField sortField, String requestParams);
 
 }
