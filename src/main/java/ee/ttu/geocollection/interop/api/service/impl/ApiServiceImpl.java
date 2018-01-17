@@ -108,7 +108,7 @@ public class ApiServiceImpl implements ApiService {
     @Override
     public Map searchByField(String table, String term, String sortField, String searchField) {
         String url;
-        if (searchField.contains(",")) { // Multiple fields autocomplete
+        if (searchField.contains(",")) { // Multiple fields autocomplete, should use & instead of multi_search
             url = apiUrl + "/" + table + "/" + "?paginate_by=" + PAGINATE_BY
                     + "&format=json&distinct=true&fields="
                     + searchField

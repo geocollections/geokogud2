@@ -17,6 +17,7 @@ public class SampleSolrServiceImpl implements SampleSolrService {
 
     @Override
     public SolrResponse findSampleByIndex(String query) {
+
         return solrService.searchRawEntities(SAMPLE_TABLE, 100, 1, new SortField(), query);
     }
 

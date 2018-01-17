@@ -4,6 +4,7 @@ import com.google.common.net.UrlEscapers;
 import ee.ttu.geocollection.domain.SortField;
 import ee.ttu.geocollection.interop.solr.response.SolrResponse;
 import ee.ttu.geocollection.interop.solr.service.SolrService;
+import org.apache.solr.common.SolrException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -11,11 +12,17 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import javax.validation.constraints.Null;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.util.Map;
 
 @Service
@@ -48,11 +55,15 @@ public class SolrServiceImpl implements SolrService {
 
     @Override
     public SolrResponse searchRawEntities(String tableName, int paginateBy, int page, SortField sortField, String requestParams) {
-        String url = solrUrl + "/"
-                + tableName + "/select?q=%22"
-                + escapeParameters(requestParams) + "%22&rows="
-                + paginateBy;
-//                + "&sort=date_added%20desc"; messes up global search if sorting by date
+        String url = null;
+        try {
+            url = solrUrl + "/"
+                    + tableName + "/select?q="
+                    + URLEncoder.encode(requestParams, "UTF-8") + "&rows="
+                    + paginateBy;
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
         logger.trace("Searching: " + url);
 
@@ -66,7 +77,7 @@ public class SolrServiceImpl implements SolrService {
 
             return response;
 
-        } catch (URISyntaxException e) {
+        } catch (URISyntaxException|SolrException|HttpClientErrorException|HttpServerErrorException|HttpMessageNotReadableException e) {
             throw new RuntimeException(e);
         }
     }

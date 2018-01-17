@@ -103,6 +103,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
                     $scope.searchResults[response.table] = response;
                     if (response.table === $scope.selectedTab) {
                         $scope.response.results = response.response.docs;
+                        $scope.response.count = response.response.numFound;
                     }
                 }
             });
