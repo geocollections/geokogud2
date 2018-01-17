@@ -4,6 +4,7 @@ import ee.ttu.geocollection.domain.SortField;
 import ee.ttu.geocollection.interop.solr.response.SolrResponse;
 import ee.ttu.geocollection.interop.solr.sample.service.SampleSolrService;
 import ee.ttu.geocollection.interop.solr.service.SolrService;
+import org.apache.solr.client.solrj.SolrQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -96,7 +97,9 @@ public class SampleSolrServiceImpl implements SampleSolrService {
 
     @Override
     public SolrResponse findSampleByIndex(String query) {
-        return solrService.searchRawEntities(SAMPLE_TABLE, 100, 1, new SortField(), query);
+        SolrQuery requestParams = new SolrQuery(query)
+                .setRows(100);
+        return solrService.searchRawEntities(SAMPLE_TABLE, 100, 1, new SortField(), requestParams.toQueryString());
     }
 
 }

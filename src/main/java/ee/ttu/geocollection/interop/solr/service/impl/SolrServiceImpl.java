@@ -18,11 +18,8 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import javax.validation.constraints.Null;
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URLEncoder;
 import java.util.Map;
 
 @Service
@@ -55,15 +52,8 @@ public class SolrServiceImpl implements SolrService {
 
     @Override
     public SolrResponse searchRawEntities(String tableName, int paginateBy, int page, SortField sortField, String requestParams) {
-        String url = null;
-        try {
-            url = solrUrl + "/"
-                    + tableName + "/select?q="
-                    + URLEncoder.encode(requestParams, "UTF-8") + "&rows="
-                    + paginateBy;
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        String url = "";
+        url = solrUrl + "/" + tableName + "/select" + requestParams + "&defType=edismax";
 
         logger.trace("Searching: " + url);
 

@@ -83,13 +83,7 @@ public class SearchController extends ControllerHelper {
         responses.add(sampleSolrService.findSampleByIndex(query));
         responses.add(specimenSolrService.findSpecimenByIndex(query));
         return responses;
-
-//        return globalSearchService.searchGlobally(query);
     }
-
-//    public Map searchGlobal(@PathVariable String query) {
-//        return globalSearchService.searchGlobally(query);
-//    }
 
     @GetMapping(value = "/autocomplete-field")
     public Map findDoiById(

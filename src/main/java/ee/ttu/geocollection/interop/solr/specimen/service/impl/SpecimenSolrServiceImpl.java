@@ -6,6 +6,7 @@ import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuild
 import ee.ttu.geocollection.interop.solr.service.SolrService;
 import ee.ttu.geocollection.interop.api.specimen.pojo.SpecimenSearchCriteria;
 import ee.ttu.geocollection.interop.solr.specimen.service.SpecimenSolrService;
+import org.apache.solr.client.solrj.SolrQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -107,6 +108,8 @@ public class SpecimenSolrServiceImpl implements SpecimenSolrService {
 
     @Override
     public SolrResponse findSpecimenByIndex(String query) {
-        return solrService.searchRawEntities(SPECIMEN_TABLE, 100, 1, new SortField(), query);
+        SolrQuery requestParams = new SolrQuery(query)
+                .setRows(100);
+        return solrService.searchRawEntities(SPECIMEN_TABLE, 100, 1, new SortField(), requestParams.toQueryString());
     }
 }
