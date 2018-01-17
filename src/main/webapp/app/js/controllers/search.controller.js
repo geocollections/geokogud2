@@ -279,7 +279,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     }
 
     function addSearchDataToSession(searchParameters) {
-        if (typeof(sessiomStorage) !== 'undefined') {
+        if (typeof(sessionStorage) !== 'undefined') {
             var stringifiedParameters = JSON.stringify(searchParameters);
             console.log(stringifiedParameters);
             var defaultParameters = '{"sortField":{"sortBy":"id","order":"DESCENDING"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"]}';

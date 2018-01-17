@@ -49,8 +49,8 @@ public class SolrServiceImpl implements SolrService {
     @Override
     public SolrResponse searchRawEntities(String tableName, int paginateBy, int page, SortField sortField, String requestParams) {
         String url = solrUrl + "/"
-                + tableName + "/select?q="
-                + escapeParameters(requestParams) + "&rows="
+                + tableName + "/select?q=%22"
+                + escapeParameters(requestParams) + "%22&rows="
                 + paginateBy;
 //                + "&sort=date_added%20desc"; messes up global search if sorting by date
 
