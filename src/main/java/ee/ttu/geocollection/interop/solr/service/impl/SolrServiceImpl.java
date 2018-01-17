@@ -59,7 +59,7 @@ public class SolrServiceImpl implements SolrService {
         try {
             url = solrUrl + "/"
                     + tableName + "/select?q="
-                    + URLEncoder.encode(requestParams, "UTF-8") + "&rows="
+                    + escapeParameters(URLEncoder.encode(requestParams, "UTF-8")) + "&rows="
                     + paginateBy;
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -87,7 +87,7 @@ public class SolrServiceImpl implements SolrService {
      * @param parameters String to be escaped
      * @return returns the escaped form of String
      */
-    private String escapeParameters(String parameters) {
+    public String escapeParameters(String parameters) {
         return UrlEscapers.urlPathSegmentEscaper().escape(parameters);
     }
 }

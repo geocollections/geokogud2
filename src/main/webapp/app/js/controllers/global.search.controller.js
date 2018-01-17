@@ -26,6 +26,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
     $scope.searchGlobally = function () {
         vm.searchLoadingHandler.start();
         $scope.$parent.globalQuery = $stateParams.query;
+        console.log($stateParams.query);
         GlobalSearchFactory.searchGlobally($stateParams.query, onGlobalDataLoaded);
     };
 
@@ -46,7 +47,8 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         addClientSorting();
 
         $scope.response = {
-            results: []
+            results: [],
+            count: 0
         };
         $scope.selectedTab = $stateParams.tab;
     }
@@ -97,13 +99,15 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
             // }
 
             result.data.forEach(function (response) {
-                if (response.response.numFound > 0) {
-                    $scope.selectedTab = response.table;
+                if (response.response !== null) {
+                    if (response.response.numFound > 0) {
+                        $scope.selectedTab = response.table;
 
-                    $scope.searchResults[response.table] = response;
-                    if (response.table === $scope.selectedTab) {
-                        $scope.response.results = response.response.docs;
-                        $scope.response.count = response.response.numFound;
+                        $scope.searchResults[response.table] = response;
+                        if (response.table === $scope.selectedTab) {
+                            $scope.response.results = response.response.docs;
+                            $scope.response.count = response.response.numFound;
+                        }
                     }
                 }
             });
@@ -168,6 +172,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         $scope.selectedTab = tabTitle;
         $state.go("global", {query: $stateParams.query, tab: tabTitle}, {location: "replace", inherit: false, notify: false});
         $scope.response.results = $scope.searchResults[tabTitle].response.docs;
+        $scope.response.count = $scope.searchResults[tabTitle].response.numFound;
         console.log($scope.response);
     };
 

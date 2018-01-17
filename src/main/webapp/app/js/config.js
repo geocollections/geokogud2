@@ -2,7 +2,7 @@ var module = angular.module("geoApp");
 
 module.config(function($stateProvider, $urlRouterProvider) {
 
-    // For any unmatched url, redirect to '/'
+    // For any unmatched url, redirect to '/' aka home
     $urlRouterProvider.otherwise("/");
 
     $stateProvider
