@@ -59,7 +59,7 @@ public class SolrServiceImpl implements SolrService {
         try {
             url = solrUrl + "/"
                     + tableName + "/select?q="
-                    + escapeParameters(URLEncoder.encode(requestParams, "UTF-8")) + "&rows="
+                    + URLEncoder.encode(escapeParameters(requestParams), "UTF-8") + "&rows="
                     + paginateBy;
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
