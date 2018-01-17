@@ -96,15 +96,7 @@ public class SampleSolrServiceImpl implements SampleSolrService {
 
     @Override
     public SolrResponse findSampleByIndex(String query) {
-        if (query.contains(":")) {
-            if (query.length() > 1) {
-                if (fields.contains(query.split(":")[0])) {
-                    return solrService.searchRawEntities(SAMPLE_TABLE, 100, 1, new SortField(), query);
-                } else return new SolrResponse();
-            } else return new SolrResponse();
-        } else {
-            return solrService.searchRawEntities(SAMPLE_TABLE, 100, 1, new SortField(), query);
-        }
+        return solrService.searchRawEntities(SAMPLE_TABLE, 100, 1, new SortField(), query);
     }
 
 }

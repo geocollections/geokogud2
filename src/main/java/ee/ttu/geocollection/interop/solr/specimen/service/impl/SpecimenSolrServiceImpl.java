@@ -107,14 +107,6 @@ public class SpecimenSolrServiceImpl implements SpecimenSolrService {
 
     @Override
     public SolrResponse findSpecimenByIndex(String query) {
-        if (query.contains(":")) {
-            if (query.length() > 1) {
-                if (fields.contains(query.split(":")[0])) {
-                    return solrService.searchRawEntities(SPECIMEN_TABLE, 100, 1, new SortField(), query);
-                } else return new SolrResponse();
-            } else return new SolrResponse();
-        } else {
-            return solrService.searchRawEntities(SPECIMEN_TABLE, 100, 1, new SortField(), query);
-        }
+        return solrService.searchRawEntities(SPECIMEN_TABLE, 100, 1, new SortField(), query);
     }
 }
