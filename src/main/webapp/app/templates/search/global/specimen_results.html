@@ -52,7 +52,7 @@
                             <localize et="entity.rock" en="entity.rock_en"/>
                         </a>
 
-                        <span ng-show="(entity.rock || entity.rock_en) && (entity.rock_txt || entity.rock_txt_en)">|</span>
+                        <span data-ng-if="(entity.rock || entity.rock_en) && (entity.rock_txt || entity.rock_txt_en)">|</span>
 
                         <span>
                             <i><localize et="entity.rock_txt[0]" en="entity.rock_txt_en[0]"/></i>
@@ -83,7 +83,7 @@
                         {{ entity.stratigraphy_free }}
                     </span>
 
-                    <span ng-show="(entity.stratigraphy || entity.stratigraphy_en || entity.stratigraphy_free) && entity.lithostratigraphy">
+                    <span data-ng-if="(entity.stratigraphy || entity.stratigraphy_en || entity.stratigraphy_free) && entity.lithostratigraphy">
                         |
                     </span>
 
@@ -95,7 +95,7 @@
                 </td>
 
                 <td data-title="{{ 'SEARCH.SPECIMENS.COLLECTOR' | translate }}">
-                    <div >{{ entity.collector }}</div>
+                    <div>{{ entity.collector }}</div>
 
                     <div data-ng-if="!entity.collector">{{ entity.collector_full_name }}</div>
                 </td>

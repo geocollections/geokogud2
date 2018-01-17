@@ -37,7 +37,6 @@ import java.util.concurrent.Executors;
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 @EnableScheduling
 @EnableAsync
-@Import(value = IndexConfig.class)
 public class App extends SpringBootServletInitializer {
     private static final Logger logger = LoggerFactory.getLogger(App.class);
 
