@@ -1,6 +1,5 @@
 package ee.ttu.geocollection.interop.solr.specimen.service.impl;
 
-import ee.ttu.geocollection.domain.SortField;
 import ee.ttu.geocollection.interop.solr.response.SolrResponse;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
 import ee.ttu.geocollection.interop.solr.service.SolrService;
@@ -90,12 +89,7 @@ public class SpecimenSolrServiceImpl implements SpecimenSolrService {
     @Override
     public SolrResponse findSpecimen(SpecimenSearchCriteria specimenSearchCriteria) {
         String requestParams = "";
-        return solrService.searchRawEntities(
-                SPECIMEN_TABLE,
-                30,
-                specimenSearchCriteria.getPage(),
-                specimenSearchCriteria.getSortField(),
-                requestParams);
+        return solrService.searchRawEntities(SPECIMEN_TABLE, requestParams);
     }
 
     @Override
@@ -110,6 +104,6 @@ public class SpecimenSolrServiceImpl implements SpecimenSolrService {
     public SolrResponse findSpecimenByIndex(String query) {
         SolrQuery requestParams = new SolrQuery(query)
                 .setRows(100);
-        return solrService.searchRawEntities(SPECIMEN_TABLE, 100, 1, new SortField(), requestParams.toQueryString());
+        return solrService.searchRawEntities(SPECIMEN_TABLE, requestParams.toQueryString());
     }
 }

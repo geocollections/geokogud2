@@ -1,7 +1,6 @@
 package ee.ttu.geocollection.interop.solr.service.impl;
 
 import com.google.common.net.UrlEscapers;
-import ee.ttu.geocollection.domain.SortField;
 import ee.ttu.geocollection.interop.solr.response.SolrResponse;
 import ee.ttu.geocollection.interop.solr.service.SolrService;
 import org.apache.solr.common.SolrException;
@@ -51,7 +50,7 @@ public class SolrServiceImpl implements SolrService {
     }
 
     @Override
-    public SolrResponse searchRawEntities(String tableName, int paginateBy, int page, SortField sortField, String requestParams) {
+    public SolrResponse searchRawEntities(String tableName, String requestParams) {
         String url = "";
         url = solrUrl + "/" + tableName + "/select" + requestParams + "&defType=edismax";
 

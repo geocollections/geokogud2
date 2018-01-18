@@ -5,6 +5,7 @@ import ee.ttu.geocollection.domain.LookUpType;
 import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.interop.api.AsynchService;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
+import ee.ttu.geocollection.interop.solr.photoArchive.service.PhotoArchiveSolrService;
 import ee.ttu.geocollection.interop.solr.response.SolrResponse;
 import ee.ttu.geocollection.interop.api.analyses.pojo.AnalysesSearchCriteria;
 import ee.ttu.geocollection.interop.api.analyses.search.AnalysesApiService;
@@ -53,6 +54,8 @@ public class SearchController extends ControllerHelper {
     private SpecimenSolrService specimenSolrService;
     @Autowired
     private SampleSolrService sampleSolrService;
+    @Autowired
+    private PhotoArchiveSolrService photoArchiveSolrService;
 
     @Autowired
     private SpecimenApiService specimenApiService;
@@ -80,6 +83,7 @@ public class SearchController extends ControllerHelper {
     @GetMapping(value = "/global/{query}")
     public Iterable searchGlobally(@PathVariable String query) {
         ArrayList<SolrResponse> responses = new ArrayList<>();
+        responses.add(photoArchiveSolrService.findPhotoArchiveByIndex(query));
         responses.add(sampleSolrService.findSampleByIndex(query));
         responses.add(specimenSolrService.findSpecimenByIndex(query));
         return responses;

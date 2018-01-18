@@ -1,6 +1,5 @@
 package ee.ttu.geocollection.interop.solr.sample.service.impl;
 
-import ee.ttu.geocollection.domain.SortField;
 import ee.ttu.geocollection.interop.solr.response.SolrResponse;
 import ee.ttu.geocollection.interop.solr.sample.service.SampleSolrService;
 import ee.ttu.geocollection.interop.solr.service.SolrService;
@@ -99,7 +98,7 @@ public class SampleSolrServiceImpl implements SampleSolrService {
     public SolrResponse findSampleByIndex(String query) {
         SolrQuery requestParams = new SolrQuery(query)
                 .setRows(100);
-        return solrService.searchRawEntities(SAMPLE_TABLE, 100, 1, new SortField(), requestParams.toQueryString());
+        return solrService.searchRawEntities(SAMPLE_TABLE, requestParams.toQueryString());
     }
 
 }
