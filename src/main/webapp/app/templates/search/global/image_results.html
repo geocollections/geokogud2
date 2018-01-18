@@ -1,50 +1,50 @@
 
 <div data-ng-if="response.results != null">
+
     <div class="row">
         <div class="col-xs-6" ng-include="'app/templates/search/partial/export_buttons.html'"></div>
         <div class="col-xs-6" ng-include="'app/templates/search/partial/pagination.html'" data-ng-if="!main.isGlobalSearch()"></div>
     </div>
 
-    <div class="table-responsive" data-ng-if="!showImages">
+    <div class="table-responsive">
         <table class="table table-bordered table-hover" id="table-search">
             <thead class="thead-default">
             <tr>
-                <!--<th><sort-field value = "id" name="SEARCH.PHOTO_ARCHIVE.TABLE.ID"></sort-field></th>-->
                 <th><sort-field value = "image_number" name="SEARCH.PHOTO_ARCHIVE.TABLE.NUMBER"></sort-field></th>
                 <th><sort-field value = "author__agent" name="SEARCH.PHOTO_ARCHIVE.TABLE.AUTHOR"></sort-field></th>
                 <th><sort-field value = "date_taken" name="SEARCH.PHOTO_ARCHIVE.TABLE.DATE"></sort-field></th>
                 <th><sort-field value = "locality__locality,locality__locality_en" name="SEARCH.PHOTO_ARCHIVE.TABLE.LOCALITY"></sort-field></th>
                 <th><sort-field value = "object" name="SEARCH.PHOTO_ARCHIVE.TABLE.CATEGORY"></sort-field></th>
                 <th><sort-field value = "keywords" name="SEARCH.PHOTO_ARCHIVE.TABLE.KEY_WORDS"></sort-field></th>
+                <th>{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.IMAGES' | translate }}</th>
             </tr>
             </thead>
             <tbody>
             <tr data-ng-repeat="entity in response.results">
-                <!--<td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.ID' | translate }}"><a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:entity.id})">{{entity.id}}</a></td>-->
-                <!--<td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.NUMBER' | translate }}">{{entity.image_number}}</td>-->
                 <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.NUMBER' | translate }}">
                     <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:entity.id})">{{entity.image_number}}</a>
                 </td>
-                <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.AUTHOR' | translate }}"><first-not-null values="[entity.author__agent, entity.author_free]"></first-not-null></td>
+                <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.AUTHOR' | translate }}"></td>
                 <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.DATE' | translate }}">
-                    <div data-ng-if="entity.date_taken && entity.date_taken != null">
-                        {{entity.date_taken}}
-                    </div>
-                    <div data-ng-if="entity.date_taken == null && entity.date_taken_free != null">
-                        {{entity.date_taken_free}}
-                    </div>
+                    <div>{{entity.date_taken | date:dateFormat}}</div>
+                    <div data-ng-if="!entity.date_taken">{{entity.date_taken_free}}</div>
                 </td>
                 <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.LOCALITY' | translate }}">
-                    <localize  data-ng-if="entity.locality__locality != null || entity.locality__locality_en != null" et="entity.locality__locality" en="entity.locality__locality_en"/>
-                    <div data-ng-if="(entity.locality__locality == null && entity.locality__locality_en == null) && entity.place != null ">
+                    <localize et="entity.locality" en="entity.locality_en"/>
+                    <div data-ng-if="!entity.locality && !entity.locality_en">
                         {{entity.place}}
                     </div>
                 </td>
                 <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.CATEGORY' | translate }}">{{entity.object}}</td>
                 <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.KEY_WORDS' | translate }}">{{entity.keywords}}</td>
+                <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.IMAGES' | translate }}">
+                    {{entity.filename}}
+                </td>
             </tr>
             </tbody>
         </table>
     </div>
+
     <div ng-include="'app/templates/search/partial/pagination.html'" data-ng-if="!main.isGlobalSearch()"></div>
+
 </div>

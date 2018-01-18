@@ -361,7 +361,8 @@
                 "LOCALITY": "Locality",
                 "CATEGORY": "Category",
                 "KEY_WORDS": "Key words",
-                "ID": "ID"
+                "ID": "ID",
+                "IMAGES": "Images"
             }
         },
         "SOIL_SITES": {

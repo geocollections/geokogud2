@@ -361,7 +361,8 @@
                 "LOCALITY": "Leiukoht",
                 "CATEGORY": "Kategooria",
                 "KEY_WORDS": "Märksõnad",
-                "ID": "ID"
+                "ID": "ID",
+                "IMAGES": "Pildid"
             }
         },
         "SOIL_SITES": {
