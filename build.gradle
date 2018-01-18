@@ -125,12 +125,15 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
 
     compile group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.1.8'
-    compile group: 'org.apache.lucene', name: 'lucene-core', version: '6.5.0'
-    compile group: 'org.apache.lucene', name: 'lucene-grouping', version: '6.5.0'
+//    compile group: 'org.apache.lucene', name: 'lucene-core', version: '6.5.0'
+//    compile group: 'org.apache.lucene', name: 'lucene-grouping', version: '6.5.0'
 
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version:'3.4.0'
     testCompile 'com.github.detro:ghostdriver:2.0.0'
     testCompile 'com.codeborne:selenide:4.4.1'
+
+//    compile 'org.springframework.data:spring-data-solr:3.0.2.RELEASE'
+    compile 'org.springframework.data:spring-data-solr:2.1.9.RELEASE'
 }
 
 task generateQueryDSL(type: JavaCompile, group: 'build', description: 'Generates the QueryDSL query types') {
