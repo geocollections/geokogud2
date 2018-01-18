@@ -131,7 +131,9 @@
                 <div class="hidden-xs">
                     <div class="row search-hint content" ng-bind-html="main.getContent(main.protoArchiveQuery)" data-ng-if="isHintHidden"></div>
                 </div>
-                <div data-ng-if="showImages && response.results != null" ng-include="'app/templates/search/partial/pagination.html'"></div>
+
+                <div class="row" data-ng-if="showImages && response.results != null" ng-include="'app/templates/search/partial/pagination.html'"></div>
+
                 <div class="row" data-ng-if="showImages && response.results != null">
                     <div class="col-lg-12">
                         <!--EDIT removed 'data-ng-init="images.total = 0"' from b tag otherwise pictures wont show-->
