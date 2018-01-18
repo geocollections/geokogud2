@@ -182,6 +182,14 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
 //        return apiService.searchRawEntitiesUsingSolr(SPECIMEN_TABLE,30, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
+    @Override
+    public ApiResponse findSpecimenImages(SpecimenSearchCriteria searchCriteria) {
+        String requestParams = prepareCommonFieldsForImages(searchCriteria)
+                .queryId(searchCriteria.getId()).andReturn()
+                .buildDefaultFieldsQuery();
+        return apiService.searchRawEntities(SPECIMEN_IMAGE_TABLE, 25, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
+    }
+
     private FluentSpecimenSearchApiBuilder prepareCommonFields(SpecimenSearchCriteria searchCriteria) {
         return FluentSpecimenSearchApiBuilder.aRequest()
                 .querySpecimenNumber(searchCriteria.getSpecimenNumber()).andReturn()
@@ -204,6 +212,34 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .queryDateAdded(searchCriteria.getDateTakenTo())
                 .queryRockId(searchCriteria.getRockId())
                 .queryInstitutions(searchCriteria.getDbs()).andReturn()
+                .returnDatabaseName()
+                .returnLocalityId()
+                .returnStratigraphyId()
+                .returnLatitutde()
+                .returnLongitude();
+    }
+
+    private FluentSpecimenSearchApiBuilder prepareCommonFieldsForImages(SpecimenSearchCriteria searchCriteria) {
+        return FluentSpecimenSearchApiBuilder.aRequest()
+                .querySpecimenNumber(searchCriteria.getSpecimenNumber()).andReturn()
+                .queryCollectionNumber(searchCriteria.getCollectionNumber()).andReturn()
+                .queryClassification(searchCriteria.getClassification())
+//                .queryFossilMineralRock(searchCriteria.getFossilMineralRock())
+                .queryNameOfFossil(searchCriteria.getFossilName())
+                .queryMineralRock(searchCriteria.getMineralRock())
+                .queryAdminUnit(searchCriteria.getAdminUnit())
+                .queryLocality(searchCriteria.getLocality()).andReturn()
+                .queryStratigraphy(searchCriteria.getStratigraphy()).andReturn()
+                .queryDepth(searchCriteria.getDepthSince()).andReturn()
+                .queryDepth(searchCriteria.getDepthTo())
+                .queryCollector(searchCriteria.getCollector()).andReturn()
+                .queryReference(searchCriteria.getReference())
+                .queryOriginalStatus(searchCriteria.getTypeStatus()).andReturn()
+                .queryPartOfFossil(searchCriteria.getPartOfFossil())
+                .queryKeywords(searchCriteria.getKeyWords())
+                .queryDateAdded(searchCriteria.getDateTakenSince())
+                .queryDateAdded(searchCriteria.getDateTakenTo())
+                .queryRockId(searchCriteria.getRockId())
                 .returnDatabaseName()
                 .returnLocalityId()
                 .returnStratigraphyId()

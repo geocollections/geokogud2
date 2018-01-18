@@ -113,64 +113,45 @@ public class SearchController extends ControllerHelper {
 
     @PostMapping(value = "/specimen")
     public ApiResponse searchSpecimen(@RequestBody SpecimenSearchCriteria specimenSearchCriteria) {
-        ApiResponse specimens = specimenApiService.findSpecimen(specimenSearchCriteria);
-        // TODO: Find better way to show images, group_by is not working in API
+//        ApiResponse specimens = specimenApiService.findSpecimen(specimenSearchCriteria);
 
-        // Call for specimen images
-        if (specimens.getResult() != null) {
-            asynchService.doAsynchCallsForEachResult(
-                    specimens,
-                    specimen ->
-                            () -> specimenApiService.findSpecimenImage(
-                                    new SearchField(specimen.get("id").toString(), LookUpType.exact)),
-                    specimen ->
-                            receivedImage -> specimen.put("specimen_image_thumbnail", receivedImage));
+        ApiResponse specimens = null;
 
-            // Call for specimen identifications
-            asynchService.doAsynchCallsForEachResult(
-                    specimens,
-                    specimen ->
-                            () -> specimenApiService.findSpecimenIdentification(
-                                    new SearchField(specimen.get("id").toString(), LookUpType.exact)),
-                    specimen ->
-                            receivedIdentification -> specimen.put("specimen_identifications", receivedIdentification));
-
-            // Call for specimen identification geologies
-            asynchService.doAsynchCallsForEachResult(
-                    specimens,
-                    specimen ->
-                            () -> specimenApiService.findSpecimenIdentificationGeologies(
-                                    new SearchField(specimen.get("id").toString(), LookUpType.exact)),
-                    specimen ->
-                            receivedIdentificationGeologies -> specimen.put("specimen_identification_geologies", receivedIdentificationGeologies));
-
-//            asynchService.doAsynchCallsForEachResult(
-//                    specimens,
-//                    specimen ->
-//                            () -> specimenApiService.findSpecimenIdentification(
-//                                    new SearchField(specimen.get("id").toString(), LookUpType.exact)),
-//                    specimen ->
-//                            receivedIdentification -> specimen.put("specimen_identification_item", receivedIdentification));
-
-        }
-
- /*       if(specimenSearchCriteria.getSearchImages() != null
+        if (specimenSearchCriteria.getSearchImages() != null
                 && specimenSearchCriteria.getSearchImages().getName() != null
                 && specimenSearchCriteria.getSearchImages().getName().equals("true")) {
-            //specimens.getResult().stream().filter(sp -> xxx(sp));
-            specimens = specimenApiService.findSpecimenImage(specimenSearchCriteria);
+            specimens = specimenApiService.findSpecimenImages(specimenSearchCriteria);
+        } else {
+            specimens = specimenApiService.findSpecimen(specimenSearchCriteria);
             if (specimens.getResult() != null) {
+                // Call for specimen images
                 asynchService.doAsynchCallsForEachResult(
                         specimens,
                         specimen ->
-                                () -> iterateImages(specimen, specimenSearchCriteria),
+                                () -> specimenApiService.findSpecimenImage(
+                                        new SearchField(specimen.get("id").toString(), LookUpType.exact)),
                         specimen ->
-                                receivedImage -> specimen.put("specimen_object", receivedImage));
+                                receivedImage -> specimen.put("specimen_image_thumbnail", receivedImage));
 
+                // Call for specimen identifications
+                asynchService.doAsynchCallsForEachResult(
+                        specimens,
+                        specimen ->
+                                () -> specimenApiService.findSpecimenIdentification(
+                                        new SearchField(specimen.get("id").toString(), LookUpType.exact)),
+                        specimen ->
+                                receivedIdentification -> specimen.put("specimen_identifications", receivedIdentification));
+
+                // Call for specimen identification geologies
+                asynchService.doAsynchCallsForEachResult(
+                        specimens,
+                        specimen ->
+                                () -> specimenApiService.findSpecimenIdentificationGeologies(
+                                        new SearchField(specimen.get("id").toString(), LookUpType.exact)),
+                        specimen ->
+                                receivedIdentificationGeologies -> specimen.put("specimen_identification_geologies", receivedIdentificationGeologies));
             }
-        } else {
-
-        }*/
+        }
 
         return specimens;
     }
@@ -190,7 +171,7 @@ public class SearchController extends ControllerHelper {
     @PostMapping(value = "/drillcore")
     public ApiResponse searchDrillCores(@RequestBody DrillCoreSearchCriteria searchCriteria) {
         return drillCoreApiService.findDrillCore(searchCriteria);
-        //EDIT 12.12.2017 commented code becuase it is not used and server threw code 500
+        //EDIT 12.12.2017 commented code because it is not used and server threw code 500
 //        ApiResponse drillCores =  drillCoreApiService.findDrillCore(searchCriteria);
 //        if (drillCores.getResult() != null) {
 //            asynchService.doAsynchCallsForEachResult(
@@ -207,6 +188,17 @@ public class SearchController extends ControllerHelper {
     @PostMapping(value = "/locality")
     public ApiResponse searchLocalities(@RequestBody LocalitySearchCriteria searchCriteria) {
 
+//        TODO: Enable when findLocalityImages() is ready.
+//        ApiResponse localities;
+//        if (searchCriteria.getSearchImages() != null
+//                && searchCriteria.getSearchImages().getName() != null
+//                && searchCriteria.getSearchImages().getName().equals("true")) {
+//            localities = localitiesApiService.findLocalityImages(searchCriteria);
+//        } else {
+//            localities = localitiesApiService.findLocality(searchCriteria);
+//        }
+
+
         ApiResponse localities =  localitiesApiService.findLocality(searchCriteria);
         if (localities.getResult() != null
                 && searchCriteria.getSearchImages() != null
@@ -215,10 +207,12 @@ public class SearchController extends ControllerHelper {
             asynchService.doAsynchCallsForEachResult(
                     localities,
                     locality ->
-                            () -> localitiesApiService.findLocalityImage(searchCriteria),
+                            () -> localitiesApiService.findLocalityImage(
+                                    new SearchField(locality.get("id").toString(), LookUpType.exact)),
                     locality ->
                             receivedImage -> locality.put("locality_image_thumbnail", receivedImage));
         }
+
         return localities;
     }
 

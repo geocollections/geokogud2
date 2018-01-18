@@ -304,26 +304,26 @@
 
                 <div class="row" data-ng-if="showImages">
                     <div class="col-lg-12">
-                        <h3 class="page-header"><b data-ng-init="images.total = 0">{{ 'SEARCH.FOUND_IMAGES' | translate }}: {{images.total}} </b></h3>
+                        <h3 class="page-header"><b data-ng-init="images.total = 0">{{ 'SEARCH.FOUND_IMAGES' | translate }}: {{response.results.length}} </b></h3>
                     </div>
-                    <div data-ng-repeat="row in images.rows">
-                        <div class="col-lg-15 col-lg-3 col-md-4 col-xs-6" data-ng-repeat="col in row">
+                    <div>
+                        <div class="col-lg-15 col-lg-3 col-md-4 col-xs-6" data-ng-repeat="image in response.results">
 
                             <figure class="margin-bottom-20">
 
-                                <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen_image',id:col.image.id})">
+                                <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen_image',id:image.id})">
                                     <!--<show-preview img-url="ctrl.service.composeImageUrl(image, col.image.image_url)" class="img-responsive"/>-->
-                                    <show-preview img-url="ctrl.service.composeImageUrl(col.object, col.image.image_url)" class="img-responsive"/>
+                                    <show-preview img-url="ctrl.service.composeImageUrl(image, image.image_url)" class="img-responsive"/>
 
                                     <div class="img-gallery-author">
-                                        <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen_image',id:col.image.id})">
-                                            {{col.object.database__acronym}} {{col.object.specimen_id}}
+                                        <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:image.specimen_id})">
+                                            {{image.specimen__database__acronym}} {{image.specimen__specimen_id}}
                                         </a>
                                         <br>
-                                        <div data-ng-if="col.object.specimenidentification__taxon__taxon == null ||col.object.specimenidentification__taxon__taxon == ''">
-                                            <a href="http://fossiilid.info/{{col.object.specimenidentification__taxon_id}}" target="_blank">{{col.object.specimenidentification__taxon__taxon}}</a>
-                                            <span data-ng-if="col.object.specimenidentification__taxon__taxon == null ||col.object.specimenidentification__taxon__taxon == ''">{{col.object.specimenidentification__name}}</span>
-                                        </div>
+                                        <!--<div data-ng-if="col.object.specimenidentification__taxon__taxon == null ||col.object.specimenidentification__taxon__taxon == ''">-->
+                                            <!--<a href="http://fossiilid.info/{{col.object.specimenidentification__taxon_id}}" target="_blank">{{col.object.specimenidentification__taxon__taxon}}</a>-->
+                                            <!--<span data-ng-if="col.object.specimenidentification__taxon__taxon == null ||col.object.specimenidentification__taxon__taxon == ''">{{col.object.specimenidentification__name}}</span>-->
+                                        <!--</div>-->
                                     </div>
                                 </a>
                             </figure>

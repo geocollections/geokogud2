@@ -83,4 +83,14 @@ public class FluentPhotoArchiveSearchApiBuilder extends FluentSearchApiBuilder<F
         addReturningField(OBJECT);
         return this;
     }
+
+    public FluentPhotoArchiveSearchApiBuilder queryFilenameNotNull() {
+        addFieldNameAndValue("filename__isnull", "false");
+        return this;
+    }
+
+    public FluentPhotoArchiveSearchApiBuilder queryLocalityIdNotNull() {
+        addFieldNameAndValue("locality_id__isnull", "false");
+        return this;
+    }
 }

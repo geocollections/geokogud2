@@ -10,6 +10,8 @@ import java.util.Map;
 public interface SpecimenApiService {
     ApiResponse findSpecimen(SpecimenSearchCriteria searchCriteria) ;
 
+    ApiResponse findSpecimenImages(SpecimenSearchCriteria searchCriteria);
+
     ApiResponse findSpecimenImage(SearchField specimenId) ;
 
     ApiResponse findSpecimenIdentification(SearchField specimenId) ;

@@ -82,6 +82,7 @@ public class PhotoArchiveApiServiceImpl implements PhotoArchiveApiService{
     public ApiResponse findPhoto(PhotoArchiveSearchCriteria searchCriteria)  {
         String requestParams = prepareCommonFields(searchCriteria)
                 .queryId(searchCriteria.getId())
+//                .queryFilenameNotNull() Currently disabled because then table view also wont show when filename is null.
                 .buildDefaultFieldsQuery();
         return apiService.searchRawEntities(IMAGE_TABLE, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }

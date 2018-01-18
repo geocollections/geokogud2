@@ -1,10 +1,12 @@
 package ee.ttu.geocollection.interop.api.localities.service.impl;
 
+import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.domain.SortField;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentLocalityImageSearchApiBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentLocalitySearchApiBuilder;
+import ee.ttu.geocollection.interop.api.builder.search.FluentPhotoArchiveSearchApiBuilder;
 import ee.ttu.geocollection.interop.api.localities.pojo.LocalityMapFilter;
 import ee.ttu.geocollection.interop.api.localities.pojo.LocalitySearchCriteria;
 import ee.ttu.geocollection.interop.api.localities.service.LocalitiesApiService;
@@ -103,11 +105,20 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
     }
 
     @Override
-    public ApiResponse findLocalityImage(LocalitySearchCriteria searchCriteria) {
-        String requestParams = FluentLocalityImageSearchApiBuilder.aRequest()
-                .queryLocalityIdForUrl(searchCriteria.getId()).andReturn()
+    public ApiResponse findLocalityImages(LocalitySearchCriteria searchCriteria) {
+        String requestParams = FluentPhotoArchiveSearchApiBuilder.aRequest()
+                .queryFilenameNotNull()
+                .queryLocalityIdNotNull()
                 .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities("image", searchCriteria.getPage(),new SortField(), requestParams);
+        return apiService.searchRawEntities("image", searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
+    }
+
+    @Override
+    public ApiResponse findLocalityImage(SearchField localityId) {
+        String requestParams = FluentLocalityImageSearchApiBuilder.aRequest()
+                .queryLocalityIdForUrl(localityId).andReturn()
+                .buildDefaultFieldsQuery();
+        return apiService.searchRawEntities("image", 1, new SortField(), requestParams);
     }
 
 
