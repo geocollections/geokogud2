@@ -261,9 +261,9 @@
             "TABLE": {
                 "REFERENCE": "Reference",
                 "JOURNAL_BOOK": "Journal / Book",
-                "PP": "PP.",
+                "PP": "Pages",
                 "DOI": "DOI",
-                "REMARKS": "File(s)",
+                "REMARKS": "Remarks",
                 "ID": "ID",
                 "AUTHOR": "Author",
                 "YEAR": "Year",

@@ -43,7 +43,7 @@
                     <a href data-ng-if="entity.doi.includes('http')" data-ng-click="ctrl.service.openUrlInNewWindow({url: entity.doi})">
                         {{entity.doi}}
                     </a>
-                    <a href data-ng-if="entity.doi.includes('DOI')" data-ng-click="ctrl.service.openDoiInNewWindow({doi: entity.doi})">
+                    <a href data-ng-if="!entity.doi.includes('http')" data-ng-click="ctrl.service.openDoiInNewWindow({doi: entity.doi})">
                         {{entity.doi}}
                     </a>
                 </td>

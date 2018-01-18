@@ -5,7 +5,7 @@
         <div class="col-xs-6" ng-include="'app/templates/search/partial/pagination.html'" data-ng-if="!main.isGlobalSearch()"></div>
     </div>
 
-    <div class="table-responsive"  data-ng-if="!showImages">
+    <div class="table-responsive">
         <table class="table table-bordered table-hover" id="table-search">
             <thead class="thead-default">
             <tr>
@@ -29,41 +29,50 @@
                 <td style="font-weight: normal" data-title="{{ 'SEARCH.LOCALITIES.TABLE.ID' | translate }}">
                     <a href data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:entity.id})">{{entity.id}}</a>
                 </td>
+
                 <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.LOCALITY' | translate }}">
                     <a class="bold-link" href data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:entity.id})">
                         <localize en="entity.locality_en" et="entity.locality"/>
                     </a>
                 </td>
+
                 <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.COUNTRY' | translate }}">
-                    <localize en="entity.country__value_en" et="entity.country__value"/>
+                    <localize en="entity.country_en" et="entity.country"/>
                 </td>
+
                 <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.LATITUDE' | translate }}">{{entity.latitude}}</td>
+
                 <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.LONGITUDE' | translate }}">{{entity.longitude}}</td>
+
                 <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.VERTICAL_EXTENT' | translate }}">{{entity.depth}}</td>
 
+
                 <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.STRATIGRAPHY_BASE' | translate }}">
-                    <a data-ng-if="entity.stratigraphy_base_id != null" href
-                       data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy', id:entity.stratigraphy_base_id})">
-                        <localize en="entity.stratigraphy_base__stratigraphy_en" et="entity.stratigraphy_base__stratigraphy"/>
+                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy', id:entity.stratigraphy_base_id})">
+                        <localize en="entity.stratigraphy_base_en" et="entity.stratigraphy_base"/>
                     </a>
                 </td>
 
                 <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.STRATIGRAPHY_TOP' | translate }}">
-                    <a data-ng-if="entity.stratigraphy_top_id != null" href
-                       data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy', id:entity.stratigraphy_top_id})">
-                        <localize en="entity.stratigraphy_top__stratigraphy_en" et="entity.stratigraphy_top__stratigraphy"/>
+                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy', id:entity.stratigraphy_top_id})">
+                        <localize en="entity.stratigraphy_top_en" et="entity.stratigraphy_top"/>
                     </a>
                 </td>
 
-                <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.DRILLCORE' | translate }}"></td>
+                <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.DRILLCORE' | translate }}">
+                    <span data-ng-if="entity.related_drillcores > 0">+</span>
+                </td>
+
                 <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.IMAGES' | translate }}">
-                    <span data-ng-if="entity.locality_image_thumbnail.count > 0">+</span>
+                    <span data-ng-if="entity.related_images > 0">+</span>
                 </td>
+
                 <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.MAP' | translate }}">
-                    <span data-ng-if="entity.latitude != null && entity.longitude != null">+</span>
+                    <span data-ng-if="entity.latitude && entity.longitude">+</span>
                 </td>
+
                 <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.MA_ID' | translate }}">
-                    <a href data-ng-if="entity.maaamet_pa_id != null"
+                    <a href data-ng-if="entity.maaamet_pa_id"
                        data-ng-click="ctrl.service.openUrlInNewWindow({url: 'http://geoportaal.maaamet.ee/index.php?&action=viewPA&page_id=382&pa_id=' + entity.maaamet_pa_id})">
                         {{entity.maaamet_pa_id}}
                     </a>

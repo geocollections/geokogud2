@@ -268,7 +268,9 @@ var constructor = function (utils, configuration, $window, $location) {
 
     function openDoiInNewWindow(params) {
         var doi = params.doi;
-        if (params.doi.includes("DOI")) {
+        if (params.doi.includes("DOI:")) {
+            doi = doi.replace("DOI:", "").trim();
+        } else if (params.doi.includes("DOI")) {
             doi = doi.replace("DOI", "").trim();
         }
         $window.open('http://dx.doi.org/' + doi, '', 'width=600,height=750,scrollbars, resizable');

@@ -261,9 +261,9 @@
             "TABLE": {
                 "REFERENCE": "Viide",
                 "JOURNAL_BOOK": "Ajakiri / kogumik",
-                "PP": "PP.",
+                "PP": "Lehed",
                 "DOI": "DOI",
-                "REMARKS": "file(s)",
+                "REMARKS": "Lisainfo",
                 "ID": "ID",
                 "AUTHOR": "Autor",
                 "YEAR": "Aasta",
