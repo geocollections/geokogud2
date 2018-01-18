@@ -143,11 +143,17 @@
                             <figure class="margin-bottom-20">
 
                                 <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:col.image.id})">
-                                    <show-preview img-author="col.image.author__agent" img-date-taken="col.image.date_taken" img-url="ctrl.service.composeImageUrl(col.image)" class="img-responsive"/>
+                                    <div data-ng-if="col.image.filename && col.image.filename != null">
+                                        <show-preview img-author="col.image.author__agent" img-date-taken="col.image.date_taken" img-url="ctrl.service.composeImageUrl(col.image)" class="img-responsive"/>
+                                    </div>
+                                    <div class="img-responsive" data-ng-if="col.image.filename == null">
+                                        <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
+                                        <!--<img class="previewImage" src="http://customerengagement.asia/Blog/img/no_img.png" />-->
+                                    </div>
 
                                     <div class="img-gallery-author">
                                         <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:col.image.id})">
-                                            <first-not-null class="font-smaller" values="[col.image.locality__locality, col.image.locality__locality_en]"/>
+                                            <first-not-null class="font-smaller" values="[col.image.locality__locality, col.image.locality__locality_en, col.image.image_number]"/>
                                         </a>
                                         <!--<br>-->
                                         <!--<div>{{col.image.author__agent}} {{col.image.date_taken}}</div>-->
