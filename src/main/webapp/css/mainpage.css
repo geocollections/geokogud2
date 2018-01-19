@@ -356,7 +356,7 @@ table tr > td:first-child {
 
 /* FAQ button reveals picture (photo archive) */
 .content img {
-	max-width: 50%;
+	max-width: 35%;
 }
 
 .content .dateAdded {

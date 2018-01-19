@@ -154,15 +154,15 @@
                                     </div>
                                     <div class="img-responsive" data-ng-if="col.image.filename == null">
                                         <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
-                                        <!--<img class="previewImage" src="http://customerengagement.asia/Blog/img/no_img.png" />-->
                                     </div>
 
                                     <div class="img-gallery-author">
                                         <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:col.image.id})">
-                                            <first-not-null class="font-smaller" values="[col.image.locality__locality, col.image.locality__locality_en, col.image.image_number]"/>
+                                            <localize class="font-smaller" et="col.image.locality__locality" en="col.image.locality__locality_en" />
+                                            <span class="font-smaller" data-ng-if="col.image.locality__locality == null && col.image.locality__locality_en == null ">
+                                                {{col.image.image_number}}
+                                            </span>
                                         </a>
-                                        <!--<br>-->
-                                        <!--<div>{{col.image.author__agent}} {{col.image.date_taken}}</div>-->
                                     </div>
                                 </a>
                             </figure>

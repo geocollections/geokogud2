@@ -75,10 +75,3 @@
 
     <div ng-include="'app/templates/search/partial/pagination.html'" data-ng-if="!main.isGlobalSearch()"></div>
 </div>
-
-<div class="row" data-ng-if="response.results == null">
-    <div class="col-lg-12 h3 panel-heading text-center no-results">{{ 'SEARCH.NO_RESULTS' | translate }}</div>
-    <div class="col-lg-12">
-        <div class="col-lg-12" ng-bind-html="main.getContent(main.searchTips)"></div>
-    </div>
-</div>

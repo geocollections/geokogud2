@@ -172,7 +172,9 @@ angular.module('geoApp')
                     if (newVal[1] && newVal[1] != null) {
                         dateTaken = newVal[1];
                     }
-                    scope.title = author + " " + dateTaken;
+                    if (author.length > 0 || dateTaken.length > 0) {
+                        scope.title = author + " " + dateTaken;
+                    }
             }
             });
             scope.$watch('imgUrl', function(newValue) {
