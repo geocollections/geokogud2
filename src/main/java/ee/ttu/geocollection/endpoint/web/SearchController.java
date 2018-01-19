@@ -189,21 +189,13 @@ public class SearchController extends ControllerHelper {
     public ApiResponse searchLocalities(@RequestBody LocalitySearchCriteria searchCriteria) {
 
 //        TODO: Enable when findLocalityImages() is ready.
-//        ApiResponse localities;
-//        if (searchCriteria.getSearchImages() != null
-//                && searchCriteria.getSearchImages().getName() != null
-//                && searchCriteria.getSearchImages().getName().equals("true")) {
-//            localities = localitiesApiService.findLocalityImages(searchCriteria);
-//        } else {
-//            localities = localitiesApiService.findLocality(searchCriteria);
-//        }
-
-
-        ApiResponse localities =  localitiesApiService.findLocality(searchCriteria);
-        if (localities.getResult() != null
-                && searchCriteria.getSearchImages() != null
+        ApiResponse localities = null;
+        if (searchCriteria.getSearchImages() != null
                 && searchCriteria.getSearchImages().getName() != null
                 && searchCriteria.getSearchImages().getName().equals("true")) {
+            localities = localitiesApiService.findLocalityImages(searchCriteria);
+        } else {
+            localities = localitiesApiService.findLocality(searchCriteria);
             asynchService.doAsynchCallsForEachResult(
                     localities,
                     locality ->
@@ -212,6 +204,21 @@ public class SearchController extends ControllerHelper {
                     locality ->
                             receivedImage -> locality.put("locality_image_thumbnail", receivedImage));
         }
+
+
+//        ApiResponse localities =  localitiesApiService.findLocality(searchCriteria);
+//        if (localities.getResult() != null
+//                && searchCriteria.getSearchImages() != null
+//                && searchCriteria.getSearchImages().getName() != null
+//                && searchCriteria.getSearchImages().getName().equals("true")) {
+//            asynchService.doAsynchCallsForEachResult(
+//                    localities,
+//                    locality ->
+//                            () -> localitiesApiService.findLocalityImage(
+//                                    new SearchField(locality.get("id").toString(), LookUpType.exact)),
+//                    locality ->
+//                            receivedImage -> locality.put("locality_image_thumbnail", receivedImage));
+//        }
 
         return localities;
     }

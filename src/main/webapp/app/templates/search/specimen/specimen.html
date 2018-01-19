@@ -309,29 +309,24 @@
                         </h3>
                     </div>
 
-                    <div>
-                        <div class="col-lg-15 col-lg-3 col-md-4 col-xs-6" data-ng-repeat="image in response.results">
+                    <div class="col-lg-15 col-lg-3 col-md-4 col-xs-6" data-ng-repeat="image in response.results">
+                        <figure class="margin-bottom-20">
 
-                            <figure class="margin-bottom-20">
+                            <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen_image',id:image.id})">
+                                <show-preview img-author="image.agent__agent" img-date-taken="image.date" img-url="ctrl.service.composeImageUrl(image, image.image_url)" class="img-responsive"/>
 
-                                <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen_image',id:image.id})">
-                                    <!--<show-preview img-url="ctrl.service.composeImageUrl(image, col.image.image_url)" class="img-responsive"/>-->
-                                    <show-preview img-author="image.agent__agent" img-date-taken="image.date" img-url="ctrl.service.composeImageUrl(image, image.image_url)" class="img-responsive"/>
-
-                                    <div class="img-gallery-author">
-                                        <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:image.specimen_id})">
-                                            {{image.specimen__database__acronym}} {{image.specimen__specimen_id}}
-                                        </a>
-                                        <br>
+                                <div class="img-gallery-author">
+                                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:image.specimen_id})">
+                                        {{image.specimen__database__acronym}} {{image.specimen__specimen_id}}
+                                    </a>
+                                    <br>
                                         <!--<div data-ng-if="col.object.specimenidentification__taxon__taxon == null ||col.object.specimenidentification__taxon__taxon == ''">-->
                                             <!--<a href="http://fossiilid.info/{{col.object.specimenidentification__taxon_id}}" target="_blank">{{col.object.specimenidentification__taxon__taxon}}</a>-->
                                             <!--<span data-ng-if="col.object.specimenidentification__taxon__taxon == null ||col.object.specimenidentification__taxon__taxon == ''">{{col.object.specimenidentification__name}}</span>-->
                                         <!--</div>-->
-                                    </div>
-                                </a>
-                            </figure>
-
-                        </div>
+                                </div>
+                            </a>
+                        </figure>
                     </div>
                 </div>
 

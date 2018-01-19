@@ -2,6 +2,7 @@ package ee.ttu.geocollection.interop.api.localities.service.impl;
 
 import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.domain.SortField;
+import ee.ttu.geocollection.domain.SortingOrder;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentLocalityImageSearchApiBuilder;
@@ -106,11 +107,28 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
 
     @Override
     public ApiResponse findLocalityImages(LocalitySearchCriteria searchCriteria) {
-        String requestParams = FluentPhotoArchiveSearchApiBuilder.aRequest()
-                .queryFilenameNotNull()
+        String requestParams = FluentLocalitySearchApiBuilder.aRequest()
                 .queryLocalityIdNotNull()
+                .queryImgLocality(searchCriteria.getLocality())
+                .queryImgNumber(searchCriteria.getNumber())
+                .queryImgCountry(searchCriteria.getCountry())
+                .queryImgAdminUnit(searchCriteria.getAdminUnit())
+                .queryImgStratigraphy(searchCriteria.getStratigraphy())
+                .queryImgReference(searchCriteria.getReference())
+                .queryMaPaId(searchCriteria.getMaPaId()).andReturn()
+                .queryLatitude(searchCriteria.getLatitude()).andReturn()
+                .queryLongitude(searchCriteria.getLongitude()).andReturn()
+                .queryDepth(searchCriteria.getVerticalExtentSince()).andReturn()
+                .queryDepth(searchCriteria.getVerticalExtentTo()).andReturn()
+                .returnId()
+                .returnLocalityBase()
+                .returnLocalityBaseEn()
+                .returnLocalityBaseId()
+                .returnLocalityTop()
+                .returnLocalityTopEn()
+                .returnLocalityTopId()
                 .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities("image", searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
+        return apiService.searchRawEntities("image", searchCriteria.getPage(), new SortField("locality__id", SortingOrder.DESCENDING), requestParams);
     }
 
     @Override

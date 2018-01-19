@@ -93,4 +93,50 @@ public class FluentLocalitySearchApiBuilder extends FluentSearchApiBuilder<Fluen
         addReturningField(LOCALITY_STRATIGRAPHY_BASE_ID);
         return this;
     }
+
+    /*
+     * IMAGE search START
+     */
+    public FluentLocalitySearchApiBuilder queryLocalityIdNotNull() {
+        addFieldNameAndValue("locality_id__isnull", "false");
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder queryImgLocality(SearchField locality) {
+        buildMultiSearch(locality, LOCALITY__LOCALITY_EN, LOCALITY__LOCALITY);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder queryImgNumber(SearchField number) {
+        buildFieldParameters(LOCALITY__NUMBER, number);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder queryImgCountry(SearchField country) {
+        buildMultiSearch(country, LOCALITY__COUNTRY, LOCALITY__COUNTRY_EN);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder queryImgAdminUnit(SearchField adminUnit) {
+        buildMultiSearch(adminUnit,
+                LOCALITY__COUNTRY,
+                LOCALITY__COUNTRY_EN,
+                LOCALITY__COUNTY,
+                LOCALITY__COUNTY_EN,
+                LOCALITY__PARISH,
+                LOCALITY__PARISH_EN,
+                LOCALITY__ASUSTUSYKSUS,
+                LOCALITY__ASUSTUSYKSUS_EN);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder queryImgStratigraphy(SearchField id) {
+        buildMultiSearch(id, LOCALITY__LOCALITYSTRATIGRAPHY__STRATIGRAPHY, LOCALITY__LOCALITYSTRATIGRAPHY__STRATIGRAPHY_EN);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder queryImgReference(SearchField id) {
+        buildFieldParameters(LOCALITY__LOCALITYREFERENCE__REFERENCE__REFERENCE, id);
+        return this;
+    }
 }

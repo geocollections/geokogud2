@@ -317,4 +317,23 @@ public class ApiFields {
     public static final String SPECIMEN__ORIGINAL_STATUS__VALUE_EN = "specimen__original_status__value_en";
     public static final String SPECIMEN__PART = "specimen__part";
     public static final String SPECIMEN__DATE_ADDED = "specimen__date_added";
+
+    /*
+     * LOCALITY IMAGE search
+     */
+    public static final String LOCALITY__LOCALITY_EN = "locality__locality_en";
+    public static final String LOCALITY__LOCALITY = "locality__locality";
+    public static final String LOCALITY__NUMBER = "locality__number";
+    public static final String LOCALITY__COUNTRY = "locality__country__value";
+    public static final String LOCALITY__COUNTRY_EN = "locality__country__value_en";
+    public static final String LOCALITY__COUNTY = "locality__maakond__maakond";
+    public static final String LOCALITY__COUNTY_EN = "locality__maakond__maakond_en";
+    public static final String LOCALITY__PARISH = "locality__vald__vald";
+    public static final String LOCALITY__PARISH_EN = "locality__vald__vald_en";
+    public static final String LOCALITY__ASUSTUSYKSUS = "locality__asustusyksus__asustusyksus";
+    public static final String LOCALITY__ASUSTUSYKSUS_EN = "locality__asustusyksus__asustusyksus_en";
+    public static final String LOCALITY__LOCALITYSTRATIGRAPHY__STRATIGRAPHY_EN = "locality__localitystratigraphy__stratigraphy__stratigraphy_en";
+    public static final String LOCALITY__LOCALITYSTRATIGRAPHY__STRATIGRAPHY = "locality__localitystratigraphy__stratigraphy__stratigraphy";
+    public static final String LOCALITY__LOCALITYREFERENCE__REFERENCE__REFERENCE = "locality__localityreference__reference__reference";
+
 }
