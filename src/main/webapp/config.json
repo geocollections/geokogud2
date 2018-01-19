@@ -147,17 +147,20 @@
             "specimenNumber": "specimen_number",
             "collectionNumber": "collection_id",
             "classification": "classification",
-            "fossilMineralRock": "fossil",
             "fossilName": "taxon",
             "mineralRock": "name_geology",
             "adminUnit": "country",
             "locality": "locality",
             "stratigraphy": "stratigraphy",
             "id": "id",
+            "depthSince": "depth_since",
+            "depthTo": "depth_to",
             "collector": "agent",
             "reference": "reference",
             "typeStatus": "original_type",
-            "partOfFossil": "part"
+            "partOfFossil": "part",
+            "dateTakenSince": "date_taken_since",
+            "dateTakenTo": "date_taken_to"
           }
       },
       "specialFields" : [

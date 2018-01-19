@@ -26,8 +26,10 @@
                 | <a href="{{detailCtrl.externalImagePath}}/1920" target="_blank">1920px</a>
                 | <a href="{{detailCtrl.imageUrl}}" target="_blank">Original</a>
             </div>
-            <div class="col-sm-6" data-ng-if="detailCtrl.results.fileName === null">
-                <h3>TODO: nice error message or default error picture.</h3>
+
+            <div class="col-sm-6" data-ng-if="detailCtrl.results.filename == null">
+                <h3> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.PHOTO' | translate }} </h3>
+                <i class="fa fa-picture-o fa-5x window-size text-center" aria-hidden="true"></i>
             </div>
 
             <div class="col-sm-6">
