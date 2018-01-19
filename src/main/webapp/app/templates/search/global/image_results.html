@@ -9,38 +9,41 @@
     <div class="table-responsive">
         <table class="table table-bordered table-hover" id="table-search">
             <thead class="thead-default">
-            <tr>
-                <th><sort-field value = "image_number" name="SEARCH.PHOTO_ARCHIVE.TABLE.NUMBER"></sort-field></th>
-                <th><sort-field value = "author__agent" name="SEARCH.PHOTO_ARCHIVE.TABLE.AUTHOR"></sort-field></th>
-                <th><sort-field value = "date_taken" name="SEARCH.PHOTO_ARCHIVE.TABLE.DATE"></sort-field></th>
-                <th><sort-field value = "locality__locality,locality__locality_en" name="SEARCH.PHOTO_ARCHIVE.TABLE.LOCALITY"></sort-field></th>
-                <th><sort-field value = "object" name="SEARCH.PHOTO_ARCHIVE.TABLE.CATEGORY"></sort-field></th>
-                <th><sort-field value = "keywords" name="SEARCH.PHOTO_ARCHIVE.TABLE.KEY_WORDS"></sort-field></th>
-                <th>{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.IMAGES' | translate }}</th>
-            </tr>
+                <tr>
+                    <th><sort-field value = "image_number" name="SEARCH.PHOTO_ARCHIVE.TABLE.NUMBER"></sort-field></th>
+                    <th><sort-field value = "author__agent" name="SEARCH.PHOTO_ARCHIVE.TABLE.AUTHOR"></sort-field></th>
+                    <th><sort-field value = "date_taken" name="SEARCH.PHOTO_ARCHIVE.TABLE.DATE"></sort-field></th>
+                    <th><sort-field value = "locality__locality,locality__locality_en" name="SEARCH.PHOTO_ARCHIVE.TABLE.LOCALITY"></sort-field></th>
+                    <th><sort-field value = "object" name="SEARCH.PHOTO_ARCHIVE.TABLE.CATEGORY"></sort-field></th>
+                    <th><sort-field value = "keywords" name="SEARCH.PHOTO_ARCHIVE.TABLE.KEY_WORDS"></sort-field></th>
+                    <th>{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.IMAGES' | translate }}</th>
+                </tr>
             </thead>
+
             <tbody>
-            <tr data-ng-repeat="entity in response.results">
-                <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.NUMBER' | translate }}">
-                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:entity.id})">{{entity.image_number}}</a>
-                </td>
-                <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.AUTHOR' | translate }}"></td>
-                <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.DATE' | translate }}">
-                    <div>{{entity.date_taken | date:dateFormat}}</div>
-                    <div data-ng-if="!entity.date_taken">{{entity.date_taken_free}}</div>
-                </td>
-                <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.LOCALITY' | translate }}">
-                    <localize et="entity.locality" en="entity.locality_en"/>
-                    <div data-ng-if="!entity.locality && !entity.locality_en">
-                        {{entity.place}}
-                    </div>
-                </td>
-                <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.CATEGORY' | translate }}">{{entity.object}}</td>
-                <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.KEY_WORDS' | translate }}">{{entity.keywords}}</td>
-                <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.IMAGES' | translate }}">
-                    {{entity.filename}}
-                </td>
-            </tr>
+                <tr data-ng-repeat="entity in response.results">
+                    <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.NUMBER' | translate }}">
+                        <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:entity.id})">{{entity.image_number}}</a>
+                    </td>
+                    <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.AUTHOR' | translate }}">{{entity.author}}</td>
+                    <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.DATE' | translate }}">
+                        <div>{{entity.date_taken | date:dateFormat}}</div>
+                        <div data-ng-if="!entity.date_taken">{{entity.date_taken_free}}</div>
+                    </td>
+                    <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.LOCALITY' | translate }}">
+                        <localize et="entity.locality" en="entity.locality_en"/>
+                        <div data-ng-if="!entity.locality && !entity.locality_en">
+                            {{entity.place}}
+                        </div>
+                    </td>
+                    <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.CATEGORY' | translate }}">{{entity.object}}</td>
+                    <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.KEY_WORDS' | translate }}">{{entity.keywords}}</td>
+                    <td class="image-preview" data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.IMAGES' | translate }}">
+                        <a href data-ng-click="ctrl.service.openInNewWindow({object:'image', id:entity.id})">
+                            <img class="previewImage" src="{{entity.image_preview_url}}" />
+                        </a>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
