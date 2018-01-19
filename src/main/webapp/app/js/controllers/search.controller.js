@@ -105,9 +105,8 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
             if ((['specimens'].indexOf($stateParams.type) > -1)) {
                 if ($scope.searchParameters.id.name != null || $scope.searchParameters.collector.name != null ||
                     $scope.searchParameters.reference.name != null || $scope.searchParameters.typeStatus.name != null ||
-                    $scope.searchParameters.partOfFossil.name != null || $scope.searchParameters.keyWords.name != null ||
-                    $scope.searchParameters.dateTakenSince !== "undefined" || $scope.searchParameters.dateTakenTo.name !== "undefined" ||
-                    $scope.searchParameters.rockId.name != null) {
+                    $scope.searchParameters.partOfFossil.name != null || $scope.searchParameters.dateTakenSince !== "undefined" ||
+                    $scope.searchParameters.dateTakenTo.name !== "undefined") {
                     $scope.isLocationFieldsCollapsed = false;
                 }
             }

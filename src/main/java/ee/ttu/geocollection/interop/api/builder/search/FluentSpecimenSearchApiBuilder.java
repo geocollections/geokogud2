@@ -164,9 +164,110 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
         return this;
     }
 
-//    public FluentSpecimenSearchApiBuilder returnImageFields() {
-//        return returnRelatedData(SpecimenApiServiceImpl.SPECIMEN_IMAGE_TABLE, SPECIMEN__DATABASE__ACRONYM, IMAGE_URL, IMAGE);
-//    }
+    /*
+     * IMAGE SEARCH START
+     */
 
+    public FluentSpecimenSearchApiBuilder queryImgSpecimenNumber(SearchField specimenNumber) {
+        buildMultiSearch(specimenNumber, SPECIMEN__SPECIMEN_NR, SPECIMEN__SPECIMEN_ID);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryImgCollectionNumber(SearchField collectionNumber) {
+        buildFieldParameters(SPECIMEN__COLL__NUMBER, collectionNumber);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryImgClassification(SearchField classification) {
+        buildMultiSearch(classification, SPECIMEN__CLASSIFICATION__CLASS_FIELD, SPECIMEN__CLASSIFICATION__CLASS_EN);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryImgNameOfFossil(SearchField nameOfFossil) {
+        buildMultiSearch(nameOfFossil, SPECIMEN__SPECIMENIDENTIFICATION__NAME, SPECIMEN__SPECIMENIDENTIFICATION__TAXON__TAXON);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryImgMineralRock(SearchField mineralRock) {
+        buildMultiSearch(
+                mineralRock,
+                SPECIMEN__SPECIMENIDENTIFICATIONGEOLOGIES__NAME,
+                SPECIMEN__SPECIMENIDENTIFICATIONGEOLOGIES__NAME_EN,
+                SPECIMEN__SPECIMENIDENTIFICATIONGEOLOGIES__ROCK__NAME,
+                SPECIMEN__SPECIMENIDENTIFICATIONGEOLOGIES__ROCK__NAME_EN);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryImgAdminUnit(SearchField adminUnit) {
+        buildMultiSearch(
+                adminUnit,
+                SPECIMEN__LOCALITY_COUNTRY,
+                SPECIMEN__LOCALITY_COUNTRY_EN,
+                SPECIMEN__LOCALITY__MAAKOND__MAAKOND,
+                SPECIMEN__LOCALITY__MAAKOND__MAAKOND_EN,
+                SPECIMEN__LOCALITY__VALD__VALD,
+                SPECIMEN__LOCALITY__VALD__VALD_EN,
+                SPECIMEN__LOCALITY__ASUSTUSYKSUS__ASUSTUSYKSUS,
+                SPECIMEN__LOCALITY__ASUSTUSYKSUS__ASUSTUSYKSUS_EN);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryImgLocality(SearchField locality) {
+        buildMultiSearch(locality, SPECIMEN__LOCALITY__LOCALITY, SPECIMEN__LOCALITY__LOCALITY_EN, SPECIMEN__LOCALITY_FREE);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryImgStratigraphy(SearchField stratigraphy) {
+        buildMultiSearch(
+                stratigraphy,
+                SPECIMEN__STRATIGRAPHY_STRATIGRAPHY,
+                SPECIMEN__STRATIGRAPHY_STRATIGRAPHY_EN,
+                SPECIMEN__LITHOSTRATIGRAPHY__STRATIGRAPHY,
+                SPECIMEN__LITHOSTRATIGRAPHY__STRATIGRAPHY_EN,
+                SPECIMEN__STRATIGRAPHY_FREE);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryImgId(SearchField specimenId) {
+        buildFieldParameters(SPECIMEN__ID, specimenId);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryImgDepth(SearchField depth) {
+        buildMultiSearch(depth, SPECIMEN__DEPTH, SPECIMEN__DEPTH_INTERVAL);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryImgCollector(SearchField collector) {
+        buildMultiSearch(collector,
+                SPECIMEN__AGENT_COLLECTED,
+                SPECIMEN__AGENT_COLLECTED__FORENAME,
+                SPECIMEN__AGENT_COLLECTED__SURENAME);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryImgReference(SearchField reference) {
+        buildMultiSearch(
+                reference,
+                SPECIMEN__SPECIMENREFERENCE__REFERENCE__AUTHOR,
+                SPECIMEN__SPECIMENREFERENCE__REFERENCE__TITLE,
+                SPECIMEN__SPECIMENREFERENCE__REFERENCE__REFERENCE);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryImgOriginalStatus(SearchField typeStatus) {
+        buildMultiSearch(typeStatus, SPECIMEN__ORIGINAL_STATUS__VALUE, SPECIMEN__ORIGINAL_STATUS__VALUE_EN);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryImgPartOfFossil(SearchField partOfFossil) {
+        buildFieldParameters(SPECIMEN__PART, partOfFossil);
+        return this;
+    }
+
+    public FluentSpecimenSearchApiBuilder queryImgDateAdded(SearchField dateAdded) {
+        buildFieldParameters(SPECIMEN__DATE_ADDED, dateAdded);
+        return this;
+    }
 
 }

@@ -241,16 +241,16 @@
                                     </div>
                                 </div>
 
-                                <div class="row searchCriterion">
-                                    <div class="col-md-12  medium-padding">
-                                        <b>{{ 'SEARCH.SPECIMENS.KEYWORDS' | translate }}</b>
-                                        <selectdefault custom-css="searchCriterionType"
-                                                       ng-model="searchParameters.keyWords.lookUpType"></selectdefault>
-                                    </div>
-                                    <div class="col-md-12 medium-padding">
-                                        <input type="text" ng-model="searchParameters.keyWords.name" class="form-control"/>
-                                    </div>
-                                </div>
+                                <!--<div class="row searchCriterion">-->
+                                    <!--<div class="col-md-12  medium-padding">-->
+                                        <!--<b>{{ 'SEARCH.SPECIMENS.KEYWORDS' | translate }}</b>-->
+                                        <!--<selectdefault custom-css="searchCriterionType"-->
+                                                       <!--ng-model="searchParameters.keyWords.lookUpType"></selectdefault>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-md-12 medium-padding">-->
+                                        <!--<input type="text" ng-model="searchParameters.keyWords.name" class="form-control"/>-->
+                                    <!--</div>-->
+                                <!--</div>-->
 
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
@@ -262,16 +262,16 @@
                                     </div>
                                 </div>
 
-                                <div class="row searchCriterion">
-                                    <div class="col-md-12  medium-padding">
-                                        <b>{{ 'SEARCH.SPECIMENS.ROCK_ID' | translate }}</b>
-                                        <selectexact custom-css="searchCriterionType"
-                                                     ng-model="searchParameters.rockId.lookUpType"></selectexact>
-                                    </div>
-                                    <div class="col-md-12 medium-padding">
-                                        <input type="text" ng-model="searchParameters.rockId.name" class="form-control"/>
-                                    </div>
-                                </div>
+                                <!--<div class="row searchCriterion">-->
+                                    <!--<div class="col-md-12  medium-padding">-->
+                                        <!--<b>{{ 'SEARCH.SPECIMENS.ROCK_ID' | translate }}</b>-->
+                                        <!--<selectexact custom-css="searchCriterionType"-->
+                                                     <!--ng-model="searchParameters.rockId.lookUpType"></selectexact>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-md-12 medium-padding">-->
+                                        <!--<input type="text" ng-model="searchParameters.rockId.name" class="form-control"/>-->
+                                    <!--</div>-->
+                                <!--</div>-->
 
                             </div>
                         </div>
@@ -299,13 +299,16 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-12" data-ng-if="showImages" ng-include="'app/templates/search/partial/pagination.html'"></div>
+                    <div class="col-sm-12" data-ng-if="response.results != null && showImages" ng-include="'app/templates/search/partial/pagination.html'"></div>
                 </div>
 
-                <div class="row" data-ng-if="showImages">
+                <div class="row" data-ng-if="response.results != null && showImages">
                     <div class="col-lg-12">
-                        <h3 class="page-header"><b data-ng-init="images.total = 0">{{ 'SEARCH.FOUND_IMAGES' | translate }}: {{response.results.length}} </b></h3>
+                        <h3 class="page-header">
+                            <b>{{ 'SEARCH.FOUND_IMAGES' | translate }}: {{response.results.length}}</b>
+                        </h3>
                     </div>
+
                     <div>
                         <div class="col-lg-15 col-lg-3 col-md-4 col-xs-6" data-ng-repeat="image in response.results">
 
@@ -313,7 +316,7 @@
 
                                 <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen_image',id:image.id})">
                                     <!--<show-preview img-url="ctrl.service.composeImageUrl(image, col.image.image_url)" class="img-responsive"/>-->
-                                    <show-preview img-url="ctrl.service.composeImageUrl(image, image.image_url)" class="img-responsive"/>
+                                    <show-preview img-author="image.agent__agent" img-date-taken="image.date" img-url="ctrl.service.composeImageUrl(image, image.image_url)" class="img-responsive"/>
 
                                     <div class="img-gallery-author">
                                         <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:image.specimen_id})">
@@ -331,7 +334,15 @@
                         </div>
                     </div>
                 </div>
-                <div data-ng-if="showImages" ng-include="'app/templates/search/partial/pagination.html'"></div>
+
+                <div class="row" data-ng-if="response.results == null">
+                    <div class="col-lg-12 h3 panel-heading text-center no-results">{{ 'SEARCH.NO_RESULTS' | translate }}</div>
+                    <div class="col-lg-12">
+                        <div class="col-lg-12" ng-bind-html="main.getContent(main.searchTips)"></div>
+                    </div>
+                </div>
+
+                <div data-ng-if="response.results != null && showImages" ng-include="'app/templates/search/partial/pagination.html'"></div>
                 <div data-ng-if="!showImages" non-isolated-include template-path="app/templates/search/specimen/specimen_results.html"/>
 
             </div>

@@ -2,6 +2,7 @@ package ee.ttu.geocollection.interop.api.specimen.service.impl;
 
 import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.domain.SortField;
+import ee.ttu.geocollection.domain.SortingOrder;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.builder.ApiFields;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
@@ -179,15 +180,6 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
 //                .buildFullQuery();
         // Had to lower the pagination size because default 30 made it too slow.
         return apiService.searchRawEntities(SPECIMEN_TABLE, 25, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
-//        return apiService.searchRawEntitiesUsingSolr(SPECIMEN_TABLE,30, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
-    }
-
-    @Override
-    public ApiResponse findSpecimenImages(SpecimenSearchCriteria searchCriteria) {
-        String requestParams = prepareCommonFieldsForImages(searchCriteria)
-                .queryId(searchCriteria.getId()).andReturn()
-                .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities(SPECIMEN_IMAGE_TABLE, 25, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
     private FluentSpecimenSearchApiBuilder prepareCommonFields(SpecimenSearchCriteria searchCriteria) {
@@ -207,10 +199,8 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .queryReference(searchCriteria.getReference())
                 .queryOriginalStatus(searchCriteria.getTypeStatus()).andReturn()
                 .queryPartOfFossil(searchCriteria.getPartOfFossil())
-                .queryKeywords(searchCriteria.getKeyWords())
                 .queryDateAdded(searchCriteria.getDateTakenSince())
                 .queryDateAdded(searchCriteria.getDateTakenTo())
-                .queryRockId(searchCriteria.getRockId())
                 .queryInstitutions(searchCriteria.getDbs()).andReturn()
                 .returnDatabaseName()
                 .returnLocalityId()
@@ -219,32 +209,28 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .returnLongitude();
     }
 
-    private FluentSpecimenSearchApiBuilder prepareCommonFieldsForImages(SpecimenSearchCriteria searchCriteria) {
-        return FluentSpecimenSearchApiBuilder.aRequest()
-                .querySpecimenNumber(searchCriteria.getSpecimenNumber()).andReturn()
-                .queryCollectionNumber(searchCriteria.getCollectionNumber()).andReturn()
-                .queryClassification(searchCriteria.getClassification())
-//                .queryFossilMineralRock(searchCriteria.getFossilMineralRock())
-                .queryNameOfFossil(searchCriteria.getFossilName())
-                .queryMineralRock(searchCriteria.getMineralRock())
-                .queryAdminUnit(searchCriteria.getAdminUnit())
-                .queryLocality(searchCriteria.getLocality()).andReturn()
-                .queryStratigraphy(searchCriteria.getStratigraphy()).andReturn()
-                .queryDepth(searchCriteria.getDepthSince()).andReturn()
-                .queryDepth(searchCriteria.getDepthTo())
-                .queryCollector(searchCriteria.getCollector()).andReturn()
-                .queryReference(searchCriteria.getReference())
-                .queryOriginalStatus(searchCriteria.getTypeStatus()).andReturn()
-                .queryPartOfFossil(searchCriteria.getPartOfFossil())
-                .queryKeywords(searchCriteria.getKeyWords())
-                .queryDateAdded(searchCriteria.getDateTakenSince())
-                .queryDateAdded(searchCriteria.getDateTakenTo())
-                .queryRockId(searchCriteria.getRockId())
-                .returnDatabaseName()
-                .returnLocalityId()
-                .returnStratigraphyId()
-                .returnLatitutde()
-                .returnLongitude();
+    @Override
+    public ApiResponse findSpecimenImages(SpecimenSearchCriteria searchCriteria) {
+        String requestParams = FluentSpecimenSearchApiBuilder.aRequest()
+                .queryImgSpecimenNumber(searchCriteria.getSpecimenNumber())
+                .queryImgCollectionNumber(searchCriteria.getCollectionNumber())
+                .queryImgClassification(searchCriteria.getClassification())
+                .queryImgNameOfFossil(searchCriteria.getFossilName())
+                .queryImgMineralRock(searchCriteria.getMineralRock())
+                .queryImgAdminUnit(searchCriteria.getAdminUnit())
+                .queryImgLocality(searchCriteria.getLocality())
+                .queryImgStratigraphy(searchCriteria.getStratigraphy())
+                .queryImgId(searchCriteria.getId())
+                .queryImgDepth(searchCriteria.getDepthSince())
+                .queryImgDepth(searchCriteria.getDepthTo())
+                .queryImgCollector(searchCriteria.getCollector())
+                .queryImgReference(searchCriteria.getReference())
+                .queryImgOriginalStatus(searchCriteria.getTypeStatus())
+                .queryImgPartOfFossil(searchCriteria.getPartOfFossil())
+                .queryImgDateAdded(searchCriteria.getDateTakenSince())
+                .queryImgDateAdded(searchCriteria.getDateTakenTo())
+                .buildDefaultFieldsQuery();
+        return apiService.searchRawEntities(SPECIMEN_IMAGE_TABLE, 25, searchCriteria.getPage(), new SortField("specimen__id", SortingOrder.DESCENDING), requestParams);
     }
 
     @Override

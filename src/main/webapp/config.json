@@ -157,9 +157,7 @@
             "collector": "agent",
             "reference": "reference",
             "typeStatus": "original_type",
-            "partOfFossil": "part",
-            "keyWords": "tags",
-            "rockId": "rock_id"
+            "partOfFossil": "part"
           }
       },
       "specialFields" : [

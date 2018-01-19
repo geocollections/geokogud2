@@ -273,4 +273,48 @@ public class ApiFields {
      * Used in WebNewsApiServiceImpl class
      */
     public static final String DATE_ADDED_LT = "date_added__lt";
+
+    /*
+     * SPECIMEN IMAGE search
+     */
+    public static final String SPECIMEN__SPECIMEN_NR = "specimen__specimen_nr";
+    public static final String SPECIMEN__SPECIMEN_ID = "specimen__specimen_id";
+    public static final String SPECIMEN__COLL__NUMBER = "specimen__coll__number";
+    public static final String SPECIMEN__CLASSIFICATION__CLASS_FIELD = "specimen__classification__class_field";
+    public static final String SPECIMEN__CLASSIFICATION__CLASS_EN = "specimen__classification__class_en";
+    public static final String SPECIMEN__SPECIMENIDENTIFICATION__NAME = "specimen__specimenidentification__name";
+    public static final String SPECIMEN__SPECIMENIDENTIFICATION__TAXON__TAXON = "specimen__specimenidentification__taxon__taxon";
+    public static final String SPECIMEN__SPECIMENIDENTIFICATIONGEOLOGIES__NAME = "specimen__specimenidentificationgeologies__name";
+    public static final String SPECIMEN__SPECIMENIDENTIFICATIONGEOLOGIES__NAME_EN = "specimen__specimenidentificationgeologies__name_en";
+    public static final String SPECIMEN__SPECIMENIDENTIFICATIONGEOLOGIES__ROCK__NAME = "specimen__specimenidentificationgeologies__rock__name";
+    public static final String SPECIMEN__SPECIMENIDENTIFICATIONGEOLOGIES__ROCK__NAME_EN = "specimen__specimenidentificationgeologies__rock__name_en";
+    public static final String SPECIMEN__LOCALITY_COUNTRY = "specimen__locality__country__value";
+    public static final String SPECIMEN__LOCALITY_COUNTRY_EN = "specimen__locality__country__value_en";
+    public static final String SPECIMEN__LOCALITY__MAAKOND__MAAKOND = "specimen__locality__maakond__maakond";
+    public static final String SPECIMEN__LOCALITY__MAAKOND__MAAKOND_EN = "specimen__locality__maakond__maakond_en";
+    public static final String SPECIMEN__LOCALITY__VALD__VALD = "specimen__locality__vald__vald";
+    public static final String SPECIMEN__LOCALITY__VALD__VALD_EN = "specimen__locality__vald__vald_en";
+    public static final String SPECIMEN__LOCALITY__ASUSTUSYKSUS__ASUSTUSYKSUS = "specimen__locality__asustusyksus__asustusyksus";
+    public static final String SPECIMEN__LOCALITY__ASUSTUSYKSUS__ASUSTUSYKSUS_EN = "specimen__locality__asustusyksus__asustusyksus_en";
+    public static final String SPECIMEN__LOCALITY__LOCALITY = "specimen__locality__locality";
+    public static final String SPECIMEN__LOCALITY__LOCALITY_EN = "specimen__locality__locality_en";
+    public static final String SPECIMEN__LOCALITY_FREE = "specimen__locality_free";
+    public static final String SPECIMEN__STRATIGRAPHY_STRATIGRAPHY = "specimen__stratigraphy__stratigraphy";
+    public static final String SPECIMEN__STRATIGRAPHY_STRATIGRAPHY_EN = "specimen__stratigraphy__stratigraphy_en";
+    public static final String SPECIMEN__LITHOSTRATIGRAPHY__STRATIGRAPHY = "specimen__lithostratigraphy__stratigraphy";
+    public static final String SPECIMEN__LITHOSTRATIGRAPHY__STRATIGRAPHY_EN = "specimen__lithostratigraphy__stratigraphy_en";
+    public static final String SPECIMEN__STRATIGRAPHY_FREE = "specimen__stratigraphy_free";
+    public static final String SPECIMEN__ID = "specimen__id";
+    public static final String SPECIMEN__DEPTH = "specimen__depth";
+    public static final String SPECIMEN__DEPTH_INTERVAL = "specimen__depth_interval";
+    public static final String SPECIMEN__AGENT_COLLECTED = "specimen__agent_collected__agent";
+    public static final String SPECIMEN__AGENT_COLLECTED__FORENAME = "specimen__agent_collected__forename";
+    public static final String SPECIMEN__AGENT_COLLECTED__SURENAME = "specimen__agent_collected__surename";
+    public static final String SPECIMEN__SPECIMENREFERENCE__REFERENCE__AUTHOR = "specimen__specimenreference__reference__author";
+    public static final String SPECIMEN__SPECIMENREFERENCE__REFERENCE__TITLE = "specimen__specimenreference__reference__title";
+    public static final String SPECIMEN__SPECIMENREFERENCE__REFERENCE__REFERENCE = "specimen__specimenreference__reference__reference";
+    public static final String SPECIMEN__ORIGINAL_STATUS__VALUE = "specimen__original_status__value";
+    public static final String SPECIMEN__ORIGINAL_STATUS__VALUE_EN = "specimen__original_status__value_en";
+    public static final String SPECIMEN__PART = "specimen__part";
+    public static final String SPECIMEN__DATE_ADDED = "specimen__date_added";
 }
