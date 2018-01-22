@@ -915,13 +915,13 @@ table tr > td:first-child {
 
 
 
-/*!* Uncomment to make picture move with the screen but needs fixing *!*/
-/*@media (min-width: 768px) {*/
-    /*#test {*/
-        /*position: fixed;*/
-        /*width: 48%;*/
-    /*}*/
-/*}*/
+/* Makes picture move with the scrolling */
+@media (min-width: 768px) {
+    .fancy-image {
+        position: fixed;
+        width: 48%;
+    }
+}
 
 
 
