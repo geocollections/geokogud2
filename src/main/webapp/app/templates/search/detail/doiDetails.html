@@ -355,49 +355,50 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-12" data-ng-if="detailCtrl.doiAttachment.length > 0
-                && (detailCtrl.results.formats.includes('text') || detailCtrl.results.formats.includes('txt')
-                || detailCtrl.results.formats.includes('png') || detailCtrl.results.formats.includes('jpg')
-                || detailCtrl.results.formats.includes('jpeg'))">
+            <div class="col-sm-12" data-ng-if="detailCtrl.doiAttachment.length > 0">
 
                 <h3>{{ 'DETAIL.DETAIL_PREVIEW_DATA' | translate }}</h3>
                 <div data-ng-repeat="entity in detailCtrl.doiAttachment">
 
                     <div class="table-responsive" data-ng-if="entity.filename.endsWith('txt')">
-                        <table class="table table-bordered table-hover">
-                            <thead class="styles-for-table-headers">
-                            <tr>
-                                <th>Sample ID</th>
-                                <th>Sample Number</th>
-                                <th>Locality</th>
-                                <th>Depth (m)</th>
-                                <th>Reference</th>
-                                <th>Dataset ID</th>
-                                <th>Analysis ID</th>
-                                <th>delta13C (‰)</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td></td>
 
-                                <td></td>
+                        <iframe id="iframe-text-file" style="width: 100%; height: 500px"
+                                ngf-src="detailCtrl.service.getDownloadLink(entity.filename)"></iframe>
 
-                                <td></td>
+                        <!--<table class="table table-bordered table-hover">-->
+                            <!--<thead class="styles-for-table-headers">-->
+                            <!--<tr>-->
+                                <!--<th>Sample ID</th>-->
+                                <!--<th>Sample Number</th>-->
+                                <!--<th>Locality</th>-->
+                                <!--<th>Depth (m)</th>-->
+                                <!--<th>Reference</th>-->
+                                <!--<th>Dataset ID</th>-->
+                                <!--<th>Analysis ID</th>-->
+                                <!--<th>delta13C (‰)</th>-->
+                            <!--</tr>-->
+                            <!--</thead>-->
+                            <!--<tbody>-->
+                            <!--<tr>-->
+                                <!--<td></td>-->
 
-                                <td></td>
+                                <!--<td></td>-->
 
-                                <td></td>
+                                <!--<td></td>-->
 
-                                <td></td>
+                                <!--<td></td>-->
 
-                                <td></td>
+                                <!--<td></td>-->
 
-                                <td></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                <!--<td></td>-->
+
+                                <!--<td></td>-->
+
+                                <!--<td></td>-->
+                            <!--</tr>-->
+                            <!--</tbody>-->
+                        <!--</table>-->
+                    <!--</div>-->
 
                     <div class="row" data-ng-if="entity.filename.endsWith('png') || entity.filename.endsWith('jpeg') || entity.filename.endsWith('jpg')">
                         <div class="col-sm-12">
