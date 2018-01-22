@@ -578,7 +578,9 @@
             "REMARKS":"Lisainfo",
             "PLACE": "Nimetatud koht",
             "POINT": "Punkt (Laiusk. Pikkusk.)",
-            "LOCALITY_DB": "Lokaliteet andmebaasist"
+            "LOCALITY_DB": "Lokaliteet andmebaasist",
+            "DOWNLOAD": "Lae alla",
+            "PREVIEW": "Eelvaade"
         }
     },
     "ERROR" : {

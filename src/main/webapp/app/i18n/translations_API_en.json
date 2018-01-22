@@ -581,7 +581,9 @@
             "REMARKS": "Remarks",
             "PLACE": "Named place",
             "POINT": "Point (Lat Long)",
-            "LOCALITY_DB": "Locality from database"
+            "LOCALITY_DB": "Locality from database",
+            "DOWNLOAD": "Download",
+            "PREVIEW": "Preview"
         }
     },
     "ERROR" : {

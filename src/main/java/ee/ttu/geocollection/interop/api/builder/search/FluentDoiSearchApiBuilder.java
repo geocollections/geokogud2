@@ -20,8 +20,6 @@ public class FluentDoiSearchApiBuilder extends FluentSearchApiBuilder<FluentDoiS
     }
 
     public FluentDoiSearchApiBuilder queryTitle(SearchField title) {
-//        buildFieldParameters(REFERENCETITLE, title);
-//        BUG FIX: changed field name to 'title'
         buildFieldParameters(TITLE, title);
         return this;
     }
@@ -32,15 +30,11 @@ public class FluentDoiSearchApiBuilder extends FluentSearchApiBuilder<FluentDoiS
     }
 
     public FluentDoiSearchApiBuilder queryYear(SearchField year) {
-//        buildFieldParameters(REFERENCEYEAR, year);
-//        BIG FIX: changed field name to 'publication_year'
         buildFieldParameters(PUBLICATION_YEAR, year);
         return this;
     }
 
     public FluentDoiSearchApiBuilder queryAuthor(SearchField author) {
-//        buildFieldParameters(REFERENCEAUTHOR, author);
-//        BUG FIX: changed field name to 'creators'
         buildFieldParameters(CREATORS, author);
         return this;
     }

@@ -563,7 +563,8 @@
         "DETAIL_DOWNLOAD": "Download data",
         "DETAIL_RELATIONS": "Related persons and institutions",
         "DETAIL_IDENTIFIERS": "Related identifiers",
-        "DETAIL_GEOLOCATIONS": "Related geolocations"
+        "DETAIL_GEOLOCATIONS": "Related geolocations",
+        "DETAIL_PREVIEW_DATA": "Preview data (for text and image files only)"
 
     },
     "TITLES": {

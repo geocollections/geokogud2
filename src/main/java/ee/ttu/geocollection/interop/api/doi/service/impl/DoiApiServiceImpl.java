@@ -51,11 +51,6 @@ public class DoiApiServiceImpl implements DoiApiService {
             "date_changed",
             "datacite_created",
             "datacite_updated",
-            "doiattachment__attachment__filename",
-            "doiattachment__attachment__description",
-            "doiattachment__attachment__description_en",
-            "doiattachment__attachment__type__value",
-            "doiattachment__attachment__type__value_en",
             "reference__reference",
             "reference_id",
             "dataset_id",
@@ -89,6 +84,7 @@ public class DoiApiServiceImpl implements DoiApiService {
                 .relatedData("doi_agent")
                 .relatedData("doi_geolocation")
                 .relatedData("doi_related_identifier")
+                .relatedData("attachment")
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity("doi", requestParams);

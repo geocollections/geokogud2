@@ -29,7 +29,6 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             console.log(vm.fields);
             vm.imageUrl = (['specimenImage', 'photoArchive'].indexOf($stateParams.type) > -1 ? vm.service.composeImageUrl(vm.results) : null);
             vm.externalImagePath = (['specimenImage', 'photoArchive'].indexOf($stateParams.type) > -1 ? vm.service.composeExternalImagePath(vm.results) : null);
-            vm.files = (['doi'].indexOf($stateParams.type) > -1 ? composeFileInfo(response.data.results) : []);
 
             vm.detailLoadingHandler.stop();
             getLocality();
@@ -99,6 +98,7 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             vm.doiAgent = vm.relatedData["doi_agent"];
             vm.doiRelatedIdentifier = vm.relatedData["doi_related_identifier"];
             vm.doiGeolocation = vm.relatedData["doi_geolocation"];
+            vm.doiAttachment = vm.relatedData["attachment"];
             vm.samples = vm.relatedData["sample"];
             vm.soilHorizon = vm.relatedData["soil_horizon"];
             vm.stratigraphyStratotype = vm.relatedData["stratigraphy_stratotype"];
@@ -121,22 +121,6 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             vm.specimenIdentificationGeology = vm.relatedData["specimen_identification_geology"];
             vm.preparationTaxa = vm.relatedData["preparation_taxa"];
         }
-    }
-
-    function composeFileInfo(results) {
-        var files = [];
-        console.log(results);
-        angular.forEach(results, function(r) {
-            if(r.doiattachment__attachment__filename != null) {
-                files.push({
-                    fileName : r.doiattachment__attachment__filename,
-                    description : r.doiattachment__attachment__description,  // added 29.11.2017
-                    dataType : r.doiattachment__attachment__type__value,     // added 29.11.2017
-                    dataTypeEn : r.doiattachment__attachment__type__value_en // added 29.11.2017
-                });
-            }
-        });
-        return files;
     }
 
     function sumNumberOfSpecimens(results) {
