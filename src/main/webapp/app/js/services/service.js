@@ -148,6 +148,17 @@ var constructor = function (utils, configuration, $window, $location) {
         return imageUrl;
     };
 
+    // TODO: Just for testing, delete after
+    service.toggleClass = function() {
+        if ($('#fancy-image-container').hasClass("fancy-image")) {
+            $('#fancy-image-container').removeClass("fancy-image");
+            $('#fancy-image-button').text("Enable moving");
+        } else {
+            $('#fancy-image-container').addClass("fancy-image");
+            $('#fancy-image-button').text("Disable moving");
+        }
+    };
+
     // Used on drillcore detail view to show corebox images which come from related_data
     function getDrillcoreImageUrl(params) {
         if (params.database != null) {

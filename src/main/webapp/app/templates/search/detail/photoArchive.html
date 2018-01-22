@@ -17,8 +17,11 @@
 
             <div class="col-sm-6" data-ng-if="detailCtrl.results.filename != null">
 
-                <!--<div class="fancy-image"> UNCOMMENT FOR MOVING IMAGE -->
+                <div id="fancy-image-container"> <!-- Button adds class here -->
                     <h3> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.PHOTO' | translate }} </h3>
+
+                    <button style="margin-bottom: 7px;" type="button" id="fancy-image-button" class="btn btn-info"
+                            data-ng-click="detailCtrl.service.toggleClass()">Enable moving</button>
 
                     <img spinner-load ng-src="{{detailCtrl.imageUrl}}" class="window-size"/>
                     {{'API_TRANSLATION.PHOTO_ARCHIVE.SIZE ' | translate }}:
@@ -28,8 +31,8 @@
                     | <a href="{{detailCtrl.externalImagePath}}/1600" target="_blank">1600px</a>
                     | <a href="{{detailCtrl.externalImagePath}}/1920" target="_blank">1920px</a>
                     | <a href="{{detailCtrl.imageUrl}}" target="_blank">Original</a>
-                <!--</div>-->
-                
+                </div>
+
             </div>
 
             <div class="col-sm-6" data-ng-if="detailCtrl.results.filename == null">
