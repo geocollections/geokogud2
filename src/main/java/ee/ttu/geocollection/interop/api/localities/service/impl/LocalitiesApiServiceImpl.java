@@ -115,20 +115,14 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
                 .queryImgAdminUnit(searchCriteria.getAdminUnit())
                 .queryImgStratigraphy(searchCriteria.getStratigraphy())
                 .queryImgReference(searchCriteria.getReference())
-                .queryMaPaId(searchCriteria.getMaPaId()).andReturn()
-                .queryLatitude(searchCriteria.getLatitude()).andReturn()
-                .queryLongitude(searchCriteria.getLongitude()).andReturn()
-                .queryDepth(searchCriteria.getVerticalExtentSince()).andReturn()
-                .queryDepth(searchCriteria.getVerticalExtentTo()).andReturn()
-                .returnId()
-                .returnLocalityBase()
-                .returnLocalityBaseEn()
-                .returnLocalityBaseId()
-                .returnLocalityTop()
-                .returnLocalityTopEn()
-                .returnLocalityTopId()
+                .queryImgId(searchCriteria.getId())
+                .queryImgMaPaId(searchCriteria.getMaPaId())
+                .queryImgLatitude(searchCriteria.getLatitude())
+                .queryImgLongitude(searchCriteria.getLongitude())
+                .queryImgDepth(searchCriteria.getVerticalExtentSince())
+                .queryImgDepth(searchCriteria.getVerticalExtentTo())
                 .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities("image", searchCriteria.getPage(), new SortField("locality__id", SortingOrder.DESCENDING), requestParams);
+        return apiService.searchRawEntities("image", searchCriteria.getPage(), new SortField(LOCALITY__ID, SortingOrder.DESCENDING), requestParams);
     }
 
     @Override

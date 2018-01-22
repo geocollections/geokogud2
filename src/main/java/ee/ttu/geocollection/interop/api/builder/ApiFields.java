@@ -335,5 +335,10 @@ public class ApiFields {
     public static final String LOCALITY__LOCALITYSTRATIGRAPHY__STRATIGRAPHY_EN = "locality__localitystratigraphy__stratigraphy__stratigraphy_en";
     public static final String LOCALITY__LOCALITYSTRATIGRAPHY__STRATIGRAPHY = "locality__localitystratigraphy__stratigraphy__stratigraphy";
     public static final String LOCALITY__LOCALITYREFERENCE__REFERENCE__REFERENCE = "locality__localityreference__reference__reference";
+    public static final String LOCALITY__ID = "locality__id";
+    public static final String LOCALITY__MA_ID = "locality__maaamet_pa_id";
+    public static final String LOCALITY__LATITUDE = "locality__latitude";
+    public static final String LOCALITY__LONGITUDE = "locality__longitude";
+    public static final String LOCALITY__DEPTH = "locality__depth";
 
 }

@@ -139,4 +139,29 @@ public class FluentLocalitySearchApiBuilder extends FluentSearchApiBuilder<Fluen
         buildFieldParameters(LOCALITY__LOCALITYREFERENCE__REFERENCE__REFERENCE, id);
         return this;
     }
+
+    public FluentLocalitySearchApiBuilder queryImgId(SearchField id) {
+        buildFieldParameters(LOCALITY__ID, id);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder queryImgMaPaId(SearchField id) {
+        buildFieldParameters(LOCALITY__MA_ID, id);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder queryImgLatitude(SearchField id) {
+        buildFieldParameters(LOCALITY__LATITUDE, id);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder queryImgLongitude(SearchField id) {
+        buildFieldParameters(LOCALITY__LONGITUDE, id);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder queryImgDepth(SearchField id) {
+        buildFieldParameters(LOCALITY__DEPTH, id);
+        return this;
+    }
 }
