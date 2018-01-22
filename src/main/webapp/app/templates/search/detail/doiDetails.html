@@ -355,7 +355,10 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-12" data-ng-if="detailCtrl.doiAttachment.length > 0">
+            <div class="col-sm-12" data-ng-if="detailCtrl.doiAttachment.length > 0
+                && (detailCtrl.results.formats.includes('text') || detailCtrl.results.formats.includes('txt')
+                || detailCtrl.results.formats.includes('png') || detailCtrl.results.formats.includes('jpg')
+                || detailCtrl.results.formats.includes('jpeg'))">
 
                 <h3>{{ 'DETAIL.DETAIL_PREVIEW_DATA' | translate }}</h3>
                 <div data-ng-repeat="entity in detailCtrl.doiAttachment">
