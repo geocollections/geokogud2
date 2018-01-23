@@ -294,7 +294,7 @@
             "HEADING": "Analyses",
             "IDENTIFIERS": {
                 "NUMBER": "Analysis ID",
-                "SAMPLE_ID": "Sample ID",
+                "SAMPLE_ID": "Sample Number/ID",
                 "BED_NAME_INDEX": "Bed name / index"
             },
             "LOCATION": {

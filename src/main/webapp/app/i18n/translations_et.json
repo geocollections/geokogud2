@@ -294,7 +294,7 @@
             "HEADING": "Analüüsid",
             "IDENTIFIERS": {
                 "NUMBER": "Analüüsi ID",
-                "SAMPLE_ID": "Number",
+                "SAMPLE_ID": "Proovi Number/ID",
                 "BED_NAME_INDEX": "Ase ID"
             },
             "LOCATION": {
