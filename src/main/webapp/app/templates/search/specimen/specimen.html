@@ -313,7 +313,13 @@
                         <figure class="margin-bottom-20">
 
                             <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen_image',id:image.id})">
-                                <show-preview img-author="image.agent__agent" img-date-taken="image.date" img-url="ctrl.service.composeImageUrl(image, image.image_url)" class="img-responsive"/>
+                                <div data-ng-if="(image.image_url && image.image_url != null) || (image.image && image.image != null)">
+                                    <show-preview img-author="image.agent__agent" img-date-taken="image.date" img-url="ctrl.service.composeImageUrl(image, image.image_url)" class="img-responsive"/>
+                                </div>
+
+                                <div class="img-responsive" data-ng-if="image.image_url == null && image.image == null">
+                                    <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
+                                </div>
 
                                 <div class="img-gallery-author">
                                     <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:image.specimen_id})">

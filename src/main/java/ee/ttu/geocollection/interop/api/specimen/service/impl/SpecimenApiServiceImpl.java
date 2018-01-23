@@ -230,7 +230,7 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .queryImgDateAdded(searchCriteria.getDateTakenSince())
                 .queryImgDateAdded(searchCriteria.getDateTakenTo())
                 .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities(SPECIMEN_IMAGE_TABLE, 25, searchCriteria.getPage(), new SortField("specimen__coll__number", SortingOrder.DESCENDING), requestParams);
+        return apiService.searchRawEntities(SPECIMEN_IMAGE_TABLE, 25, searchCriteria.getPage(), new SortField("specimen__specimen_id", SortingOrder.ASCENDING), requestParams);
     }
 
     @Override

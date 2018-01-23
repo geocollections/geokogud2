@@ -412,7 +412,8 @@
             </div>
 
             <div class="col-sm-6" >
-                <div data-ng-if="detailCtrl.specimenImage.length > 0">
+                <div data-ng-if="detailCtrl.specimenImage.length > 0
+                && (detailCtrl.specimenImage.results[0].image != null && detailCtrl.specimenImage.results[0].image_url != null)">
                     <h3> {{ 'DETAIL.DETAIL_IMAGES' | translate }} </h3>
 
                     <div id="specimen-images" class="row">
@@ -421,7 +422,8 @@
                              data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image', id:entity.id})"
                              class="col-lg-specimen-3 col-md-specimen-4 col-sm-specimen-6 col-sm-specimen-4 col-xs-6">
 
-                            <show-preview-specimen id="specimen-detail-image" img-title="entity.id"
+                            <show-preview-specimen data-ng-if="entity.image_url != null && entity.image != null"
+                                                   id="specimen-detail-image" img-title="entity.id"
                                                    img-url="detailCtrl.service.composeSpecimenImageUrl({
                                                             database: entity.specimen__database__acronym,
                                                             image: entity.image,
