@@ -49,6 +49,7 @@ public class FluentPreparationSearchApiBuilder extends FluentSearchApiBuilder<Fl
 
     public FluentPreparationSearchApiBuilder querySpeciesFrequency(SearchField text) {
         buildFieldParameters(TAXONLIST__FREQUENCY, text);
+        addFieldNameAndValue("distinct", "true"); //bug fix for duplicates
         return this;
     }
 
