@@ -21,6 +21,10 @@
     height: 130px;
 }
 
+#specimen-detail-image > .img-responsive {
+    max-width: 90%;
+}
+
 @media only screen and (max-width: 480px) {
     .carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {
         width: auto;
@@ -36,6 +40,20 @@
     }
     .imagePlace {
         font-size: 12px;
+    }
+}
+
+@media (min-width: 410px) and (max-width: 480px) {
+    #specimen-detail-image > .img-responsive {
+        width: auto;
+        height: 130px;
+    }
+}
+
+@media only screen and (max-width: 410px) {
+    #specimen-detail-image > .img-responsive {
+        width: auto;
+        height: 75px;
     }
 }
 

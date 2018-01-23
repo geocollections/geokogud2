@@ -751,6 +751,61 @@ table tr > td:first-child {
     border-top: 0;
 }
 
+.margin-left-and-right-15 {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.col-sm-specimen-4,
+.col-sm-specimen-6,
+.col-md-specimen-4,
+.col-lg-specimen-3 {
+    position: relative;
+    min-height: 1px;
+    float: left;
+    margin-bottom: 5%;
+    padding: 0;
+}
+
+#specimen-detail-image {
+    cursor: pointer;
+}
+
+#specimen-detail-image img:hover {
+    opacity: 0.8;
+}
+
+@media (min-width: 1650px) {
+    #specimen-images .col-lg-specimen-3 {
+        width: 25%;
+    }
+}
+
+@media (min-width: 1400px) and (max-width: 1649px) {
+    #specimen-images .col-md-specimen-4 {
+        width: 33.33333333%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1399px) {
+    #specimen-images .col-sm-specimen-6 {
+        width: 50%;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 767px) {
+    #specimen-images .col-sm-specimen-4 {
+        width: 33.33333333%;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 599px) {
+    #specimen-images .col-sm-specimen-6 {
+        width: 50%;
+    }
+}
+
+
 /*#image-preview-detail img {*/
     /*max-height: none;*/
     /*max-width: none;*/

@@ -415,11 +415,11 @@
                 <div data-ng-if="detailCtrl.specimenImage.length > 0">
                     <h3> {{ 'DETAIL.DETAIL_IMAGES' | translate }} </h3>
 
-                    <div class="row">
+                    <div id="specimen-images" class="row">
 
                         <div data-ng-repeat="entity in detailCtrl.specimenImage"
                              data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image', id:entity.id})"
-                             class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                             class="col-lg-specimen-3 col-md-specimen-4 col-sm-specimen-6 col-sm-specimen-4 col-xs-6">
 
                             <show-preview-specimen id="specimen-detail-image" img-title="entity.id"
                                                    img-url="detailCtrl.service.composeSpecimenImageUrl({
