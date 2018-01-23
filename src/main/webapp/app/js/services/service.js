@@ -305,7 +305,7 @@ var constructor = function (utils, configuration, $window, $location) {
 
     function openInNewWindow(params) {
         console.log(params.object + "/" + params.id);
-        $window.open('/' + params.object + '/' + params.id, '', 'width=600,height=750,scrollbars, resizable');
+        $window.open('/' + params.object + '/' + params.id, '', 'width=950,height=750,scrollbars, resizable');
     }
 
     function openUrlInNewWindow(params) {
