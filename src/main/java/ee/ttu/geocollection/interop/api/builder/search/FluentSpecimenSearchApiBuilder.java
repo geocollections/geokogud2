@@ -167,6 +167,10 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
     /*
      * IMAGE SEARCH START
      */
+    public FluentSpecimenSearchApiBuilder queryImageNotNull() {
+        addFieldNameAndValue("image__isnull", "false");
+        return this;
+    }
 
     public FluentSpecimenSearchApiBuilder queryImgSpecimenNumber(SearchField specimenNumber) {
         buildMultiSearch(specimenNumber, SPECIMEN__SPECIMEN_NR, SPECIMEN__SPECIMEN_ID);

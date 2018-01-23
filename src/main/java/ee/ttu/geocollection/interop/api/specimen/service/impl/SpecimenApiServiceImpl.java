@@ -212,6 +212,7 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
     @Override
     public ApiResponse findSpecimenImages(SpecimenSearchCriteria searchCriteria) {
         String requestParams = FluentSpecimenSearchApiBuilder.aRequest()
+                .queryImageNotNull()
                 .queryImgSpecimenNumber(searchCriteria.getSpecimenNumber())
                 .queryImgCollectionNumber(searchCriteria.getCollectionNumber())
                 .queryImgClassification(searchCriteria.getClassification())
