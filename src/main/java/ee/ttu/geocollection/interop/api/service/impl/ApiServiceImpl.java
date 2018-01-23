@@ -76,7 +76,7 @@ public class ApiServiceImpl implements ApiService {
                 + "/" + tableName + "/"
                 + "?paginate_by=" + paginateBy + "&page=" + page
                 + "&order_by=" + getSortingDirection(sortField.getOrder()) + sortField.getSortBy()
-                + "&format=json&distinct=true"
+                + "&format=json"
                 + escapeParameters(requestParams);;
 
         logger.trace("Searching: " + url);

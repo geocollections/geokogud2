@@ -20,8 +20,14 @@
                 <div id="fancy-image-container"> <!-- Button adds class here -->
                     <h3> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.PHOTO' | translate }} </h3>
 
-                    <button style="margin-bottom: 7px;" type="button" id="fancy-image-button" class="btn btn-info"
-                            data-ng-click="detailCtrl.service.toggleClass()">Enable moving</button>
+                    <!--<button style="margin-bottom: 7px;" type="button" id="fancy-image-button" class="btn btn-info"-->
+                            <!--data-ng-click="detailCtrl.service.toggleClass()">Enable moving</button>-->
+
+                    <!--<div class="fb-share-button">-->
+                        <!--<a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u&amp;src=sdkpreparse">-->
+                            <!--Jaga-->
+                        <!--</a>-->
+                    <!--</div>-->
 
                     <img spinner-load ng-src="{{detailCtrl.imageUrl}}" class="window-size"/>
                     {{'API_TRANSLATION.PHOTO_ARCHIVE.SIZE ' | translate }}:
