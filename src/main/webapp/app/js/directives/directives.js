@@ -188,7 +188,7 @@ angular.module('geoApp')
     };
 }).directive('showPreviewSpecimen', function () {
     return {
-        template: '<img title="{{title}}" class="previewImage" ng-src="{{previewImageUrl}}" spinner-load />',
+        template: '<img data-toggle="tooltip" title="{{title}}" class="previewImage img-rounded img-responsive" ng-src="{{previewImageUrl}}" spinner-load />',
         restrict: 'E',
         scope: {
             imgUrl: '=',

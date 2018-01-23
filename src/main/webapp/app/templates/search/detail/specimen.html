@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-sm-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
 
@@ -414,24 +414,40 @@
             <div class="col-sm-6" >
                 <div data-ng-if="detailCtrl.specimenImage.length > 0">
                     <h3> {{ 'DETAIL.DETAIL_IMAGES' | translate }} </h3>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td style="cursor: pointer;" id="image-preview-detail" data-ng-repeat="entity in detailCtrl.specimenImage"
-                                    data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image', id:entity.id})">
-                                    <show-preview-specimen id="specimen-detail-image" img-title="entity.id"
-                                                           img-url="detailCtrl.service.composeSpecimenImageUrl({
+
+                    <div class="row">
+
+                        <div data-ng-repeat="entity in detailCtrl.specimenImage"
+                             data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image', id:entity.id})"
+                             class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+
+                            <show-preview-specimen id="specimen-detail-image" img-title="entity.id"
+                                                   img-url="detailCtrl.service.composeSpecimenImageUrl({
                                                             database: entity.specimen__database__acronym,
                                                             image: entity.image,
                                                             imageUrl:entity.image_ur})"/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+
+                        </div>
                     </div>
+
+                    <!--<div class="table-responsive">-->
+                        <!--<table class="table">-->
+                            <!--<thead>-->
+                            <!--</thead>-->
+                            <!--<tbody>-->
+                            <!--<tr>-->
+                                <!--<td style="cursor: pointer;" id="image-preview-detail" data-ng-repeat="entity in detailCtrl.specimenImage"-->
+                                    <!--data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image', id:entity.id})">-->
+                                    <!--<show-preview-specimen id="specimen-detail-image" img-title="entity.id"-->
+                                                           <!--img-url="detailCtrl.service.composeSpecimenImageUrl({-->
+                                                            <!--database: entity.specimen__database__acronym,-->
+                                                            <!--image: entity.image,-->
+                                                            <!--imageUrl:entity.image_ur})"/>-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                            <!--</tbody>-->
+                        <!--</table>-->
+                    <!--</div>-->
                 </div>
 
                 <div data-ng-if="detailCtrl.results.locality__latitude && detailCtrl.results.locality__longitude">
