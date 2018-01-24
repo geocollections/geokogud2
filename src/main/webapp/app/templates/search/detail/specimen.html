@@ -263,17 +263,31 @@
                                         | {{ entity.name }}
                                     </span>
                                 </td>
-                                <td>{{entity.agent__agent}}</td> <!--TODO -->
-                                <td>{{entity.date_added  | date:dateFormat}}</td>
+
+                                <td>{{entity.agent__agent}}</td>
+
+                                <td>
+                                    <div data-ng-if="entity.date_identified && entity.date_identified != null">
+                                        {{entity.date_identified | date:dateFormat}}
+                                    </div>
+
+                                    <div data-ng-if="entity.date_identified == null && entity.date_identified_free != null">
+                                        {{entity.date_identified_free}}
+                                    </div>
+                                </td>
+
                                 <td>
                                     <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference', id: entity.reference_id})">
                                         {{entity.reference__reference}}
                                     </a>
                                 </td>
+
                                 <td>
                                     <localize et="entity.identification_type__value" en="entity.identification_type__value_en" />
                                 </td>
+
                                 <td>{{entity.remarks}}</td>
+
                                 <td>
                                     <div data-ng-if="entity.current == true">
                                         +
@@ -309,22 +323,35 @@
                                         <localize en="entity.name_en" et="entity.name" />
                                     </a>
 
-                                    <span ng-show="(entity.name && entity.name != null) && (entity.rock__name && entity.rock__name != null)
-                                        || (entity.name_en && entity.name_en != null) && (entity.rock__name_en && entity.rock__name_en != null)">|</span>
+                                    <span ng-show="((entity.name && entity.name != null) && (entity.rock__name && entity.rock__name != null))
+                                        || ((entity.name_en && entity.name_en != null) && (entity.rock__name_en && entity.rock__name_en != null))">|</span>
 
                                     <span data-ng-if="((entity.rock__name && entity.rock__name != null) || (entity.rock__name_en && entity.rock__name_en != null))
                                         && ((entity.name != entity.rock__name) || (entity.name_en != entity.rock__name_en))">
                                          <localize et="entity.rock__name" en="entity.rock__name_en" />
                                     </span>
                                 </td>
-                                <td>{{entity.formula}}</td> <!-- TODO: get formula somewhere -->
+
+                                <td><first-not-null values="[entity.rock__formula, entity.rock__formula_html]" /></td>
+
                                 <td>{{entity.agent__agent}}</td>
-                                <td>{{entity.date_added | date:dateFormat}}</td>
+
+                                <td>
+                                    <div data-ng-if="entity.date_identified && entity.date_identified != null">
+                                        {{entity.date_identified | date:dateFormat}}
+                                    </div>
+
+                                    <div data-ng-if="entity.date_identified == null && entity.date_identified_free != null">
+                                        {{entity.date_identified_free}}
+                                    </div>
+                                </td>
+
                                 <td>
                                     <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference',id: entity.reference_id})">
                                         {{entity.reference__reference}}
                                     </a>
                                 </td>
+
                                 <td>{{entity.remarks}}</td>
                             </tr>
                             </tbody>
