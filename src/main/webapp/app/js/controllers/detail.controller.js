@@ -43,6 +43,11 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
                 vm.preparationTaxons = (['preparations'].indexOf($stateParams.type) > -1 ? composeTaxonListInfo(vm.relatedData) : []);
             }
 
+            if (['photoArchive'].indexOf($stateParams.type) > -1) {
+                //TODO: after load
+                document.getElementById('img-size').naturalWidth;
+            }
+
         } else {
             // TODO: Do something if no response, fix error template or something.
             // $state.go("error");

@@ -144,10 +144,10 @@
                 <table class="table table-hover table-bordered">
                     <thead class="styles-for-table-headers">
                         <tr>
-                            <td> {{ 'API_TRANSLATION.REFERENCE.LOCALITY' | translate }} </td>
-                            <td> {{ 'API_TRANSLATION.REFERENCE.LOCALITY_PAGES' | translate }} </td>
-                            <td> {{ 'API_TRANSLATION.REFERENCE.FIGURES' | translate }} </td>
-                            <td> {{ 'API_TRANSLATION.REFERENCE.REMARKS' | translate }} </td>
+                            <th> {{ 'API_TRANSLATION.REFERENCE.LOCALITY' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.REFERENCE.LOCALITY_PAGES' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.REFERENCE.FIGURES' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.REFERENCE.REMARKS' | translate }} </th>
                         </tr>
                     </thead>
 
@@ -176,10 +176,11 @@
                 <table class="table table-hover table-bordered">
                     <thead class="styles-for-table-headers">
                         <tr>
-                            <td> {{ 'API_TRANSLATION.REFERENCE.ID' | translate }} </td>
-                            <td> {{ 'API_TRANSLATION.REFERENCE.TYPE' | translate }} </td>
-                            <td> {{ 'API_TRANSLATION.REFERENCE.DESCRIPTION' | translate }} </td>
-                            <td>Link</td>
+                            <th> {{ 'API_TRANSLATION.REFERENCE.ID' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.REFERENCE.TYPE' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.REFERENCE.DESCRIPTION' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.DOI.PREVIEW' | translate }} </th>
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -199,10 +200,16 @@
                             <td>
                                 <localize et="entity.attachment__description" en="entity.attachment__description_en" />
                             </td>
+                            <td class="image-preview">
+                                <a target="_blank" ng-href="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}">
+                                    <i data-ng-if="entity.attachment__filename.endsWith('pdf')"
+                                       title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
+                                       class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
+                                </a>
+                            </td>
                             <td>
-                                <a href data-ng-if="entity.attachment__id != null"
-                                   data-ng-click="detailCtrl.service.openInNewWindow({object: 'attachment', id: entity.attachment__id})">
-                                    LINK
+                                <a href="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}" download>
+                                    {{ 'API_TRANSLATION.DOI.DOWNLOAD' | translate }}
                                 </a>
                             </td>
                         </tr>
