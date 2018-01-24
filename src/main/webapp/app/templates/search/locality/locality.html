@@ -3,7 +3,7 @@
     <div id="searches" ng-include="'app/templates/main/partial/search.html'"></div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3 col-md-3 col-lg-3">
+            <div class="col-sm-3 col-md-3 col-lg-3" bs-loading-overlay bs-loading-overlay-reference-id="searchView" bs-loading-overlay-template-url="app/templates/main/partial/loading_overlay_search.html">
                 <div class="row">
                     <h3 class="search-heading">
                         {{ 'SEARCH.LOCATILIES.HEADING' | translate }}
