@@ -17,11 +17,8 @@
 
             <div class="col-sm-6" data-ng-if="detailCtrl.results.filename != null">
 
-                <div id="fancy-image-container"> <!-- Button adds class here -->
+                <div id="fancy-image-container">
                     <h3> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.PHOTO' | translate }} </h3>
-
-                    <!--<button style="margin-bottom: 7px;" type="button" id="fancy-image-button" class="btn btn-info"-->
-                            <!--data-ng-click="detailCtrl.service.toggleClass()">Enable moving</button>-->
 
                     <img id="img-size" spinner-load ng-src="{{detailCtrl.imageUrl}}" class="window-size"/>
 

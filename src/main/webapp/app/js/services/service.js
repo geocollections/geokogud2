@@ -148,15 +148,15 @@ var constructor = function (utils, configuration, $window, $location) {
         return imageUrl;
     };
 
-    // TODO: Just for testing, delete after
     service.toggleClass = function() {
-        if ($('#fancy-image-container').hasClass("fancy-image")) {
-            $('#fancy-image-container').removeClass("fancy-image");
-            $('#fancy-image-button').text("Enable moving");
-        } else {
-            $('#fancy-image-container').addClass("fancy-image");
-            $('#fancy-image-button').text("Disable moving");
-        }
+        $( document ).ready(function() {
+            var img = $('#img-size');
+            if (img.height() > img.width() || img.height() === img.width() ) {
+                img.addClass("img-portrait")
+            } else {
+                $('#fancy-image-container').addClass("fancy-image");
+            }
+        });
     };
 
     // Used on drillcore detail view to show corebox images which come from related_data
@@ -304,8 +304,11 @@ var constructor = function (utils, configuration, $window, $location) {
     }
 
     function openInNewWindow(params) {
+        if (params.width == null) {
+            params.width = 600;
+        }
         console.log(params.object + "/" + params.id);
-        $window.open('/' + params.object + '/' + params.id, '', 'width=950,height=750,scrollbars, resizable');
+        $window.open('/' + params.object + '/' + params.id, '', 'width=' + params.width + ',height=750,scrollbars, resizable');
     }
 
     function openUrlInNewWindow(params) {

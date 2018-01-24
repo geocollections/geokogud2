@@ -655,23 +655,15 @@ table tr > td:first-child {
 /* PHOTO ARCHIVE START */
 
 .window-size {
-    /*width:100%;*/
-    max-width: 100%;
     display: block;
     margin: 0 auto;
+    max-width: 90%;
+    max-height: 375px;
 }
 
-/*.img-portrait {*/
-    /*!*width:100%;*!*/
-    /*max-width: 50%;*/
-    /*display: block;*/
-    /*margin: 0 auto;*/
-/*}*/
-
-/*.img-landscape {*/
-    /*!*width:100%;*!*/
-    /*max-width: 100%;*/
-/*}*/
+.img-portrait {
+    max-width: 60%;
+}
 
 .img-settings {
     margin: 1%;
