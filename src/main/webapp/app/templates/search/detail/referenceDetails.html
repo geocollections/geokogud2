@@ -179,8 +179,7 @@
                             <th> {{ 'API_TRANSLATION.REFERENCE.ID' | translate }} </th>
                             <th> {{ 'API_TRANSLATION.REFERENCE.TYPE' | translate }} </th>
                             <th> {{ 'API_TRANSLATION.REFERENCE.DESCRIPTION' | translate }} </th>
-                            <th> {{ 'API_TRANSLATION.DOI.PREVIEW' | translate }} </th>
-                            <th></th>
+                            <th> {{ 'API_TRANSLATION.REFERENCE.PREVIEW' | translate }} </th>
                         </tr>
                     </thead>
 
@@ -205,11 +204,19 @@
                                     <i data-ng-if="entity.attachment__filename.endsWith('pdf')"
                                        title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
                                        class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}" download>
-                                    {{ 'API_TRANSLATION.DOI.DOWNLOAD' | translate }}
+
+                                    <i data-ng-if="entity.attachment__filename.endsWith('txt')"
+                                       title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
+                                       class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>
+
+                                    <i data-ng-if="entity.attachment__filename.endsWith('xlsx') || entity.attachment__filename.endsWith('ods')"
+                                       title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
+                                       class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
+
+                                    <img title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
+                                         data-ng-if="entity.attachment__filename.endsWith('png') || entity.attachment__filename.endsWith('jpeg') || entity.attachment__filename.endsWith('svg') || entity.attachment__filename.endsWith('jpg')"
+                                         class="previewImage"
+                                         src="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"/>
                                 </a>
                             </td>
                         </tr>

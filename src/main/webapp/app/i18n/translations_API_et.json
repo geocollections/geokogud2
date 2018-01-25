@@ -336,7 +336,8 @@
             "LOCALITY_PAGES": "lk.",
             "LINKED_FILES": "Seotud failid",
             "TYPE": "Tüüp",
-            "DESCRIPTION": "Kirjeldus"
+            "DESCRIPTION": "Kirjeldus",
+            "PREVIEW": "Eelvaade"
         },
         "STRATIGRAPHY" : {
             "ID":"ID",

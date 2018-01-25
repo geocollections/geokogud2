@@ -339,7 +339,8 @@
             "LOCALITY_PAGES": "Pgs.",
             "LINKED_FILES": "Linked files",
             "TYPE": "Type",
-            "DESCRIPTION": "Description"
+            "DESCRIPTION": "Description",
+            "PREVIEW": "Preview"
         },
         "STRATIGRAPHY" : {
             "ID":"ID",

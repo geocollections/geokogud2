@@ -223,7 +223,6 @@
                                 <th> {{ 'API_TRANSLATION.DOI.DESCRIPTION' | translate }} </th>
                                 <th> {{ 'API_TRANSLATION.DOI.FORMATS' | translate }} </th>
                                 <th> {{ 'API_TRANSLATION.DOI.PREVIEW' | translate }} </th>
-                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -249,11 +248,6 @@
                                              data-ng-if="entity.filename.endsWith('png') || entity.filename.endsWith('jpeg') || entity.filename.endsWith('svg') || entity.filename.endsWith('jpg')"
                                              class="previewImage"
                                              src="{{detailCtrl.service.getDownloadLink(entity.filename)}}"/>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="{{detailCtrl.service.getDownloadLink(entity.filename)}}" download>
-                                        {{ 'API_TRANSLATION.DOI.DOWNLOAD' | translate }}
                                     </a>
                                 </td>
                             </tr>
