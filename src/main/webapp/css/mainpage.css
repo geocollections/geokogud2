@@ -525,6 +525,7 @@ table tr > td:first-child {
     background-color: #eceeef;
     font-size: smaller;
     vertical-align: middle;
+    max-width: 25%; /* For detail view 'general info' first column */
 }
 
 .styles-for-table-headers {
