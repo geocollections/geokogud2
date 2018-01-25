@@ -61,9 +61,9 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
         vm.detailLoadingHandler.stop();
     }
 
-    function isIncludedField (field) {
-        return configuration.detailFieldsConfig[$stateParams.type].ignoreFields.indexOf(field) == -1;
-    }
+    // function isIncludedField (field) { TODO: Commented because not used
+    //     return configuration.detailFieldsConfig[$stateParams.type].ignoreFields.indexOf(field) == -1;
+    // }
 
     /**
      * Gets data from doi_geolocation table

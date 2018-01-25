@@ -1104,12 +1104,12 @@ angular.module('geoApp')
                                     visible: false,
                                     source: new ol.source.OSM()
                                 }),
-                                new ol.layer.Tile({
-                                    title: 'MapQuest satellite',
-                                    type: 'base',
-                                    visible: false,
-                                    source: new ol.source.MapQuest({layer: 'sat'})
-                                }),
+                                // new ol.layer.Tile({
+                                //     title: 'MapQuest satellite',
+                                //     type: 'base',
+                                //     visible: false,
+                                //     source: new ol.source.MapQuest({layer: 'sat'})
+                                // }),
                                 mapbox
                             ]
                         });
@@ -1117,20 +1117,20 @@ angular.module('geoApp')
                         var mapq = new ol.layer.Group({
                             style: 'AerialWithLabels',
 
-                            layers: [
-                                new ol.layer.Tile({
-                                    source: new ol.source.MapQuest({layer: 'sat'}),
-                                    visible: false,
-                                    type: 'base',
-                                    title: 'MapQuest satellite',
-                                }),
-                                new ol.layer.Tile({
-                                    source: new ol.source.MapQuest({layer: 'hyb'}),
-                                    visible: false,
-                                    type: 'base',
-                                    title: 'MapQuest satellite',
-                                })
-                            ]
+                            // layers: [
+                            //     new ol.layer.Tile({
+                            //         source: new ol.source.MapQuest({layer: 'sat'}),
+                            //         visible: false,
+                            //         type: 'base',
+                            //         title: 'MapQuest satellite',
+                            //     }),
+                            //     new ol.layer.Tile({
+                            //         source: new ol.source.MapQuest({layer: 'hyb'}),
+                            //         visible: false,
+                            //         type: 'base',
+                            //         title: 'MapQuest satellite',
+                            //     })
+                            // ]
                         });
 
                         var map = new ol.Map({
@@ -1230,10 +1230,10 @@ angular.module('geoApp')
                             displayFeatureInfo(pixel);
                         });
 
-                        var layerSwitcher = new ol.control.LayerSwitcher({
-                            //tipLabel: 'Légende' // Optional label for button
-                        });
-                        map.addControl(layerSwitcher);
+                        // var layerSwitcher = new ol.control.LayerSwitcher({
+                        //     //tipLabel: 'Légende' // Optional label for button
+                        // });
+                        // map.addControl(layerSwitcher);
                         //----------------------------------------------
                         var tooltip = document.querySelectorAll('.coupontooltip');
                         document.addEventListener('mousemove', fn, false);
