@@ -94,6 +94,7 @@ public class FluentSampleSearchApiBuilder extends FluentSearchApiBuilder<FluentS
 
     public FluentSampleSearchApiBuilder queryFrequency(SearchField agent) {
         buildFieldParameters(TAXONLIST__FREQUENCY, agent);
+        addFieldNameAndValue("distinct", "true");
         return this;
     }
 

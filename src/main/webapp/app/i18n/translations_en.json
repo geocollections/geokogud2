@@ -604,5 +604,6 @@
     "PLACEHOLDER_MIN": "min",
     "PLACEHOLDER_MAX": "max",
     "PLACEHOLDER_X": "x",
-    "PLACEHOLDER_Y": "y"
+    "PLACEHOLDER_Y": "y",
+    "ESTONIAN_LAND_BOARD": "Estonian Land Board"
 }

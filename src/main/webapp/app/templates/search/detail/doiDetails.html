@@ -316,7 +316,6 @@
                         <tr>
                             <th> {{ 'API_TRANSLATION.DOI.PLACE' | translate }} </th>
                             <th> {{ 'API_TRANSLATION.DOI.POINT' | translate }} </th>
-                            <th data-ng-if="detailCtrl.doiGeolocation.box != null">Bounding box</th>
                             <th> {{ 'API_TRANSLATION.DOI.LOCALITY_DB' | translate }} </th>
                         </tr>
                         </thead>
@@ -324,7 +323,6 @@
                         <tr data-ng-repeat="entity in detailCtrl.doiGeolocation">
                             <td>{{entity.place}}</td>
                             <td>{{entity.point}}</td>
-                            <td data-ng-if="detailCtrl.doiGeolocation.box != null">{{entity.box}}</td>
                             <td>
                                 <a href data-ng-if="entity.locality_id && entity.locality_id != null"
                                    data-ng-click="detailCtrl.service.openInNewWindow({object:'locality',id:entity.locality_id})">
@@ -343,6 +341,9 @@
                         <div id='hoverstat'></div>
                     </div>
                     <localities-map localities="detailCtrl.localities"></localities-map>
+                    <a href data-ng-click="detailCtrl.service.showGoogleMap(detailCtrl.localities[0].latitude, detailCtrl.localities[0].longitude, detailCtrl.localities[0].localityEng)">Google Maps</a></span>
+                    &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.localities[0].latitude, detailCtrl.localities[0].longitude)">{{ 'ESTONIAN_LAND_BOARD' | translate }}</a>
+
                 </div>
 
             </div>

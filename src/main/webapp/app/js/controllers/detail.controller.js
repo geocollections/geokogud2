@@ -1,11 +1,12 @@
 var module = angular.module("geoApp");
+
 var constructor = function ($scope, $state, $stateParams, applicationService, configuration, bsLoadingOverlayService, errorService) {
     var vm = this;
 
     vm.service = applicationService;
     vm.reload = reload;
     vm.fields = [];  vm.urlsMap = [];
-    vm.isIncludedField = isIncludedField;
+    // vm.isIncludedField = isIncludedField;
 
     vm.detailLoadingHandler = bsLoadingOverlayService.createHandler({referenceId: "detailView"});
 
@@ -33,7 +34,7 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             vm.detailLoadingHandler.stop();
             getLocality();
             getRelatedData();
-            vm.localities = (['doi'].indexOf($stateParams.type) > -1 ? getLocalities() : []);
+            vm.localities = (['doi'].indexOf($stateParams.type) > -1 ? getDoiLocalities() : []);
 
             vm.coreboxImageUrl = (['corebox'].indexOf($stateParams.type) > -1 ? vm.service.composeCoreboxImageUrl(vm.results) : null);
             vm.externalCoreboxImagePath = (['corebox'].indexOf($stateParams.type) > -1 ? vm.service.composeExternalCoreboxImagePath(vm.results) : null);
@@ -64,12 +65,14 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
         return configuration.detailFieldsConfig[$stateParams.type].ignoreFields.indexOf(field) == -1;
     }
 
-    function getLocalities() {
-        //vm.doiGeolocation
+    /**
+     * Gets data from doi_geolocation table
+     * and corrects it for map.
+     * @returns {Array} of locality information
+     */
+    function getDoiLocalities() {
         var localities = [];
         angular.forEach(vm.doiGeolocation, function(location){
-            //console.log(location.point.split(' ')[0]);
-            //console.log(location.point.split(' ')[1]);
             localities.push({
                 latitude: location.point.split(' ')[0],
                 longitude: location.point.split(' ')[1],
@@ -82,7 +85,11 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
         return localities;
     }
 
-    // Needed for map
+    /**
+     * Gets locality fields which are declared in config.json
+     * and then got from results which are added to locality array
+     * needed for map.
+     */
     function getLocality() {
         // Does not run if on corebox detail view
         if ($stateParams.type !== "corebox") {
@@ -99,6 +106,9 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
         }
     }
 
+    /**
+     * Adds related data to a variable.
+     */
     function getRelatedData() {
         if(vm.relatedData) {
             vm.doiAgent = vm.relatedData["doi_agent"];
@@ -129,6 +139,12 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
         }
     }
 
+    /**
+     * Calculates total number of specimens from preparation_taxa table which is
+     * used in preparations detail view general info and needed to calculate percent.
+     * @param results aka related data
+     * @returns total number of specimens.
+     */
     function sumNumberOfSpecimens(results) {
         var numOfSpecimen = 0;
         angular.forEach(results.preparation_taxa, function (preparation) {
@@ -137,6 +153,12 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
         return numOfSpecimen;
     }
 
+    /**
+     * Builds array similar to preparation_taxa with
+     * added 'percent' field. Used in preparations detail view.
+     * @param results aka related data
+     * @returns {Array} of taxons with added fields 'percent'
+     */
     function composeTaxonListInfo(results) {
         var preparationTaxons = [];
         var numOfSpecimen = sumNumberOfSpecimens(results);
@@ -157,11 +179,25 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
         return preparationTaxons;
     }
 
+    /**
+     * Goes to corebox view with a certain identifier.
+     * For example corebox/5000
+     * But can be implemented to all the detail views.
+     * @param id Corebox identifier
+     */
     function reload(id) {
         $state.go('coreBox.view', {id:id})
     }
 };
 
-constructor.$inject = ["$scope", "$state", "$stateParams", 'ApplicationService', 'configuration', 'bsLoadingOverlayService', 'ErrorService'];
+constructor.$inject = [
+    "$scope",
+    "$state",
+    "$stateParams",
+    'ApplicationService',
+    'configuration',
+    'bsLoadingOverlayService',
+    'ErrorService'
+];
 
 module.controller("DetailController", constructor);

@@ -224,14 +224,27 @@
     "specimens" : {
       "urls" : [],
       "localizedValues" : [],
-      "date" : ["date_added","date_changed"],
+      "date" : [
+        "date_added",
+        "date_changed"
+      ],
       "ignoreFields" : []
     },
     "specimenImage" : {
       "urls" : [],
       "localizedValues" : [],
-      "date" : ["date_added","date_changed"],
-      "locality" : {"id" : "locality_id", "country" : "locality__country__value_en", "lat" : "locality__latitude", "lon" : "locality__longitude", "value_et" : "locality__locality", "value_en" : "locality__locality_en"},
+      "date" : [
+        "date_added",
+        "date_changed"
+      ],
+      "locality" : {
+        "id" : "locality_id",
+        "country" : "locality__country__value_en",
+        "lat" : "locality__latitude",
+        "lon" : "locality__longitude",
+        "value_et" : "locality__locality",
+        "value_en" : "locality__locality_en"
+      },
       "ignoreFields" : []
     },
     "samples" : {
