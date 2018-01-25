@@ -407,7 +407,7 @@
             }
         },
         "TAXON": {
-            "HEADING": "Taxa",
+            "HEADING": "Taxon",
             "TABLE": {
                 "ID": "ID",
                 "FOSSIL_GROUP": "Fossil group",

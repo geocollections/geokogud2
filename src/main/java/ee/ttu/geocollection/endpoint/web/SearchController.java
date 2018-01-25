@@ -34,6 +34,7 @@ import ee.ttu.geocollection.interop.api.stratigraphies.pojo.StratigraphySearchCr
 import ee.ttu.geocollection.interop.api.stratigraphies.service.StratigraphyApiService;
 import ee.ttu.geocollection.interop.solr.sample.service.SampleSolrService;
 import ee.ttu.geocollection.interop.solr.specimen.service.SpecimenSolrService;
+import ee.ttu.geocollection.interop.solr.taxon.service.TaxonSolrService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,8 @@ public class SearchController extends ControllerHelper {
     private ReferenceSolrService referenceSolrService;
     @Autowired
     private PhotoArchiveSolrService photoArchiveSolrService;
+    @Autowired
+    private TaxonSolrService taxonSolrService;
 
     @Autowired
     private SpecimenApiService specimenApiService;
@@ -89,6 +92,7 @@ public class SearchController extends ControllerHelper {
     @GetMapping(value = "/global/{query}")
     public Iterable searchGlobally(@PathVariable String query) {
         ArrayList<SolrResponse> responses = new ArrayList<>();
+        responses.add(taxonSolrService.findTaxonByIndex(query));
         responses.add(photoArchiveSolrService.findPhotoArchiveByIndex(query));
         responses.add(referenceSolrService.findReferenceByIndex(query));
         responses.add(localitySolrService.findLocalityByIndex(query));
