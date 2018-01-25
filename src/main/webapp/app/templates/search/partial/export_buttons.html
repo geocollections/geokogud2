@@ -20,7 +20,6 @@
 
         var table = document.getElementById('table-search');
         var tableName = location.pathname.replace(/\//g,""); // Removes all '/'
-        console.log(tableName);
 
         $('#customXLSXbutton').on('click', function () {
             var instance = new TableExport(document.getElementById('table-search'), {

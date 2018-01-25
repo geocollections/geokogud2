@@ -173,8 +173,11 @@ var constructor = function ($http, $stateParams, $location, configuration) {
     service.decodeUrl = function(){
         if( Object.keys($location.$$search).length === 0) return null;
         var urlParams = $location.$$search, currentTable = $location.$$path.split('/')[1], searchParams = {};
-        console.log("urlParams" + JSON.stringify(urlParams));
+
+        console.log(JSON.stringify(urlParams));
+
         console.log("currentTable " + currentTable);
+
         angular.forEach(Object.keys(urlParams), function(attr){
             if(attr != 'currentTable' && attr != 'sortdir' && attr != 'dbs[]' && configuration.urlHelper[currentTable]) {
                 angular.forEach(Object.keys(configuration.urlHelper[currentTable].fields), function(a) {
