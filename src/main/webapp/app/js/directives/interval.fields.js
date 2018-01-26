@@ -9,7 +9,11 @@
         },
         controller: ['$scope', function ($scope) {
             $scope.$watch('field.name', function(newValue){
-                if(newValue) $scope.field.lookUpType = $scope.lookup;
+                if(newValue) {
+                    $scope.field.lookUpType = $scope.lookup;
+                } else {
+                    $scope.field = {lookUpType: $scope.lookup, name:null};
+                }
             });
 
         }]

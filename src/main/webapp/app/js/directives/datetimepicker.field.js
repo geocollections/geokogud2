@@ -21,6 +21,8 @@ angular.module('geoApp').directive('commonDatetimepicker', function () {
                     var dd = date.getDate();
                     $scope.field.name = yyyy + "-" + MM + "-" + dd;
                     $scope.field.lookUpType = $scope.lookup;
+                } else {
+                    $scope.field = {lookUpType: $scope.lookup};
                 }
             });
 

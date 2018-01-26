@@ -201,12 +201,14 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
             };
         }
 
+        console.log(location.href);
         /*** Get parameters from session storage START ***/
         var searchParamsSession = getSearchDataFromSessionStorage();
         if (typeof(searchParamsSession) !== 'undefined') {
             $scope.searchParameters = searchParamsSession;
         }
         /*** Get parameters from session storage END ***/
+        console.log(location.href);
 
         $scope.sortByAsc = true;
         $scope.search();
