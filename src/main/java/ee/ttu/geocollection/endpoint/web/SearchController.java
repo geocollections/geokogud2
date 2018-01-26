@@ -35,6 +35,9 @@ import ee.ttu.geocollection.interop.api.stratigraphies.service.StratigraphyApiSe
 import ee.ttu.geocollection.interop.solr.sample.service.SampleSolrService;
 import ee.ttu.geocollection.interop.solr.specimen.service.SpecimenSolrService;
 import ee.ttu.geocollection.interop.solr.taxon.service.TaxonSolrService;
+import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.SolrDocument;
+import org.apache.solr.common.SolrDocumentList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

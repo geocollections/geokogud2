@@ -98,7 +98,7 @@ public class SampleSolrServiceImpl implements SampleSolrService {
     public SolrResponse findSampleByIndex(String query) {
         SolrQuery requestParams = new SolrQuery(query)
                 .setRows(100);
-        return solrService.searchRawEntities(SAMPLE_TABLE, requestParams.toQueryString());
+        return solrService.searchRawEntities(SAMPLE_TABLE, requestParams);
     }
 
 }

@@ -5,3 +5,4 @@ phantomjs/
 *.log
 .idea
 out/
+src/main/resources/application.properties

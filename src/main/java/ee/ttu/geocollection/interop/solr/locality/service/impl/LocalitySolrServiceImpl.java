@@ -19,7 +19,7 @@ public class LocalitySolrServiceImpl implements LocalitySolrService {
     public SolrResponse findLocalityByIndex(String query) {
         SolrQuery requestParams = new SolrQuery(query)
                 .setRows(100);
-        return solrService.searchRawEntities(LOCALITY_TABLE, requestParams.toQueryString());
+        return solrService.searchRawEntities(LOCALITY_TABLE, requestParams);
     }
 
 }

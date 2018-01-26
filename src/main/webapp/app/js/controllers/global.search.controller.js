@@ -78,6 +78,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
      * @param result Response from search query
      */
     function onGlobalDataLoaded(result) {
+        console.log(result);
         if (!result.data) return;
 
         // Number of possible tabs
@@ -85,14 +86,15 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
             console.log(result.data);
 
             result.data.forEach(function (response) {
-                if (response.response !== null) {
-                    if (response.response.numFound > 0) {
+                console.log(response);
+                if (response !== null) {
+                    if (response.numFound > 0) {
                         $scope.selectedTab = response.table;
 
                         $scope.searchResults[response.table] = response;
                         if (response.table === $scope.selectedTab) {
-                            $scope.response.results = response.response.docs;
-                            $scope.response.count = response.response.numFound;
+                            $scope.response.results = response.response;
+                            $scope.response.count = response.numFound;
                         }
                     }
                 }
@@ -122,8 +124,8 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         $stateParams.tab = tabTitle;
         $scope.selectedTab = tabTitle;
         $state.go("global", {query: $stateParams.query, tab: tabTitle}, {location: "replace", inherit: false, notify: false});
-        $scope.response.results = $scope.searchResults[tabTitle].response.docs;
-        $scope.response.count = $scope.searchResults[tabTitle].response.numFound;
+        $scope.response.results = $scope.searchResults[tabTitle].response;
+        $scope.response.count = $scope.searchResults[tabTitle].numFound;
         console.log($scope.response);
     };
 
@@ -145,7 +147,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
      */
     $scope.getResultsLength = function (tab) {
         if ($scope.searchResults[tab].response != null) {
-            return $scope.searchResults[tab].response.numFound;
+            return $scope.searchResults[tab].numFound;
         } else {
             return 0;
         }

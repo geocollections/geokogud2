@@ -19,7 +19,7 @@ public class ReferenceSolrServiceImpl implements ReferenceSolrService {
     public SolrResponse findReferenceByIndex(String query) {
         SolrQuery requestParams = new SolrQuery(query)
                 .setRows(100);
-        return solrService.searchRawEntities(REFERENCE_TABLE, requestParams.toQueryString());
+        return solrService.searchRawEntities(REFERENCE_TABLE, requestParams);
     }
 
 }

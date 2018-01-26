@@ -19,7 +19,7 @@ public class TaxonSolrServiceImpl implements TaxonSolrService {
     public SolrResponse findTaxonByIndex(String query) {
         SolrQuery requestParams = new SolrQuery(query)
                 .setRows(100);
-        return solrService.searchRawEntities(TAXON_TABLE, requestParams.toQueryString());
+        return solrService.searchRawEntities(TAXON_TABLE, requestParams);
     }
 
 }

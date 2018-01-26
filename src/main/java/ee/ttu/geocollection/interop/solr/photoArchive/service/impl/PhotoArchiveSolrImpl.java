@@ -19,7 +19,7 @@ public class PhotoArchiveSolrImpl implements PhotoArchiveSolrService {
     public SolrResponse findPhotoArchiveByIndex(String query) {
         SolrQuery requestParams = new SolrQuery(query)
                 .setRows(100);
-        return solrService.searchRawEntities(PHOTO_ARCHIVE_TABLE, requestParams.toQueryString());
+        return solrService.searchRawEntities(PHOTO_ARCHIVE_TABLE, requestParams);
     }
 
 }

@@ -2,6 +2,8 @@ package ee.ttu.geocollection.interop.solr.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.apache.solr.common.SolrDocumentList;
+import org.apache.solr.common.util.NamedList;
 
 import java.util.Map;
 
@@ -9,12 +11,18 @@ import java.util.Map;
 public class SolrResponse {
 
     private String table;
-
-    @JsonProperty("responseHeader")
-    private Map responseHeader;
+    private long numFound;
 
     @JsonProperty("response")
-    private Map response;
+    private SolrDocumentList response;
+
+    public long getNumFound() {
+        return numFound;
+    }
+
+    public void setNumFound(long numFound) {
+        this.numFound = numFound;
+    }
 
     public String getTable() {
         return table;
@@ -24,19 +32,11 @@ public class SolrResponse {
         this.table = table;
     }
 
-    public Map getResponseHeader() {
-        return responseHeader;
-    }
-
-    public void setResponseHeader(Map responseHeader) {
-        this.responseHeader = responseHeader;
-    }
-
-    public Map getResponse() {
+    public SolrDocumentList getResponse() {
         return response;
     }
 
-    public void setResponse(Map response) {
+    public void setResponse(SolrDocumentList response) {
         this.response = response;
     }
 }
