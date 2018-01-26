@@ -18,32 +18,30 @@
 
     jQuery(document).ready( function ($) {
 
-        var table = document.getElementById('table-search');
+        var table = $('#table-search');
         var tableName = location.pathname.replace(/\//g,""); // Removes all '/'
 
         $('#customXLSXbutton').on('click', function () {
-            var instance = new TableExport(document.getElementById('table-search'), {
+            var instance = new TableExport(table, {
                 formats: ['xlsx'],   // (String[]), filetype(s) for the export, (default: ['xls', 'csv', 'txt'])
                 exportButtons: false        // (Boolean), generates default download buttons, (default: true)
             });
 
             var exportXLSXtable = instance.getExportData()['table-search']['xlsx'];
 
-            // TODO: get correct names
             exportXLSXtable.fileName = tableName + '_XLSX_table';
 
             instance.export2file(exportXLSXtable.data, exportXLSXtable.mimeType, exportXLSXtable.fileName, exportXLSXtable.fileExtension);
         });
 
         $('#customCSVbutton').on('click', function () {
-            var instance = new TableExport(document.getElementById('table-search'), {
+            var instance = new TableExport(table, {
                 formats: ['csv'],
                 exportButtons: false
             });
 
             var exportCSVtable = instance.getExportData()['table-search']['csv'];
 
-            // TODO: get correct names
             exportCSVtable.fileName = tableName + '_CSV_table';
 
             instance.export2file(exportCSVtable.data, exportCSVtable.mimeType, exportCSVtable.fileName, exportCSVtable.fileExtension);
