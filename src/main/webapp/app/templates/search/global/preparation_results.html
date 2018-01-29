@@ -27,29 +27,39 @@
             <tbody>
             <tr data-ng-repeat="entity in response.results">
                 <td style="font-weight: normal" data-title="{{ 'SEARCH.PREPARATIONS.TABLE.ID' | translate }}">{{entity.id}}</td>
+
                 <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.NUMBER' | translate }}">
                     <a class="bold-link" href data-ng-click="ctrl.service.openInNewWindow({object:'preparation',id:entity.id})">{{entity.preparation_number}}</a>
                 </td>
+
                 <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.LOCALITY' | translate }}">
-                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:entity.sample__locality__id})">
-                        <localize data-ng-if="entity.sample__locality__locality != null || entity.sample__locality__locality_en != null" et="entity.sample__locality__locality" en="entity.sample__locality__locality_en"/>
+                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:entity.locality_id})">
+                        <localize et="entity.locality" en="entity.locality_en"/>
                     </a>
                 </td>
-                <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.DEPTH_M' | translate }}">{{entity.sample__depth}} <span ng-if="entity.sample__depth_interval != null && entity.sample__depth_interval != ''">({{entity.sample__depth_interval}})</span></td>
+
+                <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.DEPTH_M' | translate }}">
+                    {{entity.depth}}
+                    <span ng-if="entity.depth_interval">
+                        ({{entity.depth_interval}})
+                    </span>
+                </td>
+
                 <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.STRATIGRAPHY' | translate }}">
-                    <localize data-ng-if="entity.sample__stratigraphy__stratigraphy != null || entity.sample__stratigraphy__stratigraphy_en != null"
-                              et="entity.sample__stratigraphy__stratigraphy"
-                              en="entity.sample__stratigraphy__stratigraphy_en"/>
-                    <span ng-show="entity.sample__stratigraphy__stratigraphy != null && entity.sample__lithostratigraphy__stratigraphy != null">|</span>
+                    <!--<a>-->
+                        <localize et="entity.stratigraphy" en="entity.stratigraphy_en"/>
+                    <!--</a>-->
+                    <span ng-show="(entity.stratigraphy && entity.lithostratigraphy) || (entity.stratigraphy_en && entity.lithostratigraphy_en)"> | </span>
                     <em>
-                        <localize data-ng-if="entity.sample__lithostratigraphy__stratigraphy != null || entity.sample__lithostratigraphy__stratigraphy_en != null"
-                                  et="entity.sample__lithostratigraphy__stratigraphy"
-                                  en="entity.sample__lithostratigraphy__stratigraphy_en"/>
+                        <!--<a>-->
+                            <localize et="entity.lithostratigraphy" en="entity.lithostratigraphy_en"/>
+                        <!--</a>-->
                     </em>
                 </td>
-                <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.COLLECTOR' | translate }}">{{entity.sample__agent_collected__agent}}</td>
-                <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.WEIGHT' | translate }}">{{entity.sample__mass}}</td>
-                <!--<td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.MORE_INFO' | translate }}">???</td>-->
+
+                <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.COLLECTOR' | translate }}">{{entity.agent}}</td>
+
+                <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.WEIGHT' | translate }}">{{entity.sample_mass}}</td>
             </tr>
             </tbody>
         </table>
