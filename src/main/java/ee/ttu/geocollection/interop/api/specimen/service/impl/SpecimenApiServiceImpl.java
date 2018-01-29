@@ -230,6 +230,7 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .queryImgPartOfFossil(searchCriteria.getPartOfFossil())
                 .queryImgDateAdded(searchCriteria.getDateTakenSince())
                 .queryImgDateAdded(searchCriteria.getDateTakenTo())
+                .queryInstitutions(searchCriteria.getDbs())
                 .buildDefaultFieldsQuery();
         return apiService.searchRawEntities(SPECIMEN_IMAGE_TABLE, 25, searchCriteria.getPage(), new SortField("specimen__specimen_id", SortingOrder.ASCENDING), requestParams);
     }
