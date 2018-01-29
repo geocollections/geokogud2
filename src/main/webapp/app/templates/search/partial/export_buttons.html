@@ -24,7 +24,8 @@
         $('#customXLSXbutton').on('click', function () {
             var instance = new TableExport(table, {
                 formats: ['xlsx'],   // (String[]), filetype(s) for the export, (default: ['xls', 'csv', 'txt'])
-                exportButtons: false        // (Boolean), generates default download buttons, (default: true)
+                exportButtons: false,       // (Boolean), generates default download buttons, (default: true)
+                trimWhitespace: true
             });
 
             var exportXLSXtable = instance.getExportData()['table-search']['xlsx'];
@@ -37,7 +38,8 @@
         $('#customCSVbutton').on('click', function () {
             var instance = new TableExport(table, {
                 formats: ['csv'],
-                exportButtons: false
+                exportButtons: false,
+                trimWhitespace: true
             });
 
             var exportCSVtable = instance.getExportData()['table-search']['csv'];

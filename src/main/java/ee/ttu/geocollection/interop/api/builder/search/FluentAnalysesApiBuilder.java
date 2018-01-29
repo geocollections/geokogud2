@@ -128,4 +128,9 @@ public class FluentAnalysesApiBuilder  extends FluentSearchApiBuilder<FluentAnal
         return this;
     }
 
+    public FluentAnalysesApiBuilder returnLabTxt(){
+        addReturningField(LAB_TXT);
+        return this;
+    }
+
 }

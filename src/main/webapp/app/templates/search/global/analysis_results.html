@@ -1,0 +1,76 @@
+
+<div data-ng-if="response.results != null">
+    <div class="row">
+        <div class="col-xs-6" ng-include="'app/templates/search/partial/export_buttons.html'"></div>
+        <div class="col-xs-6" ng-include="'app/templates/search/partial/pagination.html'"></div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="table-search">
+            <thead class="thead-default">
+            <tr>
+                <th><sort-field value = "id" name="SEARCH.ANALYSES.TABLE.ID"></sort-field></th>
+                <th><sort-field value = "sample" name="SEARCH.ANALYSES.TABLE.SAMPLE_ID"></sort-field></th>
+                <th><sort-field value = "sample__locality__locality,sample__locality__locality_en" name="SEARCH.ANALYSES.TABLE.LOCALITY"></sort-field></th>
+                <th><sort-field value = "sample__depth" name="SEARCH.ANALYSES.TABLE.DEPTH_M"></sort-field></th>
+                <th>
+                    <sort-field value = "sample__stratigraphy__stratigraphy,sample__stratigraphy__stratigraphy_en"
+                                name="SEARCH.ANALYSES.TABLE.STRATIGRAPHY">
+
+                    </sort-field> | <em>{{ 'SEARCH.ANALYSES.TABLE.LITHOSTRATIGRAPHY' | translate }}</em>
+                </th>
+                <th><sort-field value = "sample__stratigraphy_bed" name="SEARCH.ANALYSES.TABLE.BED_ID"></sort-field></th>
+                <th><sort-field value = "analysis_method__analysis_method,analysis_method__method_en" name="SEARCH.ANALYSES.TABLE.METHOD"></sort-field></th>
+                <th><sort-field value = "lab" name="SEARCH.ANALYSES.TABLE.LAB"></sort-field></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-ng-repeat="entity in response.results">
+
+                <td data-title="{{ 'SEARCH.ANALYSES.TABLE.ID'| translate }}">
+                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'analysis',id:entity.id})">{{entity.id}}</a>
+                </td>
+
+                <td data-title="{{ 'SEARCH.ANALYSES.TABLE.SAMPLE_ID'| translate }}">
+                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'sample',id:entity.sample_id})">
+                        <first-not-null values="[entity.sample_number, sample_id]" />
+                    </a>
+                </td>
+
+                <td data-title="{{ 'SEARCH.ANALYSES.TABLE.LOCALITY'| translate }}">
+                    <div>
+                        <!--<a href data-ng-if="entity.locality_id" data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:entity.locality_id})">-->
+                            <localize  et="entity.locality" en="entity.locality_en"/>
+                        <!--</a>-->
+                    </div>
+
+                    <div>{{entity.locality_free}}</div>
+                </td>
+
+                <td data-title="{{ 'SEARCH.ANALYSES.TABLE.DEPTH_M'| translate }}">{{entity.depth}} {{entity.depth_interval}}</td>
+
+                <td data-title="{{ 'SEARCH.ANALYSES.TABLE.STRATIGRAPHY' | translate }}">
+                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.stratigraphy_id})"><localize et="entity.stratigraphy" en="entity.stratigraphy_en"/></a><span data-ng-if="(entity.stratigraphy && entity.lithostratigraphy) || (entity.stratigraphy_en && entity.lithostratigraphy_en)"> | </span><em><a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.lithostratigraphy_id})"><localize et="entity.lithostratigraphy" en="entity.entity.lithostratigraphy_en"/></a></em>
+                </td>
+
+                <td data-title="{{ 'SEARCH.ANALYSES.TABLE.BED_ID'| translate }}">{{entity.stratigraphy_bed}}</td>
+
+                <td data-title="{{ 'SEARCH.ANALYSES.TABLE.METHOD'| translate }}">
+                    <localize et="entity.analysis_method" en="entity.analysis_method_en"/>
+                </td>
+
+                <td data-title="{{ 'SEARCH.ANALYSES.TABLE.LAB'| translate }}">{{entity.lab_txt[0]}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div ng-include="'app/templates/search/partial/pagination.html'"></div>
+</div>
+
+<div class="row" data-ng-if="response.results == null">
+    <div class="col-lg-12 h3 panel-heading text-center no-results">{{ 'SEARCH.NO_RESULTS' | translate }}</div>
+    <div class="col-lg-12">
+        <div class="col-lg-12" ng-bind-html="main.getContent(main.searchTips)"></div>
+    </div>
+</div>

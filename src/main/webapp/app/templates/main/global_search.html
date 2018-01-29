@@ -25,14 +25,14 @@
                 <div class="col-sm-10">
                     <div ng-if="selectedTab == 'specimen' && response.count > 0" non-isolated-include template-path="app/templates/search/global/specimen_results.html"></div>
                     <div ng-if="selectedTab == 'sample' && response.count > 0" non-isolated-include template-path="app/templates/search/global/sample_results.html"></div>
-                    <div ng-if="selectedTab == 'drillcore' && response.count > 0" non-isolated-include template-path="app/templates/search/drillcore/drillcore_results.html"></div>
+                    <div ng-if="selectedTab == 'drillcore' && response.count > 0" non-isolated-include template-path="app/templates/search/global/drillcore_results.html"></div>
                     <div ng-if="selectedTab == 'locality' && response.count > 0" non-isolated-include template-path="app/templates/search/global/locality_results.html"></div>
                     <div ng-if="selectedTab == 'reference' && response.count > 0" non-isolated-include template-path="app/templates/search/global/reference_results.html"></div>
-                    <div ng-if="selectedTab == 'stratigraphy' && response.count > 0" non-isolated-include template-path="app/templates/search/stratigraphy/stratigraphy_results.html"></div>
-                    <div ng-if="selectedTab == 'analysis' && response.count > 0" non-isolated-include template-path="app/templates/search/analysis/analysis_results.html"></div>
-                    <div ng-if="selectedTab == 'preparation' && response.count > 0" non-isolated-include template-path="app/templates/search/preparation/preparation_results.html"></div>
+                    <div ng-if="selectedTab == 'stratigraphy' && response.count > 0" non-isolated-include template-path="app/templates/search/global/stratigraphy_results.html"></div>
+                    <div ng-if="selectedTab == 'analysis' && response.count > 0" non-isolated-include template-path="app/templates/search/global/analysis_results.html"></div>
+                    <div ng-if="selectedTab == 'preparation' && response.count > 0" non-isolated-include template-path="app/templates/search/global/preparation_results.html"></div>
                     <div ng-if="selectedTab == 'image' && response.count > 0" non-isolated-include template-path="app/templates/search/global/image_results.html"></div>
-                    <div ng-if="selectedTab == 'doi' && response.count > 0" non-isolated-include template-path="app/templates/search/doi/doi_results.html"></div>
+                    <div ng-if="selectedTab == 'doi' && response.count > 0" non-isolated-include template-path="app/templates/search/global/doi_results.html"></div>
                     <div ng-if="selectedTab == 'taxon' && response.count > 0" non-isolated-include template-path="app/templates/search/taxon/taxon_results.html"></div>
                 </div>
 

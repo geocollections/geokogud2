@@ -1,0 +1,81 @@
+<div data-ng-if="response.results != null">
+    <div class="row">
+        <div class="col-xs-6" ng-include="'app/templates/search/partial/export_buttons.html'"></div>
+        <div class="col-xs-6" ng-include="'app/templates/search/partial/pagination.html'" data-ng-if="!main.isGlobalSearch()"></div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="table-search">
+            <thead class="thead-default">
+            <tr>
+                <th><sort-field value = "id" name="SEARCH.STRATIGRAPHY.TABLE.ID"></sort-field></th>
+                <th><sort-field value = "stratigraphy,stratigraphy_en" name="SEARCH.STRATIGRAPHY.TABLE.STRATIGRAPHY"></sort-field></th>
+                <th><sort-field value = "index_main" name="SEARCH.STRATIGRAPHY.TABLE.INDEX"></sort-field></th>
+                <th></th>
+                <th><sort-field value = "type__value,type__value_en" name="SEARCH.STRATIGRAPHY.TABLE.TYPE"></sort-field></th>
+                <th><sort-field value = "rank__value,rank__value_en" name="SEARCH.STRATIGRAPHY.TABLE.RANK"></sort-field></th>
+                <th><sort-field value = "scope__value,scope__value_en" name="SEARCH.STRATIGRAPHY.TABLE.SCOPE"></sort-field></th>
+                <th><sort-field value = "age_chronostratigraphy__stratigraphy,age_chronostratigraphy__stratigraphy_en" name="SEARCH.STRATIGRAPHY.TABLE.AGE"></sort-field></th>
+                <th><sort-field value = "age_top" name="SEARCH.STRATIGRAPHY.TABLE.AGE_MA"></sort-field></th>
+                <th><sort-field value = "parent__stratigraphy,parent__stratigraphy_en" name="SEARCH.STRATIGRAPHY.TABLE.BELONGS_TO"></sort-field></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-ng-repeat="entity in response.results">
+                <td style="font-weight: normal;" data-title="{{ 'SEARCH.STRATIGRAPHY.TABLE.ID' | translate }}">{{entity.id}}</td>
+
+                <td data-title="{{ 'SEARCH.STRATIGRAPHY.TABLE.STRATIGRAPHY' | translate }}">
+                    <a class="bold-link" href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.id})">
+                        <localize et="entity.stratigraphy" en="entity.stratigraphy_en"/>
+                    </a>
+                </td>
+
+                <td data-title="{{ 'SEARCH.STRATIGRAPHY.TABLE.INDEX' | translate }}">
+                    <first-not-null values="[entity.index_main, entity.index_main_html]" />
+                </td>
+
+                <td data-title="">
+                    <first-not-null values="[entity.index_additional, entity.index_additional_html]" />
+                </td>
+
+                <td data-title="{{ 'SEARCH.STRATIGRAPHY.TABLE.TYPE' | translate }}">
+                    <localize et="entity.stratigraphy_type" en="entity.stratigraphy_type_en" />
+                </td>
+
+                <td data-title="{{ 'SEARCH.STRATIGRAPHY.TABLE.RANK' | translate }}">
+                    <localize et="entity.stratigraphy_rank" en="entity.stratigraphy_rank_en"/>
+                </td>
+
+                <td data-title="{{ 'SEARCH.STRATIGRAPHY.TABLE.SCOPE' | translate }}">
+                    <localize et="entity.stratigraphy_scope" en="entity.stratigraphy_scope_en"/>
+                </td>
+
+                <td data-title="{{ 'SEARCH.STRATIGRAPHY.TABLE.AGE' | translate }}">
+                    <a data-ng-if="entity.age_chronostratigraphy" href
+                       data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy', id:entity.age_chronostratigraphy})">
+                        <localize et="entity.age_stratigraphy" en="entity.age_stratigraphy_en"/>
+                    </a>
+                </td>
+
+                <td data-title="{{ 'SEARCH.STRATIGRAPHY.TABLE.AGE_MA' | translate }}">{{entity.age_base}}<br>{{entity.age_top}}</td>
+
+                <td data-title="{{ 'SEARCH.STRATIGRAPHY.TABLE.BELONGS_TO' | translate }}">
+                    <a data-ng-if="entity.parent_id" href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.parent_id})">
+                        <localize et="entity.parent_stratigraphy" en="entity.parent_stratigraphy_en"/>
+                    </a>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div ng-include="'app/templates/search/partial/pagination.html'" data-ng-if="!main.isGlobalSearch()"></div>
+</div>
+
+<div class="row" data-ng-if="response.results == null">
+    <div class="col-lg-12 h3 panel-heading text-center no-results">{{ 'SEARCH.NO_RESULTS' | translate }}</div>
+    <div class="col-lg-12">
+        <div class="col-lg-12" ng-bind-html="main.getContent(main.searchTips)"></div>
+    </div>
+</div>

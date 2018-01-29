@@ -17,6 +17,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     $scope.isInstitutionsCollapsed = true;
 
     function onSearchData(result) {
+        console.log(result);
         if (['specimens'].indexOf($stateParams.type) > -1) {
             // Temporary change because of speed
             $scope.pageSize = 25
