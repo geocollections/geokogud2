@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class LocalitySolrServiceImpl implements LocalitySolrService {
 
-    private final static String LOCALITY_TABLE = "locality";
+    private static final String LOCALITY_TABLE = "locality";
 
     @Autowired
     private SolrService solrService;

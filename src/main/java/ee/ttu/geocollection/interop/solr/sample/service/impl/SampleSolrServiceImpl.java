@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class SampleSolrServiceImpl implements SampleSolrService {
 
-    private final static String SAMPLE_TABLE = "sample";
+    private static final String SAMPLE_TABLE = "sample";
 
     private List<String> fields = Arrays.asList(
             "_root_",

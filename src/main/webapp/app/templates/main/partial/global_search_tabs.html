@@ -12,6 +12,12 @@
             </a>
         </li>
 
+        <li ng-if="getResultsLength('drillcore') > 0" class="nav-item" ng-class="{active: isTabActive('drillcore')}" role="presentation">
+            <a role="tab" href ng-click="selectTab('drillcore')">
+                {{ 'SEARCH.DRILL_CORES.HEADING' | translate }} ({{getResultsLength('drillcore')}})
+            </a>
+        </li>
+
         <li ng-if="getResultsLength('locality') > 0" class="nav-item" ng-class="{active: isTabActive('locality')}" role="presentation">
             <a role="tab" href ng-click="selectTab('locality')">
                 {{ 'SEARCH.LOCATILIES.HEADING' | translate }} ({{getResultsLength('locality')}})
@@ -30,9 +36,27 @@
             </a>
         </li>
 
+        <li ng-if="getResultsLength('analysis') > 0" class="nav-item" ng-class="{active: isTabActive('analysis')}" role="presentation">
+            <a role="tab" href ng-click="selectTab('analysis')">
+                {{ 'SEARCH.ANALYSES.HEADING' | translate }} ({{getResultsLength('analysis')}})
+            </a>
+        </li>
+
+        <li ng-if="getResultsLength('preparation') > 0" class="nav-item" ng-class="{active: isTabActive('preparation')}" role="presentation">
+            <a role="tab" href ng-click="selectTab('preparation')">
+                {{ 'SEARCH.PREPARATIONS.HEADING' | translate }} ({{getResultsLength('preparation')}})
+            </a>
+        </li>
+
         <li ng-if="getResultsLength('image') > 0" class="nav-item" ng-class="{active: isTabActive('image')}" role="presentation">
             <a role="tab" href ng-click="selectTab('image')">
                 {{ 'SEARCH.PHOTO_ARCHIVE.HEADING' | translate }} ({{getResultsLength('image')}})
+            </a>
+        </li>
+
+        <li ng-if="getResultsLength('doi') > 0" class="nav-item" ng-class="{active: isTabActive('doi')}" role="presentation">
+            <a role="tab" href ng-click="selectTab('doi')">
+                {{ 'SEARCH.DOI.DOI' | translate }} ({{getResultsLength('doi')}})
             </a>
         </li>
 

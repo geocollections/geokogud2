@@ -3,9 +3,6 @@ package ee.ttu.geocollection.interop.solr.response;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.solr.common.SolrDocumentList;
-import org.apache.solr.common.util.NamedList;
-
-import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SolrResponse {

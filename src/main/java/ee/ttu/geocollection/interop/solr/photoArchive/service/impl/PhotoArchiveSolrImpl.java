@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PhotoArchiveSolrImpl implements PhotoArchiveSolrService {
 
-    private final static String PHOTO_ARCHIVE_TABLE = "image";
+    private static final String PHOTO_ARCHIVE_TABLE = "image";
 
     @Autowired
     private SolrService solrService;

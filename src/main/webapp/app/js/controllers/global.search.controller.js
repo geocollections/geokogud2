@@ -37,10 +37,14 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         $scope.searchResults = {
             "specimen": {},
             "sample": {},
+            "drillcore": {},
             "locality": {},
             "reference": {},
             "stratigraphy": {},
+            "analysis": {},
+            "preparation": {},
             "image": {},
+            "doi": {},
             "taxon": {}
         };
 
@@ -82,7 +86,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         if (!result.data) return;
 
         // Number of possible tabs
-        if (result.data.length <= 7) {
+        if (result.data.length <= 11) {
             console.log(result.data);
 
             result.data.forEach(function (response) {

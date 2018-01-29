@@ -20,7 +20,7 @@ import java.util.Map;
 @Service
 public class SpecimenSolrServiceImpl implements SpecimenSolrService {
 
-    private final static String SPECIMEN_TABLE = "specimen";
+    private static final String SPECIMEN_TABLE = "specimen";
 
     private List<String> fields = Arrays.asList(
             "ID",

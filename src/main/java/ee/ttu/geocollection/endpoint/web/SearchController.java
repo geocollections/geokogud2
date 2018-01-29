@@ -5,8 +5,12 @@ import ee.ttu.geocollection.domain.LookUpType;
 import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.interop.api.AsynchService;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
+import ee.ttu.geocollection.interop.solr.analysis.service.AnalysisSolrService;
+import ee.ttu.geocollection.interop.solr.doi.service.DoiSolrService;
+import ee.ttu.geocollection.interop.solr.drillcore.service.DrillcoreSolrService;
 import ee.ttu.geocollection.interop.solr.locality.service.LocalitySolrService;
 import ee.ttu.geocollection.interop.solr.photoArchive.service.PhotoArchiveSolrService;
+import ee.ttu.geocollection.interop.solr.preparation.service.PreparationSolrService;
 import ee.ttu.geocollection.interop.solr.reference.service.ReferenceSolrService;
 import ee.ttu.geocollection.interop.solr.response.SolrResponse;
 import ee.ttu.geocollection.interop.api.analyses.pojo.AnalysesSearchCriteria;
@@ -34,10 +38,8 @@ import ee.ttu.geocollection.interop.api.stratigraphies.pojo.StratigraphySearchCr
 import ee.ttu.geocollection.interop.api.stratigraphies.service.StratigraphyApiService;
 import ee.ttu.geocollection.interop.solr.sample.service.SampleSolrService;
 import ee.ttu.geocollection.interop.solr.specimen.service.SpecimenSolrService;
+import ee.ttu.geocollection.interop.solr.stratigraphy.service.StratigraphySolrService;
 import ee.ttu.geocollection.interop.solr.taxon.service.TaxonSolrService;
-import org.apache.solr.client.solrj.response.QueryResponse;
-import org.apache.solr.common.SolrDocument;
-import org.apache.solr.common.SolrDocumentList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,11 +63,21 @@ public class SearchController extends ControllerHelper {
     @Autowired
     private SampleSolrService sampleSolrService;
     @Autowired
+    private DrillcoreSolrService drillcoreSolrService;
+    @Autowired
     private LocalitySolrService localitySolrService;
     @Autowired
     private ReferenceSolrService referenceSolrService;
     @Autowired
+    private StratigraphySolrService stratigraphySolrService;
+    @Autowired
+    private AnalysisSolrService analysisSolrService;
+    @Autowired
+    private PreparationSolrService preparationSolrService;
+    @Autowired
     private PhotoArchiveSolrService photoArchiveSolrService;
+    @Autowired
+    private DoiSolrService doiSolrService;
     @Autowired
     private TaxonSolrService taxonSolrService;
 
@@ -96,9 +108,14 @@ public class SearchController extends ControllerHelper {
     public Iterable searchGlobally(@PathVariable String query) {
         ArrayList<SolrResponse> responses = new ArrayList<>();
         responses.add(taxonSolrService.findTaxonByIndex(query));
+        responses.add(doiSolrService.findDoiByIndex(query));
         responses.add(photoArchiveSolrService.findPhotoArchiveByIndex(query));
+        responses.add(preparationSolrService.findPreparationByIndex(query));
+        responses.add(analysisSolrService.findAnalysisByIndex(query));
+        responses.add(stratigraphySolrService.findStratigraphyByIndex(query));
         responses.add(referenceSolrService.findReferenceByIndex(query));
         responses.add(localitySolrService.findLocalityByIndex(query));
+        responses.add(drillcoreSolrService.findDrillcoreByIndex(query));
         responses.add(sampleSolrService.findSampleByIndex(query));
         responses.add(specimenSolrService.findSpecimenByIndex(query));
         return responses;
