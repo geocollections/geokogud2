@@ -9,23 +9,23 @@
     <div class="table-responsive" data-ng-if="!showImages">
         <table class="table table-bordered table-hover" id="table-search">
             <thead class="thead-default">
-            <tr>
-                <!--<th><sort-field value = "id" name="SEARCH.SPECIMENS.ID"></sort-field></th>-->
-                <th><sort-field value = "specimen_id" name="SEARCH.SPECIMENS.NUMBER"></sort-field></th>
-                <th><sort-field value = "specimen_nr" name="SEARCH.SPECIMENS.OLD_SPECIMEN_NUMBER"></sort-field></th>
-                <th><sort-field value = "specimenidentification__name" name="SEARCH.SPECIMENS.NAME_PART_ELEMENT"></sort-field></th>
-                <th><sort-field value = "locality__locality,locality__locality_en" name="SEARCH.SPECIMENS.LOCALITY"></sort-field></th>
-                <th><sort-field value = "depth" name="SEARCH.SPECIMENS.DEPHT_M"></sort-field></th>
-                <th>
-                    <sort-field value = "stratigraphy__stratigraphy,stratigraphy__stratigraphy_en"
-                                name="SEARCH.SPECIMENS.STRATIGRAPHY">
-                    </sort-field> | <em> {{ 'SEARCH.SPECIMENS.LITHOSTRATIGRAPHY' | translate }} </em>
-                </th>
-                <th><sort-field value = "agent_collected__agent" name="SEARCH.SPECIMENS.COLLECTOR"></sort-field></th>
-                <th><sort-field value = "original_status__value,original_status__value_en" name="SEARCH.SPECIMENS.STATUS"></sort-field></th>
-                <th>{{ 'SEARCH.SPECIMENS.IMAGES' | translate }}</th>
-            </tr>
+                <tr>
+                    <th><sort-field value = "specimen_id" name="SEARCH.SPECIMENS.NUMBER"></sort-field></th>
+                    <th><sort-field value = "specimen_nr" name="SEARCH.SPECIMENS.OLD_SPECIMEN_NUMBER"></sort-field></th>
+                    <th><sort-field value = "specimenidentification__name" name="SEARCH.SPECIMENS.NAME_PART_ELEMENT"></sort-field></th>
+                    <th><sort-field value = "locality__locality,locality__locality_en" name="SEARCH.SPECIMENS.LOCALITY"></sort-field></th>
+                    <th><sort-field value = "depth" name="SEARCH.SPECIMENS.DEPHT_M"></sort-field></th>
+                    <th>
+                        <sort-field value = "stratigraphy__stratigraphy,stratigraphy__stratigraphy_en"
+                                    name="SEARCH.SPECIMENS.STRATIGRAPHY">
+                        </sort-field> | <em> {{ 'SEARCH.SPECIMENS.LITHOSTRATIGRAPHY' | translate }} </em>
+                    </th>
+                    <th><sort-field value = "agent_collected__agent" name="SEARCH.SPECIMENS.COLLECTOR"></sort-field></th>
+                    <th><sort-field value = "original_status__value,original_status__value_en" name="SEARCH.SPECIMENS.STATUS"></sort-field></th>
+                    <th>{{ 'SEARCH.SPECIMENS.IMAGES' | translate }}</th>
+                </tr>
             </thead>
+
             <tbody>
             <tr data-ng-repeat="entity in response.results track by $index">
 
@@ -35,28 +35,24 @@
                     </a>
                 </td>
 
-                <td data-title="{{ 'SEARCH.SPECIMENS.OLD_SPECIMEN_NUMBER' | translate }}"> {{ entity.specimen_nr }} </td>
+                <td data-title="{{ 'SEARCH.SPECIMENS.OLD_SPECIMEN_NUMBER' | translate }}">{{ entity.specimen_nr }}</td>
 
                 <td data-title="{{ 'SEARCH.SPECIMENS.NAME_PART_ELEMENT' | translate }}">
                     <div data-ng-if="entity.specimen_identifications.count > 0">
                         <a href data-ng-click="ctrl.service.openUrlInNewWindow({url:'http://fossiilid.info/' + entity.specimen_identifications.results[0].taxon_id})">
                             <i>{{entity.specimen_identifications.results[0].taxon__taxon}}</i>
                         </a>
-                        <span data-ng-if="(entity.specimen_identifications.results[0].name && entity.specimen_identifications.results[0].name != null)
-                            && entity.specimen_identifications.results[0].name != entity.specimen_identifications.results[0].taxon__taxon">
+                        <span data-ng-if="(entity.specimen_identifications.results[0].name && entity.specimen_identifications.results[0].name != null) && entity.specimen_identifications.results[0].name != entity.specimen_identifications.results[0].taxon__taxon">
                             | <i>{{entity.specimen_identifications.results[0].name}}</i>
                         </span>
                     </div>
-
                     <!-- Currently both are links because rock__name is mostly null. -->
                     <div data-ng-repeat="item in entity.specimen_identification_geologies.results" data-ng-if="entity.specimen_identification_geologies.count > 0">
                         <a href data-ng-click="ctrl.service.openUrlInNewWindow({url:'http://www.kivid.info/' + item.rock_id})">
                             <localize et="item.rock__name" en="item.rock__name_en"/>
                         </a>
-
-                        <span ng-show="(item.rock__name && item.rock__name != null) && (item.name && item.name != null)">|</span>
-
-                        <span ng-if="((item.name && item.name != null) || (item.name_en && item.name_en != null))
+                        <span data-ng-if="(item.rock__name && item.rock__name != null) && (item.name && item.name != null)"> | </span>
+                        <span data-ng-if="((item.name && item.name != null) || (item.name_en && item.name_en != null))
                             && ((item.rock__name != item.name) || (item.rock__name_en != item.name_en))">
                             <i><localize et="item.name" en="item.name_en"/></i>
                         </span>
@@ -82,12 +78,12 @@
                         <localize en="entity.stratigraphy__stratigraphy_en" et="entity.stratigraphy__stratigraphy"/>
                     </a>
 
-                    <span ng-if="entity.stratigraphy__stratigraphy_en == null && entity.stratigraphy__stratigraphy == null
-                        || entity.lithostratigraphy__stratigraphy_en == null && entity.lithostratigraphy__stratigraphy == null">
+                    <span data-ng-if="(entity.stratigraphy__stratigraphy_en == null && entity.stratigraphy__stratigraphy == null)
+                        || (entity.lithostratigraphy__stratigraphy_en == null && entity.lithostratigraphy__stratigraphy == null)">
                         {{ entity.stratigraphy_free }}
                     </span>
 
-                    <span ng-show="entity.stratigraphy__stratigraphy != null && entity.lithostratigraphy__stratigraphy != null">|</span>
+                    <span data-ng-if="entity.stratigraphy__stratigraphy != null && entity.lithostratigraphy__stratigraphy != null">|</span>
 
                     <em>
                         <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.lithostratigraphy_id})">

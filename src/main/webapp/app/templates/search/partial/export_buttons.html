@@ -31,6 +31,12 @@
             var exportXLSXtable = instance.getExportData()['table-search']['xlsx'];
 
             exportXLSXtable.fileName = tableName + '_XLSX_table';
+            for (row in exportXLSXtable.data) {
+                for (cell in row) {
+                    console.log(row[cell].trim());
+                }
+            }
+            console.log(exportXLSXtable.data);
 
             instance.export2file(exportXLSXtable.data, exportXLSXtable.mimeType, exportXLSXtable.fileName, exportXLSXtable.fileExtension);
         });
@@ -45,6 +51,9 @@
             var exportCSVtable = instance.getExportData()['table-search']['csv'];
 
             exportCSVtable.fileName = tableName + '_CSV_table';
+            // exportCSVtable.data = exportCSVtable.data.replace(/\n +/g, ' ');
+            exportCSVtable.data = exportCSVtable.data.replace(/\s+\n\s+/g, ' ');
+            console.log(exportCSVtable.data);
 
             instance.export2file(exportCSVtable.data, exportCSVtable.mimeType, exportCSVtable.fileName, exportCSVtable.fileExtension);
         });
