@@ -52,7 +52,6 @@
 
             exportCSVtable.fileName = tableName + '_CSV_table';
             exportCSVtable.data = exportCSVtable.data.replace(/\s+\n\s+/g, ' '); // Removes empty lines
-            console.log(exportCSVtable.data);
 
             instance.export2file(exportCSVtable.data, exportCSVtable.mimeType, exportCSVtable.fileName, exportCSVtable.fileExtension);
         });

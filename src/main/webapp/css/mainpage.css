@@ -10,15 +10,15 @@ footer {
 
 #contact, #sectionSearch{
     padding-top: 50px;
-    padding-bottom: 0px;
+    padding-bottom: 0;
 }
 #about {
     padding-top: 1%;
     padding-bottom: 3%;
  }
 #additional {
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 #footer-logos > a > img {
     height: 47px; /* NATARC image's height */
@@ -38,7 +38,7 @@ footer {
 }
 .search-buttons {
     text-align: right;
-    margin-right: 0px;
+    margin-right: 0;
 }
 .news-button {
     color: #ee4b28;
@@ -70,13 +70,13 @@ footer {
     margin-top: 10px;
 }
 .search-pagination {
-    margin-right: 0px;
+    margin-right: 0;
 }
 .navbar-collapse.in {
     max-height: none;
 }
 .input-group .form-control {
-    margin: 0px !important;
+    margin: 0 !important;
 }
 .navbar-default.affix .navbar-header #header-search{
     display:block;
@@ -237,7 +237,7 @@ footer {
 .pagination > .disabled > a:hover,
 .pagination > .disabled > span,
 .pagination > .disabled > span:focus,
-.pagination > .disabled > span:hover
+.pagination > .disabled > span:hover,
 .pagination > li > a,
 .pagination > li > span {
   color: #F05F40;
@@ -281,7 +281,7 @@ table tr > td:first-child {
 
 @media only screen and (max-width: 800px) {
     .table-responsive {
-        border: 0px;
+        border: 0;
     }
     /* Force table to not be like tables anymore */
     #table-search table,
@@ -344,7 +344,7 @@ table tr > td:first-child {
     margin-bottom: 5px;
 }
 .form-group {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 .panel-title {
     cursor:pointer;
@@ -407,8 +407,8 @@ table tr > td:first-child {
     max-width: 200px;
     position: absolute;
     margin-right: 15px;
-    top: 0px;
-    right: 0px;
+    top: 0;
+    right: 0;
     padding: 5px;
 }
 
@@ -537,7 +537,7 @@ table tr > td:first-child {
 .detailview-page {
     margin-top: 45px;
     /*margin-bottom: 100px;*/
-    box-shadow: 0 0px 0px;
+    box-shadow: 0 0 0;
 }
 
 /* Fix for detail view tables, for example on
@@ -545,19 +545,16 @@ table tr > td:first-child {
  then margin-bottom went to 20px which came from
  tables.less. This rule fixed that. */
 .detailview-page .col-lg-6 .table-bordered {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 /* Title styles for detailview */
 .detailview-title {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 5px;
     /*background-color: #d9e2ee; Old color */
     background-color: #eceeef; /* New color? */
     text-align: center;
     margin-bottom: 10px;
-    padding-left: 5px;
-    padding-right: 5px;
 }
 
 /* overrides default h2 margin top 20 px */
