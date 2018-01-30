@@ -955,6 +955,18 @@ table tr > td:first-child {
     overflow-y: auto;
 }
 
+#institution-checkbox {
+    margin: 20px 0;
+}
+
+#institution-checkbox:first-child {
+    margin-top: 5px;
+}
+
+#institution-checkbox:last-child {
+    margin-bottom: 0;
+}
+
 /* UNIVERSAL END*/
 
 

@@ -222,6 +222,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     };
 
     $scope.addRemoveInstitution = function (institution) {
+        if ($scope.searchParameters.dbs)
         var index = $scope.searchParameters.dbs.indexOf(institution);
         if (index === -1) {
             vm.service.toggle(institution, $scope.searchParameters.dbs);

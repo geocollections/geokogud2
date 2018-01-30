@@ -212,6 +212,18 @@ var constructor = function ($http, $stateParams, $location, configuration) {
                 }
             });
         }
+
+        // BUG FIX, if search is made with none checked then check all. 
+        if (urlParams["dbs[]"] == null) {
+            searchParams["dbs"] = [];
+            searchParams.dbs.push("GIT");
+            searchParams.dbs.push("TUG");
+            searchParams.dbs.push("ELM");
+            searchParams.dbs.push("TUGO");
+            searchParams.dbs.push("MUMU");
+            searchParams.dbs.push("EGK");
+        }
+
         if(urlParams["sortdir"] != null && urlParams["sort"] != null) {
             if(urlParams["sortdir"] == "DESC") {
                 searchParams["sortField"] = {sortBy: urlParams["sort"], order: "DESCENDING"};

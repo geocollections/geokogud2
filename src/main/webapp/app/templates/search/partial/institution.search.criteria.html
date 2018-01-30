@@ -7,7 +7,7 @@
     </div>
     <div uib-collapse="isInstitutionsCollapsed" class="well well-lg">
         <div class="row searchCriterion">
-            <div style="margin: 20px 0;" class="checkbox" data-ng-repeat="state in ctrl.service.departments track by $index">
+            <div id="institution-checkbox" class="checkbox" data-ng-repeat="state in ctrl.service.departments track by $index">
                 <label>
                     <input class="institution" type="checkbox"
                            value="{{state.code}}"
