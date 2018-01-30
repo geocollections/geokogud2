@@ -18,7 +18,6 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
 
     function onSearchData(result) {
         console.log(result);
-        $scope.pageSize = 25;
         $scope.totalItems = result.data.count;
 
         if((['specimens', 'localities'].indexOf($stateParams.type) > -1)) $scope.images = composeImageStructure(result.data);
@@ -122,6 +121,9 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     $scope.search = function () {
         $scope.showImages = $scope.searchParameters.searchImages && $scope.searchParameters.searchImages.name ? true : false;
         vm.searchLoadingHandler.start();
+
+        $scope.pageSize = $scope.searchParameters.paginateBy;
+
         applicationService.getList($stateParams.type, $scope.searchParameters, onSearchData, onSearchError);
     };
 
@@ -139,6 +141,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         if ((['photoArchive'].indexOf($stateParams.type) > -1)) {
             $scope.searchParameters = {
                 sortField: {sortBy: "id", order: "DESCENDING"},
+                paginateBy: 25,
                 searchImages: {lookUpType: "exact", name: true},
                 dbs: vm.service.departments.map(function (department) {
                     return department.code;
@@ -147,6 +150,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         } else {
             $scope.searchParameters = {
                 sortField: {sortBy: "id", order: "DESCENDING"},
+                paginateBy: 25,
                 dbs: vm.service.departments.map(function (department) {
                     return department.code;
                 })
@@ -359,7 +363,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
                 '"journal":{"lookUpType":"icontains"},' +
                 '"book":{"lookUpType":"icontains"},' +
                 '"maxSize":5,' +
-                '"paginateBy":30}');
+                '"paginateBy":25}');
         }
         if (['stratigraphy'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse(

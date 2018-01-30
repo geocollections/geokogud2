@@ -31,8 +31,6 @@
                         <div uib-collapse="isIdentifierFieldsCollapsed">
                             <div class="well well-lg">
 
-
-
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 searchCriterionTitle medium-padding">
                                         <b>{{ 'SEARCH.PREPARATIONS.NUMBER' | translate }}</b>
@@ -128,15 +126,10 @@
 
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
-                                        <span class="col-md-3">
-                                            <b>{{ 'PAGINATE_BY_VIEW' | translate }}</b>
-                                        </span>
-                                        <span class="col-md-5">
-                                            <input type="number" ng-model="searchParameters.paginateBy" class="form-control" placeholder="25" />
-                                        </span>
-                                        <span class="col-md-4">
-                                            <b>{{ 'PAGINATE_BY_ON_A_PAGE' | translate }}</b>
-                                        </span>
+                                        <b>{{ 'PAGINATE_BY' | translate }}</b>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="number" ng-model="searchParameters.paginateBy" class="form-control" placeholder="25" />
                                     </div>
                                 </div>
                             </div>
