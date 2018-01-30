@@ -27,6 +27,7 @@
                         </div>
                         <div uib-collapse="isIdentifierFieldsCollapsed">
                             <div class="well well-lg">
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 searchCriterionTitle medium-padding">
                                         <b>{{ 'SEARCH.DOI.DOI' | translate }}</b>
@@ -38,6 +39,7 @@
                                         <!--<input type="text" ng-model="searchParameters.doi.name" class="form-control"/>-->
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.DOI.TITLE' | translate }}</b>
@@ -48,6 +50,7 @@
                                         <autocomplete-field ng-model="searchParameters.title.name" sort-by="{{searchParameters.title.lookUpType}}" table="doi" en="null" et="title"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.DOI.PUBLISHED_BY' | translate }}</b>
@@ -58,6 +61,7 @@
                                         <autocomplete-field ng-model="searchParameters.publishedBy.name" sort-by="{{searchParameters.publishedBy.lookUpType}}" table="doi" en="null" et="publisher"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.DOI.YEAR' | translate }}</b>
@@ -67,6 +71,7 @@
                                         <interval-field placeholder="{{'PLACEHOLDER_TO' | translate}}" ng-model= "searchParameters.yearTo" lookup="lte"></interval-field>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.DOI.AUTHOR' | translate }}</b>
@@ -85,6 +90,15 @@
                                     </div>
                                     <div class="col-md-12 medium-padding">
                                         <input type="text" ng-model="searchParameters.abstractText.name" class="form-control"/>
+                                    </div>
+                                </div>
+
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'PAGINATE_BY' | translate }}</b>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="number" ng-model="searchParameters.paginateBy" class="form-control" placeholder="25" />
                                     </div>
                                 </div>
                             </div>

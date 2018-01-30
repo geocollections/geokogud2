@@ -29,6 +29,7 @@
                         </div>
                         <div uib-collapse="isIdentifierFieldsCollapsed">
                             <div class="well well-lg">
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.STRATIGRAPHY.ID' | translate }}</b>
@@ -39,6 +40,7 @@
                                         <input type="text" ng-model="searchParameters.id.name" class="form-control"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.STRATIGRAPHY.STRATIGRAPHY' | translate }}</b>
@@ -49,6 +51,7 @@
                                         <autocomplete-field ng-model="searchParameters.stratigraphy.name" sort-by="{{searchParameters.stratigraphy.lookUpType}}" table="stratigraphy" en="stratigraphy_en" et="stratigraphy"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.STRATIGRAPHY.INDEX' | translate }}</b>
@@ -61,6 +64,7 @@
                                         <input type="text" ng-model="searchParameters.index.name" class="form-control"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.STRATIGRAPHY.AGE_MIN_Y' | translate }}</b>
@@ -71,6 +75,7 @@
                                         <input type="text" ng-model="searchParameters.ageMinY.name" class="form-control"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.STRATIGRAPHY.MAIN_LITHOLOGY' | translate }}</b>
@@ -81,6 +86,7 @@
                                         <autocomplete-field ng-model="searchParameters.mainLithology.name" sort-by="{{searchParameters.mainLithology.lookUpType}}" table="stratigraphy" en="lithology_en" et="lithology"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.STRATIGRAPHY.AUTHOR' | translate }}</b>
@@ -91,6 +97,16 @@
                                         <autocomplete-field ng-model="searchParameters.author.name" sort-by="{{searchParameters.author.lookUpType}}" table="stratigraphy" en="null" et="author_free"/>
                                     </div>
                                 </div>
+
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'PAGINATE_BY' | translate }}</b>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="number" ng-model="searchParameters.paginateBy" class="form-control" placeholder="25" />
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

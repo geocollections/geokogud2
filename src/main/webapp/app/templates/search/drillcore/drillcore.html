@@ -39,6 +39,7 @@
 
                         <div uib-collapse="isIdentifierFieldsCollapsed">
                             <div class="well well-lg">
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.DRILL_CORES.DRILLCORE' | translate }}</b>
@@ -49,6 +50,7 @@
                                         <autocomplete-field ng-model="searchParameters.drillcore.name" sort-by="{{searchParameters.drillcore.lookUpType}}" table="drillcore" en="drillcore_en" et="drillcore"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.DRILL_CORES.COUNTRY' | translate }}</b>
@@ -58,6 +60,7 @@
                                         <autocomplete-field ng-model="searchParameters.country.name" sort-by="{{searchParameters.country.lookUpType}}" table="drillcore" en="locality__country__value_en" et="locality__country__value" />
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.DRILL_CORES.STRATIGRAPHY' | translate }}</b>
@@ -70,6 +73,7 @@
                                         <autocomplete-field ng-model="searchParameters.stratigraphy.name" sort-by="{{searchParameters.stratigraphy.lookUpType}}" table="stratigraphy" en="stratigraphy_en" et="stratigraphy"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.DRILL_CORES.STORAGE' | translate }}</b>
@@ -80,6 +84,7 @@
                                         <autocomplete-field ng-model="searchParameters.storageLocation.name" sort-by="{{searchParameters.storageLocation.lookUpType}}" table="drillcore" en="null" et="storage__location"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.DRILL_CORES.BOX_COUNT' | translate }}</b>
@@ -90,6 +95,15 @@
                                         <interval-field placeholder="{{'PLACEHOLDER_MIN' | translate}}" ng-model= "searchParameters.boxesSince" lookup="gte"></interval-field >
                                         <interval-field placeholder="{{'PLACEHOLDER_MAX' | translate}}" ng-model= "searchParameters.boxesTo" lookup="lte"></interval-field >
                                      <!--   <input type="text" ng-model="searchParameters.boxes.name" class="form-control"/>-->
+                                    </div>
+                                </div>
+
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'PAGINATE_BY' | translate }}</b>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="number" ng-model="searchParameters.paginateBy" class="form-control" placeholder="25" />
                                     </div>
                                 </div>
                             </div>

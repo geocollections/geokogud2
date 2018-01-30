@@ -15,8 +15,10 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class PhotoArchiveApiServiceImpl implements PhotoArchiveApiService{
+public class PhotoArchiveApiServiceImpl implements PhotoArchiveApiService {
+
     public static final String IMAGE_TABLE = "image";
+
     private List<String> fields = Arrays.asList(
             "id",
             "filename",

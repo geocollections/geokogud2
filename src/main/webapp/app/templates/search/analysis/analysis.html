@@ -29,6 +29,7 @@
                         </div>
                         <div uib-collapse="isIdentifierFieldsCollapsed">
                             <div class="well well-lg">
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 searchCriterionTitle medium-padding">
                                         <b>{{ 'SEARCH.ANALYSES.IDENTIFIERS.NUMBER'| translate }}</b>
@@ -38,6 +39,7 @@
                                         <input type="text" ng-model="searchParameters.id.name" class="form-control"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.ANALYSES.LOCATION.LOCALITY'| translate }}</b>
@@ -49,6 +51,7 @@
                                         <autocomplete-field ng-model="searchParameters.locality.name" sort-by="{{searchParameters.locality.lookUpType}}" table="locality" en="locality_en" et="locality"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.ANALYSES.LOCATION.DEPTH_M'| translate }}</b>
@@ -58,6 +61,7 @@
                                         <interval-field placeholder="{{'PLACEHOLDER_MAX' | translate}}" ng-model= "searchParameters.depthTo" lookup="lte"></interval-field >
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.ANALYSES.LOCATION.STRATIGRAPHY'| translate }}</b>
@@ -69,6 +73,7 @@
                                         <autocomplete-field ng-model="searchParameters.stratigraphy.name" sort-by="{{searchParameters.stratigraphy.lookUpType}}" table="stratigraphy" en="stratigraphy_en" et="stratigraphy"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.ANALYSES.IDENTIFIERS.BED_NAME_INDEX' | translate }}</b>
@@ -89,6 +94,7 @@
                                         <autocomplete-field ng-model="searchParameters.analysisMethod.name" sort-by="{{searchParameters.analysisMethod.lookUpType}}" table="analysis" en="analysis_method__method_en" et="analysis_method__analysis_method"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.ANALYSES.ANALYSIS.COMPONENT_ANALYZED'| translate }}</b>
@@ -105,6 +111,15 @@
                                     </div>
                                     <div class="col-md-12 medium-padding">
                                         <input type="text" ng-model="searchParameters.content.name" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'PAGINATE_BY' | translate }}</b>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="number" ng-model="searchParameters.paginateBy" class="form-control" placeholder="25" />
                                     </div>
                                 </div>
                             </div>

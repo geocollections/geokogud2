@@ -20,9 +20,9 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         console.log(result);
         $scope.totalItems = result.data.count;
 
-        if((['specimens', 'localities'].indexOf($stateParams.type) > -1)) $scope.images = composeImageStructure(result.data);
-        if((['localities'].indexOf($stateParams.type) > -1)) $scope.images = composeImageStructure(result.data);
-        if((['photoArchive'].indexOf($stateParams.type) > -1)) $scope.images = composeImageArchiveStructure(result.data);
+        // if((['specimens', 'localities'].indexOf($stateParams.type) > -1)) $scope.images = composeImageStructure(result.data);
+        // if((['localities'].indexOf($stateParams.type) > -1)) $scope.images = composeImageStructure(result.data);
+        // if((['photoArchive'].indexOf($stateParams.type) > -1)) $scope.images = composeImageArchiveStructure(result.data);
 
         $scope.windowWidth = "innerWidth" in window ? window.innerWidth : document.documentElement.offsetWidth;
         if ($scope.windowWidth > 400) {
@@ -122,16 +122,42 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         $scope.showImages = $scope.searchParameters.searchImages && $scope.searchParameters.searchImages.name ? true : false;
         vm.searchLoadingHandler.start();
 
-        $scope.pageSize = $scope.searchParameters.paginateBy;
+        $scope.pageSize = $scope.searchParameters.paginateBy; // Essential for pagination
+
+        fixPaginationIfNeeded();
 
         applicationService.getList($stateParams.type, $scope.searchParameters, onSearchData, onSearchError);
     };
 
+    /**
+     * Checks if user has entered valid parameters
+     * if not then sets to default.
+     */
+    function fixPaginationIfNeeded() {
+        if ($scope.searchParameters.paginateBy <= 0) {
+            $scope.searchParameters.paginateBy = 25;
+            $scope.pageSize = 25;
+        }
+        if ($scope.searchParameters.paginateBy > 1000) {
+            $scope.searchParameters.paginateBy = 1000;
+            $scope.pageSize = 1000;
+        }
+    }
+
+    /**
+     * Gets called if there is some kind of error.
+     * @param error Full error response from server
+     */
     function onSearchError(error) {
-        if(configuration.pageSetUp.debugMode) errorService.commonErrorHandler(error);
+        console.log(error);
+        // if(configuration.pageSetUp.debugMode) errorService.commonErrorHandler(error);
         setEmptyResponse();
         vm.searchLoadingHandler.stop();
     }
+
+    /**
+     * Sets respone to empty if search has some kind of error.
+     */
     function setEmptyResponse() {
         $scope.response = {count : 0, results : null};
         $scope.totalItems = 0;

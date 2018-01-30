@@ -51,6 +51,7 @@
                                         <autocomplete-field ng-model="searchParameters.author.name" sort-by="{{searchParameters.author.lookUpType}}" table="reference" en="null" et="author"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.REFERENCES.YEAR' | translate }}</b>
@@ -61,6 +62,7 @@
                                         <interval-field placeholder="{{'PLACEHOLDER_TO' | translate}}" ng-model= "searchParameters.yearTo" lookup="lte"></interval-field >
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.REFERENCES.TITLE' | translate }}</b>
@@ -71,6 +73,7 @@
                                         <autocomplete-field ng-model="searchParameters.title.name" sort-by="{{searchParameters.title.lookUpType}}" table="reference" en="null" et="title"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.REFERENCES.JOURNAL' | translate }}</b>
@@ -81,6 +84,7 @@
                                         <autocomplete-field ng-model="searchParameters.journal.name" sort-by="{{searchParameters.journal.lookUpType}}" table="reference" en="null" et="journal__journal_name"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.REFERENCES.BOOK' | translate }}</b>
@@ -91,6 +95,16 @@
                                         <autocomplete-field ng-model="searchParameters.book.name" sort-by="{{searchParameters.book.lookUpType}}" table="reference" en="null" et="book"/>
                                     </div>
                                 </div>
+
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'PAGINATE_BY' | translate }}</b>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="number" ng-model="searchParameters.paginateBy" class="form-control" placeholder="25" />
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

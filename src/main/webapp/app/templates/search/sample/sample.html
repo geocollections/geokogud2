@@ -40,6 +40,7 @@
                         </div>
                         <div uib-collapse="isIdentifierFieldsCollapsed">
                             <div class="well well-lg">
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.SAMPLES.NUMBER' | translate }}</b>
@@ -50,6 +51,7 @@
                                         <input type="text" ng-model="searchParameters.sampleNumber.name" class="form-control"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.SAMPLES.LOCALITY' | translate }}</b>
@@ -61,6 +63,7 @@
                                         <autocomplete-field ng-model="searchParameters.locality.name" sort-by="{{searchParameters.locality.lookUpType}}" table="locality" en="locality_en" et="locality"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.SAMPLES.DEPTH_M' | translate }}</b>
@@ -70,6 +73,7 @@
                                         <interval-field placeholder="{{'PLACEHOLDER_MAX' | translate}}" ng-model= "searchParameters.depthTo" lookup="lte"></interval-field >
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.SAMPLES.STRATIGRAPHY' | translate }}</b>
@@ -81,6 +85,7 @@
                                         <autocomplete-field ng-model="searchParameters.stratigraphy.name" sort-by="{{searchParameters.stratigraphy.lookUpType}}" table="stratigraphy" en="stratigraphy_en" et="stratigraphy"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.SAMPLES.BED_NAME_INDEX' | translate }}</b>
@@ -91,6 +96,7 @@
                                         <autocomplete-field ng-model="searchParameters.stratigraphyBed.name" sort-by="{{searchParameters.stratigraphyBed.lookUpType}}" table="sample" en="null" et="stratigraphy_bed"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.SAMPLES.COLLECTOR' | translate }}</b>
@@ -101,6 +107,7 @@
                                         <autocomplete-field ng-model="searchParameters.agent.name" sort-by="{{searchParameters.agent.lookUpType}}" table="sample" en="null" et="agent_collected__agent"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.SAMPLES.WEIGHT' | translate }}</b>
@@ -110,6 +117,16 @@
                                         <interval-field placeholder="{{'PLACEHOLDER_MAX' | translate}}" ng-model= "searchParameters.massTo" lookup="lte"></interval-field >
                                     </div>
                                 </div>
+
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'PAGINATE_BY' | translate }}</b>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="number" ng-model="searchParameters.paginateBy" class="form-control" placeholder="25" />
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

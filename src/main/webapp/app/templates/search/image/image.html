@@ -35,6 +35,7 @@
                         </div>
                         <div uib-collapse="isIdentifierFieldsCollapsed">
                             <div class="well well-lg">
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.PHOTO_ARCHIVE.LOCALITY' | translate }}</b>
@@ -45,6 +46,7 @@
                                         <autocomplete-field ng-model="searchParameters.locality.name" sort-by="{{searchParameters.locality.lookUpType}}" table="image" en="locality__locality_en" et="locality__locality"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.PHOTO_ARCHIVE.PEOPLE' | translate }}</b>
@@ -55,6 +57,7 @@
                                         <input type="text" ng-model="searchParameters.people.name" class="form-control"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.PHOTO_ARCHIVE.KEY_WORDS' | translate }}</b>
@@ -65,6 +68,7 @@
                                         <input type="text" ng-model="searchParameters.keywords.name" class="form-control"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.PHOTO_ARCHIVE.COUNTRY_COUNTY_PARISH' | translate }}</b>
@@ -79,6 +83,7 @@
                                         <input type="text" ng-model="searchParameters.adminUnit.name" class="form-control"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.PHOTO_ARCHIVE.DATE' | translate }}</b>
@@ -88,6 +93,7 @@
                                         <common-datetimepicker placeholder="{{'PLACEHOLDER_TO' | translate}}" ng-model="searchParameters.dateTakenTo" lookup="lte"></common-datetimepicker>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.PHOTO_ARCHIVE.NUMBER' | translate }}</b>
@@ -98,6 +104,7 @@
                                         <autocomplete-field ng-model="searchParameters.imageNumber.name" sort-by="{{searchParameters.imageNumber.lookUpType}}" table="image" en="null" et="image_number" />
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.PHOTO_ARCHIVE.AUTHOR' | translate }}</b>
@@ -108,6 +115,7 @@
                                         <autocomplete-field ng-model="searchParameters.authorAgent.name" sort-by="{{searchParameters.authorAgent.lookUpType}}" table="image" en="null" et="author__agent"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.PHOTO_ARCHIVE.IMAGE_SIZE' | translate }}</b>
@@ -117,6 +125,15 @@
                                     <div class="col-md-12 medium-padding">
                                         <interval-field placeholder="{{'PLACEHOLDER_X' | translate}}" ng-model= "searchParameters.sizeSince" lookup="gte"></interval-field >
                                         <interval-field placeholder="{{'PLACEHOLDER_Y' | translate}}" ng-model= "searchParameters.sizeTo" lookup="gt"></interval-field >
+                                    </div>
+                                </div>
+
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'PAGINATE_BY' | translate }}</b>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="number" ng-model="searchParameters.paginateBy" class="form-control" placeholder="25" />
                                     </div>
                                 </div>
                             </div>
@@ -139,36 +156,36 @@
                 <div class="row" data-ng-if="showImages && response.results != null">
                     <div class="col-lg-12">
                         <h3 class="page-header">
-                            <b>{{ 'SEARCH.FOUND_IMAGES' | translate }}: {{images.total}} </b>
+                            <b>{{ 'SEARCH.FOUND_IMAGES' | translate }}: {{response.results.length}} </b>
                         </h3>
                     </div>
 
-                    <div data-ng-repeat="row in images.rows">
-                        <div class="col-lg-15 col-lg-3 col-md-4 col-xs-6" data-ng-repeat="col in row">
+                    <div class="col-lg-15 col-lg-3 col-md-4 col-xs-6" data-ng-repeat="image in response.results">
 
-                            <figure class="margin-bottom-20">
+                        <figure class="margin-bottom-20">
 
-                                <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:col.image.id})">
-                                    <div data-ng-if="col.image.filename && col.image.filename != null">
-                                        <show-preview img-author="col.image.author__agent" img-date-taken="col.image.date_taken" img-url="ctrl.service.composeImageUrl(col.image)" class="img-responsive"/>
-                                    </div>
-                                    <div class="img-responsive" data-ng-if="col.image.filename == null">
-                                        <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
-                                    </div>
+                            <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:image.id})">
+                                <div data-ng-if="image.filename && image.filename != null">
+                                    <show-preview img-author="image.author__agent" img-date-taken="image.date_taken" img-url="ctrl.service.composeImageUrl(image)" class="img-responsive"/>
+                                </div>
+                                <div class="img-responsive" data-ng-if="image.filename == null">
+                                    <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
+                                </div>
 
-                                    <div class="img-gallery-author">
-                                        <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:col.image.id})">
-                                            <localize class="font-smaller" et="col.image.locality__locality" en="col.image.locality__locality_en" />
-                                            <span class="font-smaller" data-ng-if="col.image.locality__locality == null && col.image.locality__locality_en == null ">
-                                                {{col.image.image_number}}
-                                            </span>
-                                        </a>
-                                    </div>
-                                </a>
-                            </figure>
+                                <div class="img-gallery-author">
+                                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:image.id})">
+                                        <localize class="font-smaller" et="image.locality__locality" en="image.locality__locality_en" />
+                                        <span class="font-smaller" data-ng-if="image.locality__locality == null && image.locality__locality_en == null ">
+                                            {{image.image_number}}
+                                        </span>
+                                    </a>
+                                </div>
+                            </a>
 
-                        </div>
+                        </figure>
+
                     </div>
+
                 </div>
 
                 <div data-ng-if="showImages && response.results != null" ng-include="'app/templates/search/partial/pagination.html'"></div>

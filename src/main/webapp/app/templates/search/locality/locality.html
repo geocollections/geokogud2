@@ -44,6 +44,7 @@
                         </div>
                         <div uib-collapse="isIdentifierFieldsCollapsed">
                             <div class="well well-lg">
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.LOCALITIES.LOCATION.LOCALITY' | translate }}</b>
@@ -54,6 +55,7 @@
                                         <autocomplete-field ng-model="searchParameters.locality.name" sort-by="{{searchParameters.locality.lookUpType}}" table="locality" en="locality_en" et="locality"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.LOCALITIES.IDENTIFIERS.NUMBER'| translate }}</b>
@@ -65,6 +67,7 @@
                                         <!--<input type="text" ng-model="searchParameters.number.name" class="form-control"/>-->
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.LOCALITIES.LOCATION.COUNTRY' | translate }}</b>
@@ -75,6 +78,7 @@
                                         <autocomplete-field ng-model="searchParameters.country.name" sort-by="{{searchParameters.country.lookUpType}}" table="locality" en="country__value_en" et="country__value"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.LOCALITIES.LOCATION.COUNTRY_COUNTY_PARISH' | translate }}</b>
@@ -89,6 +93,7 @@
                                         <input type="text" ng-model="searchParameters.adminUnit.name" class="form-control"/>
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.LOCALITIES.IDENTIFIERS.STRATIGRAPHY'| translate }}</b>
@@ -104,6 +109,7 @@
                                                             et="stratigraphy__stratigraphy" />
                                     </div>
                                 </div>
+
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">
                                         <b>{{ 'SEARCH.LOCALITIES.IDENTIFIERS.REFERENCE' | translate }}</b>
@@ -114,6 +120,15 @@
                                         <!--TODO: enable reference search-->
                                         <autocomplete-field ng-model="searchParameters.reference.name" sort-by="{{searchParameters.reference.lookUpType}}"
                                                             table="locality_reference" en="null" et="reference__reference" />
+                                    </div>
+                                </div>
+
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'PAGINATE_BY' | translate }}</b>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="number" ng-model="searchParameters.paginateBy" class="form-control" placeholder="25" />
                                     </div>
                                 </div>
                             </div>
