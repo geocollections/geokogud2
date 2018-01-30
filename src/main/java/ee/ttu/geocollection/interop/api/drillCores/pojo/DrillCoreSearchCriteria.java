@@ -7,6 +7,7 @@ import java.util.List;
 
 public class DrillCoreSearchCriteria {
     private int page = 1;
+    private int paginateBy = 25;
     private SortField sortField;
 
     private SearchField id;
@@ -21,6 +22,14 @@ public class DrillCoreSearchCriteria {
     private SearchField boxesSince;
     private SearchField boxesTo;
     private SearchField stratigraphy;
+
+    public int getPaginateBy() {
+        return paginateBy;
+    }
+
+    public void setPaginateBy(int paginateBy) {
+        this.paginateBy = paginateBy;
+    }
 
     private List<String> dbs;
 

@@ -605,5 +605,7 @@
     "PLACEHOLDER_MAX": "max",
     "PLACEHOLDER_X": "x",
     "PLACEHOLDER_Y": "y",
-    "ESTONIAN_LAND_BOARD": "Estonian Land Board"
+    "ESTONIAN_LAND_BOARD": "Estonian Land Board",
+    "PAGINATE_BY_VIEW": "List",
+    "PAGINATE_BY_ON_A_PAGE": "on a page"
 }

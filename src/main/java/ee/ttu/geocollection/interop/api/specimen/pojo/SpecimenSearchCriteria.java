@@ -8,6 +8,7 @@ import java.util.List;
 
 public class SpecimenSearchCriteria implements PageableSearchCriteria{
     private int page = 1;
+    private int paginateBy = 25;
     private SortField sortField;
 
     private SearchField specimenNumber;
@@ -29,6 +30,14 @@ public class SpecimenSearchCriteria implements PageableSearchCriteria{
     private SearchField dateTakenTo;
     private List<String> dbs;
     private SearchField searchImages;
+
+    public int getPaginateBy() {
+        return paginateBy;
+    }
+
+    public void setPaginateBy(int paginateBy) {
+        this.paginateBy = paginateBy;
+    }
 
     public SearchField getSearchImages() {
         return searchImages;

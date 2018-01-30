@@ -605,5 +605,7 @@
     "PLACEHOLDER_MAX": "max",
     "PLACEHOLDER_X": "x",
     "PLACEHOLDER_Y": "y",
-    "ESTONIAN_LAND_BOARD": "Maa-amet"
+    "ESTONIAN_LAND_BOARD": "Maa-amet",
+    "PAGINATE_BY_VIEW": "Näita",
+    "PAGINATE_BY_ON_A_PAGE": "kaupa"
 }

@@ -18,12 +18,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
 
     function onSearchData(result) {
         console.log(result);
-        if (['specimens'].indexOf($stateParams.type) > -1) {
-            // Temporary change because of speed
-            $scope.pageSize = 25
-        } else {
-            $scope.pageSize = 30;
-        }
+        $scope.pageSize = 25;
         $scope.totalItems = result.data.count;
 
         if((['specimens', 'localities'].indexOf($stateParams.type) > -1)) $scope.images = composeImageStructure(result.data);
@@ -68,51 +63,8 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         var searchParamsSession = getSearchDataFromSessionStorage();
         if (typeof(searchParamsSession) !== 'undefined') {
             $scope.searchParameters = searchParamsSession;
-
-            // If institutions are not all ticked then show
-            if ($scope.searchParameters.dbs != null) {
-                if ($scope.searchParameters.dbs.length < 6) {
-                    $scope.isInstitutionsCollapsed = false;
-                }
-            }
-
-            // If additional criteria is filled then show it
-            if ((['analyses'].indexOf($stateParams.type) > -1)) {
-                if ($scope.searchParameters.sample.name != null || $scope.searchParameters.adminUnit.name != null) {
-                    $scope.isLocationFieldsCollapsed = false;
-                }
-            }
-            if ((['localities'].indexOf($stateParams.type) > -1)) {
-                if ($scope.searchParameters.id.name != null || $scope.searchParameters.maPaId.name != null ||
-                    $scope.searchParameters.latitude.name != null || $scope.searchParameters.longitude.name != null ||
-                    $scope.searchParameters.verticalExtentSince.name != null || $scope.searchParameters.verticalExtentTo.name != null) {
-                    $scope.isLocationFieldsCollapsed = false;
-                }
-            }
-            if ((['drillCores'].indexOf($stateParams.type) > -1)) {
-                if ($scope.searchParameters.id.name != null || $scope.searchParameters.adminUnit.name != null) {
-                    $scope.isLocationFieldsCollapsed = false;
-                }
-            }
-            if ((['samples'].indexOf($stateParams.type) > -1)) {
-                if ($scope.searchParameters.id.name != null || $scope.searchParameters.country.name != null ||
-                    $scope.searchParameters.location.name != null || $scope.searchParameters.taxon.name != null ||
-                    $scope.searchParameters.frequency.name != null || $scope.searchParameters.analysisMethod.name != null ||
-                    $scope.searchParameters.component.name != null || $scope.searchParameters.content.name != null) {
-                    $scope.isLocationFieldsCollapsed = false;
-                }
-            }
-            if ((['specimens'].indexOf($stateParams.type) > -1)) {
-                if ($scope.searchParameters.id.name != null || $scope.searchParameters.depthSince.name != null ||
-                    $scope.searchParameters.depthTo.name != null || $scope.searchParameters.collector.name != null ||
-                    $scope.searchParameters.reference.name != null || $scope.searchParameters.typeStatus.name != null ||
-                    $scope.searchParameters.partOfFossil.name != null || $scope.searchParameters.dateTakenSince.name != null ||
-                    $scope.searchParameters.dateTakenTo.name != null) {
-                    $scope.isLocationFieldsCollapsed = false;
-                }
-            }
-
-
+            areInstitutionsChecked();
+            isAdditionalCriteriaUsed();
         }
 
         /* $('html, body').animate({
@@ -340,7 +292,8 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
                 '"partOfFossil":{"lookUpType":"icontains"},' +
                 '"dateTakenSince":{"lookUpType":"gte"},' +
                 '"dateTakenTo":{"lookUpType":"lte"},' +
-                '"maxSize":5}');
+                '"maxSize":5,' +
+                '"paginateBy":25}');
         }
         if (['samples'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse(
@@ -359,7 +312,8 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
                 '"analysisMethod":{"lookUpType":"icontains"},' +
                 '"component":{"lookUpType":"icontains"},' +
                 '"content":{"lookUpType":"iexact"},' +
-                '"maxSize":5}');
+                '"maxSize":5,' +
+                '"paginateBy":25}');
         }
         if (['drillCores'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse(
@@ -372,7 +326,8 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
                 '"storageLocation":{"lookUpType":"icontains"},' +
                 '"id":{"lookUpType":"iexact"},' +
                 '"adminUnit":{"lookUpType":"icontains"},' +
-                '"maxSize":5}');
+                '"maxSize":5,' +
+                '"paginateBy":25}');
         }
         if (['localities'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse(
@@ -391,7 +346,8 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
                 '"longitude":{"lookUpType":"iexact"},' +
                 '"verticalExtentSince":{"lookUpType":"gte"},' +
                 '"verticalExtentTo":{"lookUpType":"lte"},' +
-                '"maxSize":5}');
+                '"maxSize":5,' +
+                '"paginateBy":25}');
         }
         if (['references'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse(
@@ -402,7 +358,8 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
                 '"title":{"lookUpType":"icontains"},' +
                 '"journal":{"lookUpType":"icontains"},' +
                 '"book":{"lookUpType":"icontains"},' +
-                '"maxSize":5}');
+                '"maxSize":5,' +
+                '"paginateBy":30}');
         }
         if (['stratigraphy'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse(
@@ -413,7 +370,8 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
                 '"mainLithology":{"lookUpType":"icontains"},' +
                 '"author":{"lookUpType":"icontains"},' +
                 '"sortField":{"sortBy":"id","order":"DESCENDING"},' +
-                '"maxSize":5}');
+                '"maxSize":5,' +
+                '"paginateBy":25}');
         }
         if (['analyses'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse(
@@ -428,7 +386,8 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
                 '"adminUnit":{"lookUpType":"icontains"},' +
                 '"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],' +
                 '"sortField":{"sortBy":"id","order":"DESCENDING"},' +
-                '"maxSize":5}');
+                '"maxSize":5,' +
+                '"paginateBy":25}');
         }
         if (['preparations'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse(
@@ -440,7 +399,8 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
                 '"speciesRecovered":{"lookUpType":"icontains"},' +
                 '"speciesFrequency":{"lookUpType":"iexact"},' +
                 '"sortField":{"sortBy":"id","order":"DESCENDING"},' +
-                '"maxSize":5}');
+                '"maxSize":5,' +
+                '"paginateBy":25}');
         }
         if (['photoArchive'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse(
@@ -453,7 +413,8 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
                 '"adminUnit":{"lookUpType":"icontains"},' +
                 '"imageNumber":{"lookUpType":"icontains"},' +
                 '"authorAgent":{"lookUpType":"icontains"},' +
-                '"maxSize":5}');
+                '"maxSize":5,' +
+                '"paginateBy":25}');
         }
         if (['doi'].indexOf($stateParams.type) > -1) {
             $scope.searchParameters = JSON.parse(
@@ -464,7 +425,59 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
                 '"abstractText":{"lookUpType":"icontains"},' +
                 '"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],' +
                 '"sortField":{"sortBy":"id","order":"DESCENDING"},' +
-                '"maxSize":5}');
+                '"maxSize":5,' +
+                '"paginateBy":25}');
+        }
+    }
+
+    /**
+     * If institutions are not all checked then opens dropdown.
+     */
+    function areInstitutionsChecked() {
+        if ($scope.searchParameters.dbs != null) {
+            if ($scope.searchParameters.dbs.length < 6) {
+                $scope.isInstitutionsCollapsed = false;
+            }
+        }
+    }
+
+    /**
+     * If additional criteria is used then shows it.
+     */
+    function isAdditionalCriteriaUsed() {
+        if ((['analyses'].indexOf($stateParams.type) > -1)) {
+            if ($scope.searchParameters.sample.name != null || $scope.searchParameters.adminUnit.name != null) {
+                $scope.isLocationFieldsCollapsed = false;
+            }
+        }
+        if ((['localities'].indexOf($stateParams.type) > -1)) {
+            if ($scope.searchParameters.id.name != null || $scope.searchParameters.maPaId.name != null ||
+                $scope.searchParameters.latitude.name != null || $scope.searchParameters.longitude.name != null ||
+                $scope.searchParameters.verticalExtentSince.name != null || $scope.searchParameters.verticalExtentTo.name != null) {
+                $scope.isLocationFieldsCollapsed = false;
+            }
+        }
+        if ((['drillCores'].indexOf($stateParams.type) > -1)) {
+            if ($scope.searchParameters.id.name != null || $scope.searchParameters.adminUnit.name != null) {
+                $scope.isLocationFieldsCollapsed = false;
+            }
+        }
+        if ((['samples'].indexOf($stateParams.type) > -1)) {
+            if ($scope.searchParameters.id.name != null || $scope.searchParameters.country.name != null ||
+                $scope.searchParameters.location.name != null || $scope.searchParameters.taxon.name != null ||
+                $scope.searchParameters.frequency.name != null || $scope.searchParameters.analysisMethod.name != null ||
+                $scope.searchParameters.component.name != null || $scope.searchParameters.content.name != null) {
+                $scope.isLocationFieldsCollapsed = false;
+            }
+        }
+        if ((['specimens'].indexOf($stateParams.type) > -1)) {
+            if ($scope.searchParameters.id.name != null || $scope.searchParameters.depthSince.name != null ||
+                $scope.searchParameters.depthTo.name != null || $scope.searchParameters.collector.name != null ||
+                $scope.searchParameters.reference.name != null || $scope.searchParameters.typeStatus.name != null ||
+                $scope.searchParameters.partOfFossil.name != null || $scope.searchParameters.dateTakenSince.name != null ||
+                $scope.searchParameters.dateTakenTo.name != null) {
+                $scope.isLocationFieldsCollapsed = false;
+            }
         }
     }
 

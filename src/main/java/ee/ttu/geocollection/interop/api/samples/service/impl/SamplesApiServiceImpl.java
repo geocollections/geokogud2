@@ -85,6 +85,7 @@ public class SamplesApiServiceImpl implements SamplesApiService {
                 .buildFullQuery();
         return apiService.searchRawEntities(
                 SAMPLE_TABLE,
+                searchCriteria.getPaginateBy(),
                 searchCriteria.getPage(),
                 searchCriteria.getSortField(),
                 requestParams);

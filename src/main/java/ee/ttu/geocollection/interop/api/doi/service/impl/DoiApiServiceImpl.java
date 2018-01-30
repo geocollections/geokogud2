@@ -74,7 +74,7 @@ public class DoiApiServiceImpl implements DoiApiService {
                 .returnReference()
                 .returnReferenceDoi()
                 .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities("doi", searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
+        return apiService.searchRawEntities("doi", searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
     @Override

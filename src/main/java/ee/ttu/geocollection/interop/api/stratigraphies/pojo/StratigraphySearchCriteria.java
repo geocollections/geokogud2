@@ -7,13 +7,23 @@ import ee.ttu.geocollection.interop.api.PageableSearchCriteria;
 
 public class StratigraphySearchCriteria implements PageableSearchCriteria {
     private int page = 1;
+    private int paginateBy = 25;
     private SortField sortField;
+
     private SearchField id;
     private SearchField stratigraphy;
     private SearchField index;
     private SearchField ageMinY;
     private SearchField mainLithology;
     private SearchField author;
+
+    public int getPaginateBy() {
+        return paginateBy;
+    }
+
+    public void setPaginateBy(int paginateBy) {
+        this.paginateBy = paginateBy;
+    }
 
     public SortField getSortField() {
         return sortField;

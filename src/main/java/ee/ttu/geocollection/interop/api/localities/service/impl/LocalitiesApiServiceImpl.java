@@ -80,7 +80,7 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
         String requestParams = prepareCommonFields(searchCriteria)
                 .queryId(searchCriteria.getId())
                 .buildFullQuery();
-        return apiService.searchRawEntities(LOCALITY_TABLE, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
+        return apiService.searchRawEntities(LOCALITY_TABLE, searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
     private FluentLocalitySearchApiBuilder prepareCommonFields(LocalitySearchCriteria searchCriteria) {
@@ -122,7 +122,7 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
                 .queryImgDepth(searchCriteria.getVerticalExtentSince())
                 .queryImgDepth(searchCriteria.getVerticalExtentTo())
                 .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities("image", searchCriteria.getPage(), new SortField(LOCALITY__ID, SortingOrder.DESCENDING), requestParams);
+        return apiService.searchRawEntities("image", searchCriteria.getPaginateBy(), searchCriteria.getPage(), new SortField(LOCALITY__ID, SortingOrder.DESCENDING), requestParams);
     }
 
     @Override

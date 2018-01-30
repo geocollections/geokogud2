@@ -111,6 +111,11 @@ var constructor = function ($http, $stateParams, $location, configuration) {
                 if(data.page != null) {
                     url += "&page=" + data.page;
                 }
+
+                if (data.paginateBy != null) {
+                    url += "&paginateBy=" + data.paginateBy;
+                }
+
                 if(data.sortField.order == "DESCENDING") {
                     url += "&sort="+ data.sortField.sortBy +"&sortdir=DESC";
                 } else if(data.sortField.order == "ASCENDING") {
@@ -213,7 +218,7 @@ var constructor = function ($http, $stateParams, $location, configuration) {
             });
         }
 
-        // BUG FIX, if search is made with none checked then check all. 
+        // BUG FIX, if search is made with none checked then check all.
         if (urlParams["dbs[]"] == null) {
             searchParams["dbs"] = [];
             searchParams.dbs.push("GIT");
@@ -241,6 +246,10 @@ var constructor = function ($http, $stateParams, $location, configuration) {
         }
         if(urlParams["page"] != null) {
             searchParams["page"] = Number(urlParams["page"]);
+        }
+
+        if (urlParams["paginateBy"] != null) {
+            searchParams["paginateBy"] = Number(urlParams["paginateBy"]);
         }
 
         angular.forEach(configuration.urlHelper.specialFields, function(specialField) {

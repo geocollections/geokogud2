@@ -73,7 +73,6 @@ public class PreparationsApiServiceImpl implements PreparationsApiService{
 
     @Override
     public ApiResponse findPreparations(PreparationsSearchCriteria searchCriteria)  {
-
         String requestParams = FluentPreparationSearchApiBuilder.aRequest()
                 .queryNumber(searchCriteria.getNumber())
                 .queryLocality(searchCriteria.getLocality())
@@ -86,7 +85,7 @@ public class PreparationsApiServiceImpl implements PreparationsApiService{
                 .returnSampleLocalityId()
                 .returnSampleStratigraphyId()
                 .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities("preparation", searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
+        return apiService.searchRawEntities("preparation", searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
     @Override

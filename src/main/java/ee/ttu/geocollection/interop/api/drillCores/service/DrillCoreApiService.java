@@ -7,10 +7,10 @@ import ee.ttu.geocollection.interop.api.drillCores.pojo.DrillCoreSearchCriteria;
 import java.util.Map;
 
 public interface DrillCoreApiService {
-    ApiResponse findDrillCore(DrillCoreSearchCriteria searchCriteria) ;
 
-    ApiResponse findDrillCoreImage(SearchField drillCoreId) ;
+    ApiResponse findDrillCore(DrillCoreSearchCriteria searchCriteria);
 
     Map findRawById(Long id);
+
     Map findRawCoreBoxById(Long id);
 }

@@ -63,17 +63,7 @@ public class DrillCoreApiServiceImpl implements DrillCoreApiService {
 //                .queryDepth(searchCriteria.getDepth())
                 .queryInstitutions(searchCriteria.getDbs())
                 .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities("drillcore", searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
-    }
-
-
-    @Override
-    public ApiResponse findDrillCoreImage(SearchField drillCoreId) {
-        String requestParams = FluentDrillCoreImageSearchApiBuilder.aRequest()
-                .querySpecimenIdForUrl(drillCoreId)
-                .returnImageUrl()
-                .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities("drillcore_image", 2,1, new SortField(), requestParams);
+        return apiService.searchRawEntities("drillcore", searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
     @Override

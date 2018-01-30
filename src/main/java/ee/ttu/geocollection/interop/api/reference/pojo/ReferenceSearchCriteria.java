@@ -6,6 +6,7 @@ import ee.ttu.geocollection.interop.api.PageableSearchCriteria;
 
 public class ReferenceSearchCriteria implements PageableSearchCriteria {
     private int page = 1;
+    private int paginateBy = 25;
     private SortField sortField;
 
     private SearchField id;
@@ -16,6 +17,14 @@ public class ReferenceSearchCriteria implements PageableSearchCriteria {
     private SearchField doi;
     private SearchField book;
     private SearchField journal;
+
+    public int getPaginateBy() {
+        return paginateBy;
+    }
+
+    public void setPaginateBy(int paginateBy) {
+        this.paginateBy = paginateBy;
+    }
 
     public SearchField getBook() {
         return book;

@@ -8,6 +8,7 @@ import java.util.List;
 
 public class PhotoArchiveSearchCriteria implements PageableSearchCriteria{
     private int page = 1;
+    private int paginateBy = 25;
     private SortField sortField;
 
     private SearchField id;
@@ -22,6 +23,14 @@ public class PhotoArchiveSearchCriteria implements PageableSearchCriteria{
     private SearchField adminUnit;
     private SearchField sizeSince;
     private SearchField sizeTo;
+
+    public int getPaginateBy() {
+        return paginateBy;
+    }
+
+    public void setPaginateBy(int paginateBy) {
+        this.paginateBy = paginateBy;
+    }
 
     private List<String> dbs;
 

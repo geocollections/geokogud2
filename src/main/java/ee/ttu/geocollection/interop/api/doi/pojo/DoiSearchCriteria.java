@@ -7,6 +7,7 @@ import java.util.List;
 
 public class DoiSearchCriteria {
     private int page = 1;
+    private int paginateBy = 25;
     private SortField sortField;
 
     private SearchField id;
@@ -17,6 +18,14 @@ public class DoiSearchCriteria {
     private SearchField doi;
     private SearchField publishedBy;
     private SearchField abstractText;
+
+    public int getPaginateBy() {
+        return paginateBy;
+    }
+
+    public void setPaginateBy(int paginateBy) {
+        this.paginateBy = paginateBy;
+    }
 
     private List<String> dbs;
 

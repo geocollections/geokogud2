@@ -16,7 +16,9 @@ import java.util.Map;
 
 @Service
 public class StratigraphyApiServiceImpl implements StratigraphyApiService {
+
     public static final String STRATIGRAPHY_TABLE = "stratigraphy";
+
     private List<String> fields = Arrays.asList(
         "id",
         "stratigraphy",
@@ -67,6 +69,7 @@ public class StratigraphyApiServiceImpl implements StratigraphyApiService {
                 .buildDefaultFieldsQuery();
         return apiService.searchRawEntities(
                 STRATIGRAPHY_TABLE,
+                searchCriteria.getPaginateBy(),
                 searchCriteria.getPage(),
                 searchCriteria.getSortField(),
                 requestParams);

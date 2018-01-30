@@ -6,7 +6,9 @@ import ee.ttu.geocollection.interop.api.PageableSearchCriteria;
 
 public class LocalitySearchCriteria implements PageableSearchCriteria{
     private int page = 1;
+    private int paginateBy = 25;
     private SortField sortField;
+
     private SearchField id;
     private SearchField searchImages;
     private SearchField stratigraphy;
@@ -20,6 +22,14 @@ public class LocalitySearchCriteria implements PageableSearchCriteria{
     private SearchField longitude;
     private SearchField verticalExtentSince;
     private SearchField verticalExtentTo;
+
+    public int getPaginateBy() {
+        return paginateBy;
+    }
+
+    public void setPaginateBy(int paginateBy) {
+        this.paginateBy = paginateBy;
+    }
 
     public SearchField getSearchImages() {
         return searchImages;

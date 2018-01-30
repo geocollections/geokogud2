@@ -178,8 +178,7 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .queryId(searchCriteria.getId()).andReturn()
                 .buildDefaultFieldsQuery();
 //                .buildFullQuery();
-        // Had to lower the pagination size because default 30 made it too slow.
-        return apiService.searchRawEntities(SPECIMEN_TABLE, 25, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
+        return apiService.searchRawEntities(SPECIMEN_TABLE, searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
     private FluentSpecimenSearchApiBuilder prepareCommonFields(SpecimenSearchCriteria searchCriteria) {
@@ -232,7 +231,7 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .queryImgDateAdded(searchCriteria.getDateTakenTo())
                 .queryInstitutions(searchCriteria.getDbs())
                 .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities(SPECIMEN_IMAGE_TABLE, 25, searchCriteria.getPage(), new SortField("specimen__specimen_id", SortingOrder.ASCENDING), requestParams);
+        return apiService.searchRawEntities(SPECIMEN_IMAGE_TABLE, searchCriteria.getPaginateBy(), searchCriteria.getPage(), new SortField("specimen__specimen_id", SortingOrder.ASCENDING), requestParams);
     }
 
     @Override

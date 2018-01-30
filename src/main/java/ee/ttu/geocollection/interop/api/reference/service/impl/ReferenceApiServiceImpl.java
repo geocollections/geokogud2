@@ -55,7 +55,7 @@ public class ReferenceApiServiceImpl implements ReferenceApiService {
         String requestParams = prepareCommonFields(searchCriteria)
                 .queryId(searchCriteria.getId()).andReturn()
                 .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities(REFERENCE_TABLE, searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
+        return apiService.searchRawEntities(REFERENCE_TABLE, searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
     private FluentReferenceSearchApiBuilder prepareCommonFields(ReferenceSearchCriteria searchCriteria) {

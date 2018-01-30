@@ -8,10 +8,11 @@ import java.util.List;
 
 public class SampleSearchCriteria implements PageableSearchCriteria {
     private int page = 1;
+    private int paginateBy = 25;
     private SortField sortField;
+
     private SearchField id;
     private SearchField sampleNumber;
-
     private SearchField depthSince;
     private SearchField depthTo;
     private SearchField stratigraphy;
@@ -28,6 +29,14 @@ public class SampleSearchCriteria implements PageableSearchCriteria {
     private SearchField locality;
     private SearchField country;
     private List<String> dbs;
+
+    public int getPaginateBy() {
+        return paginateBy;
+    }
+
+    public void setPaginateBy(int paginateBy) {
+        this.paginateBy = paginateBy;
+    }
 
     public SearchField getCountry() {
         return country;

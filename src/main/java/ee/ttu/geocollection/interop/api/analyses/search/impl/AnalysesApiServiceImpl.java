@@ -86,7 +86,7 @@ public class AnalysesApiServiceImpl implements AnalysesApiService {
                 .returnSampleNumber()
                 .returnLabTxt()
                 .buildFullQuery();
-        return apiService.searchRawEntities("analysis", searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
+        return apiService.searchRawEntities("analysis", searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
     @Autowired
