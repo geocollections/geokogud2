@@ -16,13 +16,13 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     $scope.isAnalysesFieldsCollapsed = true;
     $scope.isInstitutionsCollapsed = true;
 
+    /**
+     * Gets called if request was successful.
+     * @param result, Success response from server.
+     */
     function onSearchData(result) {
         console.log(result);
         $scope.totalItems = result.data.count;
-
-        // if((['specimens', 'localities'].indexOf($stateParams.type) > -1)) $scope.images = composeImageStructure(result.data);
-        // if((['localities'].indexOf($stateParams.type) > -1)) $scope.images = composeImageStructure(result.data);
-        // if((['photoArchive'].indexOf($stateParams.type) > -1)) $scope.images = composeImageArchiveStructure(result.data);
 
         $scope.windowWidth = "innerWidth" in window ? window.innerWidth : document.documentElement.offsetWidth;
         if ($scope.windowWidth > 400) {
@@ -66,64 +66,22 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
             isAdditionalCriteriaUsed();
         }
 
-        /* $('html, body').animate({
-             scrollTop: ($("#searches").offset().top - 50)
-         }, 'fast');*/
-    }
-     function returnImageObject(entity) {
-         switch ($stateParams.type) {
-             case "specimens": return entity.specimen_image_thumbnail;
-             case "localities": return entity.locality_image_thumbnail;
-             default : break;
-         }
-     }
-    function composeImageArchiveStructure  (response) {
-        var imageStructure  = {rows : [],total : 0}, countImage = 0, currentRow  = [];
-       angular.forEach(response.results, function (image){
-            if(countImage < 30) {
-                currentRow.push({image :image});
-                countImage ++;
-                if(countImage % 5 === 0) {
-                    imageStructure.rows.push(currentRow);
-                    currentRow = [];
-                }
-            }
-        });
-
-        imageStructure.rows.push(currentRow);
-        imageStructure.total = countImage;
-        return imageStructure;
+        // Animates to search tabs. 
+        $('html, body').animate({
+            scrollTop: ($("#searches").offset().top - 70)
+        }, 'fast');
     }
 
-    function composeImageStructure (response) {
-        var imageStructure  = {rows : [],total : 0}, countImage = 0, currentRow  = [];
-
-        angular.forEach(response.results, function (entity){
-            var imageObject = returnImageObject(entity);
-            if(imageObject && imageObject.count > 0) {
-                angular.forEach(imageObject.results, function (image){
-                    if(countImage < 30) {
-                        currentRow.push({image :image, object : entity});
-                        countImage ++;
-                        if(countImage % 5 === 0) {
-                            imageStructure.rows.push(currentRow);
-                            currentRow = [];
-                        }
-                    }
-                });
-            }
-        });
-        imageStructure.rows.push(currentRow);
-        imageStructure.total = countImage;
-        return imageStructure;
-    }
-
+    /**
+     * Main search function.
+     * Checks if image search or not, starts the loading overlay
+     * and sends request with user inputted parameters.
+     */
     $scope.search = function () {
         $scope.showImages = $scope.searchParameters.searchImages && $scope.searchParameters.searchImages.name ? true : false;
         vm.searchLoadingHandler.start();
 
         $scope.pageSize = $scope.searchParameters.paginateBy; // Essential for pagination
-
         fixPaginationIfNeeded();
 
         applicationService.getList($stateParams.type, $scope.searchParameters, onSearchData, onSearchError);
@@ -131,7 +89,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
 
     /**
      * Checks if user has entered valid parameters
-     * if not then sets to default.
+     * if not then sets to default (1-1000).
      */
     function fixPaginationIfNeeded() {
         if ($scope.searchParameters.paginateBy <= 0) {
@@ -156,13 +114,20 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     }
 
     /**
-     * Sets respone to empty if search has some kind of error.
+     * Sets response to empty if search has some kind of error.
      */
     function setEmptyResponse() {
         $scope.response = {count : 0, results : null};
         $scope.totalItems = 0;
     }
 
+    /**
+     * THIS GETS CALLED WHEN USER COMES TO A PAGE.
+     * Adds default search parameters.
+     * If data is available then gets it from sessionStorage
+     * which overrides default parameters.
+     * Sets sorting ASCENDING and finally calls search function.
+     */
     $scope.searchDefault = function () {
         if ((['photoArchive'].indexOf($stateParams.type) > -1)) {
             $scope.searchParameters = {
@@ -196,15 +161,20 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         $scope.search();
     };
 
-    // Resets searchParameters to default search results.
+    /**
+     * Resets search parameters to default
+     * and deletes current table from sessionStorage.
+     */
     $scope.resetSearch = function () {
         resetSearchParametersToDefault();
         sessionStorage.removeItem($stateParams.type);
-        // localStorage.removeItem($stateParams.type);
     };
 
+    /**
+     * Adds or removes institution from search parameters
+     * @param institution, Name of institution to be added or removed.
+     */
     $scope.addRemoveInstitution = function (institution) {
-        if ($scope.searchParameters.dbs)
         var index = $scope.searchParameters.dbs.indexOf(institution);
         if (index === -1) {
             vm.service.toggle(institution, $scope.searchParameters.dbs);
@@ -213,19 +183,35 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         }
     };
 
+   // INITIATES DEFAULT SEARCH
     $scope.searchDefault();
 
+    /**
+     * Switches hint variable between true and false.
+     */
     $scope.showHint = function () {
         $scope.isHintHidden = !$scope.isHintHidden;
     };
 
+    /**
+     * Switches map variable between true and false.
+     * Also if true then calls getLocalities function.
+     */
     $scope.showMap = function () {
         console.log($scope.isMapHidden);
         $scope.isMapHidden = !$scope.isMapHidden;
         console.log($scope.isMapHidden);
-        $scope.getLocalities($scope.response.results);
+        if ($scope.isMapHidden) {
+            $scope.getLocalities($scope.response.results);
+        }
     };
 
+    /**
+     * Takes locality fields from response and adds them
+     * to localities list. Which are then used in map.
+     * @param list, Response from request.
+     * @returns {Array} of locality elements with data like (latitude, longitude etc.)
+     */
     $scope.getLocalities = function (list) {
         console.log(list);
         $scope.localities = [];
@@ -248,6 +234,9 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         return $scope.localities;
     };
 
+    /**
+     * Adds arguments to localities list.
+     */
     function addToLocalities(latitude, longitude, locality_en, locality, locality_id) {
         console.log("lat: " + latitude
             + " lon: " + longitude
@@ -261,25 +250,6 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
             localityEt: locality,
             fid: locality_id
         });
-    }
-
-    function addSearchDataToSession(searchParameters) {
-        if (typeof(sessionStorage) !== 'undefined') {
-            var stringifiedParameters = JSON.stringify(searchParameters);
-            console.log(stringifiedParameters);
-            var defaultParameters = '{"sortField":{"sortBy":"id","order":"DESCENDING"},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"]}';
-            var defaultPhotoArchiveParameters = '{"sortField":{"sortBy":"id","order":"DESCENDING"},"searchImages":{"lookUpType":"exact","name":true},"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"]}';
-
-            if([$stateParams.type].indexOf($stateParams.type) > -1 && $stateParams.type === "photoArchive") {
-                if(stringifiedParameters !== defaultPhotoArchiveParameters) {
-                    sessionStorage.setItem($stateParams.type, stringifiedParameters);
-                }
-            } else if([$stateParams.type].indexOf($stateParams.type) > -1) {
-                if(stringifiedParameters !== defaultParameters) {
-                    sessionStorage.setItem($stateParams.type, stringifiedParameters);
-                }
-            }
-        }
     }
 
     /**
