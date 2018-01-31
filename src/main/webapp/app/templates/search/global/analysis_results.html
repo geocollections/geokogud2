@@ -33,27 +33,29 @@
 
                 <td data-title="{{ 'SEARCH.ANALYSES.TABLE.SAMPLE_ID'| translate }}">
                     <a href data-ng-click="ctrl.service.openInNewWindow({object:'sample',id:entity.sample_id})">
-                        <first-not-null values="[entity.sample_number, sample_id]" />
+                        <first-not-null values="[entity.sample_number, entity.sample_id]" />
                     </a>
                 </td>
 
                 <td data-title="{{ 'SEARCH.ANALYSES.TABLE.LOCALITY'| translate }}">
                     <div>
-                        <!--<a href data-ng-if="entity.locality_id" data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:entity.locality_id})">-->
+                        <a href data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:entity.locality_id})">
                             <localize  et="entity.locality" en="entity.locality_en"/>
-                        <!--</a>-->
+                        </a>
                     </div>
 
-                    <div>{{entity.locality_free}}</div>
+                    <div data-ng-if="!entity.locality && !entity.locality_en">{{entity.locality_free}}</div>
                 </td>
 
-                <td data-title="{{ 'SEARCH.ANALYSES.TABLE.DEPTH_M'| translate }}">{{entity.depth}} {{entity.depth_interval}}</td>
+                <td data-title="{{ 'SEARCH.ANALYSES.TABLE.DEPTH_M'| translate }}">
+                    {{entity.depth}} <span data-ng-if="entity.depth_interval">({{entity.depth_interval}})</span>
+                </td>
 
                 <td data-title="{{ 'SEARCH.ANALYSES.TABLE.STRATIGRAPHY' | translate }}">
                     <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.stratigraphy_id})"><localize et="entity.stratigraphy" en="entity.stratigraphy_en"/></a><span data-ng-if="(entity.stratigraphy && entity.lithostratigraphy) || (entity.stratigraphy_en && entity.lithostratigraphy_en)"> | </span><em><a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.lithostratigraphy_id})"><localize et="entity.lithostratigraphy" en="entity.entity.lithostratigraphy_en"/></a></em>
                 </td>
 
-                <td data-title="{{ 'SEARCH.ANALYSES.TABLE.BED_ID'| translate }}">{{entity.stratigraphy_bed}}</td>
+                <td data-title="{{ 'SEARCH.ANALYSES.TABLE.BED_ID'| translate }}">{{entity.stratigraphy_bed[0]}}</td>
 
                 <td data-title="{{ 'SEARCH.ANALYSES.TABLE.METHOD'| translate }}">
                     <localize et="entity.analysis_method" en="entity.analysis_method_en"/>

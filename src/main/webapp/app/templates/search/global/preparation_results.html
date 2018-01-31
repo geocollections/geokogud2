@@ -40,26 +40,26 @@
 
                 <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.DEPTH_M' | translate }}">
                     {{entity.depth}}
-                    <span ng-if="entity.depth_interval">
+                    <span data-ng-if="entity.depth_interval">
                         ({{entity.depth_interval}})
                     </span>
                 </td>
 
                 <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.STRATIGRAPHY' | translate }}">
-                    <!--<a>-->
+                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.stratigraphy_id})">
                         <localize et="entity.stratigraphy" en="entity.stratigraphy_en"/>
-                    <!--</a>-->
+                    </a>
                     <span ng-show="(entity.stratigraphy && entity.lithostratigraphy) || (entity.stratigraphy_en && entity.lithostratigraphy_en)"> | </span>
                     <em>
-                        <!--<a>-->
+                        <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.lithostratigraphy_id})">
                             <localize et="entity.lithostratigraphy" en="entity.lithostratigraphy_en"/>
-                        <!--</a>-->
+                        </a>
                     </em>
                 </td>
 
                 <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.COLLECTOR' | translate }}">{{entity.agent}}</td>
 
-                <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.WEIGHT' | translate }}">{{entity.sample_mass}}</td>
+                <td data-title="{{ 'SEARCH.PREPARATIONS.TABLE.WEIGHT' | translate }}">{{entity.mass}}</td>
             </tr>
             </tbody>
         </table>

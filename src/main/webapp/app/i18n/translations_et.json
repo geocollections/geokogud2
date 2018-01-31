@@ -148,7 +148,7 @@
             "IDENTIFIERS": {
                 "SAMPLE_ID": "Number",
                 "NUMBER": "Proov #",
-                "BED_NAME_INDEX": "Ase ID",
+                "BED_NAME_INDEX": "Kihi ID",
                 "IDENTIFIERS": "Identifikaator"
             },
             "LOCATION": {
@@ -171,7 +171,7 @@
                 "DEPTH_M": "@:SEARCH.ANALYSES.LOCATION.DEPTH_M",
                 "STRATIGRAPHY": "@:SEARCH.ANALYSES.LOCATION.STRATIGRAPHY",
                 "LITHOSTRATIGRAPHY": "Litostratigraafia",
-                "BED_ID": "Ase ID",
+                "BED_ID": "Kihi ID",
                 "METHOD": "Metoodika",
                 "LAB": "Lab."
             }
@@ -295,7 +295,7 @@
             "IDENTIFIERS": {
                 "NUMBER": "Analüüsi ID",
                 "SAMPLE_ID": "Proovi Number/ID",
-                "BED_NAME_INDEX": "Ase ID"
+                "BED_NAME_INDEX": "Kihi ID"
             },
             "LOCATION": {
                 "LOCALITY": "Leiukoht",
@@ -316,7 +316,7 @@
                 "DEPTH_M": "@:SEARCH.ANALYSES.LOCATION.DEPTH_M",
                 "STRATIGRAPHY": "@:SEARCH.ANALYSES.LOCATION.STRATIGRAPHY",
                 "LITHOSTRATIGRAPHY": "Litostratigraafia",
-                "BED_ID": "Ase ID",
+                "BED_ID": "Kihi ID",
                 "METHOD": "Metoodika",
                 "LAB": "Lab.",
                 "ID": "Analüüsi ID"

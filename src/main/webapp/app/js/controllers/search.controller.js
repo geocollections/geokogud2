@@ -66,7 +66,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
             isAdditionalCriteriaUsed();
         }
 
-        // Animates to search tabs. 
+        // Animates to search tabs.
         $('html, body').animate({
             scrollTop: ($("#searches").offset().top - 70)
         }, 'fast');
