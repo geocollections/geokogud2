@@ -30,7 +30,42 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         console.log($scope.searchParameters);
         console.log($stateParams.query);
 
-        GlobalSearchFactory.searchGlobally($stateParams.tab, $stateParams.page, $stateParams.paginateBy, $stateParams.query, onGlobalDataLoaded);
+        console.log($stateParams.tab);
+
+        if (!$stateParams.tab) {
+            $stateParams.tab = "specimen";
+            $scope.searchParameters.tab = "specimen";
+        }
+        if (!$stateParams.page) {
+            $stateParams.page = 1;
+            $scope.page = 1;
+            $scope.searchParameters.page = 1;
+        }
+        if (!$stateParams.paginateBy) {
+            $stateParams.paginateBy = 100;
+            $scope.paginateBy = 100;
+            $scope.searchParameters.paginateBy = 100;
+        }
+
+        if (!$scope.searchParameters.tab) {
+            $scope.searchParameters.tab = $stateParams.tab;
+        }
+        if (!$scope.searchParameters.page) {
+            $scope.searchParameters.page = Number($stateParams.page);
+        }
+        if (!$scope.searchParameters.paginateBy) {
+            $scope.searchParameters.paginateBy = Number($stateParams.paginateBy);
+        }
+
+        console.log($scope.searchParameters);
+
+        GlobalSearchFactory.searchGlobally(
+            // $scope.searchParameters.tab,
+            $stateParams.tab,
+            $scope.searchParameters.page,
+            $scope.searchParameters.paginateBy,
+            $stateParams.query,
+            onGlobalDataLoaded);
     };
 
     /**
@@ -52,20 +87,17 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         };
 
         addClientSorting();
-        $stateParams.tab = "specimen";
-        $stateParams.page = 0;
-        $stateParams.paginateBy = 100;
 
         $scope.response = {
             results: [],
-            count: 0
+            count: 0,
+            table: ""
         };
         $scope.selectedTab = $stateParams.tab;
     }
 
     /**
-     * Sets searchParameters that sortBy is ID
-     * and order is DESCENDING.
+     * Sets default search parameters.
      * Also sortByAsc variable is set to true
      */
     function addClientSorting() {
@@ -74,9 +106,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
                 sortBy: "id",
                 order: "DESCENDING"
             },
-            maxSize: 5,
-            page: 1,
-            paginateBy: 100
+            maxSize: 5
         };
         $scope.sortByAsc = true;
     }
@@ -108,10 +138,13 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
                         if (response.table === $scope.selectedTab) {
                             $scope.response.results = response.response;
                             $scope.response.count = response.numFound;
+                            $scope.response.table = response.table;
                         }
                     }
                 }
             });
+
+            $scope.selectTab($scope.response.table); //Chooses active table
             vm.searchLoadingHandler.stop();
 
             // Animates to search tabs. TODO: maybe enable, maybe not
@@ -140,16 +173,39 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
             tabTitle = "specimen";
         }
         $stateParams.tab = tabTitle;
+
+        $scope.searchParameters.tab = tabTitle;
+        console.log($scope.searchParameters);
+
         $scope.selectedTab = tabTitle;
-        $state.go("global", {tab: $stateParams.tabTitle, page: $stateParams.page, query: $stateParams.query}, {location: "replace", inherit: false, notify: false});
+
+        console.log($stateParams.page);
+
+        $state.go("global",
+            {
+                tab: $scope.searchParameters.tab,
+                page: $scope.searchParameters.page,
+                paginateBy: $scope.searchParameters.paginateBy,
+                // tab: $stateParams.tab,
+                // page: $stateParams.page,
+                // paginateBy: $stateParams.paginateBy,
+                query: $stateParams.query
+            },
+            {
+                location: "replace",
+                inherit: false,
+                notify: false
+            });
+
         $scope.response.results = $scope.searchResults[tabTitle].response;
         $scope.response.count = $scope.searchResults[tabTitle].numFound;
+        $scope.response.table = $scope.searchResults[tabTitle].table;
         console.log($scope.response);
     };
 
 
     /**
-     * Switches global search fields
+     * Switched global search fields ordering
      * between ASCENDING or DESCENDING
      */
     $scope.search = function () {
@@ -158,8 +214,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
     };
 
     /**
-     * Gets results length for tabs which
-     * is shown after the tab name in parentheses
+     * Gets results length for a certain tab.
      * @param tab Tab's name
      * @returns Integer value of results length
      */

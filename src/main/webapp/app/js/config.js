@@ -24,7 +24,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
             data: {
                 pageTitle: "{{'TITLES.GLOBAL' | translate}}"
             },
-            url: "/global/:table/:page/:paginateBy/?=:query",
+            url: "/global/:tab/:page/:paginateBy/:query",
             templateUrl: "app/templates/main/global_search.html",
             controller: "GlobalSearchController as ctrl"
     })

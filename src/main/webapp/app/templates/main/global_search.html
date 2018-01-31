@@ -2,27 +2,21 @@
 
 <section id="sectionSearch">
     <div id="searches" ng-include="'app/templates/main/partial/global_search_tabs.html'"></div>
-    <div class="container-fluid" bs-loading-overlay bs-loading-overlay-reference-id="globalView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
-
-        <div class="row"  style="margin-top: 2%" data-ng-if="response.count > 100">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-8 text-center" style="color:#F05F40"><h3>{{'GLOBAL_SEARCH_INFO' | translate}}</h3></div>
-            <div class="col-lg-2"></div>
-        </div>
+    <div class="container-fluid">
 
         <div class="row">
             <div class="col-lg-2"></div>
-            <div ng-if="!response.count > 0" class="col-lg-8 text-center" style="color:#F05F40">
+            <div data-ng-if="!response.results.length > 0" class="col-lg-8 text-center" style="color:#F05F40">
                 <h3>{{'GLOBAL_SEARCH_NO_INFO' | translate}}</h3>
             </div>
             <div class="col-lg-2"></div>
         </div>
 
-        <div class="row"  style="margin-top: 2%">
-            <div bs-loading-overlay bs-loading-overlay-reference-id="globalView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
+        <div class="row"  style="margin-top: 2%" data-ng-if="response.results.length > 0">
+            <div>
                 <div class="col-sm-1"></div>
 
-                <div class="col-sm-10">
+                <div class="col-sm-10" bs-loading-overlay bs-loading-overlay-reference-id="globalView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
                     <div ng-if="selectedTab == 'specimen' && response.count > 0" non-isolated-include template-path="app/templates/search/global/specimen_results.html"></div>
                     <div ng-if="selectedTab == 'sample' && response.count > 0" non-isolated-include template-path="app/templates/search/global/sample_results.html"></div>
                     <div ng-if="selectedTab == 'drillcore' && response.count > 0" non-isolated-include template-path="app/templates/search/global/drillcore_results.html"></div>

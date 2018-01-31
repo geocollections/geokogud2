@@ -6,6 +6,8 @@ public interface GlobalSolrService {
 
     SolrResponse findEntitiesUsingTablePageAndPaginateBy(String table, int page, int paginateBy, String query);
 
+    SolrResponse findEntitiesUsingTableAndPage(String table, int page, String query);
+
     SolrResponse findEntitiesUsingTable(String table, String query);
 
 }

@@ -47,6 +47,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -54,33 +56,25 @@ import java.util.Map;
 public class SearchController extends ControllerHelper {
     private static final Logger logger = LoggerFactory.getLogger(SearchController.class);
 
+    private List<String> tables = Arrays.asList(
+            "taxon",
+            "doi",
+            "image",
+            "preparation",
+            "analysis",
+            "stratigraphy",
+            "reference",
+            "locality",
+            "drillcore",
+            "sample",
+            "specimen"
+    );
+
     @Autowired
     private ApiService apiService;
     @Autowired
     private AsynchService asynchService;
 
-    @Autowired
-    private SpecimenSolrService specimenSolrService;
-    @Autowired
-    private SampleSolrService sampleSolrService;
-    @Autowired
-    private DrillcoreSolrService drillcoreSolrService;
-    @Autowired
-    private LocalitySolrService localitySolrService;
-    @Autowired
-    private ReferenceSolrService referenceSolrService;
-    @Autowired
-    private StratigraphySolrService stratigraphySolrService;
-    @Autowired
-    private AnalysisSolrService analysisSolrService;
-    @Autowired
-    private PreparationSolrService preparationSolrService;
-    @Autowired
-    private PhotoArchiveSolrService photoArchiveSolrService;
-    @Autowired
-    private DoiSolrService doiSolrService;
-    @Autowired
-    private TaxonSolrService taxonSolrService;
     @Autowired
     private GlobalSolrService globalSolrService;
 
@@ -108,7 +102,6 @@ public class SearchController extends ControllerHelper {
     private DoiApiService doiApiService;
 
     @GetMapping(value = "/global")
-//    public Iterable searchGlobally(@PathVariable String query) {
     public Iterable searchGlobally(
             @RequestParam("tab") String tab,
             @RequestParam("page") int page,
@@ -118,31 +111,13 @@ public class SearchController extends ControllerHelper {
         logger.trace("Page: " + page);
         logger.trace("PaginateBy: " + paginateBy);
         logger.trace("Query: " + query);
-        ArrayList<SolrResponse> responses = new ArrayList<>();
-        responses.add(globalSolrService.findEntitiesUsingTable("taxon", query));
-        responses.add(globalSolrService.findEntitiesUsingTable("doi", query));
-        responses.add(globalSolrService.findEntitiesUsingTable("image", query));
-        responses.add(globalSolrService.findEntitiesUsingTable("preparation", query));
-        responses.add(globalSolrService.findEntitiesUsingTable("analysis", query));
-        responses.add(globalSolrService.findEntitiesUsingTable("stratigraphy", query));
-        responses.add(globalSolrService.findEntitiesUsingTable("reference", query));
-        responses.add(globalSolrService.findEntitiesUsingTable("locality", query));
-        responses.add(globalSolrService.findEntitiesUsingTable("drillcore", query));
-        responses.add(globalSolrService.findEntitiesUsingTable("sample", query));
-        responses.add(globalSolrService.findEntitiesUsingTable("specimen", query));
-//        responses.add(globalSolrService.findEntitiesUsingTableAndPage(tab, page, query));
 
-//        responses.add(taxonSolrService.findTaxonByIndex(query));
-//        responses.add(doiSolrService.findDoiByIndex(query));
-//        responses.add(photoArchiveSolrService.findPhotoArchiveByIndex(query));
-//        responses.add(preparationSolrService.findPreparationByIndex(query));
-//        responses.add(analysisSolrService.findAnalysisByIndex(query));
-//        responses.add(stratigraphySolrService.findStratigraphyByIndex(query));
-//        responses.add(referenceSolrService.findReferenceByIndex(query));
-//        responses.add(localitySolrService.findLocalityByIndex(query));
-//        responses.add(drillcoreSolrService.findDrillcoreByIndex(query));
-//        responses.add(sampleSolrService.findSampleByIndex(query));
-//        responses.add(specimenSolrService.findSpecimenByIndex(query));
+        ArrayList<SolrResponse> responses = new ArrayList<>();
+
+        for (String table : tables) {
+            responses.add(globalSolrService.findEntitiesUsingTablePageAndPaginateBy(table, page, paginateBy, query));
+        }
+
         return responses;
     }
 

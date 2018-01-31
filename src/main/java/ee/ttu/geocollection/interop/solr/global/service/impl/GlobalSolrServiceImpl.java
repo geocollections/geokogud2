@@ -14,17 +14,25 @@ public class GlobalSolrServiceImpl implements GlobalSolrService {
     SolrService solrService;
 
     @Override
-    public SolrResponse findEntitiesUsingTable(String table, String query) {
+    public SolrResponse findEntitiesUsingTablePageAndPaginateBy(String table, int page, int paginateBy, String query) {
         SolrQuery requestParams = new SolrQuery(query)
+                .setRows(paginateBy)
+                .setStart((page-1) * paginateBy);
+        return solrService.searchRawEntities(table, requestParams);
+    }
+
+    @Override
+    public SolrResponse findEntitiesUsingTableAndPage(String table, int page, String query) {
+        SolrQuery requestParams = new SolrQuery(query)
+                .setStart((page-1) * 100)
                 .setRows(100);
         return solrService.searchRawEntities(table, requestParams);
     }
 
     @Override
-    public SolrResponse findEntitiesUsingTablePageAndPaginateBy(String table, int page, int paginateBy, String query) {
-                SolrQuery requestParams = new SolrQuery(query)
-                .setRows(paginateBy)
-                .setStart(page);
+    public SolrResponse findEntitiesUsingTable(String table, String query) {
+        SolrQuery requestParams = new SolrQuery(query)
+                .setRows(100);
         return solrService.searchRawEntities(table, requestParams);
     }
 }
