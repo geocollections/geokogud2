@@ -8,6 +8,7 @@ import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.solr.analysis.service.AnalysisSolrService;
 import ee.ttu.geocollection.interop.solr.doi.service.DoiSolrService;
 import ee.ttu.geocollection.interop.solr.drillcore.service.DrillcoreSolrService;
+import ee.ttu.geocollection.interop.solr.global.service.GlobalSolrService;
 import ee.ttu.geocollection.interop.solr.locality.service.LocalitySolrService;
 import ee.ttu.geocollection.interop.solr.photoArchive.service.PhotoArchiveSolrService;
 import ee.ttu.geocollection.interop.solr.preparation.service.PreparationSolrService;
@@ -80,6 +81,8 @@ public class SearchController extends ControllerHelper {
     private DoiSolrService doiSolrService;
     @Autowired
     private TaxonSolrService taxonSolrService;
+    @Autowired
+    private GlobalSolrService globalSolrService;
 
     @Autowired
     private SpecimenApiService specimenApiService;
@@ -108,23 +111,38 @@ public class SearchController extends ControllerHelper {
 //    public Iterable searchGlobally(@PathVariable String query) {
     public Iterable searchGlobally(
             @RequestParam("tab") String tab,
-            @RequestParam("page") String page,
+            @RequestParam("page") int page,
+            @RequestParam("paginateBy") int paginateBy,
             @RequestParam("query") String query) {
         logger.trace("Tab: " + tab);
         logger.trace("Page: " + page);
+        logger.trace("PaginateBy: " + paginateBy);
         logger.trace("Query: " + query);
         ArrayList<SolrResponse> responses = new ArrayList<>();
-        responses.add(taxonSolrService.findTaxonByIndex(query));
-        responses.add(doiSolrService.findDoiByIndex(query));
-        responses.add(photoArchiveSolrService.findPhotoArchiveByIndex(query));
-        responses.add(preparationSolrService.findPreparationByIndex(query));
-        responses.add(analysisSolrService.findAnalysisByIndex(query));
-        responses.add(stratigraphySolrService.findStratigraphyByIndex(query));
-        responses.add(referenceSolrService.findReferenceByIndex(query));
-        responses.add(localitySolrService.findLocalityByIndex(query));
-        responses.add(drillcoreSolrService.findDrillcoreByIndex(query));
-        responses.add(sampleSolrService.findSampleByIndex(query));
-        responses.add(specimenSolrService.findSpecimenByIndex(query));
+        responses.add(globalSolrService.findEntitiesUsingTable("taxon", query));
+        responses.add(globalSolrService.findEntitiesUsingTable("doi", query));
+        responses.add(globalSolrService.findEntitiesUsingTable("image", query));
+        responses.add(globalSolrService.findEntitiesUsingTable("preparation", query));
+        responses.add(globalSolrService.findEntitiesUsingTable("analysis", query));
+        responses.add(globalSolrService.findEntitiesUsingTable("stratigraphy", query));
+        responses.add(globalSolrService.findEntitiesUsingTable("reference", query));
+        responses.add(globalSolrService.findEntitiesUsingTable("locality", query));
+        responses.add(globalSolrService.findEntitiesUsingTable("drillcore", query));
+        responses.add(globalSolrService.findEntitiesUsingTable("sample", query));
+        responses.add(globalSolrService.findEntitiesUsingTable("specimen", query));
+//        responses.add(globalSolrService.findEntitiesUsingTableAndPage(tab, page, query));
+
+//        responses.add(taxonSolrService.findTaxonByIndex(query));
+//        responses.add(doiSolrService.findDoiByIndex(query));
+//        responses.add(photoArchiveSolrService.findPhotoArchiveByIndex(query));
+//        responses.add(preparationSolrService.findPreparationByIndex(query));
+//        responses.add(analysisSolrService.findAnalysisByIndex(query));
+//        responses.add(stratigraphySolrService.findStratigraphyByIndex(query));
+//        responses.add(referenceSolrService.findReferenceByIndex(query));
+//        responses.add(localitySolrService.findLocalityByIndex(query));
+//        responses.add(drillcoreSolrService.findDrillcoreByIndex(query));
+//        responses.add(sampleSolrService.findSampleByIndex(query));
+//        responses.add(specimenSolrService.findSpecimenByIndex(query));
         return responses;
     }
 

@@ -27,12 +27,10 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         vm.searchLoadingHandler.start();
         $scope.$parent.globalQuery = $stateParams.query;
 
-        $stateParams.page = 1;
-
         console.log($scope.searchParameters);
         console.log($stateParams.query);
 
-        GlobalSearchFactory.searchGlobally($stateParams.tab, $stateParams.page, $stateParams.query, onGlobalDataLoaded);
+        GlobalSearchFactory.searchGlobally($stateParams.tab, $stateParams.page, $stateParams.paginateBy, $stateParams.query, onGlobalDataLoaded);
     };
 
     /**
@@ -54,6 +52,9 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         };
 
         addClientSorting();
+        $stateParams.tab = "specimen";
+        $stateParams.page = 0;
+        $stateParams.paginateBy = 100;
 
         $scope.response = {
             results: [],
