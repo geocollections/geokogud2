@@ -185,6 +185,7 @@
   },
 
   "autocompleteUrl" : "/search/autocomplete-field",
+  "globalUrl" : "/search/global",
 
   "webnewsUrl":"/webnews",
   "mapData": {

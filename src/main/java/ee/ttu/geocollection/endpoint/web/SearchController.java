@@ -104,8 +104,15 @@ public class SearchController extends ControllerHelper {
     @Autowired
     private DoiApiService doiApiService;
 
-    @GetMapping(value = "/global/{query}")
-    public Iterable searchGlobally(@PathVariable String query) {
+    @GetMapping(value = "/global")
+//    public Iterable searchGlobally(@PathVariable String query) {
+    public Iterable searchGlobally(
+            @RequestParam("tab") String tab,
+            @RequestParam("page") String page,
+            @RequestParam("query") String query) {
+        logger.trace("Tab: " + tab);
+        logger.trace("Page: " + page);
+        logger.trace("Query: " + query);
         ArrayList<SolrResponse> responses = new ArrayList<>();
         responses.add(taxonSolrService.findTaxonByIndex(query));
         responses.add(doiSolrService.findDoiByIndex(query));

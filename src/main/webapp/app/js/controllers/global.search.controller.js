@@ -26,8 +26,13 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
     $scope.searchGlobally = function () {
         vm.searchLoadingHandler.start();
         $scope.$parent.globalQuery = $stateParams.query;
+
+        $stateParams.page = 1;
+
+        console.log($scope.searchParameters);
         console.log($stateParams.query);
-        GlobalSearchFactory.searchGlobally($stateParams.query, onGlobalDataLoaded);
+
+        GlobalSearchFactory.searchGlobally($stateParams.tab, $stateParams.page, $stateParams.query, onGlobalDataLoaded);
     };
 
     /**
@@ -67,7 +72,10 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
             sortField: {
                 sortBy: "id",
                 order: "DESCENDING"
-            }
+            },
+            maxSize: 5,
+            page: 1,
+            paginateBy: 100
         };
         $scope.sortByAsc = true;
     }
@@ -105,6 +113,11 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
             });
             vm.searchLoadingHandler.stop();
 
+            // Animates to search tabs. TODO: maybe enable, maybe not
+            // $('html, body').animate({
+            //     scrollTop: ($("#searches").offset().top - 70)
+            // }, 'fast');
+
         } else {
             // Search fails
             // TODO: make nice error page why search failed.
@@ -127,7 +140,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         }
         $stateParams.tab = tabTitle;
         $scope.selectedTab = tabTitle;
-        $state.go("global", {query: $stateParams.query, tab: tabTitle}, {location: "replace", inherit: false, notify: false});
+        $state.go("global", {tab: $stateParams.tabTitle, page: $stateParams.page, query: $stateParams.query}, {location: "replace", inherit: false, notify: false});
         $scope.response.results = $scope.searchResults[tabTitle].response;
         $scope.response.count = $scope.searchResults[tabTitle].numFound;
         console.log($scope.response);

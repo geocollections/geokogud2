@@ -400,10 +400,10 @@ module.factory("SearchFactory", ['$http', 'configuration', function($http, confi
         });
     };
     return { getData: getData };
-}]).factory("GlobalSearchFactory", ['$http', function($http){
+}]).factory("GlobalSearchFactory", ['$http', 'configuration', function($http, configuration){
     return {
-        searchGlobally: function(query, successfulCallback) {
-            return $http.get('/search/global/' + query).then(successfulCallback);
+        searchGlobally: function(tab, page, query, successfulCallback) {
+            return $http.get(configuration.globalUrl, {params:{tab: tab, page: page, query: query}}).then(successfulCallback);
         }
     };
 }]);
