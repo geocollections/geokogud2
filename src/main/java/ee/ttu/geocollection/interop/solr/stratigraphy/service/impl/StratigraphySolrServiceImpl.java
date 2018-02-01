@@ -1,5 +1,6 @@
 package ee.ttu.geocollection.interop.solr.stratigraphy.service.impl;
 
+import ee.ttu.geocollection.interop.api.stratigraphies.pojo.StratigraphySearchCriteria;
 import ee.ttu.geocollection.interop.solr.response.SolrResponse;
 import ee.ttu.geocollection.interop.solr.service.SolrService;
 import ee.ttu.geocollection.interop.solr.stratigraphy.service.StratigraphySolrService;
@@ -16,9 +17,11 @@ public class StratigraphySolrServiceImpl implements StratigraphySolrService {
     private SolrService solrService;
 
     @Override
-    public SolrResponse findStratigraphyByIndex(String query) {
-        SolrQuery requestParams = new SolrQuery(query)
-                .setRows(100);
+    public SolrResponse findStratigraphy(StratigraphySearchCriteria searchCriteria) {
+        SolrQuery requestParams = new SolrQuery("*")
+                .setSort(searchCriteria.getSortField().getSortBy(), SolrQuery.ORDER.asc)
+                .setStart((searchCriteria.getPage() - 1) * searchCriteria.getPaginateBy())
+                .setRows(searchCriteria.getPaginateBy());
         return solrService.searchRawEntities(STRATIGRAPHY_TABLE, requestParams);
     }
 }

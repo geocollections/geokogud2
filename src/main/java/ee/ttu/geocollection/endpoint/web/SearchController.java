@@ -77,6 +77,8 @@ public class SearchController extends ControllerHelper {
 
     @Autowired
     private GlobalSolrService globalSolrService;
+    @Autowired
+    private StratigraphySolrService stratigraphySolrService;
 
     @Autowired
     private SpecimenApiService specimenApiService;
@@ -269,4 +271,9 @@ public class SearchController extends ControllerHelper {
     public ApiResponse searchStratigraphy(@RequestBody StratigraphySearchCriteria stratigraphySearchCriteria) {
         return stratigraphyApiService.findStratigraphy(stratigraphySearchCriteria);
     }
+
+//    @PostMapping(value = "/stratigraphy")
+//    public SolrResponse searchStratigraphy(@RequestBody StratigraphySearchCriteria stratigraphySearchCriteria) {
+//        return stratigraphySolrService.findStratigraphy(stratigraphySearchCriteria);
+//    }
 }
