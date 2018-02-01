@@ -19,7 +19,11 @@
     jQuery(document).ready( function ($) {
 
         var table = $('#table-search');
-        var tableName = location.pathname.replace(/\//g,""); // Removes all '/'
+        var tableName = location.pathname.replace(/\//g,""); // Removes all '/' and replaces them with '_'
+        if (tableName.includes("global")) {
+            tableName = "global";
+        }
+        console.log(tableName);
 
         $('#customXLSXbutton').on('click', function () {
             var instance = new TableExport(table, {

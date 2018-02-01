@@ -79,6 +79,8 @@ public class SearchController extends ControllerHelper {
     private GlobalSolrService globalSolrService;
     @Autowired
     private StratigraphySolrService stratigraphySolrService;
+    @Autowired
+    private DoiSolrService doiSolrService;
 
     @Autowired
     private SpecimenApiService specimenApiService;
@@ -256,6 +258,11 @@ public class SearchController extends ControllerHelper {
     public ApiResponse searchDoi(@RequestBody DoiSearchCriteria searchCriteria) {
         return doiApiService.findDoi(searchCriteria);
     }
+
+//    @PostMapping(value = "/doi")
+//    public SolrResponse searchDoi(@RequestBody DoiSearchCriteria searchCriteria) {
+//        return doiSolrService.findDoi(searchCriteria);
+//    }
 
     @PostMapping(value = "/analyses")
     public ApiResponse searchAnalyses(@RequestBody AnalysesSearchCriteria analysesSearchCriteria) {
