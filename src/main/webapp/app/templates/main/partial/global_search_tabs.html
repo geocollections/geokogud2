@@ -5,6 +5,7 @@
                 <h2>{{ 'INDEX.TYPES_OF_SEARCHES' | translate }}<span class="caret"></span></h2>
             </a>
             <ul class="dropdown-menu">
+
                 <li ng-if="getResultsLength('specimen') > 0" class="nav-item" ng-class="{active: isTabActive('specimen')}" role="presentation">
                     <a role="tab" href ng-click="selectTab('specimen')">
                         {{ 'SEARCH.SPECIMENS.HEADING' | translate }} ({{getResultsLength('specimen')}})
@@ -75,6 +76,7 @@
     </ul>
 
     <ul class="nav nav-tabs nav-fill navbar-center hidden-xs" role="tablist">
+
         <li ng-if="getResultsLength('specimen') > 0" class="nav-item" ng-class="{active: isTabActive('specimen')}" role="presentation">
             <a role="tab" href ng-click="selectTab('specimen')">
                 {{ 'SEARCH.SPECIMENS.HEADING' | translate }} ({{getResultsLength('specimen')}})

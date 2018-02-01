@@ -1,6 +1,15 @@
 
 <div data-ng-if="response.results != null">
 
+    <div class="row searchCriterion">
+        <div class="col-md-12 medium-padding">
+            <b>{{ 'PAGINATE_BY' | translate }}</b>
+        </div>
+        <div class="col-md-2 medium-padding">
+            <input ng-enter="searchGlobally()" type="number" ng-model="searchParameters.paginateBy" class="form-control" placeholder="100" />
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-xs-6" ng-include="'app/templates/search/partial/export_buttons.html'"></div>
         <div class="col-xs-6" ng-include="'app/templates/search/partial/pagination.html'"></div>

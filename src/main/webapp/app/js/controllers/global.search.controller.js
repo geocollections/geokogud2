@@ -32,30 +32,9 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
 
         console.log($stateParams.tab);
 
-        if (!$stateParams.tab) {
-            $stateParams.tab = "specimen";
-            $scope.searchParameters.tab = "specimen";
-        }
-        if (!$stateParams.page) {
-            $stateParams.page = 1;
-            $scope.page = 1;
-            $scope.searchParameters.page = 1;
-        }
-        if (!$stateParams.paginateBy) {
-            $stateParams.paginateBy = 100;
-            $scope.paginateBy = 100;
-            $scope.searchParameters.paginateBy = 100;
-        }
-
-        if (!$scope.searchParameters.tab) {
-            $scope.searchParameters.tab = $stateParams.tab;
-        }
-        if (!$scope.searchParameters.page) {
-            $scope.searchParameters.page = Number($stateParams.page);
-        }
-        if (!$scope.searchParameters.paginateBy) {
-            $scope.searchParameters.paginateBy = Number($stateParams.paginateBy);
-        }
+        setSearchParameters();
+        $scope.pageSize = $scope.searchParameters.paginateBy; // Essential for pagination
+        fixPaginationIfNeeded();
 
         console.log($scope.searchParameters);
 
@@ -67,6 +46,45 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
             $stateParams.query,
             onGlobalDataLoaded);
     };
+
+    /**
+     * Sets search parameters if they do not exist.
+     * Also they are needed if you want to change parameters
+     * directly in url.
+     */
+    function setSearchParameters() {
+        if (!$stateParams.page) {
+            $stateParams.page = 1;
+        }
+        if (!$stateParams.paginateBy) {
+            $stateParams.paginateBy = 100;
+        }
+
+        if (!$scope.searchParameters.tab) {
+            $scope.searchParameters.tab = $stateParams.tab;
+        }
+        if (!$scope.searchParameters.page) {
+            $scope.searchParameters.page = Number($stateParams.page);
+        }
+        if (!$scope.searchParameters.paginateBy) {
+            $scope.searchParameters.paginateBy = Number($stateParams.paginateBy);
+        }
+    }
+
+    /**
+     * Checks if user has entered valid parameters
+     * if not then sets to default (1-1000).
+     */
+    function fixPaginationIfNeeded() {
+        if ($scope.searchParameters.paginateBy <= 0) {
+            $scope.searchParameters.paginateBy = 100;
+            $scope.pageSize = 100;
+        }
+        if ($scope.searchParameters.paginateBy > 1000) {
+            $scope.searchParameters.paginateBy = 1000;
+            $scope.pageSize = 1000;
+        }
+    }
 
     /**
      * Initialises default values
@@ -147,13 +165,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
             $scope.selectTab($scope.response.table); //Chooses active table
             vm.searchLoadingHandler.stop();
 
-            // Animates to search tabs. TODO: maybe enable, maybe not
-            // $('html, body').animate({
-            //     scrollTop: ($("#searches").offset().top - 70)
-            // }, 'fast');
-
         } else {
-            // Search fails
             // TODO: make nice error page why search failed.
             $state.go("/");
                 $(function(){
@@ -186,9 +198,6 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
                 tab: $scope.searchParameters.tab,
                 page: $scope.searchParameters.page,
                 paginateBy: $scope.searchParameters.paginateBy,
-                // tab: $stateParams.tab,
-                // page: $stateParams.page,
-                // paginateBy: $stateParams.paginateBy,
                 query: $stateParams.query
             },
             {
@@ -215,6 +224,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
 
     /**
      * Gets results length for a certain tab.
+     * Number of elements in a current table.
      * @param tab Tab's name
      * @returns Integer value of results length
      */
@@ -225,6 +235,19 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
             return 0;
         }
     };
+
+    /**
+     * Gets number of results found with a certain query.
+     * @param tab Tab's name
+     * @returns Integer value of responses numFound
+     */
+    // $scope.getResultsNumFound = function (tab) {
+    //     if ($scope.searchResults[tab].response != null) {
+    //         return $scope.searchResults[tab].numFound;
+    //     } else {
+    //         return 0;
+    //     }
+    // };
 
     /**
      * Returns true if current open tab name
