@@ -283,6 +283,15 @@ module.config(function($stateProvider, $urlRouterProvider) {
             controller: "DetailController as detailCtrl",
             params: {type: "doi"}
     })
+        .state('doi.view2', {
+            data: {
+                pageTitle: "{{'TITLES.DOI' | translate}} {{ $stateParams.identifier }}"
+            },
+            url: "/doi/:identifier",
+            templateUrl: "app/templates/search/detail/doiDetails.html",
+            controller: "DetailController as detailCtrl",
+            params: {type: "doi"}
+    })
         .state('error', {
             url: '/error',
             templateUrl: 'app/templates/main/partial/default.error.html'

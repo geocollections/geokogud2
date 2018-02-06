@@ -17,6 +17,10 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
      */
     function searchEntity () {
         vm.detailLoadingHandler.start();
+        if (['doi'].indexOf($stateParams.type) > 1) {
+            // applicationService.getEntity($stateParams.type, $stateParams.id, $stateParams.identifier, onEntityData, onDetailError)
+            applicationService.getEntity($stateParams.type, $stateParams.id, onEntityData, onDetailError)
+        }
         applicationService.getEntity($stateParams.type, $stateParams.id, onEntityData, onDetailError)
     }
 
