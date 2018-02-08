@@ -104,6 +104,26 @@ public class DetailsController {
                 stratigraphy ->
                         receivedLithostratigraphy -> stratigraphy.put("lithostratigraphies", receivedLithostratigraphy));
 
+        // Call for stratigraphy Overlain_by
+        asynchService.doAsynchCallsForEachResult(
+                rawStratigraphy,
+                stratigraphy ->
+                        () -> stratigraphyApiService.findOverlainByStratigraphy(
+                                new SearchField(stratigraphy.get("age_top").toString(), LookUpType.exact),
+                                new SearchField(stratigraphy.get("parent_id").toString(), LookUpType.exact)),
+                stratigraphy ->
+                        receivedStratigraphy -> stratigraphy.put("overlain_by", receivedStratigraphy));
+
+        // Call for stratigraphy Overlies
+        asynchService.doAsynchCallsForEachResult(
+                rawStratigraphy,
+                stratigraphy ->
+                        () -> stratigraphyApiService.findOverliesStratigraphy(
+                                new SearchField(stratigraphy.get("age_base").toString(), LookUpType.exact),
+                                new SearchField(stratigraphy.get("parent_id").toString(), LookUpType.exact)),
+                stratigraphy ->
+                        receivedStratigraphy -> stratigraphy.put("overlies", receivedStratigraphy));
+
         return rawStratigraphy;
     }
 

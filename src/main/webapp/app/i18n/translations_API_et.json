@@ -385,7 +385,11 @@
             "SYNONYM": "Sünonüüm",
             "SYNONYM_LANG": "Keel",
             "SYNONYM_REFERENCE": "Viide",
-            "SYNONYM_REMARKS": "Lisainfo"
+            "SYNONYM_REMARKS": "Lisainfo",
+            "OVERLAIN_BY": "Lamab",
+            "OVERLAIN_BY_EN": "Lamab (EN)",
+            "OVERLIES": "Lasub",
+            "OVERLIES_EN": "Lasub (EN)"
         },
         "ANALYSIS":  {
             "ID":"ID",

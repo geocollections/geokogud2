@@ -402,7 +402,7 @@ angular.module('geoApp')
             et: '=',
             en: '='
         },
-        // TODO: If one language exist and other doesnt then changing language should always show the one which exists. 
+        // TODO: If one language exist and other doesnt then changing language should always show the one which exists.
         link: function (scope) {
             scope.$watch('[et, en]', function(newValue) {
                 scope.localizedValue = $translate.use() == 'et'

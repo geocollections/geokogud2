@@ -15,4 +15,8 @@ public interface StratigraphyApiService {
 
     ApiResponse findAllLithostratigraphies(SearchField ageChronoId);
 
+    ApiResponse findOverliesStratigraphy(SearchField ageBase, SearchField parentId);
+
+    ApiResponse findOverlainByStratigraphy(SearchField ageTop, SearchField parentId);
+
 }

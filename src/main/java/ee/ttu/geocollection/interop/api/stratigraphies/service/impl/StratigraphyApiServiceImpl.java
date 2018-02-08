@@ -109,4 +109,28 @@ public class StratigraphyApiServiceImpl implements StratigraphyApiService {
                 .buildFullQuery();
         return apiService.searchRawEntities(STRATIGRAPHY_TABLE, 100, 1, new SortField(), requestParams);
     }
+
+    @Override
+    public ApiResponse findOverlainByStratigraphy(SearchField ageTop, SearchField parentId) {
+        String requestParams = FluentStratigraphySearchApiBuilder.aRequest()
+                .queryAgeTopForAgeBase(ageTop)
+                .queryCorrectParentId(parentId)
+                .returnStratigraphy()
+                .returnStratigraphyEn()
+                .returnStratigraphyId()
+                .buildFullQuery();
+        return apiService.searchRawEntities(STRATIGRAPHY_TABLE, 1, 1, new SortField(), requestParams);
+    }
+
+    @Override
+    public ApiResponse findOverliesStratigraphy(SearchField ageBase, SearchField parentId) {
+        String requestParams = FluentStratigraphySearchApiBuilder.aRequest()
+                .queryAgeBaseForAgeTop(ageBase)
+                .queryCorrectParentId(parentId)
+                .returnStratigraphy()
+                .returnStratigraphyEn()
+                .returnStratigraphyId()
+                .buildFullQuery();
+        return apiService.searchRawEntities(STRATIGRAPHY_TABLE, 1, 1, new SortField(), requestParams);
+    }
 }

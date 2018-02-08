@@ -65,29 +65,46 @@ public class FluentStratigraphySearchApiBuilder extends FluentSearchApiBuilder<F
         return this;
     }
 
-
-    /* LITHOSTRATIGRAPHY START */
-
-    public FluentStratigraphySearchApiBuilder queryAgeChronostratigraphyIdForUrl(SearchField ageChronoId) {
-        buildFieldParameters(AGE_CHRONOSTRATIGRAPHY_ID, ageChronoId);
-        return this;
-    }
-
     public FluentStratigraphySearchApiBuilder returnStratigraphy() {
         addReturningField(STRATIGRAPHY);
         return this;
     }
+
     public FluentStratigraphySearchApiBuilder returnStratigraphyEn() {
         addReturningField(STRATIGRAPHY_EN);
         return this;
     }
+
     public FluentStratigraphySearchApiBuilder returnStratigraphyId() {
         addReturningField(ID);
         return this;
     }
 
+    public FluentStratigraphySearchApiBuilder queryCorrectParentId(SearchField parentId) {
+        buildFieldParameters(PARENT_ID, parentId);
+        return this;
+    }
+
+
+    /* LITHOSTRATIGRAPHY START */
+    public FluentStratigraphySearchApiBuilder queryAgeChronostratigraphyIdForUrl(SearchField ageChronoId) {
+        buildFieldParameters(AGE_CHRONOSTRATIGRAPHY_ID, ageChronoId);
+        return this;
+    }
     /* LITHOSTRATIGRAPHY END */
 
+    /* OVERLAIN_BY START */
+    public FluentStratigraphySearchApiBuilder queryAgeTopForAgeBase(SearchField ageTop) {
+        buildFieldParameters(AGE_BASE, ageTop);
+        return this;
+    }
+    /* OVERLAIN_BY END */
 
+    /* OVERLIES START */
+    public FluentStratigraphySearchApiBuilder queryAgeBaseForAgeTop(SearchField ageBase) {
+        buildFieldParameters(AGE_TOP, ageBase);
+        return this;
+    }
+    /* OVERLIES END */
 
 }

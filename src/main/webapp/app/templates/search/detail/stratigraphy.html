@@ -52,8 +52,28 @@
                         </td>
                     </tr>
 
-                    <!-- TODO: overlain by -->
-                    <!-- TODO: overlies -->
+                    <!-- TODO: overlain by, this is it -->
+                    <tr data-ng-if="detailCtrl.results.overlain_by.count > 0">
+                        <td>
+                            <localize-label et="'API_TRANSLATION.STRATIGRAPHY.OVERLAIN_BY'" en="'API_TRANSLATION.STRATIGRAPHY.OVERLAIN_BY_EN'" />
+                        </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: detailCtrl.results.overlain_by.results[0].id})">
+                                <localize et="detailCtrl.results.overlain_by.results[0].stratigraphy" en="detailCtrl.results.overlain_by.results[0].stratigraphy_en" />
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.overlies.count > 0">
+                        <td>
+                            <localize-label et="'API_TRANSLATION.STRATIGRAPHY.OVERLIES'" en="'API_TRANSLATION.STRATIGRAPHY.OVERLIES_EN'" />
+                        </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: detailCtrl.results.overlies.results[0].id})">
+                                <localize et="detailCtrl.results.overlies.results[0].stratigraphy" en="detailCtrl.results.overlies.results[0].stratigraphy_en" />
+                            </a>
+                        </td>
+                    </tr>
 
                     <tr data-ng-if="(detailCtrl.results.type__value && detailCtrl.results.type__value != null)
                         || (detailCtrl.results.type__value_en && detailCtrl.results.type__value_en != null) ">
@@ -221,7 +241,7 @@
                 <div data-ng-if="detailCtrl.results.lithostratigraphies.count > 0">
                     <h3> {{ 'DETAIL.STRATIGRAPHY.LITHOSTRATIGRAPHY_HEADING' | translate }} </h3>
 
-                    <div class="table-responsive">
+                    <div>
                         <table class="table table-bordered table-hover">
                             <thead class="styles-for-table-headers">
                             <tr>
