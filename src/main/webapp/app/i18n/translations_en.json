@@ -546,7 +546,8 @@
             "RESULTS_VALUE_TXT": "Measured value (txt)"
         },
         "STRATIGRAPHY": {
-
+            "LITHOSTRATIGRAPHY_HEADING": "Lithostratigraphy",
+            "STRATIGRAPHY": "Stratigraphy"
         },
         "NEXT": "NEXT",
         "PREVIOUS": "PREVIOUS",

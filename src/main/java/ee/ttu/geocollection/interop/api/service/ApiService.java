@@ -14,6 +14,8 @@ public interface ApiService {
      */
     Map findRawEntity(String tableName, String requestParams);
 
+    ApiResponse searchRawEntities(String tableName, String requestParams);
+
     /**
      * Calls searchRawEntities() with extra paginateBy parameter set to 30
      * @param tableName to specify table name /tableName/
@@ -34,7 +36,7 @@ public interface ApiService {
      * @param requestParams extra parameters given by certain request
      * @return returns response from api
      */
-    ApiResponse searchRawEntities(String tableName, int paginateBy, int page, SortField sortField, String requestParams) ;
+    ApiResponse searchRawEntities(String tableName, int paginateBy, int page, SortField sortField, String requestParams);
 
     /**
      *
@@ -46,5 +48,4 @@ public interface ApiService {
      */
     Map searchByField(String table, String term, String sortField, String searchField);
 
-    ApiResponse searchRawEntitiesUsingSolr(String tableName, int paginateBy, int page, SortField sordtfield, String requestParams);
 }

@@ -1,5 +1,6 @@
 package ee.ttu.geocollection.interop.api.stratigraphies.service.impl;
 
+import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.domain.SortField;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
@@ -87,7 +88,7 @@ public class StratigraphyApiServiceImpl implements StratigraphyApiService {
     }
 
     @Override
-    public Map findRawById(Long id) {
+    public ApiResponse findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
                 .relatedData("stratigraphy_reference")
@@ -95,15 +96,17 @@ public class StratigraphyApiServiceImpl implements StratigraphyApiService {
                 .relatedData("stratigraphy_synonym")
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
-        return apiService.findRawEntity(STRATIGRAPHY_TABLE, requestParams);
+        return apiService.searchRawEntities(STRATIGRAPHY_TABLE, requestParams);
     }
 
     @Override
-    public ApiResponse findStratigraphyByIds(List<String> ids) {
-        String requestParams = prepareCommonFields(new StratigraphySearchCriteria())
-                .queryMultipleIds(ids).andReturn()
-                .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities(STRATIGRAPHY_TABLE, ids.size() + 1, 1, new SortField(), requestParams);
+    public ApiResponse findAllLithostratigraphies(SearchField ageChronoId) {
+        String requestParams = FluentStratigraphySearchApiBuilder.aRequest()
+                .queryAgeChronostratigraphyIdForUrl(ageChronoId)
+                .returnStratigraphy()
+                .returnStratigraphyEn()
+                .returnStratigraphyId()
+                .buildFullQuery();
+        return apiService.searchRawEntities(STRATIGRAPHY_TABLE, 100, 1, new SortField(), requestParams);
     }
-
 }

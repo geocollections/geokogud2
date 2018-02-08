@@ -26,11 +26,6 @@ import java.util.Map;
 @Service
 public class ApiServiceImpl implements ApiService {
 
-    /**
-     * to specify the number of records per page: ?paginate_by=$paginate_by
-     * Pagination is currently set to 30
-     */
-    private static final int PAGINATE_BY = 30;
     private static final Logger logger = LoggerFactory.getLogger(ApiServiceImpl.class);
 
     /**
@@ -38,6 +33,12 @@ public class ApiServiceImpl implements ApiService {
      */
     @Value("${geo-api.url}")
     private String apiUrl;
+
+    /**
+     * to specify the number of records per page: ?paginate_by=$paginate_by
+     * Pagination is currently set to 30
+     */
+    private static final int PAGINATE_BY = 30;
 
     /**
      * Creates a new instance of the RestTemplate
@@ -66,6 +67,21 @@ public class ApiServiceImpl implements ApiService {
     }
 
     @Override
+    public ApiResponse searchRawEntities(String tableName, String requestParams) {
+        String url;
+
+        if (tableName.equals("drillcore_box")) {
+            url = apiUrl + "/" + tableName + "/" + requestParams + "?format=json";
+        } else {
+            url = apiUrl + "/" + tableName + "/" + requestParams + "&format=json";
+        }
+
+        logger.trace("Searching: " + url);
+
+        return getResponse(tableName, url);
+    }
+
+    @Override
     public ApiResponse searchRawEntities(String tableName, int page, SortField sortField, String requestParams) {
         return searchRawEntities(tableName, PAGINATE_BY, page, sortField, requestParams);
     }
@@ -77,32 +93,11 @@ public class ApiServiceImpl implements ApiService {
                 + "?paginate_by=" + paginateBy + "&page=" + page
                 + "&order_by=" + getSortingDirection(sortField.getOrder()) + sortField.getSortBy()
                 + "&format=json"
-                + escapeParameters(requestParams);;
+                + escapeParameters(requestParams);
 
         logger.trace("Searching: " + url);
 
-        try {
-            /*
-             * Retrieves a representation by doing GET on the URL.
-             * The response (if any) is converted and returned.
-             * First parameter: url.
-             * Second parameter: the type of the return value.
-             * Returns: the converted object
-             */
-            ApiResponse response = restTemplate.getForObject(new URI(url), ApiResponse.class);
-
-            if (response != null) {
-                response.setTable(tableName);
-            }
-            return response;
-
-        } catch (HttpMessageNotReadableException e) {
-            throw new AppException(AppError.BAD_REQUEST, e);
-        } catch (HttpServerErrorException e) {
-            throw new AppException(AppError.ERROR_API_UNAVAILABLE, e);
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
+        return getResponse(tableName, url);
     }
 
     @Override
@@ -130,30 +125,6 @@ public class ApiServiceImpl implements ApiService {
         return response.getBody();
     }
 
-    @Override
-    public ApiResponse searchRawEntitiesUsingSolr(String tableName, int paginateBy, int page, SortField sortfield, String requestParams) {
-        String url = "http://193.40.102.11:8983/solr/" + tableName
-                + "/select?q=160&facet=true&rows=" + paginateBy
-                + "&sort=date_added%20DESC&start=0";
-
-        logger.trace("Searching from solr: " + url);
-
-
-        try {
-            ApiResponse response = restTemplate.getForObject(new URI(url), ApiResponse.class);
-            if (response != null) {
-                response.setTable(tableName);
-            }
-            return response;
-        } catch (HttpMessageNotReadableException e) {
-            throw new AppException(AppError.BAD_REQUEST, e);
-        } catch (HttpServerErrorException e) {
-            throw new AppException(AppError.ERROR_API_UNAVAILABLE, e);
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     /**
      * Adds nothing or "-" sign for api to understand if ordering is ascending or descending
      * @param order which is either ASCENDING or DESCENDING
@@ -170,5 +141,30 @@ public class ApiServiceImpl implements ApiService {
      */
     private String escapeParameters(String parameters) {
         return UrlEscapers.urlPathSegmentEscaper().escape(parameters);
+    }
+
+    private ApiResponse getResponse(String tableName, String url) {
+        try {
+            /*
+             * Retrieves a representation by doing GET on the URL.
+             * The response (if any) is converted and returned.
+             * First parameter: url.
+             * Second parameter: the type of the return value.
+             * Returns: the converted object
+             */
+            ApiResponse response = restTemplate.getForObject(new URI(url), ApiResponse.class);
+
+            if (response != null) {
+                response.setTable(tableName);
+            }
+            return response;
+
+        } catch (HttpMessageNotReadableException e) {
+            throw new AppException(AppError.BAD_REQUEST, e);
+        } catch (HttpServerErrorException e) {
+            throw new AppException(AppError.ERROR_API_UNAVAILABLE, e);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

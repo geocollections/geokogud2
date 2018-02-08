@@ -217,6 +217,31 @@
 
                     </tbody>
                 </table>
+
+                <div data-ng-if="detailCtrl.results.lithostratigraphies.count > 0">
+                    <h3> {{ 'DETAIL.STRATIGRAPHY.LITHOSTRATIGRAPHY_HEADING' | translate }} </h3>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="styles-for-table-headers">
+                            <tr>
+                                <th> {{ 'DETAIL.STRATIGRAPHY.STRATIGRAPHY' | translate }} </th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr data-ng-repeat="entity in detailCtrl.results.lithostratigraphies.results">
+                                <td>
+                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: entity.id})">
+                                        <localize en="entity.stratigraphy_en" et="entity.stratigraphy" />
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
 
             <div class="col-sm-6" data-ng-if="detailCtrl.stratigraphyReference.length > 0">

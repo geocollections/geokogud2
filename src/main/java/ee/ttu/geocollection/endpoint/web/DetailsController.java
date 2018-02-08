@@ -1,6 +1,10 @@
 package ee.ttu.geocollection.endpoint.web;
 
 
+import ee.ttu.geocollection.domain.LookUpType;
+import ee.ttu.geocollection.domain.SearchField;
+import ee.ttu.geocollection.interop.api.AsynchService;
+import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.analyses.search.AnalysesApiService;
 import ee.ttu.geocollection.interop.api.doi.service.DoiApiService;
 import ee.ttu.geocollection.interop.api.drillCores.service.DrillCoreApiService;
@@ -28,6 +32,8 @@ import java.util.Map;
 public class DetailsController {
     private static final Logger logger = LoggerFactory.getLogger(DetailsController.class);
 
+    @Autowired
+    private AsynchService asynchService;
 
     @Autowired
     private DrillCoreApiService drillCoreApiService;
@@ -86,8 +92,19 @@ public class DetailsController {
     }
 
     @RequestMapping(value = "/raw-stratigraphy/{id}")
-    public Map findRawStratigraphyById(@PathVariable Long id) {
-        return stratigraphyApiService.findRawById(id);
+    public ApiResponse findRawStratigraphyById(@PathVariable Long id) {
+        ApiResponse rawStratigraphy = stratigraphyApiService.findRawById(id);
+
+        // Call for lithostratigraphies
+        asynchService.doAsynchCallsForEachResult(
+                rawStratigraphy,
+                stratigraphy ->
+                        () -> stratigraphyApiService.findAllLithostratigraphies(
+                                new SearchField(stratigraphy.get("id").toString(), LookUpType.exact)),
+                stratigraphy ->
+                        receivedLithostratigraphy -> stratigraphy.put("lithostratigraphies", receivedLithostratigraphy));
+
+        return rawStratigraphy;
     }
 
     @RequestMapping(value = "/raw-reference/{id}")

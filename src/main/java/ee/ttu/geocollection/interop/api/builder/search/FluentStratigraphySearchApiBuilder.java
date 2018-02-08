@@ -64,4 +64,30 @@ public class FluentStratigraphySearchApiBuilder extends FluentSearchApiBuilder<F
         addReturningField(AGE_CHRONOSTRATIGRAPHY_ID);
         return this;
     }
+
+
+    /* LITHOSTRATIGRAPHY START */
+
+    public FluentStratigraphySearchApiBuilder queryAgeChronostratigraphyIdForUrl(SearchField ageChronoId) {
+        buildFieldParameters(AGE_CHRONOSTRATIGRAPHY_ID, ageChronoId);
+        return this;
+    }
+
+    public FluentStratigraphySearchApiBuilder returnStratigraphy() {
+        addReturningField(STRATIGRAPHY);
+        return this;
+    }
+    public FluentStratigraphySearchApiBuilder returnStratigraphyEn() {
+        addReturningField(STRATIGRAPHY_EN);
+        return this;
+    }
+    public FluentStratigraphySearchApiBuilder returnStratigraphyId() {
+        addReturningField(ID);
+        return this;
+    }
+
+    /* LITHOSTRATIGRAPHY END */
+
+
+
 }

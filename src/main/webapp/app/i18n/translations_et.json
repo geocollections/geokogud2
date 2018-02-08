@@ -546,7 +546,8 @@
             "RESULTS_VALUE_BIN": "Väärtus (txt)"
         },
         "STRATIGRAPHY": {
-
+            "LITHOSTRATIGRAPHY_HEADING": "Litostratigraafia",
+            "STRATIGRAPHY": "Stratigraafia"
         },
         "NEXT": "JÄRGMINE",
         "PREVIOUS": "EELMINE",
