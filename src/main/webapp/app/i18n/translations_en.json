@@ -547,7 +547,8 @@
         },
         "STRATIGRAPHY": {
             "LITHOSTRATIGRAPHY_HEADING": "Lithostratigraphy",
-            "STRATIGRAPHY": "Stratigraphy"
+            "STRATIGRAPHY": "Stratigraphy",
+            "DESCRIPTION_HEADING": "Kirjeldus"
         },
         "NEXT": "NEXT",
         "PREVIOUS": "PREVIOUS",

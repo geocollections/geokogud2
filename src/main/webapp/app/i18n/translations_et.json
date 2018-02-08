@@ -547,7 +547,8 @@
         },
         "STRATIGRAPHY": {
             "LITHOSTRATIGRAPHY_HEADING": "Litostratigraafia",
-            "STRATIGRAPHY": "Stratigraafia"
+            "STRATIGRAPHY": "Stratigraafia",
+            "DESCRIPTION_HEADING": "Description"
         },
         "NEXT": "JÄRGMINE",
         "PREVIOUS": "EELMINE",
