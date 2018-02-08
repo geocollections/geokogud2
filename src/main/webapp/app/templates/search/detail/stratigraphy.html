@@ -362,6 +362,11 @@
 
             </div>
 
+            <div class="col-sm-12" data-ng-if="(detailCtrl.results.description && detailCtrl.results.description != null)
+                || (detailCtrl.results.description_en && detailCtrl.results.description_en != null)">
+                <div ng-bind-html="detailCtrl.results.description_en"></div>
+            </div>
+
         </div>
 
     </div>
