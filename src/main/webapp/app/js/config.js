@@ -278,16 +278,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
             data: {
                 pageTitle: "{{'TITLES.DOI' | translate}} {{ $stateParams.id }}"
             },
-            url: "/doi/:id",
-            templateUrl: "app/templates/search/detail/doiDetails.html",
-            controller: "DetailController as detailCtrl",
-            params: {type: "doi"}
-    })
-        .state('doi.view2', {
-            data: {
-                pageTitle: "{{'TITLES.DOI' | translate}} {{ $stateParams.identifier }}"
-            },
-            url: "/doi/:identifier",
+            url: "/doi/{id:.+}",
             templateUrl: "app/templates/search/detail/doiDetails.html",
             controller: "DetailController as detailCtrl",
             params: {type: "doi"}

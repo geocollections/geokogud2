@@ -65,7 +65,11 @@ var constructor = function (utils, configuration, $window, $location) {
         // console.log("callback: " + callback);
         var url = getDetailUrl(searchType);
         console.log("url: " + url);
-        utils.httpGet(url + "/" + id, null, callback, error);
+        if (id.includes("10.15152/GEO.")) { // If clause for universal DOI identifier
+            utils.httpGet(url + "/" + id.substring(13), null, callback, error);
+        } else {
+            utils.httpGet(url + "/" + id, null, callback, error);
+        }
     };
 
     service.loadMapData = function (callback, error) {

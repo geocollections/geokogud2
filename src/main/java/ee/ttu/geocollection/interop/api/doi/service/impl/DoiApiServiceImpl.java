@@ -15,6 +15,9 @@ import java.util.Map;
 
 @Service
 public class DoiApiServiceImpl implements DoiApiService {
+
+    private static final String DOI_TABLE = "doi";
+
     @Autowired
     private ApiService apiService;
     private List<String> fields = Arrays.asList(
@@ -74,7 +77,12 @@ public class DoiApiServiceImpl implements DoiApiService {
                 .returnReference()
                 .returnReferenceDoi()
                 .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities("doi", searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
+        return apiService.searchRawEntities(
+                DOI_TABLE,
+                searchCriteria.getPaginateBy(),
+                searchCriteria.getPage(),
+                searchCriteria.getSortField(),
+                requestParams);
     }
 
     @Override
@@ -87,7 +95,6 @@ public class DoiApiServiceImpl implements DoiApiService {
                 .relatedData("attachment")
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
-        return apiService.findRawEntity("doi", requestParams);
+        return apiService.findRawEntity(DOI_TABLE, requestParams);
     }
-
 }

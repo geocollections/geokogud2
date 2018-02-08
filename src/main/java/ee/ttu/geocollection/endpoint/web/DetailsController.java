@@ -13,9 +13,12 @@ import ee.ttu.geocollection.interop.api.soil.service.SoilApiService;
 import ee.ttu.geocollection.interop.api.specimen.service.SpecimenApiService;
 import ee.ttu.geocollection.interop.api.stratigraphies.service.StratigraphyApiService;
 import ee.ttu.geocollection.interop.solr.specimen.service.SpecimenSolrService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
@@ -23,6 +26,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/details")
 public class DetailsController {
+    private static final Logger logger = LoggerFactory.getLogger(DetailsController.class);
+
+
     @Autowired
     private DrillCoreApiService drillCoreApiService;
     @Autowired
@@ -84,7 +90,6 @@ public class DetailsController {
         return stratigraphyApiService.findRawById(id);
     }
 
-
     @RequestMapping(value = "/raw-reference/{id}")
     public Map findRawReferenceById(@PathVariable Long id) {
         return referenceApiService.findRawById(id);
@@ -94,20 +99,24 @@ public class DetailsController {
     public Map findRawAnalysisById(@PathVariable Long id) {
         return analysesApiService.findRawById(id);
     }
+
     @RequestMapping(value = "/raw-preparation/{id}")
     public Map findRawPreparationById(@PathVariable Long id) {
         return preparationsApiService.findRawById(id);
     }
+
     @RequestMapping(value = "/raw-photo-archive/{id}")
     public Map findRawPhotoArchiveById(@PathVariable Long id) {
         return photoArchiveApiService.findRawById(id);
     }
+
     @RequestMapping(value = "/raw-soil/{id}")
     public Map findRawSoilById(@PathVariable Long id)  {
         return soilApiService.findRawById(id);
     }
+
     @RequestMapping(value = "/raw-doi/{id}")
-    public Map findRawDoiById(@PathVariable Long id) {
+    public Map findRawDoiByIdentifier(@PathVariable Long id) {
         return doiApiService.findRawById(id);
     }
 

@@ -6,6 +6,7 @@ import ee.ttu.geocollection.interop.api.doi.pojo.DoiSearchCriteria;
 import java.util.Map;
 
 public interface DoiApiService {
+
     ApiResponse findDoi(DoiSearchCriteria searchCriteria) ;
 
     Map findRawById(Long id);
