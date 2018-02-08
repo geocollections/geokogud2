@@ -60,11 +60,6 @@
                     </thead>
                     <tbody>
 
-                    <tr data-ng-if="detailCtrl.results.id && detailCtrl.results.id != null">
-                        <td> {{ 'API_TRANSLATION.SPECIMEN_IMAGE.ID' | translate }} </td>
-                        <td> {{ detailCtrl.results.id }} </td>
-                    </tr>
-
                     <tr data-ng-if="detailCtrl.results.specimen__specimen_id && detailCtrl.results.specimen__specimen_id != null">
                         <td> {{ 'API_TRANSLATION.SPECIMEN_IMAGE.SPECIMEN_ID' | translate }} </td>
                         <td>
@@ -160,17 +155,6 @@
                         <localize et="detailCtrl.results.remarks" en="detailCtrl.results.remarks_en"/>
                     </tr>
 
-                    <tr data-ng-if="(detailCtrl.results.type__value && detailCtrl.results.type__value != null)
-                            || (detailCtrl.results.type__value_en && detailCtrl.results.type__value_en != null) ">
-                        <td>
-                            <localize-label et="'API_TRANSLATION.PHOTO_ARCHIVE.TYPE__VALUE'"
-                                            en="'API_TRANSLATION.PHOTO_ARCHIVE.TYPE__VALUE_EN'"/>
-                        </td>
-                        <td>
-                            <localize et="detailCtrl.results.type__value" en="detailCtrl.results.type__value_en"/>
-                        </td>
-                    </tr>
-
                     <tr data-ng-if="detailCtrl.results.image && detailCtrl.results.image != null">
                         <td> {{ 'API_TRANSLATION.SPECIMEN_IMAGE.IMAGE' | translate }} </td>
                         <td> {{ detailCtrl.results.image }} </td>
@@ -189,12 +173,14 @@
 
                     <tr data-ng-if="detailCtrl.results.device_id__name && detailCtrl.results.device_id__name != null">
                         <td> {{ 'API_TRANSLATION.SPECIMEN_IMAGE.DEVICE' | translate }} </td>
-                        <td> {{ detailCtrl.results.device_id__name }} </td>
+                        <td>
+                            <first-not-null values="[detailCtrl.results.camera, detailCtrl.results.device_id__name]" />
+                        </td>
                     </tr>
 
                     <tr data-ng-if="detailCtrl.results.camera && detailCtrl.results.camera != null">
                         <td> {{ 'API_TRANSLATION.SPECIMEN_IMAGE.DEVICE_FREE' | translate }} </td>
-                        <td> {{ detailCtrl.results.camera }} </td>
+                        <td>{{ detailCtrl.results.camera }}</td>
                     </tr>
 
                     <!--TODO:file_source ??? image_source_type-->
@@ -226,11 +212,6 @@
                     <tr data-ng-if="detailCtrl.results.date_digitised_free && detailCtrl.results.date_digitised_free != null" >
                         <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.DATE_DIGITISED_FREE' | translate }}</td>
                         <td> {{detailCtrl.results.date_digitised_free }}</td>
-                    </tr>
-
-                    <tr data-ng-if="detailCtrl.results.device_id__name && detailCtrl.results.device_id__name != null">
-                        <td> {{ 'API_TRANSLATION.SPECIMEN_IMAGE.DEVICE_DIGITISED' | translate }} </td>
-                        <td> {{ detailCtrl.results.device_id__name }} </td>
                     </tr>
 
                     <tr data-ng-if="detailCtrl.results.agent__forename != null && detailCtrl.results.agent__surename != null

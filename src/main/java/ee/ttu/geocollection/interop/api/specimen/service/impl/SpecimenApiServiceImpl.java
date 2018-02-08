@@ -285,7 +285,7 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .returnCustomField(ApiFields.IMAGE_URL)
                 .returnCustomField(ApiFields.SPECIMEN__DATABASE__ACRONYM)
                 .returnCustomField(ApiFields.SPECIMEN_ID)
-//                .returnCustomField(ApiFields.SPECIMEN__SPECIMEN_ID)
+                .returnCustomField(ApiFields.SPECIMEN__SPECIMEN_ID)
                 .returnCustomField("specimen__specimenidentification__taxon__taxon")
                 .returnCustomField("specimen__specimenidentification__taxon__id")
                 .returnCustomField("specimen__specimenidentification__name")
