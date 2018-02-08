@@ -96,7 +96,8 @@
           "title": "title",
           "journal": "journal",
           "book": "book",
-          "id": "reference___id"
+          "id": "reference___id",
+          "abstracts": "abstracts"
         }
       },
       "locality": {

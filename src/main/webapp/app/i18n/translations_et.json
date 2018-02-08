@@ -258,6 +258,8 @@
             "TITLE": "Pealkiri",
             "JOURNAL": "Ajakiri",
             "BOOK": "Raamat, kogumik",
+            "ABSTRACT": "Abstrakt",
+            "KEYWORDS": "Märksõnad",
             "TABLE": {
                 "REFERENCE": "Viide",
                 "JOURNAL_BOOK": "Ajakiri / kogumik",

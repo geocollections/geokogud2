@@ -358,6 +358,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
                 '"title":{"lookUpType":"icontains"},' +
                 '"journal":{"lookUpType":"icontains"},' +
                 '"book":{"lookUpType":"icontains"},' +
+                '"abstracts:{"lookUpType":icontains},' +
                 '"maxSize":5,' +
                 '"paginateBy":25}');
         }

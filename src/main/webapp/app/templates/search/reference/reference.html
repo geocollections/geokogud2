@@ -48,7 +48,8 @@
                                                        ng-model="searchParameters.author.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.author.name" sort-by="{{searchParameters.author.lookUpType}}" table="reference" en="null" et="author"/>
+                                        <input type="text" ng-model="searchParameters.author.name" class="form-control" />
+                                        <!--<autocomplete-field ng-model="searchParameters.author.name" sort-by="{{searchParameters.author.lookUpType}}" table="reference" en="null" et="author"/>-->
                                     </div>
                                 </div>
 
@@ -70,7 +71,8 @@
                                                        ng-model="searchParameters.title.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.title.name" sort-by="{{searchParameters.title.lookUpType}}" table="reference" en="null" et="title"/>
+                                        <input type="text" ng-model="searchParameters.title.name" class="form-control" />
+                                        <!--<autocomplete-field ng-model="searchParameters.title.name" sort-by="{{searchParameters.title.lookUpType}}" table="reference" en="null" et="title"/>-->
                                     </div>
                                 </div>
 
@@ -92,9 +94,33 @@
                                                      ng-model="searchParameters.book.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.book.name" sort-by="{{searchParameters.book.lookUpType}}" table="reference" en="null" et="book"/>
+                                        <input type="text" ng-model="searchParameters.book.name" class="form-control" />
+                                        <!--<autocomplete-field ng-model="searchParameters.book.name" sort-by="{{searchParameters.book.lookUpType}}" table="reference" en="null" et="book"/>-->
                                     </div>
                                 </div>
+
+                                <div class="row searchCriterion">
+                                    <div class="col-md-12 medium-padding">
+                                        <b>{{ 'SEARCH.REFERENCES.ABSTRACT' | translate }}</b>
+                                        <selectdefault custom-css="searchCriterionType"
+                                                     ng-model="searchParameters.abstracts.lookUpType"></selectdefault>
+                                    </div>
+                                    <div class="col-md-12 medium-padding">
+                                        <input type="text" ng-model="searchParameters.abstracts.name" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <!--TODO: Does not exist in reference table, but there is a reference_keyword table-->
+                                <!--<div class="row searchCriterion">-->
+                                    <!--<div class="col-md-12 medium-padding">-->
+                                        <!--<b>{{ 'SEARCH.REFERENCES.KEYWORDS' | translate }}</b>-->
+                                        <!--<selectdefault custom-css="searchCriterionType"-->
+                                                     <!--ng-model="searchParameters.keywords.lookUpType"></selectdefault>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-md-12 medium-padding">-->
+                                        <!--<input type="text" ng-model="searchParameters.keywords.name" class="form-control" />-->
+                                    <!--</div>-->
+                                <!--</div>-->
 
                                 <div class="row searchCriterion">
                                     <div class="col-md-12 medium-padding">

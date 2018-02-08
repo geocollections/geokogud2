@@ -17,6 +17,7 @@ public class ReferenceSearchCriteria implements PageableSearchCriteria {
     private SearchField doi;
     private SearchField book;
     private SearchField journal;
+    private SearchField abstracts;
 
     public int getPaginateBy() {
         return paginateBy;
@@ -106,5 +107,13 @@ public class ReferenceSearchCriteria implements PageableSearchCriteria {
 
     public void setDoi(SearchField doi) {
         this.doi = doi;
+    }
+
+    public SearchField getAbstracts() {
+        return abstracts;
+    }
+
+    public void setAbstracts(SearchField abstracts) {
+        this.abstracts = abstracts;
     }
 }
