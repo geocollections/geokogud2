@@ -58,7 +58,7 @@
                                   et="entity.sample__stratigraphy__stratigraphy"
                                   en="entity.sample__stratigraphy__stratigraphy_en"/>
                     </a> <!-- CHANGE && to || if you still want to see the | sign -->
-                    <span ng-show="entity.sample__stratigraphy__stratigraphy != null && entity.sample__lithostratigraphy__stratigraphy != null">|</span>
+                    <span data-ng-if="entity.sample__stratigraphy__stratigraphy != null && entity.sample__lithostratigraphy__stratigraphy != null">|</span>
                     <em>
                         <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.sample__lithostratigraphy_id})">
                             <localize data-ng-if="entity.sample__lithostratigraphy__stratigraphy != null || sample__lithostratigraphy__stratigraphy_en != null "

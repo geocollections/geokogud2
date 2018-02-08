@@ -59,7 +59,7 @@
                     <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.stratigraphy_id})">
                         <localize et="entity.stratigraphy" en="entity.stratigraphy_en"/>
                     </a>
-                    <span ng-show="(entity.stratigraphy && entity.lithostratigraphy) || (entity.stratigraphy_en && entity.lithostratigraphy_en)"> | </span>
+                    <span data-ng-if="(entity.stratigraphy && entity.lithostratigraphy) || (entity.stratigraphy_en && entity.lithostratigraphy_en)"> | </span>
                     <em>
                         <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.lithostratigraphy_id})">
                             <localize et="entity.lithostratigraphy" en="entity.lithostratigraphy_en"/>

@@ -51,7 +51,7 @@
                         <span data-ng-if="entity.journal__journal_name != null">
                             {{entity.journal__journal_name}}
                         </span>
-                        <span ng-show="entity.journal__journal_name != null && (entity.book && entity.book != null)">/</span>
+                        <span data-ng-if="entity.journal__journal_name != null && (entity.book && entity.book != null)">/</span>
                         <span data-ng-if="entity.book && entity.book != null">
                             {{entity.book}}
                         </span>
