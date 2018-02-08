@@ -49,7 +49,9 @@ public class FluentAnalysesApiBuilder  extends FluentSearchApiBuilder<FluentAnal
 
     public FluentAnalysesApiBuilder queryContent(SearchField content) {
         buildFieldParameters(ANALYSISRESULTS__VALUE, content);
-        addFieldNameAndValue("distinct", "true"); //removes duplicates if content is entered
+        if (content != null) {
+            addFieldNameAndValue("distinct", "true"); //removes duplicates if content is entered
+        }
         return this;
     }
 
