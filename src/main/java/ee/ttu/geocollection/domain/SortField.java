@@ -6,6 +6,7 @@ public class SortField {
      * Default field which is sorted
      */
     private String sortBy = "id";
+
     /**
      * Default sorting order
      */

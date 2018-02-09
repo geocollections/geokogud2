@@ -5,8 +5,14 @@ import javax.persistence.Enumerated;
 
 public class SearchField {
 
+    /**
+     * SearchFields name
+     */
     private String name;
 
+    /**
+     * SearchFields lookUpType, for example iexact, icontains
+     */
     @Enumerated(EnumType.STRING)
     private LookUpType lookUpType;
 
