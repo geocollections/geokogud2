@@ -18,7 +18,8 @@ public class ReferenceSearchCriteria implements PageableSearchCriteria {
     private SearchField book;
     private SearchField journal;
     private SearchField abstracts;
-    private SearchField tags;
+
+    private SearchField keywords;
 
     public int getPaginateBy() {
         return paginateBy;
@@ -118,12 +119,11 @@ public class ReferenceSearchCriteria implements PageableSearchCriteria {
         this.abstracts = abstracts;
     }
 
-
-    public SearchField getTags() {
-        return tags;
+    public SearchField getKeywords() {
+        return keywords;
     }
 
-    public void setTags(SearchField tags) {
-        this.tags = tags;
+    public void setKeywords(SearchField keywords) {
+        this.keywords = keywords;
     }
 }

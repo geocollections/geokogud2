@@ -98,7 +98,7 @@
           "book": "book",
           "id": "reference___id",
           "abstracts": "abstracts",
-          "tags": "tags"
+          "keywords": "keywords"
         }
       },
       "locality": {
