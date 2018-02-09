@@ -37,6 +37,9 @@ var constructor = function ($http, $stateParams, $location, configuration) {
                 if (typeof(sessionStorage) !== 'undefined') {
                     sessionStorage.setItem($stateParams.type, JSON.stringify(searchCriteria));
                 }
+                if (typeof(localStorage) !== 'undefined') {
+                    localStorage.setItem($stateParams.type, JSON.stringify(searchCriteria.dbs));
+                }
             }
         } else {
             service.composeUrl(data);

@@ -60,10 +60,15 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         // This here populates input fields
 
         var searchParamsSession = getSearchDataFromSessionStorage();
+        var institutions = getInstitutionsFromLocalStorage();
         if (typeof(searchParamsSession) !== 'undefined') {
             $scope.searchParameters = searchParamsSession;
             areInstitutionsChecked();
             isAdditionalCriteriaUsed();
+        }
+        if (typeof(institutions) !== 'undefined') {
+            $scope.searchParameters.dbs = institutions;
+            areInstitutionsChecked();
         }
 
         // Animates to search tabs.
@@ -168,6 +173,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
     $scope.resetSearch = function () {
         resetSearchParametersToDefault();
         sessionStorage.removeItem($stateParams.type);
+        localStorage.removeItem($stateParams.type);
     };
 
     /**
@@ -261,6 +267,15 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
             var tableName = $stateParams.type;
             if([tableName].indexOf(tableName) > -1 && sessionStorage[tableName] != null) {
                 return JSON.parse(sessionStorage.getItem(tableName));
+            }
+        }
+    }
+
+    function getInstitutionsFromLocalStorage() {
+        if (typeof(localStorage) !== 'undefined') {
+            var tableName = $stateParams.type;
+            if (tableName.indexOf(tableName) > -1 && localStorage[tableName] != null) {
+                return JSON.parse(localStorage.getItem(tableName));
             }
         }
     }
