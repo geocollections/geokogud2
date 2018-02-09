@@ -67,7 +67,8 @@ public class ReferenceApiServiceImpl implements ReferenceApiService {
                 .queryDoi(searchCriteria.getDoi()).andReturn()
                 .queryBook(searchCriteria.getBook()).andReturn()
                 .queryJournal(searchCriteria.getJournal()).andReturn()
-                .queryAbstract(searchCriteria.getAbstracts()).andReturn();
+                .queryAbstract(searchCriteria.getAbstracts()).andReturn()
+                .queryTags(searchCriteria.getTags()).andReturn();
     }
 
     @Override

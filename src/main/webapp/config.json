@@ -97,7 +97,8 @@
           "journal": "journal",
           "book": "book",
           "id": "reference___id",
-          "abstracts": "abstracts"
+          "abstracts": "abstracts",
+          "tags": "tags"
         }
       },
       "locality": {

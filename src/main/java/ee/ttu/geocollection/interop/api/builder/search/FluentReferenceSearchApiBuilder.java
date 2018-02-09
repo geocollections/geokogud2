@@ -48,6 +48,11 @@ public class FluentReferenceSearchApiBuilder extends FluentSearchApiBuilder<Flue
         return this;
     }
 
+    public FluentReferenceSearchApiBuilder queryTags(SearchField tags) {
+        buildFieldParameters(TAGS, tags);
+        return this;
+    }
+
     public FluentReferenceSearchApiBuilder queryReference(SearchField id) {
         buildFieldParameters(REFERENCE, id);
         return this;
