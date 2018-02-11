@@ -538,7 +538,8 @@
             "STRATIGRAPHY": "Stratigraphy",
             "STRATIGRAPHY_REMARKS": "Stratigraphy remarks",
             "SPECIMEN": "Specimens",
-            "ALL_SPECIMEN": "Show all specimens"
+            "ALL_SPECIMEN": "Show all specimens",
+            "IMAGES_HEADING": "Images"
         },
         "ANALYSIS": {
             "RESULTS": "Analyses results",

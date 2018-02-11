@@ -538,7 +538,8 @@
             "STRATIGRAPHY": "Stratigraafia",
             "STRATIGRAPHY_REMARKS": "Stratigraafia lisainfo",
             "SPECIMEN": "Eksemplarid",
-            "ALL_SPECIMEN": "Kuva kõik eksemplarid"
+            "ALL_SPECIMEN": "Kuva kõik eksemplarid",
+            "IMAGES_HEADING": "Pildid"
         },
         "ANALYSIS": {
             "RESULTS": "Analüüside tulemused",

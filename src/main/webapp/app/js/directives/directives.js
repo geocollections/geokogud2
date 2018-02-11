@@ -218,6 +218,51 @@ angular.module('geoApp')
                 }, true);
         }]
     };
+}).directive('showPreviewLocality', function () {
+    return {
+        template: '<img data-toggle="tooltip" title="{{title}}" data-html="true" class="img-rounded img-responsive margin-left-and-right-15" ng-src="{{previewImageUrl}}" spinner-load />',
+        restrict: 'E',
+        scope: {
+            imgUrl: '=',
+            imgTitle: '=',
+            titleLang: '='
+        },
+        controller: ['$scope','$translate', '$rootScope', function ($scope, $translate, $rootScope) {
+            $scope.$watch('imgTitle', function (newVal) {
+                console.log(newVal.length);
+                if (newVal.length > 0) {
+                    var estText = "";
+                    var engText = "";
+
+                    if (newVal[0] && newVal[0] != null) {
+                        estText += "Pildi autor: " + newVal[0] + "<br>";
+                        engText += "Image author: " + newVal[0] + "<br>";
+                    }
+                    if (newVal[1] && newVal[1] != null) {
+                        estText += "Pildistamise aeg: " + newVal[1];
+                        engText += "Date taken: " + new Date(newVal[1]).toDateString();
+                    }
+                    if (newVal[1] == null && newVal[2] && newVal[2] != null) {
+                        estText += "Pildistamise aeg: " +newVal[2];
+                        engText += "Date taken: " + newVal[2];
+                    }
+                    $scope.title = $translate.use() === 'et' ? estText : engText;
+
+                    $rootScope.$on('$translateChangeSuccess', function () {
+                        $scope.title = $translate.use() === 'et' ? estText : engText;
+                    });
+                }
+            });
+
+            $scope.$watch('imgUrl', function(newValue) {
+                if(newValue) {
+                    var foundHttp = newValue.match(/http:/);
+                    var lastSlashPosition = newValue.lastIndexOf('/');
+                    $scope.previewImageUrl = (foundHttp ? "" : "http://") + newValue.substring(0, lastSlashPosition) + '/preview' + newValue.substring(lastSlashPosition);
+                }
+            }, true);
+        }]
+    };
 }).directive('selecttemporary', function ($translate) {
     return {
         template:
