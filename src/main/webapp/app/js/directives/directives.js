@@ -229,7 +229,6 @@ angular.module('geoApp')
         },
         controller: ['$scope','$translate', '$rootScope', function ($scope, $translate, $rootScope) {
             $scope.$watch('imgTitle', function (newVal) {
-                console.log(newVal.length);
                 if (newVal.length > 0) {
                     var estText = "";
                     var engText = "";
