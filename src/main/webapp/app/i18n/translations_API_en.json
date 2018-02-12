@@ -398,7 +398,7 @@
             "ID":"ID",
             "ANALYSIS_METHOD__ANALYSIS_METHOD":"Method (ET)",
             "ANALYSIS_METHOD__METHOD_EN":"Method",
-            "METHOD_DETAILS":"Method details (ET)",
+            "METHOD_DETAILS":"Method details",
             "LAB":"Method details",
             "INSTRUMENT":"Instrument (ET)",
             "INSTRUMENT_TXT":"Instrument",

@@ -6,36 +6,21 @@ import ee.ttu.geocollection.domain.SortField;
 import java.util.List;
 
 public class DoiSearchCriteria {
+
     private int page = 1;
     private int paginateBy = 25;
     private SortField sortField;
 
-    private SearchField id;
-    private SearchField author;
+    private SearchField doi;
     private SearchField title;
+    private SearchField publishedBy;
     private SearchField yearSince;
     private SearchField yearTo;
-    private SearchField doi;
-    private SearchField publishedBy;
+    private SearchField author;
     private SearchField abstractText;
-
-    public int getPaginateBy() {
-        return paginateBy;
-    }
-
-    public void setPaginateBy(int paginateBy) {
-        this.paginateBy = paginateBy;
-    }
 
     private List<String> dbs;
 
-    public List<String> getDbs() {
-        return dbs;
-    }
-
-    public void setDbs(List<String> dbs) {
-        this.dbs = dbs;
-    }
 
     public int getPage() {
         return page;
@@ -43,6 +28,14 @@ public class DoiSearchCriteria {
 
     public void setPage(int page) {
         this.page = page;
+    }
+
+    public int getPaginateBy() {
+        return paginateBy;
+    }
+
+    public void setPaginateBy(int paginateBy) {
+        this.paginateBy = paginateBy;
     }
 
     public SortField getSortField() {
@@ -53,20 +46,13 @@ public class DoiSearchCriteria {
         this.sortField = sortField;
     }
 
-    public SearchField getId() {
-        return id;
+
+    public SearchField getDoi() {
+        return doi;
     }
 
-    public void setId(SearchField id) {
-        this.id = id;
-    }
-
-    public SearchField getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(SearchField author) {
-        this.author = author;
+    public void setDoi(SearchField doi) {
+        this.doi = doi;
     }
 
     public SearchField getTitle() {
@@ -75,6 +61,12 @@ public class DoiSearchCriteria {
 
     public void setTitle(SearchField title) {
         this.title = title;
+    }
+
+    public SearchField getPublishedBy() { return publishedBy; }
+
+    public void setPublishedBy(SearchField publishedBy) {
+        this.publishedBy = publishedBy;
     }
 
     public SearchField getYearSince() {
@@ -93,21 +85,24 @@ public class DoiSearchCriteria {
         this.yearTo = yearTo;
     }
 
-    public SearchField getDoi() {
-        return doi;
+    public SearchField getAuthor() {
+        return author;
     }
 
-    public void setDoi(SearchField doi) {
-        this.doi = doi;
-    }
-
-    public SearchField getPublishedBy() { return publishedBy; }
-
-    public void setPublishedBy(SearchField publishedBy) {
-        this.publishedBy = publishedBy;
+    public void setAuthor(SearchField author) {
+        this.author = author;
     }
 
     public SearchField getAbstractText() { return abstractText; }
 
     public void setAbstractText(SearchField abstractText) { this.abstractText = abstractText; }
+
+
+    public List<String> getDbs() {
+        return dbs;
+    }
+
+    public void setDbs(List<String> dbs) {
+        this.dbs = dbs;
+    }
 }

@@ -5,6 +5,7 @@ import ee.ttu.geocollection.domain.SearchField;
 import static ee.ttu.geocollection.interop.api.builder.ApiFields.*;
 
 public class FluentDoiSearchApiBuilder extends FluentSearchApiBuilder<FluentDoiSearchApiBuilder> {
+
     public static FluentDoiSearchApiBuilder aRequest() {
         return new FluentDoiSearchApiBuilder();
     }

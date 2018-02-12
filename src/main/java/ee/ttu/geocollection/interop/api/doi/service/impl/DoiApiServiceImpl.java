@@ -17,6 +17,10 @@ import java.util.Map;
 public class DoiApiServiceImpl implements DoiApiService {
 
     private static final String DOI_TABLE = "doi";
+    private static final String DOI_AGENT = "doi_agent";
+    private static final String DOI_GEOLOCATION = "doi_geolocation";
+    private static final String DOI_RELATED_IDENTIFIER = "doi_related_identifier";
+    private static final String ATTACHMENT = "attachment";
 
     @Autowired
     private ApiService apiService;
@@ -63,7 +67,6 @@ public class DoiApiServiceImpl implements DoiApiService {
     @Override
     public ApiResponse findDoi(DoiSearchCriteria searchCriteria)  {
         String requestParams = FluentDoiSearchApiBuilder.aRequest()
-                .queryId(searchCriteria.getId())
                 .queryIdentifier(searchCriteria.getDoi())
                 .queryTitle(searchCriteria.getTitle())
                 .queryPublishedBy(searchCriteria.getPublishedBy())
@@ -89,10 +92,10 @@ public class DoiApiServiceImpl implements DoiApiService {
     public Map findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
-                .relatedData("doi_agent")
-                .relatedData("doi_geolocation")
-                .relatedData("doi_related_identifier")
-                .relatedData("attachment")
+                .relatedData(DOI_AGENT)
+                .relatedData(DOI_GEOLOCATION)
+                .relatedData(DOI_RELATED_IDENTIFIER)
+                .relatedData(ATTACHMENT)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(DOI_TABLE, requestParams);

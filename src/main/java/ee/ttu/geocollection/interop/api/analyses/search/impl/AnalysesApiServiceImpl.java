@@ -16,13 +16,15 @@ import java.util.Map;
 @Service
 public class AnalysesApiServiceImpl implements AnalysesApiService {
 
-    public static final String ANALYSIS_RESULTS = "analysis_results";
+    private static final String ANALYSIS = "analysis";
+    private static final String ANALYSIS_RESULTS = "analysis_results";
 
     private List<String> fields = Arrays.asList(
             "id",
             "analysis_method__analysis_method",
             "analysis_method__method_en",
             "method_details",
+            "method_details_en",
             "lab",
             "instrument",
             "instrument_txt",
@@ -57,6 +59,10 @@ public class AnalysesApiServiceImpl implements AnalysesApiService {
             "database__name",
             "database__name_en"
             );
+
+    @Autowired
+    private ApiService apiService;
+
     @Override
     public ApiResponse findAnalyses(AnalysesSearchCriteria searchCriteria) {
         String requestParams = FluentAnalysesApiBuilder.aRequest()
@@ -71,12 +77,6 @@ public class AnalysesApiServiceImpl implements AnalysesApiService {
                 .queryContent(searchCriteria.getContent())
                 .querySample(searchCriteria.getSample()).andReturn()
                 .queryAdminUnit(searchCriteria.getAdminUnit())
-//                .queryMethodDetails(searchCriteria.getMethodDetails())
-//                .queryLab(searchCriteria.getLab()).andReturn()
-//                .queryInstrument(searchCriteria.getInstrument())
-//                .queryInstrumentTxt(searchCriteria.getInstrumentTxt())
-//                .queryDate(searchCriteria.getDate())
-//                .queryDateFree(searchCriteria.getDateFree())
                 .queryInstitutions(searchCriteria.getDbs())
                 .returnStratigraphyId()
                 .returnLithostratigraphyId()
@@ -86,11 +86,13 @@ public class AnalysesApiServiceImpl implements AnalysesApiService {
                 .returnSampleNumber()
                 .returnLabTxt()
                 .buildFullQuery();
-        return apiService.searchRawEntities("analysis", searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
+        return apiService.searchRawEntities(
+                ANALYSIS,
+                searchCriteria.getPaginateBy(),
+                searchCriteria.getPage(),
+                searchCriteria.getSortField(),
+                requestParams);
     }
-
-    @Autowired
-    private ApiService apiService;
 
     @Override
     public Map findRawById(Long id) {
@@ -99,6 +101,6 @@ public class AnalysesApiServiceImpl implements AnalysesApiService {
                 .relatedData(ANALYSIS_RESULTS)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
-        return apiService.findRawEntity("analysis", requestParams);
+        return apiService.findRawEntity(ANALYSIS, requestParams);
     }
 }

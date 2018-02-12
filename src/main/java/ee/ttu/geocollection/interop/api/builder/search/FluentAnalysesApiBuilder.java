@@ -25,10 +25,10 @@ public class FluentAnalysesApiBuilder  extends FluentSearchApiBuilder<FluentAnal
 
     public FluentAnalysesApiBuilder queryStratigraphy(SearchField stratigraphy) {
         buildMultiSearch(stratigraphy,
-                "sample__stratigraphy__stratigraphy",
-                "sample__stratigraphy__stratigraphy_en",
-                "sample__lithostratigraphy__stratigraphy",
-                "sample__lithostratigraphy__stratigraphy_en");
+                SAMPLE__STRATIGRAPHY__STRATIGRAPHY,
+                SAMPLE__STRATIGRAPHY__STRATIGRAPHY_EN,
+                SAMPLE__LITHOSTRATIGRAPHY__STRATIGRAPHY,
+                SAMPLE__LITHOSTRATIGRAPHY__STRATIGRAPHY_EN);
         return this;
     }
 
@@ -57,7 +57,6 @@ public class FluentAnalysesApiBuilder  extends FluentSearchApiBuilder<FluentAnal
 
     public FluentAnalysesApiBuilder querySample(SearchField sample) {
         buildMultiSearch(sample, SAMPLE__ID, SAMPLE_NUMBER);
-//        buildFieldParameters(SAMPLE__ID, sample);
         return this;
     }
 
@@ -73,32 +72,6 @@ public class FluentAnalysesApiBuilder  extends FluentSearchApiBuilder<FluentAnal
                 "sample__locality__asustusyksus__asustusyksus_en");
         return this;
     }
-    //        return this;
-    //        buildFieldParameters(DATE_FREE, dateFree);
-    //    public FluentAnalysesApiBuilder queryDateFree(SearchField dateFree) {
-    //    }
-    //        return this;
-    //        buildFieldParameters(DATE, date);
-    //    public FluentAnalysesApiBuilder queryDate(SearchField date) {
-    //
-    //    }
-    //        return this;
-    //        buildFieldParameters(INSTRUMENT_TXT, instrumentTxt);
-    //    public FluentAnalysesApiBuilder queryInstrumentTxt(SearchField instrumentTxt) {
-    //    }
-    //        return this;
-    //        buildFieldParameters(INSTRUMENT, instrument);
-    //    public FluentAnalysesApiBuilder queryInstrument(SearchField instrument) {
-    //    }
-    //        return this;
-    //        buildFieldParameters(LAB, lab);
-    //    public FluentAnalysesApiBuilder queryLab(SearchField lab) {
-    //    }
-    //        return this;
-    //        buildFieldParameters(METHOD_DETAILS, methodDetails);
-//    public FluentAnalysesApiBuilder queryMethodDetails(SearchField methodDetails) {
-
-//    }
 
     public FluentAnalysesApiBuilder returnStratigraphyId(){
         addReturningField(SAMPLE_STRATIGRAPHY_ID);

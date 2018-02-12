@@ -6,56 +6,21 @@ import ee.ttu.geocollection.domain.SortField;
 import java.util.List;
 
 public class DrillCoreSearchCriteria {
+
     private int page = 1;
     private int paginateBy = 25;
     private SortField sortField;
 
-    private SearchField id;
     private SearchField drillcore;
-    private SearchField storageLocation;
-    private SearchField boxNumber;
     private SearchField country;
-    private SearchField adminUnit;
-    private SearchField latitude;
-    private SearchField longitude;
-    private SearchField depth;
+    private SearchField stratigraphy;
+    private SearchField storageLocation;
     private SearchField boxesSince;
     private SearchField boxesTo;
-    private SearchField stratigraphy;
-
-    public int getPaginateBy() {
-        return paginateBy;
-    }
-
-    public void setPaginateBy(int paginateBy) {
-        this.paginateBy = paginateBy;
-    }
+    private SearchField id;
+    private SearchField adminUnit;
 
     private List<String> dbs;
-
-    public SearchField getAdminUnit() {
-        return adminUnit;
-    }
-
-    public void setAdminUnit(SearchField adminUnit) {
-        this.adminUnit = adminUnit;
-    }
-
-    public SearchField getStratigraphy() {
-        return stratigraphy;
-    }
-
-    public void setStratigraphy(SearchField stratigraphy) {
-        this.stratigraphy = stratigraphy;
-    }
-
-    public SearchField getId() {
-        return id;
-    }
-
-    public void setId(SearchField id) {
-        this.id = id;
-    }
 
 
     public int getPage() {
@@ -66,6 +31,14 @@ public class DrillCoreSearchCriteria {
         this.page = page;
     }
 
+    public int getPaginateBy() {
+        return paginateBy;
+    }
+
+    public void setPaginateBy(int paginateBy) {
+        this.paginateBy = paginateBy;
+    }
+
     public SortField getSortField() {
         return sortField;
     }
@@ -74,28 +47,13 @@ public class DrillCoreSearchCriteria {
         this.sortField = sortField;
     }
 
+
     public SearchField getDrillcore() {
         return drillcore;
     }
 
     public void setDrillcore(SearchField drillcore) {
         this.drillcore = drillcore;
-    }
-
-    public SearchField getStorageLocation() {
-        return storageLocation;
-    }
-
-    public void setStorageLocation(SearchField storageLocation) {
-        this.storageLocation = storageLocation;
-    }
-
-    public SearchField getBoxNumber() {
-        return boxNumber;
-    }
-
-    public void setBoxNumber(SearchField boxNumber) {
-        this.boxNumber = boxNumber;
     }
 
     public SearchField getCountry() {
@@ -106,28 +64,20 @@ public class DrillCoreSearchCriteria {
         this.country = country;
     }
 
-    public SearchField getLatitude() {
-        return latitude;
+    public SearchField getStratigraphy() {
+        return stratigraphy;
     }
 
-    public void setLatitude(SearchField latitude) {
-        this.latitude = latitude;
+    public void setStratigraphy(SearchField stratigraphy) {
+        this.stratigraphy = stratigraphy;
     }
 
-    public SearchField getLongitude() {
-        return longitude;
+    public SearchField getStorageLocation() {
+        return storageLocation;
     }
 
-    public void setLongitude(SearchField longitude) {
-        this.longitude = longitude;
-    }
-
-    public SearchField getDepth() {
-        return depth;
-    }
-
-    public void setDepth(SearchField depth) {
-        this.depth = depth;
+    public void setStorageLocation(SearchField storageLocation) {
+        this.storageLocation = storageLocation;
     }
 
     public SearchField getBoxesSince() {
@@ -145,6 +95,23 @@ public class DrillCoreSearchCriteria {
     public void setBoxesTo(SearchField boxesTo) {
         this.boxesTo = boxesTo;
     }
+
+    public SearchField getId() {
+        return id;
+    }
+
+    public void setId(SearchField id) {
+        this.id = id;
+    }
+
+    public SearchField getAdminUnit() {
+        return adminUnit;
+    }
+
+    public void setAdminUnit(SearchField adminUnit) {
+        this.adminUnit = adminUnit;
+    }
+
 
     public List<String> getDbs() {
         return dbs;

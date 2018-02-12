@@ -30,8 +30,8 @@ public class FluentDrillCoreSearchApiBuilder extends FluentSearchApiBuilder<Flue
 
     public FluentDrillCoreSearchApiBuilder queryStratigraphy(SearchField stratigraphy) {
         buildMultiSearch(stratigraphy,
-                "locality__localitystratigraphy__stratigraphy__stratigraphy",
-                "locality__localitystratigraphy__stratigraphy__stratigraphy_en");
+                LOCALITY__LOCALITYSTRATIGRAPHY__STRATIGRAPHY,
+                LOCALITY__LOCALITYSTRATIGRAPHY__STRATIGRAPHY_EN);
         return this;
     }
 
@@ -58,23 +58,4 @@ public class FluentDrillCoreSearchApiBuilder extends FluentSearchApiBuilder<Flue
         return this;
     }
 
-//    public FluentDrillCoreSearchApiBuilder queryBoxNumber(SearchField id) {
-//        buildFieldParameters(BOX_NUMBERS, id);
-//        return this;
-//    }
-//
-//    public FluentDrillCoreSearchApiBuilder queryLocalityLongitude (SearchField id) {
-//        buildFieldParameters(LOCALITY_LONGITUDE, id);
-//        return this;
-//    }
-//
-//    public FluentDrillCoreSearchApiBuilder queryLocalityLatitude (SearchField id) {
-//        buildFieldParameters(LOCALITY_LATITUDE, id);
-//        return this;
-//    }
-//
-//    public FluentDrillCoreSearchApiBuilder queryDepth (SearchField id) {
-//        buildFieldParameters(DEPTH, id);
-//        return this;
-//    }
 }

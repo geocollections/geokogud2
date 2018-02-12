@@ -25,7 +25,13 @@ import static ee.ttu.geocollection.interop.api.builder.ApiFields.*;
 @Service
 public class LocalitiesApiServiceImpl implements LocalitiesApiService {
 
-    public static final String LOCALITY_TABLE = "locality";
+    private static final String LOCALITY_TABLE = "locality";
+    private static final String IMAGE_TABLE = "image";
+    private static final String DRILLCORE_TABLE = "drillcore";
+    private static final String SPECIMEN_TABLE = "specimen";
+    private static final String LOCALITY_REFERENCE = "locality_reference";
+    private static final String LOCALITY_SYNONYM = "locality_synonym";
+    private static final String LOCALITY_SUMMARY = "locality_summary";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -80,7 +86,12 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
         String requestParams = prepareCommonFields(searchCriteria)
                 .queryId(searchCriteria.getId())
                 .buildFullQuery();
-        return apiService.searchRawEntities(LOCALITY_TABLE, searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
+        return apiService.searchRawEntities(
+                LOCALITY_TABLE,
+                searchCriteria.getPaginateBy(),
+                searchCriteria.getPage(),
+                searchCriteria.getSortField(),
+                requestParams);
     }
 
     private FluentLocalitySearchApiBuilder prepareCommonFields(LocalitySearchCriteria searchCriteria) {
@@ -122,7 +133,7 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
                 .queryImgDepth(searchCriteria.getVerticalExtentSince())
                 .queryImgDepth(searchCriteria.getVerticalExtentTo())
                 .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities("image", searchCriteria.getPaginateBy(), searchCriteria.getPage(), new SortField(LOCALITY__ID, SortingOrder.DESCENDING), requestParams);
+        return apiService.searchRawEntities(IMAGE_TABLE, searchCriteria.getPaginateBy(), searchCriteria.getPage(), new SortField(LOCALITY__ID, SortingOrder.DESCENDING), requestParams);
     }
 
     @Override
@@ -130,19 +141,18 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
         String requestParams = FluentLocalityImageSearchApiBuilder.aRequest()
                 .queryLocalityIdForUrl(localityId).andReturn()
                 .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities("image", 1, new SortField(), requestParams);
+        return apiService.searchRawEntities(IMAGE_TABLE, 1, new SortField(), requestParams);
     }
-
 
     @Override
     public Map findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
-                .relatedData("image")
-                .relatedData("drillcore")
-                .relatedData("locality_reference")
-                .relatedData("locality_synonym")
-                .relatedData("specimen")
+                .relatedData(IMAGE_TABLE)
+                .relatedData(DRILLCORE_TABLE)
+                .relatedData(LOCALITY_REFERENCE)
+                .relatedData(LOCALITY_SYNONYM)
+                .relatedData(SPECIMEN_TABLE)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(LOCALITY_TABLE, requestParams);
@@ -151,7 +161,7 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
     @Override
     public Map findLocalitiesSummary() {
         String requestParams = "?format=json";
-        return apiService.findRawEntity("locality_summary", requestParams);
+        return apiService.findRawEntity(LOCALITY_SUMMARY, requestParams);
     }
 
     @Override
@@ -167,14 +177,7 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
                     ";fields:name,name_en;lookuptype:icontains&";
         }
         requestParams += "format=json";
-        return apiService.findRawEntity("locality_summary", requestParams);
+        return apiService.findRawEntity(LOCALITY_SUMMARY, requestParams);
     }
 
-    @Override
-    public ApiResponse findLocalitiesByIds(Collection<String> ids) {
-        String requestParams = prepareCommonFields(new LocalitySearchCriteria())
-                .queryMultipleIds(ids).andReturn()
-                .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities(LOCALITY_TABLE, ids.size() + 1, 1, new SortField(), requestParams);
-    }
 }

@@ -3,6 +3,7 @@ package ee.ttu.geocollection.interop.api.localities.pojo;
 import java.util.List;
 
 public class LocalityMapFilter {
+
     private List<String> filters;
     private String localityName;
 

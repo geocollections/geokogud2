@@ -6,7 +6,9 @@ import ee.ttu.geocollection.interop.api.analyses.pojo.AnalysesSearchCriteria;
 import java.util.Map;
 
 public interface AnalysesApiService {
+
     ApiResponse findAnalyses(AnalysesSearchCriteria searchCriteria) ;
 
     Map findRawById(Long id);
+
 }

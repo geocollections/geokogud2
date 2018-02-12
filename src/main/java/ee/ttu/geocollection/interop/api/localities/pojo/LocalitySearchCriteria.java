@@ -4,24 +4,34 @@ import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.domain.SortField;
 import ee.ttu.geocollection.interop.api.PageableSearchCriteria;
 
-public class LocalitySearchCriteria implements PageableSearchCriteria{
+public class LocalitySearchCriteria {
+
     private int page = 1;
     private int paginateBy = 25;
     private SortField sortField;
 
-    private SearchField id;
     private SearchField searchImages;
-    private SearchField stratigraphy;
-    private SearchField number;
-    private SearchField reference;
-    private SearchField maPaId;
     private SearchField locality;
+    private SearchField number;
     private SearchField country;
     private SearchField adminUnit;
+    private SearchField stratigraphy;
+    private SearchField reference;
+    private SearchField id;
+    private SearchField maPaId;
     private SearchField latitude;
     private SearchField longitude;
     private SearchField verticalExtentSince;
     private SearchField verticalExtentTo;
+
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
 
     public int getPaginateBy() {
         return paginateBy;
@@ -31,12 +41,37 @@ public class LocalitySearchCriteria implements PageableSearchCriteria{
         this.paginateBy = paginateBy;
     }
 
+    public SortField getSortField() {
+        return sortField;
+    }
+
+    public void setSortField(SortField sortField) {
+        this.sortField = sortField;
+    }
+
+
     public SearchField getSearchImages() {
         return searchImages;
     }
 
     public void setSearchImages(SearchField searchImages) {
         this.searchImages = searchImages;
+    }
+
+    public SearchField getLocality() {
+        return locality;
+    }
+
+    public void setLocality(SearchField locality) {
+        this.locality = locality;
+    }
+
+    public SearchField getNumber() {
+        return number;
+    }
+
+    public void setNumber(SearchField number) {
+        this.number = number;
     }
 
     public SearchField getCountry() {
@@ -55,36 +90,12 @@ public class LocalitySearchCriteria implements PageableSearchCriteria{
         this.adminUnit = adminUnit;
     }
 
-    public SearchField getVerticalExtentSince() {
-        return verticalExtentSince;
+    public SearchField getStratigraphy() {
+        return stratigraphy;
     }
 
-    public void setVerticalExtentSince(SearchField verticalExtentSince) {
-        this.verticalExtentSince = verticalExtentSince;
-    }
-
-    public SearchField getVerticalExtentTo() {
-        return verticalExtentTo;
-    }
-
-    public void setVerticalExtentTo(SearchField verticalExtentTo) {
-        this.verticalExtentTo = verticalExtentTo;
-    }
-
-    public SearchField getLocality() {
-        return locality;
-    }
-
-    public void setLocality(SearchField locality) {
-        this.locality = locality;
-    }
-
-    public SearchField getMaPaId() {
-        return maPaId;
-    }
-
-    public void setMaPaId(SearchField maPaId) {
-        this.maPaId = maPaId;
+    public void setStratigraphy(SearchField stratigraphy) {
+        this.stratigraphy = stratigraphy;
     }
 
     public SearchField getReference() {
@@ -95,22 +106,6 @@ public class LocalitySearchCriteria implements PageableSearchCriteria{
         this.reference = reference;
     }
 
-    public SearchField getStratigraphy() {
-        return stratigraphy;
-    }
-
-    public void setStratigraphy(SearchField stratigraphy) {
-        this.stratigraphy = stratigraphy;
-    }
-
-    public SearchField getNumber() {
-        return number;
-    }
-
-    public void setNumber(SearchField number) {
-        this.number = number;
-    }
-
     public SearchField getId() {
         return id;
     }
@@ -119,23 +114,12 @@ public class LocalitySearchCriteria implements PageableSearchCriteria{
         this.id = id;
     }
 
-
-    @Override
-    public int getPage() {
-        return page;
+    public SearchField getMaPaId() {
+        return maPaId;
     }
 
-    @Override
-    public void setPage(int page) {
-        this.page = page;
-    }
-
-    public SortField getSortField() {
-        return sortField;
-    }
-
-    public void setSortField(SortField sortField) {
-        this.sortField = sortField;
+    public void setMaPaId(SearchField maPaId) {
+        this.maPaId = maPaId;
     }
 
     public SearchField getLatitude() {
@@ -152,5 +136,21 @@ public class LocalitySearchCriteria implements PageableSearchCriteria{
 
     public void setLongitude(SearchField longitude) {
         this.longitude = longitude;
+    }
+
+    public SearchField getVerticalExtentSince() {
+        return verticalExtentSince;
+    }
+
+    public void setVerticalExtentSince(SearchField verticalExtentSince) {
+        this.verticalExtentSince = verticalExtentSince;
+    }
+
+    public SearchField getVerticalExtentTo() {
+        return verticalExtentTo;
+    }
+
+    public void setVerticalExtentTo(SearchField verticalExtentTo) {
+        this.verticalExtentTo = verticalExtentTo;
     }
 }
