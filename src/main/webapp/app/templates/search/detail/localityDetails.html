@@ -331,45 +331,38 @@
 
                     <table class="table table-bordered table-hover margin-bottom-5">
                         <thead class="styles-for-table-headers">
-                        <tr>
-                            <th> {{ 'DETAIL.LOCALITY.ID' | translate }} </th>
-                            <th> {{ 'DETAIL.LOCALITY.NAME' | translate }} </th>
-                            <th> {{ 'DETAIL.LOCALITY.STRATIGRAPHY' | translate }} </th>
-                            <th> {{ 'DETAIL.LOCALITY.STRATIGRAPHY_REMARKS' | translate }} </th>
-                        </tr>
+                            <tr>
+                                <th> {{ 'DETAIL.LOCALITY.ID' | translate }} </th>
+                                <th> {{ 'DETAIL.LOCALITY.NAME' | translate }} </th>
+                                <th> {{ 'DETAIL.LOCALITY.STRATIGRAPHY' | translate }} </th>
+                            </tr>
                         </thead>
 
                         <tbody>
-                        <tr data-ng-repeat="specimen in detailCtrl.specimens | limitTo:10">
+                            <tr data-ng-repeat="specimen in detailCtrl.specimens | limitTo:10">
 
-                            <td data-ng-if="specimen.id != null">
-                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen',id:specimen.id})">
-                                    {{specimen.id}}
-                                </a>
-                            </td>
+                                <td data-ng-if="specimen.id != null">
+                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen',id:specimen.id})">
+                                        {{specimen.id}}
+                                    </a>
+                                </td>
 
-                            <td>
-                                <a href data-ng-if="specimen.specimenidentification__taxon__taxon != null && specimen.specimenidentification__taxon_id != null"
-                                   data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+specimen.specimenidentification__taxon_id})">
-                                    {{specimen.specimenidentification__taxon__taxon}}
-                                </a>
-                            </td>
+                                <td>
+                                    <a href data-ng-if="specimen.specimenidentification__taxon__taxon != null && specimen.specimenidentification__taxon_id != null"
+                                       data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+specimen.specimenidentification__taxon_id})">
+                                        {{specimen.specimenidentification__taxon__taxon}}
+                                    </a>
+                                </td>
 
-                            <!--<td href data-ng-if="(specimen.specimenidentification__taxon__taxon == null && specimen.specimenidentification__taxon_id == null)-->
-                                <!--&& specimen.specimenidentification__name != null">-->
-                                <!--{{specimen.specimenidentification__name}}-->
-                            <!--</td>-->
+                                <!-- TODO: taxon_taxon -> name -> mineral_name + mineral_formula -> specimen_identification_geology_name -->
 
-                            <!-- TODO: taxon_taxon -> name -> mineral_name + mineral_formula -> specimen_identification_geology_name -->
-
-                            <td>
-                                <a data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: specimen.stratigraphy__id})"
-                                   href ng-if="specimen.stratigraphy__id != null">
-                                    <localize et="specimen.stratigraphy__stratigraphy" en="specimen.stratigraphy__stratigraphy_en" />
-                                </a>
-                            </td>
-                            <td> {{ specimen.stratigraphy_free }} </td>
-                        </tr>
+                                <td>
+                                    <a data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: specimen.stratigraphy_id})"
+                                       href ng-if="specimen.stratigraphy_id != null">
+                                        <localize et="specimen.stratigraphy__stratigraphy" en="specimen.stratigraphy__stratigraphy_en" />
+                                    </a>
+                                </td>
+                            </tr>
                         </tbody>
 
                     </table>
