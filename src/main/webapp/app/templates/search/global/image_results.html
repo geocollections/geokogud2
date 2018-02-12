@@ -49,7 +49,7 @@
                     <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.KEY_WORDS' | translate }}">{{entity.keywords}}</td>
                     <td class="image-preview" data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.IMAGES' | translate }}">
                         <a href data-ng-click="ctrl.service.openInNewWindow({object:'image', id:entity.id})">
-                            <img class="previewImage" src="{{entity.image_preview_url}}" />
+                            <img class="previewImage img-rounded" src="{{entity.image_preview_url}}" />
                         </a>
                     </td>
                 </tr>
