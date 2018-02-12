@@ -4,7 +4,6 @@ import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.domain.SortField;
 import ee.ttu.geocollection.domain.SortingOrder;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
-import ee.ttu.geocollection.interop.api.builder.ApiFields;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentSpecimenIdentificationGeologiesSearchApiBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentSpecimenIdentificationSearchApiBuilder;
@@ -17,18 +16,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
 @Service
 public class SpecimenApiServiceImpl implements SpecimenApiService {
-    public static final String SPECIMEN_TABLE = "specimen";
-    public static final String SPECIMEN_IMAGE_TABLE = "specimen_image";
-    public static final String SPECIMEN_IDENTIFICATION_TABLE = "specimen_identification";
-    public static final String SPECIMEN_REFERENCE_TABLE = "specimen_reference";
-    public static final String SPECIMEN_IDENTIFICATION_GEOLOGY = "specimen_identification_geology";
-    public static final String ATTACHMENT_LINK = "attachment_link";
+
+    private static final String SPECIMEN_TABLE = "specimen";
+    private static final String SPECIMEN_IMAGE_TABLE = "specimen_image";
+    private static final String SPECIMEN_IDENTIFICATION_TABLE = "specimen_identification";
+    private static final String SPECIMEN_REFERENCE_TABLE = "specimen_reference";
+    private static final String SPECIMEN_IDENTIFICATION_GEOLOGY = "specimen_identification_geology";
+    private static final String ATTACHMENT_LINK = "attachment_link";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -69,81 +68,17 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
             "locality__type__value_en",
             "locality__vald__vald",
             "locality__vald__vald_en",
-//            "locality_free",
             "depth",
             "depth_interval",
-//            "sample__agent_collected__agent",
-//            "sample__agent_collected_free",
-//            "sample__classification_rock__name",
-//            "sample__classification_rock__name_en",
-//            "sample__database__acronym",
-//            "sample__date_collected",
-//            "sample__date_collected_free",
-//            "sample__depth",
-//            "sample__depth_interval",
-//            "sample_id",
-//            "sample__lithostratigraphy_id",
-//            "sample__lithostratigraphy__stratigraphy",
-//            "sample__lithostratigraphy__stratigraphy_en",
-//            "sample__locality__asustusyksus__asustusyksus",
-//            "sample__locality__asustusyksus__asustusyksus_en",
-//            "sample__locality__country__value",
-//            "sample__locality__country__value_en",
-//            "sample__locality__depth",
-//            "sample__locality__eelis",
-//            "sample__locality__elevation",
-//            "sample__locality_free",
-//            "sample__locality_id",
-//            "sample__locality__latitude",
-//            "sample__locality__locality",
-//            "sample__locality__locality_en",
-//            "sample__locality__longitude",
-//            "sample__locality__maaamet_pa_id",
-//            "sample__locality__maakond__maakond",
-//            "sample__locality__maakond__maakond_en",
-//            "sample__locality__number",
-//            "sample__locality__parent__locality",
-//            "sample__locality__remarks_location",
-//            "sample__locality__stratigraphy_base_id",
-//            "sample__locality__stratigraphy_base__stratigraphy",
-//            "sample__locality__stratigraphy_base__stratigraphy_en",
-//            "sample__locality__stratigraphy_top_id",
-//            "sample__locality__stratigraphy_top__stratigraphy",
-//            "sample__locality__stratigraphy_top__stratigraphy_en",
-//            "sample__locality__type__value",
-//            "sample__locality__type__value_en",
-//            "sample__locality__vald__vald",
-//            "sample__locality__vald__vald_en",
-//            "sample__location",
             "sample__mass",
             "sample__number",
-//            "sample__number_additional",
-//            "sample__remarks",
             "sample__rock",
             "sample__rock_en",
-//            "sample__series_id",
-//            "sample__soil_site_id",
-//            "sample__soil_site__land_use",
-//            "sample__soil_site__latitude",
-//            "sample__soil_site__longitude",
-//            "sample__soil_site__site",
-//            "sample__soil_site__site_en",
-//            "sample__soil_site__soil",
-//            "sample__stratigraphy_bed",
-//            "sample__stratigraphy_id",
-//            "sample__stratigraphy__stratigraphy",
-//            "sample__stratigraphy__stratigraphy_en",
             "specimen_nr",
             "stratigraphy_id",
             "stratigraphy__stratigraphy",
             "stratigraphy__stratigraphy_en",
             "stratigraphy_free",
-//            "specimenidentification__name",
-//            "specimenidentification__taxon_id",
-//            "specimenidentification__taxon__taxon",
-            //"specimenidentification__taxon__author_year",
-            //"specimenidentification__taxon__parent__taxon",
-            //"specimenidentification__taxon__fossil_group__taxon",
             "fossil__value",
             "fossil__value_en",
             "agent_collected_id",
@@ -163,10 +98,6 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
             "type__value_en",
             "type__value",
             "kind__value_en"
-//            "status__value", // API gives 400 error on these fields
-//            "status__value_en"
-//            "original_status__value",
-//            "original_status__value_en"
     );
 
     @Autowired
@@ -174,24 +105,16 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
 
     @Override
     public ApiResponse findSpecimen(SpecimenSearchCriteria searchCriteria)  {
-        String requestParams = prepareCommonFields(searchCriteria)
-                .queryId(searchCriteria.getId()).andReturn()
-                .buildDefaultFieldsQuery();
-//                .buildFullQuery();
-        return apiService.searchRawEntities(SPECIMEN_TABLE, searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
-    }
-
-    private FluentSpecimenSearchApiBuilder prepareCommonFields(SpecimenSearchCriteria searchCriteria) {
-        return FluentSpecimenSearchApiBuilder.aRequest()
+        String requestParams = FluentSpecimenSearchApiBuilder.aRequest()
                 .querySpecimenNumber(searchCriteria.getSpecimenNumber()).andReturn()
                 .queryCollectionNumber(searchCriteria.getCollectionNumber()).andReturn()
                 .queryClassification(searchCriteria.getClassification())
-//                .queryFossilMineralRock(searchCriteria.getFossilMineralRock())
                 .queryNameOfFossil(searchCriteria.getFossilName())
                 .queryMineralRock(searchCriteria.getMineralRock())
                 .queryAdminUnit(searchCriteria.getAdminUnit())
                 .queryLocality(searchCriteria.getLocality()).andReturn()
                 .queryStratigraphy(searchCriteria.getStratigraphy()).andReturn()
+                .queryId(searchCriteria.getId()).andReturn()
                 .queryDepth(searchCriteria.getDepthSince()).andReturn()
                 .queryDepth(searchCriteria.getDepthTo())
                 .queryCollector(searchCriteria.getCollector()).andReturn()
@@ -205,7 +128,14 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .returnLocalityId()
                 .returnStratigraphyId()
                 .returnLatitutde()
-                .returnLongitude();
+                .returnLongitude()
+                .buildDefaultFieldsQuery();
+        return apiService.searchRawEntities(
+                SPECIMEN_TABLE,
+                searchCriteria.getPaginateBy(),
+                searchCriteria.getPage(),
+                searchCriteria.getSortField(),
+                requestParams);
     }
 
     @Override
@@ -231,7 +161,12 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .queryImgDateAdded(searchCriteria.getDateTakenTo())
                 .queryInstitutions(searchCriteria.getDbs())
                 .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities(SPECIMEN_IMAGE_TABLE, searchCriteria.getPaginateBy(), searchCriteria.getPage(), new SortField("specimen__id", SortingOrder.ASCENDING), requestParams);
+        return apiService.searchRawEntities(
+                SPECIMEN_IMAGE_TABLE,
+                searchCriteria.getPaginateBy(),
+                searchCriteria.getPage(),
+                new SortField("specimen__id", SortingOrder.ASCENDING),
+                requestParams);
     }
 
     @Override
@@ -278,52 +213,7 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
     public Map findRawSpecimenImageById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
-//                .buildWithDefaultReturningFields();
-//                TODO: Currently fast fix for duplicates in specimen detail view. Or just add paginate_by=1
-                .returnCustomField(ApiFields.ID)
-                .returnCustomField(ApiFields.IMAGE)
-                .returnCustomField(ApiFields.IMAGE_URL)
-                .returnCustomField(ApiFields.SPECIMEN__DATABASE__ACRONYM)
-                .returnCustomField(ApiFields.SPECIMEN_ID)
-                .returnCustomField(ApiFields.SPECIMEN__SPECIMEN_ID)
-                .returnCustomField("specimen__specimenidentification__taxon__taxon")
-                .returnCustomField("specimen__specimenidentification__taxon__id")
-                .returnCustomField("specimen__specimenidentification__name")
-                .returnCustomField("specimen__specimenidentificationgeologies__name")
-                .returnCustomField("specimen__specimenidentificationgeologies__name_en")
-                .returnCustomField("specimen__locality__locality")
-                .returnCustomField("specimen__locality__locality_en")
-                .returnCustomField("specimen__locality")
-                .returnCustomField("specimen__stratigraphy__stratigraphy")
-                .returnCustomField("specimen__stratigraphy__stratigraphy_en")
-                .returnCustomField("specimen__stratigraphy")
-                .returnCustomField(ApiFields.TYPE_VALUE)
-                .returnCustomField(ApiFields.TYPE_VALUE_EN)
-                .returnCustomField(ApiFields.DATE)
-                .returnCustomField(ApiFields.DATE_TAKEN_FREE)
-                .returnCustomField("device_id__name")
-                .returnCustomField(ApiFields.COPYRIGHT_AGENT)
-                .returnCustomField(ApiFields.LICENCE)
-                .returnCustomField("licence__licence_url")
-                .returnCustomField(ApiFields.LICENCE_URL)
-                .returnCustomField(ApiFields.DATA_ADDED)
-                .returnCustomField(ApiFields.DATA_CHANGED)
-                .returnCustomField(ApiFields.TAGS)
-                .returnCustomField(ApiFields.DESCRIPTION)
-                .returnCustomField("description_en")
-                .returnCustomField(ApiFields.REMARKS)
-                .returnCustomField("remarks_en")
-                .returnCustomField("scalebar")
-                .returnCustomField("camera")
-                .returnCustomField("date_digitised")
-                .returnCustomField("date_digitised_free")
-                .returnCustomField("agent__forename")
-                .returnCustomField("agent__surename")
-                .returnCustomField("agent_digitised__forename")
-                .returnCustomField("agent_digitised__surename")
-                .returnCustomField(ApiFields.USER_ADDED)
-                .returnCustomField("user_changed")
-                .buildWithReturningFieldsAndRelatedData();
+                .buildWithDefaultReturningFields();
         return apiService.findRawEntity(SPECIMEN_IMAGE_TABLE, requestParams);
     }
 
@@ -339,14 +229,5 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(SPECIMEN_TABLE, requestParams);
-    }
-
-    @Override
-    public ApiResponse findSpecimensByIds(Collection<String> ids) {
-        String requestParams = prepareCommonFields(new SpecimenSearchCriteria())
-                .queryMultipleIds(ids).andReturn()
-                .buildFullQuery();
-        //This + 1 in paginateBy is very important! (API does not accept neither 0, nor 1 values there)
-        return apiService.searchRawEntities(SPECIMEN_TABLE, ids.size() + 1, 1, new SortField(), requestParams);
     }
 }

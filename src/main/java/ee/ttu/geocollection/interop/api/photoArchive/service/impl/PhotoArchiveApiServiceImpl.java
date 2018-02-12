@@ -80,25 +80,20 @@ public class PhotoArchiveApiServiceImpl implements PhotoArchiveApiService {
 
     @Override
     public ApiResponse findPhoto(PhotoArchiveSearchCriteria searchCriteria)  {
-        String requestParams = prepareCommonFields(searchCriteria)
-//                .queryFilenameNotNull() Currently disabled because then table view also wont show when filename is null.
-                .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities(IMAGE_TABLE, searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
-    }
-
-    private FluentPhotoArchiveSearchApiBuilder prepareCommonFields(PhotoArchiveSearchCriteria searchCriteria) {
-        return FluentPhotoArchiveSearchApiBuilder.aRequest()
-                .queryAuthorAgent(searchCriteria.getAuthorAgent())
+        String requestParams = FluentPhotoArchiveSearchApiBuilder.aRequest()
+                .queryLocality(searchCriteria.getLocality())
+                .queryPeople(searchCriteria.getPeople())
+                .queryKeywords(searchCriteria.getKeywords())
+                .queryCountry(searchCriteria.getAdminUnit())
                 .queryDateTaken(searchCriteria.getDateTakenSince())
                 .queryDateTaken(searchCriteria.getDateTakenTo())
-                .queryKeywords(searchCriteria.getKeywords())
                 .queryNumber(searchCriteria.getImageNumber())
-                .queryPeople(searchCriteria.getPeople())
-                .queryLocality(searchCriteria.getLocality())
-                .queryCountry(searchCriteria.getAdminUnit())
+                .queryAuthorAgent(searchCriteria.getAuthorAgent())
                 .querySizeX(searchCriteria.getSizeSince())
                 .querySizeY(searchCriteria.getSizeTo())
-                .queryInstitutions(searchCriteria.getDbs());
+                .queryInstitutions(searchCriteria.getDbs())
+                .buildDefaultFieldsQuery();
+        return apiService.searchRawEntities(IMAGE_TABLE, searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
     @Override

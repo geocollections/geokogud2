@@ -4,6 +4,7 @@ import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.domain.SortField;
 
 public class PreparationsSearchCriteria {
+
     private int page = 1;
     private int paginateBy = 25;
     private SortField sortField;
@@ -40,6 +41,7 @@ public class PreparationsSearchCriteria {
     public void setSortField(SortField sortField) {
         this.sortField = sortField;
     }
+
 
     public SearchField getNumber() {
         return number;

@@ -45,23 +45,13 @@ public class FluentStratigraphySearchApiBuilder extends FluentSearchApiBuilder<F
         return this;
     }
 
-    public FluentStratigraphySearchApiBuilder queryParentStratigraphy(SearchField parentStratigraphy) {
-        buildMultiSearch(parentStratigraphy, PARENT_STRATIGRAPHY, PARENT_STRATIGRAPHY_EN);
-        return this;
-    }
-
-    public FluentStratigraphySearchApiBuilder queryAgeChronostratigraphy(SearchField ageChronostratigraphy) {
-        buildMultiSearch(ageChronostratigraphy, AGE_CHRONOSTRATIGRAPHY_STRATIGRAPHY, AGE_CHRONOSTRATIGRAPHY_STRATIGRAPHY_EN);
+    public FluentStratigraphySearchApiBuilder returnAgeChronostratigraphyId() {
+        addReturningField(AGE_CHRONOSTRATIGRAPHY_ID);
         return this;
     }
 
     public FluentStratigraphySearchApiBuilder returnParentId() {
         addReturningField(PARENT_ID);
-        return this;
-    }
-
-    public FluentStratigraphySearchApiBuilder returnAgeChronostratigraphyId() {
-        addReturningField(AGE_CHRONOSTRATIGRAPHY_ID);
         return this;
     }
 

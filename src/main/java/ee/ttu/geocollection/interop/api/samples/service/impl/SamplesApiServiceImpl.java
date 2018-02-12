@@ -17,6 +17,7 @@ import java.util.Map;
 
 @Service
 public class SamplesApiServiceImpl implements SamplesApiService {
+
     private static final String SAMPLE_TABLE = "sample";
     private static final String TAXON_LIST_TABLE = "taxon_list";
     private static final String ANALYSIS_TABLE = "analysis";
@@ -78,21 +79,7 @@ public class SamplesApiServiceImpl implements SamplesApiService {
 
     @Override
     public ApiResponse findSample(SampleSearchCriteria searchCriteria) {
-        System.err.println(searchCriteria.getId());
-        String requestParams = prepareCommonFields(searchCriteria)
-                .queryId(searchCriteria.getId()).andReturn()
-//                .buildDefaultFieldsQuery();
-                .buildFullQuery();
-        return apiService.searchRawEntities(
-                SAMPLE_TABLE,
-                searchCriteria.getPaginateBy(),
-                searchCriteria.getPage(),
-                searchCriteria.getSortField(),
-                requestParams);
-    }
-
-    private FluentSampleSearchApiBuilder prepareCommonFields(SampleSearchCriteria searchCriteria) {
-        return FluentSampleSearchApiBuilder.aRequest()
+        String requestParams = FluentSampleSearchApiBuilder.aRequest()
                 .queryNumber(searchCriteria.getSampleNumber()).andReturn()
                 .queryLocality(searchCriteria.getLocality()).andReturn()
                 .queryDepth(searchCriteria.getDepthSince()).andReturn()
@@ -102,6 +89,7 @@ public class SamplesApiServiceImpl implements SamplesApiService {
                 .queryAgent(searchCriteria.getAgent()).andReturn()
                 .queryMass(searchCriteria.getMassSince()).andReturn()
                 .queryMass(searchCriteria.getMassTo())
+                .queryId(searchCriteria.getId()).andReturn()
                 .queryCountry(searchCriteria.getCountry())
                 .queryLocation(searchCriteria.getLocation())
                 .queryTaxon(searchCriteria.getTaxon())
@@ -116,7 +104,14 @@ public class SamplesApiServiceImpl implements SamplesApiService {
                 .returnDateChanged()
                 .returnLithostratigraphyId()
                 .returnLocalitylatitude()
-                .returnLocalitylongitude();
+                .returnLocalitylongitude()
+                .buildDefaultFieldsQuery();
+        return apiService.searchRawEntities(
+                SAMPLE_TABLE,
+                searchCriteria.getPaginateBy(),
+                searchCriteria.getPage(),
+                searchCriteria.getSortField(),
+                requestParams);
     }
 
     @Override
@@ -125,26 +120,9 @@ public class SamplesApiServiceImpl implements SamplesApiService {
                 .id(id)
                 .relatedData(TAXON_LIST_TABLE)
                 .relatedData(ANALYSIS_TABLE)
-          /*      .returnId()
-                .returnLocality()
-                .returnLocalityEn()
-                .returnNumber()
-                .returnNumberAdditional()*/
-//                .relatedData("analysis")
-//                .relatedData("analysis_results")
-//                .relatedData("preparation")
-//                .relatedData("taxon_list")
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(SAMPLE_TABLE, requestParams);
-    }
-
-    @Override
-    public ApiResponse findSamplesByIds(Collection<String> ids) {
-        String requestParams = prepareCommonFields(new SampleSearchCriteria())
-                .queryMultipleIds(ids).andReturn()
-                .buildFullQuery();
-        return apiService.searchRawEntities(SAMPLE_TABLE, ids.size() + 1, 1, new SortField(), requestParams);
     }
 
 }

@@ -62,7 +62,6 @@
           "locality": "locality",
           "stratigraphy": "stratigraphy",
           "collector": "agent",
-          "description": "prep_description",
           "speciesRecovered": "taxon",
           "speciesFrequency": "frequency"
         }
@@ -92,11 +91,11 @@
       },
       "reference": {
         "fields": {
+          "id": "reference___id",
           "author": "author",
           "title": "title",
           "journal": "journal",
           "book": "book",
-          "id": "reference___id",
           "abstracts": "abstracts",
           "keywords": "keywords"
         }

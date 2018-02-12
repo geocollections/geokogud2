@@ -13,12 +13,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class StratigraphyApiServiceImpl implements StratigraphyApiService {
 
-    public static final String STRATIGRAPHY_TABLE = "stratigraphy";
+    private static final String STRATIGRAPHY_TABLE = "stratigraphy";
+    private static final String STRATIGRAPHY_REFERENCE = "stratigraphy_reference";
+    private static final String STRATIGRAPHY_STRATOTYPE = "stratigraphy_stratotype";
+    private static final String STRATIGRAPHY_SYNONYM = "stratigraphy_synonym";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -67,8 +69,15 @@ public class StratigraphyApiServiceImpl implements StratigraphyApiService {
 
     @Override
     public ApiResponse findStratigraphy(StratigraphySearchCriteria searchCriteria)  {
-        String requestParams = prepareCommonFields(searchCriteria)
+        String requestParams = FluentStratigraphySearchApiBuilder.aRequest()
                 .queryId(searchCriteria.getId())
+                .queryStratigraphy(searchCriteria.getStratigraphy())
+                .queryIndex(searchCriteria.getIndex())
+                .queryAgeBase(searchCriteria.getAgeMinY())
+                .queryLithology(searchCriteria.getMainLithology())
+                .queryAuthor(searchCriteria.getAuthor())
+                .returnAgeChronostratigraphyId()
+                .returnParentId()
                 .buildDefaultFieldsQuery();
         return apiService.searchRawEntities(
                 STRATIGRAPHY_TABLE,
@@ -78,24 +87,13 @@ public class StratigraphyApiServiceImpl implements StratigraphyApiService {
                 requestParams);
     }
 
-    private FluentStratigraphySearchApiBuilder prepareCommonFields(StratigraphySearchCriteria searchCriteria) {
-        return FluentStratigraphySearchApiBuilder.aRequest()
-                .queryStratigraphy(searchCriteria.getStratigraphy())
-                .queryIndex(searchCriteria.getIndex())
-                .queryAgeBase(searchCriteria.getAgeMinY())
-                .queryLithology(searchCriteria.getMainLithology())
-                .queryAuthor(searchCriteria.getAuthor())
-                .returnAgeChronostratigraphyId()
-                .returnParentId();
-    }
-
     @Override
     public ApiResponse findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
-                .relatedData("stratigraphy_reference")
-                .relatedData("stratigraphy_stratotype")
-                .relatedData("stratigraphy_synonym")
+                .relatedData(STRATIGRAPHY_REFERENCE)
+                .relatedData(STRATIGRAPHY_STRATOTYPE)
+                .relatedData(STRATIGRAPHY_SYNONYM)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.searchRawEntities(STRATIGRAPHY_TABLE, requestParams);

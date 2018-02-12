@@ -2,17 +2,17 @@ package ee.ttu.geocollection.interop.api.samples.pojo;
 
 import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.domain.SortField;
-import ee.ttu.geocollection.interop.api.PageableSearchCriteria;
 
 import java.util.List;
 
-public class SampleSearchCriteria implements PageableSearchCriteria {
+public class SampleSearchCriteria {
+
     private int page = 1;
     private int paginateBy = 25;
     private SortField sortField;
 
-    private SearchField id;
     private SearchField sampleNumber;
+    private SearchField locality;
     private SearchField depthSince;
     private SearchField depthTo;
     private SearchField stratigraphy;
@@ -20,15 +20,25 @@ public class SampleSearchCriteria implements PageableSearchCriteria {
     private SearchField agent;
     private SearchField massSince;
     private SearchField massTo;
+    private SearchField id;
+    private SearchField country;
     private SearchField location;
     private SearchField taxon;
     private SearchField frequency;
     private SearchField analysisMethod;
     private SearchField component;
     private SearchField content;
-    private SearchField locality;
-    private SearchField country;
+
     private List<String> dbs;
+
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
 
     public int getPaginateBy() {
         return paginateBy;
@@ -36,32 +46,6 @@ public class SampleSearchCriteria implements PageableSearchCriteria {
 
     public void setPaginateBy(int paginateBy) {
         this.paginateBy = paginateBy;
-    }
-
-    public SearchField getCountry() {
-        return country;
-    }
-
-    public void setCountry(SearchField country) {
-        this.country = country;
-    }
-
-    public SearchField getLocality() {
-        return locality;
-    }
-
-    public void setLocality(SearchField locality) {
-        this.locality = locality;
-    }
-
-    @Override
-    public int getPage() {
-        return page;
-    }
-
-    @Override
-    public void setPage(int page) {
-        this.page = page;
     }
 
     public SortField getSortField() {
@@ -72,13 +56,6 @@ public class SampleSearchCriteria implements PageableSearchCriteria {
         this.sortField = sortField;
     }
 
-    public SearchField getId() {
-        return id;
-    }
-
-    public void setId(SearchField id) {
-        this.id = id;
-    }
 
     public SearchField getSampleNumber() {
         return sampleNumber;
@@ -86,6 +63,14 @@ public class SampleSearchCriteria implements PageableSearchCriteria {
 
     public void setSampleNumber(SearchField sampleNumber) {
         this.sampleNumber = sampleNumber;
+    }
+
+    public SearchField getLocality() {
+        return locality;
+    }
+
+    public void setLocality(SearchField locality) {
+        this.locality = locality;
     }
 
     public SearchField getDepthSince() {
@@ -144,6 +129,22 @@ public class SampleSearchCriteria implements PageableSearchCriteria {
         this.massTo = massTo;
     }
 
+    public SearchField getId() {
+        return id;
+    }
+
+    public void setId(SearchField id) {
+        this.id = id;
+    }
+
+    public SearchField getCountry() {
+        return country;
+    }
+
+    public void setCountry(SearchField country) {
+        this.country = country;
+    }
+
     public SearchField getLocation() {
         return location;
     }
@@ -191,6 +192,7 @@ public class SampleSearchCriteria implements PageableSearchCriteria {
     public void setContent(SearchField content) {
         this.content = content;
     }
+
 
     public List<String> getDbs() {
         return dbs;

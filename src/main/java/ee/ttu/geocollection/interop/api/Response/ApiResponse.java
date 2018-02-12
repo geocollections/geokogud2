@@ -8,25 +8,24 @@ import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ApiResponse {
+
     private String table;
+
     @JsonProperty("count")
     private int count;
+
     @JsonProperty("page")
     private String pageInfo;
+
     @JsonProperty("results")
     private List<Map<String, Object>> result;
+
     @JsonProperty("response")
     private Map response;
+
     @JsonProperty("related_data")
     private Map<String, List> relatedData;
 
-    public Map<String, List> getRelatedData() {
-        return relatedData;
-    }
-
-    public void setRelatedData(Map<String, List> relatedData) {
-        this.relatedData = relatedData;
-    }
 
     public String getTable() {
         return table;
@@ -68,11 +67,12 @@ public class ApiResponse {
         this.response = response;
     }
 
-    public int extractCurrentPageNumber() {
-        return Integer.parseInt(pageInfo.split(" ")[1]);
+    public Map<String, List> getRelatedData() {
+        return relatedData;
     }
 
-    public int extractLastPageNumber() {
-        return Integer.parseInt(pageInfo.split(" ")[3]);
+    public void setRelatedData(Map<String, List> relatedData) {
+        this.relatedData = relatedData;
     }
+
 }

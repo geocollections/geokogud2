@@ -6,6 +6,7 @@ import ee.ttu.geocollection.interop.api.preparations.service.impl.PreparationsAp
 import static ee.ttu.geocollection.interop.api.builder.ApiFields.*;
 
 public class FluentPreparationSearchApiBuilder extends FluentSearchApiBuilder<FluentPreparationSearchApiBuilder> {
+
     public static FluentPreparationSearchApiBuilder aRequest() {
         return new FluentPreparationSearchApiBuilder();
     }

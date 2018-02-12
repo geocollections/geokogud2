@@ -15,28 +15,8 @@ public class FluentPhotoArchiveSearchApiBuilder extends FluentSearchApiBuilder<F
         return this;
     }
 
-    public FluentPhotoArchiveSearchApiBuilder queryFileName(SearchField id) {
-        buildFieldParameters(FILE_NAME, id);
-        return this;
-    }
-
-    public FluentPhotoArchiveSearchApiBuilder queryDateTaken(SearchField dateTaken) {
-        buildFieldParameters(DATE_TAKEN, dateTaken);
-        return this;
-    }
-
-    public FluentPhotoArchiveSearchApiBuilder queryAuthorAgent(SearchField id) {
-        buildMultiSearch(id, AUTHOR_AGENT, AUTHOR_FORENAME, AUTHOR_SURENAME, AUTHOR_FREE);
-        return this;
-    }
-
-    public FluentPhotoArchiveSearchApiBuilder queryKeywords(SearchField keywords) {
-        buildMultiSearch(keywords, KEYWORDS, DESCRIPTION, OBJECT, PLACE, LOCALITY_LOCALITY_EN, LOCALITY_LOCALITY);
-        return this;
-    }
-
-    public FluentPhotoArchiveSearchApiBuilder queryNumber(SearchField imageNumber) {
-        buildMultiSearch(imageNumber, IMAGE_NUMBER, IMAGESET_NUMBER);
+    public FluentPhotoArchiveSearchApiBuilder queryLocality(SearchField locality) {
+        buildMultiSearch(locality, LOCALITY_LOCALITY, LOCALITY_LOCALITY_EN, PLACE);
         return this;
     }
 
@@ -45,8 +25,8 @@ public class FluentPhotoArchiveSearchApiBuilder extends FluentSearchApiBuilder<F
         return this;
     }
 
-    public FluentPhotoArchiveSearchApiBuilder queryLocality(SearchField locality) {
-        buildMultiSearch(locality, LOCALITY_LOCALITY, LOCALITY_LOCALITY_EN, PLACE);
+    public FluentPhotoArchiveSearchApiBuilder queryKeywords(SearchField keywords) {
+        buildMultiSearch(keywords, KEYWORDS, DESCRIPTION, OBJECT, PLACE, LOCALITY_LOCALITY_EN, LOCALITY_LOCALITY);
         return this;
     }
 
@@ -64,6 +44,21 @@ public class FluentPhotoArchiveSearchApiBuilder extends FluentSearchApiBuilder<F
         return this;
     }
 
+    public FluentPhotoArchiveSearchApiBuilder queryDateTaken(SearchField dateTaken) {
+        buildFieldParameters(DATE_TAKEN, dateTaken);
+        return this;
+    }
+
+    public FluentPhotoArchiveSearchApiBuilder queryNumber(SearchField imageNumber) {
+        buildMultiSearch(imageNumber, IMAGE_NUMBER, IMAGESET_NUMBER);
+        return this;
+    }
+
+    public FluentPhotoArchiveSearchApiBuilder queryAuthorAgent(SearchField id) {
+        buildMultiSearch(id, AUTHOR_AGENT, AUTHOR_FORENAME, AUTHOR_SURENAME, AUTHOR_FREE);
+        return this;
+    }
+
     public FluentPhotoArchiveSearchApiBuilder querySizeX(SearchField size) {
         buildFieldParameters(SIZE_X, size);
         return this;
@@ -71,16 +66,6 @@ public class FluentPhotoArchiveSearchApiBuilder extends FluentSearchApiBuilder<F
 
     public FluentPhotoArchiveSearchApiBuilder querySizeY(SearchField size) {
         buildFieldParameters(SIZE_Y, size);
-        return this;
-    }
-
-//    public FluentPhotoArchiveSearchApiBuilder querySize(SearchField sizeXY) {
-//        buildMultiSearch(sizeXY, SIZE_X, SIZE_Y);
-//        return this;
-//    }
-
-    public FluentPhotoArchiveSearchApiBuilder returnObject() {
-        addReturningField(OBJECT);
         return this;
     }
 }

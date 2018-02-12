@@ -15,11 +15,6 @@ public class FluentSampleSearchApiBuilder extends FluentSearchApiBuilder<FluentS
         return this;
     }
 
-    public FluentSampleSearchApiBuilder queryId(SearchField id) {
-        buildFieldParameters(ID, id);
-        return this;
-    }
-
     public FluentSampleSearchApiBuilder queryNumber(SearchField number) {
         buildMultiSearch(number, NUMBER, NUMBER_ADDITIONAL, NUMBER_FIELD, ID);
         return this;
@@ -68,6 +63,11 @@ public class FluentSampleSearchApiBuilder extends FluentSearchApiBuilder<FluentS
         return this;
     }
 
+    public FluentSampleSearchApiBuilder queryId(SearchField id) {
+        buildFieldParameters(ID, id);
+        return this;
+    }
+
     public FluentSampleSearchApiBuilder queryCountry(SearchField country) {
         buildMultiSearch(country,
                 LOCALITY_COUNTRY,
@@ -94,7 +94,9 @@ public class FluentSampleSearchApiBuilder extends FluentSearchApiBuilder<FluentS
 
     public FluentSampleSearchApiBuilder queryFrequency(SearchField agent) {
         buildFieldParameters(TAXONLIST__FREQUENCY, agent);
-        addFieldNameAndValue("distinct", "true");
+        if (agent != null) { // TODO: FIX IT!
+            addFieldNameAndValue("distinct", "true");
+        }
         return this;
     }
 
@@ -110,21 +112,6 @@ public class FluentSampleSearchApiBuilder extends FluentSearchApiBuilder<FluentS
 
     public FluentSampleSearchApiBuilder queryContent(SearchField agent) {
         buildFieldParameters(ANALYSIS_RESULTS_VALUE, agent);
-        return this;
-    }
-
-    public FluentSampleSearchApiBuilder returnNumber() {
-        addReturningField(NUMBER);
-        return this;
-    }
-
-    public FluentSampleSearchApiBuilder returnNumberAdditional() {
-        addReturningField(NUMBER_ADDITIONAL);
-        return this;
-    }
-
-    public FluentSampleSearchApiBuilder returnDepthInterval() {
-        addReturningField(DEPTH_INTERVAL);
         return this;
     }
 

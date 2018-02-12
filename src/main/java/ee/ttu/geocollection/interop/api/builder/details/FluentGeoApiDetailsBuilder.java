@@ -49,16 +49,6 @@ public class FluentGeoApiDetailsBuilder {
     }
 
     /**
-     * Adds custom string value to returningFields.
-     * @param fieldName string value.
-     * @return current object instance
-     */
-    public FluentGeoApiDetailsBuilder returnCustomField(String fieldName) {
-        addReturningField(fieldName);
-        return this;
-    }
-
-    /**
      * If returningFields is empty then adds field (date_taken) else it adds field with comma (,date_taken).
      * @param field String value to be added into returningFields variable.
      */

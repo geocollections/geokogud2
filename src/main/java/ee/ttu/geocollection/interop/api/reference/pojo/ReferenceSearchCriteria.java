@@ -2,24 +2,31 @@ package ee.ttu.geocollection.interop.api.reference.pojo;
 
 import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.domain.SortField;
-import ee.ttu.geocollection.interop.api.PageableSearchCriteria;
 
-public class ReferenceSearchCriteria implements PageableSearchCriteria {
+public class ReferenceSearchCriteria {
+
     private int page = 1;
     private int paginateBy = 25;
     private SortField sortField;
 
     private SearchField id;
     private SearchField author;
-    private SearchField title;
     private SearchField yearSince;
     private SearchField yearTo;
-    private SearchField doi;
-    private SearchField book;
+    private SearchField title;
     private SearchField journal;
+    private SearchField book;
     private SearchField abstracts;
-
     private SearchField keywords;
+
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
 
     public int getPaginateBy() {
         return paginateBy;
@@ -27,40 +34,6 @@ public class ReferenceSearchCriteria implements PageableSearchCriteria {
 
     public void setPaginateBy(int paginateBy) {
         this.paginateBy = paginateBy;
-    }
-
-    public SearchField getBook() {
-        return book;
-    }
-
-    public void setBook(SearchField book) {
-        this.book = book;
-    }
-
-    public SearchField getJournal() {
-        return journal;
-    }
-
-    public void setJournal(SearchField journal) {
-        this.journal = journal;
-    }
-
-    public SearchField getId() {
-        return id;
-    }
-
-    public void setId(SearchField id) {
-        this.id = id;
-    }
-
-    @Override
-    public int getPage() {
-        return page;
-    }
-
-    @Override
-    public void setPage(int page) {
-        this.page = page;
     }
 
     public SortField getSortField() {
@@ -71,20 +44,21 @@ public class ReferenceSearchCriteria implements PageableSearchCriteria {
         this.sortField = sortField;
     }
 
+
+    public SearchField getId() {
+        return id;
+    }
+
+    public void setId(SearchField id) {
+        this.id = id;
+    }
+
     public SearchField getAuthor() {
         return author;
     }
 
     public void setAuthor(SearchField author) {
         this.author = author;
-    }
-
-    public SearchField getTitle() {
-        return title;
-    }
-
-    public void setTitle(SearchField title) {
-        this.title = title;
     }
 
     public SearchField getYearSince() {
@@ -103,12 +77,28 @@ public class ReferenceSearchCriteria implements PageableSearchCriteria {
         this.yearTo = yearTo;
     }
 
-    public SearchField getDoi() {
-        return doi;
+    public SearchField getTitle() {
+        return title;
     }
 
-    public void setDoi(SearchField doi) {
-        this.doi = doi;
+    public void setTitle(SearchField title) {
+        this.title = title;
+    }
+
+    public SearchField getJournal() {
+        return journal;
+    }
+
+    public void setJournal(SearchField journal) {
+        this.journal = journal;
+    }
+
+    public SearchField getBook() {
+        return book;
+    }
+
+    public void setBook(SearchField book) {
+        this.book = book;
     }
 
     public SearchField getAbstracts() {

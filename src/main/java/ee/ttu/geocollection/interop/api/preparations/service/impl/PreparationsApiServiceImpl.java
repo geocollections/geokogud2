@@ -16,7 +16,8 @@ import java.util.Map;
 @Service
 public class PreparationsApiServiceImpl implements PreparationsApiService{
 
-    public static final String PREPARATION_TAXA = "preparation_taxa";
+    private static final String PREPARATION_TABLE = "preparation";
+    private static final String PREPARATION_TAXA = "preparation_taxa";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -61,11 +62,6 @@ public class PreparationsApiServiceImpl implements PreparationsApiService{
             "date_changed",
             "user_added",
             "user_changed"
-//            "taxonlist__taxon__id",
-//            "taxonlist__taxon__taxon",
-//            "taxonlist__taxon__remarks",
-//            "taxonlist__frequency",
-//            "taxonlist__name"
     );
 
     @Autowired
@@ -85,7 +81,12 @@ public class PreparationsApiServiceImpl implements PreparationsApiService{
                 .returnSampleLocalityId()
                 .returnSampleStratigraphyId()
                 .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities("preparation", searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
+        return apiService.searchRawEntities(
+                PREPARATION_TABLE,
+                searchCriteria.getPaginateBy(),
+                searchCriteria.getPage(),
+                searchCriteria.getSortField(),
+                requestParams);
     }
 
     @Override
@@ -95,6 +96,6 @@ public class PreparationsApiServiceImpl implements PreparationsApiService{
                 .relatedData(PREPARATION_TAXA)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
-        return apiService.findRawEntity("preparation", requestParams);
+        return apiService.findRawEntity(PREPARATION_TABLE, requestParams);
     }
 }

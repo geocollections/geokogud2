@@ -2,15 +2,16 @@ package ee.ttu.geocollection.interop.api.specimen.pojo;
 
 import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.domain.SortField;
-import ee.ttu.geocollection.interop.api.PageableSearchCriteria;
 
 import java.util.List;
 
-public class SpecimenSearchCriteria implements PageableSearchCriteria{
+public class SpecimenSearchCriteria {
+
     private int page = 1;
     private int paginateBy = 25;
     private SortField sortField;
 
+    private SearchField searchImages;
     private SearchField specimenNumber;
     private SearchField collectionNumber;
     private SearchField classification;
@@ -28,8 +29,17 @@ public class SpecimenSearchCriteria implements PageableSearchCriteria{
     private SearchField partOfFossil;
     private SearchField dateTakenSince;
     private SearchField dateTakenTo;
+
     private List<String> dbs;
-    private SearchField searchImages;
+
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
 
     public int getPaginateBy() {
         return paginateBy;
@@ -39,28 +49,21 @@ public class SpecimenSearchCriteria implements PageableSearchCriteria{
         this.paginateBy = paginateBy;
     }
 
+    public SortField getSortField() {
+        return sortField;
+    }
+
+    public void setSortField(SortField sortField) {
+        this.sortField = sortField;
+    }
+
+
     public SearchField getSearchImages() {
         return searchImages;
     }
 
     public void setSearchImages(SearchField searchImages) {
         this.searchImages = searchImages;
-    }
-
-    public List<String> getDbs() {
-        return dbs;
-    }
-
-    public void setDbs(List<String> dbs) {
-        this.dbs = dbs;
-    }
-
-    public SearchField getId() {
-        return id;
-    }
-
-    public void setId(SearchField id) {
-        this.id = id;
     }
 
     public SearchField getSpecimenNumber() {
@@ -119,6 +122,22 @@ public class SpecimenSearchCriteria implements PageableSearchCriteria{
         this.locality = locality;
     }
 
+    public SearchField getStratigraphy() {
+        return stratigraphy;
+    }
+
+    public void setStratigraphy(SearchField stratigraphy) {
+        this.stratigraphy = stratigraphy;
+    }
+
+    public SearchField getId() {
+        return id;
+    }
+
+    public void setId(SearchField id) {
+        this.id = id;
+    }
+
     public SearchField getDepthSince() {
         return depthSince;
     }
@@ -133,14 +152,6 @@ public class SpecimenSearchCriteria implements PageableSearchCriteria{
 
     public void setDepthTo(SearchField depthTo) {
         this.depthTo = depthTo;
-    }
-
-    public SearchField getStratigraphy() {
-        return stratigraphy;
-    }
-
-    public void setStratigraphy(SearchField stratigraphy) {
-        this.stratigraphy = stratigraphy;
     }
 
     public SearchField getCollector() {
@@ -191,20 +202,12 @@ public class SpecimenSearchCriteria implements PageableSearchCriteria{
         this.dateTakenTo = dateTakenTo;
     }
 
-    @Override
-    public int getPage() {
-        return page;
-    }
-    @Override
-    public void setPage(int page) {
-        this.page = page;
+
+    public List<String> getDbs() {
+        return dbs;
     }
 
-    public SortField getSortField() {
-        return sortField;
-    }
-
-    public void setSortField(SortField sortField) {
-        this.sortField = sortField;
+    public void setDbs(List<String> dbs) {
+        this.dbs = dbs;
     }
 }

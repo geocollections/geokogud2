@@ -2,10 +2,9 @@ package ee.ttu.geocollection.interop.api.stratigraphies.pojo;
 
 import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.domain.SortField;
-import ee.ttu.geocollection.interop.api.PageableSearchCriteria;
 
+public class StratigraphySearchCriteria {
 
-public class StratigraphySearchCriteria implements PageableSearchCriteria {
     private int page = 1;
     private int paginateBy = 25;
     private SortField sortField;
@@ -16,6 +15,15 @@ public class StratigraphySearchCriteria implements PageableSearchCriteria {
     private SearchField ageMinY;
     private SearchField mainLithology;
     private SearchField author;
+
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
 
     public int getPaginateBy() {
         return paginateBy;
@@ -33,15 +41,6 @@ public class StratigraphySearchCriteria implements PageableSearchCriteria {
         this.sortField = sortField;
     }
 
-    @Override
-    public int getPage() {
-        return page;
-    }
-
-    @Override
-    public void setPage(int page) {
-        this.page = page;
-    }
 
     public SearchField getId() {
         return id;

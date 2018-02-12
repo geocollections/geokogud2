@@ -1,11 +1,11 @@
 package ee.ttu.geocollection.interop.api.builder.search;
 
 import ee.ttu.geocollection.domain.SearchField;
-import ee.ttu.geocollection.interop.api.specimen.service.impl.SpecimenApiServiceImpl;
 
 import static ee.ttu.geocollection.interop.api.builder.ApiFields.*;
 
 public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<FluentSpecimenSearchApiBuilder> {
+
     public static FluentSpecimenSearchApiBuilder aRequest() {
         return new FluentSpecimenSearchApiBuilder();
     }
@@ -27,11 +27,6 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
 
     public FluentSpecimenSearchApiBuilder queryClassification(SearchField classification) {
         buildMultiSearch(classification, CLASSIFICATION__CLASS_FIELD, CLASSIFICATION__CLASS_EN);
-        return this;
-    }
-
-    public FluentSpecimenSearchApiBuilder queryFossilMineralRock(SearchField fossilMineralRock) {
-        buildMultiSearch(fossilMineralRock, KIND__VALUE, KIND__VALUE_EN);
         return this;
     }
 
@@ -110,18 +105,8 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
         return this;
     }
 
-    public FluentSpecimenSearchApiBuilder queryKeywords(SearchField keyWords) {
-        buildFieldParameters(TAGS, keyWords);
-        return this;
-    }
-
     public FluentSpecimenSearchApiBuilder queryDateAdded(SearchField dateAdded) {
         buildFieldParameters(DATA_ADDED, dateAdded);
-        return this;
-    }
-
-    public FluentSpecimenSearchApiBuilder queryRockId(SearchField rockId) {
-        buildFieldParameters(SPECIMENIDENTIFICATIONGEOLOGIES__ROCK__ID, rockId);
         return this;
     }
 
@@ -130,37 +115,23 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
         return this;
     }
 
-    public FluentSpecimenSearchApiBuilder returnTaxonFields() {
-        return returnRelatedData(SpecimenApiServiceImpl.SPECIMEN_IDENTIFICATION_TABLE, TAXON_ID, TAXON_TAXON, NAME);
-    }
-
     public FluentSpecimenSearchApiBuilder returnLocalityId() {
-        addReturningField("locality_id");
+        addReturningField(LOCALITY_ID);
         return this;
     }
 
     public FluentSpecimenSearchApiBuilder returnStratigraphyId() {
-        addReturningField("stratigraphy_id");
+        addReturningField(STRATIGRAPHY_ID);
         return this;
     }
 
     public FluentSpecimenSearchApiBuilder returnLatitutde() {
-        addReturningField("locality__latitude");
+        addReturningField(LOCALITY__LATITUDE);
         return this;
     }
 
     public FluentSpecimenSearchApiBuilder returnLongitude() {
-        addReturningField("locality__longitude");
-        return this;
-    }
-
-    public FluentSpecimenSearchApiBuilder returnSpecimenidentificationTaxonTaxon() {
-        addReturningField(SPECIMENIDENTIFICATION__TAXON__TAXON);
-        return this;
-    }
-
-    public FluentSpecimenSearchApiBuilder returnSpecimenidentificationTaxonId() {
-        addReturningField(SPECIMENIDENTIFICATION__TAXON_ID);
+        addReturningField(LOCALITY__LONGITUDE);
         return this;
     }
 
