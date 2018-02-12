@@ -271,7 +271,7 @@
 
                     <div id="specimen-images" class="row">
 
-                        <div data-ng-repeat="entity in detailCtrl.images | orderBy : ['-stars','-date_taken']"
+                        <div data-ng-repeat="entity in detailCtrl.images | orderBy : ['-stars','-date_taken','-date_taken_free']"
                              data-ng-click="detailCtrl.service.openInNewWindow({object:'image', id:entity.id})"
                              class="col-lg-specimen-3 col-md-specimen-4 col-sm-specimen-6 col-sm-specimen-4 col-xs-6">
 
