@@ -205,19 +205,22 @@ public class SearchController extends ControllerHelper {
     public ApiResponse searchLocalities(@RequestBody LocalitySearchCriteria searchCriteria) {
 
         ApiResponse localities = null;
+
         if (searchCriteria.getSearchImages() != null
                 && searchCriteria.getSearchImages().getName() != null
                 && searchCriteria.getSearchImages().getName().equals("true")) {
             localities = localitiesApiService.findLocalityImages(searchCriteria);
         } else {
             localities = localitiesApiService.findLocality(searchCriteria);
-            asynchService.doAsynchCallsForEachResult(
-                    localities,
-                    locality ->
-                            () -> localitiesApiService.findLocalityImage(
-                                    new SearchField(locality.get("id").toString(), LookUpType.exact)),
-                    locality ->
-                            receivedImage -> locality.put("locality_image_thumbnail", receivedImage));
+            if (localities.getResult() != null) {
+                asynchService.doAsynchCallsForEachResult(
+                        localities,
+                        locality ->
+                                () -> localitiesApiService.findLocalityImage(
+                                        new SearchField(locality.get("id").toString(), LookUpType.exact)),
+                        locality ->
+                                receivedImage -> locality.put("locality_image_thumbnail", receivedImage));
+            }
         }
 
         return localities;

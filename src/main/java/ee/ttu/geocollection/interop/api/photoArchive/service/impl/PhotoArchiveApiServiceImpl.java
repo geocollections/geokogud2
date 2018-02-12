@@ -1,6 +1,5 @@
 package ee.ttu.geocollection.interop.api.photoArchive.service.impl;
 
-import ee.ttu.geocollection.domain.SortField;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentPhotoArchiveSearchApiBuilder;
@@ -17,7 +16,7 @@ import java.util.Map;
 @Service
 public class PhotoArchiveApiServiceImpl implements PhotoArchiveApiService {
 
-    public static final String IMAGE_TABLE = "image";
+    private static final String IMAGE_TABLE = "image";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -79,11 +78,9 @@ public class PhotoArchiveApiServiceImpl implements PhotoArchiveApiService {
     @Autowired
     private ApiService apiService;
 
-    //https://api.arendus.geokogud.info/image/?paginate_by=30&order_by=id&page=1&format=json&filename__isnull=false
     @Override
     public ApiResponse findPhoto(PhotoArchiveSearchCriteria searchCriteria)  {
         String requestParams = prepareCommonFields(searchCriteria)
-                .queryId(searchCriteria.getId())
 //                .queryFilenameNotNull() Currently disabled because then table view also wont show when filename is null.
                 .buildDefaultFieldsQuery();
         return apiService.searchRawEntities(IMAGE_TABLE, searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
@@ -91,7 +88,6 @@ public class PhotoArchiveApiServiceImpl implements PhotoArchiveApiService {
 
     private FluentPhotoArchiveSearchApiBuilder prepareCommonFields(PhotoArchiveSearchCriteria searchCriteria) {
         return FluentPhotoArchiveSearchApiBuilder.aRequest()
-                .queryFileName(searchCriteria.getFileName())
                 .queryAuthorAgent(searchCriteria.getAuthorAgent())
                 .queryDateTaken(searchCriteria.getDateTakenSince())
                 .queryDateTaken(searchCriteria.getDateTakenTo())
@@ -112,13 +108,5 @@ public class PhotoArchiveApiServiceImpl implements PhotoArchiveApiService {
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(IMAGE_TABLE, requestParams);
-    }
-
-    @Override
-    public ApiResponse findImagesByIds(List<String> ids) {
-        String requestParams = prepareCommonFields(new PhotoArchiveSearchCriteria())
-                .queryMultipleIds(ids).andReturn()
-                .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities(IMAGE_TABLE, ids.size() + 1, 1, new SortField(), requestParams);
     }
 }

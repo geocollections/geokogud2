@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 public interface PhotoArchiveApiService {
+
     ApiResponse findPhoto(PhotoArchiveSearchCriteria searchCriteria) ;
 
     Map findRawById(Long id);
 
-    ApiResponse findImagesByIds(List<String> ids);
 }

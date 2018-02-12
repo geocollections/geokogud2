@@ -5,9 +5,11 @@ import ee.ttu.geocollection.domain.SearchField;
 import static ee.ttu.geocollection.interop.api.builder.ApiFields.IMAGE_URL;
 
 public class FluentLocalityImageSearchApiBuilder extends FluentSearchApiBuilder<FluentLocalityImageSearchApiBuilder> {
+
     public static FluentLocalityImageSearchApiBuilder aRequest() {
         return new FluentLocalityImageSearchApiBuilder();
     }
+
     @Override
     FluentLocalityImageSearchApiBuilder getThis() {
         return this;

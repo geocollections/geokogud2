@@ -2,7 +2,6 @@ package ee.ttu.geocollection.interop.api.localities.pojo;
 
 import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.domain.SortField;
-import ee.ttu.geocollection.interop.api.PageableSearchCriteria;
 
 public class LocalitySearchCriteria {
 

@@ -50,10 +50,13 @@ public abstract class FluentSearchApiBuilder<B extends FluentSearchApiBuilder<B>
 
     public B queryInstitutions(List<String> institutions) {
         if (institutions != null) {
-            buildOrSearch(
-                    institutions.stream()
-                            .map(inst -> new OrSearchPair(new SearchField(inst, LookUpType.exact), DATABASE_ACRONYM))
-                            .collect(toList()));
+            // Pointless to add institutions to query if user wants to find all results from all institutions.
+            if (institutions.size() != 6) {
+                buildOrSearch(
+                        institutions.stream()
+                                .map(inst -> new OrSearchPair(new SearchField(inst, LookUpType.exact), DATABASE_ACRONYM))
+                                .collect(toList()));
+            }
         }
         this.lastQueryField = DATABASE_ACRONYM;
         return getThis();
