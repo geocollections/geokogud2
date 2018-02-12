@@ -50,7 +50,9 @@ public class FluentAnalysesApiBuilder  extends FluentSearchApiBuilder<FluentAnal
     public FluentAnalysesApiBuilder queryContent(SearchField content) {
         buildFieldParameters(ANALYSISRESULTS__VALUE, content);
         if (content != null) {
-            addFieldNameAndValue("distinct", "true"); //removes duplicates if content is entered
+            if (!content.toString().equals("name=null")) {
+                addFieldNameAndValue("distinct", "true"); // BUG FIX for duplicates
+            }
         }
         return this;
     }

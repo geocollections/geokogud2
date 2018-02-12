@@ -39,4 +39,9 @@ public class SearchField {
     public void setLookUpType(LookUpType lookUpType) {
         this.lookUpType = lookUpType;
     }
+
+    @Override
+    public String toString() {
+        return "name=" + name;
+    }
 }

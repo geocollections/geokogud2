@@ -51,7 +51,9 @@ public class FluentPreparationSearchApiBuilder extends FluentSearchApiBuilder<Fl
     public FluentPreparationSearchApiBuilder querySpeciesFrequency(SearchField text) {
         buildFieldParameters(TAXONLIST__FREQUENCY, text);
         if (text != null) {
-            addFieldNameAndValue("distinct", "true"); //bug fix for duplicates
+            if (!text.toString().equals("name=null")) {
+                addFieldNameAndValue("distinct", "true"); // BUG FIX for duplicates
+            }
         }
         return this;
     }
