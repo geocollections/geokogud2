@@ -141,7 +141,7 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
         String requestParams = FluentLocalityImageSearchApiBuilder.aRequest()
                 .queryLocalityIdForUrl(localityId).andReturn()
                 .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities(IMAGE_TABLE, 1, new SortField(), requestParams);
+        return apiService.searchRawEntities(IMAGE_TABLE, 1, new SortField("stars", SortingOrder.DESCENDING), requestParams);
     }
 
     @Override

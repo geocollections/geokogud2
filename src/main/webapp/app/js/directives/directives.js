@@ -188,12 +188,13 @@ angular.module('geoApp')
     };
 }).directive('showPreviewSpecimen', function () {
     return {
-        template: '<img data-toggle="tooltip" title="{{title}}" class="img-rounded img-responsive margin-left-and-right-15" ng-src="{{previewImageUrl}}" spinner-load />',
+        template: '<img data-toggle="tooltip" title="{{title}}" class="{{classes}}" ng-src="{{previewImageUrl}}" spinner-load />',
         restrict: 'E',
         scope: {
             imgUrl: '=',
             imgTitle: '=',
-            titleLang: '='
+            titleLang: '=',
+            classes: '@'
         },
         controller: ['$scope','$translate', '$rootScope', function ($scope, $translate, $rootScope) {
             $scope.$watch('imgTitle', function (newVal) {
@@ -220,12 +221,13 @@ angular.module('geoApp')
     };
 }).directive('showPreviewLocality', function () {
     return {
-        template: '<img data-toggle="tooltip" title="{{title}}" data-html="true" class="img-rounded img-responsive margin-left-and-right-15" ng-src="{{previewImageUrl}}" spinner-load />',
+        template: '<img data-toggle="tooltip" title="{{title}}" data-html="true" class="{{classes}}" ng-src="{{previewImageUrl}}" spinner-load />',
         restrict: 'E',
         scope: {
             imgUrl: '=',
             imgTitle: '=',
-            titleLang: '='
+            titleLang: '=',
+            classes: '@'
         },
         controller: ['$scope','$translate', '$rootScope', function ($scope, $translate, $rootScope) {
             $scope.$watch('imgTitle', function (newVal) {

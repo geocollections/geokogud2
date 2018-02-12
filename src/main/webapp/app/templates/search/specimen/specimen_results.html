@@ -109,11 +109,14 @@
 
                 <td class="image-preview" data-title="{{ 'SEARCH.SPECIMENS.IMAGES' | translate }}">
                     <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:entity.id,width:950})">
-                        <show-preview data-ng-if="entity.specimen_image_thumbnail.count > 0"
-                                      img-url="ctrl.service.composeSpecimenImageUrl({
-                                            database: entity.specimen_image_thumbnail.results[0].specimen__database__acronym,
-                                            image: entity.specimen_image_thumbnail.results[0].image,
-                                            imageUrl: entity.specimen_image_thumbnail.results[0].image_url})"/>
+
+                        <show-preview-specimen data-ng-if="entity.specimen_image_thumbnail.count > 0"
+                                               classes="img-rounded"
+                                               img-url="ctrl.service.composeSpecimenImageUrl({
+                                               database: entity.specimen_image_thumbnail.results[0].specimen__database__acronym,
+                                               image: entity.specimen_image_thumbnail.results[0].image,
+                                               imageUrl: entity.specimen_image_thumbnail.results[0].image_url})"/>
+
                     </a>
                 </td>
 
