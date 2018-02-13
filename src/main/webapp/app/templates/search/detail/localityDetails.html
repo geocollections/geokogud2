@@ -275,33 +275,14 @@
                              data-ng-click="detailCtrl.service.openInNewWindow({object:'image', id:entity.id})"
                              class="col-lg-specimen-3 col-md-specimen-4 col-sm-specimen-6 col-sm-specimen-4 col-xs-6">
 
-                            <show-preview-locality id="specimen-detail-image" img-title="[entity.author__agent, entity.date_taken, entity.date_taken_free]"
-                                                   classes="img-rounded img-responsive margin-left-and-right-15"
-                                                   img-url="detailCtrl.service.composeImageUrl(entity)"/>
+                            <show-preview id="specimen-detail-image"
+                                          img-title="[entity.author__agent, entity.date_taken, entity.date_taken_free]"
+                                          classes="img-rounded img-responsive margin-left-and-right-15"
+                                          img-url="detailCtrl.service.composeImageUrl(entity)"/>
 
                         </div>
                     </div>
 
-                    <!--<table class="table table-bordered table-hover">-->
-                        <!--<thead class="styles-for-table-headers">-->
-                        <!--<tr>-->
-                            <!--<th>{{'DETAIL.LOCALITY.DATE' | translate }}</th>-->
-                            <!--<th>{{'DETAIL.LOCALITY.AUTHOR' | translate }}</th>-->
-                            <!--<th>{{'DETAIL.LOCALITY.DESCRIPTION' | translate }}</th>-->
-                            <!--<th>{{'DETAIL.LOCALITY.TYPE' | translate }}</th>-->
-                            <!--<th>{{'DETAIL.LOCALITY.LINK ' | translate }}</th>-->
-                        <!--</tr>-->
-                        <!--</thead>-->
-                        <!--<tbody>-->
-                        <!--<tr data-ng-repeat="entity in detailCtrl.images">-->
-                            <!--<td>{{entity.date_added | date:dateFormat}}</td>-->
-                            <!--<td>{{entity.author__forename}} {{entity.author__surename}}</td>-->
-                            <!--<td>{{entity.description}}</td>-->
-                            <!--<td><localize et="entity.type__value" en="entity.type__value_en"/></td>-->
-                            <!--<td><a href data-ng-click="detailCtrl.service.openInNewWindow({object:'image',id:entity.id})"><img src="http://geokogud.info/git/image/{{entity.imageset__imageset_series}}/{{entity.imageset__imageset_number}}/preview/{{entity.filename}}"></a></td>-->
-                        <!--</tr>-->
-                        <!--</tbody>-->
-                    <!--</table>-->
                 </div>
 
                 <div data-ng-if="detailCtrl.localitySynonyms.length > 0">
@@ -394,26 +375,6 @@
                         </tbody>
                     </table>
                 </div>
-
-                <!--<div data-ng-if="detailCtrl.drillcores.length > 0">-->
-                    <!--<h3> {{ 'DETAIL.DETAIL_DRILLCORES' | translate }} </h3>-->
-                    <!--<table class="table table-bordered table-hover">-->
-                        <!--<thead class="styles-for-table-headers">-->
-                        <!--<tr>-->
-                            <!--<th>Drillcore</th>-->
-                            <!--<th>???</th>-->
-                            <!--<th>???</th>-->
-                        <!--</tr>-->
-                        <!--</thead>-->
-                        <!--<tbody>-->
-                        <!--<tr data-ng-repeat="entity in detailCtrl.drillcores">-->
-                            <!--<td><a href data-ng-click="detailCtrl.service.openInNewWindow({object:'drillcore',id:entity.id})">{{entity.drillcore}}</a></td>-->
-                            <!--<td>???</td>-->
-                            <!--<td>???</td>-->
-                        <!--</tr>-->
-                        <!--</tbody>-->
-                    <!--</table>-->
-                <!--</div>-->
 
             </div>
         </div>

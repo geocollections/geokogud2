@@ -450,12 +450,13 @@
                              data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image', id:entity.id})"
                              class="col-lg-specimen-3 col-md-specimen-4 col-sm-specimen-6 col-sm-specimen-4 col-xs-6">
 
-                            <show-preview-specimen id="specimen-detail-image" img-title="entity.id"
-                                                   classes="img-rounded img-responsive margin-left-and-right-15"
-                                                   img-url="detailCtrl.service.composeSpecimenImageUrl({
-                                                            database: entity.specimen__database__acronym,
-                                                            image: entity.image,
-                                                            imageUrl:entity.image_ur})"/>
+                            <show-preview id="specimen-detail-image"
+                                          img-title="[entity.agent__agent, entity.date, entity.date_taken_free, entity.id]"
+                                          classes="img-rounded img-responsive margin-left-and-right-15"
+                                          img-url="detailCtrl.service.composeSpecimenImageUrl({
+                                                   database: entity.specimen__database__acronym,
+                                                   image: entity.image,
+                                                   imageUrl:entity.image_ur})"/>
 
                         </div>
                     </div>

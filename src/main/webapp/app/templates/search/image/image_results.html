@@ -29,6 +29,7 @@
                 <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.DATE' | translate }}">
                     <div data-ng-if="entity.date_taken && entity.date_taken != null">
                         {{entity.date_taken}}
+                        <!--{{entity.date_taken | date:dateFormat}}-->
                     </div>
                     <div data-ng-if="entity.date_taken == null && entity.date_taken_free != null">
                         {{entity.date_taken_free}}

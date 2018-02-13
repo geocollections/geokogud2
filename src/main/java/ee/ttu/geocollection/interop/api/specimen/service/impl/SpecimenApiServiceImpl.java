@@ -177,6 +177,9 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .returnImage()
                 .returnDatabaseAcronym()
                 .returnId()
+                .returnAgent()
+                .returnDate()
+                .returnDateFree()
                 .buildFullQuery();
         return apiService.searchRawEntities(SPECIMEN_IMAGE_TABLE, 1,1, new SortField(), requestParams);
     }

@@ -154,73 +154,6 @@ angular.module('geoApp')
     };
 }).directive('showPreview', function () {
     return {
-        template: '<img data-toggle="tooltip" title="{{title}}" class="previewImage" ng-src="{{previewImageUrl}}" spinner-load />',
-        restrict: 'E',
-        scope: {
-            imgUrl: '=',
-            imgAuthor: '=',
-            imgDateTaken: '='
-        },
-        link: function (scope) {
-            scope.$watch('[imgAuthor, imgDateTaken]', function (newVal) {
-                if (newVal) {
-                    var author = "";
-                    var dateTaken = "";
-                    if (newVal[0] && newVal[0] != null) {
-                        author = newVal[0];
-                    }
-                    if (newVal[1] && newVal[1] != null) {
-                        dateTaken = newVal[1];
-                    }
-                    if (author.length > 0 || dateTaken.length > 0) {
-                        scope.title = author + " " + dateTaken;
-                    }
-            }
-            });
-            scope.$watch('imgUrl', function(newValue) {
-                if(newValue) {
-                    var foundHttp = newValue.match(/http:/);
-                    var lastSlashPosition = newValue.lastIndexOf('/');
-                    scope.previewImageUrl = (foundHttp ? "" : "http://") + newValue.substring(0, lastSlashPosition) + '/preview' + newValue.substring(lastSlashPosition);
-                }
-            }, true);
-        }
-    };
-}).directive('showPreviewSpecimen', function () {
-    return {
-        template: '<img data-toggle="tooltip" title="{{title}}" class="{{classes}}" ng-src="{{previewImageUrl}}" spinner-load />',
-        restrict: 'E',
-        scope: {
-            imgUrl: '=',
-            imgTitle: '=',
-            titleLang: '=',
-            classes: '@'
-        },
-        controller: ['$scope','$translate', '$rootScope', function ($scope, $translate, $rootScope) {
-            $scope.$watch('imgTitle', function (newVal) {
-                if (newVal) {
-                    var imgID = newVal;
-                    var engText = "Click for image no. " + imgID + " details";
-                    var estText = "Kliki, et näha pildi nr. " + imgID + " üksikasju";
-                    $scope.title = $translate.use() === 'et' ? estText : engText;
-
-                    $rootScope.$on('$translateChangeSuccess', function () {
-                        $scope.title = $translate.use() === 'et' ? estText : engText;
-                    });
-                }
-            });
-
-            $scope.$watch('imgUrl', function(newValue) {
-                if(newValue) {
-                    var foundHttp = newValue.match(/http:/);
-                    var lastSlashPosition = newValue.lastIndexOf('/');
-                    $scope.previewImageUrl = (foundHttp ? "" : "http://") + newValue.substring(0, lastSlashPosition) + '/preview' + newValue.substring(lastSlashPosition);
-                    }
-                }, true);
-        }]
-    };
-}).directive('showPreviewLocality', function () {
-    return {
         template: '<img data-toggle="tooltip" title="{{title}}" data-html="true" class="{{classes}}" ng-src="{{previewImageUrl}}" spinner-load />',
         restrict: 'E',
         scope: {
@@ -247,6 +180,11 @@ angular.module('geoApp')
                         estText += "Pildistamise aeg: " +newVal[2];
                         engText += "Date taken: " + newVal[2];
                     }
+                    if (newVal[3] && newVal[3] != null) {
+                        estText = "Pildi nr. " + newVal[3] + "<br>" + estText;
+                        engText = "Image no. " + newVal[3] + "<br>" + engText;
+                    }
+
                     $scope.title = $translate.use() === 'et' ? estText : engText;
 
                     $rootScope.$on('$translateChangeSuccess', function () {

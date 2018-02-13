@@ -235,7 +235,12 @@
 
                             <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:image.id})">
                                 <div data-ng-if="image.filename && image.filename != null">
-                                    <show-preview img-author="image.author__agent" img-date-taken="image.date_taken" img-url="ctrl.service.composeImageUrl(image)" class="img-responsive"/>
+
+                                    <show-preview class="img-responsive"
+                                                  classes="previewImage"
+                                                  img-title="[image.author__agent, image.date_taken, image.date_taken_free]"
+                                                  img-url="ctrl.service.composeImageUrl(image)" />
+
                                 </div>
 
                                 <div class="img-responsive" data-ng-if="image.filename == null">
