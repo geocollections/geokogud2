@@ -40,6 +40,7 @@
                         {{entity.sample}}
                     </a>
                 </td>
+
                 <td data-title="{{ 'SEARCH.ANALYSES.TABLE.LOCALITY'| translate }}">
                     <div data-ng-if="entity.sample__locality__locality != null || entity.sample__locality__locality_en != null">
                         <a href data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:entity.sample__locality_id})">
@@ -51,7 +52,9 @@
                         {{entity.sample__locality_free}}
                     </div>
                 </td>
-                <td data-title="{{ 'SEARCH.ANALYSES.TABLE.DEPTH_M'| translate }}">{{entity.sample__depth}} {{entity.sample__depth_interval}}</td>
+
+                <td data-title="{{ 'SEARCH.ANALYSES.TABLE.DEPTH_M'| translate }}">{{entity.sample__depth}}<span data-ng-if="entity.sample__depth_interval"> ({{entity.sample__depth_interval}})</span></td>
+
                 <td data-title="{{ 'SEARCH.ANALYSES.TABLE.STRATIGRAPHY' | translate }}">
                     <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.sample__stratigraphy_id})">
                         <localize data-ng-if="entity.sample__stratigraphy__stratigraphy != null || entity.sample__stratigraphy__stratigraphy_en != null"
