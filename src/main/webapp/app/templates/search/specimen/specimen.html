@@ -320,12 +320,13 @@
                     </div>
 
                     <div class="col-lg-15 col-lg-3 col-md-4 col-xs-6" data-ng-repeat="image in response.results">
+
                         <figure class="margin-bottom-20">
 
                             <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen_image',id:image.id})">
 
-                                <show-preview class="img-responsive"
-                                              classes="previewImage"
+                                <show-preview class="img-responsive set-height hover-me"
+                                              classes="previewImage img-rounded"
                                               img-title="[image.agent__agent, image.date, image.date_taken_free]"
                                               img-url="ctrl.service.composeImageUrl(image, image.image_url)"/>
 

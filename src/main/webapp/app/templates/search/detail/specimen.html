@@ -444,14 +444,14 @@
 
                     <!--TODO: change ID and CLASS names to universal-->
 
-                    <div id="specimen-images" class="row">
+                    <div id="images" class="row">
 
                         <div data-ng-repeat="entity in detailCtrl.specimenImage"
                              data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image', id:entity.id})"
-                             class="col-lg-specimen-3 col-md-specimen-4 col-sm-specimen-6 col-sm-specimen-4 col-xs-6">
+                             id="detail-image"
+                             class="col-lg-picture-3 col-md-picture-4 col-sm-picture-6 col-sm-picture-4 col-xs-6 set-height">
 
-                            <show-preview id="specimen-detail-image"
-                                          img-title="[entity.agent__agent, entity.date, entity.date_taken_free, entity.id]"
+                            <show-preview img-title="[entity.agent__agent, entity.date, entity.date_taken_free, entity.id]"
                                           classes="img-rounded img-responsive margin-left-and-right-15"
                                           img-url="detailCtrl.service.composeSpecimenImageUrl({
                                                    database: entity.specimen__database__acronym,
@@ -461,24 +461,6 @@
                         </div>
                     </div>
 
-                    <!--<div class="table-responsive">-->
-                        <!--<table class="table">-->
-                            <!--<thead>-->
-                            <!--</thead>-->
-                            <!--<tbody>-->
-                            <!--<tr>-->
-                                <!--<td style="cursor: pointer;" id="image-preview-detail" data-ng-repeat="entity in detailCtrl.specimenImage"-->
-                                    <!--data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image', id:entity.id})">-->
-                                    <!--<show-preview-specimen id="specimen-detail-image" img-title="entity.id"-->
-                                                           <!--img-url="detailCtrl.service.composeSpecimenImageUrl({-->
-                                                            <!--database: entity.specimen__database__acronym,-->
-                                                            <!--image: entity.image,-->
-                                                            <!--imageUrl:entity.image_ur})"/>-->
-                                <!--</td>-->
-                            <!--</tr>-->
-                            <!--</tbody>-->
-                        <!--</table>-->
-                    <!--</div>-->
                 </div>
 
                 <div data-ng-if="detailCtrl.results.locality__latitude && detailCtrl.results.locality__longitude">

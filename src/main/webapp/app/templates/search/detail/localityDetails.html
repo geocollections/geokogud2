@@ -269,14 +269,14 @@
 
                     <!--TODO: change ID and CLASS names to universal-->
 
-                    <div id="specimen-images" class="row">
+                    <div id="images" class="row">
 
                         <div data-ng-repeat="entity in detailCtrl.images | orderBy : ['-stars','-date_taken','-date_taken_free']"
                              data-ng-click="detailCtrl.service.openInNewWindow({object:'image', id:entity.id})"
-                             class="col-lg-specimen-3 col-md-specimen-4 col-sm-specimen-6 col-sm-specimen-4 col-xs-6">
+                             id="detail-image"
+                             class="col-lg-picture-3 col-md-picture-4 col-sm-picture-6 col-sm-picture-4 col-xs-6 set-height">
 
-                            <show-preview id="specimen-detail-image"
-                                          img-title="[entity.author__agent, entity.date_taken, entity.date_taken_free]"
+                            <show-preview img-title="[entity.author__agent, entity.date_taken, entity.date_taken_free]"
                                           classes="img-rounded img-responsive margin-left-and-right-15"
                                           img-url="detailCtrl.service.composeImageUrl(entity)"/>
 

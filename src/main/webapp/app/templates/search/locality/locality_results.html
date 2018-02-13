@@ -57,8 +57,8 @@
 
                 <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.DRILLCORE' | translate }}"></td>
 
-                <td class="preview-images" data-title="{{ 'SEARCH.LOCALITIES.TABLE.IMAGES' | translate }}">
-                    <a href data-ng-click="ctrl.service.openInNewWindow({object: 'locality', id: entity.id, width:1000})">
+                <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.IMAGES' | translate }}">
+                    <a href class="hover-me" data-ng-click="ctrl.service.openInNewWindow({object: 'locality', id: entity.id, width:1000})">
 
                         <show-preview data-ng-if="entity.locality_image_thumbnail.count > 0"
                                       classes="img-rounded imagePreview"

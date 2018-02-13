@@ -164,12 +164,12 @@
 
                         <figure class="margin-bottom-20">
 
-                            <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:image.id})">
+                            <a href class="hover-me" data-ng-click="ctrl.service.openInNewWindow({object:'image',id:image.id})">
 
                                 <div data-ng-if="image.filename && image.filename != null">
 
-                                    <show-preview class="img-responsive"
-                                                  classes="previewImage"
+                                    <show-preview class="img-responsive set-height"
+                                                  classes="previewImage img-rounded"
                                                   img-title="[image.author__agent, image.date_taken, image.date_taken_free]"
                                                   img-url="ctrl.service.composeImageUrl(image)" />
                                 </div>

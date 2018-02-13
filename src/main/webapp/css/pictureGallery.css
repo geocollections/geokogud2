@@ -18,17 +18,21 @@
 
 .carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {
     width: auto;
+    max-height: 130px;
+}
+
+.set-height {
     height: 130px;
 }
 
-#specimen-detail-image > .img-responsive {
+#detail-image > .img-responsive {
     max-width: 90%;
 }
 
 @media only screen and (max-width: 480px) {
     .carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {
         width: auto;
-        height: 75px;
+        max-height: 75px;
     }
     .previewImage {
         max-height: 75px;
@@ -41,18 +45,24 @@
     .imagePlace {
         font-size: 12px;
     }
+    .set-height {
+        height: 75px;
+    }
 }
 
 @media (min-width: 410px) and (max-width: 480px) {
-    #specimen-detail-image > .img-responsive {
+    #detail-image > .img-responsive {
         width: auto;
-        height: 130px;
+        max-height: 130px;
     }
 }
 
 @media only screen and (max-width: 410px) {
-    #specimen-detail-image > .img-responsive {
+    #detail-image > .img-responsive {
         width: auto;
+        height: 75px;
+    }
+    .set-height {
         height: 75px;
     }
 }
@@ -65,6 +75,9 @@
     font-size: smaller;
 }
 
+.hover-me img:hover {
+    opacity: 0.8;
+}
 
 
 /*********************************

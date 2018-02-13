@@ -236,8 +236,8 @@
                             <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:image.id})">
                                 <div data-ng-if="image.filename && image.filename != null">
 
-                                    <show-preview class="img-responsive"
-                                                  classes="previewImage"
+                                    <show-preview class="img-responsive set-height hover-me"
+                                                  classes="previewImage img-rounded"
                                                   img-title="[image.author__agent, image.date_taken, image.date_taken_free]"
                                                   img-url="ctrl.service.composeImageUrl(image)" />
 
@@ -248,7 +248,7 @@
                                 </div>
 
                                 <div class="img-gallery-author">
-                                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:image.locality_id})">
+                                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:image.locality_id, width: 1000})">
                                         <localize class="font-smaller" en="image.locality__locality_en" et="image.locality__locality" />
                                         <span class="font-smaller" data-ng-if="image.locality__locality == null && image.locality__locality_en == null ">
                                             {{image.image_number}}
