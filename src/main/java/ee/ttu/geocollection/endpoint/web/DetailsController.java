@@ -87,42 +87,58 @@ public class DetailsController {
     }
 
     @RequestMapping(value = "/raw-locality/{id}")
-    public Map findRawLocalityById(@PathVariable Long id) {
-        return localitiesApiService.findRawById(id);
+    public ApiResponse findRawLocalityById(@PathVariable Long id) {
+        ApiResponse localities = localitiesApiService.findRawById(id);
+
+        if (localities.getResult() != null) {
+            // Call for specimens
+            asynchService.doAsynchCallsForEachResult(
+                    localities,
+                    locality ->
+                            () -> localitiesApiService.findAllSpecimens(
+                                    new SearchField(locality.get("id").toString(), LookUpType.exact)),
+                    locality ->
+                            receivedSpecimens -> locality.put("specimens", receivedSpecimens));
+        }
+
+
+        return localities;
     }
 
     @RequestMapping(value = "/raw-stratigraphy/{id}")
     public ApiResponse findRawStratigraphyById(@PathVariable Long id) {
         ApiResponse rawStratigraphy = stratigraphyApiService.findRawById(id);
 
-        // Call for lithostratigraphies
-        asynchService.doAsynchCallsForEachResult(
-                rawStratigraphy,
-                stratigraphy ->
-                        () -> stratigraphyApiService.findAllLithostratigraphies(
-                                new SearchField(stratigraphy.get("id").toString(), LookUpType.exact)),
-                stratigraphy ->
-                        receivedLithostratigraphy -> stratigraphy.put("lithostratigraphies", receivedLithostratigraphy));
+        if (rawStratigraphy.getResult() != null) {
+            // Call for lithostratigraphies
+            asynchService.doAsynchCallsForEachResult(
+                    rawStratigraphy,
+                    stratigraphy ->
+                            () -> stratigraphyApiService.findAllLithostratigraphies(
+                                    new SearchField(stratigraphy.get("id").toString(), LookUpType.exact)),
+                    stratigraphy ->
+                            receivedLithostratigraphy -> stratigraphy.put("lithostratigraphies", receivedLithostratigraphy));
 
-        // Call for stratigraphy Overlain_by
-        asynchService.doAsynchCallsForEachResult(
-                rawStratigraphy,
-                stratigraphy ->
-                        () -> stratigraphyApiService.findOverlainByStratigraphy(
-                                new SearchField(stratigraphy.get("age_top").toString(), LookUpType.exact),
-                                new SearchField(stratigraphy.get("parent_id").toString(), LookUpType.exact)),
-                stratigraphy ->
-                        receivedStratigraphy -> stratigraphy.put("overlain_by", receivedStratigraphy));
+            // Call for stratigraphy Overlain_by
+            asynchService.doAsynchCallsForEachResult(
+                    rawStratigraphy,
+                    stratigraphy ->
+                            () -> stratigraphyApiService.findOverlainByStratigraphy(
+                                    new SearchField(stratigraphy.get("age_top").toString(), LookUpType.exact),
+                                    new SearchField(stratigraphy.get("parent_id").toString(), LookUpType.exact)),
+                    stratigraphy ->
+                            receivedStratigraphy -> stratigraphy.put("overlain_by", receivedStratigraphy));
 
-        // Call for stratigraphy Overlies
-        asynchService.doAsynchCallsForEachResult(
-                rawStratigraphy,
-                stratigraphy ->
-                        () -> stratigraphyApiService.findOverliesStratigraphy(
-                                new SearchField(stratigraphy.get("age_base").toString(), LookUpType.exact),
-                                new SearchField(stratigraphy.get("parent_id").toString(), LookUpType.exact)),
-                stratigraphy ->
-                        receivedStratigraphy -> stratigraphy.put("overlies", receivedStratigraphy));
+            // Call for stratigraphy Overlies
+            asynchService.doAsynchCallsForEachResult(
+                    rawStratigraphy,
+                    stratigraphy ->
+                            () -> stratigraphyApiService.findOverliesStratigraphy(
+                                    new SearchField(stratigraphy.get("age_base").toString(), LookUpType.exact),
+                                    new SearchField(stratigraphy.get("parent_id").toString(), LookUpType.exact)),
+                    stratigraphy ->
+                            receivedStratigraphy -> stratigraphy.put("overlies", receivedStratigraphy));
+        }
 
         return rawStratigraphy;
     }

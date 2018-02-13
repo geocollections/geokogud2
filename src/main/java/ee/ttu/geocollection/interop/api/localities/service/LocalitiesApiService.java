@@ -16,7 +16,9 @@ public interface LocalitiesApiService {
 
     ApiResponse findLocalityImages(LocalitySearchCriteria searchCriteria);
 
-    Map findRawById(Long id);
+    ApiResponse findRawById(Long id);
+
+    ApiResponse findAllSpecimens(SearchField id);
 
     Map findLocalitiesSummary();
 

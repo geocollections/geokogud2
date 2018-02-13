@@ -267,8 +267,6 @@
                 <div data-ng-if="detailCtrl.images.length > 0">
                     <h3> {{ 'DETAIL.LOCALITY.IMAGES_HEADING'| translate }} </h3>
 
-                    <!--TODO: change ID and CLASS names to universal-->
-
                     <div id="images" class="row">
 
                         <div data-ng-repeat="entity in detailCtrl.images | orderBy : ['-stars','-date_taken','-date_taken_free']"
@@ -320,7 +318,8 @@
                         </thead>
 
                         <tbody>
-                            <tr data-ng-repeat="specimen in detailCtrl.specimens | limitTo:10">
+                            <!--<tr data-ng-repeat="specimen in detailCtrl.specimens | limitTo:10">-->
+                            <tr data-ng-repeat="specimen in detailCtrl.results.specimens.results">
 
                                 <td data-ng-if="specimen.id != null">
                                     <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen',id:specimen.id})">
@@ -329,13 +328,22 @@
                                 </td>
 
                                 <td>
-                                    <a href data-ng-if="specimen.specimenidentification__taxon__taxon != null && specimen.specimenidentification__taxon_id != null"
+                                    <a href data-ng-if="specimen.specimenidentification__taxon_id != null"
                                        data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+specimen.specimenidentification__taxon_id})">
-                                        {{specimen.specimenidentification__taxon__taxon}}
+                                        <first-not-null values="[specimen.specimenidentification__taxon__taxon, specimen.specimenidentification__name]" />
                                     </a>
+
+                                    <a href data-ng-if="specimen.specimenidentificationgeologies__rock__id != null"
+                                       data-ng-click="detailCtrl.service.openUrlInNewWindow({url: 'http://www.kivid.info/' + specimen.specimenidentificationgeologies__rock__id})">
+                                        <localize et="specimen.specimenidentificationgeologies__rock__name" en="specimen.specimenidentificationgeologies__rock__name_en" />
+                                    </a>
+
+                                    <span data-ng-if="specimen.specimenidentification__taxon_id == null && specimen.specimenidentificationgeologies__rock__id == null">
+                                        <localize et="specimen.specimenidentificationgeologies__name" en="specimen.specimenidentificationgeologies__name_en" />
+                                    </span>
                                 </td>
 
-                                <!-- TODO: taxon_taxon -> name -> mineral_name + mineral_formula -> specimen_identification_geology_name -->
+                                <!-- TODO: taxon_taxon -> name -> rock tabel mineral_name -> specimen_identification_geology_name -->
 
                                 <td>
                                     <a data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: specimen.stratigraphy_id})"

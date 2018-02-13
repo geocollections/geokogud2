@@ -164,4 +164,69 @@ public class FluentLocalitySearchApiBuilder extends FluentSearchApiBuilder<Fluen
         buildFieldParameters(LOCALITY__DEPTH, id);
         return this;
     }
+
+    /*
+     * SPECIMEN search START
+     */
+
+    public FluentLocalitySearchApiBuilder querySpecimenIdForUrl(SearchField id) {
+        buildFieldParameters(LOCALITY__ID, id);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder returnStratigraphyId() {
+        addReturningField(STRATIGRAPHY_ID);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder returnStratigraphy() {
+        addReturningField(STRATIGRAPHY_STRATIGRAPHY);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder returnStratigraphyEn() {
+        addReturningField(STRATIGRAPHY_STRATIGRAPHY_ENG);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder returnTaxonId() {
+        addReturningField(SPECIMENIDENTIFICATION__TAXON_ID);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder returnTaxon() {
+        addReturningField(SPECIMENIDENTIFICATION__TAXON__TAXON);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder returnTaxonName() {
+        addReturningField(SPECIMENIDENTIFICATION__NAME);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder returnGeologiesName() {
+        addReturningField(SPECIMENIDENTIFICATIONGEOLOGIES__NAME);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder returnGeologiesNameEn() {
+        addReturningField(SPECIMENIDENTIFICATIONGEOLOGIES__NAME_EN);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder returnRockId() {
+        addReturningField(SPECIMENIDENTIFICATIONGEOLOGIES__ROCK__ID);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder returnRockName() {
+        addReturningField(SPECIMENIDENTIFICATIONGEOLOGIES__ROCK__NAME);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder returnRockNameEn() {
+        addReturningField(SPECIMENIDENTIFICATIONGEOLOGIES__ROCK__NAME_EN);
+        return this;
+    }
+
 }

@@ -145,7 +145,7 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
     }
 
     @Override
-    public Map findRawById(Long id) {
+    public ApiResponse findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
                 .relatedData(IMAGE_TABLE)
@@ -155,7 +155,27 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
                 .relatedData(SPECIMEN_TABLE)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
-        return apiService.findRawEntity(LOCALITY_TABLE, requestParams);
+        return apiService.searchRawEntities(LOCALITY_TABLE, requestParams);
+    }
+
+    @Override
+    public ApiResponse findAllSpecimens(SearchField id) {
+        String requestParams = FluentLocalitySearchApiBuilder.aRequest()
+                .querySpecimenIdForUrl(id)
+                .returnId()
+                .returnStratigraphyId()
+                .returnStratigraphy()
+                .returnStratigraphyEn()
+                .returnTaxonId()
+                .returnTaxon()
+                .returnTaxonName()
+                .returnGeologiesName()
+                .returnGeologiesNameEn()
+                .returnRockId()
+                .returnRockName()
+                .returnRockNameEn()
+                .buildFullQuery();
+        return apiService.searchRawEntities(SPECIMEN_TABLE, 10, 1, new SortField(), requestParams);
     }
 
     @Override
