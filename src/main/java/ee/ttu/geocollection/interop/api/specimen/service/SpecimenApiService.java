@@ -18,8 +18,6 @@ public interface SpecimenApiService {
 
     ApiResponse findSpecimenIdentificationGeologies(SearchField specimenId) ;
 
-    Map findRawSpecimenImageById(Long id);
-
     Map findRawById(Long id);
 
 }

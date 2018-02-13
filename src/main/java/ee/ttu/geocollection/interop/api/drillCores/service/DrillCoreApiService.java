@@ -12,5 +12,4 @@ public interface DrillCoreApiService {
 
     Map findRawById(Long id);
 
-    Map findRawCoreBoxById(Long id);
 }

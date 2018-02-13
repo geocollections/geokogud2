@@ -77,12 +77,4 @@ public class DrillCoreApiServiceImpl implements DrillCoreApiService {
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(DRILLCORE, requestParams);
     }
-
-    @Override
-    public Map findRawCoreBoxById(Long id) {
-        String requestParams = FluentGeoApiDetailsBuilder.aRequest()
-                .id(id)
-                .buildWithDefaultReturningFields();
-        return apiService.findRawEntity(DRILLCORE_BOX, requestParams);
-    }
 }

@@ -8,6 +8,7 @@ import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.analyses.search.AnalysesApiService;
 import ee.ttu.geocollection.interop.api.doi.service.DoiApiService;
 import ee.ttu.geocollection.interop.api.drillCores.service.DrillCoreApiService;
+import ee.ttu.geocollection.interop.api.drillCores.service.DrillCoreBoxApiService;
 import ee.ttu.geocollection.interop.api.localities.service.LocalitiesApiService;
 import ee.ttu.geocollection.interop.api.photoArchive.service.PhotoArchiveApiService;
 import ee.ttu.geocollection.interop.api.preparations.PreparationsApiService;
@@ -15,6 +16,7 @@ import ee.ttu.geocollection.interop.api.reference.service.ReferenceApiService;
 import ee.ttu.geocollection.interop.api.samples.service.SamplesApiService;
 import ee.ttu.geocollection.interop.api.soil.service.SoilApiService;
 import ee.ttu.geocollection.interop.api.specimen.service.SpecimenApiService;
+import ee.ttu.geocollection.interop.api.specimen.service.SpecimenImageApiService;
 import ee.ttu.geocollection.interop.api.stratigraphies.service.StratigraphyApiService;
 import ee.ttu.geocollection.interop.solr.specimen.service.SpecimenSolrService;
 import org.slf4j.Logger;
@@ -38,6 +40,8 @@ public class DetailsController {
     @Autowired
     private DrillCoreApiService drillCoreApiService;
     @Autowired
+    private DrillCoreBoxApiService drillCoreBoxApiService;
+    @Autowired
     private ReferenceApiService referenceApiService;
     @Autowired
     private DoiApiService doiApiService;
@@ -51,6 +55,8 @@ public class DetailsController {
     private LocalitiesApiService localitiesApiService;
     @Autowired
     private SpecimenApiService specimenApiService;
+    @Autowired
+    private SpecimenImageApiService specimenImageApiService;
     @Autowired
     private SpecimenSolrService specimenSolrService;
     @Autowired
@@ -68,7 +74,7 @@ public class DetailsController {
 
     @RequestMapping(value = "/raw-specimen-image/{id}")
     public Map findRawSpecimenImageById(@PathVariable Long id) {
-        return specimenApiService.findRawSpecimenImageById(id);
+        return specimenImageApiService.findRawSpecimenImageById(id);
     }
 
     @RequestMapping(value = "/raw-sample/{id}")
@@ -83,7 +89,7 @@ public class DetailsController {
 
     @RequestMapping(value = "/raw-corebox/{id}")
     public Map findRawCoreBoxById(@PathVariable Long id) {
-        return drillCoreApiService.findRawCoreBoxById(id);
+        return drillCoreBoxApiService.findRawCoreBoxById(id);
     }
 
     @RequestMapping(value = "/raw-locality/{id}")

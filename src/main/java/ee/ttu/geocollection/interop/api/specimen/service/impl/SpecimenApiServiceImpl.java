@@ -26,8 +26,8 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
     private static final String SPECIMEN_IMAGE_TABLE = "specimen_image";
     private static final String SPECIMEN_IDENTIFICATION_TABLE = "specimen_identification";
     private static final String SPECIMEN_REFERENCE_TABLE = "specimen_reference";
-    private static final String SPECIMEN_IDENTIFICATION_GEOLOGY = "specimen_identification_geology";
-    private static final String ATTACHMENT_LINK = "attachment_link";
+    private static final String SPECIMEN_IDENTIFICATION_GEOLOGY_TABLE = "specimen_identification_geology";
+    private static final String ATTACHMENT_LINK_TABLE = "attachment_link";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -209,15 +209,7 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .returnNameEn()
                 .returnCurrent()
                 .buildFullQuery();
-        return apiService.searchRawEntities(SPECIMEN_IDENTIFICATION_GEOLOGY, 5,1, new SortField(), requestParams);
-    }
-
-    @Override
-    public Map findRawSpecimenImageById(Long id) {
-        String requestParams = FluentGeoApiDetailsBuilder.aRequest()
-                .id(id)
-                .buildWithDefaultReturningFields();
-        return apiService.findRawEntity(SPECIMEN_IMAGE_TABLE, requestParams);
+        return apiService.searchRawEntities(SPECIMEN_IDENTIFICATION_GEOLOGY_TABLE, 5,1, new SortField(), requestParams);
     }
 
     @Override
@@ -227,8 +219,8 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .relatedData(SPECIMEN_IDENTIFICATION_TABLE)
                 .relatedData(SPECIMEN_IMAGE_TABLE)
                 .relatedData(SPECIMEN_REFERENCE_TABLE)
-                .relatedData(SPECIMEN_IDENTIFICATION_GEOLOGY)
-                .relatedData(ATTACHMENT_LINK)
+                .relatedData(SPECIMEN_IDENTIFICATION_GEOLOGY_TABLE)
+                .relatedData(ATTACHMENT_LINK_TABLE)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(SPECIMEN_TABLE, requestParams);
