@@ -104,21 +104,6 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
             "taxon": {}
         };
 
-        addClientSorting();
-
-        $scope.response = {
-            results: [],
-            count: 0,
-            table: ""
-        };
-        $scope.selectedTab = $stateParams.tab;
-    }
-
-    /**
-     * Sets default search parameters.
-     * Also sortByAsc variable is set to true
-     */
-    function addClientSorting() {
         $scope.searchParameters = {
             sortField: {
                 sortBy: "id",
@@ -126,7 +111,15 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
             },
             maxSize: 5
         };
+
+        $scope.response = {
+            results: [],
+            count: 0,
+            table: ""
+        };
+
         $scope.sortByAsc = true;
+        $scope.selectedTab = $stateParams.tab;
     }
 
     /**

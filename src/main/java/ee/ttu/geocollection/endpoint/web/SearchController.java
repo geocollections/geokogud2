@@ -119,8 +119,15 @@ public class SearchController extends ControllerHelper {
         ArrayList<SolrResponse> responses = new ArrayList<>();
 
         for (String table : tables) {
-            responses.add(globalSolrService.findEntitiesUsingTablePageAndPaginateBy(table, page, paginateBy, query));
+            if (!table.equals(tab)) {
+                responses.add(globalSolrService.findEntitiesUsingTablePageAndPaginateBy(table, page, paginateBy, query));
+            }
         }
+        // Active tab comes always last so the
+        if (tab.length() > 0 && tables.contains(tab)) {
+            responses.add(globalSolrService.findEntitiesUsingTablePageAndPaginateBy(tab, page, paginateBy, query));
+        }
+
 
         return responses;
     }

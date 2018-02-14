@@ -28,10 +28,10 @@ module.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: "app/templates/main/global_search.html",
             controller: "GlobalSearchController as ctrl"
     })
-        .state('search', {
-            url: "/search",
-            templateUrl: "app/templates/main/partial/search.html"
-    })
+    //     .state('search', {
+    //         url: "/search",
+    //         templateUrl: "app/templates/main/partial/search.html"
+    // })
         .state('specimens', {
             data: {
                 pageTitle: "{{'TITLES.SPECIMEN' | translate}}"
