@@ -42,8 +42,11 @@
                         <a href data-ng-click="ctrl.service.openUrlInNewWindow({url:'http://fossiilid.info/' + entity.specimen_identifications.results[0].taxon_id})">
                             <i>{{entity.specimen_identifications.results[0].taxon__taxon}}</i>
                         </a>
-                        <span data-ng-if="(entity.specimen_identifications.results[0].name && entity.specimen_identifications.results[0].name != null) && entity.specimen_identifications.results[0].name != entity.specimen_identifications.results[0].taxon__taxon">
-                            | <i>{{entity.specimen_identifications.results[0].name}}</i>
+                        <span data-ng-if="(entity.specimen_identifications.results[0].name && entity.specimen_identifications.results[0].name != null)
+                            && (entity.specimen_identifications.results[0].taxon__taxon && entity.specimen_identifications.results[0].taxon__taxon != null)"> | </span>
+                        <span data-ng-if="(entity.specimen_identifications.results[0].name && entity.specimen_identifications.results[0].name != null)
+                            && entity.specimen_identifications.results[0].name != entity.specimen_identifications.results[0].taxon__taxon">
+                            <i>{{entity.specimen_identifications.results[0].name}}</i>
                         </span>
                     </div>
                     <!-- Currently both are links because rock__name is mostly null. -->
