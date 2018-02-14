@@ -61,6 +61,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
 
         var searchParamsSession = getSearchDataFromSessionStorage();
         var institutions = getInstitutionsFromLocalStorage();
+        console.log(location.search);
         if (typeof(searchParamsSession) !== 'undefined') {
             $scope.searchParameters = searchParamsSession;
             areInstitutionsChecked();
@@ -153,18 +154,20 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
             };
         }
 
-        console.log(location.href);
         /*** Get parameters from session storage and local storage START ***/
         var searchParamsSession = getSearchDataFromSessionStorage();
         var institutions = getInstitutionsFromLocalStorage();
+        var searchParamsFromUrl = getSearchDataFromUrl(location.search);
         if (typeof(searchParamsSession) !== 'undefined') {
             $scope.searchParameters = searchParamsSession;
         }
         if (typeof(institutions) !== 'undefined') {
             $scope.searchParameters.dbs = institutions;
         }
+        if (searchParamsFromUrl.dbs.length > 0) {
+            $scope.searchParameters.dbs = searchParamsFromUrl.dbs;
+        }
         /*** Get parameters from session storage and local storage END ***/
-        console.log(location.href);
 
         $scope.sortByAsc = true;
         $scope.search();
@@ -282,6 +285,66 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
                 return JSON.parse(localStorage.getItem(tableName));
             }
         }
+    }
+
+    function getSearchDataFromUrl(searchData) {
+        var withoutQuestionMark = searchData.substring(1);
+        var list = withoutQuestionMark.split("&");
+        console.log(list);
+        var json = {};
+        json.dbs = [];
+        var lookUpType = "";
+        var name = "";
+        for (item in list) {
+            var row = list[item].split("=");
+            var key = row[0];
+            var value = row[1];
+            if (key === "dbs%5B%5D") {
+                if (value === "1") {
+                    value = "GIT";
+                }
+                if (value === "2") {
+                    value = "TUG";
+                }
+                if (value === "3") {
+                    value = "ELM";
+                }
+                if (value === "4") {
+                    value = "TUGO";
+                }
+                if (value === "5") {
+                    value = "MUMU";
+                }
+                if (value === "6") {
+                    value = "EGK";
+                }
+                json.dbs.push(value);
+            } else if (key.includes("_1")) {
+                key = key.substring(0, key.length - 2);
+                json[key] = {};
+                if (value === "1") {
+                    lookUpType = "icontains"
+                }
+                json[key].lookUpType = lookUpType;
+            } else {
+                // json[key] = value;
+                // json[key] = value;
+            }
+            // if (key.includes("_1")) {
+            //     // key = key.substring(0, key.length-2);
+            //     console.log(key);
+            //     if (value === "1") {
+            //         lookUpType = "icontains";
+            //     }
+            //     console.log(key + " " + value);
+            //     json[key].lookUpType = lookUpType;
+            // }
+
+
+            // console.log(key + " " +value);
+        }
+        console.log(json);
+        return json;
     }
 
     /**
