@@ -39,10 +39,13 @@
                 <td data-title="{{ 'SEARCH.DRILL_CORES.TABLE.BOX_NUMBERS' | translate }}">
                     {{entity.box_numbers}}
                 </td>
-                <!-- TODO: Links for Institutions -->
+
                 <td data-title="{{ 'SEARCH.DRILL_CORES.TABLE.INSTITUTE' | translate }}">
-                    {{entity.database__acronym}}
+                    <a href="{{ctrl.service.returnInstitutionLink(entity.database__acronym)}}" target="_blank">
+                        {{entity.database__acronym}}
+                    </a>
                 </td>
+
                 <td data-title="{{ 'SEARCH.DRILL_CORES.TABLE.STORAGE' | translate }}">
                     {{entity.storage__location}}
                 </td>

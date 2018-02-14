@@ -57,13 +57,16 @@
                     {{entity.box_numbers}}
                 </td>
 
-                <!-- TODO: Links for Institutions -->
-                <td data-title="{{ 'SEARCH.DRILL_CORES.TABLE.INSTITUTE' | translate }}">{{entity.acronym}}</td>
+                <td data-title="{{ 'SEARCH.DRILL_CORES.TABLE.INSTITUTE' | translate }}">
+                    <a href="{{ctrl.service.returnInstitutionLink(entity.acronym)}}" target="_blank">
+                        {{entity.acronym}}
+                    </a>
+                </td>
 
                 <td data-title="{{ 'SEARCH.DRILL_CORES.TABLE.STORAGE' | translate }}">{{entity.storage__address}}</td>
 
                 <td data-title="{{ 'SEARCH.DRILL_CORES.TABLE.IMAGES' | translate }}">
-                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'drillcore',id:entity.id})">{{entity.boxes}}</a>
+                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'drillcore',id:entity.id})">{{entity.count_images}}</a>
                 </td>
             </tr>
             </tbody>

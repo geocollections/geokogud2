@@ -41,7 +41,11 @@
                     {{entity.id}}
                 </td>
 
-                <td data-title="{{ 'SEARCH.SAMPLES.INSTITUTE' | translate }}">{{entity.acronym}}</td>
+                <td data-title="{{ 'SEARCH.SAMPLES.INSTITUTE' | translate }}">
+                    <a href="{{ctrl.service.returnInstitutionLink(entity.acronym)}}" target="_blank">
+                        {{entity.acronym}}
+                    </a>
+                </td>
 
                 <td data-title="{{ 'SEARCH.SAMPLES.NUMBER' | translate }}">
                     <a class="bold-link" href data-ng-click="ctrl.service.openInNewWindow({object:'sample',id:entity.id})">

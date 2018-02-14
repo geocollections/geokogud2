@@ -358,6 +358,12 @@
   "elmUrl" : "http://www.loodusmuuseum.ee/",
   "geocaseUrl" : "http://www.geocase.eu/",
   "tugUrl" : "http://natmuseum.ut.ee/",
-  "githubUrl" : "https://github.com/geocollections/geokogud2"
+  "githubUrl" : "https://github.com/geocollections/geokogud2",
+  "gitUrl" : "https://ttu.ee/geoloogia-instituut",
+  "tugUrl2" : "http://www.natmuseum.ut.ee/en/content/geological-collections",
+  "elmUrl2" : "http://www.loodusmuuseum.ee/en/geological-collections",
+  "tugoUrl" : "https://www.geoloogia.ut.ee/et",
+  "mumuUrl" : "https://kogud.emu.ee/mullamuuseum/",
+  "egkUrl" : "http://www.egk.ee/"
 
 }

@@ -27,10 +27,17 @@
             </thead>
             <tbody>
             <tr data-ng-repeat="entity in response.results">
+
                 <td style="font-weight: normal" id="first-table-element" data-title="{{ 'SEARCH.SAMPLES.ID' | translate }}">
                     {{entity.id}}
                 </td>
-                <td data-title="{{ 'SEARCH.SAMPLES.INSTITUTE' | translate }}">{{entity.database__acronym}}</td>
+
+                <td data-title="{{ 'SEARCH.SAMPLES.INSTITUTE' | translate }}">
+                    <a href="{{ctrl.service.returnInstitutionLink(entity.database__acronym)}}" target="_blank">
+                        {{entity.database__acronym}}
+                    </a>
+                </td>
+
                 <td data-title="{{ 'SEARCH.SAMPLES.NUMBER' | translate }}">
                     <a class="bold-link" href data-ng-click="ctrl.service.openInNewWindow({object:'sample',id:entity.id})">
                         <first-not-null values="[entity.number, entity.id]"/>

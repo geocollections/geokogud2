@@ -554,7 +554,9 @@
             "DESCRIPTION_HEADING": "Kirjeldus"
         },
         "NEXT": "NEXT",
+        "NEXT_INFO": "Did you know that you can also use keyboard arrow keys",
         "PREVIOUS": "PREVIOUS",
+        "PREVIOUS_INFO": "Did you know that you can also use keyboard arrow keys",
         "DETAIL_MAP": "Map",
         "DETAIL_IDENTIFICATIONS": "Identifications (minerals and rocks)",
         "DETAIL_REFERENCES": "References",
@@ -598,7 +600,7 @@
         "GLOBAL": "Geocollections of Estonia: Global search"
     },
     "GLOBAL_SEARCH_INFO" : "Global search shows max 100 results. To see more results please use extended search.",
-    "GLOBAL_SEARCH_NO_INFO": "Your quick search returned no results. Please use extended search and select, which kind of information you are searching.",
+    "GLOBAL_SEARCH_NO_INFO": "Your quick search returned no results. Maybe your page number is too high to show any results, otherwise please use extended search and select, which kind of information you are searching.",
     "DETAILVIEW_TABLE_HEADER": "General info",
     "ABOUT_MIDDLE": "Geocollections in Estonia",
     "FAQ_BUTTON": "Shows hints",
