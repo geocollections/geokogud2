@@ -154,12 +154,16 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         }
 
         console.log(location.href);
-        /*** Get parameters from session storage START ***/
+        /*** Get parameters from session storage and local storage START ***/
         var searchParamsSession = getSearchDataFromSessionStorage();
+        var institutions = getInstitutionsFromLocalStorage();
         if (typeof(searchParamsSession) !== 'undefined') {
             $scope.searchParameters = searchParamsSession;
         }
-        /*** Get parameters from session storage END ***/
+        if (typeof(institutions) !== 'undefined') {
+            $scope.searchParameters.dbs = institutions;
+        }
+        /*** Get parameters from session storage and local storage END ***/
         console.log(location.href);
 
         $scope.sortByAsc = true;

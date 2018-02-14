@@ -47,9 +47,13 @@
                     </td>
                     <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.CATEGORY' | translate }}">{{entity.object}}</td>
                     <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.KEY_WORDS' | translate }}">{{entity.keywords}}</td>
-                    <td class="image-preview" data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.IMAGES' | translate }}">
+
+                    <td class="text-center" data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.IMAGES' | translate }}">
                         <a href data-ng-click="ctrl.service.openInNewWindow({object:'image', id:entity.id})">
-                            <img class="previewImage img-rounded" src="{{entity.image_preview_url}}" />
+                            <show-preview data-ng-if="entity.image_preview_url"
+                                          classes="previewImage img-rounded"
+                                          img-title="[entity.author, entity.date_taken, entity.date_taken_free, null, entity.author_free]"
+                                          img-url="entity.image_preview_url" />
                         </a>
                     </td>
                 </tr>

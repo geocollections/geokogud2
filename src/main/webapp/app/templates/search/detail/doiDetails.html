@@ -230,7 +230,8 @@
                                 <td><localize et="entity.type__value" en="entity.type__value_en" /></td>
                                 <td><localize et="entity.description" en="entity.description_en" /></td>
                                 <td>{{entity.attachment_format__value}}</td>
-                                <td class="image-preview">
+
+                                <td class="text-center">
                                     <a target="_blank" ng-href="{{detailCtrl.service.getDownloadLink(entity.filename)}}">
                                         <i data-ng-if="entity.filename.endsWith('pdf')"
                                            title="{{detailCtrl.service.getDownloadLink(entity.filename)}}"

@@ -73,8 +73,15 @@
                     <span data-ng-if="entity.related_drillcores > 0">+</span>
                 </td>
 
-                <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.IMAGES' | translate }}">
-                    <span data-ng-if="entity.related_images > 0">+</span>
+                <td class="text-center" data-title="{{ 'SEARCH.LOCALITIES.TABLE.IMAGES' | translate }}">
+                    <span data-ng-if="entity.related_images > 0">
+                        <a href data-ng-click="ctrl.service.openInNewWindow({object: 'locality', id: entity.id})">
+                            <show-preview data-ng-if="entity.image_preview_url"
+                                          classes="previewImage img-rounded"
+                                          img-title="[entity.image_author, entity.image_date]"
+                                          img-url="entity.image_preview_url" />
+                        </a>
+                    </span>
                 </td>
 
                 <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.MAP' | translate }}">

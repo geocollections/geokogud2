@@ -164,6 +164,7 @@ angular.module('geoApp')
         },
         controller: ['$scope','$translate', '$rootScope', function ($scope, $translate, $rootScope) {
             $scope.$watch('imgTitle', function (newVal) {
+                // [author, date, date_free, number, author_free]
                 if (newVal.length > 0) {
                     var estText = "";
                     var engText = "";
@@ -172,8 +173,12 @@ angular.module('geoApp')
                         estText += "Pildi autor: " + newVal[0] + "<br>";
                         engText += "Image author: " + newVal[0] + "<br>";
                     }
+                    if (newVal[0] == null && newVal[4] && newVal[4] != null) {
+                        estText += "Pildi autor: " + newVal[4] + "<br>";
+                        engText += "Image author: " + newVal[4] + "<br>";
+                    }
                     if (newVal[1] && newVal[1] != null) {
-                        estText += "Pildistamise aeg: " + newVal[1];
+                        estText += "Pildistamise aeg: " + new Date(newVal[1]).toLocaleDateString('et-EE');
                         engText += "Date taken: " + new Date(newVal[1]).toDateString();
                     }
                     if (newVal[1] == null && newVal[2] && newVal[2] != null) {
@@ -195,9 +200,13 @@ angular.module('geoApp')
 
             $scope.$watch('imgUrl', function(newValue) {
                 if(newValue) {
-                    var foundHttp = newValue.match(/http:/);
-                    var lastSlashPosition = newValue.lastIndexOf('/');
-                    $scope.previewImageUrl = (foundHttp ? "" : "http://") + newValue.substring(0, lastSlashPosition) + '/preview' + newValue.substring(lastSlashPosition);
+                    if (newValue.includes("/preview/")) {
+                        $scope.previewImageUrl = newValue;
+                    } else {
+                        var foundHttp = newValue.match(/http:/);
+                        var lastSlashPosition = newValue.lastIndexOf('/');
+                        $scope.previewImageUrl = (foundHttp ? "" : "http://") + newValue.substring(0, lastSlashPosition) + '/preview' + newValue.substring(lastSlashPosition);
+                    }
                 }
             }, true);
         }]
