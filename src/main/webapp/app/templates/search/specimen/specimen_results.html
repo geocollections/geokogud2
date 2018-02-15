@@ -110,7 +110,7 @@
                               et="entity.original_status__value" en="entity.original_status__value_en"/>
                 </td>
 
-                <td id="image-preview" data-title="{{ 'SEARCH.SPECIMENS.IMAGES' | translate }}">
+                <td class="text-center" data-title="{{ 'SEARCH.SPECIMENS.IMAGES' | translate }}">
                     <a href class="hover-me" data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:entity.id,width:950})">
 
                         <show-preview data-ng-if="entity.specimen_image_thumbnail.count > 0"

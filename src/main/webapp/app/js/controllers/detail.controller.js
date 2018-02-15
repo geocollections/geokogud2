@@ -186,8 +186,9 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
      * But can be implemented to all the detail views.
      * @param id Corebox identifier
      */
-    function reload(id) {
-        $state.go('coreBox.view', {id:id})
+    function reload(params) {
+        console.log(params.table + " " + params.id);
+        $state.go(params.table + '.view', {id:params.id})
     }
 };
 
