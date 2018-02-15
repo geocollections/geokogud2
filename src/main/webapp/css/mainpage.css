@@ -983,6 +983,34 @@ table tr > td:first-child {
 
 
 
+/******************************
+ *** MOBILE TABLE FIX START ***
+ ******************************/
+
+@media (max-width: 800px) {
+    .mobile-padding-fix > tbody > tr > td {
+        padding: 3%;
+    }
+}
+
+@media (max-width: 550px) {
+    .mobile-padding-fix > tbody > tr > td {
+        padding: 4%;
+    }
+}
+
+@media (max-width: 420px) {
+    .mobile-padding-fix > tbody > tr > td {
+        padding: 5%;
+    }
+}
+
+/******************************
+ ***  MOBILE TABLE FIX END  ***
+ ******************************/
+
+
+
 /***********************
  *** SCROLLBAR START ***
  ***********************/

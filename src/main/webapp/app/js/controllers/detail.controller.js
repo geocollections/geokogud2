@@ -181,13 +181,11 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
     }
 
     /**
-     * Goes to corebox view with a certain identifier.
+     * Goes to given view.
      * For example corebox/5000
-     * But can be implemented to all the detail views.
-     * @param id Corebox identifier
+     * @param params, table -> detail view name; id -> detail view identifier
      */
     function reload(params) {
-        console.log(params.table + " " + params.id);
         $state.go(params.table + '.view', {id:params.id})
     }
 };
