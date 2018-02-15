@@ -642,11 +642,6 @@ table tr > td:first-child {
     border: none;
 }
 
-#img-width-height-75 {
-    width: 75%;
-    height: 75%;
-}
-
 /* DOI END */
 
 
@@ -1008,6 +1003,18 @@ table tr > td:first-child {
 /******************************
  ***  MOBILE TABLE FIX END  ***
  ******************************/
+
+.detailview-max-width {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.doi-big-image {
+    margin: 0 auto;
+    display: block;
+    width: 75%;
+    height: 75%;
+}
 
 
 

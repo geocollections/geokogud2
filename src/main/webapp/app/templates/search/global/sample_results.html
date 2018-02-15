@@ -31,7 +31,6 @@
                     | <em> {{ 'SEARCH.SAMPLES.LITHOSTRATIGRAPHY' | translate }} </em>
                 </th>
                 <th><sort-field value = "agent_collected__agent" name="SEARCH.SAMPLES.COLLECTOR"></sort-field></th>
-                <th><sort-field value = "analyzed" name="SEARCH.SAMPLES.ANALYSED"></sort-field></th>
                 <th><sort-field value = "mass" name="SEARCH.SAMPLES.WEIGHT"></sort-field></th>
             </tr>
             </thead>
@@ -79,10 +78,6 @@
 
                 <td data-title="{{ 'SEARCH.SAMPLES.COLLECTOR' | translate }}">
                     <first-not-null values="[entity.collector, entity.collector_full_name]"/>
-                </td>
-
-                <td data-title="{{ 'SEARCH.SAMPLES.ANALYSED' | translate }}">
-                    <make-boolean-readable boolean-value="entity.analyzed"/>
                 </td>
 
                 <td data-title="{{ 'SEARCH.SAMPLES.WEIGHT' | translate }}">{{entity.mass}}</td>

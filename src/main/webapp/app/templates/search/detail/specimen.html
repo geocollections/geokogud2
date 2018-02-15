@@ -1,7 +1,8 @@
 <div ng-include="'app/templates/main/partial/detailview_header.html'"></div>
 
 <div id="elementToFocus" tabindex="1" style="outline: 0" ng-arrow-left="detailCtrl.reload({table:'specimen', id:detailCtrl.results.id - 1})" ng-arrow-right="detailCtrl.reload({table:'specimen', id:detailCtrl.results.id + 1})"  class="panel detailview-page">
-    <div class="panel-body">
+    <!--TODO: Fix image design, same like in locality detail view-->
+    <div class="panel-body detailview-max-width">
 
         <div class="row">
             <div class="col-sm-12">

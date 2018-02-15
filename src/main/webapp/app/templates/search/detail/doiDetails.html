@@ -1,7 +1,7 @@
 <div ng-include="'app/templates/main/partial/detailview_header.html'"></div>
 
 <div class="panel detailview-page">
-    <div class="panel-body">
+    <div class="panel-body detailview-max-width">
 
         <div class="row">
             <div class="col-sm-12">
@@ -372,9 +372,9 @@
                             <h4 class="text-center">
                                 <localize et="entity.description" en="entity.description_en"/>
                             </h4>
-                            <div class="thumbnail border-none">
+                            <div class="border-none">
                                 <a href target="_blank" ng-href="{{detailCtrl.service.getDownloadLink(entity.filename)}}">
-                                    <img id="img-width-height-75" title="{{detailCtrl.service.getDownloadLink(entity.filename)}}"
+                                    <img class="doi-big-image" title="{{detailCtrl.service.getDownloadLink(entity.filename)}}"
                                          src="{{detailCtrl.service.getDownloadLink(entity.filename)}}" />
                                 </a>
                             </div>
