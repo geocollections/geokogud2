@@ -1,6 +1,6 @@
 var module = angular.module("geoApp");
 
-var constructor = function ($scope, $stateParams, configuration, $http, applicationService, $window, $translate, SearchFactory, errorService, bsLoadingOverlayService) {
+var constructor = function ($scope, $location, $stateParams, configuration, $http, applicationService, $window, $translate, SearchFactory, errorService, bsLoadingOverlayService) {
     var vm = this;
     vm.service = applicationService;
     vm.factory = SearchFactory;
@@ -157,15 +157,16 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         /*** Get parameters from session storage and local storage START ***/
         var searchParamsSession = getSearchDataFromSessionStorage();
         var institutions = getInstitutionsFromLocalStorage();
-        var searchParamsFromUrl = getSearchDataFromUrl(location.search);
+        var searchParamsFromUrl = getSearchDataFromUrl();
+        console.log(searchParamsFromUrl);
         if (typeof(searchParamsSession) !== 'undefined') {
             $scope.searchParameters = searchParamsSession;
         }
         if (typeof(institutions) !== 'undefined') {
             $scope.searchParameters.dbs = institutions;
         }
-        if (searchParamsFromUrl.dbs.length > 0) {
-            $scope.searchParameters.dbs = searchParamsFromUrl.dbs;
+        if (searchParamsFromUrl != null) {
+            $scope.searchParameters = searchParamsFromUrl;
         }
         /*** Get parameters from session storage and local storage END ***/
 
@@ -287,64 +288,142 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
         }
     }
 
-    function getSearchDataFromUrl(searchData) {
-        var withoutQuestionMark = searchData.substring(1);
-        var list = withoutQuestionMark.split("&");
-        console.log(list);
-        var json = {};
-        json.dbs = [];
-        var lookUpType = "";
-        var name = "";
-        for (item in list) {
-            var row = list[item].split("=");
-            var key = row[0];
-            var value = row[1];
-            if (key === "dbs%5B%5D") {
-                if (value === "1") {
-                    value = "GIT";
-                }
-                if (value === "2") {
-                    value = "TUG";
-                }
-                if (value === "3") {
-                    value = "ELM";
-                }
-                if (value === "4") {
-                    value = "TUGO";
-                }
-                if (value === "5") {
-                    value = "MUMU";
-                }
-                if (value === "6") {
-                    value = "EGK";
-                }
-                json.dbs.push(value);
-            } else if (key.includes("_1")) {
-                key = key.substring(0, key.length - 2);
-                json[key] = {};
-                if (value === "1") {
-                    lookUpType = "icontains"
-                }
-                json[key].lookUpType = lookUpType;
-            } else {
-                // json[key] = value;
-                // json[key] = value;
+    // Same as in utils.js decodeUrl function
+    function getSearchDataFromUrl() {
+        if( Object.keys($location.$$search).length === 0) return null;
+        var urlParams = $location.$$search, currentTable = $location.$$path.split('/')[1], searchParams = {};
+        angular.forEach(Object.keys(urlParams), function(attr){
+            if(attr != 'currentTable' && attr != 'sortdir' && attr != 'dbs[]' && configuration.urlHelper[currentTable]) {
+                angular.forEach(Object.keys(configuration.urlHelper[currentTable].fields), function(a) {
+                    if(configuration.urlHelper[currentTable].fields[a] == attr) {
+                        var lookUpType = getLookUpType(urlParams[attr+'_1']);
+                        urlParams[attr] ? searchParams[a] = {"lookUpType":lookUpType, "name":urlParams[attr]}
+                            : searchParams[a] = {"lookUpType":lookUpType};
+                    }
+                })
             }
-            // if (key.includes("_1")) {
-            //     // key = key.substring(0, key.length-2);
-            //     console.log(key);
-            //     if (value === "1") {
-            //         lookUpType = "icontains";
-            //     }
-            //     console.log(key + " " + value);
-            //     json[key].lookUpType = lookUpType;
-            // }
-
-
-            // console.log(key + " " +value);
+        });
+        if(urlParams["dbs[]"] != null) {
+            searchParams["dbs"] = [];
+            angular.forEach(urlParams["dbs[]"], function(institution) {
+                if(institution == 1) {
+                    searchParams.dbs.push("GIT");
+                }
+                if(institution == 2) {
+                    searchParams.dbs.push("TUG");
+                }
+                if(institution == 3) {
+                    searchParams.dbs.push("ELM");
+                }
+                if(institution == 4) {
+                    searchParams.dbs.push("TUGO");
+                }
+                if(institution == 5) {
+                    searchParams.dbs.push("MUMU");
+                }
+                if(institution == 6) {
+                    searchParams.dbs.push("EGK");
+                }
+            });
         }
-        console.log(json);
-        return json;
+
+        // BUG FIX, if search is made with none checked then check all.
+        if (urlParams["dbs[]"] == null) {
+            searchParams["dbs"] = [];
+            searchParams.dbs.push("GIT");
+            searchParams.dbs.push("TUG");
+            searchParams.dbs.push("ELM");
+            searchParams.dbs.push("TUGO");
+            searchParams.dbs.push("MUMU");
+            searchParams.dbs.push("EGK");
+        }
+
+        if(urlParams["sortdir"] != null && urlParams["sort"] != null) {
+            if(urlParams["sortdir"] == "DESC") {
+                searchParams["sortField"] = {sortBy: urlParams["sort"], order: "DESCENDING"};
+            } else if(urlParams["sortdir"] == "ASC") {
+                searchParams["sortField"] = {sortBy: urlParams["sort"], order: "ASCENDING"};
+            }
+        }
+        if(urlParams["maxSize"] != null) {
+            searchParams["maxSize"] = Number(urlParams["maxSize"]);
+        }
+        if(urlParams["search_images"] != null) {
+            if(Number(urlParams["search_images"]) == 1) {
+                searchParams["searchImages"] = {lookUpType: "exact", name: true};
+            }
+        }
+        if(urlParams["page"] != null) {
+            searchParams["page"] = Number(urlParams["page"]);
+        }
+
+        if (urlParams["paginateBy"] != null) {
+            searchParams["paginateBy"] = Number(urlParams["paginateBy"]);
+        }
+
+        angular.forEach(configuration.urlHelper.specialFields, function(specialField) {
+            if(urlParams[specialField + "_1"] != null && urlParams[specialField] != null) {
+
+                var specialFieldName = urlParams[specialField].split(" ");
+                var specialFieldLookUpType = urlParams[specialField + "_1"].split(" ");
+
+                // Double check because if only 'lte' value is entered its index is also 0.
+                if(specialFieldName[0] != null) {
+                    if (specialFieldLookUpType[0] === "gte") {
+                        if (specialField === "dateTaken") {
+                            searchParams[specialField + "Since"] = {
+                                lookUpType: specialFieldLookUpType[0],
+                                name: specialFieldName[0]
+                            }
+                        } else {
+                            searchParams[specialField + "Since"] = {
+                                lookUpType: specialFieldLookUpType[0],
+                                name: Number(specialFieldName[0])
+                            }
+                        }
+                    } else if (specialFieldLookUpType[0] === "lte" || specialFieldLookUpType[0] === "gt") {
+                        if (specialField === "dateTaken") {
+                            searchParams[specialField + "To"] = {
+                                lookUpType: specialFieldLookUpType[0],
+                                name: specialFieldName[0]
+                            }
+                        } else {
+                            searchParams[specialField + "To"] = {
+                                lookUpType: specialFieldLookUpType[0],
+                                name: Number(specialFieldName[0])
+                            }
+                        }
+                    }
+                }
+
+                if(specialFieldName[1] != null) {
+                    if (specialField === "dateTaken") {
+                        searchParams[specialField + "To"] = {
+                            lookUpType: specialFieldLookUpType[1],
+                            name: specialFieldName[1]
+                        }
+                    } else {
+                        searchParams[specialField + "To"] = {
+                            lookUpType: specialFieldLookUpType[1],
+                            name: Number(specialFieldName[1])
+                        }
+                    }
+                }
+            }
+        });
+        return searchParams;
+    }
+
+    // Same as in utils.js function
+    function getLookUpType(attr){
+        var found = false, lookUpType = "";
+        angular.forEach(Object.keys(configuration.urlHelper['lookUpType']), function(a) {
+            if(!found && configuration.urlHelper['lookUpType'][a] == attr) {
+                lookUpType = a;
+                found = true;
+            }
+        });
+        return lookUpType;
     }
 
     /**
@@ -569,6 +648,7 @@ var constructor = function ($scope, $stateParams, configuration, $http, applicat
 
 constructor.$inject = [
     "$scope",
+    "$location",
     "$stateParams",
     "configuration",
     "$http",
