@@ -5,6 +5,10 @@
     max-height: 130px;
     max-width: 210px;
 }
+.previewImageDetail {
+    max-height: 130px;
+    max-width: 210px;
+}
 .img-responsive {
     text-align: center;
 }
@@ -29,12 +33,26 @@
     max-width: 90%;
 }
 
+@media (min-width: 768px) and (max-width: 1020px) {
+    .previewImageDetail {
+        max-height: 100px;
+        max-width: 170px;
+    }
+    .set-height {
+        height: 100px;
+    }
+}
+
 @media only screen and (max-width: 480px) {
     .carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {
         width: auto;
         max-height: 75px;
     }
     .previewImage {
+        max-height: 75px;
+        max-width: 150px;
+    }
+    .previewImageDetail {
         max-height: 75px;
         max-width: 150px;
     }
@@ -69,6 +87,10 @@
 
 .margin-bottom-20 {
     margin-bottom: 20px;
+}
+
+.margin-bottom-30 {
+    margin-bottom: 30px;
 }
 
 .font-smaller {

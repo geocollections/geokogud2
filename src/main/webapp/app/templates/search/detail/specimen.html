@@ -1,7 +1,6 @@
 <div ng-include="'app/templates/main/partial/detailview_header.html'"></div>
 
 <div id="elementToFocus" tabindex="1" style="outline: 0" ng-arrow-left="detailCtrl.reload({table:'specimen', id:detailCtrl.results.id - 1})" ng-arrow-right="detailCtrl.reload({table:'specimen', id:detailCtrl.results.id + 1})"  class="panel detailview-page">
-    <!--TODO: Fix image design, same like in locality detail view-->
     <div class="panel-body detailview-max-width">
 
         <div class="row">
@@ -443,21 +442,28 @@
                 <div data-ng-if="detailCtrl.specimenImage.length > 0">
                     <h3> {{ 'DETAIL.DETAIL_IMAGES' | translate }} </h3>
 
-                    <div id="images" class="row">
+                    <div class="row">
 
-                        <div data-ng-repeat="entity in detailCtrl.specimenImage"
-                             data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image', id:entity.id})"
-                             id="detail-image"
-                             class="col-lg-picture-3 col-md-picture-4 col-sm-picture-6 col-sm-picture-4 col-xs-6 set-height">
+                        <div class="col-md-6 col-xs-6" data-ng-repeat="image in detailCtrl.specimenImage">
 
-                            <show-preview img-title="[entity.agent__agent, entity.date, entity.date_taken_free, entity.id]"
-                                          classes="img-rounded img-responsive margin-left-and-right-15"
-                                          img-url="detailCtrl.service.composeSpecimenImageUrl({
-                                                   database: entity.specimen__database__acronym,
-                                                   image: entity.image,
-                                                   imageUrl:entity.image_ur})"/>
+                            <figure class="margin-bottom-30">
+
+                                <a href class="hover-me" data-ng-click="detailCtrl.service.openInNewWindow({object:'image',id:image.id})">
+
+                                    <show-preview class="img-responsive set-height"
+                                                  classes="previewImageDetail img-rounded"
+                                                  img-title="[image.agent__agent, image.date, image.date_taken_free, image.id]"
+                                                  img-url="detailCtrl.service.composeSpecimenImageUrl({
+                                                           database: image.specimen__database__acronym,
+                                                           image: image.image,
+                                                           imageUrl: image.image_ur})"/>
+
+                                </a>
+
+                            </figure>
 
                         </div>
+
                     </div>
 
                 </div>

@@ -1,9 +1,7 @@
 <div ng-include="'app/templates/main/partial/detailview_header.html'"></div>
 
 <div id="elementToFocus" tabindex="1" style="outline: 0" ng-arrow-left="detailCtrl.reload({table:'locality', id:detailCtrl.results.id - 1})" ng-arrow-right="detailCtrl.reload({table:'locality', id:detailCtrl.results.id + 1})"  class="panel detailview-page">
-    <!--TODO: Enable after image design is ready-->
-    <!--<div class="panel-body detailview-max-width">-->
-    <div class="panel-body">
+    <div class="panel-body detailview-max-width">
 
         <div class="row">
             <div class="col-sm-12">
@@ -269,18 +267,25 @@
                 <div data-ng-if="detailCtrl.images.length > 0">
                     <h3> {{ 'DETAIL.LOCALITY.IMAGES_HEADING'| translate }} </h3>
 
-                    <div id="images" class="row">
+                    <div class="row">
 
-                        <div data-ng-repeat="entity in detailCtrl.images | orderBy : ['-stars','-date_taken','-date_taken_free']"
-                             data-ng-click="detailCtrl.service.openInNewWindow({object:'image', id:entity.id})"
-                             id="detail-image"
-                             class="col-lg-picture-3 col-md-picture-4 col-sm-picture-6 col-sm-picture-4 col-xs-6 set-height">
+                        <div class="col-md-6 col-xs-6" data-ng-repeat="image in detailCtrl.images">
 
-                            <show-preview img-title="[entity.author__agent, entity.date_taken, entity.date_taken_free]"
-                                          classes="img-rounded img-responsive margin-left-and-right-15"
-                                          img-url="detailCtrl.service.composeImageUrl(entity)"/>
+                            <figure class="margin-bottom-30">
+
+                                <a href class="hover-me" data-ng-click="detailCtrl.service.openInNewWindow({object:'image',id:image.id})">
+
+                                    <show-preview class="img-responsive set-height"
+                                                  classes="previewImageDetail img-rounded"
+                                                  img-title="[image.author__agent, image.date_taken, image.date_taken_free]"
+                                                  img-url="detailCtrl.service.composeImageUrl(image)" />
+
+                                </a>
+
+                            </figure>
 
                         </div>
+
                     </div>
 
                 </div>

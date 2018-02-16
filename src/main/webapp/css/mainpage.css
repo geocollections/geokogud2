@@ -967,12 +967,18 @@ table tr > td:first-child {
 /* ALL H1 TAGS */
 
 
-
 /* Makes picture move with the scrolling */
 @media (min-width: 768px) {
     .fancy-image {
         position: fixed;
         width: 48%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .fancy-image {
+        position: fixed;
+        width: inherit;
     }
 }
 
