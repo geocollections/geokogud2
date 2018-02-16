@@ -1,6 +1,6 @@
 <div ng-include="'app/templates/main/partial/detailview_header.html'"></div>
 
-<div class="panel detailview-page">
+<div id="elementToFocus" tabindex="1" style="outline: 0" ng-arrow-left="detailCtrl.reload({table:'doi', left:true})" ng-arrow-right="detailCtrl.reload({table:'doi', right:true})"  class="panel detailview-page">
     <div class="panel-body detailview-max-width">
 
         <div class="row">
@@ -389,3 +389,9 @@
 </div>
 
 <div ng-include="'app/templates/main/partial/detailview_footer.html'"></div>
+
+<script>
+    $(function(){
+        $('#elementToFocus').focus();
+    });
+</script>

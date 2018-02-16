@@ -187,20 +187,13 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
      * @param params, table -> detail view name; id -> detail view identifier
      */
     function reload(params) {
-        console.log(params.id); // on that now
-        console.log(params.currentId); // previous
         var idFromUrl = location.pathname.split("/")[2];
-        var difference = params.id - idFromUrl;
-        console.log(difference);
-        // if (difference === -1 && params.id > 0) {
-        //     $state.go(params.table + '.view', {id:params.id+1})
-        // }
-        // if (difference === 1 && params.id > 0) {
-        //     $state.go(params.table + '.view', {id:params.id-1})
-        // }
-        //     console.log(idFromUrl);
-        if (params.id > 0) {
-            $state.go(params.table + '.view', {id:params.id})
+
+        if (params.right) idFromUrl = Number(idFromUrl) + 1;
+        if (params.left) idFromUrl = Number(idFromUrl) - 1;
+
+        if (idFromUrl > 0 && Number.isInteger(idFromUrl)) {
+            $state.go(params.table + '.view', {id:idFromUrl})
         }
     }
 };

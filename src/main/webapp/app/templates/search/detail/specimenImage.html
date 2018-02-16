@@ -1,6 +1,6 @@
 <div ng-include="'app/templates/main/partial/detailview_header.html'"></div>
 
-<div id="elementToFocus" tabindex="1" style="outline: 0" ng-arrow-left="detailCtrl.reload({table:'specimenImage', id:detailCtrl.results.id - 1})" ng-arrow-right="detailCtrl.reload({table:'specimenImage', id:detailCtrl.results.id + 1})"  class="panel detailview-page">
+<div id="elementToFocus" tabindex="1" style="outline: 0" ng-arrow-left="detailCtrl.reload({table:'specimenImage', left:true})" ng-arrow-right="detailCtrl.reload({table:'specimenImage', right:true})"  class="panel detailview-page">
     <div class="panel-body detailview-max-width">
 
         <div class="row">
