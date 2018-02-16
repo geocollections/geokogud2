@@ -19,10 +19,10 @@
                 </div>
 
                 <div class="row core-box-previous-next" ng-if="detailCtrl.results.id">
-                    <a data-toggle="tooltip" title="{{'DETAIL.PREVIOUS_INFO' | translate}}" class="pull-left" href data-ng-click="detailCtrl.reload({table:'coreBox', id:detailCtrl.results.id - 1})">
+                    <a data-toggle="tooltip" title="{{'DETAIL.PREVIOUS_INFO' | translate}}" class="pull-left" href data-ng-click="detailCtrl.reload({table:'coreBox', left:true})">
                         {{ 'DETAIL.PREVIOUS'| translate }}
                     </a>
-                    <a data-toggle="tooltip" title="{{'DETAIL.NEXT_INFO' | translate}}" class="pull-right" href data-ng-click="detailCtrl.reload({table:'coreBox', id:detailCtrl.results.id + 1})">
+                    <a data-toggle="tooltip" title="{{'DETAIL.NEXT_INFO' | translate}}" class="pull-right" href data-ng-click="detailCtrl.reload({table:'coreBox', right:true})">
                         {{ 'DETAIL.NEXT'| translate }}
                     </a>
                 </div>
