@@ -978,7 +978,7 @@ table tr > td:first-child {
 @media (min-width: 1200px) {
     .fancy-image {
         position: fixed;
-        width: inherit;
+        width: unset;
     }
 }
 
