@@ -457,7 +457,8 @@
         "FOUND_IMAGES": "Pilte lehel",
         "RESET_FORM": "Puhasta väljad",
         "SEND_QUERY": "Saada päring",
-        "INSTITUTIONS": "Asutused"
+        "INSTITUTIONS": "Asutused",
+        "MAP_HOME_BUTTON": "Tagasi pealehele"
     },
     "DETAIL": {
         "SPECIMEN": {

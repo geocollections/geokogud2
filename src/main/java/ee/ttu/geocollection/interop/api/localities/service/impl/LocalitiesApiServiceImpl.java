@@ -180,24 +180,22 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
 
     @Override
     public Map findLocalitiesSummary() {
-        String requestParams = "?format=json";
-        return apiService.findRawEntity(LOCALITY_SUMMARY, requestParams);
+        return apiService.findRawEntity(LOCALITY_SUMMARY, "?format=json");
     }
 
     @Override
     public Map findLocalitiesSummaryFilter(LocalityMapFilter filters) {
-        String requestParams = "?";
-        if(filters.getFilters().size() > 0) {
-            for(String filter: filters.getFilters()) {
-                    requestParams += filter + "__gt=0&";
+        StringBuilder requestParams = new StringBuilder("?");
+        if (filters.getFilters().size() > 0) {
+            for (String filter: filters.getFilters()) {
+                requestParams.append(filter).append("__gt=0&");
             }
         }
-        if(filters.getLocalityName() != "") {
-            requestParams += "multi_search=value:" +  filters.getLocalityName() +
-                    ";fields:name,name_en;lookuptype:icontains&";
+        if (!filters.getLocalityName().equals("")) {
+            requestParams.append("multi_search=value:").append(filters.getLocalityName()).append(";fields:name,name_en;lookuptype:icontains&");
         }
-        requestParams += "format=json";
-        return apiService.findRawEntity(LOCALITY_SUMMARY, requestParams);
+        requestParams.append("format=json");
+        return apiService.findRawEntity(LOCALITY_SUMMARY, requestParams.toString());
     }
 
 }

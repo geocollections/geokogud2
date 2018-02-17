@@ -833,16 +833,24 @@ angular.module('geoApp')
             replace: true,
             template: '<div id="map" class="map"></div>',
             controller: ['$scope', 'ApplicationService', '$rootScope', '$timeout', function ($scope, ApplicationService, $rootScope, $timeout) {
-                ApplicationService.loadMapData(onMapData);
+                // ApplicationService.loadMapData(onMapData);
                 var filterData = ApplicationService.getMapParamsFromUrl();
-                if(filterData == null){
-                    ApplicationService.loadMapData(onMapData);
-                } else {
+                if (filterData != null) {
                     ApplicationService.loadMapDataOnFilterChange(filterData, onMapDataFilter);
                     angular.forEach(filterData.filters, function(filter){
                         angular.element("input[name=" + filter + "]").prop('checked', true);
                     });
+                } else {
+                    ApplicationService.loadMapData(onMapData);
                 }
+                // if(filterData == null){
+                //     ApplicationService.loadMapData(onMapData);
+                // } else {
+                //     ApplicationService.loadMapDataOnFilterChange(filterData, onMapDataFilter);
+                //     angular.forEach(filterData.filters, function(filter){
+                //         angular.element("input[name=" + filter + "]").prop('checked', true);
+                //     });
+                // }
                 function onMapData(response) {
                     var locs = response.data;
                     if (locs != undefined) {
@@ -1246,7 +1254,7 @@ angular.module('geoApp')
 
                     var filterData = {
                         filters: [],
-                        localityName: "",
+                        localityName: ""
                     };
 
                     for (var index in allFilters) {

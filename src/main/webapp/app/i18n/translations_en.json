@@ -457,7 +457,8 @@
         "FOUND_IMAGES": "Images on page",
         "RESET_FORM": "Reset fields",
         "SEND_QUERY": "Send query",
-        "INSTITUTIONS": "Institutions"
+        "INSTITUTIONS": "Institutions",
+        "MAP_HOME_BUTTON": "Back to home page"
     },
     "DETAIL": {
         "SPECIMEN": {

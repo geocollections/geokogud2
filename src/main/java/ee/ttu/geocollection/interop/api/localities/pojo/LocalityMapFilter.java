@@ -4,16 +4,9 @@ import java.util.List;
 
 public class LocalityMapFilter {
 
-    private List<String> filters;
     private String localityName;
+    private List<String> filters;
 
-    public List<String> getFilters() {
-        return filters;
-    }
-
-    public void setFilters(List<String> filters) {
-        this.filters = filters;
-    }
 
     public String getLocalityName() {
         return localityName;
@@ -21,5 +14,13 @@ public class LocalityMapFilter {
 
     public void setLocalityName(String localityName) {
         this.localityName = localityName;
+    }
+
+    public List<String> getFilters() {
+        return filters;
+    }
+
+    public void setFilters(List<String> filters) {
+        this.filters = filters;
     }
 }

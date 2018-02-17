@@ -48,7 +48,9 @@ public class ApiServiceImpl implements ApiService {
     @Override
     public Map findRawEntity(String tableName, String requestParams) {
         String url;
-        if (tableName.equals("drillcore_box") || tableName.equals("specimen_image")) {
+        if (tableName.equals("locality_summary")) {
+            url = apiUrl + "/" + tableName + "/" + requestParams;
+        } else  if (tableName.equals("drillcore_box") || tableName.equals("specimen_image")) {
             url = apiUrl + "/" + tableName + "/" + requestParams + "?format=json";
 
         } else {
