@@ -309,11 +309,19 @@ var constructor = function (utils, configuration, $window, $location) {
     }
 
     function openInNewWindow(params) {
-        if (params.width == null) {
-            params.width = 600;
-        }
+        var width = 600;
         console.log(params.object + "/" + params.id);
-        $window.open('/' + params.object + '/' + params.id, '', 'width=' + params.width + ',height=750,scrollbars, resizable');
+        switch (params.object) {
+            case "specimen":
+                width = 950;
+                break;
+            case "locality":
+                width = 1025;
+                break;
+            case "doi":
+                width = 1000;
+        }
+        $window.open('/' + params.object + '/' + params.id, '', 'width=' + width + ',height=750,scrollbars, resizable');
     }
 
     function openUrlInNewWindow(params) {

@@ -30,7 +30,7 @@
             <tr data-ng-repeat="entity in response.results track by $index">
 
                 <td data-title="{{ 'SEARCH.SPECIMENS.NUMBER' | translate }}">
-                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:entity.id,width:950})">
+                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:entity.id})">
                         {{ entity.coll__number | split:' ':0 }} {{ entity.specimen_id }}
                     </a>
                 </td>
@@ -111,7 +111,7 @@
                 </td>
 
                 <td class="text-center" data-title="{{ 'SEARCH.SPECIMENS.IMAGES' | translate }}">
-                    <a href class="hover-me" data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:entity.id,width:950})">
+                    <a href class="hover-me" data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:entity.id})">
 
                         <show-preview data-ng-if="entity.specimen_image_thumbnail.count > 0"
                                       classes="img-rounded previewImage"

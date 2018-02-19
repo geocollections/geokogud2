@@ -27,10 +27,10 @@
             <tbody>
             <tr data-ng-repeat="entity in response.results">
                 <td style="font-weight: normal" data-title="{{ 'SEARCH.LOCALITIES.TABLE.ID' | translate }}">
-                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:entity.id, width:1000})">{{entity.id}}</a>
+                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:entity.id})">{{entity.id}}</a>
                 </td>
                 <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.LOCALITY' | translate }}">
-                    <a class="bold-link" href data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:entity.id, width:1000})">
+                    <a class="bold-link" href data-ng-click="ctrl.service.openInNewWindow({object:'locality',id:entity.id})">
                         <localize en="entity.locality_en" et="entity.locality"/>
                     </a>
                 </td>
@@ -58,7 +58,7 @@
                 <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.DRILLCORE' | translate }}"></td>
 
                 <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.IMAGES' | translate }}">
-                    <a href class="hover-me" data-ng-click="ctrl.service.openInNewWindow({object: 'locality', id: entity.id, width:1000})">
+                    <a href class="hover-me" data-ng-click="ctrl.service.openInNewWindow({object: 'locality', id: entity.id})">
 
                         <show-preview data-ng-if="entity.locality_image_thumbnail.count > 0"
                                       classes="img-rounded imagePreview"
