@@ -165,7 +165,7 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
         if (typeof(institutions) !== 'undefined') {
             $scope.searchParameters.dbs = institutions;
         }
-        if (searchParamsFromUrl != null) {
+        if (searchParamsFromUrl != null && searchParamsFromUrl.sortField != null) {
             $scope.searchParameters = searchParamsFromUrl;
         }
         /*** Get parameters from session storage and local storage END ***/

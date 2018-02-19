@@ -852,6 +852,7 @@ angular.module('geoApp')
                 //     });
                 // }
                 function onMapData(response) {
+                    console.log(response);
                     var locs = response.data;
                     if (locs != undefined) {
                         $rootScope.countLocalities = response.data.count;
