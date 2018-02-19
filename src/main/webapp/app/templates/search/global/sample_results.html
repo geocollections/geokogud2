@@ -41,7 +41,7 @@
                 </td>
 
                 <td data-title="{{ 'SEARCH.SAMPLES.INSTITUTE' | translate }}">
-                    <a href="{{ctrl.service.returnInstitutionLink(entity.acronym)}}" target="_blank">
+                    <a class="page-scroll-to-additional" href="/" data-target="#infoCarousel" data-slide-to="{{ctrl.service.returnInstitutionSlideNumber(entity.acronym)}}">
                         {{entity.acronym}}
                     </a>
                 </td>

@@ -128,8 +128,8 @@
                 <div class="row core-box-image">
 
                     <div class="col-sm-12">
-                        <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.coreboxImageUrl})"
-                           title="{{detailCtrl.coreboxImageUrl}}">
+                        <a href title="{{detailCtrl.coreboxImageUrl}}"
+                           data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.coreboxImageUrl})">
                             <img spinner-load ng-src="{{detailCtrl.service.getDrillcoreImageUrl({
                                 database: detailCtrl.results.database__acronym,
                                 id: detailCtrl.results.drillcore__id,

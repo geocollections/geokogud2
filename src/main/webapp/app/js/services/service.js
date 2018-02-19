@@ -27,7 +27,7 @@ var constructor = function (utils, configuration, $window, $location) {
     service.getDrillcoreImageUrl = getDrillcoreImageUrl;
     service.composeSpecimenImageUrl = composeSpecimenImageUrl;
     service.getAttachmentFormatFromFilename = getAttachmentFormatFromFilename;
-    service.returnInstitutionLink = returnInstitutionLink;
+    service.returnInstitutionSlideNumber = returnInstitutionSlideNumber;
 
     service.toggle = function (el,array) {
         utils.toggleInArray(el,array)
@@ -353,15 +353,11 @@ var constructor = function (utils, configuration, $window, $location) {
         }
     }
 
-    function returnInstitutionLink(institution) {
-        if (institution == "GIT") return configuration.gitUrl;
-        if (institution == "TUG") return configuration.tugUrl2;
-        if (institution == "ELM") return configuration.elmUrl2;
-        if (institution == "TUGO") return configuration.tugoUrl;
-        if (institution == "MUMU") return configuration.mumuUrl;
-        if (institution == "EGK") return configuration.egkUrl;
+    function returnInstitutionSlideNumber(institution) {
+        if (institution === "GIT") return 4;
+        if (institution === "TUG") return 5;
+        if (institution === "ELM") return 6;
     }
-
 
     return service;
 };

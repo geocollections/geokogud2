@@ -41,7 +41,7 @@
                 </td>
 
                 <td data-title="{{ 'SEARCH.DRILL_CORES.TABLE.INSTITUTE' | translate }}">
-                    <a href="{{ctrl.service.returnInstitutionLink(entity.database__acronym)}}" target="_blank">
+                    <a class="page-scroll-to-additional" href="/" data-target="#infoCarousel" data-slide-to="{{ctrl.service.returnInstitutionSlideNumber(entity.database__acronym)}}">
                         {{entity.database__acronym}}
                     </a>
                 </td>
