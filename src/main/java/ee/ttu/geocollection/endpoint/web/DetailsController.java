@@ -88,8 +88,20 @@ public class DetailsController {
     }
 
     @RequestMapping(value = "/raw-corebox/{id}")
-    public Map findRawCoreBoxById(@PathVariable Long id) {
-        return drillCoreBoxApiService.findRawCoreBoxById(id);
+    public ApiResponse findRawCoreBoxById(@PathVariable Long id) {
+        ApiResponse coreBox = drillCoreBoxApiService.findRawCoreBoxById(id);
+
+        if (coreBox.getResult() != null) {
+            asynchService.doAsynchCallsForEachResult(
+                    coreBox,
+                    box -> () -> drillCoreBoxApiService.findSamples(
+                            new SearchField(box.get("drillcore__locality").toString(), LookUpType.exact),
+                            new SearchField(box.get("depth_start").toString(), LookUpType.gte),
+                            new SearchField(box.get("depth_end").toString(), LookUpType.lte)),
+                    box -> receivedSamples -> box.put("samplesFromBox", receivedSamples));
+        }
+
+        return coreBox;
     }
 
     @RequestMapping(value = "/raw-locality/{id}")

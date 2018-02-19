@@ -223,7 +223,10 @@
             "INSTITUTE": "Inst.",
             "ANALYSED": "Analyzed",
             "LITHOSTRATIGRAPHY": "Lithostratigraphy",
-            "TAXON_HEADING": "Species identified"
+            "TAXON_HEADING": "Species identified",
+            "AGENT": "Person/Institution",
+            "DATE": "Date",
+            "PURPOSE": "Purpose"
         },
         "DRILL_CORES": {
             "HEADING": "Drill cores",
@@ -518,7 +521,8 @@
             "LOCATION": "Location code",
             "REMARKS": "Remarks",
             "DATE_ADDED": "Date added",
-            "DATE_CHANGED": "Date changed"
+            "DATE_CHANGED": "Date changed",
+            "SAMPLES": "Samples from this box"
         },
         "LOCALITY": {
             "TYPE": "Type",

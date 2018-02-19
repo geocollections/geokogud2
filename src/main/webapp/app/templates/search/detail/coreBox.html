@@ -125,37 +125,69 @@
                     </tbody>
                 </table>
 
-                <div class="row core-box-image">
+            </div>
 
-                    <div class="col-sm-12">
-                        <a href title="{{detailCtrl.coreboxImageUrl}}"
-                           data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.coreboxImageUrl})">
-                            <img spinner-load ng-src="{{detailCtrl.service.getDrillcoreImageUrl({
+
+            <div class="col-lg-6 core-box-image">
+                <a href title="{{detailCtrl.coreboxImageUrl}}"
+                   data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.coreboxImageUrl})">
+                    <img spinner-load ng-src="{{detailCtrl.service.getDrillcoreImageUrl({
                                 database: detailCtrl.results.database__acronym,
                                 id: detailCtrl.results.drillcore__id,
                                 filename: detailCtrl.results.drillcoreimage__image,
                                 preview: true})}}">
-                        </a>
-                    </div>
+                </a>
 
-                    <div class="photo-author">
-                        {{ 'DETAIL.CORE_BOX.PHOTO' | translate }}:
-                        {{detailCtrl.results.drillcoreimage__agent__agent}} {{detailCtrl.results.drillcoreimage__image_date | date:dateFormat}}
-                    </div>
-
-                    <div class="col-sm-12">
-                        {{'API_TRANSLATION.PHOTO_ARCHIVE.SIZE ' | translate }}:
-                        <a href="{{detailCtrl.externalCoreboxImagePath}}/600" target="_blank">600px</a>
-                        | <a href="{{detailCtrl.externalCoreboxImagePath}}/1024" target="_blank">1024px</a>
-                        | <a href="{{detailCtrl.externalCoreboxImagePath}}/1440" target="_blank">1440px</a>
-                        | <a href="{{detailCtrl.externalCoreboxImagePath}}/1600" target="_blank">1600px</a>
-                        | <a href="{{detailCtrl.externalCoreboxImagePath}}/1920" target="_blank">1920px</a>
-                        | <a href="{{detailCtrl.coreboxImageUrl}}" target="_blank">Original</a>
-                    </div>
-
+                <div class="photo-author">
+                    {{ 'DETAIL.CORE_BOX.PHOTO' | translate }}:
+                    {{detailCtrl.results.drillcoreimage__agent__agent}} {{detailCtrl.results.drillcoreimage__image_date | date:dateFormat}}
                 </div>
 
+                <div>
+                    {{'API_TRANSLATION.PHOTO_ARCHIVE.SIZE ' | translate }}:
+                    <a href="{{detailCtrl.externalCoreboxImagePath}}/600" target="_blank">600px</a>
+                    | <a href="{{detailCtrl.externalCoreboxImagePath}}/1024" target="_blank">1024px</a>
+                    | <a href="{{detailCtrl.externalCoreboxImagePath}}/1440" target="_blank">1440px</a>
+                    | <a href="{{detailCtrl.externalCoreboxImagePath}}/1600" target="_blank">1600px</a>
+                    | <a href="{{detailCtrl.externalCoreboxImagePath}}/1920" target="_blank">1920px</a>
+                    | <a href="{{detailCtrl.coreboxImageUrl}}" target="_blank">Original</a>
+                </div>
             </div>
+
+
+            <div class="col-lg-6" data-ng-if="detailCtrl.results.samplesFromBox.count > 0">
+                <h3> {{ 'DETAIL.CORE_BOX.SAMPLES' | translate }} </h3>
+
+                <table class="table table-bordered table-hover">
+                    <thead class="styles-for-table-headers">
+                        <tr>
+                            <th> {{ 'SEARCH.SAMPLES.NUMBER' | translate }} </th>
+                            <th> {{ 'SEARCH.SAMPLES.AGENT' | translate }} </th>
+                            <th> {{ 'SEARCH.SAMPLES.DATE' | translate }} </th>
+                            <th> {{ 'SEARCH.SAMPLES.PURPOSE' | translate }} </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr data-ng-repeat="sample in detailCtrl.results.samplesFromBox.results">
+                            <td>
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'sample', id: sample.id})">
+                                    <first-not-null values="[sample.number, sample.id]" />
+                                </a>
+                            </td>
+
+                            <td><first-not-null values="[sample.agent_collected__agent, sample.agent_collected_free]" /></td>
+
+                            <td>{{ sample.date_added | date:dateFormat }}</td>
+
+                            <td>
+                                <localize en="sample.sample_purpose__value_en" et="sample.sample_purpose__value" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
 
     </div>

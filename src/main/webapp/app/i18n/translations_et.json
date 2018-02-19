@@ -223,7 +223,10 @@
             "INSTITUTE": "Inst.",
             "ANALYSED": "Analüüsitud",
             "LITHOSTRATIGRAPHY": "Litostratigraafia",
-            "TAXON_HEADING": "Proovist määratud taksonid"
+            "TAXON_HEADING": "Proovist määratud taksonid",
+            "AGENT": "Isik/Asutus",
+            "DATE": "Aeg",
+            "PURPOSE": "Eesmärk"
         },
         "DRILL_CORES": {
             "HEADING": "Puursüdamikud",
@@ -518,7 +521,8 @@
             "LOCATION": "Asukoha kood",
             "REMARKS": "Lisainfo",
             "DATE_ADDED": "Kirje sisestatud",
-            "DATE_CHANGED": "Kirje muudetud"
+            "DATE_CHANGED": "Kirje muudetud",
+            "SAMPLES": "Proovid sellest kastist"
         },
         "LOCALITY": {
             "TYPE": "Tüüp",

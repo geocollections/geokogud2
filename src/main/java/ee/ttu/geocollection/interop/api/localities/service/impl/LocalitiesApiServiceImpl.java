@@ -7,8 +7,6 @@ import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentLocalityImageSearchApiBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentLocalitySearchApiBuilder;
-import ee.ttu.geocollection.interop.api.builder.search.FluentPhotoArchiveSearchApiBuilder;
-import ee.ttu.geocollection.interop.api.localities.pojo.LocalityMapFilter;
 import ee.ttu.geocollection.interop.api.localities.pojo.LocalitySearchCriteria;
 import ee.ttu.geocollection.interop.api.localities.service.LocalitiesApiService;
 import ee.ttu.geocollection.interop.api.service.ApiService;
@@ -16,9 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 import static ee.ttu.geocollection.interop.api.builder.ApiFields.*;
 
@@ -31,7 +27,6 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
     private static final String SPECIMEN_TABLE = "specimen";
     private static final String LOCALITY_REFERENCE = "locality_reference";
     private static final String LOCALITY_SYNONYM = "locality_synonym";
-    private static final String LOCALITY_SUMMARY = "locality_summary";
 
     private List<String> fields = Arrays.asList(
             "id",

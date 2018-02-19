@@ -1,9 +1,12 @@
 package ee.ttu.geocollection.interop.api.drillCores.service;
 
-import java.util.Map;
+import ee.ttu.geocollection.domain.SearchField;
+import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 
 public interface DrillCoreBoxApiService {
 
-    Map findRawCoreBoxById(Long id);
+    ApiResponse findRawCoreBoxById(Long id);
+
+    ApiResponse findSamples(SearchField localityId, SearchField depthStart, SearchField depthEnd);
 
 }

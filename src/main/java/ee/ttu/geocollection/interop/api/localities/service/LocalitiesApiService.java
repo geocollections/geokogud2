@@ -2,11 +2,8 @@ package ee.ttu.geocollection.interop.api.localities.service;
 
 import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
-import ee.ttu.geocollection.interop.api.localities.pojo.LocalityMapFilter;
 import ee.ttu.geocollection.interop.api.localities.pojo.LocalitySearchCriteria;
 
-import java.util.Collection;
-import java.util.Map;
 
 public interface LocalitiesApiService {
 
