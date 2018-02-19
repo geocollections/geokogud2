@@ -178,24 +178,4 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
         return apiService.searchRawEntities(SPECIMEN_TABLE, 10, 1, new SortField(), requestParams);
     }
 
-    @Override
-    public Map findLocalitiesSummary() {
-        return apiService.findRawEntity(LOCALITY_SUMMARY, "?format=json");
-    }
-
-    @Override
-    public Map findLocalitiesSummaryFilter(LocalityMapFilter filters) {
-        StringBuilder requestParams = new StringBuilder("?");
-        if (filters.getFilters().size() > 0) {
-            for (String filter: filters.getFilters()) {
-                requestParams.append(filter).append("__gt=0&");
-            }
-        }
-        if (!filters.getLocalityName().equals("")) {
-            requestParams.append("multi_search=value:").append(filters.getLocalityName()).append(";fields:name,name_en;lookuptype:icontains&");
-        }
-        requestParams.append("format=json");
-        return apiService.findRawEntity(LOCALITY_SUMMARY, requestParams.toString());
-    }
-
 }

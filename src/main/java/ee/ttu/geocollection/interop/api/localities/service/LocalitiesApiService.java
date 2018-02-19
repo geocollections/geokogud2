@@ -20,8 +20,4 @@ public interface LocalitiesApiService {
 
     ApiResponse findAllSpecimens(SearchField id);
 
-    Map findLocalitiesSummary();
-
-    Map findLocalitiesSummaryFilter(LocalityMapFilter filters);
-
 }

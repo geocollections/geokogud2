@@ -833,7 +833,7 @@ angular.module('geoApp')
             replace: true,
             template: '<div id="map" class="map"></div>',
             controller: ['$scope', 'ApplicationService', '$rootScope', '$timeout', function ($scope, ApplicationService, $rootScope, $timeout) {
-                // ApplicationService.loadMapData(onMapData);
+
                 var filterData = ApplicationService.getMapParamsFromUrl();
                 if (filterData != null) {
                     ApplicationService.loadMapDataOnFilterChange(filterData, onMapDataFilter);
@@ -843,14 +843,7 @@ angular.module('geoApp')
                 } else {
                     ApplicationService.loadMapData(onMapData);
                 }
-                // if(filterData == null){
-                //     ApplicationService.loadMapData(onMapData);
-                // } else {
-                //     ApplicationService.loadMapDataOnFilterChange(filterData, onMapDataFilter);
-                //     angular.forEach(filterData.filters, function(filter){
-                //         angular.element("input[name=" + filter + "]").prop('checked', true);
-                //     });
-                // }
+
                 function onMapData(response) {
                     console.log(response);
                     var locs = response.data;
@@ -1174,12 +1167,12 @@ angular.module('geoApp')
                                 var fid, pikk;
                                 if (fid = feature.get('fid')) {
                                     //document.getElementById('hoversystem').innerHTML = name;
-                                    window.open('/locality/' + fid, '', 'width=600,height=750,scrollbars, resizable');
+                                    window.open('/locality/' + fid, '', 'width=1025,height=750,scrollbars, resizable');
                                 } else if (pikk = feature.get('features').length) {
                                     if (pikk == 1) {
                                         fid = feature.get('features')[0].get('fid');
                                         //document.getElementById('hoversystem').innerHTML = name;
-                                        window.open('/locality/' + fid, '', 'width=600,height=750,scrollbars, resizable');
+                                        window.open('/locality/' + fid, '', 'width=1025,height=750,scrollbars, resizable');
                                     }
                                 }
                             }

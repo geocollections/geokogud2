@@ -1,7 +1,7 @@
 package ee.ttu.geocollection.endpoint.web;
 
-import ee.ttu.geocollection.interop.api.localities.pojo.LocalityMapFilter;
-import ee.ttu.geocollection.interop.api.localities.service.LocalitiesApiService;
+import ee.ttu.geocollection.interop.api.map.pojo.MapFilter;
+import ee.ttu.geocollection.interop.api.map.service.MapApiService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +16,16 @@ public class MapController {
     private static final Logger logger = LoggerFactory.getLogger(MapController.class);
 
     @Autowired
-    private LocalitiesApiService localitiesApiService;
+    private MapApiService mapApiService;
 
     @GetMapping(value = "/locality-summary")
     public Map findLocalitySummary() {
-        return localitiesApiService.findLocalitiesSummary();
+        return mapApiService.findLocalitiesSummary();
     }
 
     @PostMapping(value = "/locality-summary-filter")
-    public Map findLocalitySummaryFilter(@RequestBody LocalityMapFilter filters) {
-        return localitiesApiService.findLocalitiesSummaryFilter(filters);
+    public Map findLocalitySummaryFilter(@RequestBody MapFilter filters) {
+        return mapApiService.findLocalitiesSummaryFilter(filters);
     }
 }
 
