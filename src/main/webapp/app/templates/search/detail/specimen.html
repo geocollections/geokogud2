@@ -15,7 +15,7 @@
                             </a>
                         </span>
                         <span data-ng-repeat="entity in detailCtrl.specimenIdentificationGeology" data-ng-if="detailCtrl.specimenIdentificationGeology.length > 0">
-                            <a href ng-if="entity.current == true" data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://kivid.info/'+entity.rock_id})">
+                            <a href ng-if="entity.current == true" data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://www.kivid.info/'+entity.rock_id})">
                                 <localize en="entity.rock__name_en" et="entity.rock__name" />
                             </a>
                         </span>
@@ -324,7 +324,7 @@
                             <tbody>
                             <tr data-ng-repeat="entity in detailCtrl.specimenIdentificationGeology">
                                 <td>
-                                    <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://kivid.info/'+entity.rock_id})">
+                                    <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://www.kivid.info/'+entity.rock_id})">
                                         <localize en="entity.name_en" et="entity.name" />
                                     </a>
 
