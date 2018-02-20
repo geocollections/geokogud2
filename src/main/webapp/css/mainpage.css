@@ -731,6 +731,10 @@ table tr > td:first-child {
     font-weight: normal;
 }
 
+.table-data-min-height {
+    min-height: 20px;
+}
+
 /* DRILLCORE END */
 
 
