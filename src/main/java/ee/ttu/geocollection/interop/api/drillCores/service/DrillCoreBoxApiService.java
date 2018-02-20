@@ -9,4 +9,6 @@ public interface DrillCoreBoxApiService {
 
     ApiResponse findSamples(SearchField localityId, SearchField depthStart, SearchField depthEnd);
 
+    ApiResponse findStratigraphicBoundaries(SearchField localityId, SearchField depthStart, SearchField depthEnd);
+
 }

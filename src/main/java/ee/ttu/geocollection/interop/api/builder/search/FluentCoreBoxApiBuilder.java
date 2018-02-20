@@ -20,4 +20,8 @@ public class FluentCoreBoxApiBuilder extends FluentSearchApiBuilder<FluentCoreBo
         return this;
     }
 
+    public FluentCoreBoxApiBuilder queryDepthBase(SearchField depth) {
+        buildFieldParameters(DEPTH_BASE, depth);
+        return this;
+    }
 }

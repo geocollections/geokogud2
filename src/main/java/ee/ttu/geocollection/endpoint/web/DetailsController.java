@@ -92,6 +92,7 @@ public class DetailsController {
         ApiResponse coreBox = drillCoreBoxApiService.findRawCoreBoxById(id);
 
         if (coreBox.getResult() != null) {
+            // Call for samples
             asynchService.doAsynchCallsForEachResult(
                     coreBox,
                     box -> () -> drillCoreBoxApiService.findSamples(
@@ -99,6 +100,15 @@ public class DetailsController {
                             new SearchField(box.get("depth_start").toString(), LookUpType.gte),
                             new SearchField(box.get("depth_end").toString(), LookUpType.lte)),
                     box -> receivedSamples -> box.put("samplesFromBox", receivedSamples));
+
+            // Call for stratigraphic boundaries
+            asynchService.doAsynchCallsForEachResult(
+                    coreBox,
+                    box -> () -> drillCoreBoxApiService.findStratigraphicBoundaries(
+                            new SearchField(box.get("drillcore__locality").toString(), LookUpType.exact),
+                            new SearchField(box.get("depth_start").toString(), LookUpType.gte),
+                            new SearchField(box.get("depth_end").toString(), LookUpType.lte)),
+                    box -> receivedBoundaries -> box.put("stratigraphicBoundaries", receivedBoundaries));
         }
 
         return coreBox;

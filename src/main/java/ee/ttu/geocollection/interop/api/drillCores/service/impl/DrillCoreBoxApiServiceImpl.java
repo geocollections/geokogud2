@@ -16,6 +16,7 @@ public class DrillCoreBoxApiServiceImpl implements DrillCoreBoxApiService {
 
     private static final String DRILLCORE_BOX_TABLE = "drillcore_box";
     private static final String SAMPLE_TABLE = "sample";
+    private static final String LOCALITY_STRATIGRAPHY_TABLE = "locality_stratigraphy";
 
     @Autowired
     private ApiService apiService;
@@ -36,5 +37,15 @@ public class DrillCoreBoxApiServiceImpl implements DrillCoreBoxApiService {
                 .queryDepth(depthEnd)
                 .buildDefaultFieldsQuery();
         return apiService.searchRawEntities(SAMPLE_TABLE, 100, 1, new SortField("depth", SortingOrder.ASCENDING), requestParams);
+    }
+
+    @Override
+    public ApiResponse findStratigraphicBoundaries(SearchField localityId, SearchField depthStart, SearchField depthEnd) {
+        String requestParams = FluentCoreBoxApiBuilder.aRequest()
+                .queryLocalityId(localityId)
+                .queryDepthBase(depthStart)
+                .queryDepthBase(depthEnd)
+                .buildDefaultFieldsQuery();
+        return apiService.searchRawEntities(LOCALITY_STRATIGRAPHY_TABLE, 10, 1, new SortField(), requestParams);
     }
 }

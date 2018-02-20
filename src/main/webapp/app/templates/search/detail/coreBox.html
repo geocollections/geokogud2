@@ -155,6 +155,42 @@
             </div>
 
 
+            <div class="col-lg-6" data-ng-if="detailCtrl.results.stratigraphicBoundaries.count > 0">
+                <h3> {{ 'DETAIL.CORE_BOX.STRATIGRAPHIC_BOUNDARIES' | translate }} </h3>
+
+                <table class="table table-bordered table-hover">
+                    <thead class="styles-for-table-headers">
+                        <tr>
+                            <th> {{ 'DETAIL.CORE_BOX.STRATIGRAPHY' | translate }} </th>
+                            <th> {{ 'DETAIL.CORE_BOX.BASE' | translate }} </th>
+                            <th> {{ 'SEARCH.SAMPLES.AGENT' | translate }} </th>
+                            <th> {{ 'DETAIL.CORE_BOX.REFERENCE' | translate }} </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr data-ng-repeat="stratigraphy in detailCtrl.results.stratigraphicBoundaries.results">
+                            <td>
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: stratigraphy.stratigraphy_id})">
+                                    <localize et="stratigraphy.stratigraphy__stratigraphy" en="stratigraphy.stratigraphy__stratigraphy_en" />
+                                </a>
+                            </td>
+
+                            <td>{{ stratigraphy.depth_base }}</td>
+
+                            <td>{{ stratigraphy.agent__agent }}</td>
+
+                            <td>
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference', id: stratigraphy.reference_id})">
+                                    {{ stratigraphy.reference__reference }}
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
             <div class="col-lg-6" data-ng-if="detailCtrl.results.samplesFromBox.count > 0">
                 <h3> {{ 'DETAIL.CORE_BOX.SAMPLES' | translate }} </h3>
 

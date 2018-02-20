@@ -522,7 +522,10 @@
             "REMARKS": "Remarks",
             "DATE_ADDED": "Date added",
             "DATE_CHANGED": "Date changed",
-            "SAMPLES": "Samples from this box"
+            "SAMPLES": "Samples from this box",
+            "STRATIGRAPHIC_BOUNDARIES": "Stratigraphic boundaries",
+            "BASE": "Base",
+            "REFERENCE": "Reference"
         },
         "LOCALITY": {
             "TYPE": "Type",

@@ -522,7 +522,10 @@
             "REMARKS": "Lisainfo",
             "DATE_ADDED": "Kirje sisestatud",
             "DATE_CHANGED": "Kirje muudetud",
-            "SAMPLES": "Proovid sellest kastist"
+            "SAMPLES": "Proovid sellest kastist",
+            "STRATIGRAPHIC_BOUNDARIES": "Stratigraafilised piirid",
+            "BASE": "Alumine piir",
+            "REFERENCE": "Viide"
         },
         "LOCALITY": {
             "TYPE": "Tüüp",
