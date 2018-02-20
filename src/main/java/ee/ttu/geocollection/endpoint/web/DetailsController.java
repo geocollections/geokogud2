@@ -78,8 +78,19 @@ public class DetailsController {
     }
 
     @RequestMapping(value = "/raw-sample/{id}")
-    public Map findRawSampleById(@PathVariable Long id) {
-        return samplesApiService.findRawById(id);
+    public ApiResponse findRawSampleById(@PathVariable Long id) {
+        ApiResponse samples = samplesApiService.findRawById(id);
+
+        if (samples.getResult() != null) {
+            // Call for specimens
+            asynchService.doAsynchCallsForEachResult(
+                    samples,
+                    sample -> () -> samplesApiService.findSpecimens(
+                            new SearchField(sample.get("id").toString(), LookUpType.exact)),
+                    sample -> receivedSpecimens -> sample.put("specimensFromSample", receivedSpecimens));
+        }
+
+        return samples;
     }
 
     @RequestMapping(value = "/raw-drillcore/{id}")

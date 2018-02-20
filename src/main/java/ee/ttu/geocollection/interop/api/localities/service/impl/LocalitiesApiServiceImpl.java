@@ -169,6 +169,8 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
                 .returnRockId()
                 .returnRockName()
                 .returnRockNameEn()
+                .returnTaxonCurrent()
+                .returnGeologiesCurrent()
                 .buildFullQuery();
         return apiService.searchRawEntities(SPECIMEN_TABLE, 10, 1, new SortField(), requestParams);
     }

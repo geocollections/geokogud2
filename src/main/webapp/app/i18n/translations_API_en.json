@@ -230,7 +230,11 @@
             "ANALYSIS_LAB": "Lab.",
             "ANALYSIS_AGENT": "Person/Institution",
             "ANALYSIS_LOCATION": "Storage",
-            "ANALYSIS_REMARKS": "Remarks"
+            "ANALYSIS_REMARKS": "Remarks",
+            "SPECIMEN_HEADING": "Numbered specimens from sample",
+            "SPECIMEN_NUMBER": "Number",
+            "SPECIMEN_NAME": "Name",
+            "SPECIMEN_GROUP": "Group"
         },
         "DRILL_CORE" : {
             "ID":"ID",

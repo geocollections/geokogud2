@@ -94,6 +94,8 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
             "remarks_collecting",
             "date_added",
             "date_changed",
+            "date_collected",
+            "date_collected_free",
             "specimen_id",
             "type__value_en",
             "type__value",

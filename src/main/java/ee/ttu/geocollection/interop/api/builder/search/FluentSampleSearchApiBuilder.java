@@ -147,4 +147,28 @@ public class FluentSampleSearchApiBuilder extends FluentSearchApiBuilder<FluentS
         return this;
     }
 
+    /* Related Specimens START */
+    public FluentSampleSearchApiBuilder querySampleIdForUrl(SearchField sampleId) {
+        buildFieldParameters(SAMPLE_ID, sampleId);
+        return this;
+    }
+
+    public FluentSampleSearchApiBuilder returnSpecimenId() {
+        addReturningField(SPECIMEN_ID);
+        return this;
+    }
+
+    public FluentSampleSearchApiBuilder returnClassification() {
+        addReturningField(CLASSIFICATION__CLASS_EN);
+        return this;
+    }
+
+    public FluentSampleSearchApiBuilder returnTaxonName() {
+        addReturningField(SPECIMENIDENTIFICATION__NAME);
+        return this;
+    }
+    /* Related Specimens END */
+
+
+
 }

@@ -1,5 +1,6 @@
 package ee.ttu.geocollection.interop.api.samples.service.impl;
 
+import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.domain.SortField;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
@@ -21,6 +22,7 @@ public class SamplesApiServiceImpl implements SamplesApiService {
     private static final String SAMPLE_TABLE = "sample";
     private static final String TAXON_LIST_TABLE = "taxon_list";
     private static final String ANALYSIS_TABLE = "analysis";
+    private static final String SPECIMEN_TABLE = "specimen";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -71,7 +73,8 @@ public class SamplesApiServiceImpl implements SamplesApiService {
             "fossils",
             "palaeontology",
             "analysis",
-            "owner__agent"
+            "owner__agent",
+            "stratigraphy_free"
     );
 
     @Autowired
@@ -115,14 +118,25 @@ public class SamplesApiServiceImpl implements SamplesApiService {
     }
 
     @Override
-    public Map findRawById(Long id) {
+    public ApiResponse findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
                 .relatedData(TAXON_LIST_TABLE)
                 .relatedData(ANALYSIS_TABLE)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
-        return apiService.findRawEntity(SAMPLE_TABLE, requestParams);
+        return apiService.searchRawEntities(SAMPLE_TABLE, requestParams);
     }
 
+    @Override
+    public ApiResponse findSpecimens(SearchField sampleId) {
+        String requestParams = FluentSampleSearchApiBuilder.aRequest()
+                .querySampleIdForUrl(sampleId)
+                .returnId()
+                .returnSpecimenId()
+                .returnClassification()
+                .returnTaxonName()
+                .buildFullQuery();
+        return apiService.searchRawEntities(SPECIMEN_TABLE, 100, 1, new SortField(), requestParams);
+    }
 }

@@ -36,6 +36,7 @@ public class ApiFields {
     public static final String DEPTH_INTERVAL = "depth_interval";
     public static final String REMARKS = "remarks";
     public static final String ANALYZED = "analyzed";
+    public static final String SAMPLE_ID = "sample_id";
 
     public static final String AGENT_COLLECTED = "agent_collected__agent";
     public static final String AGENT_COLLECTED__FORENAME = "agent_collected__forename";
@@ -201,10 +202,12 @@ public class ApiFields {
     public static final String SPECIMENREFERENCE__REFERENCE__REFERENCE = "specimenreference__reference__reference";
     public static final String SPECIMENIDENTIFICATION__NAME = "specimenidentification__name";
     public static final String SPECIMENIDENTIFICATION__TAXON__TAXON = "specimenidentification__taxon__taxon";
+    public static final String SPECIMENIDENTIFICATION__CURRENT = "specimenidentification__current";
     public static final String SPECIMENIDENTIFICATIONGEOLOGIES__ROCK__NAME = "specimenidentificationgeologies__rock__name";
     public static final String SPECIMENIDENTIFICATIONGEOLOGIES__ROCK__NAME_EN = "specimenidentificationgeologies__rock__name_en";
     public static final String SPECIMENIDENTIFICATIONGEOLOGIES__NAME = "specimenidentificationgeologies__name";
     public static final String SPECIMENIDENTIFICATIONGEOLOGIES__NAME_EN = "specimenidentificationgeologies__name_en";
+    public static final String SPECIMENIDENTIFICATIONGEOLOGIES__CURRENT = "specimenidentificationgeologies__current";
     public static final String KIND__VALUE = "kind__value";
     public static final String KIND__VALUE_EN = "kind__value_en";
     public static final String PARENT_STRATIGRAPHY = "parent__stratigraphy";

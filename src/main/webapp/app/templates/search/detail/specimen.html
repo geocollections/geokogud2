@@ -14,6 +14,11 @@
                                 {{ entity.taxon__taxon }}
                             </a>
                         </span>
+                        <span data-ng-repeat="entity in detailCtrl.specimenIdentificationGeology" data-ng-if="detailCtrl.specimenIdentificationGeology.length > 0">
+                            <a href ng-if="entity.current == true" data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://kivid.info/'+entity.rock_id})">
+                                <localize en="entity.rock__name_en" et="entity.rock__name" />
+                            </a>
+                        </span>
                     </h2>
                     <div>
                         <em>(ID: {{detailCtrl.results.id}})</em>
@@ -31,7 +36,7 @@
                     <tr data-ng-if="detailCtrl.results.coll__number != null && detailCtrl.results.coll__number">
                         <td> {{' API_TRANSLATION.SPECIMEN.COLL__NUMBER' | translate }} </td>
                         <td>
-                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'collection', id:detailCtrl.results.coll_id})">
+                            <a href target="_blank" data-ng-click="detailCtrl.service.searchAllSpecimensUsingCollection({collection: detailCtrl.results.coll__number})">
                                 {{detailCtrl.results.coll__number}}
                             </a>
                         </td>
@@ -153,7 +158,7 @@
                                     object: 'stratigraphy',
                                     id: detailCtrl.results.stratigraphy_id})">
 
-                                <localize et="detailCtrl.stratigraphy__stratigraphy"
+                                <localize et="detailCtrl.results.stratigraphy__stratigraphy"
                                           en="detailCtrl.results.stratigraphy__stratigraphy_en"/>
                             </a>
                         </td>
@@ -185,7 +190,7 @@
 
                     <tr data-ng-if="detailCtrl.results.date_collected != null && detailCtrl.results.date_collected">
                         <td> {{ 'API_TRANSLATION.SPECIMEN.DATE_COLLECTED' | translate }} </td>
-                        <td> {{ detailCtrl.results.date_collected }} </td>
+                        <td> {{ detailCtrl.results.date_collected | date:dateFormat }} </td>
                     </tr>
 
                     <tr data-ng-if="detailCtrl.results.date_collected_free!= null && detailCtrl.results.date_collected_free">
@@ -402,7 +407,6 @@
                             <thead class="styles-for-table-headers">
                             <tr>
                                 <th> {{ 'DETAIL.SPECIMEN.ATTACHMENT_TYPE' | translate }} </th>
-                                <th> {{ 'DETAIL.SPECIMEN.ATTACHMENT_FORMAT' | translate }} </th>
                                 <th> {{ 'DETAIL.SPECIMEN.ATTACHMENT_DESCRIPTION' | translate }} </th>
                                 <th> {{ 'DETAIL.SPECIMEN.ATTACHMENT_AUTHOR' | translate }} </th>
                                 <th> {{ 'DETAIL.SPECIMEN.ATTACHMENT_DATE' | translate }} </th>
@@ -416,20 +420,51 @@
                                 <td>
                                     <localize en="entity.attachment__type__value_en" et="entity.attachment__type__value" />
                                 </td>
-                                <td>{{detailCtrl.service.getAttachmentFormatFromFilename({filename: entity.attachment__filename})}}</td>
+
                                 <td>
                                     <localize en="entity.attachment__description_en" et="entity.attachment__description" />
                                 </td>
+
                                 <td>
-                                    <div data-ng-if="entity.attachment__author__agent != null">{{entity.attachment__author__agent}}</div>
-                                    <div data-ng-if="entity.attachment__author__agent == null">{{entity.attachment__author_free}}</div>
+                                    <first-not-null values="[entity.attachment__author__agent, entity.attachment__author_free]" />
                                 </td>
-                                <td>{{entity.attachment__date_added}}</td>
-                                <td style="word-break: break-all">
-                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({objecy: 'attachment', id: entity.attachment__id})">
-                                        {{entity.attachment__filename}}
+
+                                <td>
+                                    <div data-ng-if="entity.attachment__date_added && entity.attachment__date_added != null">
+                                        {{entity.attachment__date_added | date:dateFormat}}
+                                    </div>
+                                    <div data-ng-if="(entity.attachment__date_digitised && entity.attachment__date_digitised != null)
+                                        && entity.attachment__date_added == null">
+                                        {{entity.attachment__date_digitised | date:dateFormat}}
+                                    </div>
+                                    <div data-ng-if="(entity.attachment__date_added == null && entity.attachment__date_digitised == null)
+                                    && (entity.attachment__date_digitised_free && entity.attachment__date_digitised_free != null)">
+                                        {{entity.attachment__date_digitised_free}}
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <a target="_blank" ng-href="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}">
+                                        <i data-ng-if="entity.attachment__filename.endsWith('pdf')"
+                                           title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
+                                           class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
+
+                                        <i data-ng-if="entity.attachment__filename.endsWith('txt')"
+                                           title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
+                                           class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>
+
+                                        <i data-ng-if="entity.attachment__filename.endsWith('xlsx') || entity.attachment__filename.endsWith('ods')"
+                                           title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
+                                           class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
+
+                                        <img title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
+                                             data-ng-if="entity.attachment__filename.endsWith('png') || entity.attachment__filename.endsWith('jpeg') || entity.filename.endsWith('svg') || entity.filename.endsWith('jpg')"
+                                             class="previewImage"
+                                             src="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"/>
                                     </a>
                                 </td>
+
+                                <td></td>
                             </tr>
                             </tbody>
                         </table>
@@ -448,7 +483,7 @@
 
                             <figure class="margin-bottom-30">
 
-                                <a href class="hover-me" data-ng-click="detailCtrl.service.openInNewWindow({object:'image',id:image.id})">
+                                <a href class="hover-me" data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image',id:image.id})">
 
                                     <show-preview class="img-responsive set-height"
                                                   classes="previewImageDetail img-rounded"

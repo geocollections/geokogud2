@@ -264,6 +264,76 @@
                     &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude)">Maa-amet / Estonian Land Board</a>
                 </div>
 
+                <div data-ng-if="detailCtrl.analysis.length > 0">
+                    <h3>  {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_HEADING' | translate }}  </h3>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="styles-for-table-headers">
+                            <tr>
+                                <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_ID' | translate }} </td>
+                                <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_METHOD' | translate }} </td>
+                                <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_METHOD_DETAILS' | translate }} </td>
+                                <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_MASS' | translate }} </td>
+                                <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_DATE' | translate }} </td>
+                                <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_LAB' | translate }} </td>
+                                <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_AGENT' | translate }} </td>
+                                <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_LOCATION' | translate }} </td>
+                                <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_REMARKS' | translate }} </td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="entity in detailCtrl.analysis">
+                                <td>
+                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'analysis', id:entity.id})">
+                                        {{ entity.id }}
+                                    </a>
+                                </td>
+                                <td><localize et="entity.analysis_method__analysis_method" en="entity.analysis_method__analysis_method_en" /></td>
+                                <td><localize et="entity.method_details" en="entity.method_details_en" /></td>
+                                <td> {{ entity.mass }} </td>
+                                <td data-ng-if="entity.date && entity.date != null"> {{ entity.date }} </td>
+                                <td data-ng-if="entity.date == null"> {{ entity.date_free }} </td>
+                                <td> {{ entity.lab_txt }} </td>
+                                <td> {{ entity.agent__agent }} </td>
+                                <td> {{ entity.location }} </td>
+                                <td> {{ entity.remarks }} </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div data-ng-if="detailCtrl.results.specimensFromSample.count > 0">
+                    <h3>  {{ 'API_TRANSLATION.SAMPLE.SPECIMEN_HEADING' | translate }}  </h3>
+
+                    <table class="table table-bordered table-hover">
+                        <thead class="styles-for-table-headers">
+                            <tr>
+                                <td>{{ 'API_TRANSLATION.SAMPLE.SPECIMEN_NUMBER' | translate }}</td>
+                                <td>{{ 'API_TRANSLATION.SAMPLE.SPECIMEN_NAME' | translate }}</td>
+                                <td>{{ 'API_TRANSLATION.SAMPLE.SPECIMEN_GROUP' | translate }}</td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr data-ng-repeat="specimen in detailCtrl.results.specimensFromSample.results">
+                                <td>
+                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'specimen', id: specimen.id})">
+                                        {{ specimen.specimen_id }}
+                                    </a>
+                                </td>
+
+                                <td>{{ specimen.specimenidentification__name }}</td>
+
+                                <td>{{ specimen.classification__class_en }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
                 <div data-ng-if="detailCtrl.taxonList.length > 0">
                     <h3>  {{ 'SEARCH.SAMPLES.TAXON_HEADING' | translate }}  </h3>
 
@@ -289,47 +359,6 @@
                             </tr>
                         </tbody>
                     </table>
-
-                </div>
-
-                <div data-ng-if="detailCtrl.analysis.length > 0">
-                    <h3>  {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_HEADING' | translate }}  </h3>
-
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
-                            <thead class="styles-for-table-headers">
-                                <tr>
-                                    <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_ID' | translate }} </td>
-                                    <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_METHOD' | translate }} </td>
-                                    <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_METHOD_DETAILS' | translate }} </td>
-                                    <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_MASS' | translate }} </td>
-                                    <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_DATE' | translate }} </td>
-                                    <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_LAB' | translate }} </td>
-                                    <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_AGENT' | translate }} </td>
-                                    <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_LOCATION' | translate }} </td>
-                                    <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_REMARKS' | translate }} </td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="entity in detailCtrl.analysis">
-                                    <td>
-                                        <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'analysis', id:entity.id})">
-                                            {{ entity.id }}
-                                        </a>
-                                    </td>
-                                    <td><localize et="entity.analysis_method__analysis_method" en="entity.analysis_method__analysis_method_en" /></td>
-                                    <td><localize et="entity.method_details" en="entity.method_details_en" /></td>
-                                    <td> {{ entity.mass }} </td>
-                                    <td data-ng-if="entity.date && entity.date != null"> {{ entity.date }} </td>
-                                    <td data-ng-if="entity.date == null"> {{ entity.date_free }} </td>
-                                    <td> {{ entity.lab_txt }} </td>
-                                    <td> {{ entity.agent__agent }} </td>
-                                    <td> {{ entity.location }} </td>
-                                    <td> {{ entity.remarks }} </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
 
                 </div>
 

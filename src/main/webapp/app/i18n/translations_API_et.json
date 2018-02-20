@@ -234,7 +234,11 @@
             "ANALYSIS_LAB": "Lab.",
             "ANALYSIS_AGENT": "Isik/Asutus",
             "ANALYSIS_LOCATION": "Hoiukoht",
-            "ANALYSIS_REMARKS": "Lisainfo"
+            "ANALYSIS_REMARKS": "Lisainfo",
+            "SPECIMEN_HEADING": "Proovist leitud numeeritud eksemplarid",
+            "SPECIMEN_NUMBER": "Number",
+            "SPECIMEN_NAME": "Nimi",
+            "SPECIMEN_GROUP": "Rühm"
         },
         "DRILL_CORE" : {
             "DETAIL_FORM_NAME" : "",

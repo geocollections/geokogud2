@@ -229,4 +229,14 @@ public class FluentLocalitySearchApiBuilder extends FluentSearchApiBuilder<Fluen
         return this;
     }
 
+    public FluentLocalitySearchApiBuilder returnTaxonCurrent() {
+        addReturningField(SPECIMENIDENTIFICATION__CURRENT);
+        return this;
+    }
+
+    public FluentLocalitySearchApiBuilder returnGeologiesCurrent() {
+        addReturningField(SPECIMENIDENTIFICATIONGEOLOGIES__CURRENT);
+        return this;
+    }
+
 }

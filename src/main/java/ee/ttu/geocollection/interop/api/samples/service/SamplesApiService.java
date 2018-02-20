@@ -1,5 +1,6 @@
 package ee.ttu.geocollection.interop.api.samples.service;
 
+import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.samples.pojo.SampleSearchCriteria;
 
@@ -9,6 +10,8 @@ public interface SamplesApiService {
 
     ApiResponse findSample(SampleSearchCriteria searchCriteria);
 
-    Map findRawById(Long id);
+    ApiResponse findSpecimens(SearchField sampleId);
+
+    ApiResponse findRawById(Long id);
 
 }

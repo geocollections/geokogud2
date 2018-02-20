@@ -17,10 +17,12 @@
 
             <div class="col-sm-6" data-ng-if="detailCtrl.results.filename != null">
 
-                <div id="fancy-image-container">
+                <div>
                     <h3> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.PHOTO' | translate }} </h3>
 
-                    <img id="img-size" spinner-load ng-src="{{detailCtrl.imageUrl}}" class="window-size"/>
+                    <a href title="{{detailCtrl.imageUrl}}" data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.imageUrl})">
+                        <img id="img-size" spinner-load ng-src="{{detailCtrl.imageUrl}}" class="window-size"/>
+                    </a>
 
                     <div class="img-settings">
                         <div class="img-text">
@@ -32,15 +34,16 @@
                             | <a href="{{detailCtrl.externalImagePath}}/1920" target="_blank">1920px</a>
                             | <a href="{{detailCtrl.imageUrl}}" target="_blank">Original</a>
 
-                            <div class="fb-share-button"
-                                 data-href="{{'http://arendus.geokogud.info/image/' + detailCtrl.results.id}}"
-                                 data-layout="button"
-                                 data-mobile_iframe="true"
-                                 data-size="small"
-                                 data-toggle="tooltip"
-                                 data-placement="bottom"
-                                 title="Works but in developement">
-                            </div>
+                            <!--TODO: fix it-->
+                            <!--<div class="fb-share-button"-->
+                                 <!--data-href="{{'http://arendus.geokogud.info/image/' + detailCtrl.results.id}}"-->
+                                 <!--data-layout="button"-->
+                                 <!--data-mobile_iframe="true"-->
+                                 <!--data-size="small"-->
+                                 <!--data-toggle="tooltip"-->
+                                 <!--data-placement="bottom"-->
+                                 <!--title="Works but in developement">-->
+                            <!--</div>-->
                         </div>
                     </div>
 

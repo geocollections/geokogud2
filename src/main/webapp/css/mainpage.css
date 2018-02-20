@@ -2,6 +2,9 @@ footer {
     padding-top: 2%;
     text-align: center;
     padding-bottom: 30px;
+    /*position: absolute;*/
+    /*width: 100%;*/
+    /*bottom: 0;*/
 }
 
 #footer-logos {
@@ -650,12 +653,11 @@ table tr > td:first-child {
 .window-size {
     display: block;
     margin: 0 auto;
-    max-width: 90%;
-    max-height: 375px;
+    max-width: 100%;
 }
 
 .img-portrait {
-    max-width: 60%;
+    max-width: 80%;
 }
 
 .img-settings {
