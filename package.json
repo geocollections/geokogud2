@@ -1,0 +1,51 @@
+{
+  "name": "geokogud2",
+  "version": "1.0.0",
+  "description": "Database for geocollections in Estonia",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "angular": "^1.6.9",
+    "angular-animate": "^1.6.9",
+    "angular-bootstrap": "^2.5.0",
+    "angular-bootstrap-multiselect": "^0.5.1",
+    "angular-cookies": "^1.6.9",
+    "angular-i18n": "^1.6.9",
+    "angular-loading-overlay": "^1.1.1",
+    "angular-sanitize": "^1.6.9",
+    "angular-translate": "^2.17.0",
+    "angular-translate-loader-static-files": "^2.17.0",
+    "angular-translate-storage-cookie": "^2.17.0",
+    "angular-translate-storage-local": "^2.17.0",
+    "angular-ui-bootstrap-datetimepicker": "^2.5.1",
+    "angular-ui-router": "^0.4.2",
+    "angular-ui-select3": "ui-select#*",
+    "bootstrap": "^3.3.7",
+    "components-font-awesome": "^4.7.0",
+    "file-saver": "^1.3.3",
+    "jquery": "^3.3.1",
+    "jquery.easing": "^1.4.1",
+    "moment": "^2.20.1",
+    "ng-file-upload": "^12.2.13",
+    "ng-page-title": "^1.3.1",
+    "ngstorage": "^0.3.11",
+    "ol": "^4.6.4",
+    "ol-layerswitcher": "^2.0.0",
+    "scrollreveal": "^3.3.6",
+    "select2": "^4.0.5",
+    "tableexport": "^5.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geocollections/geokogud2.git"
+  },
+  "author": "Enar Mustonen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/geocollections/geokogud2/issues"
+  },
+  "homepage": "https://github.com/geocollections/geokogud2#readme"
+}
