@@ -19,7 +19,10 @@ public class MapSolrServiceImpl implements MapSolrService {
     @Override
     public SolrResponse findAllLocalities() {
         SolrQuery requestParams = new SolrQuery("*:*")
-                .setRows(12000)
+                .addFilterQuery("longitude:[* TO *]")
+                .addFilterQuery("latitude:[* TO *]")
+                .addFilterQuery("id:[* TO *]")
+                .setRows(10000)
                 .setFields("longitude","latitude","id","locality","locality_en","total_related_records");
         return solrService.searchRawEntities(LOCALITY_TABLE, requestParams);
     }
@@ -28,9 +31,15 @@ public class MapSolrServiceImpl implements MapSolrService {
     public SolrResponse findAllLocalitiesUsingFilter(MapFilter filters) {
         SolrQuery requestParams;
         if (!filters.getLocalityName().equals("")) {
-            requestParams = new SolrQuery(filters.getLocalityName());
+            requestParams = new SolrQuery(filters.getLocalityName())
+                    .addFilterQuery("longitude:[* TO *]")
+                    .addFilterQuery("latitude:[* TO *]")
+                    .addFilterQuery("id:[* TO *]");
         } else {
-            requestParams = new SolrQuery("*:*");
+            requestParams = new SolrQuery("*:*")
+                    .addFilterQuery("longitude:[* TO *]")
+                    .addFilterQuery("latitude:[* TO *]")
+                    .addFilterQuery("id:[* TO *]");
         }
         if (filters.getFilters().size() > 0) {
             for (String filter : filters.getFilters()) {
@@ -41,7 +50,7 @@ public class MapSolrServiceImpl implements MapSolrService {
 
         }
         requestParams
-                .setRows(12000)
+                .setRows(10000)
                 .setFields("longitude","latitude","id","locality","locality_en","total_related_records");
         return solrService.searchRawEntities(LOCALITY_TABLE, requestParams);
     }
