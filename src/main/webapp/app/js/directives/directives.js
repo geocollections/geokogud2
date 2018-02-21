@@ -846,10 +846,15 @@ angular.module('geoApp')
 
                 function onMapData(response) {
                     console.log(response);
+
                     var locs = response.data;
-                    if (locs != undefined) {
-                        // $rootScope.countLocalities = response.data.count;
+                    if (locs != null) {
                         $rootScope.countLocalities = response.data.numFound;
+
+                        /*********************************************
+                         *** CODE FROM geokogud.info map.php START ***
+                         *********************************************/
+
                         var earthquakeFill = new ol.style.Fill({
                             color: 'rgba(236, 102, 37,0.7)' //255, 153, 0,0.6
                         });
@@ -876,11 +881,11 @@ angular.module('geoApp')
                             var klass = 0;
                             if (arv < 10) {
                                 klass = 1;
-                            } else if (9 < arv & arv < 100) {
+                            } else if ((9 < arv) && (arv < 100)) {
                                 klass = 2;
-                            } else if (99 < arv & arv < 1000) {
+                            } else if ((99 < arv) && (arv < 1000)) {
                                 klass = 3;
-                            } else if (999 < arv & arv < 5000) {
+                            } else if ((999 < arv) && (arv < 5000)) {
                                 klass = 4;
                             } else if (arv > 4999) {
                                 klass = 5;
@@ -892,14 +897,14 @@ angular.module('geoApp')
                             var name = feature.get('name');
                             var rec = feature.get('rec'); //magnitude = parseFloat(name.substr(2));
                             var klass = findSizeClass(rec);
-                            //console.log(name, rec, klass);
-                            var radius = 1 + 3 * klass;// * (magnitude - 5);
+                            // console.log(name, rec, klass);
+                            var radius = 1 + 3 * klass; // * (magnitude - 5);
 
                             return new ol.style.Style({
                                 geometry: feature.getGeometry(),
                                 image: new ol.style.Circle({
                                     radius: radius,
-                                    fill: earthquakeFill,
+                                    fill: earthquakeFill
                                     //stroke: earthquakeStroke
                                 }),
                                 text: (resolution > 200 ? null : new ol.style.Text({
@@ -910,7 +915,7 @@ angular.module('geoApp')
                                     textAlign: 'left',
                                     textBaseline: 'bottom',
                                     offsetX: 5,
-                                    offsetY: -5,
+                                    offsetY: -5
                                 }))
                             });
                         }
@@ -929,8 +934,7 @@ angular.module('geoApp')
                                     ol.extent.extend(extent, originalFeatures[j].getGeometry().getExtent());
                                 }
                                 maxFeatureCount = Math.max(maxFeatureCount, jj);
-                                radius = 0.25 * (ol.extent.getWidth(extent) + ol.extent.getHeight(extent)) /
-                                    resolution;
+                                radius = 0.25 * (ol.extent.getWidth(extent) + ol.extent.getHeight(extent)) / resolution;
                                 feature.set('radius', radius);
                             }
                         }
@@ -947,7 +951,7 @@ angular.module('geoApp')
                             if (size > 1) {
                                 style = [new ol.style.Style({
                                     image: new ol.style.Circle({
-                                        radius: 16,//feature.get('radius'),
+                                        radius: 16, //feature.get('radius'),
                                         fill: new ol.style.Fill({
                                             color: [255, 153, 0, Math.min(0.8, 0.4 + (size / maxFeatureCount))]
                                         }),
@@ -968,7 +972,6 @@ angular.module('geoApp')
                             }
                             return style;
                         }
-
 
                         var currentResolution;
 
@@ -1014,7 +1017,7 @@ angular.module('geoApp')
                                 geometry: feature.getGeometry(),
                                 image: new ol.style.Circle({
                                     radius: radius,
-                                    fill: earthquakeFill,
+                                    fill: earthquakeFill
                                     //stroke: earthquakeStroke
                                 }),
                                 text: (resolution > 200 ? null : new ol.style.Text({
@@ -1025,7 +1028,7 @@ angular.module('geoApp')
                                     textAlign: 'left',
                                     textBaseline: 'bottom',
                                     offsetX: 5,
-                                    offsetY: -5,
+                                    offsetY: -5
                                 }))
                             });
                         }
@@ -1035,21 +1038,8 @@ angular.module('geoApp')
                             //	html: "Data from PA/Credit Suisse."})]
                         });
 
-                        // for (var k in locs.results) { TODO: for api one
-                        //     var centroidLL = ol.proj.transform([
-                        //             locs.results[k].longitude,
-                        //             locs.results[k].latitude],
-                        //         'EPSG:4326', 'EPSG:3857');
-                        //     var centroidPoint = new ol.geom.Point(centroidLL);
-                        //     var feature = new ol.Feature({geometry: centroidPoint});
-                        //     feature.set('name', locs.results[k].name);
-                        //     feature.set('fid', locs.results[k].id);
-                        //     feature.set('rec', locs.results[k].total_related_records);
-                        //     vectorSource.addFeature(feature);
-                        // }
-
                         for (var k in locs.response) {
-                            if (locs.response[k].longitude != null && locs.response[k].latitude != null && locs.response[k].id != null) {
+                            if (locs.response[k].longitude != null && locs.response[k].latitude != null) {
                                 var centroidLL = ol.proj.transform([
                                         locs.response[k].longitude,
                                         locs.response[k].latitude],
@@ -1084,6 +1074,15 @@ angular.module('geoApp')
                             style: styleFunction1
                         });
 
+                        var mapbox = new ol.layer.Tile({
+                            title: 'MapBox grayscale',
+                            type: 'base',
+                            visible: true,
+                            source: new ol.source.XYZ({
+                                url: 'https://api.tiles.mapbox.com/v4/mapbox.light/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3V1dG9iaW5lIiwiYSI6ImNpZWlxdXAzcjAwM2Nzd204enJvN2NieXYifQ.tp6-mmPsr95hfIWu3ASz2w'
+                            })
+                        });
+
                         var vectors = new ol.layer.Group({
                             title: 'Localities',
                             //visible: false,
@@ -1092,15 +1091,26 @@ angular.module('geoApp')
                                 vector,
                                 vector1
                             ]
-                        })
+                        });
 
-                        var mapbox = new ol.layer.Tile({
-                            title: 'MapBox grayscale',
-                            type: 'base',
-                            visible: true,
-                            source: new ol.source.XYZ({
-                                url: 'https://api.tiles.mapbox.com/v4/mapbox.light/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3V1dG9iaW5lIiwiYSI6ImNpZWlxdXAzcjAwM2Nzd204enJvN2NieXYifQ.tp6-mmPsr95hfIWu3ASz2w'
-                            }),
+                        var bedrockAge = new ol.layer.Tile({
+                            title: 'Bedrock age',
+                            visible: false,
+                            /*extent: [-13884991, 2870341, -7455066, 6338219],*/
+                            source: new ol.source.TileWMS({
+                                url: 'http://gis.geokogud.info/geoserver/wms',
+                                params: {'LAYERS': 'IGME5000:EuroGeology', 'TILED': true},
+                                serverType: 'geoserver',
+                                // Countries have transparency, so do not fade tiles:
+                                transition: 0
+                            })
+                        });
+
+                        var overlays = new ol.layer.Group({
+                            title: 'Overlays',
+                            layers: [
+                                bedrockAge
+                            ]
                         });
 
                         var basemaps = new ol.layer.Group({
@@ -1112,6 +1122,15 @@ angular.module('geoApp')
                                     visible: false,
                                     source: new ol.source.Stamen({
                                         layer: 'toner'
+                                    })
+                                }),
+                                new ol.layer.Tile({
+                                    title: 'Stamen terrain',
+                                    type: 'base',
+                                    group: 'group-name',
+                                    visible: false,
+                                    source: new ol.source.Stamen({
+                                        layer: 'terrain'
                                     })
                                 }),
                                 new ol.layer.Tile({
@@ -1134,23 +1153,24 @@ angular.module('geoApp')
                             style: 'AerialWithLabels',
 
                             // layers: [
-                            //     new ol.layer.Tile({
-                            //         source: new ol.source.MapQuest({layer: 'sat'}),
-                            //         visible: false,
-                            //         type: 'base',
-                            //         title: 'MapQuest satellite',
-                            //     }),
-                            //     new ol.layer.Tile({
-                            //         source: new ol.source.MapQuest({layer: 'hyb'}),
-                            //         visible: false,
-                            //         type: 'base',
-                            //         title: 'MapQuest satellite',
-                            //     })
+                                // new ol.layer.Tile({
+                                //     source: new ol.source.MapQuest({layer: 'sat'}),
+                                //     visible: false,
+                                //     type: 'base',
+                                //     title: 'MapQuest satellite',
+                                // }),
+                                // new ol.layer.Tile({
+                                //     source: new ol.source.MapQuest({layer: 'hyb'}),
+                                //     visible: false,
+                                //     type: 'base',
+                                //     title: 'MapQuest satellite',
+                                // })
                             // ]
                         });
 
                         var map = new ol.Map({
-                            layers: [basemaps, vectors],
+                            //TODO: if correct coordinates set bedrockAge visible to true
+                            layers: [basemaps, overlays, vectors],
                             /*  interactions: ol.interaction.defaults().extend([new ol.interaction.Select({
                              condition: function(evt) {
                              return evt.originalEvent.type == 'mousemove' ||
@@ -1161,8 +1181,8 @@ angular.module('geoApp')
                             target: 'map',
                             view: new ol.View({
                                 projection: "EPSG:3857",
-                                center: ol.proj.transform([10.0, 15.0], 'EPSG:4326', 'EPSG:3857'),
-                                zoom: 2,
+                                center: ol.proj.transform([25.0, 58.4], 'EPSG:4326', 'EPSG:3857'),
+                                zoom: 6,
                                 maxZoom: 16,
                                 minZoom: 2
                             }),
@@ -1241,21 +1261,30 @@ angular.module('geoApp')
                             openLoc(evt.pixel);
                         });
 
-                        if (locs.response.length > 0) {
-                            // Centers the map
-                            map.getView().fit(vectorSource.getExtent());
-                        }
-
                         map.getViewport().addEventListener('mousemove', function (evt) {
                             var pixel = map.getEventPixel(evt);
                             displayFeatureInfo(pixel);
                         });
 
-                        // var layerSwitcher = new ol.control.LayerSwitcher({
-                        //     //tipLabel: 'Légende' // Optional label for button
-                        // });
-                        // map.addControl(layerSwitcher);
+                        var layerSwitcher = new ol.control.LayerSwitcher({
+                            //tipLabel: 'Légende' // Optional label for button
+                        });
+                        map.addControl(layerSwitcher);
                         //----------------------------------------------
+
+                        if (locs.response.length > 0) {
+                            var extent = vector1.getSource().getExtent();
+                            map.getView().fit(extent, map.getSize());
+                            var zz = map.getView().getZoom();
+                            if (zz > 10) {
+                                map.getView().setZoom(10);
+                            }
+                        }
+
+                        /*********************************************
+                         ***  CODE FROM geokogud.info map.php END  ***
+                         *********************************************/
+
                         var tooltip = document.querySelectorAll('.coupontooltip');
                         document.addEventListener('mousemove', fn, false);
                         function fn(e) {

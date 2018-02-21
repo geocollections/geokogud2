@@ -28,7 +28,7 @@ public class MapSolrServiceImpl implements MapSolrService {
     public SolrResponse findAllLocalitiesUsingFilter(MapFilter filters) {
         SolrQuery requestParams;
         if (!filters.getLocalityName().equals("")) {
-            requestParams = new SolrQuery("locality:*" + filters.getLocalityName() + "* OR locality_en:*" + filters.getLocalityName() + "*");
+            requestParams = new SolrQuery(filters.getLocalityName());
         } else {
             requestParams = new SolrQuery("*:*");
         }
@@ -37,7 +37,6 @@ public class MapSolrServiceImpl implements MapSolrService {
                 System.out.println("Filter: " + filter);
                 if (filter.equals("citing_references")) filter = "references";
                 requestParams.addFilterQuery("related_" + filter + ":[1 TO *]");
-//                requestParams.setParam("related_" + filter, "[1 TO *]");
             }
 
         }

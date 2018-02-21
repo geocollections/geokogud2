@@ -42,6 +42,7 @@
 
     <!-- Open Layers CSS https://openlayers.org/ -->
     <link rel="stylesheet" href="lib/OpenLayers/dist/ol.css">
+    <link rel="stylesheet" href="lib/ol-layerswitcher/src/ol-layerswitcher.css">
 
     <!-- Piwik -->
     <script type="text/javascript">
@@ -94,6 +95,8 @@
 
     <!-- Open Layers JS for map -->
     <script src="lib/OpenLayers/dist/ol.js"></script>
+    <!-- Open Layers layerswitcher JS -->
+    <script src="lib/ol-layerswitcher/dist/ol-layerswitcher.js"></script>
 
     <!-- Angular-translate pascalprecht.translate -->
     <script src="lib/angular-translate/angular-translate.min.js"></script>
@@ -145,14 +148,14 @@
     <script src="app/js/directives/datetimepicker.field.js"></script>
 
     <!-- Load Facebook SDK for JavaScript -->
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    <!--<div id="fb-root"></div>-->
+    <!--<script>(function(d, s, id) {-->
+        <!--var js, fjs = d.getElementsByTagName(s)[0];-->
+        <!--if (d.getElementById(id)) return;-->
+        <!--js = d.createElement(s); js.id = id;-->
+        <!--js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11";-->
+        <!--fjs.parentNode.insertBefore(js, fjs);-->
+    <!--}(document, 'script', 'facebook-jssdk'));</script>-->
 
 </body>
 </html>
