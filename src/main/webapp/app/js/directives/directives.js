@@ -1161,7 +1161,7 @@ angular.module('geoApp')
                             target: 'map',
                             view: new ol.View({
                                 projection: "EPSG:3857",
-                                center: ol.proj.transform([15.0, 10.0], 'EPSG:4326', 'EPSG:3857'),
+                                center: ol.proj.transform([10.0, 15.0], 'EPSG:4326', 'EPSG:3857'),
                                 zoom: 2,
                                 maxZoom: 16,
                                 minZoom: 2
@@ -1240,6 +1240,11 @@ angular.module('geoApp')
                         map.on('click', function (evt) {
                             openLoc(evt.pixel);
                         });
+
+                        if (locs.response.length > 0) {
+                            // Centers the map
+                            map.getView().fit(vectorSource.getExtent());
+                        }
 
                         map.getViewport().addEventListener('mousemove', function (evt) {
                             var pixel = map.getEventPixel(evt);

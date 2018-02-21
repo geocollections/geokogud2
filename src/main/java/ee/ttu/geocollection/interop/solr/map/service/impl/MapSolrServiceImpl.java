@@ -35,6 +35,7 @@ public class MapSolrServiceImpl implements MapSolrService {
         if (filters.getFilters().size() > 0) {
             for (String filter : filters.getFilters()) {
                 System.out.println("Filter: " + filter);
+                if (filter.equals("citing_references")) filter = "references";
                 requestParams.addFilterQuery("related_" + filter + ":[1 TO *]");
 //                requestParams.setParam("related_" + filter, "[1 TO *]");
             }
