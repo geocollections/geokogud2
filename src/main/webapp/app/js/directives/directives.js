@@ -848,7 +848,8 @@ angular.module('geoApp')
                     console.log(response);
                     var locs = response.data;
                     if (locs != undefined) {
-                        $rootScope.countLocalities = response.data.count;
+                        // $rootScope.countLocalities = response.data.count;
+                        $rootScope.countLocalities = response.data.numFound;
                         var earthquakeFill = new ol.style.Fill({
                             color: 'rgba(236, 102, 37,0.7)' //255, 153, 0,0.6
                         });
@@ -1034,22 +1035,41 @@ angular.module('geoApp')
                             //	html: "Data from PA/Credit Suisse."})]
                         });
 
-                        for (var k in locs.results) {
-                            var centroidLL = ol.proj.transform([
-                                    locs.results[k].longitude,
-                                    locs.results[k].latitude],
-                                'EPSG:4326', 'EPSG:3857');
-                            var centroidPoint = new ol.geom.Point(centroidLL);
-                            var feature = new ol.Feature({geometry: centroidPoint});
-                            feature.set('name', locs.results[k].name);
-                            feature.set('fid', locs.results[k].id);
-                            feature.set('rec', locs.results[k].total_related_records);
-                            vectorSource.addFeature(feature);
+                        // for (var k in locs.results) { TODO: for api one
+                        //     var centroidLL = ol.proj.transform([
+                        //             locs.results[k].longitude,
+                        //             locs.results[k].latitude],
+                        //         'EPSG:4326', 'EPSG:3857');
+                        //     var centroidPoint = new ol.geom.Point(centroidLL);
+                        //     var feature = new ol.Feature({geometry: centroidPoint});
+                        //     feature.set('name', locs.results[k].name);
+                        //     feature.set('fid', locs.results[k].id);
+                        //     feature.set('rec', locs.results[k].total_related_records);
+                        //     vectorSource.addFeature(feature);
+                        // }
+
+                        for (var k in locs.response) {
+                            if (locs.response[k].longitude != null && locs.response[k].latitude != null && locs.response[k].id != null) {
+                                var centroidLL = ol.proj.transform([
+                                        locs.response[k].longitude,
+                                        locs.response[k].latitude],
+                                    'EPSG:4326', 'EPSG:3857');
+                                var centroidPoint = new ol.geom.Point(centroidLL);
+                                var feature = new ol.Feature({geometry: centroidPoint});
+                                if (locs.response[k].locality != null) {
+                                    feature.set('name', locs.response[k].locality);
+                                } else {
+                                    feature.set('name', locs.response[k].locality_en);
+                                }
+                                feature.set('fid', locs.response[k].id);
+                                feature.set('rec', locs.response[k].total_related_records);
+                                vectorSource.addFeature(feature);
+                            }
                         }
 
                         var vector = new ol.layer.Vector({
                             title: 'Clustered',
-                            visible: (response.data.count > 999 ? true : false),
+                            visible: (response.data.numFound > 999 ? true : false),
                             distance: 40,
                             source: new ol.source.Cluster({
                                 source: vectorSource
@@ -1059,7 +1079,7 @@ angular.module('geoApp')
 
                         var vector1 = new ol.layer.Vector({
                             title: 'Unclustered',
-                            visible: (response.data.count < 1000 ? true : false),
+                            visible: (response.data.numFound < 1000 ? true : false),
                             source: vectorSource,
                             style: styleFunction1
                         });
@@ -1141,8 +1161,8 @@ angular.module('geoApp')
                             target: 'map',
                             view: new ol.View({
                                 projection: "EPSG:3857",
-                                center: ol.proj.transform([25.0, 58.4], 'EPSG:4326', 'EPSG:3857'),
-                                zoom: 6,
+                                center: ol.proj.transform([15.0, 10.0], 'EPSG:4326', 'EPSG:3857'),
+                                zoom: 2,
                                 maxZoom: 16,
                                 minZoom: 2
                             }),
