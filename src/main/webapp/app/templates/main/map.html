@@ -1,3 +1,5 @@
+<div ng-include="'app/templates/main/partial/detailview_header.html'"></div>
+
 <link rel="stylesheet" href="../css/map.css">
 
 <div id="mapcontainer">
@@ -5,30 +7,52 @@
         <div id='hoversystem'></div>
         <div id='hoverstat'></div>
     </div>
-    <main-map></main-map>
+    <div id="map" class="map"></div>
+    <!--<main-map></main-map>-->
 </div>
+<img id="bedrock-legend" class="img-rounded hidden hidden-xs" src='http://gis.geokogud.info/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=IGME5000:EuroGeology&legend_options=fontName:DejaVu%20Sans%20ExtraLight;fontAntiAliasing:true;fontColor:0x333333;fontSize:10;bgColor:0xFFFFff;dpi:96' />
 <div id="map-footer-container">
     <div class="bg-dark" id="map-footer-menu">
         <form role="form" class="form-inline" name="filter" ng-enter="submitFilterForm()">
-            <label>Found <strong>{{ countLocalities }}</strong> georeferenced localities. Show only those or search by:</label>
+
+            <label>{{ 'SEARCH.MAP.SEARCH_1' | translate}} <strong>{{ mapCtrl.countLocalities }}</strong> {{ 'SEARCH.MAP.SEARCH_2' | translate}}:</label>
+
             <div class="input-group input-group-sm input-inline">
-                <input type="text" class="form-control input-sm" name="localityName" placeholder="Name">
+                <input type="text" class="form-control input-sm" name="localityName" placeholder="{{ 'SEARCH.MAP.INPUT_PLACEHOLDER' | translate}}">
                 <div class="input-group-btn">
                     <button type="submit" data-ng-click="submitFilterForm()" class="btn btn-primary btn-sm">
                         <i class="fa fa-refresh sr-icons" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
+
             <br/>
-            <label class="checkbox-inline"><input type="checkbox" data-ng-click="submitFilterForm()" name="specimens"/>collection specimens |</label>
-            <label class="checkbox-inline"><input type="checkbox" data-ng-click="submitFilterForm()" name="samples"/>samples |</label>
-            <label class="checkbox-inline"><input type="checkbox" data-ng-click="submitFilterForm()" name="drillcores"/>drillcores |</label>
-            <label class="checkbox-inline"><input type="checkbox" data-ng-click="submitFilterForm()" name="citing_references"/>citing references |</label>
-            <label class="checkbox-inline"><input type="checkbox" data-ng-click="submitFilterForm()" name="analyses"/>analyses |</label>
-            <label class="checkbox-inline"><input type="checkbox" data-ng-click="submitFilterForm()" name="stratotypes"/>stratotypes |</label>
-            <label class="checkbox-inline"><input type="checkbox" data-ng-click="submitFilterForm()" name="images"/>photos |</label>
-            <label class="checkbox-inline"><input type="checkbox" data-ng-click="submitFilterForm()" name="taxon_occurrences"/>taxon occurrences</label>
-            <a href="/" id="map-return-back">Back to SARV</a>
+
+            <label class="checkbox-inline">
+                <input type="checkbox" data-ng-click="submitFilterForm()" name="specimens"/>{{ 'SEARCH.MAP.SPECIMENS' | translate }} |
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" data-ng-click="submitFilterForm()" name="samples"/>{{ 'SEARCH.MAP.SAMPLES' | translate }} |
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" data-ng-click="submitFilterForm()" name="drillcores"/>{{ 'SEARCH.MAP.DRILLCORES' | translate }} |
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" data-ng-click="submitFilterForm()" name="citing_references"/>{{ 'SEARCH.MAP.REFERENCES' | translate }} |
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" data-ng-click="submitFilterForm()" name="analyses"/>{{ 'SEARCH.MAP.ANALYSES' | translate }} |
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" data-ng-click="submitFilterForm()" name="stratotypes"/>{{ 'SEARCH.MAP.STRATOTYPES' | translate }} |
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" data-ng-click="submitFilterForm()" name="images"/>{{ 'SEARCH.MAP.PHOTOS' | translate }} |
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" data-ng-click="submitFilterForm()" name="taxon_occurrences"/>{{ 'SEARCH.MAP.TAXONS' | translate }}
+            </label>
+            <!--<a href="/" id="map-return-back">{{ 'SEARCH.MAP.HOME_BUTTON' | translate }}</a>-->
         </form>
     </div>
 </div>

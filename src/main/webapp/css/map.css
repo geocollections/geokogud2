@@ -5,6 +5,7 @@
     position: fixed;
     top: 0px;
     left: 0px;
+    margin-top: 50px; /*So the header doesnt overlap*/
 }
 
 #map {
@@ -21,7 +22,7 @@
 }
 
 #map-footer-menu {
-    padding: 5px;
+    padding: 6px 10px;
 }
 
 .ol-scale-line {
@@ -45,4 +46,11 @@
 
 #map-return-back {
     float: right;
+}
+
+#bedrock-legend {
+    position: absolute;
+    opacity: 0.9;
+    top: 20%;
+    max-width: 25%;
 }

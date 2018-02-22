@@ -18,7 +18,8 @@ module.config(function($stateProvider, $urlRouterProvider) {
                 pageTitle: "{{'TITLES.MAP' | translate}}"
             },
             url: "/map",
-            templateUrl: "app/templates/main/map.html"
+            templateUrl: "app/templates/main/map.html",
+            controller: "MapController as mapCtrl"
     })
         .state('global',{
             data: {

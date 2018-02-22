@@ -454,14 +454,27 @@
                 "LOCALITY": "Leiukoht"
             }
         },
+        "MAP": {
+            "SEARCH_1": "Leiti",
+            "SEARCH_2": "geograafilist asukohta. Näita ainult neid või otsige",
+            "INPUT_PLACEHOLDER": "Nimi",
+            "SPECIMENS": "Eksemplarid",
+            "SAMPLES": "Proovid",
+            "DRILLCORES": "Puursüdamikud",
+            "REFERENCES": "Viited",
+            "ANALYSES": "Analüüsid",
+            "STRATOTYPES": "Stratotüübid",
+            "PHOTOS": "Pildid",
+            "TAXONS": "Taksonid",
+            "HOME_BUTTON": "Tagasi pealehele"
+        },
         "SHOW_MAP": "Näitab kaarti",
         "SHOW_MAP_BUTTON": "Näita kaarti",
         "SEARCH_IMAGES": "Otsi pilte",
         "FOUND_IMAGES": "Pilte lehel",
         "RESET_FORM": "Puhasta väljad",
         "SEND_QUERY": "Saada päring",
-        "INSTITUTIONS": "Asutused",
-        "MAP_HOME_BUTTON": "Tagasi pealehele"
+        "INSTITUTIONS": "Asutused"
     },
     "DETAIL": {
         "SPECIMEN": {

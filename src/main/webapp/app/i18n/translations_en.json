@@ -454,14 +454,27 @@
                 "LOCALITY": "Locality"
             }
         },
+        "MAP": {
+          "SEARCH_1": "Found",
+          "SEARCH_2": "georeferenced localities. Show only those or search by",
+          "INPUT_PLACEHOLDER": "Name",
+          "SPECIMENS": "Specimens",
+          "SAMPLES": "Samples",
+          "DRILLCORES": "Drillcores",
+          "REFERENCES": "Citing references",
+          "ANALYSES": "Analyses",
+          "STRATOTYPES": "Stratotypes",
+          "PHOTOS": "Photos",
+          "TAXONS": "Taxon occurrences",
+          "HOME_BUTTON": "Back to home page"
+        },
         "SHOW_MAP": "Shows map",
         "SHOW_MAP_BUTTON": "Show map",
         "SEARCH_IMAGES": "Search images",
         "FOUND_IMAGES": "Images on page",
         "RESET_FORM": "Reset fields",
         "SEND_QUERY": "Send query",
-        "INSTITUTIONS": "Institutions",
-        "MAP_HOME_BUTTON": "Back to home page"
+        "INSTITUTIONS": "Institutions"
     },
     "DETAIL": {
         "SPECIMEN": {
