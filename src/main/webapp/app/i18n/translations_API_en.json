@@ -344,7 +344,8 @@
             "LINKED_FILES": "Linked files",
             "TYPE": "Type",
             "DESCRIPTION": "Description",
-            "PREVIEW": "Preview"
+            "PREVIEW": "Preview",
+            "URL": "URL"
         },
         "STRATIGRAPHY" : {
             "ID":"ID",

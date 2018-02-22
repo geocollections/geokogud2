@@ -341,7 +341,8 @@
             "LINKED_FILES": "Seotud failid",
             "TYPE": "Tüüp",
             "DESCRIPTION": "Kirjeldus",
-            "PREVIEW": "Eelvaade"
+            "PREVIEW": "Eelvaade",
+            "URL": "URL"
         },
         "STRATIGRAPHY" : {
             "ID":"ID",

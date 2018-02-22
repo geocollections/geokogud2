@@ -124,9 +124,18 @@
                                data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.results.doi})">
                                 {{detailCtrl.results.doi}}
                             </a>
-                            <a href data-ng-if="detailCtrl.results.doi.includes('DOI')"
+                            <a href data-ng-if="!detailCtrl.results.doi.includes('http')"
                                data-ng-click="detailCtrl.service.openDoiInNewWindow({doi: detailCtrl.results.doi})">
                                 {{detailCtrl.results.doi}}
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.url && detailCtrl.results.url != null">
+                        <td> {{ 'API_TRANSLATION.REFERENCE.URL' | translate }} </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.results.url})">
+                                {{detailCtrl.results.url}}
                             </a>
                         </td>
                     </tr>
