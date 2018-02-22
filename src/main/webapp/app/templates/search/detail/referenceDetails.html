@@ -120,13 +120,9 @@
                     <tr data-ng-if="detailCtrl.results.doi && detailCtrl.results.doi != null">
                         <td> {{ 'API_TRANSLATION.REFERENCE.DOI ' | translate }} </td>
                         <td>
-                            <a href data-ng-if="detailCtrl.results.doi.includes('http')"
-                               data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.results.doi})">
-                                {{detailCtrl.results.doi}}
-                            </a>
-                            <a href data-ng-if="!detailCtrl.results.doi.includes('http')"
+                            <a href data-ng-if="detailCtrl.results.doi && detailCtrl.results.doi != null"
                                data-ng-click="detailCtrl.service.openDoiInNewWindow({doi: detailCtrl.results.doi})">
-                                {{detailCtrl.results.doi}}
+                                <i title="{{detailCtrl.results.doi}}" class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>
                             </a>
                         </td>
                     </tr>

@@ -285,12 +285,16 @@ var constructor = function (utils, configuration, $window, $location) {
 
     function openDoiInNewWindow(params) {
         var doi = params.doi;
-        if (params.doi.includes("DOI:")) {
-            doi = doi.replace("DOI:", "").trim();
-        } else if (params.doi.includes("DOI")) {
-            doi = doi.replace("DOI", "").trim();
+        if (doi && doi != null) {
+            doi = doi.replace(/\s/g,''); // removes all whitespace
+            if (doi.startsWith('http')) {
+                $window.open(doi, '', 'width=600,height=750,scrollbars, resizable');
+
+            } else {
+                doi = "1" + doi.substring(doi.indexOf("10.")+1); // gets the doi identifier
+                $window.open('https://doi.org/' + doi, '', 'width=600,height=750,scrollbars, resizable');
+            }
         }
-        $window.open('http://dx.doi.org/' + doi, '', 'width=600,height=750,scrollbars, resizable');
     }
 
     function showGoogleMap(lat, lon, localityName) {

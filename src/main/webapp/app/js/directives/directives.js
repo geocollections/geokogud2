@@ -1093,8 +1093,9 @@ angular.module('geoApp')
                             ]
                         });
 
+                        //TODO: make legend disappear if layer is not visible
                         var bedrockAge = new ol.layer.Tile({
-                            title: 'Bedrock age',
+                            title: 'Bedrock age <br><img src=\'http://gis.geokogud.info/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=IGME5000:EuroGeology&legend_options=fontName:DejaVu%20Sans%20ExtraLight;fontAntiAliasing:true;fontColor:0x333333;fontSize:10;bgColor:0xFFFFff;dpi:96\' />',
                             visible: false,
                             /*extent: [-13884991, 2870341, -7455066, 6338219],*/
                             source: new ol.source.TileWMS({

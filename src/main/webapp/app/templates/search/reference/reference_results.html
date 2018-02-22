@@ -39,14 +39,13 @@
                     </span>
                 </td>
                 <td data-title="{{ 'SEARCH.REFERENCES.TABLE.PP' | translate }}">{{entity.pages}}</td>
+
                 <td data-title="{{ 'SEARCH.REFERENCES.TABLE.DOI' | translate }}">
-                    <a href data-ng-if="entity.doi.includes('http')" data-ng-click="ctrl.service.openUrlInNewWindow({url: entity.doi})">
-                        {{entity.doi}}
-                    </a>
-                    <a href data-ng-if="!entity.doi.includes('http')" data-ng-click="ctrl.service.openDoiInNewWindow({doi: entity.doi})">
-                        {{entity.doi}}
+                    <a href data-ng-if="entity.doi && entity.doi != null" data-ng-click="ctrl.service.openDoiInNewWindow({doi: entity.doi})">
+                        <i title="{{entity.doi}}" class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>
                     </a>
                 </td>
+
                 <td data-title="{{ 'SEARCH.REFERENCES.TABLE.REMARKS' | translate }}">{{entity.remarks}}</td>
             </tr>
             </tbody>
