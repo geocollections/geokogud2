@@ -1,6 +1,7 @@
 <div ng-include="'app/templates/main/partial/detailview_header.html'"></div>
 
-<div id="elementToFocus" tabindex="1" style="outline: 0" ng-arrow-left="detailCtrl.reload({table:'specimen', left:true})" ng-arrow-right="detailCtrl.reload({table:'specimen', right:true})"  class="panel detailview-page">
+<!--<div id="elementToFocus" tabindex="1" style="outline: 0" ng-arrow-left="detailCtrl.reload({table:'specimen', left:true})" ng-arrow-right="detailCtrl.reload({table:'specimen', right:true})"  class="panel detailview-page">-->
+<div class="panel detailview-page">
     <div class="panel-body detailview-max-width">
 
         <div class="row">
@@ -479,11 +480,12 @@
 
                     <div class="row">
 
-                        <div class="col-md-6 col-xs-6" data-ng-repeat="image in detailCtrl.specimenImage">
+                        <div class="col-md-6 col-xs-6" data-ng-repeat="image in detailCtrl.specimenImage track by $index">
 
                             <figure class="margin-bottom-30">
 
-                                <a href class="hover-me" data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image',id:image.id})">
+                                <!--<a href class="hover-me" data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image',id:image.id})">-->
+                                <a href class="hover-me" data-ng-click="detailCtrl.service.setCarouselImageActive($index)" data-toggle="modal" data-target=".picture-modal">
 
                                     <show-preview class="img-responsive set-height"
                                                   classes="previewImageDetail img-rounded"
@@ -500,8 +502,50 @@
                         </div>
 
                     </div>
-
                 </div>
+
+                <div data-ng-if="detailCtrl.specimenImage.length > 0" class="modal fade picture-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false" >
+
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner" id="carousel">
+
+                                    <div class="item" id="{{$index}}" data-ng-repeat="image in detailCtrl.specimenImage track by $index">
+
+                                        <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image',id:image.id})">
+                                            <img id="carousel-image" src="{{detailCtrl.service.composeImageUrl(image)}}">
+                                        </a>
+
+                                        <div id="image-data" class="carousel-caption">
+                                            <div data-ng-if="image.agent__agent && image.agent__agent != null">
+                                                {{ 'DETAIL.LOCALITY.IMAGE_AUTHOR' | translate }}: {{image.agent__agent}}
+                                            </div>
+                                            <div data-ng-if="image.date && image.date != null">
+                                                {{ 'DETAIL.LOCALITY.IMAGE_DATE_TAKEN' | translate }}: {{image.date | date:dateFormat}}
+                                            </div>
+                                            <div data-ng-if="(image.date_taken_free && image.date_taken_free != null) && image.date_taken == null">
+                                                {{ 'DETAIL.LOCALITY.IMAGE_DATE_TAKEN' | translate }}: {{image.date_taken_free}}
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Controls -->
+                                <a class="left carousel-control" href="/" data-target="#carousel-example-generic" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                </a>
+                                <a class="right carousel-control" href="/" data-target="#carousel-example-generic" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
                 <div data-ng-if="detailCtrl.results.locality__latitude && detailCtrl.results.locality__longitude">
                     <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
@@ -522,8 +566,8 @@
 
 <div ng-include="'app/templates/main/partial/detailview_footer.html'"></div>
 
-<script>
-    $(function(){
-        $('#elementToFocus').focus();
-    });
-</script>
+<!--<script>-->
+    <!--$(function(){-->
+        <!--$('#elementToFocus').focus();-->
+    <!--});-->
+<!--</script>-->
