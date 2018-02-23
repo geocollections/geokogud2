@@ -145,3 +145,26 @@
 /*******************************
  *** 5 ELEMENTS IN A ROW END ***
  *******************************/
+
+
+
+/***********************************
+ *** CAROUSEL IMAGE STYLES START ***
+ ***********************************/
+
+#carousel-image {
+    width: 100%;
+    max-height: 50%;
+    margin: 0 auto;
+}
+
+#image-data {
+    font-weight: bold;
+    font-size: large;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+/***********************************
+ ***  CAROUSEL IMAGE STYLES END  ***
+ ***********************************/
+

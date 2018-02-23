@@ -29,6 +29,7 @@ var constructor = function (utils, configuration, $window, $location) {
     service.getAttachmentFormatFromFilename = getAttachmentFormatFromFilename;
     service.returnInstitutionSlideNumber = returnInstitutionSlideNumber;
     service.searchAllSpecimensUsingCollection = searchAllSpecimensUsingCollection;
+    service.setCarouselImageActive = setCarouselImageActive;
 
     service.toggle = function (el,array) {
         utils.toggleInArray(el,array)
@@ -157,10 +158,8 @@ var constructor = function (utils, configuration, $window, $location) {
     service.toggleClass = function() {
         $( document ).ready(function() {
             var img = $('#img-size');
-            if (img.height() > img.width() || img.height() === img.width() ) {
+            if (img.height() > img.width()) {
                 img.addClass("img-portrait")
-            } else {
-                $('#fancy-image-container').addClass("fancy-image");
             }
         });
     };
@@ -366,6 +365,13 @@ var constructor = function (utils, configuration, $window, $location) {
         if (institution === "GIT") return 4;
         if (institution === "TUG") return 5;
         if (institution === "ELM") return 6;
+    }
+
+    function setCarouselImageActive(id) {
+        for (var i = 0; i < 50; i++) {
+            $('#' + i).removeClass('active');
+        }
+       $('#' + id).addClass('active');
     }
 
     return service;

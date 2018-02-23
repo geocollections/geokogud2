@@ -491,7 +491,8 @@ var constructor = function ($scope, $state, configuration, ApplicationService) {
         ApplicationService.loadMapDataOnFilterChange(filterData, onMapDataFilter);
     };
     function onMapDataFilter(response) {
-        $("#map").empty();
+        // $("#map").empty();
+        $("#map").clear();
         onMapData(response);
     }
     

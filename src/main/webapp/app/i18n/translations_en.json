@@ -560,7 +560,9 @@
             "STRATIGRAPHY_REMARKS": "Stratigraphy remarks",
             "SPECIMEN": "Specimens",
             "ALL_SPECIMEN": "Show all specimens",
-            "IMAGES_HEADING": "Images"
+            "IMAGES_HEADING": "Images",
+            "IMAGE_AUTHOR": "Image author",
+            "IMAGE_DATE_TAKEN": "Date taken"
         },
         "ANALYSIS": {
             "RESULTS": "Analyses results",
