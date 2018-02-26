@@ -43,7 +43,8 @@
                             <i>{{entity.specimen_identifications.results[0].taxon__taxon}}</i>
                         </a>
                         <span data-ng-if="(entity.specimen_identifications.results[0].name && entity.specimen_identifications.results[0].name != null)
-                            && (entity.specimen_identifications.results[0].taxon__taxon && entity.specimen_identifications.results[0].taxon__taxon != null)"> | </span>
+                            && (entity.specimen_identifications.results[0].taxon__taxon && entity.specimen_identifications.results[0].taxon__taxon != null)
+                            && entity.specimen_identifications.results[0].name != entity.specimen_identifications.results[0].taxon__taxon"> | </span>
                         <span data-ng-if="(entity.specimen_identifications.results[0].name && entity.specimen_identifications.results[0].name != null)
                             && entity.specimen_identifications.results[0].name != entity.specimen_identifications.results[0].taxon__taxon">
                             <i>{{entity.specimen_identifications.results[0].name}}</i>

@@ -491,9 +491,23 @@ var constructor = function ($scope, $state, configuration, ApplicationService) {
         ApplicationService.loadMapDataOnFilterChange(filterData, onMapDataFilter);
     };
     function onMapDataFilter(response) {
-        // $("#map").empty();
-        $("#map").clear();
+        $("#map").empty();
         onMapData(response);
+    }
+
+    $scope.toggleMapForm = function () {
+        console.log("hi");
+        var button = $('#map-footer-button');
+        var form = $('#map-footer-menu');
+        if (button.hasClass('fa-angle-double-down')) {
+            form.slideToggle('fast');
+            button.removeClass('fa-angle-double-down');
+            button.addClass('fa-angle-double-up');
+        } else if (button.hasClass('fa-angle-double-up')) {
+            form.slideToggle('fast');
+            button.removeClass('fa-angle-double-up');
+            button.addClass('fa-angle-double-down');
+        }
     }
     
 };
