@@ -8,7 +8,7 @@ var module = angular.module("geoApp");
  * @param $location From angular translate library
  * @returns service which contains
  */
-var constructor = function (utils, configuration, $window, $location, $translate) {
+var constructor = function (utils, configuration, $window, $location, $translate, $stateParams) {
 
     var service = {};
 
@@ -375,6 +375,11 @@ var constructor = function (utils, configuration, $window, $location, $translate
        $('#' + id).addClass('active');
     }
 
+    /**
+     * Builds caption data for images in fancybox gallery.
+     * @param arrayOfPictureInfo Image data (author, date, etc)
+     * @returns {string} value of caption data for images. (author, date, etc)
+     */
     function setFancyBoxCaption(arrayOfPictureInfo) {
         // [author, date, date_free, number, author_free, id]
         if (arrayOfPictureInfo.length > 0) {
@@ -402,8 +407,12 @@ var constructor = function (utils, configuration, $window, $location, $translate
                 engText = "Image no. " + arrayOfPictureInfo[3] + "<br>" + engText;
             }
             if (arrayOfPictureInfo[5] && arrayOfPictureInfo[5] != null) {
-                estText += "<strong>" + "<a target='_blank' href='http://arendus.geokogud.info/image/" + arrayOfPictureInfo[5] + "'>Mine pildi detail vaatele</a></strong>";
-                engText += "<strong>" + "<a target='_blank' href='http://arendus.geokogud.info/image/" + arrayOfPictureInfo[5] + "'>Go to picture detail view</a></strong>";
+                var url = 'http://arendus.geokogud.info/image/';
+                if ($stateParams.type === 'specimens') {
+                    url = 'http://arendus.geokogud.info/specimen_image/'
+                }
+                estText += "<strong>" + "<a target='_blank' href='" + url + arrayOfPictureInfo[5] + "'>Mine pildi detail vaatele</a></strong>";
+                engText += "<strong>" + "<a target='_blank' href='" + url + arrayOfPictureInfo[5] + "'>Go to picture detail view</a></strong>";
             }
             return $translate.use() === 'et' ? estText : engText;
         }
@@ -412,7 +421,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
     return service;
 };
 
-constructor.$inject = ['utils','configuration','$window', '$location', '$translate'];
+constructor.$inject = ['utils','configuration','$window', '$location', '$translate', '$stateParams'];
 
 module.service("ApplicationService", constructor);
 
