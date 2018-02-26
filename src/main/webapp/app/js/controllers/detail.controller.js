@@ -10,6 +10,8 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
 
     vm.detailLoadingHandler = bsLoadingOverlayService.createHandler({referenceId: "detailView"});
 
+    $scope.pageHasError = false;
+
     searchEntity();
 
     /**
@@ -58,6 +60,7 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
     }
 
     function onDetailError(error) {
+        $scope.pageHasError = true;
         console.log(error);
         errorService.commonErrorHandler(error);
         vm.detailLoadingHandler.stop();

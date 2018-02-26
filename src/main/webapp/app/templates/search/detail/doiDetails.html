@@ -1,7 +1,7 @@
 <div ng-include="'app/templates/main/partial/detailview_header.html'"></div>
 
 <div id="elementToFocus" tabindex="1" style="outline: 0" ng-arrow-left="detailCtrl.reload({table:'doi', left:true})" ng-arrow-right="detailCtrl.reload({table:'doi', right:true})"  class="panel detailview-page">
-    <div class="panel-body detailview-max-width">
+    <div class="panel-body detailview-max-width" data-ng-if="detailCtrl.results != null">
 
         <div class="row">
             <div class="col-sm-12">
@@ -358,6 +358,10 @@
 
                     <div class="table-responsive" data-ng-if="entity.filename.endsWith('txt')">
 
+                        <!--<a data-fancybox data-type="iframe" data-src="http://geokogud.info/files/47/47aa3e41f32c906852388e0481396872.txt" href="javascript:;">-->
+                            <!--Webpage-->
+                        <!--</a>-->
+
                         <iframe id="iframe-text-file" style="width: 100%; height: 500px"
                                 ngf-src="detailCtrl.service.getDownloadLink(entity.filename)"></iframe>
 
@@ -382,6 +386,9 @@
         </div>
 
     </div>
+
+    <div data-ng-if="detailCtrl.results == null && pageHasError" ng-include="'app/templates/main/detailview_error.html'"></div>
+
 </div>
 
 <div ng-include="'app/templates/main/partial/detailview_footer.html'"></div>

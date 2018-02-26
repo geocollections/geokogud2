@@ -113,7 +113,9 @@
         }
     },
     "ERROR": {
-        "TITLE": ""
+        "DETAIL_TITLE": "Detail view not found!",
+        "DETAIL_MESSAGE": "The page you are looking for can't be found. Go home by",
+        "DETAIL_BUTTON": "clicking here!"
     },
     "SEARCH": {
         "NO_RESULTS": "Your search returned no matching records. Please check your search criteria and read the tips below",

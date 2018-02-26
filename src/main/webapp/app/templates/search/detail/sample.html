@@ -1,7 +1,7 @@
 <div ng-include="'app/templates/main/partial/detailview_header.html'"></div>
 
 <div id="elementToFocus" tabindex="1" style="outline: 0" ng-arrow-left="detailCtrl.reload({table:'sample', left:true})" ng-arrow-right="detailCtrl.reload({table:'sample', right:true})"  class="panel detailview-page">
-    <div class="panel-body detailview-max-width">
+    <div class="panel-body detailview-max-width" data-ng-if="detailCtrl.results != null">
 
         <div class="row">
             <div class="col-sm-12">
@@ -365,8 +365,10 @@
             </div>
         </div>
 
-
     </div>
+
+    <div data-ng-if="detailCtrl.results == null && pageHasError" ng-include="'app/templates/main/detailview_error.html'"></div>
+
 </div>
 
 <div ng-include="'app/templates/main/partial/detailview_footer.html'"></div>

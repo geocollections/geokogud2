@@ -1,0 +1,21 @@
+<div class="panel-body detailview-max-width">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="detailview-title">
+                <h2 class="error-title-color">{{ 'ERROR.DETAIL_TITLE' | translate }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 text-center" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
+            <i class="fa fa-exclamation-circle fa-5x error-icon"></i>
+            <div class="error-message">
+                <p>{{ 'ERROR.DETAIL_MESSAGE' | translate }} <a href="/">{{ 'ERROR.DETAIL_BUTTON' | translate }}</a></p>
+            </div>
+        </div>
+
+    </div>
+
+</div>

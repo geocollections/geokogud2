@@ -595,10 +595,5 @@
             "DOWNLOAD": "Download",
             "PREVIEW": "Preview"
         }
-    },
-    "ERROR" : {
-        "TITLE" : "Error",
-        "INVALID_REQUEST" : "Invalid request",
-        "INTERNAL_SERVER_ERROR" : "Internal server error"
     }
 }

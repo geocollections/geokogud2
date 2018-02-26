@@ -592,10 +592,5 @@
             "DOWNLOAD": "Lae alla",
             "PREVIEW": "Eelvaade"
         }
-    },
-    "ERROR" : {
-        "TITLE" : "Viga",
-        "INVALID_REQUEST" : "Vigane päring",
-        "INTERNAL_SERVER_ERROR" : "Serveri viga"
     }
 }
