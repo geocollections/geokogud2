@@ -274,10 +274,8 @@
 
                             <figure class="margin-bottom-30">
 
-                                <!--<a href class="hover-me" data-ng-click="detailCtrl.service.openInNewWindow({object:'image',id:image.id})">-->
                                 <a href="{{detailCtrl.service.composeImageUrl(image)}}" class="hover-me" data-fancybox="gallery"
-                                   data-caption="{{ 'DETAIL.LOCALITY.IMAGE_AUTHOR' | translate }}: {{image.author__agent}}<br>{{ 'DETAIL.LOCALITY.IMAGE_DATE_TAKEN' | translate}}: {{image.date_taken | date:DateFormat}}">
-                                    <!--TODO: fix caption!-->
+                                   data-caption="{{detailCtrl.service.setFancyBoxCaption([image.author__agent, image.date_taken, image.date_taken_free, null, image.author_free, image.id])}}">
 
                                     <show-preview class="img-responsive set-height"
                                                   classes="previewImageDetail img-rounded"

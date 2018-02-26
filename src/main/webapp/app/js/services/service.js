@@ -8,7 +8,7 @@ var module = angular.module("geoApp");
  * @param $location From angular translate library
  * @returns service which contains
  */
-var constructor = function (utils, configuration, $window, $location) {
+var constructor = function (utils, configuration, $window, $location, $translate) {
 
     var service = {};
 
@@ -30,6 +30,7 @@ var constructor = function (utils, configuration, $window, $location) {
     service.returnInstitutionSlideNumber = returnInstitutionSlideNumber;
     service.searchAllSpecimensUsingCollection = searchAllSpecimensUsingCollection;
     service.setCarouselImageActive = setCarouselImageActive;
+    service.setFancyBoxCaption = setFancyBoxCaption;
 
     service.toggle = function (el,array) {
         utils.toggleInArray(el,array)
@@ -374,10 +375,44 @@ var constructor = function (utils, configuration, $window, $location) {
        $('#' + id).addClass('active');
     }
 
+    function setFancyBoxCaption(arrayOfPictureInfo) {
+        // [author, date, date_free, number, author_free, id]
+        if (arrayOfPictureInfo.length > 0) {
+            var estText = "";
+            var engText = "";
+
+            if (arrayOfPictureInfo[0] && arrayOfPictureInfo[0] != null) {
+                estText += "Pildi autor: " + "<strong>" + arrayOfPictureInfo[0] + "</strong>" + "<br>";
+                engText += "Image author: " + "<strong>" + arrayOfPictureInfo[0] + "</strong>" + "<br>";
+            }
+            if (arrayOfPictureInfo[0] == null && arrayOfPictureInfo[4] && arrayOfPictureInfo[4] != null) {
+                estText += "Pildi autor: " + "<strong>" + arrayOfPictureInfo[4] + "</strong>" + "<br>";
+                engText += "Image author: " + "<strong>" + arrayOfPictureInfo[4] + "</strong>" + "<br>";
+            }
+            if (arrayOfPictureInfo[1] && arrayOfPictureInfo[1] != null) {
+                estText += "Pildistamise aeg: " + "<strong>" + new Date(arrayOfPictureInfo[1]).toLocaleDateString('et-EE') + "</strong>" + "<br>";
+                engText += "Date taken: " + "<strong>" + new Date(arrayOfPictureInfo[1]).toDateString() + "</strong>" + "<br>";
+            }
+            if (arrayOfPictureInfo[1] == null && arrayOfPictureInfo[2] && arrayOfPictureInfo[2] != null) {
+                estText += "Pildistamise aeg: " + "<strong>" +arrayOfPictureInfo[2] + "</strong>" + "<br>";
+                engText += "Date taken: " + "<strong>" + arrayOfPictureInfo[2] + "</strong>" + "<br>";
+            }
+            if (arrayOfPictureInfo[3] && arrayOfPictureInfo[3] != null) {
+                estText = "Pildi nr. " + arrayOfPictureInfo[3] + "<br>" + estText;
+                engText = "Image no. " + arrayOfPictureInfo[3] + "<br>" + engText;
+            }
+            if (arrayOfPictureInfo[5] && arrayOfPictureInfo[5] != null) {
+                estText += "<strong>" + "<a target='_blank' href='http://arendus.geokogud.info/image/" + arrayOfPictureInfo[5] + "'>Mine pildi detail vaatele</a></strong>";
+                engText += "<strong>" + "<a target='_blank' href='http://arendus.geokogud.info/image/" + arrayOfPictureInfo[5] + "'>Go to picture detail view</a></strong>";
+            }
+            return $translate.use() === 'et' ? estText : engText;
+        }
+    }
+
     return service;
 };
 
-constructor.$inject = ['utils','configuration','$window', '$location'];
+constructor.$inject = ['utils','configuration','$window', '$location', '$translate'];
 
 module.service("ApplicationService", constructor);
 
