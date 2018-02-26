@@ -24,6 +24,8 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
         console.log(result);
         $scope.totalItems = result.data.count;
 
+        if ($scope.totalItems === 0 || $scope.totalItems == null) $scope.noResults = true;
+
         $scope.windowWidth = "innerWidth" in window ? window.innerWidth : document.documentElement.offsetWidth;
         if ($scope.windowWidth > 400) {
             $scope.searchParameters.maxSize = 5;

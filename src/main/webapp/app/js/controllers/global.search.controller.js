@@ -229,6 +229,10 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         }
     };
 
+    $scope.goToPageOne = function() {
+        window.location.assign(window.location.origin + "/global/" + $scope.searchParameters.tab + "/1/" + $scope.searchParameters.paginateBy + "/" + $scope.$parent.globalQuery);
+    };
+
     /**
      * Gets number of results found with a certain query.
      * @param tab Tab's name

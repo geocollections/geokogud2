@@ -197,7 +197,7 @@
                 <div data-ng-if="showImages && response.results != null" ng-include="'app/templates/search/partial/pagination.html'"></div>
                 <div data-ng-if="!showImages" non-isolated-include template-path="app/templates/search/image/image_results.html"/>
 
-                <div class="row" data-ng-if="response.results == null">
+                <div class="row" data-ng-if="response.results == null && noResults">
                     <div class="col-lg-12 h3 panel-heading text-center no-results">{{ 'SEARCH.NO_RESULTS' | translate }}</div>
                     <div class="col-lg-12">
                         <div class="col-lg-12 no-results-image" ng-bind-html="main.getContent(main.protoArchiveQuery)"></div>

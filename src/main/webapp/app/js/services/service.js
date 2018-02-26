@@ -29,7 +29,6 @@ var constructor = function (utils, configuration, $window, $location, $translate
     service.getAttachmentFormatFromFilename = getAttachmentFormatFromFilename;
     service.returnInstitutionSlideNumber = returnInstitutionSlideNumber;
     service.searchAllSpecimensUsingCollection = searchAllSpecimensUsingCollection;
-    service.setCarouselImageActive = setCarouselImageActive;
     service.setFancyBoxCaption = setFancyBoxCaption;
 
     service.toggle = function (el,array) {
@@ -366,13 +365,6 @@ var constructor = function (utils, configuration, $window, $location, $translate
         if (institution === "GIT") return 4;
         if (institution === "TUG") return 5;
         if (institution === "ELM") return 6;
-    }
-
-    function setCarouselImageActive(id) {
-        for (var i = 0; i < 50; i++) {
-            $('#' + i).removeClass('active');
-        }
-       $('#' + id).addClass('active');
     }
 
     /**
