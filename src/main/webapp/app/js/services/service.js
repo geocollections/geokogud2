@@ -155,15 +155,6 @@ var constructor = function (utils, configuration, $window, $location, $translate
         return imageUrl;
     };
 
-    service.toggleClass = function() {
-        $( document ).ready(function() {
-            var img = $('#img-size');
-            if (img.height() > img.width()) {
-                img.addClass("img-portrait")
-            }
-        });
-    };
-
     // Used on drillcore detail view to show corebox images which come from related_data
     function getDrillcoreImageUrl(params) {
         if (params.database != null) {

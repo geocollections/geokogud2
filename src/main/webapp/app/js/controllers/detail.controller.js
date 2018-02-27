@@ -46,16 +46,8 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
                 vm.preparationTaxons = (['preparations'].indexOf($stateParams.type) > -1 ? composeTaxonListInfo(vm.relatedData) : []);
             }
 
-            if (['specimenImage', 'photoArchive'].indexOf($stateParams.type) > -1) {
-                $( document ).ready(function() {
-                    vm.service.toggleClass();
-                });
-            }
-
         } else {
             onDetailError(response);
-            // TODO: Do something if no response, fix error template or something.
-            // $state.go("error");
         }
     }
 
