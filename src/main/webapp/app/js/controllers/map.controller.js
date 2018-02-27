@@ -279,7 +279,7 @@ var constructor = function ($scope, $state, configuration, ApplicationService) {
                     }
                 })
             });
-            //TODO: make legend disappear if layer is not visible
+
             var bedrockAge = new ol.layer.Tile({
                 title: 'Bedrock age',
                 visible: false,

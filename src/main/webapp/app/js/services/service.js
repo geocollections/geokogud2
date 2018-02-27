@@ -392,9 +392,9 @@ var constructor = function (utils, configuration, $window, $location, $translate
                 engText = "Image no. " + arrayOfPictureInfo[3] + "<br>" + engText;
             }
             if (arrayOfPictureInfo[5] && arrayOfPictureInfo[5] != null) {
-                var url = 'http://arendus.geokogud.info/image/';
+                var url = $window.location.origin + '/image/';
                 if ($stateParams.type === 'specimens') {
-                    url = 'http://arendus.geokogud.info/specimen_image/'
+                    url = $window.location.origin + '/specimen_image/'
                 }
                 estText += "<strong>" + "<a target='_blank' href='" + url + arrayOfPictureInfo[5] + "'>Mine pildi detail vaatele</a></strong>";
                 engText += "<strong>" + "<a target='_blank' href='" + url + arrayOfPictureInfo[5] + "'>Go to picture detail view</a></strong>";

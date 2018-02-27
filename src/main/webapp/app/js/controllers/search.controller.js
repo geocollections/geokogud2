@@ -46,10 +46,7 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
         });
         $scope.response = result.data;
 
-
-        // console.log("THIS IS HINT: " + $scope.isHintHidden);
-        // console.log("THIS IS MAP: " + $scope.isMapHidden);
-        if ($scope.isMapHidden) {
+        if ($scope.isMapVisible) {
             console.log("im here");
             $scope.getLocalities($scope.response.results);
         }
@@ -86,6 +83,10 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
      * and sends request with user inputted parameters.
      */
     $scope.search = function () {
+        if ($scope.isMapVisible) {
+            hideMap();
+        }
+
         $scope.showImages = $scope.searchParameters.searchImages && $scope.searchParameters.searchImages.name ? true : false;
         vm.searchLoadingHandler.start();
 
@@ -186,6 +187,7 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
         resetSearchParametersToDefault();
         sessionStorage.removeItem($stateParams.type);
         localStorage.removeItem($stateParams.type);
+        hideMap();
     };
 
     /**
@@ -216,13 +218,18 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
      * Also if true then calls getLocalities function.
      */
     $scope.showMap = function () {
-        console.log($scope.isMapHidden);
-        $scope.isMapHidden = !$scope.isMapHidden;
-        console.log($scope.isMapHidden);
-        if ($scope.isMapHidden) {
+        console.log($scope.isMapVisible);
+        $scope.isMapVisible = !$scope.isMapVisible;
+        console.log($scope.isMapVisible);
+        if ($scope.isMapVisible) {
             $scope.getLocalities($scope.response.results);
         }
     };
+
+    function hideMap() {
+        $('#map-checkbox').prop('checked', false);
+        $scope.isMapVisible = false;
+    }
 
     /**
      * Takes locality fields from response and adds them
