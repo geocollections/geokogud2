@@ -350,7 +350,7 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-12" data-ng-if="detailCtrl.doiAttachment.length > 0">
+            <div class="col-sm-12" data-ng-if="ifDoiAttachmentContainsShowableFiles(detailCtrl.doiAttachment)">
 
                 <!--TODO: Fix this heading to only exist if txt or image-->
                 <h3>{{ 'DETAIL.DETAIL_PREVIEW_DATA' | translate }}</h3>

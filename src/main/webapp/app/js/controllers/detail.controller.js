@@ -191,6 +191,19 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             $state.go(params.table + '.view', {id:idFromUrl})
         }
     }
+
+    $scope.ifDoiAttachmentContainsShowableFiles = function(doiAttachment) {
+        console.log(doiAttachment);
+        if (doiAttachment.length > 0) {
+            for (entity in doiAttachment) {
+                var filename = doiAttachment[entity].filename;
+                if (filename.endsWith('txt') || filename.endsWith('png') || filename.endsWith('jpg') || filename.endsWith('jpeg')) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 };
 
 constructor.$inject = [

@@ -30,6 +30,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
     service.returnInstitutionSlideNumber = returnInstitutionSlideNumber;
     service.searchAllSpecimensUsingCollection = searchAllSpecimensUsingCollection;
     service.setFancyBoxCaption = setFancyBoxCaption;
+    service.ifDoiAttachmentContainsFiles = ifDoiAttachmentContainsFiles;
 
     service.toggle = function (el,array) {
         utils.toggleInArray(el,array)
@@ -401,6 +402,13 @@ var constructor = function (utils, configuration, $window, $location, $translate
             }
             return $translate.use() === 'et' ? estText : engText;
         }
+    }
+
+    function ifDoiAttachmentContainsFiles(attachments) {
+        console.log(attachments);
+        angular.forEach(attachments, function (attachment) {
+            return attachment.filename.endsWith('txt') || attachment.filename.endsWith('png') || attachment.filename.endsWith('jpg') || attachment.filename.endsWith('jpeg');
+        });
     }
 
     return service;
