@@ -496,7 +496,6 @@ var constructor = function ($scope, $state, configuration, ApplicationService) {
     }
 
     $scope.toggleMapForm = function () {
-        console.log("hi");
         var button = $('#map-footer-button');
         var form = $('#map-footer-menu');
         if (button.hasClass('fa-angle-double-down')) {
