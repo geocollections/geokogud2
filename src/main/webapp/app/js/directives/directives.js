@@ -484,24 +484,85 @@ angular.module('geoApp')
 
                 var olMap;
 
+                var bedrockAge = new ol.layer.Tile({
+                    title: 'Bedrock age',
+                    visible: false,
+                    /*extent: [-13884991, 2870341, -7455066, 6338219],*/
+                    source: new ol.source.TileWMS({
+                        url: 'http://gis.geokogud.info/geoserver/wms',
+                        params: {'LAYERS': 'IGME5000:EuroGeology', 'TILED': true},
+                        serverType: 'geoserver',
+                        // Countries have transparency, so do not fade tiles:
+                        transition: 0
+                    })
+                });
+
+                var ermas = new ol.layer.Tile({
+                    visible: false,
+                    title: 'Show all locations',
+                    source: new ol.source.TileWMS({
+                        url: 'http://gis.geokogud.info:80/geoserver/sarv/wms',
+                        params: {
+                            'VERSION': '1.1.1',
+                            tiled: true,
+                            STYLES: '',
+                            LAYERS: 'sarv:locality_summary',
+                            tilesOrigin: -180 + "," + -90
+                        }
+                    })
+                });
+
+                var overlays = new ol.layer.Group({
+                    title: 'Overlays',
+                    layers: [
+                        bedrockAge,
+                        ermas
+                    ]
+                });
+
+                var mapbox = new ol.layer.Tile({
+                    title: 'MapBox grayscale',
+                    type: 'base',
+                    visible: true,
+                    source: new ol.source.XYZ({
+                        url: 'https://api.tiles.mapbox.com/v4/mapbox.light/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3V1dG9iaW5lIiwiYSI6ImNpZWlxdXAzcjAwM2Nzd204enJvN2NieXYifQ.tp6-mmPsr95hfIWu3ASz2w'
+                    })
+                });
+
+                var basemaps = new ol.layer.Group({
+                    'title': 'Base maps',
+                    layers: [
+                        new ol.layer.Tile({
+                            title: 'Stamen dark',
+                            type: 'base',
+                            visible: false,
+                            source: new ol.source.Stamen({
+                                layer: 'toner'
+                            })
+                        }),
+                        new ol.layer.Tile({
+                            title: 'Stamen terrain',
+                            type: 'base',
+                            group: 'group-name',
+                            visible: false,
+                            source: new ol.source.Stamen({
+                                layer: 'terrain'
+                            })
+                        }),
+                        new ol.layer.Tile({
+                            title: 'OpenStreetMap',
+                            type: 'base',
+                            visible: false,
+                            source: new ol.source.OSM()
+                        }),
+                        mapbox
+                    ]
+                });
+
                 function init() {
                     olMap = new ol.Map({
                         target: "map",
-                        layers: [
-                            /*
-                             new ol.layer.Tile({
-                             //source: new ol.source.Stamen({
-                             //layer: 'toner',
-                             //})
-                             source: new ol.source.OSM()
-                             }),*/
-
-                            new ol.layer.Tile({
-                                source: new ol.source.XYZ({
-                                    url: 'https://api.tiles.mapbox.com/v4/mapbox.light/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3V1dG9iaW5lIiwiYSI6ImNpZWlxdXAzcjAwM2Nzd204enJvN2NieXYifQ.tp6-mmPsr95hfIWu3ASz2w'
-                                })
-                            })
-                        ],
+                        layers: [basemaps, overlays],
                         controls: ol.control.defaults({
                             attributionOptions: ({
                                 collapsible: true
@@ -523,7 +584,6 @@ angular.module('geoApp')
                             restrictedExtent: ol.proj.transformExtent([-10, 52, 2, 62], 'EPSG:4326', 'EPSG:3857')
                         })
                     });
-
 
                     function defaultStyle(feature, resolution) {
                         return [
@@ -580,12 +640,12 @@ angular.module('geoApp')
                     vectorSource.addFeature(feature);
 
                     var layerData = new ol.layer.Vector({
-                        title: "Localities",
+                        // title: "Localities",
                         source: vectorSource,
                         style: function (feature, resolution) {
                             return defaultStyle(feature, resolution);
                         }
-                    })
+                    });
 
                     olMap.addLayer(layerData);
 
@@ -600,6 +660,11 @@ angular.module('geoApp')
                     olMap.on('click', function (evt) {
                         openLoc(evt.pixel);
                     });
+
+                    var layerSwitcher = new ol.control.LayerSwitcher({
+                        // tipLabel: 'Légende' // Optional label for button
+                    });
+                    olMap.addControl(layerSwitcher);
                 }
 
 
@@ -734,35 +799,7 @@ angular.module('geoApp')
                     ]
                 });
 
-
-
-
                 function init() {
-                    if (!$scope.olMap) {
-                        $scope.olMap = new ol.Map({
-                            target: "map",
-                            layers: [basemaps, overlays],
-                            controls: ol.control.defaults({
-                                attributionOptions: ({
-                                    collapsible: true
-                                })
-                            }).extend([
-                                new ol.control.ScaleLine({units: "metric"}),
-                                new ol.control.FullScreen()
-                            ]),
-                            interactions: ol.interaction.defaults().extend([
-                                new ol.interaction.DragRotateAndZoom()
-                            ]),
-                            view: new ol.View({
-                                projection: "EPSG:3857",
-                                center: ol.proj.transform([25.0, 58.4], 'EPSG:4326', 'EPSG:3857'),
-                                zoom: 6,
-                                maxZoom: 16,
-                                minZoom: 1,
-                                restrictedExtent: ol.proj.transformExtent([-10, 52, 2, 62], 'EPSG:4326', 'EPSG:3857')
-                            })
-                        });
-                    }
 
                     function defaultStyle(feature, resolution) {
                         return [
@@ -811,13 +848,6 @@ angular.module('geoApp')
                         $scope.vectorSource.addFeature(feature);
                     });
 
-                    // $scope.layerDataGroup = new ol.layer.Group({
-                    //     title: 'Current localities',
-                    //     layers: [
-                    //         $scope.layerData
-                    //     ]
-                    // });
-
                     $scope.layerData = new ol.layer.Vector({
                         title: "Localities",
                         source: $scope.vectorSource,
@@ -826,7 +856,37 @@ angular.module('geoApp')
                         }
                     });
 
-                    $scope.olMap.addLayer($scope.layerData);
+                    var currentLocalitiesFromTable = new ol.layer.Group({
+                        title: 'Localities from table',
+                        layers: [$scope.layerData]
+                    });
+
+                    if (!$scope.olMap) {
+                        $scope.olMap = new ol.Map({
+                            target: "map",
+                            layers: [basemaps, overlays, currentLocalitiesFromTable],
+                            controls: ol.control.defaults({
+                                attributionOptions: ({
+                                    collapsible: true
+                                })
+                            }).extend([
+                                new ol.control.ScaleLine({units: "metric"}),
+                                new ol.control.FullScreen()
+                            ]),
+                            interactions: ol.interaction.defaults().extend([
+                                new ol.interaction.DragRotateAndZoom()
+                            ]),
+                            view: new ol.View({
+                                projection: "EPSG:3857",
+                                center: ol.proj.transform([25.0, 58.4], 'EPSG:4326', 'EPSG:3857'),
+                                zoom: 6,
+                                maxZoom: 16,
+                                minZoom: 1,
+                                restrictedExtent: ol.proj.transformExtent([-10, 52, 2, 62], 'EPSG:4326', 'EPSG:3857')
+                            })
+                        });
+                    }
+
                     $scope.olMap.getViewport().addEventListener('mousemove', function (evt) {
                         var pixel = $scope.olMap.getEventPixel(evt);
                         displayFeatureInfo(pixel);
