@@ -1,7 +1,7 @@
 angular.module('geoApp').directive('commonDatetimepicker', function () {
     return {
         // TODO: Show date correctly, not in placeholder.
-        template: '<span class=\'col-md-6 form-group\'><input type=\"text\" class=\"form-control\" placeholder=\"\{{field.name}}"' +
+        template: '<span class=\'col-md-6 form-group\'><input type=\"text\" id="date-time-picker" class=\"form-control\" placeholder=\"\{{field.name}}"' +
         ' data-ng-model=\"field.name\" data-uib-datepicker-popup=\"{{dateFormat}}\" ' +
         'data-is-open=\"fromDate.open\" data-datepicker-options=\"datePickerOptions\" ' +
         'data-ng-click=\"fromDate.open = true\"/></span> ',

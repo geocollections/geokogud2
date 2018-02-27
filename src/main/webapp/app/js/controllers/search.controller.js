@@ -116,6 +116,7 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
      */
     function onSearchError(error) {
         console.log(error);
+        $scope.noResults = true;
         // if(configuration.pageSetUp.debugMode) errorService.commonErrorHandler(error);
         setEmptyResponse();
         vm.searchLoadingHandler.stop();

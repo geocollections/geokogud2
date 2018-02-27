@@ -1089,3 +1089,29 @@ table tr > td:first-child {
 /***********************************
  ***  ERROR TEMPLATE STYLES END  ***
  ***********************************/
+
+
+
+/*******************************
+ *** PLACEHOLDER COLOR START ***
+ *******************************/
+
+#date-time-picker::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #FF2F00;
+}
+
+#date-time-picker::-moz-placeholder { /* Firefox 19+ */
+    color: #FF2F00;
+}
+
+#date-time-picker:-ms-input-placeholder { /* IE 10+ */
+    color: #FF2F00;
+}
+
+#date-time-picker:-moz-placeholder { /* Firefox 18- */
+    color: #FF2F00;
+}
+
+/*******************************
+ ***  PLACEHOLDER COLOR END  ***
+ *******************************/
