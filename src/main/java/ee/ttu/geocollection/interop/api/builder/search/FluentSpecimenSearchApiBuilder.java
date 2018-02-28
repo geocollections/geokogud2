@@ -31,10 +31,12 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
     }
 
     public FluentSpecimenSearchApiBuilder queryNameOfFossil(SearchField nameOfFossil) {
-        if (nameOfFossil.getLookUpType().toString().equals("hierarchy")) {
-            buildFieldParameters(SPECIMENIDENTIFICATION__TAXON__TAXON, nameOfFossil);
-        } else {
-            buildMultiSearch(nameOfFossil, SPECIMENIDENTIFICATION__NAME, SPECIMENIDENTIFICATION__TAXON__TAXON);
+        if (nameOfFossil != null) {
+            if (nameOfFossil.getLookUpType().toString().equals("hierarchy")) {
+                buildFieldParameters(SPECIMENIDENTIFICATION__TAXON__TAXON, nameOfFossil);
+            } else {
+                buildMultiSearch(nameOfFossil, SPECIMENIDENTIFICATION__NAME, SPECIMENIDENTIFICATION__TAXON__TAXON);
+            }
         }
         return this;
     }
