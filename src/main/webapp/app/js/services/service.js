@@ -477,6 +477,10 @@ var constructor = function (utils, configuration, $window, $location, $translate
         return text;
     }
 
+    /**
+     * Return boolean value if attachments have certain format.
+     * @param attachments Array of doi attachments
+     */
     function ifDoiAttachmentContainsFiles(attachments) {
         console.log(attachments);
         angular.forEach(attachments, function (attachment) {

@@ -459,7 +459,7 @@
         },
         "MAP": {
           "SEARCH_1": "Found",
-          "SEARCH_2": "georeferenced localities. Show only those or search by",
+          "SEARCH_2": "georeferenced localities. Search by",
           "INPUT_PLACEHOLDER": "Name",
           "SPECIMENS": "Specimens",
           "SAMPLES": "Samples",

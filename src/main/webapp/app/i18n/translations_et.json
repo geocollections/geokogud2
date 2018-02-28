@@ -459,7 +459,7 @@
         },
         "MAP": {
             "SEARCH_1": "Leiti",
-            "SEARCH_2": "geograafilist asukohta. Näita ainult neid või otsige",
+            "SEARCH_2": "geograafilist asukohta. Otsi",
             "INPUT_PLACEHOLDER": "Nimi",
             "SPECIMENS": "Eksemplarid",
             "SAMPLES": "Proovid",

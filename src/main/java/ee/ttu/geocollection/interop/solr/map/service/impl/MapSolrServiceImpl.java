@@ -31,7 +31,7 @@ public class MapSolrServiceImpl implements MapSolrService {
     public SolrResponse findAllLocalitiesUsingFilter(MapFilter filters) {
         SolrQuery requestParams;
         if (!filters.getLocalityName().equals("")) {
-            requestParams = new SolrQuery(filters.getLocalityName())
+            requestParams = new SolrQuery("locality_search:" + filters.getLocalityName())
                     .addFilterQuery("longitude:[* TO *]")
                     .addFilterQuery("latitude:[* TO *]")
                     .addFilterQuery("id:[* TO *]");
