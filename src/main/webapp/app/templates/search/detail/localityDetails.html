@@ -275,7 +275,15 @@
                             <figure class="margin-bottom-30">
 
                                 <a href="{{detailCtrl.service.composeImageUrl(image)}}" class="hover-me" data-fancybox="gallery"
-                                   data-caption="{{detailCtrl.service.setFancyBoxCaption([image.author__agent, image.date_taken, image.date_taken_free, null, image.author_free, image.id])}}">
+                                   data-caption="{{detailCtrl.service.setFancyBoxCaption(
+                                       {
+                                            author: image.author__agent,
+                                            author_free: image.author_free,
+                                            date_taken: image.date_taken,
+                                            date_taken_free: image.date_taken_free,
+                                            copyright_agent: image.copyright_agent__agent,
+                                            id: image.id
+                                       })}}">
 
                                     <show-preview class="img-responsive set-height"
                                                   classes="previewImageDetail img-rounded"

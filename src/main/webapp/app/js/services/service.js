@@ -366,42 +366,102 @@ var constructor = function (utils, configuration, $window, $location, $translate
      * @param arrayOfPictureInfo Image data (author, date, etc)
      * @returns {string} value of caption data for images. (author, date, etc)
      */
-    function setFancyBoxCaption(arrayOfPictureInfo) {
-        // [author, date, date_free, number, author_free, id]
-        if (arrayOfPictureInfo.length > 0) {
-            var estText = "";
-            var engText = "";
+    function setFancyBoxCaption(params) {
+        console.log(params);
 
-            if (arrayOfPictureInfo[0] && arrayOfPictureInfo[0] != null) {
-                estText += "Pildi autor: " + "<strong>" + arrayOfPictureInfo[0] + "</strong>" + "<br>";
-                engText += "Image author: " + "<strong>" + arrayOfPictureInfo[0] + "</strong>" + "<br>";
-            }
-            if (arrayOfPictureInfo[0] == null && arrayOfPictureInfo[4] && arrayOfPictureInfo[4] != null) {
-                estText += "Pildi autor: " + "<strong>" + arrayOfPictureInfo[4] + "</strong>" + "<br>";
-                engText += "Image author: " + "<strong>" + arrayOfPictureInfo[4] + "</strong>" + "<br>";
-            }
-            if (arrayOfPictureInfo[1] && arrayOfPictureInfo[1] != null) {
-                estText += "Pildistamise aeg: " + "<strong>" + new Date(arrayOfPictureInfo[1]).toLocaleDateString('et-EE') + "</strong>" + "<br>";
-                engText += "Date taken: " + "<strong>" + new Date(arrayOfPictureInfo[1]).toDateString() + "</strong>" + "<br>";
-            }
-            if (arrayOfPictureInfo[1] == null && arrayOfPictureInfo[2] && arrayOfPictureInfo[2] != null) {
-                estText += "Pildistamise aeg: " + "<strong>" +arrayOfPictureInfo[2] + "</strong>" + "<br>";
-                engText += "Date taken: " + "<strong>" + arrayOfPictureInfo[2] + "</strong>" + "<br>";
-            }
-            if (arrayOfPictureInfo[3] && arrayOfPictureInfo[3] != null) {
-                estText = "Pildi nr. " + arrayOfPictureInfo[3] + "<br>" + estText;
-                engText = "Image no. " + arrayOfPictureInfo[3] + "<br>" + engText;
-            }
-            if (arrayOfPictureInfo[5] && arrayOfPictureInfo[5] != null) {
-                var url = $window.location.origin + '/image/';
-                if ($stateParams.type === 'specimens') {
-                    url = $window.location.origin + '/specimen_image/'
-                }
-                estText += "<strong>" + "<a target='_blank' href='" + url + arrayOfPictureInfo[5] + "'>Mine pildi detail vaatele</a></strong>";
-                engText += "<strong>" + "<a target='_blank' href='" + url + arrayOfPictureInfo[5] + "'>Go to picture detail view</a></strong>";
-            }
-            return $translate.use() === 'et' ? estText : engText;
+        var text = "";
+
+        var author = "Author: ";
+        var date = "Date: ";
+        var license = "Licence: ";
+        var detailView = "Picture detail view";
+
+        if ($translate.use() === 'et') {
+            author = "Autor: ";
+            date = "Kuupäev: ";
+            license = "Litsents: ";
+            detailView = "Pildi detailvaade";
         }
+
+        if (params.author && params.author != null) {
+            text +=
+                "<div>" +
+                    "<span>"+author+"</span>" +
+                    "<strong>" +
+                        "<span>"+params.author+"</span>";
+            if (params.copyright_agent && params.copyright_agent != null) {
+                text +=
+                        "<span> / </span>" +
+                        "<span>"+params.copyright_agent+"</span>" +
+                    "</strong>" +
+                "</div>";
+            }
+
+        } else if (params.author_free && params.author_free != null) {
+            text +=
+                "<div>" +
+                    "<span>"+author+"</span>" +
+                    "<strong>" +
+                        "<span>"+params.author_free+"</span>";
+            if (params.copyright_agent && params.copyright_agent != null) {
+                text +=
+                    "<span> / </span>" +
+                        "<span>"+params.copyright_agent+"</span>" +
+                    "</strong>" +
+                "</div>";
+            }
+        } else if (params.copyright_agent && params.copyright_agent != null) {
+            text +=
+                "<div>" +
+                    "<span>"+author+"</span>" +
+                    "<strong>" +
+                        "<span>"+params.copyright_agent+"</span>" +
+                    "</strong>" +
+                "</div>";
+        }
+
+        return text;
+
+
+
+        // if (arrayOfPictureInfo.length > 0) {
+        //     var estText = "";
+        //     var engText = "";
+        //
+        //     if (arrayOfPictureInfo[0] && arrayOfPictureInfo[0] != null) {
+        //         estText += "Autor: " + "<strong>" + arrayOfPictureInfo[0] + "</strong>" + "<br>";
+        //         engText += "Author: " + "<strong>" + arrayOfPictureInfo[0] + "</strong>" + "<br>";
+        //     }
+        //     if (arrayOfPictureInfo[0] == null && arrayOfPictureInfo[4] && arrayOfPictureInfo[4] != null) {
+        //         estText += "Aautor: " + "<strong>" + arrayOfPictureInfo[4] + "</strong>" + "<br>";
+        //         engText += "Author: " + "<strong>" + arrayOfPictureInfo[4] + "</strong>" + "<br>";
+        //     }
+        //     if (arrayOfPictureInfo[6] && arrayOfPictureInfo[6] != null) {
+        //         estText += " / " + "<strong>" + arrayOfPictureInfo[6] + "</strong>" + "<br>";
+        //         engText += " /" + "<strong>" + arrayOfPictureInfo[6] + "</strong>" + "<br>";
+        //     }
+        //     if (arrayOfPictureInfo[1] && arrayOfPictureInfo[1] != null) {
+        //         estText += "Pildistamise aeg: " + "<strong>" + new Date(arrayOfPictureInfo[1]).toLocaleDateString('et-EE') + "</strong>" + "<br>";
+        //         engText += "Date taken: " + "<strong>" + new Date(arrayOfPictureInfo[1]).toDateString() + "</strong>" + "<br>";
+        //     }
+        //     if (arrayOfPictureInfo[1] == null && arrayOfPictureInfo[2] && arrayOfPictureInfo[2] != null) {
+        //         estText += "Pildistamise aeg: " + "<strong>" +arrayOfPictureInfo[2] + "</strong>" + "<br>";
+        //         engText += "Date taken: " + "<strong>" + arrayOfPictureInfo[2] + "</strong>" + "<br>";
+        //     }
+        //     if (arrayOfPictureInfo[3] && arrayOfPictureInfo[3] != null) {
+        //         estText = "Pildi nr. " + arrayOfPictureInfo[3] + "<br>" + estText;
+        //         engText = "Image no. " + arrayOfPictureInfo[3] + "<br>" + engText;
+        //     }
+        //     if (arrayOfPictureInfo[5] && arrayOfPictureInfo[5] != null) {
+        //         var url = $window.location.origin + '/image/';
+        //         if ($stateParams.type === 'specimens') {
+        //             url = $window.location.origin + '/specimen_image/'
+        //         }
+        //         estText += "<strong>" + "<a target='_blank' href='" + url + arrayOfPictureInfo[5] + "'>Mine pildi detail vaatele</a></strong>";
+        //         engText += "<strong>" + "<a target='_blank' href='" + url + arrayOfPictureInfo[5] + "'>Go to picture detail view</a></strong>";
+        //     }
+        //     return $translate.use() === 'et' ? estText : engText;
+        // }
     }
 
     function ifDoiAttachmentContainsFiles(attachments) {
