@@ -267,6 +267,7 @@
             "KEYWORDS": "Märksõnad",
             "TABLE": {
                 "REFERENCE": "Viide",
+                "JOURNAL_BOOK": "Ajakiri / Kogumik",
                 "JOURNAL": "Ajakiri",
                 "BOOK": "Kogumik",
                 "PP": "Lehed",

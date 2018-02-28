@@ -18,22 +18,21 @@
     <div class="table-responsive">
         <table class="table table-bordered table-hover mobile-padding-fix" id="table-search">
             <thead class="thead-default">
-            <tr>
-                <th><sort-field value = "id" name="SEARCH.ANALYSES.TABLE.ID"></sort-field></th>
-                <th><sort-field value = "sample" name="SEARCH.ANALYSES.TABLE.SAMPLE_ID"></sort-field></th>
-                <th><sort-field value = "sample__locality__locality,sample__locality__locality_en" name="SEARCH.ANALYSES.TABLE.LOCALITY"></sort-field></th>
-                <th><sort-field value = "sample__depth" name="SEARCH.ANALYSES.TABLE.DEPTH_M"></sort-field></th>
-                <th>
-                    <sort-field value = "sample__stratigraphy__stratigraphy,sample__stratigraphy__stratigraphy_en"
-                                name="SEARCH.ANALYSES.TABLE.STRATIGRAPHY">
-
-                    </sort-field> | <em>{{ 'SEARCH.ANALYSES.TABLE.LITHOSTRATIGRAPHY' | translate }}</em>
-                </th>
-                <th><sort-field value = "sample__stratigraphy_bed" name="SEARCH.ANALYSES.TABLE.BED_ID"></sort-field></th>
-                <th><sort-field value = "analysis_method__analysis_method,analysis_method__method_en" name="SEARCH.ANALYSES.TABLE.METHOD"></sort-field></th>
-                <th><sort-field value = "lab" name="SEARCH.ANALYSES.TABLE.LAB"></sort-field></th>
-            </tr>
+                <tr>
+                    <th> {{ 'SEARCH.ANALYSES.TABLE.ID' | translate }} </th>
+                    <th> {{ 'SEARCH.ANALYSES.TABLE.SAMPLE_ID' | translate }} </th>
+                    <th> {{ 'SEARCH.ANALYSES.TABLE.LOCALITY' | translate }} </th>
+                    <th> {{ 'SEARCH.ANALYSES.TABLE.DEPTH_M' | translate }} </th>
+                    <th> {{ 'SEARCH.ANALYSES.TABLE.STRATIGRAPHY' | translate }}
+                        |
+                        <em>{{ 'SEARCH.ANALYSES.TABLE.LITHOSTRATIGRAPHY' | translate }}</em>
+                    </th>
+                    <th> {{ 'SEARCH.ANALYSES.TABLE.BED_ID' | translate }} </th>
+                    <th> {{ 'SEARCH.ANALYSES.TABLE.METHOD' | translate }} </th>
+                    <th> {{ 'SEARCH.ANALYSES.TABLE.LAB' | translate }} </th>
+                </tr>
             </thead>
+
             <tbody>
             <tr data-ng-repeat="entity in response.results">
 

@@ -312,7 +312,7 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
                 '"specimenNumber":{"lookUpType":"icontains"},' +
                 '"collectionNumber":{"lookUpType":"icontains"},' +
                 '"classification":{"lookUpType":"hierarchy"},' +
-                '"fossilName":{"lookUpType":"icontains"},' +
+                '"fossilName":{"lookUpType":"hierarchy"},' +
                 '"mineralRock":{"lookUpType":"icontains"},' +
                 '"adminUnit":{"lookUpType":"icontains"},' +
                 '"locality":{"lookUpType":"icontains"},' +

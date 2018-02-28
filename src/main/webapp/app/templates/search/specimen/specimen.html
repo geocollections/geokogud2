@@ -89,8 +89,8 @@
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.SPECIMENS.NAME_OF_ROCK' | translate }}</b>
-                                        <selectdefault custom-css="searchCriterionType"
-                                                       ng-model="searchParameters.fossilName.lookUpType"></selectdefault>
+                                        <selecthierarchy custom-css="searchCriterionType"
+                                                       ng-model="searchParameters.fossilName.lookUpType"></selecthierarchy>
                                     </div>
                                     <div class="col-md-12 medium-padding">
                                         <autocomplete-field ng-model="searchParameters.fossilName.name" sort-by="{{searchParameters.fossilName.lookUpType}}" table="taxon" en="null" et="taxon"/>

@@ -18,16 +18,16 @@
     <div class="table-responsive">
         <table class="table table-bordered table-hover mobile-padding-fix" id="table-search">
             <thead class="thead-default">
-            <tr>
-                <!--<th><sort-field value = "id" name="SEARCH.DOI.TABLE.ID"></sort-field></th>-->
-                <th><sort-field value = "identifier" name="SEARCH.DOI.TABLE.DOI"></sort-field></th>
-                <th><sort-field value = "reference__author" name="SEARCH.DOI.TABLE.AUTHOR"></sort-field></th>
-                <th><sort-field value = "reference__year" name="SEARCH.DOI.TABLE.YEAR"></sort-field></th>
-                <th><sort-field value = "reference__title" name="SEARCH.DOI.TABLE.TITLE"></sort-field></th>
-                <th><sort-field value = "resource_type__value" name="SEARCH.DOI.TABLE.TYPE"></sort-field></th>
-                <th><sort-field value = "datacite_created" name="SEARCH.DOI.TABLE.DATACITE_REGISTRATION"></sort-field></th>
-            </tr>
+                <tr>
+                    <th>{{ 'SEARCH.DOI.TABLE.DOI' | translate }}</th>
+                    <th>{{ 'SEARCH.DOI.TABLE.AUTHOR' | translate }}</th>
+                    <th>{{ 'SEARCH.DOI.TABLE.YEAR' | translate }}</th>
+                    <th>{{ 'SEARCH.DOI.TABLE.TITLE' | translate }}</th>
+                    <th>{{ 'SEARCH.DOI.TABLE.TYPE' | translate }}</th>
+                    <th>{{ 'SEARCH.DOI.TABLE.DATACITE_REGISTRATION' | translate }}</th>
+                </tr>
             </thead>
+
             <tbody>
             <tr data-ng-repeat="entity in response.results">
                 <td data-title="{{ 'SEARCH.DOI.TABLE.DOI' | translate }}">

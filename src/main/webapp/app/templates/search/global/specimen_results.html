@@ -19,18 +19,16 @@
         <table class="table table-bordered table-hover mobile-padding-fix" id="table-search">
             <thead class="thead-default">
             <tr>
-                <th><sort-field value = "specimen_id" name="SEARCH.SPECIMENS.NUMBER"></sort-field></th>
-                <th><sort-field value = "specimen_nr" name="SEARCH.SPECIMENS.OLD_SPECIMEN_NUMBER"></sort-field></th>
-                <th><sort-field value = "specimenidentification__name" name="SEARCH.SPECIMENS.NAME_PART_ELEMENT"></sort-field></th>
-                <th><sort-field value = "locality__locality,locality__locality_en" name="SEARCH.SPECIMENS.LOCALITY"></sort-field></th>
-                <th><sort-field value = "depth" name="SEARCH.SPECIMENS.DEPHT_M"></sort-field></th>
-                <th>
-                    <sort-field value = "stratigraphy__stratigraphy,stratigraphy__stratigraphy_en"
-                                name="SEARCH.SPECIMENS.STRATIGRAPHY">
-                    </sort-field> | <em> {{ 'SEARCH.SPECIMENS.LITHOSTRATIGRAPHY' | translate }} </em>
+                <th>{{ 'SEARCH.SPECIMENS.NUMBER' | translate }}</th>
+                <th>{{ 'SEARCH.SPECIMENS.OLD_SPECIMEN_NUMBER' | translate }}</th>
+                <th>{{ 'SEARCH.SPECIMENS.NAME_PART_ELEMENT' | translate }}</th>
+                <th>{{ 'SEARCH.SPECIMENS.LOCALITY' | translate }}</th>
+                <th>{{ 'SEARCH.SPECIMENS.DEPHT_M' | translate }}</th>
+                <th>{{ 'SEARCH.SPECIMENS.STRATIGRAPHY' | translate }}
+                    | <em> {{ 'SEARCH.SPECIMENS.LITHOSTRATIGRAPHY' | translate }} </em>
                 </th>
-                <th><sort-field value = "agent_collected__agent" name="SEARCH.SPECIMENS.COLLECTOR"></sort-field></th>
-                <th><sort-field value = "original_status__value,original_status__value_en" name="SEARCH.SPECIMENS.STATUS"></sort-field></th>
+                <th>{{ 'SEARCH.SPECIMENS.COLLECTOR' | translate }}</th>
+                <th>{{ 'SEARCH.SPECIMENS.STATUS' | translate }}</th>
                 <th>{{ 'SEARCH.SPECIMENS.IMAGES' | translate }}</th>
             </tr>
             </thead>

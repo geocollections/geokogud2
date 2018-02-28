@@ -267,6 +267,7 @@
             "KEYWORDS": "Keywords",
             "TABLE": {
                 "REFERENCE": "Reference",
+                "JOURNAL_BOOK": "Journal / Book",
                 "JOURNAL": "Journal",
                 "BOOK": "Book",
                 "PP": "Pages",

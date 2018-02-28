@@ -17,19 +17,20 @@
     <div class="table-responsive">
         <table class="table table-bordered table-hover mobile-padding-fix" id="table-search">
             <thead class="thead-default">
-            <tr>
-                <th><sort-field value = "id" name="SEARCH.STRATIGRAPHY.TABLE.ID"></sort-field></th>
-                <th><sort-field value = "stratigraphy,stratigraphy_en" name="SEARCH.STRATIGRAPHY.TABLE.STRATIGRAPHY"></sort-field></th>
-                <th><sort-field value = "index_main" name="SEARCH.STRATIGRAPHY.TABLE.INDEX"></sort-field></th>
-                <th></th>
-                <th><sort-field value = "type__value,type__value_en" name="SEARCH.STRATIGRAPHY.TABLE.TYPE"></sort-field></th>
-                <th><sort-field value = "rank__value,rank__value_en" name="SEARCH.STRATIGRAPHY.TABLE.RANK"></sort-field></th>
-                <th><sort-field value = "scope__value,scope__value_en" name="SEARCH.STRATIGRAPHY.TABLE.SCOPE"></sort-field></th>
-                <th><sort-field value = "age_chronostratigraphy__stratigraphy,age_chronostratigraphy__stratigraphy_en" name="SEARCH.STRATIGRAPHY.TABLE.AGE"></sort-field></th>
-                <th><sort-field value = "age_top" name="SEARCH.STRATIGRAPHY.TABLE.AGE_MA"></sort-field></th>
-                <th><sort-field value = "parent__stratigraphy,parent__stratigraphy_en" name="SEARCH.STRATIGRAPHY.TABLE.BELONGS_TO"></sort-field></th>
-            </tr>
+                <tr>
+                    <th>{{ 'SEARCH.STRATIGRAPHY.TABLE.ID' | translate }}</th>
+                    <th>{{ 'SEARCH.STRATIGRAPHY.TABLE.STRATIGRAPHY' | translate }}</th>
+                    <th>{{ 'SEARCH.STRATIGRAPHY.TABLE.INDEX' | translate }}</th>
+                    <th></th>
+                    <th>{{ 'SEARCH.STRATIGRAPHY.TABLE.TYPE' | translate }}</th>
+                    <th>{{ 'SEARCH.STRATIGRAPHY.TABLE.RANK' | translate }}</th>
+                    <th>{{ 'SEARCH.STRATIGRAPHY.TABLE.SCOPE' | translate }}</th>
+                    <th>{{ 'SEARCH.STRATIGRAPHY.TABLE.AGE' | translate }}</th>
+                    <th>{{ 'SEARCH.STRATIGRAPHY.TABLE.AGE_MA' | translate }}</th>
+                    <th>{{ 'SEARCH.STRATIGRAPHY.TABLE.BELONGS_TO' | translate }}</th>
+                </tr>
             </thead>
+
             <tbody>
             <tr data-ng-repeat="entity in response.results">
                 <td style="font-weight: normal;" data-title="{{ 'SEARCH.STRATIGRAPHY.TABLE.ID' | translate }}">{{entity.id}}</td>
