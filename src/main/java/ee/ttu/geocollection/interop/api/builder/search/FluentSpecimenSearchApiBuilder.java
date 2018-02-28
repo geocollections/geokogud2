@@ -26,7 +26,7 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
     }
 
     public FluentSpecimenSearchApiBuilder queryClassification(SearchField classification) {
-        buildMultiSearch(classification, CLASSIFICATION__CLASS_FIELD, CLASSIFICATION__CLASS_EN);
+        buildMultiSearch(classification, CLASSIFICATION__CLASS_FIELD, CLASSIFICATION__CLASS_EN, CLASSIFICATION__CLASS_LAT);
         return this;
     }
 

@@ -194,6 +194,7 @@ public class ApiFields {
     public static final String COLL_ID = "coll_id";
     public static final String CLASSIFICATION__CLASS_FIELD = "classification__class_field";
     public static final String CLASSIFICATION__CLASS_EN = "classification__class_en";
+    public static final String CLASSIFICATION__CLASS_LAT = "classification__class_lat";
     public static final String PART = "part";
     public static final String ORIGINAL_STATUS__VALUE = "original_status__value";
     public static final String ORIGINAL_STATUS__VALUE_EN = "original_status__value_en";
