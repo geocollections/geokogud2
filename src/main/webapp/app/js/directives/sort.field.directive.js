@@ -10,7 +10,6 @@ angular.module('geoApp').directive('sortField', function () {
         scope: {
             name: '@',
             value: '@'
-
         },
         controller: ['$scope','$translate', function ($scope,$translate) {
             function localizePredicate(predicate) {
@@ -23,10 +22,9 @@ angular.module('geoApp').directive('sortField', function () {
             }
 
             $scope.order = function (predicate) {
-                $scope.predicate = predicate;
-                predicate = localizePredicate(predicate);
-                $scope.$parent.sortByAsc = ($scope.$parent.searchParameters.sortField.sortBy === predicate ? !$scope.$parent.sortByAsc : true);
-                $scope.$parent.searchParameters.sortField.sortBy = predicate;
+                $scope.predicate = localizePredicate(predicate);
+                $scope.$parent.sortByAsc = ($scope.$parent.searchParameters.sortField.sortBy === $scope.predicate ? !$scope.$parent.sortByAsc : true);
+                $scope.$parent.searchParameters.sortField.sortBy = $scope.predicate;
                 !$scope.$parent.sortByAsc ? $scope.$parent.searchParameters.sortField.order = "ASCENDING" : $scope.$parent.searchParameters.sortField.order = "DESCENDING";
                 $scope.$parent.searchParameters.page = 1;
                 $scope.$parent.search();

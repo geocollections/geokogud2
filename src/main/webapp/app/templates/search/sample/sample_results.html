@@ -18,7 +18,10 @@
                 <th></th>
                 <th>
                     <sort-field value = "stratigraphy__stratigraphy,stratigraphy__stratigraphy_en" name="SEARCH.SAMPLES.STRATIGRAPHY"></sort-field>
-                    | <em> {{ 'SEARCH.SAMPLES.LITHOSTRATIGRAPHY' | translate }} </em>
+                    |
+                    <em>
+                        <sort-field value = "lithostratigraphy__stratigraphy,lithostratigraphy__stratigraphy_en" name="SEARCH.SAMPLES.LITHOSTRATIGRAPHY" />
+                    </em>
                 </th>
                 <th><sort-field value = "agent_collected__agent" name="SEARCH.SAMPLES.COLLECTOR"></sort-field></th>
                 <th><sort-field value = "mass" name="SEARCH.SAMPLES.WEIGHT"></sort-field></th>

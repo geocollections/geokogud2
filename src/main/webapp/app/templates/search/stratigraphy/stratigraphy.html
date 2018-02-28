@@ -44,8 +44,8 @@
                                 <div class="row searchCriterion">
                                     <div class="col-md-12  medium-padding">
                                         <b>{{ 'SEARCH.STRATIGRAPHY.STRATIGRAPHY' | translate }}</b>
-                                        <selecthierarchy custom-css="searchCriterionType"
-                                                         ng-model="searchParameters.stratigraphy.lookUpType"></selecthierarchy>
+                                        <selectdefault custom-css="searchCriterionType"
+                                                         ng-model="searchParameters.stratigraphy.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
                                         <autocomplete-field ng-model="searchParameters.stratigraphy.name" sort-by="{{searchParameters.stratigraphy.lookUpType}}" table="stratigraphy" en="stratigraphy_en" et="stratigraphy"/>

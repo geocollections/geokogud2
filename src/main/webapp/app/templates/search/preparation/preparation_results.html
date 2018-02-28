@@ -16,8 +16,13 @@
                     <th>
                         <sort-field value = "sample__stratigraphy__stratigraphy,sample__stratigraphy__stratigraphy_en"
                                     name="SEARCH.PREPARATIONS.TABLE.STRATIGRAPHY">
-
-                        </sort-field> | <em>{{ 'SEARCH.PREPARATIONS.TABLE.LITHOSTRATIGRAPHY' | translate }}</em>
+                        </sort-field>
+                        |
+                        <em>
+                            <sort-field value = "sample__lithostratigraphy__stratigraphy,sample__lithostratigraphy__stratigraphy_en"
+                                        name="SEARCH.PREPARATIONS.TABLE.LITHOSTRATIGRAPHY">
+                            </sort-field>
+                        </em>
                     </th>
                     <th><sort-field value = "sample__agent_collected__agent" name="SEARCH.PREPARATIONS.TABLE.COLLECTOR"></sort-field></th>
                     <th><sort-field value = "sample__mass" name="SEARCH.PREPARATIONS.TABLE.WEIGHT"/></th>

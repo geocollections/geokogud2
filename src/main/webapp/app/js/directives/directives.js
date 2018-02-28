@@ -316,13 +316,13 @@ angular.module('geoApp')
     return {
         template:
             '<select class="{{selectCss}}" ng-model="field">' +
-                '<option value="icontains" selected="selected">{{ \'SEARCH.SELECT.CONTAINS\' | translate }}</option>' +
+                '<option value="hierarchy" selected="selected">{{ \'SEARCH.SELECT.HIERARCHY\' | translate }}</option>' +
+                '<option value="icontains">{{ \'SEARCH.SELECT.CONTAINS\' | translate }}</option>' +
                 '<option value="iexact">{{ \'SEARCH.SELECT.EQUALS\' | translate }}</option>' +
                 '<option value="istartswith">{{ \'SEARCH.SELECT.STARTSWITH\' | translate }}</option>' +
                 '<option value="iendswith">{{ \'SEARCH.SELECT.ENDSWITH\' | translate }}</option>' +
                 /*'<option value="doesnotcontain">{{ \'SEARCH.SELECT.DOESNOTCONTAIN\' | translate }}</option>' +*/
                 '<option value="in">{{ \'SEARCH.SELECT.ISINLIST\' | translate }}</option>' +
-                '<option value="hierarchy">{{ \'SEARCH.SELECT.HIERARCHY\' | translate }}</option>' +
             '</select>',
         scope: {
             field: '=?ngModel',
@@ -331,13 +331,13 @@ angular.module('geoApp')
         link: function (scope) {
             scope.selectCss = angular.isUndefined(scope.customCss) ? 'col-md-4 form-control' : scope.customCss;
             scope.defaultOptions = [
+                {name: 'hierarchy', value: 'hierarchy'},
                 {name: 'contains', value: 'icontains'},
                 {name: 'equals', value: 'iexact'},
                 {name: 'start with', value: 'istartswith'},
                 {name: 'ends with', value: 'iendsswith'},
          /*       {name: 'does not contain', value: 'doesnotcontain'},*/
-                {name: 'is in list', value: 'in'},
-                {name: 'hierarchy', value: 'hierarchy'}
+                {name: 'is in list', value: 'in'}
             ];
 
             scope.$watch('field', function (data) {

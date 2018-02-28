@@ -383,6 +383,8 @@ module.filter('split', function() {
 module.factory("SearchFactory", ['$http', 'configuration', function($http, configuration) {
     return {
         autocompleteSearch: function (table, term, sortField, searchField) {
+            if (sortField === 'hierarchy') sortField = 'icontains';
+            console.log(sortField);
             // console.log(table);
             // console.log(term);
             // console.log(sortField);

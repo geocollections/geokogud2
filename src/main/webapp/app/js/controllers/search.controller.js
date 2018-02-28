@@ -311,12 +311,12 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
                 '"searchImages":{"lookUpType":"exact","name":null},' +
                 '"specimenNumber":{"lookUpType":"icontains"},' +
                 '"collectionNumber":{"lookUpType":"icontains"},' +
-                '"classification":{"lookUpType":"icontains"},' +
+                '"classification":{"lookUpType":"hierarchy"},' +
                 '"fossilName":{"lookUpType":"icontains"},' +
                 '"mineralRock":{"lookUpType":"icontains"},' +
                 '"adminUnit":{"lookUpType":"icontains"},' +
                 '"locality":{"lookUpType":"icontains"},' +
-                '"stratigraphy":{"lookUpType":"icontains"},' +
+                '"stratigraphy":{"lookUpType":"hierarchy"},' +
                 '"id":{"lookUpType":"iexact"},' +
                 '"depthSince":{"lookUpType":"gte"},' +
                 '"depthTo":{"lookUpType":"lte"},' +
@@ -335,7 +335,7 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
                 '"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],' +
                 '"sampleNumber":{"lookUpType":"icontains"},' +
                 '"locality":{"lookUpType":"icontains"},' +
-                '"stratigraphy":{"lookUpType":"icontains"},' +
+                '"stratigraphy":{"lookUpType":"hierarchy"},' +
                 '"stratigraphyBed":{"lookUpType":"icontains"},' +
                 '"agent":{"lookUpType":"icontains"},' +
                 '"id":{"lookUpType":"iexact"},' +
@@ -356,7 +356,7 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
                 '"dbs":["GIT","TUG","ELM","TUGO","MUMU","EGK"],' +
                 '"drillcore":{"lookUpType":"icontains"},' +
                 '"country":{"lookUpType":"icontains"},' +
-                '"stratigraphy":{"lookUpType":"icontains"},' +
+                '"stratigraphy":{"lookUpType":"hierarchy"},' +
                 '"storageLocation":{"lookUpType":"icontains"},' +
                 '"id":{"lookUpType":"iexact"},' +
                 '"adminUnit":{"lookUpType":"icontains"},' +
@@ -372,7 +372,7 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
                 '"number":{"lookUpType":"icontains"},' +
                 '"country":{"lookUpType":"icontains"},' +
                 '"adminUnit":{"lookUpType":"icontains"},' +
-                '"stratigraphy":{"lookUpType":"icontains"},' +
+                '"stratigraphy":{"lookUpType":"hierarchy"},' +
                 '"reference":{"lookUpType":"icontains"},' +
                 '"id":{"lookUpType":"iexact"},' +
                 '"maPaId":{"lookUpType":"iexact"},' +
@@ -413,7 +413,7 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
             $scope.searchParameters = JSON.parse(
                 '{"id":{"lookUpType":"iexact"},' +
                 '"locality":{"lookUpType":"icontains"},' +
-                '"stratigraphy":{"lookUpType":"icontains"},' +
+                '"stratigraphy":{"lookUpType":"hierarchy"},' +
                 '"stratigraphyBed":{"lookUpType":"icontains"},' +
                 '"analysisMethod":{"lookUpType":"icontains"},' +
                 '"componentAnalysed":{"lookUpType":"icontains"},' +
@@ -429,7 +429,7 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
             $scope.searchParameters = JSON.parse(
                 '{"number":{"lookUpType":"icontains"},' +
                 '"locality":{"lookUpType":"icontains"},' +
-                '"stratigraphy":{"lookUpType":"icontains"},' +
+                '"stratigraphy":{"lookUpType":"hierarchy"},' +
                 '"collector":{"lookUpType":"icontains"},' +
                 '"description":{"lookUpType":"icontains"},' +
                 '"speciesRecovered":{"lookUpType":"icontains"},' +

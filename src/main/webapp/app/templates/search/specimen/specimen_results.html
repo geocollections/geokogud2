@@ -12,13 +12,16 @@
                 <tr>
                     <th><sort-field value = "id" name="SEARCH.SPECIMENS.NUMBER"></sort-field></th>
                     <th><sort-field value = "specimen_nr" name="SEARCH.SPECIMENS.OLD_SPECIMEN_NUMBER"></sort-field></th>
-                    <th><sort-field value = "specimenidentification__name" name="SEARCH.SPECIMENS.NAME_PART_ELEMENT"></sort-field></th>
+                    <th><sort-field value = "specimenidentification__taxon__taxon" name="SEARCH.SPECIMENS.NAME_PART_ELEMENT"></sort-field></th>
                     <th><sort-field value = "locality__locality,locality__locality_en" name="SEARCH.SPECIMENS.LOCALITY"></sort-field></th>
                     <th><sort-field value = "depth" name="SEARCH.SPECIMENS.DEPHT_M"></sort-field></th>
                     <th>
                         <sort-field value = "stratigraphy__stratigraphy,stratigraphy__stratigraphy_en"
-                                    name="SEARCH.SPECIMENS.STRATIGRAPHY">
-                        </sort-field> | <em> {{ 'SEARCH.SPECIMENS.LITHOSTRATIGRAPHY' | translate }} </em>
+                                    name="SEARCH.SPECIMENS.STRATIGRAPHY"/>
+                        |
+                        <em>
+                            <sort-field value="lithostratigraphy__stratigraphy,lithostratigraphy__stratigraphy_en" name="SEARCH.SPECIMENS.LITHOSTRATIGRAPHY"/>
+                        </em>
                     </th>
                     <th><sort-field value = "agent_collected__agent" name="SEARCH.SPECIMENS.COLLECTOR"></sort-field></th>
                     <th><sort-field value = "original_status__value,original_status__value_en" name="SEARCH.SPECIMENS.STATUS"></sort-field></th>

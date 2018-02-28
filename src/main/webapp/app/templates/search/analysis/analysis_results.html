@@ -16,12 +16,16 @@
                 <th>
                     <sort-field value = "sample__stratigraphy__stratigraphy,sample__stratigraphy__stratigraphy_en"
                                 name="SEARCH.ANALYSES.TABLE.STRATIGRAPHY">
-
-                    </sort-field> | <em>{{ 'SEARCH.ANALYSES.TABLE.LITHOSTRATIGRAPHY' | translate }}</em>
+                    </sort-field>
+                    |
+                    <em>
+                        <sort-field value = "sample__lithostratigraphy__stratigraphy,sample__lithostratigraphy__stratigraphy_en"
+                                    name="SEARCH.ANALYSES.TABLE.LITHOSTRATIGRAPHY"></sort-field>
+                    </em>
                 </th>
                 <th><sort-field value = "sample__stratigraphy_bed" name="SEARCH.ANALYSES.TABLE.BED_ID"></sort-field></th>
                 <th><sort-field value = "analysis_method__analysis_method,analysis_method__method_en" name="SEARCH.ANALYSES.TABLE.METHOD"></sort-field></th>
-                <th><sort-field value = "lab" name="SEARCH.ANALYSES.TABLE.LAB"></sort-field></th>
+                <th><sort-field value = "lab_txt" name="SEARCH.ANALYSES.TABLE.LAB"></sort-field></th>
             </tr>
             </thead>
             <tbody>

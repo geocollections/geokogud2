@@ -267,7 +267,8 @@
             "KEYWORDS": "Märksõnad",
             "TABLE": {
                 "REFERENCE": "Viide",
-                "JOURNAL_BOOK": "Ajakiri / kogumik",
+                "JOURNAL": "Ajakiri",
+                "BOOK": "Kogumik",
                 "PP": "Lehed",
                 "DOI": "DOI",
                 "REMARKS": "Lisainfo",
