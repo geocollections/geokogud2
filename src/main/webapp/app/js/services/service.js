@@ -363,36 +363,49 @@ var constructor = function (utils, configuration, $window, $location, $translate
 
     /**
      * Builds caption data for images in fancybox gallery.
-     * @param arrayOfPictureInfo Image data (author, date, etc)
+     * @param params Image data (author, date, etc)
      * @returns {string} value of caption data for images. (author, date, etc)
      */
     function setFancyBoxCaption(params) {
-        console.log(params);
-
         var text = "";
-
         var author = "Author: ";
         var date = "Date: ";
-        var license = "Licence: ";
+        var licence = "Licence: ";
         var detailView = "Picture detail view";
+        var url = $window.location.origin + '/image/';
+
+        if ($stateParams.type === 'specimens') {
+            url = $window.location.origin + '/specimen_image/'
+        }
+
+        if (params.date_taken && params.date_taken != null) {
+            params.date_taken = new Date(params.date_taken).toDateString();
+        }
 
         if ($translate.use() === 'et') {
             author = "Autor: ";
             date = "Kuupäev: ";
-            license = "Litsents: ";
+            licence = "Litsents: ";
             detailView = "Pildi detailvaade";
+            if (params.date_taken && params.date_taken != null) {
+                params.date_taken = new Date(params.date_taken).toLocaleDateString('et-EE')
+            }
+            if (params.licence_url && params.licence_url != null) {
+                params.licence_url_en = params.licence_url;
+            }
         }
 
+        // AUTHOR BLOCK START
         if (params.author && params.author != null) {
             text +=
                 "<div>" +
-                    "<span>"+author+"</span>" +
-                    "<strong>" +
-                        "<span>"+params.author+"</span>";
+                    "<span>" + author + "</span>" +
+                    "<strong><span>" + params.author + "</span></strong>";
             if (params.copyright_agent && params.copyright_agent != null) {
                 text +=
+                    "<strong>" +
                         "<span> / </span>" +
-                        "<span>"+params.copyright_agent+"</span>" +
+                        "<span>" + params.copyright_agent + "</span>" +
                     "</strong>" +
                 "</div>";
             }
@@ -400,68 +413,68 @@ var constructor = function (utils, configuration, $window, $location, $translate
         } else if (params.author_free && params.author_free != null) {
             text +=
                 "<div>" +
-                    "<span>"+author+"</span>" +
-                    "<strong>" +
-                        "<span>"+params.author_free+"</span>";
+                    "<span>" + author + "</span>" +
+                    "<strong><span>"+params.author_free+"</span></strong>";
             if (params.copyright_agent && params.copyright_agent != null) {
                 text +=
-                    "<span> / </span>" +
-                        "<span>"+params.copyright_agent+"</span>" +
+                    "<strong>" +
+                        "<span> / </span>" +
+                        "<span>" + params.copyright_agent + "</span>" +
                     "</strong>" +
                 "</div>";
             }
         } else if (params.copyright_agent && params.copyright_agent != null) {
             text +=
                 "<div>" +
-                    "<span>"+author+"</span>" +
+                    "<span>" + author + "</span>" +
                     "<strong>" +
-                        "<span>"+params.copyright_agent+"</span>" +
+                        "<span>" + params.copyright_agent + "</span>" +
                     "</strong>" +
                 "</div>";
         }
+        // AUTHOR BLOCK END
+
+        // DATE BLOCK START
+        if (params.date_taken && params.date_taken != null) {
+            text +=
+                "<div>" +
+                    "<span>" + date + "</span>" +
+                    "<strong>" +
+                        "<span>" + params.date_taken + "</span>" +
+                    "</strong>" +
+                "</div>";
+        } else if (params.date_taken_free && params.date_taken_free) {
+            text +=
+                "<div>" +
+                    "<span>" + date + "</span>" +
+                    "<strong>" +
+                        "<span>" + params.date_taken_free + "</span>" +
+                    "</strong>" +
+                "</div>";
+        }
+        // DATE BLOCK END
+
+        // LICENCE BLOCK START
+        if (params.licence && params.licence != null) {
+            text +=
+                "<div>" +
+                    "<span>" + licence + "</span>" +
+                    "<strong>" +
+                        "<a target='_blank' href='" + params.licence_url_en + "'>" +
+                            "<span>" + params.licence + "</span>" +
+                        "</a>" +
+                    "</strong>" +
+                "</div>";
+        }
+        // LICENCE BLOCK END
+
+        // DETAIL VIEW BLOCK START
+        if (params.id && params.id != null) {
+            text += "<div><strong><a target='_blank' href='" + url + params.id + "'><span>" + detailView + "</span></a></strong></div>";
+        }
+        // DETAIL VIEW BLOCK END
 
         return text;
-
-
-
-        // if (arrayOfPictureInfo.length > 0) {
-        //     var estText = "";
-        //     var engText = "";
-        //
-        //     if (arrayOfPictureInfo[0] && arrayOfPictureInfo[0] != null) {
-        //         estText += "Autor: " + "<strong>" + arrayOfPictureInfo[0] + "</strong>" + "<br>";
-        //         engText += "Author: " + "<strong>" + arrayOfPictureInfo[0] + "</strong>" + "<br>";
-        //     }
-        //     if (arrayOfPictureInfo[0] == null && arrayOfPictureInfo[4] && arrayOfPictureInfo[4] != null) {
-        //         estText += "Aautor: " + "<strong>" + arrayOfPictureInfo[4] + "</strong>" + "<br>";
-        //         engText += "Author: " + "<strong>" + arrayOfPictureInfo[4] + "</strong>" + "<br>";
-        //     }
-        //     if (arrayOfPictureInfo[6] && arrayOfPictureInfo[6] != null) {
-        //         estText += " / " + "<strong>" + arrayOfPictureInfo[6] + "</strong>" + "<br>";
-        //         engText += " /" + "<strong>" + arrayOfPictureInfo[6] + "</strong>" + "<br>";
-        //     }
-        //     if (arrayOfPictureInfo[1] && arrayOfPictureInfo[1] != null) {
-        //         estText += "Pildistamise aeg: " + "<strong>" + new Date(arrayOfPictureInfo[1]).toLocaleDateString('et-EE') + "</strong>" + "<br>";
-        //         engText += "Date taken: " + "<strong>" + new Date(arrayOfPictureInfo[1]).toDateString() + "</strong>" + "<br>";
-        //     }
-        //     if (arrayOfPictureInfo[1] == null && arrayOfPictureInfo[2] && arrayOfPictureInfo[2] != null) {
-        //         estText += "Pildistamise aeg: " + "<strong>" +arrayOfPictureInfo[2] + "</strong>" + "<br>";
-        //         engText += "Date taken: " + "<strong>" + arrayOfPictureInfo[2] + "</strong>" + "<br>";
-        //     }
-        //     if (arrayOfPictureInfo[3] && arrayOfPictureInfo[3] != null) {
-        //         estText = "Pildi nr. " + arrayOfPictureInfo[3] + "<br>" + estText;
-        //         engText = "Image no. " + arrayOfPictureInfo[3] + "<br>" + engText;
-        //     }
-        //     if (arrayOfPictureInfo[5] && arrayOfPictureInfo[5] != null) {
-        //         var url = $window.location.origin + '/image/';
-        //         if ($stateParams.type === 'specimens') {
-        //             url = $window.location.origin + '/specimen_image/'
-        //         }
-        //         estText += "<strong>" + "<a target='_blank' href='" + url + arrayOfPictureInfo[5] + "'>Mine pildi detail vaatele</a></strong>";
-        //         engText += "<strong>" + "<a target='_blank' href='" + url + arrayOfPictureInfo[5] + "'>Go to picture detail view</a></strong>";
-        //     }
-        //     return $translate.use() === 'et' ? estText : engText;
-        // }
     }
 
     function ifDoiAttachmentContainsFiles(attachments) {

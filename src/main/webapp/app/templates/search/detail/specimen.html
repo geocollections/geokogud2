@@ -490,7 +490,18 @@
 
                                 <!--<a href class="hover-me" data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image',id:image.id})">-->
                                 <a href="{{detailCtrl.service.composeImageUrl(image)}}" class="hover-me" data-fancybox="gallery"
-                                   data-caption="{{detailCtrl.service.setFancyBoxCaption([image.agent__agent, image.date, image.date_taken_free, null, null, image.id])}}">
+                                   data-caption="{{detailCtrl.service.setFancyBoxCaption(
+                                        {
+                                            author: image.agent__agent,
+                                            author_free: image.agent__surename,
+                                            date_taken: image.date,
+                                            date_taken_free: image.date_taken_free,
+                                            copyright_agent: image.copyright_agent__agent,
+                                            licence: image.licence__licence_en,
+                                            licence_url: image.licence__licence_url,
+                                            licence_url_en: image.licence__licence_url_en,
+                                            id: image.id
+                                        })}}">
 
                                     <show-preview class="img-responsive set-height"
                                                   classes="previewImageDetail img-rounded"
