@@ -11,11 +11,13 @@
                         <span data-ng-if="detailCtrl.results.coll__number">{{detailCtrl.results.coll__number | split:' ':0}}</span>
                         {{detailCtrl.results.specimen_id}}
                         <span data-ng-repeat="entity in detailCtrl.specimenIdentifications" data-ng-if="detailCtrl.specimenIdentifications.length > 0">
+                            |
                             <a href ng-if="entity.current == true" data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+entity.taxon_id})">
                                 {{ entity.taxon__taxon }}
                             </a>
                         </span>
                         <span data-ng-repeat="entity in detailCtrl.specimenIdentificationGeology" data-ng-if="detailCtrl.specimenIdentificationGeology.length > 0">
+                            |
                             <a href ng-if="entity.current == true" data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://www.kivid.info/'+entity.rock_id})">
                                 <localize en="entity.rock__name_en" et="entity.rock__name" />
                             </a>
