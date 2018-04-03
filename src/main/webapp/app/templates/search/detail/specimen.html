@@ -462,6 +462,10 @@
                                            title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
                                            class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
 
+                                        <i data-ng-if="entity.attachment__filename.endsWith('mp4')"
+                                           title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
+                                           class="fa fa-file-video-o fa-2x" aria-hidden="true"></i>
+
                                         <img title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
                                              data-ng-if="entity.attachment__filename.endsWith('png') || entity.attachment__filename.endsWith('jpeg') || entity.filename.endsWith('svg') || entity.filename.endsWith('jpg')"
                                              class="previewImage"
@@ -473,6 +477,13 @@
                             </tr>
                             </tbody>
                         </table>
+
+                    </div>
+
+                    <div data-ng-repeat="entity in detailCtrl.attachmentLink">
+                        <video data-ng-if="entity.attachment__filename.endsWith('mp4')" width="100%" controls loop>
+                            <source src="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}" type="video/mp4">
+                        </video>
                     </div>
                 </div>
 

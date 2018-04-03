@@ -627,7 +627,7 @@
         "GLOBAL": "Eesti geokogude infosüsteem: Globaalne otsing"
     },
     "GLOBAL_SEARCH_INFO" : "Globaalne otsing kuvab maksimaalselt 100 tulemust. Rohkemate andmete kuvamiseks palun kasutage detailotsingut.",
-    "GLOBAL_SEARCH_NO_INFO": "Teie kiire otsing ei tagastanud ühtegi tulemust. Kontrollige, et teie lehe number ei oleks liiga suur, vastasel korral palun kasutage detailotsingut ja valige, missugust informatsiooni otsida soovite.",
+    "GLOBAL_SEARCH_NO_INFO": "Teie kiirotsing ei andnud tulemusi. Palun proovige teisi märksõnu või kasutage detailotsingut.",
     "GLOBAL_SEARCH_ERROR1": "Hetkel kuvab",
     "GLOBAL_SEARCH_ERROR2": "tulemust",
     "GLOBAL_SEARCH_ERROR3": ". lehel",

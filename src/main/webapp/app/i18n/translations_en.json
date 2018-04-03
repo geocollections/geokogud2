@@ -627,7 +627,7 @@
         "GLOBAL": "Geocollections of Estonia: Global search"
     },
     "GLOBAL_SEARCH_INFO" : "Global search shows max 100 results. To see more results please use extended search.",
-    "GLOBAL_SEARCH_NO_INFO": "Your quick search returned no results. Maybe your page number is too high to show any results, otherwise please use extended search and select, which kind of information you are searching.",
+    "GLOBAL_SEARCH_NO_INFO": "Your quick search returned no results. Please try another more generic keyword or use extended search and select, which kind of information you are looking for.",
     "GLOBAL_SEARCH_ERROR1": "Currently showing",
     "GLOBAL_SEARCH_ERROR2": "result(s) on page",
     "GLOBAL_SEARCH_ERROR3": "",
