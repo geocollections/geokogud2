@@ -40,7 +40,7 @@ module.config(function ($translateProvider, $locationProvider) {
     });
 
     // Necessary for app translations
-    console.log(window.navigator.language === 'et-EE')
+    // console.log(window.navigator.language)
     if (window.navigator.language === 'et-EE') {
         $translateProvider.preferredLanguage('et');
     } else {
