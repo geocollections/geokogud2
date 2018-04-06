@@ -64,11 +64,11 @@ var constructor = function (utils, configuration, $window, $location, $translate
         return utils.decodeMapUrl();
     };
     service.getEntity = function (searchType, id, callback, error) {
-        console.log("searchType: " + searchType);
-        console.log("id: " + id);
+        // console.log("searchType: " + searchType);
+        // console.log("id: " + id);
         // console.log("callback: " + callback);
         var url = getDetailUrl(searchType);
-        console.log("url: " + url);
+        // console.log("url: " + url);
         if (id.includes("10.15152/GEO.")) { // If clause for universal DOI identifier
             utils.httpGet(url + "/" + id.substring(13), null, callback, error);
         } else {
@@ -122,7 +122,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
 
     // Used only on corebox detail view
     service.composeCoreboxImageUrl = function (imageData) {
-        console.log(imageData);
+        // console.log(imageData);
         if (imageData.database__acronym != null) {
             var imageUrl = "https://geokogud.info/" + imageData.database__acronym.toLowerCase() + "/drillcore_image/" + imageData.drillcore__id + "/";
             return imageUrl + imageData.drillcoreimage__image;
@@ -152,7 +152,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
                 + imageData.drillcore__id + "/"
                 + imageData.drillcoreimage__image;
         }
-        console.log(imageUrl);
+        // console.log(imageUrl);
         return imageUrl;
     };
 
@@ -203,7 +203,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
                 + imageData.imageset__imageset_number + "/"
                 + imageData.filename;
         }
-        console.log(imageUrl);
+        // console.log(imageUrl);
         return imageUrl;
     }
 
@@ -306,7 +306,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
 
     function openInNewWindow(params) {
         var width = 600;
-        console.log(params.object + "/" + params.id);
+        // console.log(params.object + "/" + params.id);
         switch (params.object) {
             case "specimen":
                 width = 1050;
@@ -321,7 +321,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
     }
 
     function openUrlInNewWindow(params) {
-        console.log(params.url);
+        // console.log(params.url);
         $window.open(params.url, '', 'width=600,height=750,scrollbars, resizable');
     }
 
@@ -482,7 +482,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
      * @param attachments Array of doi attachments
      */
     function ifDoiAttachmentContainsFiles(attachments) {
-        console.log(attachments);
+        // console.log(attachments);
         angular.forEach(attachments, function (attachment) {
             return attachment.filename.endsWith('txt') || attachment.filename.endsWith('png') || attachment.filename.endsWith('jpg') || attachment.filename.endsWith('jpeg');
         });

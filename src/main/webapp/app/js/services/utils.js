@@ -9,9 +9,9 @@ var constructor = function ($http, $stateParams, $location, configuration) {
     };
 
     service.httpGet = function (url, data, successCb, errorCb, headers) {
-        console.log("GET REQUEST url: " + url);
-        console.log("GET REQUEST data: " + data);
-        console.log("GET REQUEST headers: " + headers);
+        // console.log("GET REQUEST url: " + url);
+        // console.log("GET REQUEST data: " + data);
+        // console.log("GET REQUEST headers: " + headers);
         var config = {
             "params": data,
             "headers": headers ? headers : {},
@@ -31,9 +31,9 @@ var constructor = function ($http, $stateParams, $location, configuration) {
                 // if (typeof(sessionStorage) !== 'undefined') {
                 //     sessionStorage.setItem($stateParams.type + "Search", JSON.stringify(searchCriteria));
                 // }
-                console.log("------------------------------");
-                console.log(searchCriteria);
-                console.log("------------------------------");
+                // console.log("------------------------------");
+                // console.log(searchCriteria);
+                // console.log("------------------------------");
                 if (typeof(sessionStorage) !== 'undefined') {
                     sessionStorage.setItem($stateParams.type, JSON.stringify(searchCriteria));
                 }
@@ -132,7 +132,7 @@ var constructor = function ($http, $stateParams, $location, configuration) {
                     // }
                     if(data[specialField + "Since"] != null && data[specialField + "To"] != null) {
                         if (data[specialField + "Since"].name != null && data[specialField + "Since"].lookUpType != null && data[specialField + "To"].name != null && data[specialField + "To"].lookUpType != null) {
-                            console.log(url);
+                            // console.log(url);
                             url += "&" + specialField + "_1=" + data[specialField + 'Since'].lookUpType + "+" + data[specialField + 'To'].lookUpType + "&" + specialField + "=" + data[specialField + "Since"].name + "+" + data[specialField + 'To'].name;
                         } else if (data[specialField + "Since"].name != null && data[specialField + "Since"].lookUpType != null) {
                             url += "&" + specialField + "_1=" + data[specialField + 'Since'].lookUpType + "&" + specialField + "=" + data[specialField + "Since"].name;
@@ -259,9 +259,9 @@ var constructor = function ($http, $stateParams, $location, configuration) {
         angular.forEach(configuration.urlHelper.specialFields, function(specialField) {
             if(urlParams[specialField + "_1"] != null && urlParams[specialField] != null) {
 
-                console.log(urlParams);
-                console.log(urlParams[specialField]);
-                console.log(urlParams[specialField + "_1"]);
+                // console.log(urlParams);
+                // console.log(urlParams[specialField]);
+                // console.log(urlParams[specialField + "_1"]);
 
                 var specialFieldName = urlParams[specialField].split(" ");
                 var specialFieldLookUpType = urlParams[specialField + "_1"].split(" ");
@@ -384,7 +384,7 @@ module.factory("SearchFactory", ['$http', 'configuration', function($http, confi
     return {
         autocompleteSearch: function (table, term, sortField, searchField) {
             if (sortField === 'hierarchy') sortField = 'icontains';
-            console.log(sortField);
+            // console.log(sortField);
             // console.log(table);
             // console.log(term);
             // console.log(sortField);

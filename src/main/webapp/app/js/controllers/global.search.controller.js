@@ -27,16 +27,16 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         vm.searchLoadingHandler.start();
         $scope.$parent.globalQuery = $stateParams.query;
 
-        console.log($scope.searchParameters);
-        console.log($stateParams.query);
-
-        console.log($stateParams.tab);
+        // console.log($scope.searchParameters);
+        // console.log($stateParams.query);
+        //
+        // console.log($stateParams.tab);
 
         setSearchParameters();
         $scope.pageSize = $scope.searchParameters.paginateBy; // Essential for pagination
         fixPaginationIfNeeded();
 
-        console.log($scope.searchParameters);
+        // console.log($scope.searchParameters);
 
         GlobalSearchFactory.searchGlobally(
             // $scope.searchParameters.tab,
@@ -132,15 +132,15 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
      * @param result Response from search query
      */
     function onGlobalDataLoaded(result) {
-        console.log(result);
+        // console.log(result);
         if (!result.data) return;
 
         // Number of possible tabs
         if (result.data.length <= 11) {
-            console.log(result.data);
+            // console.log(result.data);
 
             result.data.forEach(function (response) {
-                console.log(response);
+                // console.log(response);
                 if (response !== null) {
                     if (response.numFound > 0) {
                         $scope.selectedTab = response.table;
@@ -180,11 +180,11 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         $stateParams.tab = tabTitle;
 
         $scope.searchParameters.tab = tabTitle;
-        console.log($scope.searchParameters);
+        // console.log($scope.searchParameters);
 
         $scope.selectedTab = tabTitle;
 
-        console.log($stateParams.page);
+        // console.log($stateParams.page);
 
         $state.go("global",
             {
@@ -202,7 +202,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         $scope.response.results = $scope.searchResults[tabTitle].response;
         $scope.response.count = $scope.searchResults[tabTitle].numFound;
         $scope.response.table = $scope.searchResults[tabTitle].table;
-        console.log($scope.response);
+        // console.log($scope.response);
     };
 
 

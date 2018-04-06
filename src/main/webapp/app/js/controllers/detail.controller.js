@@ -23,13 +23,13 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
     }
 
     function onEntityData(response) {
-        console.log(response);
+        // console.log(response);
         if (response.data.results != null) {
 
             vm.results = response.data.results[0];
             vm.relatedData = response.data.related_data;
             vm.fields = Object.keys(vm.results);
-            console.log(vm.fields);
+            // console.log(vm.fields);
             vm.imageUrl = (['specimenImage', 'photoArchive'].indexOf($stateParams.type) > -1 ? vm.service.composeImageUrl(vm.results) : null);
             vm.externalImagePath = (['specimenImage', 'photoArchive'].indexOf($stateParams.type) > -1 ? vm.service.composeExternalImagePath(vm.results) : null);
 
@@ -53,7 +53,7 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
 
     function onDetailError(error) {
         $scope.pageHasError = true;
-        console.log(error);
+        // console.log(error);
         errorService.commonErrorHandler(error);
         vm.detailLoadingHandler.stop();
     }
@@ -163,7 +163,7 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
 
         angular.forEach(results.preparation_taxa, function(data) {
             percent = ((data.frequency * 100) / numOfSpecimen).toFixed(1);
-            console.log(percent);
+            // console.log(percent);
 
             preparationTaxons.push({
                 name: data.name,
@@ -193,7 +193,7 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
     }
 
     $scope.ifDoiAttachmentContainsShowableFiles = function(doiAttachment) {
-        console.log(doiAttachment);
+        // console.log(doiAttachment);
         if (doiAttachment.length > 0) {
             for (entity in doiAttachment) {
                 var filename = doiAttachment[entity].filename;

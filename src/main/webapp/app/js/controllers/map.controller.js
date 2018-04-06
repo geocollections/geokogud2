@@ -17,7 +17,7 @@ var constructor = function ($scope, $state, configuration, ApplicationService) {
     }
 
     function onMapData(response) {
-        console.log(response);
+        // console.log(response);
 
         var locs = response.data;
         if (locs != null) {

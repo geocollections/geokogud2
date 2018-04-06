@@ -21,7 +21,7 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
      * @param result, Success response from server.
      */
     function onSearchData(result) {
-        console.log(result);
+        // console.log(result);
         $scope.totalItems = result.data.count;
 
         if ($scope.totalItems === 0 || $scope.totalItems == null) $scope.noResults = true;
@@ -47,7 +47,7 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
         $scope.response = result.data;
 
         if ($scope.isMapVisible) {
-            console.log("im here");
+            // console.log("im here");
             $scope.getLocalities($scope.response.results);
         }
 
@@ -60,7 +60,7 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
 
         var searchParamsSession = getSearchDataFromSessionStorage();
         var institutions = getInstitutionsFromLocalStorage();
-        console.log(location.search);
+        // console.log(location.search);
         if (typeof(searchParamsSession) !== 'undefined') {
             $scope.searchParameters = searchParamsSession;
             areInstitutionsChecked();
@@ -116,7 +116,7 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
      * @param error Full error response from server
      */
     function onSearchError(error) {
-        console.log(error);
+        // console.log(error);
         $scope.noResults = true;
         // if(configuration.pageSetUp.debugMode) errorService.commonErrorHandler(error);
         setEmptyResponse();
@@ -163,7 +163,7 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
         var institutions = getInstitutionsFromLocalStorage();
         // var searchParamsFromUrl = getSearchDataFromUrl();
         var searchParamsFromUrl = applicationService.getSearchParamsFromUrl();
-        console.log(searchParamsFromUrl);
+        // console.log(searchParamsFromUrl);
         if (typeof(searchParamsSession) !== 'undefined') {
             $scope.searchParameters = searchParamsSession;
         }
@@ -218,9 +218,9 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
      * Also if true then calls getLocalities function.
      */
     $scope.showMap = function () {
-        console.log($scope.isMapVisible);
+        // console.log($scope.isMapVisible);
         $scope.isMapVisible = !$scope.isMapVisible;
-        console.log($scope.isMapVisible);
+        // console.log($scope.isMapVisible);
         if ($scope.isMapVisible) {
             $scope.getLocalities($scope.response.results);
         }
@@ -238,10 +238,10 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
      * @returns {Array} of locality elements with data like (latitude, longitude etc.)
      */
     $scope.getLocalities = function (list) {
-        console.log(list);
+        // console.log(list);
         $scope.localities = [];
 
-        console.log($scope.localities);
+        // console.log($scope.localities);
         if (list && list != null) {
             angular.forEach(list, function (el) {
                 if (['localities'].indexOf($stateParams.type) > -1) {
@@ -263,11 +263,11 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
      * Adds arguments to localities list.
      */
     function addToLocalities(latitude, longitude, locality_en, locality, locality_id) {
-        console.log("lat: " + latitude
-            + " lon: " + longitude
-            + " loc: " + locality_en
-            + " loc_en: " + locality
-            + " id: " + locality_id);
+        // console.log("lat: " + latitude
+        //     + " lon: " + longitude
+        //     + " loc: " + locality_en
+        //     + " loc_en: " + locality
+        //     + " id: " + locality_id);
         $scope.localities.push({
             latitude: latitude,
             longitude: longitude,
