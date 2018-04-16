@@ -230,7 +230,8 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
     };
 
     $scope.goToPageOne = function() {
-        window.location.assign(window.location.origin + "/global/" + $scope.searchParameters.tab + "/1/" + $scope.searchParameters.paginateBy + "/" + $scope.$parent.globalQuery);
+        // window.location.assign(window.location.origin + "/search/" + $scope.searchParameters.tab + "/1/" + $scope.searchParameters.paginateBy + "/" + $scope.$parent.globalQuery);
+        window.location.assign(window.location.origin + "/search/" + $scope.$parent.globalQuery + "/" + $scope.searchParameters.tab + "/1/" + $scope.searchParameters.paginateBy);
     };
 
     /**

@@ -105,16 +105,28 @@ public class SearchController extends ControllerHelper {
     @Autowired
     private DoiApiService doiApiService;
 
-    @GetMapping(value = "/global")
+    @GetMapping(value = "/search")
     public Iterable searchGlobally(
-            @RequestParam("tab") String tab,
-            @RequestParam("page") int page,
-            @RequestParam("paginateBy") int paginateBy,
+            @RequestParam(value = "tab", required = false) String tab,
+            @RequestParam(value = "page", required = false) int page,
+            @RequestParam(value = "paginateBy", required = false) int paginateBy,
             @RequestParam("query") String query) {
         logger.trace("Tab: " + tab);
         logger.trace("Page: " + page);
         logger.trace("PaginateBy: " + paginateBy);
         logger.trace("Query: " + query);
+
+        // Assigning default values if doesn't exist START
+        if (tab == null) {
+            tab = "specimen";
+        }
+        if (page == 0) {
+            page = 1;
+        }
+        if (paginateBy == 0) {
+            paginateBy = 100;
+        }
+        // Assigning default values if doesn't exist END
 
         ArrayList<SolrResponse> responses = new ArrayList<>();
 

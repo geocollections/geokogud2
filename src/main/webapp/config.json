@@ -186,7 +186,7 @@
   },
 
   "autocompleteUrl" : "/search/autocomplete-field",
-  "globalUrl" : "/search/global",
+  "globalUrl" : "/search/search",
 
   "webnewsUrl":"/webnews",
   "mapData": {

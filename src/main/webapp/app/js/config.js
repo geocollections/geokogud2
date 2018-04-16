@@ -25,7 +25,17 @@ module.config(function($stateProvider, $urlRouterProvider) {
             data: {
                 pageTitle: "{{'TITLES.GLOBAL' | translate}}"
             },
-            url: "/global/:tab/:page/:paginateBy/:query",
+            // url: "/search/:tab/:page/:paginateBy/:query",
+            url: "/search/:query/:tab/:page/:paginateBy",
+            templateUrl: "app/templates/main/global_search.html",
+            controller: "GlobalSearchController as ctrl"
+    })
+        .state('global2',{
+            data: {
+                pageTitle: "{{'TITLES.GLOBAL' | translate}}"
+            },
+            // url: "/search/:tab/:page/:paginateBy/:query",
+            url: "/search/:query",
             templateUrl: "app/templates/main/global_search.html",
             controller: "GlobalSearchController as ctrl"
     })
