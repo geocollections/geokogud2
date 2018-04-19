@@ -1120,3 +1120,18 @@ table tr > td:first-child {
 /*******************************
  ***  PLACEHOLDER COLOR END  ***
  *******************************/
+
+/* Global search tips button */
+#global-show-tips {
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    display: inline-block;
+}
+
+#global-show-tips:hover {
+    opacity: 0.6;
+}

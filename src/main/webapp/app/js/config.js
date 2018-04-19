@@ -11,7 +11,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
                 pageTitle: "{{'TITLES.HOME' | translate}}"
             },
             url: "/",
-            templateUrl: "app/templates/main/geokogud.html"
+            templateUrl: "app/templates/main/geokogud.html",
     })
         .state('map',{
             data: {

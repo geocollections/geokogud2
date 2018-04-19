@@ -626,12 +626,20 @@
         "COREBOX": "Geocollections of Estonia: Corebox",
         "GLOBAL": "Geocollections of Estonia: Global search"
     },
+    "GLOBAL": {
+        "SEARCH_TIPS_TITLE": "Shows help",
+        "SEARCH_TIPS_HEADING": "HELP"
+    },
     "GLOBAL_SEARCH_INFO" : "Global search shows max 100 results. To see more results please use extended search.",
     "GLOBAL_SEARCH_NO_INFO": "Your quick search returned no results. Please try another more generic keyword or use extended search and select, which kind of information you are looking for.",
     "GLOBAL_SEARCH_ERROR1": "Currently showing",
     "GLOBAL_SEARCH_ERROR2": "result(s) on page",
     "GLOBAL_SEARCH_ERROR3": "",
     "GLOBAL_SEARCH_PAGE_ONE_BUTTON": "Click here to get back to page one",
+    "GLOBAL_SEARCH_TIPS": "Show tips",
+    "GLOBAL_SEARCH_TIP_1": "Enter term(s) for quickly searching through all tables. For wildcard use '*'.",
+    "GLOBAL_SEARCH_TIP_2": "In case of multiple terms the results will include any of the terms. To require a specific keyword to be present, precede it with '+'. To exclude a term, precede it with '-'. For instance:",
+    "GLOBAL_SEARCH_TIP_3": "To search exact expression, use double quotation marks. Use them also if the term includes special characters like '+' or '-', for instance:",
     "DETAILVIEW_TABLE_HEADER": "General info",
     "ABOUT_MIDDLE": "Geocollections in Estonia",
     "FAQ_BUTTON": "Shows hints",

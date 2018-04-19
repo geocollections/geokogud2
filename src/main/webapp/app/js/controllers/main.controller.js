@@ -22,6 +22,7 @@ var constructor = function (configuration, $translate, $http, applicationService
     vm.isDetailForm = isDetailForm;
     vm.isGlobalSearch = isGlobalSearch;
     vm.switchYear = switchYear;
+    vm.isMain = isMain;
 
     // Initial value for which year to show
     $scope.yearToShow = 0;
@@ -224,6 +225,14 @@ var constructor = function (configuration, $translate, $http, applicationService
      */
     function isGlobalSearch () {
         return $state.params && $state.params.query;
+    }
+
+    /**
+     * Checks if user is on main page or not
+     * @returns boolean value
+     */
+    function isMain() {
+        return $state.current.name === '/';
     }
 };
 
