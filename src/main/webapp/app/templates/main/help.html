@@ -5,23 +5,8 @@
         <div class="col-lg-12">
             <h2 class="section-heading text-center">{{ 'GLOBAL.SEARCH_TIPS_HEADING' | translate }}</h2>
             <hr class="primary">
-            <h3 class="header-collection">{{ 'GLOBAL.SEARCH_TIPS' | translate }}</h3>
-            <div>
-                <ul>
-                    <li>{{ 'GLOBAL.SEARCH_TIP_1' | translate }}</li>
-                    <li>
-                        {{ 'GLOBAL.SEARCH_TIP_2' | translate }}
-                        <a href data-ng-click="main.service.openUrlWithGivenTarget({ url: location.origin + 'search/+scolecodonts +valga -conjungaspis', target: '_blank' })">+scolecodonts +valga -conjungaspis</a>.
-                    </li>
-                    <li>
-                        {{ 'GLOBAL.SEARCH_TIP_3' | translate }}
-                        <a href data-ng-click='main.service.openUrlWithGivenTarget({ url: location.origin + "search/\"om6-3\"", target: "_blank" })'>"OM6-3"</a>.
-                    </li>
-                </ul>
-            </div>
-            <!-- TODO: Enable if help comes from API -->
-            <!--<h3 class="header-collection" ng-bind-html="main.getTitle(main.help)"></h3>-->
-            <!--<div ng-bind-html="main.getContent(main.help)"></div>-->
+            <h3 class="header-collection" ng-bind-html="main.getTitle(main.help)"></h3>
+            <div ng-bind-html="main.getContent(main.help)"></div>
         </div>
     </div>
 </div>

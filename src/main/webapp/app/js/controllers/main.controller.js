@@ -54,7 +54,7 @@ var constructor = function (configuration, $translate, $http, applicationService
             vm.git = getWebPageById(44, "git");
             vm.tug = getWebPageById(63, "tug");
             vm.elm = getWebPageById(64, "elm");
-            // vm.help = getWebPageById(xxx, "help"); TODO: Enable if search comes from API
+            vm.help = getWebPageById(65, "help");
         }
         if (isSearch()) {
             // Every search view has own certain FAQ
@@ -96,7 +96,7 @@ var constructor = function (configuration, $translate, $http, applicationService
             else if (page == "drillCoreSearch") { vm.drillCoreSearch = result; }
             else if (page == "protoArchiveQuery") { vm.protoArchiveQuery = result; }
             else if (page == "doiIdentifiers") { vm.doiIdentifiers = result; }
-            // else if (page == "help") { vm.help = result; } TODO: Enable if search comes from API
+            else if (page == "help") { vm.help = result; }
         });
     }
 
