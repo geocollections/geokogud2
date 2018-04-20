@@ -234,7 +234,8 @@ var constructor = function (configuration, $translate, $http, applicationService
      * @returns boolean value
      */
     function isMain() {
-        return $state.current.name === '/';
+        console.log($state.current.name)
+        return $state.current.name === '/' || $state.current.name === 'global';
     }
 };
 
