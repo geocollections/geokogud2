@@ -50,6 +50,13 @@
         </a>
     </li>
 
+    <li role="presentation">
+        <a data-toggle="tab" href="/" data-target="#infoCarousel" data-slide-to="7">
+            <i class="fa fa-question fa-lg"></i><br/>
+            {{ 'GLOBAL.SEARCH_TIPS_HEADING' | translate }}
+        </a>
+    </li>
+
 </ul>
 </div>
 <div id="infoCarousel" class="carousel" data-ride="carousel" data-interval="false">
@@ -81,6 +88,10 @@
 
             <div class="item">
                 <div ng-include="'app/templates/main/elm.html'"></div>
+            </div>
+
+            <div class="item">
+                <div ng-include="'app/templates/main/help.html'"></div>
             </div>
 
         </div>

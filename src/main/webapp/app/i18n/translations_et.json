@@ -627,8 +627,12 @@
         "GLOBAL": "Eesti geokogude infosüsteem: Globaalne otsing"
     },
     "GLOBAL": {
+        "SEARCH_TIPS": "Kiire otsingu abi",
         "SEARCH_TIPS_TITLE": "Kuvab abi",
-        "SEARCH_TIPS_HEADING": "ABI"
+        "SEARCH_TIPS_HEADING": "ABI",
+        "SEARCH_TIP_1": "Sisesta märksõna(d) kiireks otsinguks kõigist tabelitest. Suur- ja väiketähti ei eristata, 'wildcard' märgina kasutada '*'.",
+        "SEARCH_TIP_2": "Mitme märksõna korral otsitakse vasteid, kus esineb vähemalt üks otsitavatest. Et märksõna kindlasti tulemustes sisalduks, lisa selle ette '+'. Kui soovid mõne termini välistada, siis kasuta märksõna ees '-'. Näiteks:",
+        "SEARCH_TIP_3": "Mitmesõnalise väljendi otsimiseks ümbritse see jutumärkidega. Sama tee ka siis kui otsitav sisaldab erimärke, nagu '-' ja '+', nt"
     },
     "GLOBAL_SEARCH_INFO" : "Globaalne otsing kuvab maksimaalselt 100 tulemust. Rohkemate andmete kuvamiseks palun kasutage detailotsingut.",
     "GLOBAL_SEARCH_NO_INFO": "Teie kiirotsing ei andnud tulemusi. Palun proovige teisi märksõnu või kasutage detailotsingut.",
@@ -636,10 +640,7 @@
     "GLOBAL_SEARCH_ERROR2": "tulemust",
     "GLOBAL_SEARCH_ERROR3": ". lehel",
     "GLOBAL_SEARCH_PAGE_ONE_BUTTON": "Vajuta siia, et saada tagasi esimesele lehele",
-    "GLOBAL_SEARCH_TIPS": "Näita vihjeid",
-    "GLOBAL_SEARCH_TIP_1": "Sisesta märksõna(d) kiireks otsinguks kõigist tabelitest. Suur- ja väiketähti ei eristata, 'wildcard' märgina kasutada '*'.",
-    "GLOBAL_SEARCH_TIP_2": "Mitme märksõna korral otsitakse vasteid, kus esineb vähemalt üks otsitavatest. Et märksõna kindlasti tulemustes sisalduks, lisa selle ette '+'. Kui soovid mõne termini välistada, siis kasuta märksõna ees '-'. Näiteks:",
-    "GLOBAL_SEARCH_TIP_3": "Mitmesõnalise väljendi otsimiseks ümbritse see jutumärkidega. Sama tee ka siis kui otsitav sisaldab erimärke, nagu '-' ja '+', nt",
+    "GLOBAL_SEARCH_TIPS": "Näita abi",
     "DETAILVIEW_TABLE_HEADER": "Üldinfo",
     "ABOUT_MIDDLE": "Geokogud Eestis",
     "FAQ_BUTTON": "Kuvab vihjed",

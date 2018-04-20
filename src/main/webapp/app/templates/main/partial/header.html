@@ -116,7 +116,10 @@
                 </div>
             </div>
         </form>
-        <a href ng-show="main.isMain()" data-ng-click="main.showGlobalSearchTips()" id="global-show-tips" >{{ 'GLOBAL_SEARCH_TIPS' | translate }}</a>
+
+        <a href ng-show="main.isMain()" class="page-scroll-to-additional" data-target="#infoCarousel" data-slide-to="7" data-ng-click="main.showGlobalSearchTips()" id="global-show-tips" >
+            {{ 'GLOBAL_SEARCH_TIPS' | translate }}
+        </a>
 
         <a ng-show="!main.isDetailForm()" href data-ui-sref="references" id="button-extended-search">{{ 'INDEX.EXTENDED_SEARCH_LINK' | translate }}</a>
     </div>

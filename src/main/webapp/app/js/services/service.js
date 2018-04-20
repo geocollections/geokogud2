@@ -19,6 +19,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
     service.openDoiInNewWindow = openDoiInNewWindow;
     service.openInNewWindow = openInNewWindow;
     service.openUrlInNewWindow = openUrlInNewWindow;
+    service.openUrlWithGivenTarget = openUrlWithGivenTarget;
     service.showGoogleMap = showGoogleMap;
     service.showEstonianLandBoardMap = showEstonianLandBoardMap;
     service.getTranslationRoot = getTranslationRoot;
@@ -486,6 +487,10 @@ var constructor = function (utils, configuration, $window, $location, $translate
         angular.forEach(attachments, function (attachment) {
             return attachment.filename.endsWith('txt') || attachment.filename.endsWith('png') || attachment.filename.endsWith('jpg') || attachment.filename.endsWith('jpeg');
         });
+    }
+
+    function openUrlWithGivenTarget(params) {
+        window.open(params.url, params.target);
     }
 
     return service;
