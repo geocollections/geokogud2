@@ -1,3 +1,5 @@
+<div ng-show="!main.isMain()" class="slider-mb-5" ng-include="'app/templates/main/partial/detailview_header.html'"></div>
+
 <div class="container infoSection" id="database">
     <div class="row">
         <div class="col-md-12">
@@ -8,3 +10,6 @@
         <!--	<div>{{list}}</div>-->
     </div>
 </div>
+
+<div ng-show="!main.isMain()" ng-include="'app/templates/main/partial/detailview_footer.html'"></div>
+

@@ -299,51 +299,73 @@ module.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'app/templates/main/partial/default.error.html'
         })
 
-    //main page
+
+
+        /******************************
+         *** MAIN PAGE SLIDER START ***
+         ******************************/
+
         .state('news', {
             data: {
                 pageTitle: "Geocollections of Estonia: News"
             },
             url: "/news",
-            views: {
-                "additional": {
-                    templateUrl: "app/templates/main/news.html"
-                }
-            }
+            templateUrl: "app/templates/main/news.html"
     })
-        .state('usingcollection', {
-            url: "/usingcollection",
-            views: {
-                "additional": {
-                    templateUrl: "app/templates/main/using_collection.html"
-                }
-            }
+        .state('using_collections', {
+            data: {
+                pageTitle: "Geocollections of Estonia: Using collections"
+            },
+            url: "/using_collections",
+            templateUrl: "app/templates/main/using_collection.html"
+    })
+        .state('geocollection', {
+            data: {
+                pageTitle: "Geocollections of Estonia: About database"
+            },
+            url: "/geocollection",
+            templateUrl: "app/templates/main/geocollection.html"
+    })
+        .state('database', {
+            data: {
+                pageTitle: "Geocollections of Estonia: Database"
+            },
+            url: "/database",
+            templateUrl: "app/templates/main/database.html"
     })
         .state('git', {
             data: {
                 pageTitle: "Geocollections of Estonia: GIT"
             },
             url: "/git",
-            views: {
-                "additional": {
-                    templateUrl: "app/templates/main/git.html"
-                }
-            }
+            templateUrl: "app/templates/main/git.html"
     })
-        .state('geocollection', {
-            url: "/geocollection",
-            views: {
-                "additional": {
-                    templateUrl: "app/templates/main/geocollection.html"
-                }
-            }
+        .state('tug', {
+            data: {
+                pageTitle: "Geocollections of Estonia: TUG"
+            },
+            url: "/tug",
+            templateUrl: "app/templates/main/tug.html"
     })
-        .state('database', {
-            url: "/database",
-            views: {
-                "additional": {
-                    templateUrl: "app/templates/main/database.html"
-                }
-            }
+        .state('elm', {
+            data: {
+                pageTitle: "Geocollections of Estonia: ELM"
+            },
+            url: "/elm",
+            templateUrl: "app/templates/main/elm.html"
+    })
+        .state('help', {
+            data: {
+                pageTitle: "Geocollections of Estonia: Help"
+            },
+            url: "/help",
+            templateUrl: "app/templates/main/help.html"
     });
+
+    /******************************
+     ***  MAIN PAGE SLIDER END  ***
+     ******************************/
+
+
+
 });

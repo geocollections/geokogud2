@@ -1135,3 +1135,8 @@ table tr > td:first-child {
 #global-show-tips:hover {
     opacity: 0.6;
 }
+
+/* Slider pages header margin-bottom */
+.slider-mb-5 {
+    margin-bottom: 5rem;
+}

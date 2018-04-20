@@ -230,7 +230,7 @@ var constructor = function (configuration, $translate, $http, applicationService
     }
 
     /**
-     * Checks if user is on main page or not
+     * Checks if user is on main page or on fast search page
      * @returns boolean value
      */
     function isMain() {
