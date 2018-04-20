@@ -337,21 +337,21 @@ module.config(function($stateProvider, $urlRouterProvider) {
             data: {
                 pageTitle: "Geocollections of Estonia: GIT"
             },
-            url: "/git_info",
+            url: "/about_git",
             templateUrl: "app/templates/main/git.html"
     })
         .state('tug', {
             data: {
                 pageTitle: "Geocollections of Estonia: TUG"
             },
-            url: "/tug_info",
+            url: "/about_tug",
             templateUrl: "app/templates/main/tug.html"
     })
         .state('elm', {
             data: {
                 pageTitle: "Geocollections of Estonia: ELM"
             },
-            url: "/elm_info",
+            url: "/about_elm",
             templateUrl: "app/templates/main/elm.html"
     })
         .state('help', {
