@@ -319,11 +319,11 @@ module.config(function($stateProvider, $urlRouterProvider) {
             url: "/using_collections",
             templateUrl: "app/templates/main/using_collection.html"
     })
-        .state('geocollection', {
+        .state('geocollections', {
             data: {
-                pageTitle: "Geocollections of Estonia: About database"
+                pageTitle: "Geocollections of Estonia: Geological collections"
             },
-            url: "/geocollection",
+            url: "/geocollections",
             templateUrl: "app/templates/main/geocollection.html"
     })
         .state('database', {
@@ -337,21 +337,21 @@ module.config(function($stateProvider, $urlRouterProvider) {
             data: {
                 pageTitle: "Geocollections of Estonia: GIT"
             },
-            url: "/git",
+            url: "/git_info",
             templateUrl: "app/templates/main/git.html"
     })
         .state('tug', {
             data: {
                 pageTitle: "Geocollections of Estonia: TUG"
             },
-            url: "/tug",
+            url: "/tug_info",
             templateUrl: "app/templates/main/tug.html"
     })
         .state('elm', {
             data: {
                 pageTitle: "Geocollections of Estonia: ELM"
             },
-            url: "/elm",
+            url: "/elm_info",
             templateUrl: "app/templates/main/elm.html"
     })
         .state('help', {
