@@ -72,9 +72,11 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
         }
 
         // Animates to search tabs.
-        $('html, body').animate({
-            scrollTop: ($("#searches").offset().top - 70)
-        }, 'fast');
+        jQuery(document).ready(function ($) {
+            $('html, body').animate({
+                scrollTop: ($("#searches").offset().top - 70)
+            }, 'fast');
+        });
     }
 
     /**
