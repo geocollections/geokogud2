@@ -299,6 +299,48 @@ module.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'app/templates/main/partial/default.error.html'
         })
 
+        .state('attachment', {
+            template: '<data-ui-view/>'
+        })
+
+        .state('attachment.view', {
+            data: {
+                pageTitle: "{{'TITLES.DETAIL_ATTACHMENT' | translate}} {{ $stateParams.id }}"
+            },
+            url: "/attachment/:id",
+            templateUrl: "app/templates/search/detail/attachment.html",
+            controller: "DetailController as detailCtrl",
+            params: {type: "attachment"}
+        })
+
+        .state('collection', {
+            template: '<data-ui-view/>'
+        })
+
+        .state('collection.view', {
+            data: {
+                pageTitle: "{{'TITLES.DETAIL_COLLECTION' | translate}} {{ $stateParams.id }}"
+            },
+            url: "/collection/:id",
+            templateUrl: "app/templates/search/detail/collection.html",
+            controller: "DetailController as detailCtrl",
+            params: {type: "collection"}
+        })
+
+        .state('dataset', {
+            template: '<data-ui-view/>'
+        })
+
+        .state('dataset.view', {
+            data: {
+                pageTitle: "{{'TITLES.DETAIL_DATASET' | translate}} {{ $stateParams.id }}"
+            },
+            url: "/dataset/:id",
+            templateUrl: "app/templates/search/detail/dataset.html",
+            controller: "DetailController as detailCtrl",
+            params: {type: "dataset"}
+        })
+
 
 
         /******************************

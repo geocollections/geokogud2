@@ -580,6 +580,16 @@
             "STRATIGRAPHY": "Stratigraphy",
             "DESCRIPTION_HEADING": "Kirjeldus"
         },
+        "ATTACHMENT": {
+            "HEADING": "File"
+        },
+        "COLLECTION": {
+            "HEADING": "Collection #",
+            "SPECIMEN_LINK": "Specimens belonging to this collection"
+        },
+        "DATASET": {
+            "HEADING": "Dataset Nr."
+        },
         "NEXT": "NEXT",
         "NEXT_INFO": "Did you know that you can also use keyboard arrow keys",
         "PREVIOUS": "PREVIOUS",
@@ -620,6 +630,9 @@
         "DETAIL_ANALYSES": "Geocollections of Estonia: Analysis",
         "DETAIL_PREPARATION": "Geocollections of Estonia: Preparation",
         "DETAIL_PHOTO_ARCHIVE": "Geocollections of Estonia: Photo",
+        "DETAIL_ATTACHMENT": "Geocollections of Estonia: Attachment",
+        "DETAIL_COLLECTION": "Geocollections of Estonia: Collection",
+        "DETAIL_DATASET": "Geocollections of Estonia: Dataset",
         "HOME": "Geocollections of Estonia",
         "MAP": "Geocollections of Estonia: Map",
         "SPECIMEN_IMAGE": "Geocollections of Estonia: Specimen image",

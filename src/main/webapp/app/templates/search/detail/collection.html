@@ -1,0 +1,136 @@
+<div ng-include="'app/templates/main/partial/detailview_header.html'"></div>
+
+
+<div id="elementToFocus" tabindex="1" style="outline: 0" ng-arrow-left="detailCtrl.reload({table:'attachment', left:true})" ng-arrow-right="detailCtrl.reload({table:'attachment', right:true})"  class="panel detailview-page">
+    <div class="panel-body" data-ng-if="detailCtrl.results != null">
+
+
+        <div class="row">
+
+            <div class="col-lg-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
+
+                <div class="detailview-title">
+                    <h2>
+                        {{ 'DETAIL.COLLECTION.HEADING' | translate }}
+                        <localize et="detailCtrl.results.number" en="null"/>
+                    </h2>
+                </div>
+
+                <h3> {{ 'DETAILVIEW_TABLE_HEADER' | translate }} </h3>
+                <table class="table table-bordered table-hover table-header-styles">
+
+                    <tr data-ng-if="detailCtrl.results.number && detailCtrl.results.number != null">
+                        <td> {{ 'API_TRANSLATION.COLLECTION.NUMBER' | translate }} </td>
+                        <td> {{ detailCtrl.results.number.split(' ')[1] }} </td>
+                    </tr>
+
+                    <tr data-ng-if="(detailCtrl.results.name && detailCtrl.results.name != null) ||
+                        (detailCtrl.results.name_en && detailCtrl.results.name_en != null)">
+                        <td> {{ 'API_TRANSLATION.COLLECTION.NAME' | translate }} </td>
+                        <td>
+                            <localize et="detailCtrl.results.name" en="detailCtrl.results.name_en" />
+                        </td>
+                    </tr>
+
+                    <tr data-ng-if="(detailCtrl.results.name_long && detailCtrl.results.name_long != null) ||
+                        (detailCtrl.results.name_long_en && detailCtrl.results.name_long_en != null)">
+                        <td> {{ 'API_TRANSLATION.COLLECTION.NAME_LONG' | translate }} </td>
+                        <td>
+                            <localize et="detailCtrl.results.name_long" en="detailCtrl.results.name_long_en" />
+                        </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.classification__class_en && detailCtrl.results.classification__class_en != null">
+                        <td> {{ 'API_TRANSLATION.COLLECTION.CLASS' | translate }} </td>
+                        <td>
+                            <localize et="detailCtrl.results.classification__class_en" en="null" />
+                        </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.locality__id && detailCtrl.results.locality__id != null">
+                        <td> {{ 'API_TRANSLATION.COLLECTION.LOCALITY' | translate }} </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'locality',id:detailCtrl.results.locality__id})">
+                                <localize et="detailCtrl.results.locality__locality" en="detailCtrl.results.locality__locality_en" />
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.stratigraphy__id && detailCtrl.results.stratigraphy__id != null">
+                        <td> {{ 'API_TRANSLATION.COLLECTION.STRATIGRAPHY' | translate }} </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'stratigraphy',id:detailCtrl.results.stratigraphy__id})">
+                                <localize et="detailCtrl.results.stratigraphy__stratigraphy" en="detailCtrl.results.stratigraphy__stratigraphy_en" />
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.agent__agent && detailCtrl.results.agent__agent != null">
+                        <td> {{ 'API_TRANSLATION.COLLECTION.AGENT' | translate }} </td>
+                        <td> {{ detailCtrl.results.agent__agent }} </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.reference__id && detailCtrl.results.reference__id != null">
+                        <td> {{ 'API_TRANSLATION.COLLECTION.REFERENCE' | translate }} </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'reference',id:detailCtrl.results.reference__id})">
+                                {{ detailCtrl.results.reference__reference }}
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.number_objects != null">
+                        <td> {{ 'API_TRANSLATION.COLLECTION.NUMBER_OBJECTS' | translate }} </td>
+                        <td> {{ detailCtrl.results.number_objects }} </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.remarks && detailCtrl.results.remarks != null">
+                        <td> {{ 'API_TRANSLATION.COLLECTION.REMARKS' | translate }} </td>
+                        <td> {{ detailCtrl.results.remarks }} </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.date_added && detailCtrl.results.date_added != null">
+                        <td> {{ 'API_TRANSLATION.COLLECTION.DATE_ADDED' | translate }} </td>
+                        <td> {{ detailCtrl.results.date_added | date:dateFormat }} </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.date_changed && detailCtrl.results.date_changed != null">
+                        <td> {{ 'API_TRANSLATION.COLLECTION.DATE_CHANGED' | translate }} </td>
+                        <td> {{ detailCtrl.results.date_changed | date:dateFormat }} </td>
+                    </tr>
+
+                    <tr data-ng-if="(detailCtrl.results.database__name && detailCtrl.results.database__name != null) ||
+                        (detailCtrl.results.database__name_en && detailCtrl.results.database__name_en != null)">
+                        <td> {{ 'API_TRANSLATION.COLLECTION.DATABASE_NAME' | translate }} </td>
+                        <td>
+                            <a class="page-scroll-to-additional" href="/" data-target="#infoCarousel" data-slide-to="{{detailCtrl.service.returnInstitutionSlideNumber(detailCtrl.results.database__acronym)}}">
+                                <localize et="detailCtrl.results.database__name" en="detailCtrl.results.database__name_en" />
+                            </a>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <div class="col-lg-6 collection-specimen-link">
+                <a href target="_blank" data-ng-if="detailCtrl.results.number_objects && detailCtrl.results.number_objects != null"
+                   data-ng-click="detailCtrl.service.searchAllSpecimensUsingCollection({collection: detailCtrl.results.number})">
+                    {{ 'DETAIL.COLLECTION.SPECIMEN_LINK' | translate }}
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div data-ng-if="detailCtrl.results == null && pageHasError" ng-include="'app/templates/main/detailview_error.html'"></div>
+
+</div>
+
+<div ng-include="'app/templates/main/partial/detailview_footer.html'"></div>
+
+<script>
+    $(function(){
+        $('#elementToFocus').focus();
+    });
+</script>

@@ -23,7 +23,7 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
     }
 
     function onEntityData(response) {
-        // console.log(response);
+        console.log(response);
         if (response.data.results != null) {
 
             vm.results = response.data.results[0];

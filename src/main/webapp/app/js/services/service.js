@@ -232,6 +232,9 @@ var constructor = function (utils, configuration, $window, $location, $translate
             case "photoArchive" : url = configuration.photoArchiveDetailUrl; break;
             case "soil" : url = configuration.soilDetailUrl; break;
             case "doi" : url = configuration.doiDetailUrl; break;
+            case "attachment" : url = configuration.attachmentDetailUrl; break;
+            case "collection" : url = configuration.collectionDetailUrl; break;
+            case "dataset" : url = configuration.datasetDetailUrl; break;
             default : break;
         }
         return url;

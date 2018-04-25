@@ -594,6 +594,37 @@
             "LOCALITY_DB": "Locality from database",
             "DOWNLOAD": "Download",
             "PREVIEW": "Preview"
+        },
+        "ATTACHMENT": {
+            "TYPE": "Type",
+            "DESCRIPTION": "Description",
+            "AUTHOR": "Author",
+            "DATE": "Date",
+            "FORMAT": "Format",
+            "FILENAME": "File name",
+            "PERSON_DIGITISED": "Person digitised",
+            "DATE_DIGITISED": "Date digitised",
+            "DEVICE": "Camera",
+            "REMARKS": "Remarks"
+        },
+        "COLLECTION": {
+            "NUMBER": "Collection number",
+            "NAME": "Collection name",
+            "NAME_LONG": "Collection longer name",
+            "CLASS": "Group",
+            "LOCALITY": "Locality",
+            "STRATIGRAPHY": "Stratigaphy",
+            "AGENT": "Person/Institution",
+            "REFERENCE": "Reference",
+            "NUMBER_OBJECTS": "Specimen count",
+            "REMARKS": "Remarks",
+            "DATE_ADDED": "Record added",
+            "DATE_CHANGED":"Record changed",
+            "DATABASE_NAME":"Belongs to"
+        },
+        "DATASET": {
+
         }
+
     }
 }

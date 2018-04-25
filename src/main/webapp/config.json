@@ -221,6 +221,9 @@
   "photoArchiveDetailUrl":"/details/raw-photo-archive",
   "soilDetailUrl":"/details/raw-soil",
   "doiDetailUrl":"/details/raw-doi",
+  "attachmentDetailUrl":"/details/raw-attachment",
+  "collectionDetailUrl":"/details/raw-collection",
+  "datasetDetailUrl":"/details/raw-dataset",
 
   "detailFieldsConfig" : {
     "specimens" : {
@@ -340,7 +343,10 @@
         {"value_et" : "dataset__name",  "value_en" : "dataset__name_en"}],
       "date" : ["date_added","date_changed", "datacite_created", "datacite_updated"],
       "ignoreFields" : []
-    }
+    },
+    "attachment" : {},
+    "collection" : {},
+    "dataset" : {}
   },
 
   "departments": [{"code": "GIT", "label": "GIT"},

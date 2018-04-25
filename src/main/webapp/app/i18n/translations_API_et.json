@@ -591,6 +591,36 @@
             "LOCALITY_DB": "Lokaliteet andmebaasist",
             "DOWNLOAD": "Lae alla",
             "PREVIEW": "Eelvaade"
+        },
+        "ATTACHMENT": {
+            "TYPE": "Tüüp",
+            "DESCRIPTION": "Kirjeldus",
+            "AUTHOR": "Autor",
+            "DATE": "Aeg",
+            "FORMAT": "Formaat",
+            "FILENAME": "Failinimi",
+            "PERSON_DIGITISED": "Digiteerija",
+            "DATE_DIGITISED": "Digit. aeg",
+            "DEVICE": "Kaamera",
+            "REMARKS": "Lisainfo"
+        },
+        "COLLECTION": {
+            "NUMBER": "Kollektsiooni nr",
+            "NAME": "Kollektsiooni nimi",
+            "NAME_LONG": "Kollektsiooni pikk nimi",
+            "CLASS": "Rühm",
+            "LOCALITY": "Leiukoht",
+            "STRATIGRAPHY": "Stratigraafia",
+            "AGENT": "Isik/Asutus",
+            "REFERENCE": "Viide",
+            "NUMBER_OBJECTS": "Säilikute arv",
+            "REMARKS": "Lisainfo",
+            "DATE_ADDED": "Kirje sisestatud",
+            "DATE_CHANGED":"Kirjet muudetud",
+            "DATABASE_NAME":"Kuulub"
+        },
+        "DATASET": {
+
         }
     }
 }

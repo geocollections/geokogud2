@@ -122,7 +122,8 @@
                         <td>
                             <a href data-ng-if="detailCtrl.results.doi && detailCtrl.results.doi != null"
                                data-ng-click="detailCtrl.service.openDoiInNewWindow({doi: detailCtrl.results.doi})">
-                                <i title="{{detailCtrl.results.doi}}" class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>
+                                {{ detailCtrl.results.doi }}
+                                <!--<i title="{{detailCtrl.results.doi}}" class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>-->
                             </a>
                         </td>
                     </tr>

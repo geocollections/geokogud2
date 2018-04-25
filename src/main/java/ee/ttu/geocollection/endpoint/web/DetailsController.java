@@ -6,6 +6,9 @@ import ee.ttu.geocollection.domain.SearchField;
 import ee.ttu.geocollection.interop.api.AsynchService;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.analyses.search.AnalysesApiService;
+import ee.ttu.geocollection.interop.api.attachment.service.AttachmentApiService;
+import ee.ttu.geocollection.interop.api.collection.service.CollectionApiService;
+import ee.ttu.geocollection.interop.api.dataset.service.DatasetApiService;
 import ee.ttu.geocollection.interop.api.doi.service.DoiApiService;
 import ee.ttu.geocollection.interop.api.drillCores.service.DrillCoreApiService;
 import ee.ttu.geocollection.interop.api.drillCores.service.DrillCoreBoxApiService;
@@ -65,6 +68,16 @@ public class DetailsController {
     private AnalysesApiService analysesApiService;
     @Autowired
     private PreparationsApiService preparationsApiService;
+
+    @Autowired
+    private AttachmentApiService attachmentApiService;
+
+    @Autowired
+    private CollectionApiService collectionApiService;
+
+    @Autowired
+    private DatasetApiService datasetApiService;
+
 
     @RequestMapping(value = "/raw-specimen/{id}")
     public Map findRawSpecimenById(@PathVariable Long id) {
@@ -210,6 +223,21 @@ public class DetailsController {
     @RequestMapping(value = "/raw-doi/{id}")
     public Map findRawDoiByIdentifier(@PathVariable Long id) {
         return doiApiService.findRawById(id);
+    }
+
+    @RequestMapping(value = "/raw-attachment/{id}")
+    public ApiResponse findRawAttachmentByIdentifier(@PathVariable Long id) {
+        return attachmentApiService.findRawById(id);
+    }
+
+    @RequestMapping(value = "/raw-collection/{id}")
+    public ApiResponse findRawCollectionByIdentifier(@PathVariable Long id) {
+        return collectionApiService.findRawById(id);
+    }
+
+    @RequestMapping(value = "/raw-dataset/{id}")
+    public ApiResponse findRawDatasetByIdentifier(@PathVariable Long id) {
+        return datasetApiService.findRawById(id);
     }
 
 }

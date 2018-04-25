@@ -580,6 +580,16 @@
             "STRATIGRAPHY": "Stratigraafia",
             "DESCRIPTION_HEADING": "Description"
         },
+        "ATTACHMENT": {
+            "HEADING": "Fail"
+        },
+        "COLLECTION": {
+            "HEADING": "Kollektsioon #",
+            "SPECIMEN_LINK": "Kollektsiooni kuuluvad eksemplarid"
+        },
+        "DATASET": {
+            "HEADING": "Dataset No."
+        },
         "NEXT": "JÄRGMINE",
         "NEXT_INFO": "Kas teadsid, et sa saad navigeerida ka klaviatuuri nooleklahve kasutades",
         "PREVIOUS": "EELMINE",
@@ -620,6 +630,9 @@
         "DETAIL_ANALYSES": "Eesti geokogude infosüsteem: Analüüs",
         "DETAIL_PREPARATION": "Eesti geokogude infosüsteem: Preparaat",
         "DETAIL_PHOTO_ARCHIVE": "Eesti geokogude infosüsteem: Foto",
+        "DETAIL_ATTACHMENT": "Eesti geokogude infosüsteem: Lisa",
+        "DETAIL_COLLECTION": "Geocollections of Estonia: Kollektsioon",
+        "DETAIL_DATASET": "Geocollections of Estonia: Andmestik",
         "HOME": "Eesti geokogude infosüsteem",
         "MAP": "Eesti geokogude infosüsteem: Kaart",
         "SPECIMEN_IMAGE": "Eesti geokogude infosüsteem: Säiliku foto",

@@ -72,7 +72,8 @@ public class ApiServiceImpl implements ApiService {
     public ApiResponse searchRawEntities(String tableName, String requestParams) {
         String url;
 
-        if (tableName.equals("drillcore_box")) {
+//        TODO: Maybe instead add fields array to attachment, collections and dataset class
+        if (tableName.equals("drillcore_box") || tableName.equals("attachment") || tableName.equals("collection") || tableName.equals("dataset")) {
             url = apiUrl + "/" + tableName + "/" + requestParams + "?format=json";
         } else {
             url = apiUrl + "/" + tableName + "/" + requestParams + "&format=json";
