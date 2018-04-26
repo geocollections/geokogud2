@@ -39,7 +39,7 @@
                     <tr data-ng-if="detailCtrl.results.coll__number != null && detailCtrl.results.coll__number">
                         <td> {{' API_TRANSLATION.SPECIMEN.COLL__NUMBER' | translate }} </td>
                         <td>
-                            <a href target="_blank" data-ng-click="detailCtrl.service.searchAllSpecimensUsingCollection({collection: detailCtrl.results.coll__number})">
+                            <a href target="_blank" data-ng-click="detailCtrl.service.openInNewWindow({object:'collection',id:detailCtrl.results.coll_id})">
                                 {{detailCtrl.results.coll__number}}
                             </a>
                         </td>

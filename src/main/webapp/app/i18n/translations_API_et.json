@@ -602,7 +602,44 @@
             "PERSON_DIGITISED": "Digiteerija",
             "DATE_DIGITISED": "Digit. aeg",
             "DEVICE": "Kaamera",
-            "REMARKS": "Lisainfo"
+            "REMARKS": "Lisainfo",
+            "ANALYSIS": {
+                "HEADING": "Seotud analüüs",
+                "ANALYSIS_ID": "Analüüsi ID"
+            },
+            "COLLECTION": {
+                "HEADING": "Seotud kollektsioon",
+                "NUMBER": "Kollektsiooni nr"
+            },
+            "DATASET": {
+                "HEADING": "Seotud andmestik",
+                "NAME": "Nimi"
+            },
+            "DOI": {
+                "HEADING": "Seotud doi",
+                "IDENTIFIER": "DOI"
+            },
+            "LOCALITY": {
+                "HEADING": "Seotud leiukoht",
+                "LOCALITY": "Leiukoht"
+            },
+            "PREPARATION": {
+                "HEADING": "Seotud preparaat",
+                "NUMBER": "Number"
+            },
+            "REFERENCE": {
+                "HEADING": "Seotud viide",
+                "REFERENCE": "Viide"
+            },
+            "SAMPLE": {
+                "HEADING": "Seotud proov",
+                "NUMBER": "Proovi nr"
+            },
+            "SPECIMEN": {
+                "HEADING": "Seotud eksemplar",
+                "NUMBER": "Eksemplari nr"
+            }
+
         },
         "COLLECTION": {
             "NUMBER": "Kollektsiooni nr",

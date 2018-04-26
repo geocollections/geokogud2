@@ -5,7 +5,6 @@
 
 
         <div class="row">
-
             <div class="col-lg-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
 
                 <div class="detailview-title">
@@ -126,8 +125,10 @@
 
                 </table>
             </div>
+        </div>
 
 
+        <div class="row">
             <div class="col-lg-6">
                 <div data-ng-if="detailCtrl.results.filename != null">
                     <div data-ng-if="detailCtrl.results.filename.endsWith('png') || detailCtrl.results.filename.endsWith('jpeg') || detailCtrl.results.filename.endsWith('svg') || detailCtrl.results.filename.endsWith('jpg')">
@@ -138,27 +139,299 @@
                         </a>
 
                         <!--<div class="img-settings">-->
-                            <!--<div class="img-text">-->
-                                <!--{{'API_TRANSLATION.PHOTO_ARCHIVE.SIZE ' | translate }}:-->
-                                <!--<a href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}/600" target="_blank">600px</a>-->
-                                <!--| <a href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}/1024" target="_blank">1024px</a>-->
-                                <!--| <a href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}/1440" target="_blank">1440px</a>-->
-                                <!--| <a href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}/1600" target="_blank">1600px</a>-->
-                                <!--| <a href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}/1920" target="_blank">1920px</a>-->
-                                <!--| <a href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}" target="_blank">Original</a>-->
+                        <!--<div class="img-text">-->
+                        <!--{{'API_TRANSLATION.PHOTO_ARCHIVE.SIZE ' | translate }}:-->
+                        <!--<a href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}/600" target="_blank">600px</a>-->
+                        <!--| <a href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}/1024" target="_blank">1024px</a>-->
+                        <!--| <a href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}/1440" target="_blank">1440px</a>-->
+                        <!--| <a href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}/1600" target="_blank">1600px</a>-->
+                        <!--| <a href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}/1920" target="_blank">1920px</a>-->
+                        <!--| <a href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}" target="_blank">Original</a>-->
 
-                            <!--</div>-->
+                        <!--</div>-->
                         <!--</div>-->
 
                     </div>
                 </div>
             </div>
-
-
-            <!--TODO: All relations-->
-
-
         </div>
+
+        <!-- Related analysis -->
+        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__analysis__id && detailCtrl.results.attachmentlink__analysis__id != null">
+            <div class="col-lg-6">
+                <h3>{{ 'API_TRANSLATION.ATTACHMENT.ANALYSIS.HEADING' | translate }}</h3>
+
+                <table class="table table-bordered table-hover">
+                    <thead class="styles-for-table-headers">
+                        <tr>
+                            <th> {{ 'API_TRANSLATION.ATTACHMENT.ANALYSIS.ANALYSIS_ID' | translate }} </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'analysis',id:detailCtrl.results.attachmentlink__analysis__id})">
+                                    {{ detailCtrl.results.attachmentlink__analysis__id }}
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Related collection -->
+        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__collection__id && detailCtrl.results.attachmentlink__collection__id != null">
+            <div class="col-lg-6">
+                <h3>{{ 'API_TRANSLATION.ATTACHMENT.COLLECTION.HEADING' | translate }}</h3>
+
+                <table class="table table-bordered table-hover">
+                    <thead class="styles-for-table-headers">
+                        <tr>
+                            <th> {{ 'API_TRANSLATION.ATTACHMENT.COLLECTION.NUMBER' | translate }} </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'collection',id:detailCtrl.results.attachmentlink__collection__id})">
+                                    {{ detailCtrl.results.attachmentlink__colletion__number }}
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Related dataset -->
+        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__dataset__id && detailCtrl.results.attachmentlink__dataset__id != null">
+            <div class="col-lg-6">
+                <h3>{{ 'API_TRANSLATION.ATTACHMENT.DATASET.HEADING' | translate }}</h3>
+
+                <table class="table table-bordered table-hover">
+                    <thead class="styles-for-table-headers">
+                    <tr>
+                        <th> {{ 'API_TRANSLATION.ATTACHMENT.DATASET.NAME' | translate }} </th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'dataset',id:detailCtrl.results.attachmentlink__dataset__id})">
+                                <localize et="detailCtrl.results.attachmentlink__dataset__name" en="detailCtrl.results.attachmentlink__dataset__name_en" />
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Related doi -->
+        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__doi__id && detailCtrl.results.attachmentlink__doi__id != null">
+            <div class="col-lg-6">
+                <h3>{{ 'API_TRANSLATION.ATTACHMENT.DOI.HEADING' | translate }}</h3>
+
+                <table class="table table-bordered table-hover">
+                    <thead class="styles-for-table-headers">
+                    <tr>
+                        <th> {{ 'API_TRANSLATION.ATTACHMENT.DOI.IDENTIFIER' | translate }} </th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'doi',id:detailCtrl.results.attachmentlink__doi__id})">
+                                {{ detailCtrl.results.attachmentlink__doi__identifier }}
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Related drillcore 500 error currently -->
+        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__drillcore__id && detailCtrl.results.attachmentlink__drillcore__id != null">
+            <div class="col-lg-6">
+                <h3>{{ 'API_TRANSLATION.ATTACHMENT.ANALYSIS.HEADING' | translate }}</h3>
+
+                <table class="table table-bordered table-hover">
+                    <thead class="styles-for-table-headers">
+                    <tr>
+                        <th> {{ 'API_TRANSLATION.ATTACHMENT.ANALYSIS.ANALYSIS_ID' | translate }} </th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'analysis',id:detailCtrl.results.attachmentlink__analysis__id})">
+                                {{ detailCtrl.results.attachmentlink__analysis__id }}
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Related drillcore box 500 error currently -->
+        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__drillcore_box__id && detailCtrl.results.attachmentlink__drillcore_box__id != null">
+            <div class="col-lg-6">
+                <h3>{{ 'API_TRANSLATION.ATTACHMENT.ANALYSIS.HEADING' | translate }}</h3>
+
+                <table class="table table-bordered table-hover">
+                    <thead class="styles-for-table-headers">
+                    <tr>
+                        <th> {{ 'API_TRANSLATION.ATTACHMENT.ANALYSIS.ANALYSIS_ID' | translate }} </th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'analysis',id:detailCtrl.results.attachmentlink__analysis__id})">
+                                {{ detailCtrl.results.attachmentlink__analysis__id }}
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Related locality -->
+        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__locality__id && detailCtrl.results.attachmentlink__locality__id != null">
+            <div class="col-lg-6">
+                <h3>{{ 'API_TRANSLATION.ATTACHMENT.LOCALITY.HEADING' | translate }}</h3>
+
+                <table class="table table-bordered table-hover">
+                    <thead class="styles-for-table-headers">
+                    <tr>
+                        <th> {{ 'API_TRANSLATION.ATTACHMENT.LOCALITY.LOCALITY' | translate }} </th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'analysis',id:detailCtrl.results.attachmentlink__locality__id})">
+                                <localize et="detailCtrl.results.attachmentlink__locality__locality" en="detailCtrl.results.attachmentlink__locality__locality_en" />
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Related preparation -->
+        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__preparation__id && detailCtrl.results.attachmentlink__preparation__id != null">
+            <div class="col-lg-6">
+                <h3>{{ 'API_TRANSLATION.ATTACHMENT.PREPARATION.HEADING' | translate }}</h3>
+
+                <table class="table table-bordered table-hover">
+                    <thead class="styles-for-table-headers">
+                    <tr>
+                        <th> {{ 'API_TRANSLATION.ATTACHMENT.PREPARATION.NUMBER' | translate }} </th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'preparation',id:detailCtrl.results.attachmentlink__preparation__id})">
+                                {{ detailCtrl.results.attachmentlink__preparation__preparation_number }}
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Related reference -->
+        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__reference__id && detailCtrl.results.attachmentlink__reference__id != null">
+            <div class="col-lg-6">
+                <h3>{{ 'API_TRANSLATION.ATTACHMENT.REFERENCE.HEADING' | translate }}</h3>
+
+                <table class="table table-bordered table-hover">
+                    <thead class="styles-for-table-headers">
+                    <tr>
+                        <th> {{ 'API_TRANSLATION.ATTACHMENT.REFERENCE.REFERENCE' | translate }} </th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'reference',id:detailCtrl.results.attachmentlink__reference__id})">
+                                {{ detailCtrl.results.attachmentlink__reference__reference }}
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Related sample -->
+        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__sample__id && detailCtrl.results.attachmentlink__sample__id != null">
+            <div class="col-lg-6">
+                <h3>{{ 'API_TRANSLATION.ATTACHMENT.SAMPLE.HEADING' | translate }}</h3>
+
+                <table class="table table-bordered table-hover">
+                    <thead class="styles-for-table-headers">
+                    <tr>
+                        <th> {{ 'API_TRANSLATION.ATTACHMENT.SAMPLE.NUMBER' | translate }} </th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'sample',id:detailCtrl.results.attachmentlink__sample__id})">
+                                {{ detailCtrl.results.attachmentlink__sample__number }}
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Related specimen -->
+        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__specimen__id && detailCtrl.results.attachmentlink__specimen__id != null">
+            <div class="col-lg-6">
+                <h3>{{ 'API_TRANSLATION.ATTACHMENT.SPECIMEN.HEADING' | translate }}</h3>
+
+                <table class="table table-bordered table-hover">
+                    <thead class="styles-for-table-headers">
+                    <tr>
+                        <th> {{ 'API_TRANSLATION.ATTACHMENT.SPECIMEN.NUMBER' | translate }} </th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen',id:detailCtrl.results.attachmentlink__specimen__id})">
+                                {{ detailCtrl.results.attachmentlink__specimen__coll__number | split:' ':0 }} {{ detailCtrl.results.attachmentlink__specimen__specimen_id }}
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
     </div>
 
 

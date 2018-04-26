@@ -605,7 +605,43 @@
             "PERSON_DIGITISED": "Person digitised",
             "DATE_DIGITISED": "Date digitised",
             "DEVICE": "Camera",
-            "REMARKS": "Remarks"
+            "REMARKS": "Remarks",
+            "ANALYSIS": {
+                "HEADING": "Related analysis",
+                "ANALYSIS_ID": "Analysis ID"
+            },
+            "COLLECTION": {
+                "HEADING": "Related collection",
+                "NUMBER": "Collection number"
+            },
+            "DATASET": {
+                "HEADING": "Related dataset",
+                "NAME": "Name"
+            },
+            "DOI": {
+                "HEADING": "Related doi",
+                "IDENTIFIER": "DOI"
+            },
+            "LOCALITY": {
+                "HEADING": "Related locality",
+                "LOCALITY": "Locality"
+            },
+            "PREPARATION": {
+                "HEADING": "Related preparation",
+                "NUMBER": "Number"
+            },
+            "REFERENCE": {
+                "HEADING": "Related reference",
+                "REFERENCE": "Reference"
+            },
+            "SAMPLE": {
+                "HEADING": "Related sample",
+                "NUMBER": "Sample number"
+            },
+            "SPECIMEN": {
+                "HEADING": "Related specimen",
+                "NUMBER": "Specimen number"
+            }
         },
         "COLLECTION": {
             "NUMBER": "Collection number",

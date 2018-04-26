@@ -80,6 +80,7 @@
                     </tr>
 
                     <tr data-ng-if="detailCtrl.results.number_objects != null">
+                        <!--TODO: Sometimes number_objects is null but actually specimens do exist, maybe count them with another request? -->
                         <td> {{ 'API_TRANSLATION.COLLECTION.NUMBER_OBJECTS' | translate }} </td>
                         <td> {{ detailCtrl.results.number_objects }} </td>
                     </tr>
@@ -113,8 +114,7 @@
             </div>
 
             <div class="col-lg-6 collection-specimen-link">
-                <a href target="_blank" data-ng-if="detailCtrl.results.number_objects && detailCtrl.results.number_objects != null"
-                   data-ng-click="detailCtrl.service.searchAllSpecimensUsingCollection({collection: detailCtrl.results.number})">
+                <a href target="_blank" data-ng-click="detailCtrl.service.searchAllSpecimensUsingCollection({collection: detailCtrl.results.number})">
                     {{ 'DETAIL.COLLECTION.SPECIMEN_LINK' | translate }}
                 </a>
             </div>
