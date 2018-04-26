@@ -169,19 +169,17 @@
                             </td>
                         </tr>
 
-                        <!--<tr data-ng-if="(detailCtrl.results.dataset__name && detailCtrl.results.dataset__name != null) || (detailCtrl.results.dataset__name_en && detailCtrl.results.dataset__name_en != null) ">-->
-                            <!--<td>-->
-                                <!--<localize-label et="'API_TRANSLATION.DOI.DATASET__NAME'" en="'API_TRANSLATION.DOI.DATASET__NAME_EN'"/>-->
-                            <!--</td>-->
-                            <!--<td>-->
-                                <!--&lt;!&ndash;TODO: make dataset detail view&ndash;&gt;-->
-                                <!--&lt;!&ndash;<a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'dataset', id: detailCtrl.results.dataset_id})"&ndash;&gt;-->
-                                <!--<a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url: 'http://geokogud.info/dataset/' + detailCtrl.results.dataset_id})"-->
-                                   <!--data-ng-if="detailCtrl.results.dataset_id && detailCtrl.results.dataset_id != null">-->
-                                    <!--<localize et="detailCtrl.results.dataset__name" en="detailCtrl.results.dataset__name_en"/>-->
-                                <!--</a>-->
-                            <!--</td>-->
-                        <!--</tr>-->
+                        <tr data-ng-if="(detailCtrl.results.dataset__name && detailCtrl.results.dataset__name != null) || (detailCtrl.results.dataset__name_en && detailCtrl.results.dataset__name_en != null) ">
+                            <td>
+                                <localize-label et="'API_TRANSLATION.DOI.DATASET__NAME'" en="'API_TRANSLATION.DOI.DATASET__NAME_EN'"/>
+                            </td>
+                            <td>
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'dataset', id: detailCtrl.results.dataset_id})"
+                                   data-ng-if="detailCtrl.results.dataset_id && detailCtrl.results.dataset_id != null">
+                                    <localize et="detailCtrl.results.dataset__name" en="detailCtrl.results.dataset__name_en"/>
+                                </a>
+                            </td>
+                        </tr>
 
                         <tr data-ng-if="detailCtrl.results.reference__reference && detailCtrl.results.reference__reference != null">
                             <td> {{ 'API_TRANSLATION.DOI.RELATED_REFERENCE' | translate }} </td>

@@ -659,7 +659,38 @@
             "DATABASE_NAME":"Belongs to"
         },
         "DATASET": {
-
+            "ID": "ID",
+            "NAME": "Name",
+            "AUTHOR": "Author",
+            "DATE": "Date",
+            "COPYRIGHT": "Copyright",
+            "LICENCE": "Licence",
+            "DESCRIPTION": "Description",
+            "DATE_ADDED": "Date added",
+            "DATE_CHANGED": "Date changed",
+            "REFERENCE": {
+                "REFERENCE": "Reference",
+                "TITLE": "Title",
+                "BOOK": "Book",
+                "JOURNAL": "Journal",
+                "PAGES": "pgs."
+            },
+            "ATTACHMENT": {
+                "TYPE": "Type",
+                "DESCRIPTION": "Description",
+                "AUTHOR": "Author",
+                "DATE": "Date",
+                "LINK": "Link"
+            },
+            "DATASET_ANALYSIS": "Original data",
+            "ANALYSIS": {
+                "NUMBER": "Sample no.",
+                "LOCALITY": "Locality",
+                "DEPTH": "Depth (m)",
+                "STRATIGRAPHY": "Stratigraphy",
+                "LITHOSTRATIGRAPHY": "Lithostratigraphy",
+                "ROCK": "Rock"
+            }
         }
 
     }

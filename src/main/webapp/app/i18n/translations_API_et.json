@@ -612,7 +612,7 @@
                 "NUMBER": "Kollektsiooni nr"
             },
             "DATASET": {
-                "HEADING": "Seotud andmestik",
+                "HEADING": "Seotud andmekogu",
                 "NAME": "Nimi"
             },
             "DOI": {
@@ -657,7 +657,38 @@
             "DATABASE_NAME":"Kuulub"
         },
         "DATASET": {
-
+            "ID": "ID",
+            "NAME": "Nimi",
+            "AUTHOR": "Autor",
+            "DATE": "Aeg",
+            "COPYRIGHT": "Autoriõigused",
+            "LICENCE": "Kasutustingimused",
+            "DESCRIPTION": "Kirjeldus",
+            "DATE_ADDED": "Kirje sisestatud",
+            "DATE_CHANGED": "Kirje muudetud",
+            "REFERENCE": {
+                "REFERENCE": "Viide",
+                "TITLE": "Pealkiri",
+                "BOOK": "Raamat, kogumik",
+                "JOURNAL": "Ajakiri",
+                "PAGES": "lk."
+            },
+            "ATTACHMENT": {
+                "TYPE": "Tüüp",
+                "DESCRIPTION": "Kirjeldus",
+                "AUTHOR": "Autor",
+                "DATE": "Aeg",
+                "LINK": "Link"
+            },
+            "DATASET_ANALYSIS": "Originaal andmekogu",
+            "ANALYSIS": {
+                "NUMBER": "Proovi nr.",
+                "LOCALITY": "Leiukoht",
+                "DEPTH": "Sügavsus (m)",
+                "STRATIGRAPHY": "Stratigraafia",
+                "LITHOSTRATIGRAPHY": "Litostratigraafia",
+                "ROCK": "Kivim"
+            }
         }
     }
 }

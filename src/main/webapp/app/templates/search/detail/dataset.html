@@ -3,10 +3,260 @@
 
 
 
-<div id="elementToFocus" tabindex="1" style="outline: 0" ng-arrow-left="detailCtrl.reload({table:'attachment', left:true})" ng-arrow-right="detailCtrl.reload({table:'attachment', right:true})"  class="panel detailview-page">
-    <div class="panel-body" data-ng-if="detailCtrl.results != null">
+<div id="elementToFocus" tabindex="1" style="outline: 0" ng-arrow-left="detailCtrl.reload({table:'dataset', left:true})" ng-arrow-right="detailCtrl.reload({table:'dataset', right:true})"  class="panel detailview-page">
+    <div class="panel-body detailview-max-width" data-ng-if="detailCtrl.results != null">
 
-        TODO: Dataset detail view
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="detailview-title">
+                    <h2>
+                        {{ 'DETAIL.DATASET.HEADING' | translate }}
+                        {{ detailCtrl.results.id }}:
+                        <localize et="detailCtrl.results.name" en="detailCtrl.results.name_en" />
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
+
+                <h3> {{ 'DETAILVIEW_TABLE_HEADER' | translate }} </h3>
+                <table class="table table-bordered table-hover table-header-styles">
+
+                    <tr data-ng-if="detailCtrl.results.id && detailCtrl.results.id != null">
+                        <td> {{ 'API_TRANSLATION.DATASET.ID' | translate }} </td>
+                        <td> {{ detailCtrl.results.id }} </td>
+                    </tr>
+
+                    <tr data-ng-if="(detailCtrl.results.name && detailCtrl.results.name != null)
+                        || (detailCtrl.results.name_en && detailCtrl.results.name_en != null)">
+                        <td> {{ 'API_TRANSLATION.DATASET.NAME' | translate }} </td>
+                        <td>
+                            <localize et="detailCtrl.results.name" en="detailCtrl.results.name_en"/>
+                        </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.owner__agent && detailCtrl.results.owner__agent != null">
+                        <td> {{ 'API_TRANSLATION.DATASET.AUTHOR' | translate }} </td>
+                        <td> {{ detailCtrl.results.owner__agent }} </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.owner__agent == null &&
+                        (detailCtrl.results.owner_txt && detailCtrl.results.owner_txt != null)">
+                        <td> {{ 'API_TRANSLATION.DATASET.AUTHOR' | translate }} </td>
+                        <td> {{ detailCtrl.results.owner_txt }} </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.date && detailCtrl.results.date != null">
+                        <td> {{ 'API_TRANSLATION.DATASET.DATE' | translate }} </td>
+                        <td> {{ detailCtrl.results.date | date:dateFormat }} </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.date == null &&
+                        (detailCtrl.results.date_txt && detailCtrl.results.date_txt != null)">
+                        <td> {{ 'API_TRANSLATION.DATASET.DATE' | translate }} </td>
+                        <td> {{ detailCtrl.results.date_txt }} </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.copyright_agent__agent && detailCtrl.results.copyright_agent__agent != null">
+                        <td> {{ 'API_TRANSLATION.DATASET.COPYRIGHT' | translate }} </td>
+                        <td> {{ detailCtrl.results.copyright_agent__agent }} </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.licence__licence && detailCtrl.results.licence__licence != null">
+                        <td> {{ 'API_TRANSLATION.DATASET.LICENCE' | translate }} </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.results.licence__licence_url })">
+                                {{ detailCtrl.results.licence__licence }}
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.description && detailCtrl.results.description != null">
+                        <td> {{ 'API_TRANSLATION.DATASET.DESCRIPTION' | translate }} </td>
+                        <td> {{ detailCtrl.results.description }} </td>
+                    </tr>
+
+                    <!-- Probably not necessary -->
+                    <!--<tr data-ng-if="detailCtrl.results.date_added && detailCtrl.results.date_added != null">-->
+                        <!--<td> {{ 'API_TRANSLATION.DATASET.DATE_ADDED' | translate }} </td>-->
+                        <!--<td> {{ detailCtrl.results.date_added | date:dateFormat }} </td>-->
+                    <!--</tr>-->
+
+                    <!--<tr data-ng-if="detailCtrl.results.date_changed && detailCtrl.results.date_changed != null">-->
+                        <!--<td> {{ 'API_TRANSLATION.DATASET.DATE_CHANGED' | translate }} </td>-->
+                        <!--<td> {{ detailCtrl.results.date_changed | date:dateFormat }} </td>-->
+                    <!--</tr>-->
+
+                </table>
+
+                <!-- Related attachments -->
+                <div data-ng-if="detailCtrl.datasetAttachment.length > 0">
+                    <h3>{{ 'DETAIL.DETAIL_LINKED_FILES' | translate }}</h3>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered">
+                            <thead class="styles-for-table-headers">
+                            <tr>
+                                <th> {{ 'API_TRANSLATION.DATASET.ATTACHMENT.TYPE' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.DATASET.ATTACHMENT.DESCRIPTION' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.DATASET.ATTACHMENT.AUTHOR' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.DATASET.ATTACHMENT.DATE' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.DATASET.ATTACHMENT.LINK' | translate }} </th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr data-ng-repeat="entity in detailCtrl.datasetAttachment">
+                                <td>
+                                    <localize en="entity.type__value_en" et="entity.type__value" />
+                                </td>
+                                <td>
+                                    <localize en="entity.description_en" et="entity.description" />
+                                </td>
+                                <td>
+                                    <first-not-null values="[entity.author__agent, entity.author_free]" />
+                                </td>
+                                <td>
+                                    <first-not-null values="[entity.date_created, entity.date_created_free]" />
+                                </td>
+                                <td>
+                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'attachment', id: entity.id})">
+                                        {{ entity.filename | split:'.':1 }}
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Related references -->
+                <div data-ng-if="detailCtrl.datasetReference.length > 0">
+
+                    <h3>{{ 'DETAIL.DETAIL_REFERENCES' | translate }}</h3>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered">
+                            <thead class="styles-for-table-headers">
+                            <tr>
+                                <th> {{ 'API_TRANSLATION.DATASET.REFERENCE.REFERENCE' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.DATASET.REFERENCE.TITLE' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.DATASET.REFERENCE.BOOK' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.DATASET.REFERENCE.JOURNAL' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.DATASET.REFERENCE.PAGES' | translate }} </th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr data-ng-repeat="entity in detailCtrl.datasetReference">
+                                <td data-ng-if="(entity.reference__id && entity.reference__id != null)
+                                        && entity.reference__reference && entity.reference__reference != null">
+                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference', id: entity.reference__id})">
+                                        {{ entity.reference__reference }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <first-not-null values="[entity.reference__title, entity.reference__title_original]" />
+                                </td>
+                                <td>
+                                    <first-not-null values="[entity.reference__book, entity.reference__book_original]" />
+                                </td>
+                                <td>
+                                    <first-not-null values="[entity.reference__journal__journal_name, entity.reference__journal_additional]" />
+                                </td>
+                                <td> {{ entity.reference__pages }} </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Map -->
+            <div class="col-sm-6">
+
+                <div>
+                    <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
+                    <div id='hoverbox' class='coupontooltip'>
+                        <div id='hoversystem'></div>
+                        <div id='hoverstat'></div>
+                    </div>
+                    <localities-map style="height: 300px;" localities="detailCtrl.datasetLocalities"></localities-map>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Original data -->
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div data-ng-if="detailCtrl.datasetAnalysis.length > 0">
+
+                    <h3>{{ 'API_TRANSLATION.DATASET.DATASET_ANALYSIS' | translate }}</h3>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-smaller">
+                            <thead class="styles-for-table-headers">
+                                <tr>
+                                    <th> {{ 'API_TRANSLATION.DATASET.ANALYSIS.NUMBER' | translate }} </th>
+                                    <th> {{ 'API_TRANSLATION.DATASET.ANALYSIS.LOCALITY' | translate }} </th>
+                                    <th> {{ 'API_TRANSLATION.DATASET.ANALYSIS.DEPTH' | translate }} </th>
+                                    <th> {{ 'API_TRANSLATION.DATASET.ANALYSIS.STRATIGRAPHY' | translate }} </th>
+                                    <th> {{ 'API_TRANSLATION.DATASET.ANALYSIS.LITHOSTRATIGRAPHY' | translate }} </th>
+                                    <th> {{ 'API_TRANSLATION.DATASET.ANALYSIS.ROCK' | translate }} </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr data-ng-repeat="entity in detailCtrl.datasetAnalysis">
+                                    <td>
+                                        <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'sample', id: entity.analysis__sample__id})">
+                                            <first-not-null values="[entity.analysis__sample__number, entity.analysis__sample_id]" />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'locality', id: entity.analysis__sample__locality__id})">
+                                            <localize et="entity.analysis__sample__locality__locality" en="entity.analysis__sample__locality__locality_en" />
+                                        </a>
+
+                                        <span data-ng-if="(entity.analysis__sample__locality__locality == null && entity.analysis__sample__locality__locality_en == null)
+                                            && (entity.analysis__sample__locality_free && entity.analysis__sample__locality_free != null)">
+                                            {{ entity.analysis__sample__locality_free }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <first-not-null values="[entity.analysis__sample__depth, entity.analysis__sample__depth_interval]" />
+                                    </td>
+                                    <td>
+                                        <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: entity.analysis__sample__stratigraphy__id})">
+                                            <localize et="entity.analysis__sample__stratigraphy__stratigraphy" en="entity.analysis__sample__stratigraphy__stratigraphy_en" />
+                                        </a>
+
+                                        <span data-ng-if="(entity.analysis__sample__stratigraphy__stratigraphy == null && entity.analysis__sample__stratigraphy__stratigraphy_en == null)
+                                            && (entity.analysis__sample__stratigraphy_free && entity.analysis__sample__stratigraphy_free != null)">
+                                            {{ entity.analysis__sample__stratigraphy_free }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: entity.analysis__sample__lithostratigraphy__id})">
+                                            <localize et="entity.analysis__sample__lithostratigraphy__stratigraphy" en="entity.analysis__sample__lithostratigraphy__stratigraphy_en" />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <localize et="entity.analysis__sample__rock" en="entity.analysis__sample__rock_en" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
         <!--<div class="row">-->
         <!--<div class="col-lg-6" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">-->

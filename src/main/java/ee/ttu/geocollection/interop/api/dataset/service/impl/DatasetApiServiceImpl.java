@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 public class DatasetApiServiceImpl implements DatasetApiService {
 
     private static final String DATASET_TABLE = "dataset";
+    private static final String DATASET_REFERENCE_TABLE = "dataset_reference";
+    private static final String ATTACHMENT_TABLE = "attachment";
+    private static final String DATASET_ANALYSIS_TABLE = "dataset_analysis";
 
     @Autowired
     private ApiService apiService;
@@ -19,6 +22,9 @@ public class DatasetApiServiceImpl implements DatasetApiService {
     public ApiResponse findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
+                .relatedData(DATASET_REFERENCE_TABLE)
+                .relatedData(ATTACHMENT_TABLE)
+                .relatedData(DATASET_ANALYSIS_TABLE)
                 .buildWithDefaultReturningFields();
         return apiService.searchRawEntities(DATASET_TABLE, requestParams);
     }

@@ -1141,6 +1141,12 @@ table tr > td:first-child {
     margin-bottom: 5rem;
 }
 
+/* Adds margin to link */
 .collection-specimen-link {
     margin-top: 2rem
+}
+
+/* Makes table smaller */
+.table-smaller {
+    font-size: smaller;
 }

@@ -37,6 +37,7 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             getLocality();
             getRelatedData();
             vm.localities = (['doi'].indexOf($stateParams.type) > -1 ? getDoiLocalities() : []);
+            vm.datasetLocalities = (['dataset'].indexOf($stateParams.type) > -1 ? getDatasetLocalities() : []);
 
             vm.coreboxImageUrl = (['corebox'].indexOf($stateParams.type) > -1 ? vm.service.composeCoreboxImageUrl(vm.results) : null);
             vm.externalCoreboxImagePath = (['corebox'].indexOf($stateParams.type) > -1 ? vm.service.composeExternalCoreboxImagePath(vm.results) : null);
@@ -80,6 +81,54 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             })
         });
         return localities;
+    }
+
+    /**
+     * Gets data from dataset and corrects it for map.
+     * @returns {Array} of locality information
+     */
+    function getDatasetLocalities() {
+        var localities = [];
+        angular.forEach(vm.datasetAnalysis, function (location) {
+            if (location.analysis__sample__locality__id != null && location.analysis__sample__locality__latitude != null && location.analysis__sample__locality__latitude != null) {
+                localities.push({
+                    latitude: location.analysis__sample__locality__latitude,
+                    longitude: location.analysis__sample__locality__longitude,
+                    localityEng: location.analysis__sample__locality__locality_en,
+                    localityEt: location.analysis__sample__locality__locality,
+                    fid: location.analysis__sample__locality__id,
+                    place: location.analysis__sample__locality__country__value_en,
+                });
+            }
+        });
+
+        localities = removeDuplicates(localities);
+
+        console.log(localities)
+        return localities
+    }
+
+    /**
+     * Removes duplicates from object array using vanilla js
+     * Got this code from https://stackoverflow.com/questions/36032179/remove-duplicates-in-an-object-array-javascript
+     */
+    function removeDuplicates(array) {
+        return array.reduce(function (p, c) {
+
+            // create an identifying id from the object values
+            var id = [c.latitude, c.longitude, c.localityEng, c.localityEt, c.fid, c.place].join('|');
+
+            // if the id is not found in the temp array
+            // add the object to the output array
+            // and add the key to the temp array
+            if (p.temp.indexOf(id) === -1) {
+                p.out.push(c);
+                p.temp.push(id);
+            }
+            return p;
+
+            // return the unique array
+        }, { temp: [], out: [] }).out;
     }
 
     /**
@@ -133,6 +182,9 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             vm.analysis = vm.relatedData["analysis"];
             vm.specimenIdentificationGeology = vm.relatedData["specimen_identification_geology"];
             vm.preparationTaxa = vm.relatedData["preparation_taxa"];
+            vm.datasetReference = vm.relatedData["dataset_reference"];
+            vm.datasetAttachment = vm.relatedData["attachment"];
+            vm.datasetAnalysis = vm.relatedData["dataset_analysis"];
         }
     }
 
