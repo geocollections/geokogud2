@@ -502,7 +502,7 @@
             "GEOLOGY_DATE": "Date",
             "GEOLOGY_REFERENCE": "Reference",
             "GEOLOGY_REMARKS": "Remarks",
-            "ATTACHMENT_HEADING": "Attachments",
+            "ATTACHMENT_HEADING": "Related files",
             "ATTACHMENT_TYPE": "Type",
             "ATTACHMENT_FORMAT": "Format",
             "ATTACHMENT_DESCRIPTION": "Description",

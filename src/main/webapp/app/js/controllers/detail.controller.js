@@ -187,6 +187,7 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             vm.datasetAttachment = vm.relatedData["attachment"];
             vm.datasetAnalysis = vm.relatedData["dataset_analysis"];
             vm.doi = vm.relatedData["doi"];
+            vm.preparation = vm.relatedData["preparation"];
         }
     }
 

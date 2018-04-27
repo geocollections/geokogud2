@@ -249,6 +249,15 @@
               "VARIABLE": "Muutuja",
               "VALUE": "Väärtus",
               "ID": "Analüüsi ID"
+            },
+            "PREPARATION": {
+              "HEADING": "Mikrofauna preparaadid",
+              "NUMBER": "Number",
+              "GROUP": "Rühm",
+              "PREP": "Prep.",
+              "STORAGE": "Hoiukoht",
+              "REMARKS": "Lisainfo",
+              "METHOD": "Metoodika"
             }
         },
         "DRILL_CORE" : {
@@ -635,6 +644,7 @@
             "DATE_DIGITISED": "Digit. aeg",
             "DEVICE": "Kaamera",
             "REMARKS": "Lisainfo",
+            "VIDEO": "Video",
             "ANALYSIS": {
                 "HEADING": "Seotud analüüs",
                 "ANALYSIS_ID": "Analüüsi ID"

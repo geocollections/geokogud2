@@ -289,6 +289,38 @@
                     </div>
                 </div>
 
+                <!-- Related images -->
+                <div data-ng-if="detailCtrl.attachmentLink.length > 0">
+                    <!--<h3> {{ 'DETAIL.LOCALITY.IMAGES_HEADING'| translate }} </h3>-->
+
+                    <div class="row related-images-margin-top">
+
+                        <div class="col-md-6 col-xs-6" data-ng-repeat="image in detailCtrl.attachmentLink"
+                             data-ng-if="image.attachment__filename.endsWith('png') || image.attachment__filename.endsWith('jpeg') || image.attachment__filename.endsWith('svg') || image.attachment__filename.endsWith('jpg')" >
+
+                            <figure class="margin-bottom-30">
+
+                                <a href="{{detailCtrl.service.getDownloadLink(image.attachment__filename)}}" class="hover-me" data-fancybox="gallery">
+
+                                    <div class="img-responsive set-height">
+                                        <img class="previewImageDetail img-rounded"
+                                             src="{{detailCtrl.service.getDownloadLink(image.attachment__filename)}}" />
+                                    </div>
+
+                                    <!--<show-preview class="img-responsive set-height"-->
+                                    <!--classes="previewImageDetail img-rounded"-->
+                                    <!--img-title="[image.author__agent, image.date_taken, image.date_taken_free]"-->
+                                    <!--img-url="detailCtrl.service.getDownloadLink(image.attachment__filename)" />-->
+
+                                </a>
+
+                            </figure>
+
+                        </div>
+
+                    </div>
+                </div>
+
                 <!-- Related analysis results -->
                 <div data-ng-if="detailCtrl.analysisResults.length > 0">
                     <h3> {{ 'DETAIL.DETAIL_ANALYSIS_RESULTS' | translate }} </h3>
@@ -329,6 +361,7 @@
 
             <div class="col-sm-6">
 
+                <!-- Map -->
                 <div data-ng-if="detailCtrl.locality.latitude && detailCtrl.locality.longitude">
                     <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
                     <div id='hoverbox' class='coupontooltip'>
@@ -340,6 +373,7 @@
                     &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude)">Maa-amet / Estonian Land Board</a>
                 </div>
 
+                <!-- Analysis -->
                 <div data-ng-if="detailCtrl.analysis.length > 0">
                     <h3>  {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_HEADING' | translate }}  </h3>
 
@@ -347,15 +381,15 @@
                         <table class="table table-bordered table-hover">
                             <thead class="styles-for-table-headers">
                             <tr>
-                                <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_ID' | translate }} </td>
-                                <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_METHOD' | translate }} </td>
-                                <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_METHOD_DETAILS' | translate }} </td>
-                                <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_MASS' | translate }} </td>
-                                <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_DATE' | translate }} </td>
-                                <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_LAB' | translate }} </td>
-                                <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_AGENT' | translate }} </td>
-                                <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_LOCATION' | translate }} </td>
-                                <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_REMARKS' | translate }} </td>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_ID' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_METHOD' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_METHOD_DETAILS' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_MASS' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_DATE' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_LAB' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_AGENT' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_LOCATION' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_REMARKS' | translate }} </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -381,15 +415,64 @@
 
                 </div>
 
+                <!-- Preparation -->
+                <!-- TODO: Missing some information -->
+                <div data-ng-if="detailCtrl.preparation.length > 0">
+                    <h3>  {{ 'API_TRANSLATION.SAMPLE.PREPARATION.HEADING' | translate }}  </h3>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="styles-for-table-headers">
+                            <tr>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.PREPARATION.NUMBER' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.PREPARATION.GROUP' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.PREPARATION.PREP' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.PREPARATION.PREP' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.PREPARATION.STORAGE' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.PREPARATION.REMARKS' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.PREPARATION.METHOD' | translate }} </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="entity in detailCtrl.preparation">
+                                <td>
+                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'preparation', id:entity.id})">
+                                        <first-not-null values="[entity.preparation_number, entity.id]" />
+                                    </a>
+                                </td>
+
+                                <td>
+                                    <localize et="entity.classification__class" en="entity.classification__class_en" />
+                                </td>
+
+                                <td><!--TODO: prep?--></td>
+
+                                <td><!--TODO: prep?--></td>
+
+                                <td>
+                                    <first-not-null values="[entity.storage__location, entity.storage__location_location]" />
+                                </td>
+
+                                <td> {{ entity.remarks }} </td>
+                                <td>
+                                    <!-- TODO: Method? -->
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Specimens -->
                 <div data-ng-if="detailCtrl.results.specimensFromSample.count > 0">
                     <h3>  {{ 'API_TRANSLATION.SAMPLE.SPECIMEN_HEADING' | translate }}  </h3>
 
                     <table class="table table-bordered table-hover">
                         <thead class="styles-for-table-headers">
                             <tr>
-                                <td>{{ 'API_TRANSLATION.SAMPLE.SPECIMEN_NUMBER' | translate }}</td>
-                                <td>{{ 'API_TRANSLATION.SAMPLE.SPECIMEN_NAME' | translate }}</td>
-                                <td>{{ 'API_TRANSLATION.SAMPLE.SPECIMEN_GROUP' | translate }}</td>
+                                <th>{{ 'API_TRANSLATION.SAMPLE.SPECIMEN_NUMBER' | translate }}</th>
+                                <th>{{ 'API_TRANSLATION.SAMPLE.SPECIMEN_NAME' | translate }}</th>
+                                <th>{{ 'API_TRANSLATION.SAMPLE.SPECIMEN_GROUP' | translate }}</th>
                             </tr>
                         </thead>
 
@@ -410,20 +493,21 @@
 
                 </div>
 
+                <!-- Taxons -->
                 <div data-ng-if="detailCtrl.taxonList.length > 0">
                     <h3>  {{ 'SEARCH.SAMPLES.TAXON_HEADING' | translate }}  </h3>
 
                     <table class="table table-bordered table-hover">
                         <thead class="styles-for-table-headers">
                             <tr>
-                                <td> {{ 'API_TRANSLATION.SAMPLE.TAXON_NAME' | translate }} </td>
-                                <td> {{ 'API_TRANSLATION.SAMPLE.TAXON_NAME' | translate }} </td>
-                                <td> {{ 'API_TRANSLATION.SAMPLE.TAXON_FREQUENCY' | translate }} </td>
-                                <td> {{ 'API_TRANSLATION.SAMPLE.TAXON_REMARKS' | translate }} </td>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.TAXON_NAME' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.TAXON_NAME' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.TAXON_FREQUENCY' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.TAXON_REMARKS' | translate }} </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="taxon in detailCtrl.taxonList">
+                            <tr ng-repeat="taxon in detailCtrl.taxonList | orderBy:'name'">
                                 <td>
                                     <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+taxon.taxon_id})">
                                         {{ taxon.taxon__taxon }}

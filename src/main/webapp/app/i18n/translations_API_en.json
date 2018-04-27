@@ -245,6 +245,15 @@
               "VARIABLE": "Muutuja",
               "VALUE": "Väärtus",
               "ID": "Analüüsi ID"
+            },
+            "PREPARATION": {
+              "HEADING": "Microfossil preparations",
+              "NUMBER": "Number",
+              "GROUP": "Group",
+              "PREP": "Prep.",
+              "STORAGE": "Storage",
+              "REMARKS": "Remarks",
+              "METHOD": "Method"
             }
         },
         "DRILL_CORE" : {
@@ -638,6 +647,7 @@
             "DATE_DIGITISED": "Date digitised",
             "DEVICE": "Camera",
             "REMARKS": "Remarks",
+            "VIDEO": "Video",
             "ANALYSIS": {
                 "HEADING": "Related analysis",
                 "ANALYSIS_ID": "Analysis ID"

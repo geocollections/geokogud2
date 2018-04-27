@@ -369,6 +369,7 @@
                     </div>
                 </div>
 
+                <!-- References -->
                 <div data-ng-if="detailCtrl.specimenReference.length > 0">
                     <h3> {{ 'DETAIL.SPECIMEN.REFERENCE_HEADING' | translate }} </h3>
                     <div class="table-responsive">
@@ -405,6 +406,7 @@
                 <!-- TODO: Analysis-->
                 <!-- TODO: AnalysisResults-->
 
+                <!-- Related files -->
                 <div data-ng-if="detailCtrl.attachmentLink.length > 0">
                     <h3> {{ 'DETAIL.SPECIMEN.ATTACHMENT_HEADING' | translate }} </h3>
                     <div class="table-responsive">
@@ -416,7 +418,7 @@
                                 <th> {{ 'DETAIL.SPECIMEN.ATTACHMENT_AUTHOR' | translate }} </th>
                                 <th> {{ 'DETAIL.SPECIMEN.ATTACHMENT_DATE' | translate }} </th>
                                 <th> {{ 'DETAIL.SPECIMEN.ATTACHMENT_LINK' | translate }} </th>
-                                <th>DOI</th>
+                                <!--<th>DOI</th>-->
                             </tr>
                             </thead>
 
@@ -435,61 +437,99 @@
                                 </td>
 
                                 <td>
-                                    <div data-ng-if="entity.attachment__date_added && entity.attachment__date_added != null">
-                                        {{entity.attachment__date_added | date:dateFormat}}
-                                    </div>
-                                    <div data-ng-if="(entity.attachment__date_digitised && entity.attachment__date_digitised != null)
-                                        && entity.attachment__date_added == null">
-                                        {{entity.attachment__date_digitised | date:dateFormat}}
-                                    </div>
-                                    <div data-ng-if="(entity.attachment__date_added == null && entity.attachment__date_digitised == null)
-                                    && (entity.attachment__date_digitised_free && entity.attachment__date_digitised_free != null)">
-                                        {{entity.attachment__date_digitised_free}}
-                                    </div>
+                                    <span data-ng-if="entity.attachment__date_added != null">
+                                        {{ entity.attachment__date_added | date:dateFormat }}
+                                    </span>
+                                    <span data-ng-if="entity.attachment__date_added == null && entity.attachment__date_created != null">
+                                        {{ entity.attachment__date_created | date:dateFormat }}
+                                    </span>
+                                    <span data-ng-if="entity.attachment__date_added == null && entity.attachment__date_created == null && entity.attachment__date_created_free != null">
+                                        {{ entity.attachment__date_created_free }}
+                                    </span>
                                 </td>
 
                                 <td>
-                                    <a target="_blank" ng-href="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}">
-                                        <i data-ng-if="entity.attachment__filename.endsWith('pdf')"
-                                           title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
-                                           class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
-
-                                        <i data-ng-if="entity.attachment__filename.endsWith('txt')"
-                                           title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
-                                           class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>
-
-                                        <i data-ng-if="entity.attachment__filename.endsWith('xlsx') || entity.attachment__filename.endsWith('ods') || entity.attachment__filename.endsWith('xls')"
-                                           title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
-                                           class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
-
-                                        <i data-ng-if="entity.attachment__filename.endsWith('mp4')"
-                                           title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
-                                           class="fa fa-file-video-o fa-2x" aria-hidden="true"></i>
-
-                                        <img title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
-                                             data-ng-if="entity.attachment__filename.endsWith('png') || entity.attachment__filename.endsWith('jpeg') || entity.attachment__filename.endsWith('svg') || entity.attachment__filename.endsWith('jpg')"
-                                             class="previewImage"
-                                             src="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"/>
+                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'attachment', id: entity.attachment__id})">
+                                        Link
                                     </a>
                                 </td>
 
-                                <td></td>
+                                <!--<td>-->
+                                    <!--<a target="_blank" ng-href="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}">-->
+                                        <!--<i data-ng-if="entity.attachment__filename.endsWith('pdf')"-->
+                                           <!--title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"-->
+                                           <!--class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>-->
+
+                                        <!--<i data-ng-if="entity.attachment__filename.endsWith('txt')"-->
+                                           <!--title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"-->
+                                           <!--class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>-->
+
+                                        <!--<i data-ng-if="entity.attachment__filename.endsWith('xlsx') || entity.attachment__filename.endsWith('ods') || entity.attachment__filename.endsWith('xls')"-->
+                                           <!--title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"-->
+                                           <!--class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>-->
+
+                                        <!--<i data-ng-if="entity.attachment__filename.endsWith('mp4')"-->
+                                           <!--title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"-->
+                                           <!--class="fa fa-file-video-o fa-2x" aria-hidden="true"></i>-->
+
+                                        <!--<img title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"-->
+                                             <!--data-ng-if="entity.attachment__filename.endsWith('png') || entity.attachment__filename.endsWith('jpeg') || entity.attachment__filename.endsWith('svg') || entity.attachment__filename.endsWith('jpg')"-->
+                                             <!--class="previewImage"-->
+                                             <!--src="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"/>-->
+                                    <!--</a>-->
+                                <!--</td>-->
+
+                                <!--<td></td>-->
                             </tr>
                             </tbody>
                         </table>
 
                     </div>
 
-                    <div data-ng-repeat="entity in detailCtrl.attachmentLink">
+                    <!-- Videos -->
+                    <div data-ng-repeat="entity in detailCtrl.attachmentLink" style="margin-top: 2rem">
                         <video data-ng-if="entity.attachment__filename.endsWith('mp4')" width="100%" controls loop>
                             <source src="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}" type="video/mp4">
                         </video>
                     </div>
                 </div>
 
+                <!-- Related images -->
+                <div class="col-lg-6" data-ng-if="detailCtrl.attachmentLink.length > 0">
+                    <!--<h3> {{ 'DETAIL.LOCALITY.IMAGES_HEADING'| translate }} </h3>-->
+
+                    <div class="row related-images-margin-top">
+
+                        <div class="col-md-6 col-xs-6" data-ng-repeat="image in detailCtrl.attachmentLink"
+                             data-ng-if="image.attachment__filename.endsWith('png') || image.attachment__filename.endsWith('jpeg') || image.attachment__filename.endsWith('svg') || image.attachment__filename.endsWith('jpg')" >
+
+                            <figure class="margin-bottom-30">
+
+                                <a href="{{detailCtrl.service.getDownloadLink(image.attachment__filename)}}" class="hover-me" data-fancybox="gallery">
+
+                                    <div class="img-responsive set-height">
+                                        <img class="previewImageDetail img-rounded"
+                                             src="{{detailCtrl.service.getDownloadLink(image.attachment__filename)}}" />
+                                    </div>
+
+                                    <!--<show-preview class="img-responsive set-height"-->
+                                    <!--classes="previewImageDetail img-rounded"-->
+                                    <!--img-title="[image.author__agent, image.date_taken, image.date_taken_free]"-->
+                                    <!--img-url="detailCtrl.service.getDownloadLink(image.attachment__filename)" />-->
+
+                                </a>
+
+                            </figure>
+
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
 
             <div class="col-sm-6" >
+                <!-- Specimen images -->
                 <div data-ng-if="detailCtrl.specimenImage.length > 0">
                     <h3> {{ 'DETAIL.DETAIL_IMAGES' | translate }} </h3>
 
@@ -531,6 +571,7 @@
                     </div>
                 </div>
 
+                <!-- Map -->
                 <div data-ng-if="detailCtrl.results.locality__latitude && detailCtrl.results.locality__longitude">
                     <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
                     <div id='hoverbox' class='coupontooltip'>

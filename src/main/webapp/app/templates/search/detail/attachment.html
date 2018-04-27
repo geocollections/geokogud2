@@ -79,6 +79,10 @@
                                     title="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}"
                                     class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
 
+                                <i data-ng-if="detailCtrl.results.filename.endsWith('mp4')"
+                                   title="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}"
+                                   class="fa fa-file-video-o fa-2x" aria-hidden="true"></i>
+
                                 <span data-ng-if="detailCtrl.results.filename.endsWith('png') || detailCtrl.results.filename.endsWith('jpeg') || detailCtrl.results.filename.endsWith('svg') || detailCtrl.results.filename.endsWith('jpg')">
                                     {{ detailCtrl.results.filename }}
                                 </span>
@@ -151,6 +155,15 @@
                         <!--</div>-->
                         <!--</div>-->
 
+                    </div>
+
+                    <!-- TODO: Add more formats -->
+                    <div data-ng-if="detailCtrl.results.filename.endsWith('mp4')">
+                        <h3> {{ 'API_TRANSLATION.ATTACHMENT.VIDEO' | translate }} </h3>
+
+                        <video data-ng-if="detailCtrl.results.filename.endsWith('mp4')" width="100%" controls loop>
+                            <source src="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}" type="video/mp4">
+                        </video>
                     </div>
                 </div>
             </div>
