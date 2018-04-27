@@ -426,7 +426,13 @@
             "MATERIAL": "Materjal",
             "LAB_ANALYSIS_NUMBER": "Labori analüüsi nr.",
             "MASS": "Mass",
-            "COUNTED_GRAINS": "Loetud terasid, punkte jne"
+            "COUNTED_GRAINS": "Loetud terasid, punkte jne",
+            "ATTACHMENT_LINK": {
+                "TYPE": "Tüüp",
+                "DESCRIPTION": "Kirjeldus",
+                "AUTHOR": "Autor",
+                "DATE": "Aeg"
+            }
         },
         "PREPARATION" :     {
             "DETAIL_FORM_NAME" : "Mikrofauna preparaat nr.",
@@ -682,6 +688,7 @@
             },
             "DATASET_ANALYSIS": "Originaal andmekogu",
             "ANALYSIS": {
+                "ID": "Analüüsi ID",
                 "NUMBER": "Proovi nr.",
                 "LOCALITY": "Leiukoht",
                 "DEPTH": "Sügavsus (m)",

@@ -429,7 +429,13 @@
             "MATERIAL": "Material",
             "LAB_ANALYSIS_NUMBER": "Lab analysis No.",
             "MASS": "Mass",
-            "COUNTED_GRAINS": "Counted grains, points etc"
+            "COUNTED_GRAINS": "Counted grains, points etc",
+            "ATTACHMENT_LINK": {
+                "TYPE": "Type",
+                "DESCRIPTION": "Description",
+                "AUTHOR": "Author",
+                "DATE": "Date"
+            }
         },
         "PREPARATION" :     {
             "DETAIL_FORM_NAME" : "Microfossil preparation No.",
@@ -684,6 +690,7 @@
             },
             "DATASET_ANALYSIS": "Original data",
             "ANALYSIS": {
+                "ID": "Analysis ID",
                 "NUMBER": "Sample no.",
                 "LOCALITY": "Locality",
                 "DEPTH": "Depth (m)",

@@ -608,7 +608,8 @@
         "DETAIL_RELATIONS": "Related persons and institutions",
         "DETAIL_IDENTIFIERS": "Related identifiers",
         "DETAIL_GEOLOCATIONS": "Related geolocations",
-        "DETAIL_PREVIEW_DATA": "Preview data (for text and image files only)"
+        "DETAIL_PREVIEW_DATA": "Preview data (for text and image files only)",
+        "DETAIL_ATTACHMENT_LINK": "Related files"
 
     },
     "TITLES": {

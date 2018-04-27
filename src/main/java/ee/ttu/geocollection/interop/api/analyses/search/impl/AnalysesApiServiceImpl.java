@@ -18,6 +18,7 @@ public class AnalysesApiServiceImpl implements AnalysesApiService {
 
     private static final String ANALYSIS = "analysis";
     private static final String ANALYSIS_RESULTS = "analysis_results";
+    private static final String ATTACHMENT_LINK = "attachment_link";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -99,6 +100,7 @@ public class AnalysesApiServiceImpl implements AnalysesApiService {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
                 .relatedData(ANALYSIS_RESULTS)
+                .relatedData(ATTACHMENT_LINK)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(ANALYSIS, requestParams);

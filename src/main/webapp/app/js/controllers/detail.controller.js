@@ -155,6 +155,7 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
     /**
      * Adds related data to a variable.
      */
+    // TODO: Should remove duplicates
     function getRelatedData() {
         if(vm.relatedData) {
             vm.doiAgent = vm.relatedData["doi_agent"];

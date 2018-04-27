@@ -608,7 +608,8 @@
         "DETAIL_RELATIONS": "Seotud isikud ja asutused",
         "DETAIL_IDENTIFIERS": "Seotud identifikaatorid",
         "DETAIL_GEOLOCATIONS": "Seotud geolokatsioonid",
-        "DETAIL_PREVIEW_DATA": "Eelvaate andmed (ainult teksti ja pildi failid)"
+        "DETAIL_PREVIEW_DATA": "Eelvaate andmed (ainult teksti ja pildi failid)",
+        "DETAIL_ATTACHMENT_LINK": "Seotud failid"
 
     },
     "TITLES": {
