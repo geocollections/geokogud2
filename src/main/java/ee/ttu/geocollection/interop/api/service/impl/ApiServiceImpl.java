@@ -73,7 +73,7 @@ public class ApiServiceImpl implements ApiService {
         String url;
 
 //        TODO: Maybe instead add fields array to attachment and collections classs
-        if (tableName.equals("drillcore_box") || tableName.equals("attachment") || tableName.equals("collection")) {
+        if (tableName.equals("attachment") || tableName.equals("collection")) {
             url = apiUrl + "/" + tableName + "/" + requestParams + "?format=json";
         } else {
             url = apiUrl + "/" + tableName + "/" + requestParams + "&format=json";

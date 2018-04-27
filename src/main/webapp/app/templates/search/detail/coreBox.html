@@ -154,7 +154,78 @@
                 </div>
             </div>
 
+            <!-- Related files -->
+            <div class="col-lg-6" data-ng-if="detailCtrl.attachmentLink.length > 0">
+                <h3> {{ 'DETAIL.DETAIL_ATTACHMENT_LINK' | translate }} </h3>
 
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="styles-for-table-headers">
+                        <tr>
+                            <td>{{ 'API_TRANSLATION.SAMPLE.ATTACHMENT_LINK.TYPE' | translate }}</td>
+                            <td>{{ 'API_TRANSLATION.SAMPLE.ATTACHMENT_LINK.DESCRIPTION' | translate }}</td>
+                            <td>{{ 'API_TRANSLATION.SAMPLE.ATTACHMENT_LINK.AUTHOR' | translate }}</td>
+                            <td>{{ 'API_TRANSLATION.SAMPLE.ATTACHMENT_LINK.DATE' | translate }}</td>
+                            <td></td>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr data-ng-repeat="entity in detailCtrl.attachmentLink">
+                            <td>
+                                <localize et="entity.attachment__type__value" en="entity.attachment__type__value_en" />
+                            </td>
+                            <td>
+                                <localize et="entity.attachment__description" en="entity.attachment__description_en" />
+                            </td>
+                            <td>
+                                <first-not-null values="[entity.attachment__author__agent, entity.attachment__author_free]" />
+                            </td>
+                            <td> {{ entity.attachment__date_added | date:dateFormat }} </td>
+                            <td>
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'attachment', id: entity.attachment__id})">
+                                    Link
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Related images -->
+            <div class="col-lg-6" data-ng-if="detailCtrl.attachmentLink.length > 0">
+                <h3> {{ 'DETAIL.LOCALITY.IMAGES_HEADING'| translate }} </h3>
+
+                <div class="row">
+
+                    <div class="col-md-6 col-xs-6" data-ng-repeat="image in detailCtrl.attachmentLink"
+                         data-ng-if="image.attachment__filename.endsWith('png') || image.attachment__filename.endsWith('jpeg') || image.attachment__filename.endsWith('svg') || image.attachment__filename.endsWith('jpg')" >
+
+                        <figure class="margin-bottom-30">
+
+                            <a href="{{detailCtrl.service.getDownloadLink(image.attachment__filename)}}" class="hover-me" data-fancybox="gallery">
+
+                                <div class="img-responsive set-height">
+                                    <img class="previewImageDetail img-rounded"
+                                         src="{{detailCtrl.service.getDownloadLink(image.attachment__filename)}}" />
+                                </div>
+
+                                <!--<show-preview class="img-responsive set-height"-->
+                                <!--classes="previewImageDetail img-rounded"-->
+                                <!--img-title="[image.author__agent, image.date_taken, image.date_taken_free]"-->
+                                <!--img-url="detailCtrl.service.getDownloadLink(image.attachment__filename)" />-->
+
+                            </a>
+
+                        </figure>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Stratigraphic boundaries -->
             <div class="col-lg-6" data-ng-if="detailCtrl.results.stratigraphicBoundaries.count > 0">
                 <h3> {{ 'DETAIL.CORE_BOX.STRATIGRAPHIC_BOUNDARIES' | translate }} </h3>
 
