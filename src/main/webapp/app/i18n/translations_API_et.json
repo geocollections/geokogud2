@@ -320,7 +320,14 @@
             "DATE_ADDED":"Kirje lisatud",
             "DATE_CHANGED":"Kirje muudetud",
             "DRILLCORE": "Puursüdamik",
-            "COREBOX": "südamikukast(i)"
+            "COREBOX": "südamikukast(i)",
+            "STRATIGRAPHY_STRATOTYPE": {
+              "STRATIGRAPHY": "Stratigraafia",
+              "TYPE": "Tüüp",
+              "DEPTH": "Sügavus (m)",
+              "REFERENCE": "Viide",
+              "REMARKS": "Lisainfo"
+            }
         },
         "REFERENCE" : {
             "ID":"ID",

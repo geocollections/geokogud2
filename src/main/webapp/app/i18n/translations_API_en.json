@@ -323,7 +323,14 @@
             "DATE_ADDED":"Record added",
             "DATE_CHANGED":"Record changed",
             "DRILLCORE": "Drillcore",
-            "COREBOX": "core box(es)"
+            "COREBOX": "core box(es)",
+            "STRATIGRAPHY_STRATOTYPE": {
+              "STRATIGRAPHY": "Stratigraphy",
+              "TYPE": "Type",
+              "DEPTH": "Depth (m)",
+              "REFERENCE": "Reference",
+              "REMARKS": "Remarks"
+            }
         },
         "REFERENCE" : {
             "ID":"ID",

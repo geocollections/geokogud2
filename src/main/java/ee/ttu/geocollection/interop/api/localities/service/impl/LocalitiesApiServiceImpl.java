@@ -27,6 +27,9 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
     private static final String SPECIMEN_TABLE = "specimen";
     private static final String LOCALITY_REFERENCE = "locality_reference";
     private static final String LOCALITY_SYNONYM = "locality_synonym";
+    private static final String ATTACHMENT_LINK = "attachment_link";
+    private static final String SAMPLE = "sample";
+    private static final String STRATIGRAPHY_STRATOTYPE = "stratigraphy_stratotype";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -148,6 +151,9 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
                 .relatedData(LOCALITY_REFERENCE)
                 .relatedData(LOCALITY_SYNONYM)
                 .relatedData(SPECIMEN_TABLE)
+                .relatedData(ATTACHMENT_LINK)
+                .relatedData(SAMPLE)
+                .relatedData(STRATIGRAPHY_STRATOTYPE)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.searchRawEntities(LOCALITY_TABLE, requestParams);

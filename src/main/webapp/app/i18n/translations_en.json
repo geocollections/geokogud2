@@ -565,8 +565,10 @@
             "SPECIMEN": "Specimens",
             "ALL_SPECIMEN": "Show all specimens",
             "IMAGES_HEADING": "Images",
+            "IMAGES_HEADING_2": "Images from related files",
             "IMAGE_AUTHOR": "Image author",
-            "IMAGE_DATE_TAKEN": "Date taken"
+            "IMAGE_DATE_TAKEN": "Date taken",
+            "SAMPLE_LINK": "Show samples recovered"
         },
         "ANALYSIS": {
             "RESULTS": "Analyses results",
@@ -610,7 +612,8 @@
         "DETAIL_GEOLOCATIONS": "Related geolocations",
         "DETAIL_PREVIEW_DATA": "Preview data (for text and image files only)",
         "DETAIL_ATTACHMENT_LINK": "Related files",
-        "DETAIL_ANALYSIS_RESULTS": "Analysis results"
+        "DETAIL_ANALYSIS_RESULTS": "Analysis results",
+        "DETAIL_STRATIGRAPHY_STRATOTYPE": "Stratotypes"
     },
     "TITLES": {
         "SPECIMEN": "Geocollections of Estonia: Specimens",
