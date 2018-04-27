@@ -18,6 +18,7 @@ public class PreparationsApiServiceImpl implements PreparationsApiService{
 
     private static final String PREPARATION_TABLE = "preparation";
     private static final String PREPARATION_TAXA = "preparation_taxa";
+    private static final String ATTACHMENT_LINK = "attachment_link";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -94,6 +95,7 @@ public class PreparationsApiServiceImpl implements PreparationsApiService{
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
                 .relatedData(PREPARATION_TAXA)
+                .relatedData(ATTACHMENT_LINK)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(PREPARATION_TABLE, requestParams);

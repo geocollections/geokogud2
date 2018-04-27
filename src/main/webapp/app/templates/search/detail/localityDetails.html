@@ -320,7 +320,17 @@
                                 <td>
                                     <first-not-null values="[entity.attachment__author__agent, entity.attachment__author_free]" />
                                 </td>
-                                <td> {{ entity.attachment__date_added | date:dateFormat }} </td>
+                                <td>
+                                    <span data-ng-if="entity.attachment__date_added != null">
+                                        {{ entity.attachment__date_added | date:dateFormat }}
+                                    </span>
+                                        <span data-ng-if="entity.attachment__date_added == null && entity.attachment__date_created != null">
+                                        {{ entity.attachment__date_created | date:dateFormat }}
+                                    </span>
+                                        <span data-ng-if="entity.attachment__date_added == null && entity.attachment__date_created == null && entity.attachment__date_created_free != null">
+                                        {{ entity.attachment__date_created_free }}
+                                    </span>
+                                </td>
                                 <td>
                                     <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'attachment', id: entity.attachment__id})">
                                         Link
@@ -368,6 +378,7 @@
 
             <div class="col-sm-6">
 
+                <!-- Map -->
                 <div data-ng-if="detailCtrl.locality.latitude && detailCtrl.locality.longitude">
                     <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
                     <div id='hoverbox' class='coupontooltip'>
@@ -379,6 +390,7 @@
                     &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude)">Maa-amet / Estonian Land Board</a>
                 </div>
 
+                <!-- Images -->
                 <div data-ng-if="detailCtrl.images.length > 0">
                     <h3> {{ 'DETAIL.LOCALITY.IMAGES_HEADING'| translate }} </h3>
 
@@ -417,6 +429,7 @@
 
                 </div>
 
+                <!-- Synonyms -->
                 <div data-ng-if="detailCtrl.localitySynonyms.length > 0">
                     <h3> {{ 'DETAIL.LOCALITY.SYNONYMS_HEADING' | translate }} </h3>
                     <table class="table table-bordered table-hover">
@@ -439,6 +452,7 @@
                     </table>
                 </div>
 
+                <!-- Specimens + link -->
                 <div data-ng-if="detailCtrl.specimens.length > 0">
                     <h3> {{ 'DETAIL.LOCALITY.SPECIMEN' | translate }} </h3>
 
@@ -493,6 +507,7 @@
                     </a>
                 </div>
 
+                <!-- References -->
                 <div data-ng-if="detailCtrl.localityReferences.length > 0">
                     <h3> {{ 'DETAIL.LOCALITY.REFERENCE_HEADING' | translate }} </h3>
                     <table class="table table-bordered table-hover">
@@ -516,6 +531,7 @@
                     </table>
                 </div>
 
+                <!-- Samples link -->
                 <div data-ng-if="detailCtrl.samples.length > 0">
                     <a href target="_blank" data-ng-click="detailCtrl.service.searchAllSamplesUsingLocality({locality: detailCtrl.results.locality, localityEn: detailCtrl.results.locality_en})">
                         {{ 'DETAIL.LOCALITY.SAMPLE_LINK' | translate }} ({{detailCtrl.samples.length}})
