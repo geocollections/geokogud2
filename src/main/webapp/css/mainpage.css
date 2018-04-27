@@ -1150,3 +1150,8 @@ table tr > td:first-child {
 .table-smaller {
     font-size: smaller;
 }
+
+/* Adds margin top to related images in detail views */
+.related-images-margin-top {
+    margin-top: 2rem;
+}

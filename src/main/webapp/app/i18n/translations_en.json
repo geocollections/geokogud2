@@ -570,6 +570,9 @@
             "IMAGE_DATE_TAKEN": "Date taken",
             "SAMPLE_LINK": "Show samples recovered"
         },
+        "REFERENCE": {
+            "SPECIMEN_LINK": "Viidatud eksemplarid"
+        },
         "ANALYSIS": {
             "RESULTS": "Analyses results",
             "RESULTS_NAME": "Variable",

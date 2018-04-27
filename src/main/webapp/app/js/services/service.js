@@ -33,6 +33,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
     service.setFancyBoxCaption = setFancyBoxCaption;
     service.ifDoiAttachmentContainsFiles = ifDoiAttachmentContainsFiles;
     service.searchAllSamplesUsingLocality = searchAllSamplesUsingLocality;
+    service.searchAllSpecimensUsingReference = searchAllSpecimensUsingReference;
 
     service.toggle = function (el,array) {
         utils.toggleInArray(el,array)
@@ -353,6 +354,11 @@ var constructor = function (utils, configuration, $window, $location, $translate
     // Opens new window with new search url for specimens.
     function searchAllSpecimensUsingCollection(params) {
         $window.open($window.location.origin + "/specimen?specimen_number_1=1&specimen_number=&collection_id_1=1&collection_id=" + params.collection + "&classification_1=1&classification=&taxon_1=1&taxon=&name_geology_1=1&name_geology=&country_1=1&country=&locality_1=1&locality=&stratigraphy_1=1&stratigraphy=&id_1=5&id=&depth_since_1=12&depth_since=&depth_to_1=13&depth_to=&agent_1=1&agent=&reference_1=1&reference=&original_type_1=1&original_type=&part_1=1&part=&date_taken_since_1=12&date_taken_since=&date_taken_to_1=13&date_taken_to=&dbs%5B%5D=1&dbs%5B%5D=2&dbs%5B%5D=3&dbs%5B%5D=4&dbs%5B%5D=5&dbs%5B%5D=6&currentTable=specimen&maxSize=5&paginateBy=25&sort=id&sortdir=DESC");
+    }
+
+    // Opens new window with new search url for specimens.
+    function searchAllSpecimensUsingReference(params) {
+        $window.open($window.location.origin + "/specimen?specimen_number_1=1&specimen_number=&collection_id_1=1&collection_id=&classification_1=11&classification=&taxon_1=11&taxon=&name_geology_1=1&name_geology=&country_1=1&country=&locality_1=1&locality=&stratigraphy_1=11&stratigraphy=&id_1=5&id=&depth_since_1=12&depth_since=&depth_to_1=13&depth_to=&agent_1=1&agent=&reference_1=1&reference=" + params.reference + "&original_type_1=1&original_type=&part_1=1&part=&date_taken_since_1=12&date_taken_since=&date_taken_to_1=13&date_taken_to=&dbs%5B%5D=1&dbs%5B%5D=2&dbs%5B%5D=3&dbs%5B%5D=4&dbs%5B%5D=5&dbs%5B%5D=6&currentTable=specimen&maxSize=5&paginateBy=25&sort=id&sortdir=DESC");
     }
 
     // Opens new window with new search url for samples

@@ -145,51 +145,58 @@
                 </table>
             </div>
 
-            <div class="col-lg-6" data-ng-if="detailCtrl.localityReferences.length > 0">
-                <h3> {{ 'API_TRANSLATION.REFERENCE.SECTIONS_DESCRIBED' | translate }} </h3>
-                <table class="table table-hover table-bordered">
-                    <thead class="styles-for-table-headers">
-                        <tr>
-                            <th> {{ 'API_TRANSLATION.REFERENCE.LOCALITY' | translate }} </th>
-                            <th> {{ 'API_TRANSLATION.REFERENCE.LOCALITY_PAGES' | translate }} </th>
-                            <th> {{ 'API_TRANSLATION.REFERENCE.FIGURES' | translate }} </th>
-                            <th> {{ 'API_TRANSLATION.REFERENCE.REMARKS' | translate }} </th>
-                        </tr>
-                    </thead>
+            <!-- Doi -->
+            <div class="col-lg-6" data-ng-if="detailCtrl.doi.length > 0">
+                <h3> {{ 'API_TRANSLATION.REFERENCE.DOI.HEADING' | translate }} </h3>
 
-                    <tbody>
-                        <tr data-ng-repeat="entity in detailCtrl.localityReferences">
-                            <td data-ng-if="(entity.locality__id && entity.locality__id != null)
-                                && entity.locality__locality && entity.locality__locality != null">
-                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'locality', id: entity.locality__id})">
-                                    <localize en="entity.locality__locality_en" et="entity.locality__locality" />
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead class="styles-for-table-headers">
+                        <tr>
+                            <th> {{ 'API_TRANSLATION.REFERENCE.DOI.DOI' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.REFERENCE.DOI.AUTHOR' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.REFERENCE.DOI.DATE' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.REFERENCE.DOI.TITLE' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.REFERENCE.DOI.FORMAT' | translate }} </th>
+                            <th></th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr data-ng-repeat="entity in detailCtrl.doi">
+                            <td>
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'doi', id: entity.id})">
+                                    {{ entity.identifier }}
                                 </a>
                             </td>
-                            <td data-ng-if="entity.locality__id === null && entity.locality__locality != null && entity.locality__locality_id != null">
-                                <localize en="entity.locality__locality_en" et="entity.locality__locality" />
-
-                            </td>
-                            <td> {{ entity.pages }} </td>
-                            <td> {{ entity.figures }} </td>
-                            <td> {{ entity.remarks }} </td>
+                            <td> {{ entity.creators }} </td>
+                            <td> {{ entity.date_added | date:dateFormat }} </td>
+                            <td> {{ entity.title }} </td>
+                            <td> {{ entity.formats }} </td>
+                            <td> {{ entity.sizes }} </td>
                         </tr>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
+            <!-- Related files -->
             <div class="col-lg-6" data-ng-if="detailCtrl.attachmentLink.length > 0">
                 <h3> {{ 'API_TRANSLATION.REFERENCE.LINKED_FILES' | translate }} </h3>
-                <table class="table table-hover table-bordered">
-                    <thead class="styles-for-table-headers">
+
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead class="styles-for-table-headers">
                         <tr>
                             <th> {{ 'API_TRANSLATION.REFERENCE.ID' | translate }} </th>
                             <th> {{ 'API_TRANSLATION.REFERENCE.TYPE' | translate }} </th>
                             <th> {{ 'API_TRANSLATION.REFERENCE.DESCRIPTION' | translate }} </th>
-                            <th> {{ 'API_TRANSLATION.REFERENCE.PREVIEW' | translate }} </th>
+                            <th></th>
+                            <!--<th> {{ 'API_TRANSLATION.REFERENCE.PREVIEW' | translate }} </th>-->
                         </tr>
-                    </thead>
+                        </thead>
 
-                    <tbody>
+                        <tbody>
                         <tr data-ng-repeat="entity in detailCtrl.attachmentLink">
                             <td> {{ entity.attachment__id }} </td>
                             <td data-ng-if="entity.locality__id === null && entity.locality__locality != null && entity.locality__locality_id != null">
@@ -205,30 +212,112 @@
                             <td>
                                 <localize et="entity.attachment__description" en="entity.attachment__description_en" />
                             </td>
-                            <td class="text-center">
-                                <a target="_blank" ng-href="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}">
-                                    <i data-ng-if="entity.attachment__filename.endsWith('pdf')"
-                                       title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
-                                       class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
-
-                                    <i data-ng-if="entity.attachment__filename.endsWith('txt')"
-                                       title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
-                                       class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>
-
-                                    <i data-ng-if="entity.attachment__filename.endsWith('xlsx') || entity.attachment__filename.endsWith('ods') || entity.attachment__filename.endsWith('xls')"
-                                       title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
-                                       class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
-
-                                    <img title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"
-                                         data-ng-if="entity.attachment__filename.endsWith('png') || entity.attachment__filename.endsWith('jpeg') || entity.attachment__filename.endsWith('svg') || entity.attachment__filename.endsWith('jpg')"
-                                         class="previewImage"
-                                         src="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"/>
+                            <td>
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'attachment', id: entity.attachment__id})">
+                                    Link
                                 </a>
                             </td>
+                            <!--<td class="text-center">-->
+                            <!--<a target="_blank" ng-href="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}">-->
+                            <!--<i data-ng-if="entity.attachment__filename.endsWith('pdf')"-->
+                            <!--title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"-->
+                            <!--class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>-->
+
+                            <!--<i data-ng-if="entity.attachment__filename.endsWith('txt')"-->
+                            <!--title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"-->
+                            <!--class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>-->
+
+                            <!--<i data-ng-if="entity.attachment__filename.endsWith('xlsx') || entity.attachment__filename.endsWith('ods') || entity.attachment__filename.endsWith('xls')"-->
+                            <!--title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"-->
+                            <!--class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>-->
+
+                            <!--<img title="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"-->
+                            <!--data-ng-if="entity.attachment__filename.endsWith('png') || entity.attachment__filename.endsWith('jpeg') || entity.attachment__filename.endsWith('svg') || entity.attachment__filename.endsWith('jpg')"-->
+                            <!--class="previewImage"-->
+                            <!--src="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}"/>-->
+                            <!--</a>-->
+                            <!--</td>-->
                         </tr>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
+            <!-- Related images -->
+            <div class="col-lg-6" data-ng-if="detailCtrl.attachmentLink.length > 0">
+                <!--<h3> {{ 'DETAIL.LOCALITY.IMAGES_HEADING'| translate }} </h3>-->
+
+                <div class="row related-images-margin-top">
+
+                    <div class="col-md-6 col-xs-6" data-ng-repeat="image in detailCtrl.attachmentLink"
+                         data-ng-if="image.attachment__filename.endsWith('png') || image.attachment__filename.endsWith('jpeg') || image.attachment__filename.endsWith('svg') || image.attachment__filename.endsWith('jpg')" >
+
+                        <figure class="margin-bottom-30">
+
+                            <a href="{{detailCtrl.service.getDownloadLink(image.attachment__filename)}}" class="hover-me" data-fancybox="gallery">
+
+                                <div class="img-responsive set-height">
+                                    <img class="previewImageDetail img-rounded"
+                                         src="{{detailCtrl.service.getDownloadLink(image.attachment__filename)}}" />
+                                </div>
+
+                                <!--<show-preview class="img-responsive set-height"-->
+                                <!--classes="previewImageDetail img-rounded"-->
+                                <!--img-title="[image.author__agent, image.date_taken, image.date_taken_free]"-->
+                                <!--img-url="detailCtrl.service.getDownloadLink(image.attachment__filename)" />-->
+
+                            </a>
+
+                        </figure>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Localities -->
+            <div class="col-lg-6" data-ng-if="detailCtrl.localityReferences.length > 0">
+                <h3> {{ 'API_TRANSLATION.REFERENCE.SECTIONS_DESCRIBED' | translate }} </h3>
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead class="styles-for-table-headers">
+                            <tr>
+                                <th> {{ 'API_TRANSLATION.REFERENCE.LOCALITY' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.REFERENCE.LOCALITY_PAGES' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.REFERENCE.FIGURES' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.REFERENCE.REMARKS' | translate }} </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr data-ng-repeat="entity in detailCtrl.localityReferences">
+                                <td data-ng-if="(entity.locality__id && entity.locality__id != null)
+                                    && entity.locality__locality && entity.locality__locality != null">
+                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'locality', id: entity.locality__id})">
+                                        <localize en="entity.locality__locality_en" et="entity.locality__locality" />
+                                    </a>
+                                </td>
+                                <td data-ng-if="entity.locality__id === null && entity.locality__locality != null && entity.locality__locality_id != null">
+                                    <localize en="entity.locality__locality_en" et="entity.locality__locality" />
+
+                                </td>
+                                <td> {{ entity.pages }} </td>
+                                <td> {{ entity.figures }} </td>
+                                <td> {{ entity.remarks }} </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Specimen link -->
+            <div class="col-lg-6" style="margin-top: 2rem" data-ng-if="detailCtrl.specimenReference.length > 0">
+                <a href target="_blank" data-ng-click="detailCtrl.service.searchAllSpecimensUsingReference({reference: detailCtrl.results.reference})">
+                    {{ 'DETAIL.REFERENCE.SPECIMEN_LINK' | translate }} ({{ detailCtrl.specimenReference.length }})
+                </a>
+            </div>
+
+            <!-- TODO: New genera table for exmaple: /reference/12 -->
 
         </div>
 

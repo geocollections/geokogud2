@@ -19,6 +19,8 @@ public class ReferenceApiServiceImpl implements ReferenceApiService {
     private static final String REFERENCE_TABLE = "reference";
     private static final String LOCALITY_REFERENCE_TABLE = "locality_reference";
     private static final String ATTACHMENT_LINK_TABLE = "attachment_link";
+    private static final String SPECIMEN_REFERENCE = "specimen_reference";
+    private static final String DOI = "doi";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -72,6 +74,8 @@ public class ReferenceApiServiceImpl implements ReferenceApiService {
                 .id(id)
                 .relatedData(LOCALITY_REFERENCE_TABLE)
                 .relatedData(ATTACHMENT_LINK_TABLE)
+                .relatedData(SPECIMEN_REFERENCE)
+                .relatedData(DOI)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(REFERENCE_TABLE, requestParams);

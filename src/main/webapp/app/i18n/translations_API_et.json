@@ -360,7 +360,15 @@
             "TYPE": "Tüüp",
             "DESCRIPTION": "Kirjeldus",
             "PREVIEW": "Eelvaade",
-            "URL": "URL"
+            "URL": "URL",
+            "DOI": {
+              "HEADING": "Täiendus (DOI)",
+              "DOI": "DOI",
+              "AUTHOR": "Autor",
+              "DATE": "Aeg",
+              "TITLE": "Pealkiri",
+              "FORMAT": "Formaat"
+            }
         },
         "STRATIGRAPHY" : {
             "ID":"ID",

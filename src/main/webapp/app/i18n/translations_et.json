@@ -570,6 +570,9 @@
             "IMAGE_DATE_TAKEN": "Pildistamise aeg",
             "SAMPLE_LINK": "Kuva proovid"
         },
+        "REFERENCE": {
+            "SPECIMEN_LINK": "Specimens cited"
+        },
         "ANALYSIS": {
             "RESULTS": "Analüüside tulemused",
             "RESULTS_NAME": "Muutuja",

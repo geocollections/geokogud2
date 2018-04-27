@@ -256,9 +256,9 @@
 
             <!-- Images from related files -->
             <div class="col-lg-6" data-ng-if="detailCtrl.attachmentLink.length > 0">
-                <h3> {{ 'DETAIL.LOCALITY.IMAGES_HEADING'| translate }} </h3>
+                <!--<h3> {{ 'DETAIL.LOCALITY.IMAGES_HEADING'| translate }} </h3>-->
 
-                <div class="row">
+                <div class="row related-images-margin-top">
 
                     <div class="col-md-6 col-xs-6" data-ng-repeat="image in detailCtrl.attachmentLink"
                          data-ng-if="image.attachment__filename.endsWith('png') || image.attachment__filename.endsWith('jpeg') || image.attachment__filename.endsWith('svg') || image.attachment__filename.endsWith('jpg')" >

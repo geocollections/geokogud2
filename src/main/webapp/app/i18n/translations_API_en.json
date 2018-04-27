@@ -363,7 +363,15 @@
             "TYPE": "Type",
             "DESCRIPTION": "Description",
             "PREVIEW": "Preview",
-            "URL": "URL"
+            "URL": "URL",
+            "DOI": {
+              "HEADING": "Supplements (with DOI)",
+              "DOI": "DOI",
+              "AUTHOR": "Author",
+              "DATE": "Date",
+              "TITLE": "Title",
+              "FORMAT": "Format"
+            }
         },
         "STRATIGRAPHY" : {
             "ID":"ID",
