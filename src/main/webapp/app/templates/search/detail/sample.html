@@ -249,6 +249,82 @@
 
                     </tbody>
                 </table>
+
+                <!-- Related files -->
+                <div data-ng-if="detailCtrl.attachmentLink.length > 0">
+                    <h3> {{ 'DETAIL.DETAIL_ATTACHMENT_LINK' | translate }} </h3>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="styles-for-table-headers">
+                                <tr>
+                                    <td>{{ 'API_TRANSLATION.SAMPLE.ATTACHMENT_LINK.TYPE' | translate }}</td>
+                                    <td>{{ 'API_TRANSLATION.SAMPLE.ATTACHMENT_LINK.DESCRIPTION' | translate }}</td>
+                                    <td>{{ 'API_TRANSLATION.SAMPLE.ATTACHMENT_LINK.AUTHOR' | translate }}</td>
+                                    <td>{{ 'API_TRANSLATION.SAMPLE.ATTACHMENT_LINK.DATE' | translate }}</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr data-ng-repeat="entity in detailCtrl.attachmentLink">
+                                    <td>
+                                        <localize et="entity.attachment__type__value" en="entity.attachment__type__value_en" />
+                                    </td>
+                                    <td>
+                                        <localize et="entity.attachment__description" en="entity.attachment__description_en" />
+                                    </td>
+                                    <td>
+                                        <first-not-null values="[entity.attachment__author__agent, entity.attachment__author_free]" />
+                                    </td>
+                                    <td> {{ entity.attachment__date_added | date:dateFormat }} </td>
+                                    <td>
+                                        <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'attachment', id: entity.attachment__id})">
+                                            Link
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Related analysis results -->
+                <div data-ng-if="detailCtrl.analysisResults.length > 0">
+                    <h3> {{ 'DETAIL.DETAIL_ANALYSIS_RESULTS' | translate }} </h3>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="styles-for-table-headers">
+                            <tr>
+                                <td>{{ 'API_TRANSLATION.SAMPLE.ANALYSIS_RESULTS.VARIABLE' | translate }}</td>
+                                <td>{{ 'API_TRANSLATION.SAMPLE.ANALYSIS_RESULTS.VALUE' | translate }}</td>
+                                <td>{{ 'API_TRANSLATION.SAMPLE.ANALYSIS_RESULTS.VALUE' | translate }}</td>
+                                <td>{{ 'API_TRANSLATION.SAMPLE.ANALYSIS_RESULTS.ID' | translate }}</td>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr data-ng-repeat="entity in detailCtrl.analysisResults | orderBy:'name'">
+                                <td> {{ entity.name }} </td>
+
+                                <td>{{ entity.value }}</td>
+
+                                <td>
+                                    <first-not-null values="[entity.value_bin, entity.value_txt]" />
+                                </td>
+
+                                <td>
+                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'analysis', id: entity.analysis_id})">
+                                        {{ entity.analysis_id }}
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
 
             <div class="col-sm-6">

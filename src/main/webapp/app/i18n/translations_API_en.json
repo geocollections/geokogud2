@@ -234,7 +234,18 @@
             "SPECIMEN_HEADING": "Numbered specimens from sample",
             "SPECIMEN_NUMBER": "Number",
             "SPECIMEN_NAME": "Name",
-            "SPECIMEN_GROUP": "Group"
+            "SPECIMEN_GROUP": "Group",
+            "ATTACHMENT_LINK": {
+              "TYPE": "Tüüp",
+              "DESCRIPTION": "Kirjeldus",
+              "AUTHOR": "Autor",
+              "DATE": "Aeg"
+            },
+            "ANALYSIS_RESULTS": {
+              "VARIABLE": "Muutuja",
+              "VALUE": "Väärtus",
+              "ID": "Analüüsi ID"
+            }
         },
         "DRILL_CORE" : {
             "ID":"ID",

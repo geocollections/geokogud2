@@ -23,6 +23,8 @@ public class SamplesApiServiceImpl implements SamplesApiService {
     private static final String TAXON_LIST_TABLE = "taxon_list";
     private static final String ANALYSIS_TABLE = "analysis";
     private static final String SPECIMEN_TABLE = "specimen";
+    private static final String ATTACHMENT_LINK = "attachment_link";
+    private static final String ANALYSIS_RESULTS = "analysis_results";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -123,6 +125,8 @@ public class SamplesApiServiceImpl implements SamplesApiService {
                 .id(id)
                 .relatedData(TAXON_LIST_TABLE)
                 .relatedData(ANALYSIS_TABLE)
+                .relatedData(ATTACHMENT_LINK)
+                .relatedData(ANALYSIS_RESULTS)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.searchRawEntities(SAMPLE_TABLE, requestParams);

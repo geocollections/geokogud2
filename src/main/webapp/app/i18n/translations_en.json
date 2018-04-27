@@ -609,8 +609,8 @@
         "DETAIL_IDENTIFIERS": "Related identifiers",
         "DETAIL_GEOLOCATIONS": "Related geolocations",
         "DETAIL_PREVIEW_DATA": "Preview data (for text and image files only)",
-        "DETAIL_ATTACHMENT_LINK": "Related files"
-
+        "DETAIL_ATTACHMENT_LINK": "Related files",
+        "DETAIL_ANALYSIS_RESULTS": "Analysis results"
     },
     "TITLES": {
         "SPECIMEN": "Geocollections of Estonia: Specimens",
