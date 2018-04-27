@@ -625,6 +625,15 @@
                 "HEADING": "Seotud doi",
                 "IDENTIFIER": "DOI"
             },
+            "DRILLCORE": {
+                "HEADING": "Seotud puursüdamik",
+                "DRILLCORE": "Puursüdamik"
+            },
+            "DRILLCORE_BOX": {
+                "HEADING": "Seotud puursüdamiku kast",
+                "NUMBER": "Kasti nr",
+                "DRILLCORE_BOX": "Puursüdamik"
+            },
             "LOCALITY": {
                 "HEADING": "Seotud leiukoht",
                 "LOCALITY": "Leiukoht"

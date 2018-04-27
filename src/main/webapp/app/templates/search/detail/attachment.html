@@ -157,7 +157,7 @@
         </div>
 
         <!-- Related analysis -->
-        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__analysis__id && detailCtrl.results.attachmentlink__analysis__id != null">
+        <div class="row" data-ng-if="detailCtrl.results.attach_link__analysis__id && detailCtrl.results.attach_link__analysis__id != null">
             <div class="col-lg-6">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.ANALYSIS.HEADING' | translate }}</h3>
 
@@ -171,8 +171,8 @@
                     <tbody>
                         <tr>
                             <td>
-                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'analysis',id:detailCtrl.results.attachmentlink__analysis__id})">
-                                    {{ detailCtrl.results.attachmentlink__analysis__id }}
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'analysis',id:detailCtrl.results.attach_link__analysis__id})">
+                                    {{ detailCtrl.results.attach_link__analysis__id }}
                                 </a>
                             </td>
                         </tr>
@@ -182,7 +182,7 @@
         </div>
 
         <!-- Related collection -->
-        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__collection__id && detailCtrl.results.attachmentlink__collection__id != null">
+        <div class="row" data-ng-if="detailCtrl.results.attach_link__collection__id && detailCtrl.results.attach_link__collection__id != null">
             <div class="col-lg-6">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.COLLECTION.HEADING' | translate }}</h3>
 
@@ -196,8 +196,8 @@
                     <tbody>
                         <tr>
                             <td>
-                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'collection',id:detailCtrl.results.attachmentlink__collection__id})">
-                                    {{ detailCtrl.results.attachmentlink__colletion__number }}
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'collection',id:detailCtrl.results.attach_link__collection__id})">
+                                    {{ detailCtrl.results.attach_link__colletion__number }}
                                 </a>
                             </td>
                         </tr>
@@ -207,7 +207,7 @@
         </div>
 
         <!-- Related dataset -->
-        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__dataset__id && detailCtrl.results.attachmentlink__dataset__id != null">
+        <div class="row" data-ng-if="detailCtrl.results.attach_link__dataset__id && detailCtrl.results.attach_link__dataset__id != null">
             <div class="col-lg-6">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.DATASET.HEADING' | translate }}</h3>
 
@@ -221,8 +221,8 @@
                     <tbody>
                     <tr>
                         <td>
-                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'dataset',id:detailCtrl.results.attachmentlink__dataset__id})">
-                                <localize et="detailCtrl.results.attachmentlink__dataset__name" en="detailCtrl.results.attachmentlink__dataset__name_en" />
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'dataset',id:detailCtrl.results.attach_link__dataset__id})">
+                                <localize et="detailCtrl.results.attach_link__dataset__name" en="detailCtrl.results.attach_link__dataset__name_en" />
                             </a>
                         </td>
                     </tr>
@@ -232,7 +232,7 @@
         </div>
 
         <!-- Related doi -->
-        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__doi__id && detailCtrl.results.attachmentlink__doi__id != null">
+        <div class="row" data-ng-if="detailCtrl.results.attach_link__doi__id && detailCtrl.results.attach_link__doi__id != null">
             <div class="col-lg-6">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.DOI.HEADING' | translate }}</h3>
 
@@ -246,8 +246,8 @@
                     <tbody>
                     <tr>
                         <td>
-                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'doi',id:detailCtrl.results.attachmentlink__doi__id})">
-                                {{ detailCtrl.results.attachmentlink__doi__identifier }}
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'doi',id:detailCtrl.results.attach_link__doi__id})">
+                                {{ detailCtrl.results.attach_link__doi__identifier }}
                             </a>
                         </td>
                     </tr>
@@ -256,23 +256,24 @@
             </div>
         </div>
 
-        <!-- Related drillcore 500 error currently -->
-        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__drillcore__id && detailCtrl.results.attachmentlink__drillcore__id != null">
+        <!-- Related drillcore  -->
+        <div class="row" data-ng-if="detailCtrl.results.attach_link__drillcore__id && detailCtrl.results.attach_link__drillcore__id != null">
             <div class="col-lg-6">
-                <h3>{{ 'API_TRANSLATION.ATTACHMENT.ANALYSIS.HEADING' | translate }}</h3>
+                <h3>{{ 'API_TRANSLATION.ATTACHMENT.DRILLCORE.HEADING' | translate }}</h3>
 
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
                     <tr>
-                        <th> {{ 'API_TRANSLATION.ATTACHMENT.ANALYSIS.ANALYSIS_ID' | translate }} </th>
+                        <th> {{ 'API_TRANSLATION.ATTACHMENT.DRILLCORE.DRILLCORE' | translate }} </th>
                     </tr>
                     </thead>
 
                     <tbody>
                     <tr>
                         <td>
-                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'analysis',id:detailCtrl.results.attachmentlink__analysis__id})">
-                                {{ detailCtrl.results.attachmentlink__analysis__id }}
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'drillcore',id:detailCtrl.results.attach_link__drillcore__id})">
+                                <localize et="detailCtrl.results.attach_link__drillcore__drillcore"
+                                          en="detailCtrl.results.attach_link__drillcore__drillcore_en" />
                             </a>
                         </td>
                     </tr>
@@ -281,23 +282,29 @@
             </div>
         </div>
 
-        <!-- Related drillcore box 500 error currently -->
-        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__drillcore_box__id && detailCtrl.results.attachmentlink__drillcore_box__id != null">
+        <!-- Related drillcore box -->
+        <div class="row" data-ng-if="detailCtrl.results.attach_link__drillcore_box__id && detailCtrl.results.attach_link__drillcore_box__id != null">
             <div class="col-lg-6">
-                <h3>{{ 'API_TRANSLATION.ATTACHMENT.ANALYSIS.HEADING' | translate }}</h3>
+                <h3>{{ 'API_TRANSLATION.ATTACHMENT.DRILLCORE_BOX.HEADING' | translate }}</h3>
 
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
                     <tr>
-                        <th> {{ 'API_TRANSLATION.ATTACHMENT.ANALYSIS.ANALYSIS_ID' | translate }} </th>
+                        <th> {{ 'API_TRANSLATION.ATTACHMENT.DRILLCORE_BOX.NUMBER' | translate }} </th>
+                        <th> {{ 'API_TRANSLATION.ATTACHMENT.DRILLCORE_BOX.DRILLCORE' | translate }} </th>
                     </tr>
                     </thead>
 
                     <tbody>
                     <tr>
                         <td>
-                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'analysis',id:detailCtrl.results.attachmentlink__analysis__id})">
-                                {{ detailCtrl.results.attachmentlink__analysis__id }}
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'corebox',id:detailCtrl.results.attach_link__drillcore_box__id})"></a>
+                            {{ detailCtrl.results.attach_link__drillcore_box__number }}
+                        </td>
+                        <td>
+                            <a href data-ng-if="detailCtrl.results.attach_link__drillcore__id != null" data-ng-click="detailCtrl.service.openInNewWindow({object:'drillcore',id:detailCtrl.results.attach_link__drillcore__id})">
+                                <localize et="detailCtrl.results.attach_link__drillcore_box__drillcore__drillcore"
+                                          en="detailCtrl.results.attach_link__drillcore_box__drillcore__drillcore_en" />
                             </a>
                         </td>
                     </tr>
@@ -307,7 +314,7 @@
         </div>
 
         <!-- Related locality -->
-        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__locality__id && detailCtrl.results.attachmentlink__locality__id != null">
+        <div class="row" data-ng-if="detailCtrl.results.attach_link__locality__id && detailCtrl.results.attach_link__locality__id != null">
             <div class="col-lg-6">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.LOCALITY.HEADING' | translate }}</h3>
 
@@ -321,8 +328,8 @@
                     <tbody>
                     <tr>
                         <td>
-                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'analysis',id:detailCtrl.results.attachmentlink__locality__id})">
-                                <localize et="detailCtrl.results.attachmentlink__locality__locality" en="detailCtrl.results.attachmentlink__locality__locality_en" />
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'analysis',id:detailCtrl.results.attach_link__locality__id})">
+                                <localize et="detailCtrl.results.attach_link__locality__locality" en="detailCtrl.results.attach_link__locality__locality_en" />
                             </a>
                         </td>
                     </tr>
@@ -332,7 +339,7 @@
         </div>
 
         <!-- Related preparation -->
-        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__preparation__id && detailCtrl.results.attachmentlink__preparation__id != null">
+        <div class="row" data-ng-if="detailCtrl.results.attach_link__preparation__id && detailCtrl.results.attach_link__preparation__id != null">
             <div class="col-lg-6">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.PREPARATION.HEADING' | translate }}</h3>
 
@@ -346,8 +353,8 @@
                     <tbody>
                     <tr>
                         <td>
-                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'preparation',id:detailCtrl.results.attachmentlink__preparation__id})">
-                                {{ detailCtrl.results.attachmentlink__preparation__preparation_number }}
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'preparation',id:detailCtrl.results.attach_link__preparation__id})">
+                                {{ detailCtrl.results.attach_link__preparation__preparation_number }}
                             </a>
                         </td>
                     </tr>
@@ -357,7 +364,7 @@
         </div>
 
         <!-- Related reference -->
-        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__reference__id && detailCtrl.results.attachmentlink__reference__id != null">
+        <div class="row" data-ng-if="detailCtrl.results.attach_link__reference__id && detailCtrl.results.attach_link__reference__id != null">
             <div class="col-lg-6">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.REFERENCE.HEADING' | translate }}</h3>
 
@@ -371,8 +378,8 @@
                     <tbody>
                     <tr>
                         <td>
-                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'reference',id:detailCtrl.results.attachmentlink__reference__id})">
-                                {{ detailCtrl.results.attachmentlink__reference__reference }}
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'reference',id:detailCtrl.results.attach_link__reference__id})">
+                                {{ detailCtrl.results.attach_link__reference__reference }}
                             </a>
                         </td>
                     </tr>
@@ -382,7 +389,7 @@
         </div>
 
         <!-- Related sample -->
-        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__sample__id && detailCtrl.results.attachmentlink__sample__id != null">
+        <div class="row" data-ng-if="detailCtrl.results.attach_link__sample__id && detailCtrl.results.attach_link__sample__id != null">
             <div class="col-lg-6">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.SAMPLE.HEADING' | translate }}</h3>
 
@@ -396,8 +403,8 @@
                     <tbody>
                     <tr>
                         <td>
-                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'sample',id:detailCtrl.results.attachmentlink__sample__id})">
-                                {{ detailCtrl.results.attachmentlink__sample__number }}
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'sample',id:detailCtrl.results.attach_link__sample__id})">
+                                {{ detailCtrl.results.attach_link__sample__number }}
                             </a>
                         </td>
                     </tr>
@@ -407,7 +414,7 @@
         </div>
 
         <!-- Related specimen -->
-        <div class="row" data-ng-if="detailCtrl.results.attachmentlink__specimen__id && detailCtrl.results.attachmentlink__specimen__id != null">
+        <div class="row" data-ng-if="detailCtrl.results.attach_link__specimen__id && detailCtrl.results.attach_link__specimen__id != null">
             <div class="col-lg-6">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.SPECIMEN.HEADING' | translate }}</h3>
 
@@ -421,8 +428,8 @@
                     <tbody>
                     <tr>
                         <td>
-                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen',id:detailCtrl.results.attachmentlink__specimen__id})">
-                                {{ detailCtrl.results.attachmentlink__specimen__coll__number | split:' ':0 }} {{ detailCtrl.results.attachmentlink__specimen__specimen_id }}
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen',id:detailCtrl.results.attach_link__specimen__id})">
+                                {{ detailCtrl.results.attach_link__specimen__coll__number | split:' ':0 }} {{ detailCtrl.results.attach_link__specimen__specimen_id }}
                             </a>
                         </td>
                     </tr>

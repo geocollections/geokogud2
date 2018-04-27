@@ -628,6 +628,15 @@
                 "HEADING": "Related doi",
                 "IDENTIFIER": "DOI"
             },
+            "DRILLCORE": {
+                "HEADING": "Related drillcore",
+                "DRILLCORE": "Drillcore"
+            },
+            "DRILLCORE_BOX": {
+                "HEADING": "Related corebox",
+                "NUMBER": "Box no",
+                "DRILLCORE_BOX": "Drillcore"
+            },
             "LOCALITY": {
                 "HEADING": "Related locality",
                 "LOCALITY": "Locality"
