@@ -1,6 +1,8 @@
 # Geocollections of Estonia
-
 http://geocollections.info/
+
+* Architecture, coding and design 2017 by Olesja Senkiv, Stanislav Nazmutdinov, Marjana Voronina and Artur Gummel (https://github.com/geocollections/geokogud).
+* Extended and updated 2017-2018 by Enar Mustonen, Kristjan Urtson and Olle Hints.
 
 ## Getting Started
 
