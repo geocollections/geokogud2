@@ -328,7 +328,7 @@
                         <tr>
                             <th> {{ 'API_TRANSLATION.REFERENCE.TAXON.GENUS' | translate }} </th>
                             <th> {{ 'API_TRANSLATION.REFERENCE.TAXON.FAMILY' | translate }} </th>
-                            <th> {{ 'API_TRANSLATION.REFERENCE.TAXON.PHYLUM' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.REFERENCE.TAXON.GROUP' | translate }} </th>
                         </tr>
                         </thead>
 
@@ -346,8 +346,8 @@
                                 </a>
                             </td>
                             <td>
-                                <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url: 'http://fossiilid.info/' + entity.fossil_group__parent__parent__id})">
-                                    {{ entity.fossil_group__parent__parent__taxon }}
+                                <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url: 'http://fossiilid.info/' + entity.fossil_group__id})">
+                                    {{ entity.fossil_group__taxon }}
                                 </a>
                             </td>
                         </tr>

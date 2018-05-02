@@ -21,6 +21,8 @@ public class StratigraphyApiServiceImpl implements StratigraphyApiService {
     private static final String STRATIGRAPHY_REFERENCE = "stratigraphy_reference";
     private static final String STRATIGRAPHY_STRATOTYPE = "stratigraphy_stratotype";
     private static final String STRATIGRAPHY_SYNONYM = "stratigraphy_synonym";
+    private static final String SPECIMEN = "specimen";
+    private static final String SAMPLE = "sample";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -94,6 +96,8 @@ public class StratigraphyApiServiceImpl implements StratigraphyApiService {
                 .relatedData(STRATIGRAPHY_REFERENCE)
                 .relatedData(STRATIGRAPHY_STRATOTYPE)
                 .relatedData(STRATIGRAPHY_SYNONYM)
+                .relatedData(SPECIMEN)
+                .relatedData(SAMPLE)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.searchRawEntities(STRATIGRAPHY_TABLE, requestParams);

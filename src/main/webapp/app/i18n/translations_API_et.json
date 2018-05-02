@@ -381,8 +381,8 @@
             "TAXON": {
                 "HEADING": "Kirjeldatud taksonid",
                 "GENUS": "Perekond",
-                "FAMILY": "Sugukond",
-                "PHYLUM": "Hõimkond"
+                "FAMILY": "Kuulub",
+                "GROUP": "Rühm"
             }
         },
         "STRATIGRAPHY" : {

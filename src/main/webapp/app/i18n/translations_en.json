@@ -583,7 +583,9 @@
         "STRATIGRAPHY": {
             "LITHOSTRATIGRAPHY_HEADING": "Lithostratigraphy",
             "STRATIGRAPHY": "Stratigraphy",
-            "DESCRIPTION_HEADING": "Kirjeldus"
+            "DESCRIPTION_HEADING": "Description",
+            "SPECIMEN_LINK": "Specimens in collections (approximately)",
+            "SAMPLE_LINK": "Samples in collections (approximately)"
         },
         "ATTACHMENT": {
             "HEADING": "File"

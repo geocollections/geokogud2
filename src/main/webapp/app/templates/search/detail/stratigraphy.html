@@ -264,6 +264,7 @@
 
             </div>
 
+            <!-- References -->
             <div class="col-sm-6" data-ng-if="detailCtrl.stratigraphyReference.length > 0">
                 <h3> {{ 'DETAIL.DETAIL_REFERENCES' | translate }} </h3>
 
@@ -292,6 +293,7 @@
 
             <div class="col-sm-6">
 
+                <!-- Stratotypes -->
                 <div data-ng-if="detailCtrl.stratigraphyStratotype.length > 0">
                     <h3> {{ 'DETAIL.DETAIL_STRATOTYPE' | translate }} </h3>
                     <div class="table-responsive">
@@ -332,6 +334,7 @@
                     </div>
                 </div>
 
+                <!-- Synonyms -->
                 <div data-ng-if="detailCtrl.stratigraphySynonym.length > 0">
                     <h3> {{ 'DETAIL.DETAIL_STRATIGRAPHY_SYNONYMS' | translate }} </h3>
                     <table class="table table-bordered table-hover">
@@ -360,8 +363,64 @@
                     </table>
                 </div>
 
+                <!-- TODO: Add image -->
+                <!--<div data-ng-if="detailCtrl.images.length > 0">-->
+                    <!--<h3> {{ 'DETAIL.LOCALITY.IMAGES_HEADING'| translate }} </h3>-->
+
+                    <!--<div class="row">-->
+
+                        <!--<div class="col-md-6 col-xs-6" data-ng-repeat="image in detailCtrl.images">-->
+
+                            <!--<figure class="margin-bottom-30">-->
+
+                                <!--<a href="{{detailCtrl.service.composeImageUrl(image)}}" class="hover-me" data-fancybox="gallery"-->
+                                   <!--data-caption="{{detailCtrl.service.setFancyBoxCaption(-->
+                                       <!--{-->
+                                            <!--author: image.author__agent,-->
+                                            <!--author_free: image.author_free,-->
+                                            <!--date_taken: image.date_taken,-->
+                                            <!--date_taken_free: image.date_taken_free,-->
+                                            <!--copyright_agent: image.copyright_agent__agent,-->
+                                            <!--licence: image.licence__licence_en,-->
+                                            <!--licence_url: image.licence__licence_url,-->
+                                            <!--licence_url_en: image.licence__licence_url_en,-->
+                                            <!--id: image.id-->
+                                       <!--})}}">-->
+
+                                    <!--<show-preview class="img-responsive set-height"-->
+                                                  <!--classes="previewImageDetail img-rounded"-->
+                                                  <!--img-title="[image.author__agent, image.date_taken, image.date_taken_free]"-->
+                                                  <!--img-url="detailCtrl.service.composeImageUrl(image)" />-->
+
+                                <!--</a>-->
+
+                            <!--</figure>-->
+
+                        <!--</div>-->
+
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!-- Specimen link -->
+                <div data-ng-if="detailCtrl.specimens.length > 0">
+                    {{ 'DETAIL.STRATIGRAPHY.SPECIMEN_LINK' | translate }}:
+                    <a href target="_blank" data-ng-click="detailCtrl.service.searchAllSpecimensUsingStratigraphy({stratigraphy: detailCtrl.results.stratigraphy, stratigraphyEn: detailCtrl.results.stratigraphy_en})">
+                        {{detailCtrl.specimens.length}}
+                    </a>
+                </div>
+
+                <!-- Sample link -->
+                <div data-ng-if="detailCtrl.samples.length > 0" style="margin-top: 2rem">
+                    {{ 'DETAIL.STRATIGRAPHY.SAMPLE_LINK' | translate }}:
+                    <a href target="_blank" data-ng-click="detailCtrl.service.searchAllSamplesUsingStratigraphy({stratigraphy: detailCtrl.results.stratigraphy, stratigraphyEn: detailCtrl.results.stratigraphy_en})">
+                        {{detailCtrl.samples.length}}
+                    </a>
+                </div>
+
+
             </div>
 
+            <!-- Description -->
             <div class="col-sm-12" data-ng-if="(detailCtrl.results.description && detailCtrl.results.description != null)
                 || (detailCtrl.results.description_en && detailCtrl.results.description_en != null)">
                 <h3> {{ 'DETAIL.STRATIGRAPHY.DESCRIPTION_HEADING' | translate }} </h3>

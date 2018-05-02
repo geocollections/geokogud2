@@ -383,9 +383,9 @@
             },
             "TAXON": {
                 "HEADING": "New taxa described",
-                "GENUS": "Genus",
-                "FAMILY": "Family",
-                "PHYLUM": "Phylum"
+                "GENUS": "Taxon",
+                "FAMILY": "Parent",
+                "GROUP": "Group"
             }
         },
         "STRATIGRAPHY" : {
