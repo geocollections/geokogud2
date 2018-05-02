@@ -377,6 +377,12 @@
               "DATE": "Aeg",
               "TITLE": "Pealkiri",
               "FORMAT": "Formaat"
+            },
+            "TAXON": {
+                "HEADING": "Kirjeldatud taksonid",
+                "GENUS": "Perekond",
+                "FAMILY": "Sugukond",
+                "PHYLUM": "Hõimkond"
             }
         },
         "STRATIGRAPHY" : {

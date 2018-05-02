@@ -318,7 +318,43 @@
                 </a>
             </div>
 
-            <!-- TODO: New genera table for exmaple: /reference/12 -->
+            <!-- Taxons -->
+            <div class="col-lg-6" data-ng-if="detailCtrl.taxon.length > 0">
+                <h3> {{ 'API_TRANSLATION.REFERENCE.TAXON.HEADING' | translate }} </h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead class="styles-for-table-headers">
+                        <tr>
+                            <th> {{ 'API_TRANSLATION.REFERENCE.TAXON.GENUS' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.REFERENCE.TAXON.FAMILY' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.REFERENCE.TAXON.PHYLUM' | translate }} </th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr data-ng-repeat="entity in detailCtrl.taxon">
+                            <td>
+                                <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url: 'http://fossiilid.info/' + entity.id})">
+                                    <em> {{ entity.taxon }} </em>
+                                </a>
+                                {{ entity.author_year }}
+                            </td>
+                            <td>
+                                <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url: 'http://fossiilid.info/' + entity.parent_id})">
+                                    {{ entity.parent__taxon }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url: 'http://fossiilid.info/' + entity.fossil_group__parent__parent__id})">
+                                    {{ entity.fossil_group__parent__parent__taxon }}
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
         </div>
 

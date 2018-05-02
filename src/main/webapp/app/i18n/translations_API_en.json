@@ -380,6 +380,12 @@
               "DATE": "Date",
               "TITLE": "Title",
               "FORMAT": "Format"
+            },
+            "TAXON": {
+                "HEADING": "New taxa described",
+                "GENUS": "Genus",
+                "FAMILY": "Family",
+                "PHYLUM": "Phylum"
             }
         },
         "STRATIGRAPHY" : {
