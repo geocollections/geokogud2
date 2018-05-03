@@ -36,6 +36,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
     service.searchAllSpecimensUsingReference = searchAllSpecimensUsingReference;
     service.searchAllSpecimensUsingStratigraphy = searchAllSpecimensUsingStratigraphy;
     service.searchAllSamplesUsingStratigraphy = searchAllSamplesUsingStratigraphy;
+    service.getFileLink = getFileLink;
 
     service.toggle = function (el,array) {
         utils.toggleInArray(el,array)
@@ -124,6 +125,8 @@ var constructor = function (utils, configuration, $window, $location, $translate
     service.getDownloadLink = function (fileName) {
         return "http://geokogud.info/files/"+fileName.substring(0,2)+"/"+fileName;
     };
+
+
 
     // Used only on corebox detail view
     service.composeCoreboxImageUrl = function (imageData) {
@@ -390,6 +393,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
         }
     }
 
+    // TODO: Can drop that and use split('.') inside {{}} parentheses
     // Used in specimen detail view when there are attachments like 154421451fsa548a.jpg
     // then it takes the 4 last chars aka format.
     function getAttachmentFormatFromFilename(params) {
@@ -533,6 +537,19 @@ var constructor = function (utils, configuration, $window, $location, $translate
 
     function openUrlWithGivenTarget(params) {
         window.open(params.url, params.target);
+    }
+
+    function getFileLink(params) {
+        if (params.size) {
+            return "http://files.geocollections.info/" + params.size
+                + "/" + params.filename.substring(0, 2)
+                + "/" + params.filename.substring(2, 4)
+                + "/" + params.filename;
+        } else {
+            return "http://files.geocollections.info/" + params.filename.substring(0, 2)
+                + "/" + params.filename.substring(2, 4)
+                + "/" + params.filename;
+        }
     }
 
     return service;

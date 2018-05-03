@@ -214,11 +214,11 @@
 
                         <figure class="margin-bottom-30">
 
-                            <a href="{{detailCtrl.service.getDownloadLink(image.attachment__filename)}}" class="hover-me" data-fancybox="gallery">
+                            <a href="{{detailCtrl.service.getFileLink({filename: image.attachment__uuid_filename})}}" class="hover-me" data-fancybox="gallery">
 
                                 <div class="img-responsive set-height">
                                     <img class="previewImageDetail img-rounded"
-                                         src="{{detailCtrl.service.getDownloadLink(image.attachment__filename)}}" />
+                                         src="{{detailCtrl.service.getFileLink({filename: image.attachment__uuid_filename})}}" />
                                 </div>
 
                                 <!--<show-preview class="img-responsive set-height"-->

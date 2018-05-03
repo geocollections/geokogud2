@@ -232,23 +232,23 @@
                                 <td>{{entity.attachment_format__value}}</td>
 
                                 <td class="text-center">
-                                    <a target="_blank" ng-href="{{detailCtrl.service.getDownloadLink(entity.filename)}}">
+                                    <a target="_blank" ng-href="{{detailCtrl.service.getFileLink({filename: entity.uuid_filename})}}">
                                         <i data-ng-if="entity.filename.endsWith('pdf')"
-                                           title="{{detailCtrl.service.getDownloadLink(entity.filename)}}"
+                                           title="{{detailCtrl.service.getFileLink({filename: entity.uuid_filename})}}"
                                            class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
 
                                         <i data-ng-if="entity.filename.endsWith('txt')"
-                                           title="{{detailCtrl.service.getDownloadLink(entity.filename)}}"
+                                           title="{{detailCtrl.service.getFileLink({filename: entity.uuid_filename})}}"
                                            class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>
 
                                         <i data-ng-if="entity.filename.endsWith('xlsx') || entity.filename.endsWith('ods') || entity.filename.endsWith('xls')"
-                                           title="{{detailCtrl.service.getDownloadLink(entity.filename)}}"
+                                           title="{{detailCtrl.service.getFileLink({filename: entity.uuid_filename})}}"
                                            class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
 
-                                        <img title="{{detailCtrl.service.getDownloadLink(entity.filename)}}"
+                                        <img title="{{detailCtrl.service.getFileLink({filename: entity.uuid_filename})}}"
                                              data-ng-if="entity.filename.endsWith('png') || entity.filename.endsWith('jpeg') || entity.filename.endsWith('svg') || entity.filename.endsWith('jpg')"
                                              class="previewImage"
-                                             src="{{detailCtrl.service.getDownloadLink(entity.filename)}}"/>
+                                             src="{{detailCtrl.service.getFileLink({filename: entity.uuid_filename})}}"/>
                                     </a>
                                 </td>
                             </tr>
@@ -373,9 +373,9 @@
                                 <localize et="entity.description" en="entity.description_en"/>
                             </h4>
                             <div class="border-none">
-                                <a href target="_blank" ng-href="{{detailCtrl.service.getDownloadLink(entity.filename)}}">
-                                    <img class="doi-big-image" title="{{detailCtrl.service.getDownloadLink(entity.filename)}}"
-                                         src="{{detailCtrl.service.getDownloadLink(entity.filename)}}" />
+                                <a href target="_blank" ng-href="{{detailCtrl.service.getFileLink({filename: entity.uuid_filename})}}">
+                                    <img class="doi-big-image" title="{{detailCtrl.service.getFileLink({filename: entity.uuid_filename})}}"
+                                         src="{{detailCtrl.service.getFileLink({filename: entity.uuid_filename})}}" />
                                 </a>
                             </div>
                         </div>

@@ -66,30 +66,30 @@
                     <tr data-ng-if="detailCtrl.results.filename && detailCtrl.results.filename != null">
                         <td> {{ 'API_TRANSLATION.ATTACHMENT.FILENAME' | translate }} </td>
                         <td>
-                            <a target="_blank" ng-href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}">
+                            <a target="_blank" ng-href="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}">
                                 <i data-ng-if="detailCtrl.results.filename.endsWith('pdf')"
-                                    title="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}"
+                                    title="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"
                                     class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
 
                                 <i data-ng-if="detailCtrl.results.filename.endsWith('txt')"
-                                    title="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}"
+                                    title="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"
                                     class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>
 
                                 <i data-ng-if="detailCtrl.results.filename.endsWith('xlsx') || detailCtrl.results.filename.endsWith('ods') || detailCtrl.results.filename.endsWith('xls')"
-                                    title="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}"
+                                    title="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"
                                     class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
 
                                 <i data-ng-if="detailCtrl.results.filename.endsWith('mp4')"
-                                   title="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}"
+                                   title="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"
                                    class="fa fa-file-video-o fa-2x" aria-hidden="true"></i>
 
                                 <span data-ng-if="detailCtrl.results.filename.endsWith('png') || detailCtrl.results.filename.endsWith('jpeg') || detailCtrl.results.filename.endsWith('svg') || detailCtrl.results.filename.endsWith('jpg')">
                                     {{ detailCtrl.results.filename }}
                                 </span>
-                                <!--<img title="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}"-->
+                                <!--<img title="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"-->
                                     <!--data-ng-if="detailCtrl.results.filename.endsWith('png') || detailCtrl.results.filename.endsWith('jpeg') || detailCtrl.results.filename.endsWith('svg') || detailCtrl.results.filename.endsWith('jpg')"-->
                                     <!--class="previewImage"-->
-                                    <!--src="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}"/>-->
+                                    <!--src="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"/>-->
                             </a>
                         </td>
                     </tr>
@@ -138,21 +138,22 @@
                     <div data-ng-if="detailCtrl.results.filename.endsWith('png') || detailCtrl.results.filename.endsWith('jpeg') || detailCtrl.results.filename.endsWith('svg') || detailCtrl.results.filename.endsWith('jpg')">
                         <h3> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.PHOTO' | translate }} </h3>
 
-                        <a href title="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}" data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.service.getDownloadLink(detailCtrl.results.filename)})">
-                            <img id="img-size" spinner-load ng-src="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}" class="window-size"/>
+                        <a href title="{{detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.uuid_filename})}}" data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.uuid_filename})})">
+                            <img id="img-size" spinner-load ng-src="{{detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.uuid_filename})}}" class="window-size"/>
                         </a>
-                        <!--<div class="img-settings">-->
-                        <!--<div class="img-text">-->
-                        <!--{{'API_TRANSLATION.PHOTO_ARCHIVE.SIZE ' | translate }}:-->
-                        <!--<a href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}/600" target="_blank">600px</a>-->
-                        <!--| <a href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}/1024" target="_blank">1024px</a>-->
-                        <!--| <a href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}/1440" target="_blank">1440px</a>-->
-                        <!--| <a href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}/1600" target="_blank">1600px</a>-->
-                        <!--| <a href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}/1920" target="_blank">1920px</a>-->
-                        <!--| <a href="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}" target="_blank">Original</a>-->
+                        <div class="img-settings">
+                            <div class="img-text">
+                                {{'API_TRANSLATION.PHOTO_ARCHIVE.SIZE ' | translate }}:
+                                <a href="{{detailCtrl.service.getFileLink({size: 'small', filename: detailCtrl.results.uuid_filename})}}" target="_blank">400px</a>
+                                |
+                                <a href="{{detailCtrl.service.getFileLink({size: 'medium', filename: detailCtrl.results.uuid_filename})}}" target="_blank">1000px</a>
+                                |
+                                <a href="{{detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.uuid_filename})}}" target="_blank">2000px</a>
+                                |
+                                <a href="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}" target="_blank">Original</a>
 
-                        <!--</div>-->
-                        <!--</div>-->
+                            </div>
+                        </div>
 
                     </div>
 
@@ -161,7 +162,7 @@
                         <h3> {{ 'API_TRANSLATION.ATTACHMENT.VIDEO' | translate }} </h3>
 
                         <video data-ng-if="detailCtrl.results.filename.endsWith('mp4')" width="100%" controls loop>
-                            <source src="{{detailCtrl.service.getDownloadLink(detailCtrl.results.filename)}}" type="video/mp4">
+                            <source src="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}" type="video/mp4">
                         </video>
                     </div>
                 </div>

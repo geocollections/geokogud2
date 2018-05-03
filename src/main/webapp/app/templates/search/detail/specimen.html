@@ -489,7 +489,7 @@
                     <!-- Videos -->
                     <div data-ng-repeat="entity in detailCtrl.attachmentLink" style="margin-top: 2rem">
                         <video data-ng-if="entity.attachment__filename.endsWith('mp4')" width="100%" controls loop>
-                            <source src="{{detailCtrl.service.getDownloadLink(entity.attachment__filename)}}" type="video/mp4">
+                            <source src="{{detailCtrl.service.getFileLink({filename: entity.attachment__uuid_filename})}}" type="video/mp4">
                         </video>
                     </div>
                 </div>
@@ -505,11 +505,11 @@
 
                             <figure class="margin-bottom-30">
 
-                                <a href="{{detailCtrl.service.getDownloadLink(image.attachment__filename)}}" class="hover-me" data-fancybox="gallery">
+                                <a href="{{detailCtrl.service.getFileLink({filename: image.attachment__uuid_filename})}}" class="hover-me" data-fancybox="gallery">
 
                                     <div class="img-responsive set-height">
                                         <img class="previewImageDetail img-rounded"
-                                             src="{{detailCtrl.service.getDownloadLink(image.attachment__filename)}}" />
+                                             src="{{detailCtrl.service.getFileLink({filename: image.attachment__uuid_filename})}}" />
                                     </div>
 
                                     <!--<show-preview class="img-responsive set-height"-->
