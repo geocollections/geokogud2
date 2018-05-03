@@ -39,7 +39,9 @@
         "CONTACT_LINK": "Contact",
         "BUTTON_LANG_ET": "EST",
         "BUTTON_LANG_EN": "ENG",
-        "TYPES_OF_SEARCHES": "Types of searches"
+        "TYPES_OF_SEARCHES": "Types of searches",
+        "EUROCORE_LINK": "EUROCORE data portal",
+        "BALTIC_LINK": "Baltic chitinozoans"
     },
     "GIT": {
         "GIT_TITLE": "Geological collections at the Institute of Geology at TUT",

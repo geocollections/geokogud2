@@ -39,7 +39,9 @@
         "CONTACT_LINK": "Kontakt",
         "BUTTON_LANG_ET": "EST",
         "BUTTON_LANG_EN": "ENG",
-        "TYPES_OF_SEARCHES": "Otsingute tüübid"
+        "TYPES_OF_SEARCHES": "Otsingute tüübid",
+        "EUROCORE_LINK": "EUROCORE puursüdamike portaal",
+        "BALTIC_LINK": "Baltoskandia kitiinikud"
     },
     "GIT": {
         "GIT_TITLE": "TTÜ Geoloogia Instituudi geoloogilised kollektsioonid",

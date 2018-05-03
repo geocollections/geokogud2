@@ -358,7 +358,7 @@
 
 
   "apiDeveloperUrl" : "https://api.arendus.geokogud.info",
-  "apiUrl" : "https://api2.geokogud.info",
+  "apiUrl" : "https://api.geocollections.info",
   "fossilsUrl" : "http://fossiilid.info/",
   "ermasUrl" : "http://ermas.geokogud.info/",
   "elmUrl" : "http://www.loodusmuuseum.ee/",
@@ -370,6 +370,8 @@
   "elmUrl2" : "http://www.loodusmuuseum.ee/en/geological-collections",
   "tugoUrl" : "https://www.geoloogia.ut.ee/et",
   "mumuUrl" : "https://kogud.emu.ee/mullamuuseum/",
-  "egkUrl" : "http://www.egk.ee/"
+  "egkUrl" : "http://www.egk.ee/",
+  "eurocoreUrl" : "https://eurocore.rocks/",
+  "balticChitinozoansUrl": "http://chitinozoa.net/"
 
 }
