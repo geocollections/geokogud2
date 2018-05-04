@@ -245,10 +245,10 @@
                                            title="{{detailCtrl.service.getFileLink({filename: entity.uuid_filename})}}"
                                            class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
 
-                                        <img title="{{detailCtrl.service.getFileLink({size: 'medium', filename: entity.uuid_filename})}}"
+                                        <img title="{{detailCtrl.service.getFileLink({filename: entity.uuid_filename})}}"
                                              data-ng-if="entity.filename.endsWith('png') || entity.filename.endsWith('jpeg') || entity.filename.endsWith('svg') || entity.filename.endsWith('jpg')"
                                              class="previewImage"
-                                             src="{{detailCtrl.service.getFileLink({size: 'medium', filename: entity.uuid_filename})}}"/>
+                                             src="{{detailCtrl.service.getFileLink({filename: entity.uuid_filename})}}"/>
                                     </a>
                                 </td>
                             </tr>
