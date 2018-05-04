@@ -245,10 +245,10 @@
                                            title="{{detailCtrl.service.getFileLink({filename: entity.uuid_filename})}}"
                                            class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
 
-                                        <img title="{{detailCtrl.service.getFileLink({filename: entity.uuid_filename})}}"
+                                        <img title="{{detailCtrl.service.getFileLink({size: 'medium', filename: entity.uuid_filename})}}"
                                              data-ng-if="entity.filename.endsWith('png') || entity.filename.endsWith('jpeg') || entity.filename.endsWith('svg') || entity.filename.endsWith('jpg')"
                                              class="previewImage"
-                                             src="{{detailCtrl.service.getFileLink({filename: entity.uuid_filename})}}"/>
+                                             src="{{detailCtrl.service.getFileLink({size: 'medium', filename: entity.uuid_filename})}}"/>
                                     </a>
                                 </td>
                             </tr>
@@ -373,9 +373,9 @@
                                 <localize et="entity.description" en="entity.description_en"/>
                             </h4>
                             <div class="border-none">
-                                <a href target="_blank" ng-href="{{detailCtrl.service.getFileLink({filename: entity.uuid_filename})}}">
-                                    <img class="doi-big-image" title="{{detailCtrl.service.getFileLink({filename: entity.uuid_filename})}}"
-                                         src="{{detailCtrl.service.getFileLink({filename: entity.uuid_filename})}}" />
+                                <a href target="_blank" ng-href="{{detailCtrl.service.getFileLink({size: 'large', filename: entity.uuid_filename})}}">
+                                    <img class="doi-big-image" title="{{detailCtrl.service.getFileLink({size: 'large', filename: entity.uuid_filename})}}"
+                                         src="{{detailCtrl.service.getFileLink({size: 'large', filename: entity.uuid_filename})}}" />
                                 </a>
                             </div>
                         </div>

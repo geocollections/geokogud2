@@ -41,7 +41,11 @@
         "BUTTON_LANG_EN": "ENG",
         "TYPES_OF_SEARCHES": "Otsingute tüübid",
         "EUROCORE_LINK": "EUROCORE puursüdamike portaal",
-        "BALTIC_LINK": "Baltoskandia kitiinikud"
+        "BALTIC_LINK": "Baltoskandia kitiinikud",
+        "SMALL": "väike",
+        "MEDIUM": "keskmine",
+        "LARGE": "suur",
+        "ORIGINAL": "Originaal"
     },
     "GIT": {
         "GIT_TITLE": "TTÜ Geoloogia Instituudi geoloogilised kollektsioonid",
