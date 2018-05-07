@@ -573,25 +573,52 @@ var constructor = function (utils, configuration, $window, $location, $translate
         var estText = "";
         var engText = "";
 
-        if (imageData.object !== null && imageData.object) {
-            estText = imageData.object + ". ";
-            engText = imageData.object + ". ";
+        // images
+        if (imageData.database__acronym) {
+            if (imageData.object !== null && imageData.object) {
+                estText = imageData.object + ". ";
+                engText = imageData.object + ". ";
+            }
+            if (imageData.description !== null && imageData.description) {
+                estText += imageData.description + ". ";
+                engText += imageData.description + ". ";
+            }
+            if (imageData.author__agent !== null && imageData.author__agent) {
+                estText += "Autor: " + imageData.author__agent + ". ";
+                engText += "Author: " + imageData.author__agent + ". ";
+            }
+            if (imageData.date_taken !== null && imageData.date_taken) {
+                estText += "Pildistamise aeg: " + new Date(imageData.date_taken).toLocaleDateString('et-EE') + ". ";
+                engText += "Date taken: " + new Date(imageData.date_taken).toDateString() + ". ";
+            }
+            if (imageData.date_taken === null && imageData.date_taken_free !== null && imageData.date_taken_free) {
+                estText += "Pildistamise aeg: " + imageData.date_taken_free + ". ";
+                engText += "Date taken: " + imageData.date_taken_free + ". ";
+            }
         }
-        if (imageData.description !== null && imageData.description) {
-            estText += imageData.description + ". ";
-            engText += imageData.description + ". ";
-        }
-        if (imageData.author__agent !== null && imageData.author__agent) {
-            estText += "Autor: " + imageData.author__agent + ". ";
-            engText += "Author: " + imageData.author__agent + ". ";
-        }
-        if (imageData.date_taken !== null && imageData.date_taken) {
-            estText += "Pildistamise aeg: " + new Date(imageData.date_taken).toLocaleDateString('et-EE') + ". ";
-            engText += "Date taken: " + new Date(imageData.date_taken).toDateString() + ". ";
-        }
-        if (imageData.date_taken === null && imageData.date_taken_free !== null && imageData.date_taken_free) {
-            estText += "Pildistamise aeg: " + imageData.date_taken_free + ". ";
-            engText += "Date taken: " + imageData.date_taken_free + ". ";
+
+        // Specimen images
+        if (imageData.specimen__database__acronym) {
+            if ((imageData.type__value !== null && imageData.type__value) || (imageData.type__value_en !== null && imageData.type__value_en) ) {
+                estText = imageData.type__value + ". ";
+                engText = imageData.type__value_en + ". ";
+            }
+            if ((imageData.description !== null && imageData.description) || (imageData.description_en !== null && imageData.description_en)) {
+                estText += imageData.description + ". ";
+                engText += imageData.description + ". ";
+            }
+            if (imageData.author__agent !== null && imageData.author__agent) {
+                estText += "Autor: " + imageData.author__agent + ". ";
+                engText += "Author: " + imageData.author__agent + ". ";
+            }
+            if (imageData.date !== null && imageData.date) {
+                estText += "Pildistamise aeg: " + new Date(imageData.date).toLocaleDateString('et-EE') + ". ";
+                engText += "Date taken: " + new Date(imageData.date).toDateString() + ". ";
+            }
+            if (imageData.date === null && imageData.date_taken_free !== null && imageData.date_taken_free) {
+                estText += "Pildistamise aeg: " + imageData.date_taken_free + ". ";
+                engText += "Date taken: " + imageData.date_taken_free + ". ";
+            }
         }
 
         FB.ui({

@@ -20,29 +20,24 @@
                 <div>
                     <h3> {{ 'API_TRANSLATION.SPECIMEN_IMAGE.PHOTO' | translate }} </h3>
 
-                    <a href title="{{detailCtrl.imageUrl}}" data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.imageUrl})">
-                        <img id="img-size" spinner-load ng-src="{{detailCtrl.imageUrl}}" class="window-size"/>
+                    <a href title="{{detailCtrl.service.getFileLink({size: 'medium', filename: detailCtrl.results.uuid_filename})}}" data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.service.getFileLink({size: 'medium', filename: detailCtrl.results.uuid_filename})})">
+                        <img id="img-size" spinner-load ng-src="{{detailCtrl.service.getFileLink({size: 'medium', filename: detailCtrl.results.uuid_filename})}}" class="window-size"/>
                     </a>
 
                     <div class="img-settings">
                         <div class="img-text">
                             {{'API_TRANSLATION.PHOTO_ARCHIVE.SIZE ' | translate }}:
-                            <a href="{{detailCtrl.externalImagePath}}/600" target="_blank">600px</a>
-                            | <a href="{{detailCtrl.externalImagePath}}/1024" target="_blank">1024px</a>
-                            | <a href="{{detailCtrl.externalImagePath}}/1440" target="_blank">1440px</a>
-                            | <a href="{{detailCtrl.externalImagePath}}/1600" target="_blank">1600px</a>
-                            | <a href="{{detailCtrl.externalImagePath}}/1920" target="_blank">1920px</a>
-                            | <a href="{{detailCtrl.imageUrl}}" target="_blank">Original</a>
-
-                            <!--TODO: fix it-->
-                            <div class="fb-share-button"
-                                 data-href="{{'http://geocollections.info/image/' + detailCtrl.results.id}}"
-                                 data-layout="button"
-                                 data-mobile_iframe="true"
-                                 data-size="small"
-                                 data-toggle="tooltip"
-                                 data-placement="bottom">
-                            </div>
+                            <a href="{{detailCtrl.service.getFileLink({size: 'small', filename: detailCtrl.results.uuid_filename})}}" target="_blank">{{ 'INDEX.SMALL' | translate }}</a>
+                            |
+                            <a href="{{detailCtrl.service.getFileLink({size: 'medium', filename: detailCtrl.results.uuid_filename})}}" target="_blank">{{ 'INDEX.MEDIUM' | translate }}</a>
+                            |
+                            <a href="{{detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.uuid_filename})}}" target="_blank">{{ 'INDEX.LARGE' | translate }}</a>
+                            |
+                            <a href="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}" target="_blank">{{ 'INDEX.ORIGINAL' | translate }}</a>
+                            |
+                            <button class="btn btn-primary btn-sm" data-ng-click="detailCtrl.service.shareImage(detailCtrl.results)">
+                                <i class="fa fa-facebook-f" aria-hidden="true"></i> &nbsp;{{ 'INDEX.SHARE' | translate }}
+                            </button>
 
                         </div>
                     </div>

@@ -45,7 +45,8 @@
         "SMALL": "väike",
         "MEDIUM": "keskmine",
         "LARGE": "suur",
-        "ORIGINAL": "Originaal"
+        "ORIGINAL": "Originaal",
+        "SHARE": "JAGA"
     },
     "GIT": {
         "GIT_TITLE": "TTÜ Geoloogia Instituudi geoloogilised kollektsioonid",
