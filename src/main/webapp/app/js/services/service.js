@@ -548,6 +548,12 @@ var constructor = function (utils, configuration, $window, $location, $translate
         window.open(params.url, params.target);
     }
 
+    /**
+     * Build file's url using size and uuid
+     * @param params object, size which can be empty or small, medium and large.
+     * Also contains filename which is uuid.
+     * @return string of file url.
+     */
     function getFileLink(params) {
         if (params.size) {
             return "http://files.geocollections.info/" + params.size
@@ -564,7 +570,30 @@ var constructor = function (utils, configuration, $window, $location, $translate
 
     // FACEBOOK START
     service.shareImage = function (imageData) {
-        console.log(getImageUrl(imageData))
+        var estText = "";
+        var engText = "";
+
+        if (imageData.object !== null && imageData.object) {
+            estText = imageData.object + ". ";
+            engText = imageData.object + ". ";
+        }
+        if (imageData.description !== null && imageData.description) {
+            estText += imageData.description + ". ";
+            engText += imageData.description + ". ";
+        }
+        if (imageData.author__agent !== null && imageData.author__agent) {
+            estText += "Autor: " + imageData.author__agent + ". ";
+            engText += "Author: " + imageData.author__agent + ". ";
+        }
+        if (imageData.date_taken !== null && imageData.date_taken) {
+            estText += "Pildistamise aeg: " + new Date(imageData.date_taken).toLocaleDateString('et-EE') + ". ";
+            engText += "Date taken: " + new Date(imageData.date_taken).toDateString() + ". ";
+        }
+        if (imageData.date_taken === null && imageData.date_taken_free !== null && imageData.date_taken_free) {
+            estText += "Pildistamise aeg: " + imageData.date_taken + ". ";
+            engText += "Date taken: " + imageData.date_taken + ". ";
+        }
+
         FB.ui({
                 method: 'share_open_graph',
                 action_type: 'og.shares',
@@ -572,8 +601,8 @@ var constructor = function (utils, configuration, $window, $location, $translate
                     object: {
                         'og:url': location.href,
                         'og:title': document.title,
-                        'og:description': imageData.description,
-                        'og:image': getImageUrl(imageData)
+                        'og:description': $translate.use() === 'et' ? estText : engText,
+                        'og:image': getFileLink({filename: imageData.uuid_filename})
                     }
                 })
             },
@@ -581,25 +610,6 @@ var constructor = function (utils, configuration, $window, $location, $translate
                 // Action after response
             });
     };
-
-    // TEMP functions, soon should use getFileLink function
-    function getImageUrl(imageData) {
-        if(imageData.image_url) return imageData.image_url;
-        // For photo archive image
-        if (imageData.database__acronym != null) {
-            var imageUrl = "http://geokogud.info/" + imageData.database__acronym.toLowerCase()
-                + "/image/" + imageData.imageset__imageset_series
-                + "/" + imageData.imageset__imageset_number
-                + "/" + imageData.filename;
-        }
-        // For specimen image
-        if (imageData.specimen__database__acronym != null) {
-            var imageUrl = "http://geokogud.info/" + imageData.specimen__database__acronym.toLowerCase()
-                + "/specimen_image/"
-                + "/" + imageData.image;
-        }
-        return imageUrl;
-    }
     // FACEBOOK END
 
     return service;

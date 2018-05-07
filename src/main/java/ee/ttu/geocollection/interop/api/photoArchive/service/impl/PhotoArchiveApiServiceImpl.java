@@ -72,7 +72,9 @@ public class PhotoArchiveApiServiceImpl implements PhotoArchiveApiService {
             "agent_digitised__forename",
             "agent_digitised__surename",
             "agent_digitised__date_added",
-            "copyright_agent__agent"
+            "copyright_agent__agent",
+            "uuid_filename",
+            "uuid"
     );
 
     @Autowired
