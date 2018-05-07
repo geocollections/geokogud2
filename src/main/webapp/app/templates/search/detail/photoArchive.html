@@ -34,16 +34,20 @@
                             | <a href="{{detailCtrl.externalImagePath}}/1920" target="_blank">1920px</a>
                             | <a href="{{detailCtrl.imageUrl}}" target="_blank">Original</a>
 
+                            <button class="btn btn-primary btn-sm" data-ng-click="detailCtrl.service.shareImage(detailCtrl.results)">
+                                <i class="fa fa-facebook-f" aria-hidden="true"></i> &nbsp;Share
+                            </button>
+
                             <!--TODO: fix it-->
                             <!--<div class="fb-share-button"-->
-                                 <!--data-href="{{'http://arendus.geokogud.info/image/' + detailCtrl.results.id}}"-->
+                                 <!--data-href="{{'http://geocollections.info/image/' + detailCtrl.results.id}}"-->
                                  <!--data-layout="button"-->
                                  <!--data-mobile_iframe="true"-->
                                  <!--data-size="small"-->
                                  <!--data-toggle="tooltip"-->
-                                 <!--data-placement="bottom"-->
-                                 <!--title="Works but in developement">-->
+                                 <!--data-placement="bottom">-->
                             <!--</div>-->
+
                         </div>
                     </div>
 

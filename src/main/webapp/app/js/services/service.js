@@ -561,6 +561,24 @@ var constructor = function (utils, configuration, $window, $location, $translate
         }
     }
 
+    service.shareImage = function (imageData) {
+        FB.ui({
+                method: 'share_open_graph',
+                action_type: 'og.shares',
+                action_properties: JSON.stringify({
+                    object: {
+                        'og:url': location.href,
+                        'og:title': document.title,
+                        'og:description': imageData.description,
+                        'og:image': composeImageExternalPath(imageData)
+                    }
+                })
+            },
+            function (response) {
+                // Action after response
+            });
+    };
+
     return service;
 };
 

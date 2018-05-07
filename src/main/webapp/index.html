@@ -14,6 +14,8 @@
     <meta property="og:title"         content="Geocollections of Estonia" />
     <meta property="og:description"   content="Database for geocollections in Estonia" />
     <meta property="og:image"         content="img/logos/sarv_logo_valge1.png" />
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <!-- Chrome, Firefox OS and Opera address bar color -->
     <meta name="theme-color" content="#F05F40">
@@ -64,6 +66,26 @@
     <!-- End Piwik Code -->
 </head>
 <body id="page-top" data-ng-cloak class="ng-cloak" role="document"  ng-controller="MainController as main">
+
+    <!-- Facebook Code -->
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '1974699236183678',
+                xfbml      : true,
+                version    : 'v3.0'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 
     <ui-view></ui-view>
 
@@ -160,7 +182,7 @@
         <!--var js, fjs = d.getElementsByTagName(s)[0];-->
         <!--if (d.getElementById(id)) return;-->
         <!--js = d.createElement(s); js.id = id;-->
-        <!--js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11";-->
+        <!--js.src = "https://connect.facebook.net/en_US/all.js#xfbml=1";-->
         <!--fjs.parentNode.insertBefore(js, fjs);-->
     <!--}(document, 'script', 'facebook-jssdk'));</script>-->
 
