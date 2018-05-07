@@ -296,7 +296,7 @@
         </div>
 
         <!-- Related drillcore box -->
-        <div class="row" data-ng-if="detailCtrl.results.attach_link__drillcore_box__id && detailCtrl.results.attach_link__drillcore_box__id != null">
+        <div class="row" data-ng-if="detailCtrl.results.attach_link__drillcore_box__drillcore__id && detailCtrl.results.attach_link__drillcore_box__drillcore__id != null">
             <div class="col-lg-6">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.DRILLCORE_BOX.HEADING' | translate }}</h3>
 
@@ -304,7 +304,7 @@
                     <thead class="styles-for-table-headers">
                     <tr>
                         <th> {{ 'API_TRANSLATION.ATTACHMENT.DRILLCORE_BOX.NUMBER' | translate }} </th>
-                        <th> {{ 'API_TRANSLATION.ATTACHMENT.DRILLCORE_BOX.DRILLCORE' | translate }} </th>
+                        <th> {{ 'API_TRANSLATION.ATTACHMENT.DRILLCORE_BOX.DRILLCORE_BOX' | translate }} </th>
                     </tr>
                     </thead>
 
@@ -315,7 +315,7 @@
                             {{ detailCtrl.results.attach_link__drillcore_box__number }}
                         </td>
                         <td>
-                            <a href data-ng-if="detailCtrl.results.attach_link__drillcore__id != null" data-ng-click="detailCtrl.service.openInNewWindow({object:'drillcore',id:detailCtrl.results.attach_link__drillcore__id})">
+                            <a href data-ng-if="detailCtrl.results.attach_link__drillcore_box__drillcore__id != null" data-ng-click="detailCtrl.service.openInNewWindow({object:'drillcore',id:detailCtrl.results.attach_link__drillcore_box__drillcore__id})">
                                 <localize et="detailCtrl.results.attach_link__drillcore_box__drillcore__drillcore"
                                           en="detailCtrl.results.attach_link__drillcore_box__drillcore__drillcore_en" />
                             </a>
