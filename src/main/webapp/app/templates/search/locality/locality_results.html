@@ -65,10 +65,10 @@
                 <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.IMAGES' | translate }}">
                     <a href class="hover-me" data-ng-click="ctrl.service.openInNewWindow({object: 'locality', id: entity.id})">
 
-                        <show-preview data-ng-if="entity.locality_image_thumbnail.count > 0"
-                                      classes="img-rounded imagePreview"
+                        <show-preview data-ng-if="entity.locality_image_thumbnail.count > 0 && entity.locality_image_thumbnail.results[0].uuid_filename !== null"
+                                      classes="img-rounded previewImage"
                                       img-title="[entity.locality_image_thumbnail.results[0].author__agent, entity.locality_image_thumbnail.results[0].date_taken, entity.locality_image_thumbnail.results[0].date_taken_free]"
-                                      img-url="ctrl.service.composeImageUrl(entity.locality_image_thumbnail.results[0])"/>
+                                      img-url="ctrl.service.getFileLink({size: 'small', filename: entity.locality_image_thumbnail.results[0].uuid_filename})"/>
 
                     </a>
                 </td>

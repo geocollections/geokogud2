@@ -182,6 +182,7 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .returnAgent()
                 .returnDate()
                 .returnDateFree()
+                .returnUuidFilename()
                 .buildFullQuery();
         return apiService.searchRawEntities(SPECIMEN_IMAGE_TABLE, 1,1, new SortField(), requestParams);
     }

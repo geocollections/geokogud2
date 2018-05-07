@@ -200,13 +200,14 @@ angular.module('geoApp')
 
             $scope.$watch('imgUrl', function(newValue) {
                 if(newValue) {
-                    if (newValue.includes("/preview/")) {
-                        $scope.previewImageUrl = newValue;
-                    } else {
-                        var foundHttp = newValue.match(/http:/);
-                        var lastSlashPosition = newValue.lastIndexOf('/');
-                        $scope.previewImageUrl = (foundHttp ? "" : "http://") + newValue.substring(0, lastSlashPosition) + '/preview' + newValue.substring(lastSlashPosition);
-                    }
+                    $scope.previewImageUrl = newValue
+                    // if (newValue.includes("/preview/")) {
+                    //     $scope.previewImageUrl = newValue;
+                    // } else {
+                    //     var foundHttp = newValue.match(/http:/);
+                    //     var lastSlashPosition = newValue.lastIndexOf('/');
+                    //     $scope.previewImageUrl = (foundHttp ? "" : "http://") + newValue.substring(0, lastSlashPosition) + '/preview' + newValue.substring(lastSlashPosition);
+                    // }
                 }
             }, true);
         }]

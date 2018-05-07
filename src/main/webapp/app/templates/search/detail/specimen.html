@@ -540,7 +540,7 @@
                             <figure class="margin-bottom-30">
 
                                 <!--<a href class="hover-me" data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen_image',id:image.id})">-->
-                                <a href="{{detailCtrl.service.composeImageUrl(image)}}" class="hover-me" data-fancybox="gallery"
+                                <a href="{{detailCtrl.service.getFileLink({size: 'medium', filename: image.uuid_filename})}}" class="hover-me" data-fancybox="gallery"
                                    data-caption="{{detailCtrl.service.setFancyBoxCaption(
                                         {
                                             author: image.agent__agent,
@@ -557,10 +557,7 @@
                                     <show-preview class="img-responsive set-height"
                                                   classes="previewImageDetail img-rounded"
                                                   img-title="[image.agent__agent, image.date, image.date_taken_free, image.id]"
-                                                  img-url="detailCtrl.service.composeSpecimenImageUrl({
-                                                           database: image.specimen__database__acronym,
-                                                           image: image.image,
-                                                           imageUrl: image.image_ur})"/>
+                                                  img-url="detailCtrl.service.getFileLink({size: 'medium', filename: image.uuid_filename})"/>
 
                                 </a>
 

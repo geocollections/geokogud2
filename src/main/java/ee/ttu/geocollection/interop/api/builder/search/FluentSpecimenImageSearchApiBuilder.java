@@ -50,4 +50,9 @@ public class FluentSpecimenImageSearchApiBuilder extends FluentSearchApiBuilder<
         addReturningField(DATE_TAKEN_FREE);
         return this;
     }
+
+    public FluentSpecimenImageSearchApiBuilder returnUuidFilename() {
+        addReturningField(UUID_FILENAME);
+        return this;
+    }
 }

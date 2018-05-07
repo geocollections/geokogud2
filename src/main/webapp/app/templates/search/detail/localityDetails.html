@@ -400,7 +400,7 @@
 
                             <figure class="margin-bottom-30">
 
-                                <a href="{{detailCtrl.service.composeImageUrl(image)}}" class="hover-me" data-fancybox="gallery"
+                                <a href="{{detailCtrl.service.getFileLink({size: 'medium', filename: image.uuid_filename})}}" class="hover-me" data-fancybox="gallery"
                                    data-caption="{{detailCtrl.service.setFancyBoxCaption(
                                        {
                                             author: image.author__agent,
@@ -417,7 +417,7 @@
                                     <show-preview class="img-responsive set-height"
                                                   classes="previewImageDetail img-rounded"
                                                   img-title="[image.author__agent, image.date_taken, image.date_taken_free]"
-                                                  img-url="detailCtrl.service.composeImageUrl(image)" />
+                                                  img-url="detailCtrl.service.getFileLink({size: 'small', filename: image.uuid_filename})" />
 
                                 </a>
 

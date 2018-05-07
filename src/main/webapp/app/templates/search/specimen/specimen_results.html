@@ -117,13 +117,10 @@
                 <td class="text-center" data-title="{{ 'SEARCH.SPECIMENS.IMAGES' | translate }}">
                     <a href class="hover-me" data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:entity.id})">
 
-                        <show-preview data-ng-if="entity.specimen_image_thumbnail.count > 0"
+                        <show-preview data-ng-if="entity.specimen_image_thumbnail.count > 0 && entity.specimen_image_thumbnail.results[0].uuid_filename !== null"
                                       classes="img-rounded previewImage"
                                       img-title="[entity.specimen_image_thumbnail.results[0].agent__agent, entity.specimen_image_thumbnail.results[0].date, entity.specimen_image_thumbnail.results[0].date_taken_free]"
-                                      img-url="ctrl.service.composeSpecimenImageUrl({
-                                               database: entity.specimen_image_thumbnail.results[0].specimen__database__acronym,
-                                               image: entity.specimen_image_thumbnail.results[0].image,
-                                               imageUrl: entity.specimen_image_thumbnail.results[0].image_url})"/>
+                                      img-url="ctrl.service.getFileLink({size: 'small', filename: entity.specimen_image_thumbnail.results[0].uuid_filename})"/>
 
                     </a>
                 </td>

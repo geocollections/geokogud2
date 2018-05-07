@@ -98,6 +98,7 @@ public class ApiFields {
     public static final String OBJECT = "object";
     public static final String SIZE_X = "size_x";
     public static final String SIZE_Y = "size_y";
+    public static final String UUID_FILENAME = "uuid_filename";
 
     public static final String AUTHOR_FORENAME = "author__forename";
     public static final String AUTHOR_SURENAME = "author__surename";
