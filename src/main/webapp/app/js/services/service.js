@@ -590,8 +590,8 @@ var constructor = function (utils, configuration, $window, $location, $translate
             engText += "Date taken: " + new Date(imageData.date_taken).toDateString() + ". ";
         }
         if (imageData.date_taken === null && imageData.date_taken_free !== null && imageData.date_taken_free) {
-            estText += "Pildistamise aeg: " + imageData.date_taken + ". ";
-            engText += "Date taken: " + imageData.date_taken + ". ";
+            estText += "Pildistamise aeg: " + imageData.date_taken_free + ". ";
+            engText += "Date taken: " + imageData.date_taken_free + ". ";
         }
 
         FB.ui({
