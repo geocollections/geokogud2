@@ -408,6 +408,15 @@ var constructor = function (utils, configuration, $window, $location, $translate
         if (institution === "ELM") return 6;
     }
 
+    service.openInstitutionUrl = function (institution) {
+        if (institution === "TUGO") {
+            $window.open('https://www.geoloogia.ut.ee/et', '', 'width=600,height=750,scrollbars, resizable');
+        }
+        if (institution === "EGK") {
+            $window.open('http://www.egk.ee/', '', 'width=600,height=750,scrollbars, resizable');
+        }
+    };
+
     /**
      * Builds caption data for images in fancybox gallery.
      * @param params Image data (author, date, etc)

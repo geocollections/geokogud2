@@ -41,7 +41,13 @@
                 </td>
 
                 <td data-title="{{ 'SEARCH.DRILL_CORES.TABLE.INSTITUTE' | translate }}">
-                    <a class="page-scroll-to-additional" href="/" data-target="#infoCarousel" data-slide-to="{{ctrl.service.returnInstitutionSlideNumber(entity.database__acronym)}}">
+                    <a data-ng-if="entity.database__acronym === 'GIT' || entity.database__acronym === 'TUG' || entity.database__acronym === 'ELM'"
+                       class="page-scroll-to-additional" href="/" data-target="#infoCarousel"
+                       data-slide-to="{{ctrl.service.returnInstitutionSlideNumber(entity.database__acronym)}}">
+                        {{entity.database__acronym}}
+                    </a>
+                    <a data-ng-if="entity.database__acronym !== 'GIT' && entity.database__acronym !== 'TUG' && entity.database__acronym !== 'ELM'" href
+                        data-ng-click="ctrl.service.openInstitutionUrl(entity.database__acronym)">
                         {{entity.database__acronym}}
                     </a>
                 </td>
