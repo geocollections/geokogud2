@@ -17,4 +17,6 @@ public interface LocalitiesApiService {
 
     ApiResponse findAllSpecimens(SearchField id);
 
+    ApiResponse findDrillcore(SearchField localityId);
+
 }

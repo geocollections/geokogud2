@@ -143,6 +143,14 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
     }
 
     @Override
+    public ApiResponse findDrillcore(SearchField localityId) {
+        String requestParams = FluentLocalitySearchApiBuilder.aRequest()
+                .queryLocalityIdForUrl(localityId).andReturn()
+                .buildDefaultFieldsQuery();
+        return apiService.searchRawEntities(DRILLCORE_TABLE, 1, 1, new SortField("id", SortingOrder.ASCENDING), requestParams);
+    }
+
+    @Override
     public ApiResponse findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)

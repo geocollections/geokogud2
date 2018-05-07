@@ -239,6 +239,14 @@ public class SearchController extends ControllerHelper {
                                         new SearchField(locality.get("id").toString(), LookUpType.exact)),
                         locality ->
                                 receivedImage -> locality.put("locality_image_thumbnail", receivedImage));
+
+                asynchService.doAsynchCallsForEachResult(
+                        localities,
+                        locality ->
+                                () -> localitiesApiService.findDrillcore(
+                                        new SearchField(locality.get("id").toString(), LookUpType.exact)),
+                        locality ->
+                                receivedDrillcore -> locality.put("locality_drillcore", receivedDrillcore));
             }
         }
 

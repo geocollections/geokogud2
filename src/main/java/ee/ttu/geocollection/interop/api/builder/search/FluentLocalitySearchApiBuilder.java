@@ -239,4 +239,12 @@ public class FluentLocalitySearchApiBuilder extends FluentSearchApiBuilder<Fluen
         return this;
     }
 
+    /**
+     * For Drillcore field in table
+     */
+    public FluentLocalitySearchApiBuilder queryLocalityIdForUrl(SearchField id) {
+        buildFieldParameters(LOCALITY_ID, id);
+        return this;
+    }
+
 }
