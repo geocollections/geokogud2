@@ -171,12 +171,8 @@
                         <tr>
                             <td id="drillcore-image-background" colspan="2">
                                 <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'corebox',id:box.id})">
-                                    <img data-toggle="tooltip" title="{{ 'DETAIL.DRILLCORE.COREBOX_DETAILS' | translate }}"
-                                         ng-src="{{detailCtrl.service.getDrillcoreImageUrl({
-                                            database: detailCtrl.results.database__acronym,
-                                            id: detailCtrl.results.id,
-                                            filename: box.drillcoreimage__image,
-                                            preview:true})}}" />
+                                    <img style="max-width: 210px" data-toggle="tooltip" title="{{ 'DETAIL.DRILLCORE.COREBOX_DETAILS' | translate }}"
+                                         ng-src="{{detailCtrl.service.getFileLink({size: 'small', filename: box.drillcoreimage__uuid_filename})}}" />
                                 </a>
                             </td>
                         </tr>

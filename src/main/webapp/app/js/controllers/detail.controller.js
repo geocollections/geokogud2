@@ -30,8 +30,8 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             vm.relatedData = response.data.related_data;
             vm.fields = Object.keys(vm.results);
             // console.log(vm.fields);
-            vm.imageUrl = (['specimenImage', 'photoArchive'].indexOf($stateParams.type) > -1 ? vm.service.composeImageUrl(vm.results) : null);
-            vm.externalImagePath = (['specimenImage', 'photoArchive'].indexOf($stateParams.type) > -1 ? vm.service.composeExternalImagePath(vm.results) : null);
+            // vm.imageUrl = (['specimenImage', 'photoArchive'].indexOf($stateParams.type) > -1 ? vm.service.composeImageUrl(vm.results) : null);
+            // vm.externalImagePath = (['specimenImage', 'photoArchive'].indexOf($stateParams.type) > -1 ? vm.service.composeExternalImagePath(vm.results) : null);
 
             vm.detailLoadingHandler.stop();
             getLocality();
@@ -155,7 +155,7 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
     /**
      * Adds related data to a variable.
      */
-    // TODO: Should remove duplicates
+    // TODO: Should refactor and remove duplicates
     function getRelatedData() {
         if(vm.relatedData) {
             vm.doiAgent = vm.relatedData["doi_agent"];

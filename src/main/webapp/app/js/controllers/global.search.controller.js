@@ -132,7 +132,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
      * @param result Response from search query
      */
     function onGlobalDataLoaded(result) {
-        // console.log(result);
+        console.log(result);
         if (!result.data) return;
 
         // Number of possible tabs
