@@ -166,15 +166,15 @@
 
                             <a href class="hover-me" data-ng-click="ctrl.service.openInNewWindow({object:'image',id:image.id})">
 
-                                <div data-ng-if="image.filename && image.filename != null">
+                                <div data-ng-if="image.uuid_filename && image.uuid_filename != null">
 
                                     <show-preview class="img-responsive set-height"
                                                   classes="previewImage img-rounded"
                                                   img-title="[image.author__agent, image.date_taken, image.date_taken_free, null, image.author_free]"
-                                                  img-url="ctrl.service.composeImageUrl(image)" />
+                                                  img-url="ctrl.service.getFileLink({size: 'small', filename: image.uuid_filename})" />
                                 </div>
 
-                                <div class="img-responsive" data-ng-if="image.filename == null">
+                                <div class="img-responsive" data-ng-if="image.uuid_filename == null">
                                     <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
                                 </div>
 

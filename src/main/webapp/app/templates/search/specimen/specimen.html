@@ -324,11 +324,17 @@
                         <figure class="margin-bottom-20">
 
                             <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen_image',id:image.id})">
+                                <div data-ng-if="image.uuid_filename && image.uuid_filename != null">
 
-                                <show-preview class="img-responsive set-height hover-me"
-                                              classes="previewImage img-rounded"
-                                              img-title="[image.agent__agent, image.date, image.date_taken_free]"
-                                              img-url="ctrl.service.composeImageUrl(image, image.image_url)"/>
+                                    <show-preview class="img-responsive set-height hover-me"
+                                                  classes="previewImage img-rounded"
+                                                  img-title="[image.agent__agent, image.date, image.date_taken_free]"
+                                                  img-url="ctrl.service.getFileLink({size: 'small', filename: image.uuid_filename})"/>
+                                </div>
+
+                                <div class="img-responsive" data-ng-if="image.uuid_filename == null">
+                                    <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
+                                </div>
 
                                 <div class="img-gallery-author">
                                     <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:image.specimen_id,width:950})">

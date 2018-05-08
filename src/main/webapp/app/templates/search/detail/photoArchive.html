@@ -15,7 +15,7 @@
 
         <div class="row" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
 
-            <div class="col-sm-6" data-ng-if="detailCtrl.results.filename != null">
+            <div class="col-sm-6" data-ng-if="detailCtrl.results.uuid_filename != null">
 
                 <div>
                     <h3> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.PHOTO' | translate }} </h3>
@@ -46,7 +46,7 @@
 
             </div>
 
-            <div class="col-sm-6" data-ng-if="detailCtrl.results.filename == null">
+            <div class="col-sm-6" data-ng-if="detailCtrl.results.uuid_filename == null">
                 <h3> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.PHOTO' | translate }} </h3>
                 <i class="fa fa-picture-o fa-5x window-size text-center" aria-hidden="true"></i>
             </div>

@@ -19,19 +19,14 @@ var constructor = function (utils, configuration, $window, $location, $translate
     service.openDoiInNewWindow = openDoiInNewWindow;
     service.openInNewWindow = openInNewWindow;
     service.openUrlInNewWindow = openUrlInNewWindow;
-    service.openUrlWithGivenTarget = openUrlWithGivenTarget;
     service.showGoogleMap = showGoogleMap;
     service.showEstonianLandBoardMap = showEstonianLandBoardMap;
     service.getTranslationRoot = getTranslationRoot;
     service.getCountsForAnalysisDetailView = getCountsForAnalysisDetailView;
     service.searchAllSpecimenInLocality = searchAllSpecimenInLocality;
-    service.getDrillcoreImageUrl = getDrillcoreImageUrl;
-    service.composeSpecimenImageUrl = composeSpecimenImageUrl;
-    service.getAttachmentFormatFromFilename = getAttachmentFormatFromFilename;
     service.returnInstitutionSlideNumber = returnInstitutionSlideNumber;
     service.searchAllSpecimensUsingCollection = searchAllSpecimensUsingCollection;
     service.setFancyBoxCaption = setFancyBoxCaption;
-    service.ifDoiAttachmentContainsFiles = ifDoiAttachmentContainsFiles;
     service.searchAllSamplesUsingLocality = searchAllSamplesUsingLocality;
     service.searchAllSpecimensUsingReference = searchAllSpecimensUsingReference;
     service.searchAllSpecimensUsingStratigraphy = searchAllSpecimensUsingStratigraphy;
@@ -92,136 +87,6 @@ var constructor = function (utils, configuration, $window, $location, $translate
     service.autocompleteSearch = function (table, val, searchField) {
         utils.httpGet(configuration.autocompleteUrl, {table: table, term: val, searchField: searchField}, null, null);
     };
-
-    service.composeImageUrl = function(imageData, readyUrl) {
-        if(readyUrl) return readyUrl;
-        if(imageData.image_url) return imageData.image_url;
-        // For photo archive image
-        if (imageData.database__acronym != null) {
-            var imageUrl = "http://geokogud.info/" + imageData.database__acronym.toLowerCase()
-                + "/image/" + imageData.imageset__imageset_series
-                + "/" + imageData.imageset__imageset_number
-                + "/" + imageData.filename;
-        }
-        // For specimen image
-        if (imageData.specimen__database__acronym != null) {
-            var imageUrl = "http://geokogud.info/" + imageData.specimen__database__acronym.toLowerCase()
-                + "/specimen_image/"
-                + "/" + imageData.image;
-        }
-        return imageUrl;
-    };
-
-    service.composeExternalImagePath = function(imageData) {
-        if(imageData.specimen__database__acronym) {
-            //console.log(imageData)
-            return composeSpecimenExternalPath(imageData);
-        }
-        if(imageData.database__acronym) {
-            return composeImageExternalPath(imageData)
-        }
-    };
-
-    service.getDownloadLink = function (fileName) {
-        return "http://geokogud.info/files/"+fileName.substring(0,2)+"/"+fileName;
-    };
-
-
-
-    // Used only on corebox detail view
-    service.composeCoreboxImageUrl = function (imageData) {
-        // console.log(imageData);
-        if (imageData.database__acronym != null) {
-            var imageUrl = "https://geokogud.info/" + imageData.database__acronym.toLowerCase() + "/drillcore_image/" + imageData.drillcore__id + "/";
-            return imageUrl + imageData.drillcoreimage__image;
-        }
-    };
-
-    // // Used only on corebox detail view for different sizes
-    // service.composeExternalCoreboxImagePath = function (imageData) {
-    //     if (imageData.database__acronym != null) {
-    //         var imageUrl = "http://geokogud.info/di.php?f=/var/www/"
-    //             + imageData.database__acronym.toLowerCase() + "/"
-    //             + "drillcore_image/"
-    //             + imageData.drillcore__id + "/"
-    //             + imageData.drillcoreimage__image + "&w=";
-    //     }
-    //     return imageUrl;
-    // };
-
-    // Used only on corebox detail view for different sizes
-    service.composeExternalCoreboxImagePath = function(imageData) {
-        //http://geokogud.info/di.php?f=/var/www/git/drillcore_image/477/477_1.jpg&w=600
-        var applicationUrl = buildApplicationUrl();
-        if (imageData.database__acronym != null) {
-            var imageUrl = applicationUrl
-                + "drillcoreImg/"
-                + imageData.database__acronym.toLowerCase() + "/"
-                + imageData.drillcore__id + "/"
-                + imageData.drillcoreimage__image;
-        }
-        // console.log(imageUrl);
-        return imageUrl;
-    };
-
-    // Used on drillcore detail view to show corebox images which come from related_data
-    function getDrillcoreImageUrl(params) {
-        if (params.database != null) {
-            var imageUrl = "https://geokogud.info/" + params.database.toLowerCase() + "/drillcore_image/" + params.id;
-            if (params.preview) {
-                imageUrl +=  "/preview/";
-            } else {
-                imageUrl += "/";
-            }
-            return imageUrl + params.filename;
-        }
-    }
-
-    function composeSpecimenImageUrl(params) {
-        if (params.imageUrl != null) {
-            var imageUrl = params.imageUrl;
-        } else {
-            if (params.database != null) {
-                var imageUrl = "geokogud.info/" + params.database.toLowerCase() + "/specimen_image/" + params.image;
-            }
-        }
-        return imageUrl;
-    }
-
-    function composeSpecimenExternalPath(imageData) {
-        //http://geokogud.info/di.php?f=/data/git/images/specimen/663/663-6.jpg&w=400
-        var applicationUrl = buildApplicationUrl();
-        if (imageData.specimen__database__acronym != null) {
-            var imageUrl = applicationUrl
-                + "specimenImg/"
-                + imageData.specimen__database__acronym.toLowerCase() + "/"
-                + imageData.image;
-        }
-        return imageUrl;
-    }
-
-    function composeImageExternalPath(imageData) {
-        //http://geokogud.info/di.php?f=/var/www/git/image/OH/OH07-1/OH07-1-4.jpg
-        var applicationUrl = buildApplicationUrl();
-        if (imageData.database__acronym != null) {
-            var imageUrl = applicationUrl
-                + "img/"
-                + imageData.database__acronym.toLowerCase() + "/"
-                + imageData.imageset__imageset_series + "/"
-                + imageData.imageset__imageset_number + "/"
-                + imageData.filename;
-        }
-        // console.log(imageUrl);
-        return imageUrl;
-    }
-
-    function buildApplicationUrl() {
-        if(service.location.host().indexOf('localhost') != -1){
-            return service.location.protocol() + "://" + service.location.host() + ":" + service.location.port() + "/";
-        }else{
-            return service.location.protocol() + "://" + service.location.host() + "/";
-        }
-    }
 
     function getDetailUrl (searchType) {
         var url = null;
@@ -393,15 +258,6 @@ var constructor = function (utils, configuration, $window, $location, $translate
         }
     }
 
-    // TODO: Can drop that and use split('.') inside {{}} parentheses
-    // Used in specimen detail view when there are attachments like 154421451fsa548a.jpg
-    // then it takes the 4 last chars aka format.
-    function getAttachmentFormatFromFilename(params) {
-        if (params.filename != null) {
-            return params.filename.substring(params.filename.length, -4);
-        }
-    }
-
     function returnInstitutionSlideNumber(institution) {
         if (institution === "GIT") return 4;
         if (institution === "TUG") return 5;
@@ -531,21 +387,6 @@ var constructor = function (utils, configuration, $window, $location, $translate
         // DETAIL VIEW BLOCK END
 
         return text;
-    }
-
-    /**
-     * Return boolean value if attachments have certain format.
-     * @param attachments Array of doi attachments
-     */
-    function ifDoiAttachmentContainsFiles(attachments) {
-        // console.log(attachments);
-        angular.forEach(attachments, function (attachment) {
-            return attachment.filename.endsWith('txt') || attachment.filename.endsWith('png') || attachment.filename.endsWith('jpg') || attachment.filename.endsWith('jpeg');
-        });
-    }
-
-    function openUrlWithGivenTarget(params) {
-        window.open(params.url, params.target);
     }
 
     /**

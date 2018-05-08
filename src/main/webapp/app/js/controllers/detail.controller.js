@@ -29,18 +29,12 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             vm.results = response.data.results[0];
             vm.relatedData = response.data.related_data;
             vm.fields = Object.keys(vm.results);
-            // console.log(vm.fields);
-            // vm.imageUrl = (['specimenImage', 'photoArchive'].indexOf($stateParams.type) > -1 ? vm.service.composeImageUrl(vm.results) : null);
-            // vm.externalImagePath = (['specimenImage', 'photoArchive'].indexOf($stateParams.type) > -1 ? vm.service.composeExternalImagePath(vm.results) : null);
 
             vm.detailLoadingHandler.stop();
             getLocality();
             getRelatedData();
             vm.localities = (['doi'].indexOf($stateParams.type) > -1 ? getDoiLocalities() : []);
             vm.datasetLocalities = (['dataset'].indexOf($stateParams.type) > -1 ? getDatasetLocalities() : []);
-
-            vm.coreboxImageUrl = (['corebox'].indexOf($stateParams.type) > -1 ? vm.service.composeCoreboxImageUrl(vm.results) : null);
-            vm.externalCoreboxImagePath = (['corebox'].indexOf($stateParams.type) > -1 ? vm.service.composeExternalCoreboxImagePath(vm.results) : null);
 
             if (vm.relatedData != null) {
                 vm.numOfSpecimens = (['preparations'].indexOf($stateParams.type) > -1 ? sumNumberOfSpecimens(vm.relatedData) : []);
