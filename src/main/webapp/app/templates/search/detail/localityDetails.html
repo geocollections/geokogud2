@@ -353,11 +353,11 @@
 
                             <figure class="margin-bottom-30">
 
-                                <a href="{{detailCtrl.service.getFileLink({filename: image.attachment__uuid_filename})}}" class="hover-me" data-fancybox="gallery">
+                                <a href="{{detailCtrl.service.getFileLink({size: 'large', filename: image.attachment__uuid_filename})}}" class="hover-me" data-fancybox="gallery">
 
                                     <div class="img-responsive set-height">
                                         <img class="previewImageDetail img-rounded"
-                                             src="{{detailCtrl.service.getFileLink({filename: image.attachment__uuid_filename})}}" />
+                                             src="{{detailCtrl.service.getFileLink({size: 'small', filename: image.attachment__uuid_filename})}}" />
                                     </div>
 
                                     <!--<show-preview class="img-responsive set-height"-->
@@ -400,7 +400,7 @@
 
                             <figure class="margin-bottom-30">
 
-                                <a href="{{detailCtrl.service.getFileLink({size: 'medium', filename: image.uuid_filename})}}" class="hover-me" data-fancybox="gallery"
+                                <a href="{{detailCtrl.service.getFileLink({size: 'large', filename: image.uuid_filename})}}" class="hover-me" data-fancybox="gallery"
                                    data-caption="{{detailCtrl.service.setFancyBoxCaption(
                                        {
                                             author: image.author__agent,
