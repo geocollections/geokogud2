@@ -32,12 +32,20 @@ public class FluentSampleSearchApiBuilder extends FluentSearchApiBuilder<FluentS
     }
 
     public FluentSampleSearchApiBuilder queryStratigraphy(SearchField stratigraphy) {
-        buildMultiSearch(stratigraphy,
-                STRATIGRAPHY_STRATIGRAPHY,
-                STRATIGRAPHY_STRATIGRAPHY_ENG,
-                LITHOSTRATIGRAPHY__STRATIGRAPHY,
-                LITHOSTRATIGRAPHY__STRATIGRAPHY_ENG,
-                STRATIGRAPHY_FREE);
+        if (stratigraphy.getLookUpType().toString().equals("hierarchy")) {
+            buildMultiSearch(stratigraphy,
+                    STRATIGRAPHY_STRATIGRAPHY,
+                    STRATIGRAPHY_STRATIGRAPHY_ENG,
+                    LITHOSTRATIGRAPHY__STRATIGRAPHY,
+                    LITHOSTRATIGRAPHY__STRATIGRAPHY_ENG);
+        } else {
+            buildMultiSearch(stratigraphy,
+                    STRATIGRAPHY_STRATIGRAPHY,
+                    STRATIGRAPHY_STRATIGRAPHY_ENG,
+                    LITHOSTRATIGRAPHY__STRATIGRAPHY,
+                    LITHOSTRATIGRAPHY__STRATIGRAPHY_ENG,
+                    STRATIGRAPHY_FREE);
+        }
         return this;
     }
 

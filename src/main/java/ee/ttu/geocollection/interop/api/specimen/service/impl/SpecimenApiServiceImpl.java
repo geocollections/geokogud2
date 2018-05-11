@@ -167,7 +167,7 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 SPECIMEN_IMAGE_TABLE,
                 searchCriteria.getPaginateBy(),
                 searchCriteria.getPage(),
-                new SortField("specimen__id", SortingOrder.ASCENDING),
+                new SortField("specimen__id", SortingOrder.DESCENDING),
                 requestParams);
     }
 
