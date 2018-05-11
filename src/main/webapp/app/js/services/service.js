@@ -438,8 +438,8 @@ var constructor = function (utils, configuration, $window, $location, $translate
                     engText += "Name: " + imageData.specimenIdentification.results[0].taxon__taxon;
                 }
                 if (imageData.specimenIdentification.results[0].name && imageData.specimenIdentification.results[0].name !== null && (imageData.specimenIdentification.results[0].name != imageData.specimenIdentification.results[0].taxon__taxon)) {
-                    estText += " |" + imageData.specimenIdentification.results[0].name;
-                    engText += " |" + imageData.specimenIdentification.results[0].name;
+                    estText += " | " + imageData.specimenIdentification.results[0].name + ". ";
+                    engText += " | " + imageData.specimenIdentification.results[0].name + ". ";
                 } else {
                     estText += ". ";
                     engText += ". ";
