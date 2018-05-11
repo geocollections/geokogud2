@@ -67,29 +67,30 @@
                         <td> {{ 'API_TRANSLATION.ATTACHMENT.FILENAME' | translate }} </td>
                         <td>
                             <a target="_blank" ng-href="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}">
-                                <i data-ng-if="detailCtrl.results.filename.endsWith('pdf')"
-                                    title="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"
-                                    class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
+                                {{detailCtrl.results.filename}}
+                                <!--<i data-ng-if="detailCtrl.results.filename.endsWith('pdf')"-->
+                                    <!--title="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"-->
+                                    <!--class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>-->
 
-                                <i data-ng-if="detailCtrl.results.filename.endsWith('txt')"
-                                    title="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"
-                                    class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>
+                                <!--<i data-ng-if="detailCtrl.results.filename.endsWith('txt')"-->
+                                    <!--title="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"-->
+                                    <!--class="fa fa-file-text-o fa-2x" aria-hidden="true"></i>-->
 
-                                <i data-ng-if="detailCtrl.results.filename.endsWith('xlsx') || detailCtrl.results.filename.endsWith('ods') || detailCtrl.results.filename.endsWith('xls')"
-                                    title="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"
-                                    class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>
+                                <!--<i data-ng-if="detailCtrl.results.filename.endsWith('xlsx') || detailCtrl.results.filename.endsWith('ods') || detailCtrl.results.filename.endsWith('xls')"-->
+                                    <!--title="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"-->
+                                    <!--class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>-->
 
-                                <i data-ng-if="detailCtrl.results.filename.endsWith('mp4')"
-                                   title="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"
-                                   class="fa fa-file-video-o fa-2x" aria-hidden="true"></i>
+                                <!--<i data-ng-if="detailCtrl.results.filename.endsWith('mp4')"-->
+                                   <!--title="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"-->
+                                   <!--class="fa fa-file-video-o fa-2x" aria-hidden="true"></i>-->
 
-                                <span data-ng-if="detailCtrl.results.filename.endsWith('png') || detailCtrl.results.filename.endsWith('jpeg') || detailCtrl.results.filename.endsWith('svg') || detailCtrl.results.filename.endsWith('jpg')">
-                                    {{ detailCtrl.results.filename }}
-                                </span>
-                                <!--<img title="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"-->
-                                    <!--data-ng-if="detailCtrl.results.filename.endsWith('png') || detailCtrl.results.filename.endsWith('jpeg') || detailCtrl.results.filename.endsWith('svg') || detailCtrl.results.filename.endsWith('jpg')"-->
-                                    <!--class="previewImage"-->
-                                    <!--src="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"/>-->
+                                <!--<span data-ng-if="detailCtrl.results.filename.endsWith('png') || detailCtrl.results.filename.endsWith('jpeg') || detailCtrl.results.filename.endsWith('svg') || detailCtrl.results.filename.endsWith('jpg')">-->
+                                    <!--{{ detailCtrl.results.filename }}-->
+                                <!--</span>-->
+                                <!--&lt;!&ndash;<img title="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;data-ng-if="detailCtrl.results.filename.endsWith('png') || detailCtrl.results.filename.endsWith('jpeg') || detailCtrl.results.filename.endsWith('svg') || detailCtrl.results.filename.endsWith('jpg')"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;class="previewImage"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;src="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"/>&ndash;&gt;-->
                             </a>
                         </td>
                     </tr>
