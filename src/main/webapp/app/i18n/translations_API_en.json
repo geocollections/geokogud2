@@ -165,7 +165,8 @@
             "DEVICE_DIGITISED": "Device digitised",
             "COPYRIGHT": "Copyright",
             "DATE_ADDED": "Date added",
-            "DATE_CHANGED": "Date changed"
+            "DATE_CHANGED": "Date changed",
+            "SPECIMEN_NAME": "Name"
         },
         "SAMPLE" : {
             "DETAIL_FORM_NAME" : "Sample #",

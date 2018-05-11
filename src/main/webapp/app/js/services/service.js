@@ -416,14 +416,6 @@ var constructor = function (utils, configuration, $window, $location, $translate
 
         // images
         if (imageData.database__acronym) {
-            if (imageData.object !== null && imageData.object) {
-                estText = imageData.object + ". ";
-                engText = imageData.object + ". ";
-            }
-            if (imageData.description !== null && imageData.description) {
-                estText += imageData.description + ". ";
-                engText += imageData.description + ". ";
-            }
             if (imageData.author__agent !== null && imageData.author__agent) {
                 estText += "Autor: " + imageData.author__agent + ". ";
                 engText += "Author: " + imageData.author__agent + ". ";
@@ -440,13 +432,18 @@ var constructor = function (utils, configuration, $window, $location, $translate
 
         // Specimen images
         if (imageData.specimen__database__acronym) {
-            if ((imageData.type__value !== null && imageData.type__value) || (imageData.type__value_en !== null && imageData.type__value_en) ) {
-                estText = imageData.type__value + ". ";
-                engText = imageData.type__value_en + ". ";
-            }
-            if ((imageData.description !== null && imageData.description) || (imageData.description_en !== null && imageData.description_en)) {
-                estText += imageData.description + ". ";
-                engText += imageData.description + ". ";
+            if (imageData.specimenIdentification.count > 0) {
+                if (imageData.specimenIdentification.results[0].taxon__taxon !== null && imageData.specimenIdentification.results[0].taxon__taxon) {
+                    estText += "Nimi: " + imageData.specimenIdentification.results[0].taxon__taxon;
+                    engText += "Name: " + imageData.specimenIdentification.results[0].taxon__taxon;
+                }
+                if (imageData.specimenIdentification.results[0].name && imageData.specimenIdentification.results[0].name !== null && (imageData.specimenIdentification.results[0].name != imageData.specimenIdentification.results[0].taxon__taxon)) {
+                    estText += " |" + imageData.specimenIdentification.results[0].name;
+                    engText += " |" + imageData.specimenIdentification.results[0].name;
+                } else {
+                    estText += ". ";
+                    engText += ". ";
+                }
             }
             if (imageData.author__agent !== null && imageData.author__agent) {
                 estText += "Autor: " + imageData.author__agent + ". ";

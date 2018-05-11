@@ -1,9 +1,12 @@
 package ee.ttu.geocollection.interop.api.specimen.service;
 
-import java.util.Map;
+import ee.ttu.geocollection.domain.SearchField;
+import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 
 public interface SpecimenImageApiService {
 
-    Map findRawSpecimenImageById(Long id);
+    ApiResponse findRawSpecimenImageById(Long id);
+
+    ApiResponse findSpecimenIdentification(SearchField specimenId);
 
 }

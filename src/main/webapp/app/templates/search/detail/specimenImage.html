@@ -67,7 +67,19 @@
                         </td>
                     </tr>
 
-                    <!--NAME START-->
+                    <tr data-ng-if="detailCtrl.results.specimenIdentification.count > 0">
+                        <td> {{ 'API_TRANSLATION.SPECIMEN_IMAGE.SPECIMEN_NAME' | translate }} </td>
+                        <td>
+                            <span>
+                                <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+detailCtrl.results.specimenIdentification.results[0].taxon_id})">
+                                    {{detailCtrl.results.specimenIdentification.results[0].taxon__taxon}}
+                                </a>
+                            </span>
+                            <span data-ng-if="(detailCtrl.results.specimenIdentification.results[0].name && detailCtrl.results.specimenIdentification.results[0].name != null) && detailCtrl.results.specimenIdentification.results[0].name != detailCtrl.results.specimenIdentification.results[0].taxon__taxon">
+                                | {{ detailCtrl.results.specimenIdentification.results[0].name }}
+                            </span>
+                        </td>
+                    </tr>
 
                     <!--First-->
                     <tr data-ng-if="detailCtrl.results.specimen__specimenidentification__taxon__taxon

@@ -86,8 +86,19 @@ public class DetailsController {
     }
 
     @RequestMapping(value = "/raw-specimen-image/{id}")
-    public Map findRawSpecimenImageById(@PathVariable Long id) {
-        return specimenImageApiService.findRawSpecimenImageById(id);
+    public ApiResponse findRawSpecimenImageById(@PathVariable Long id) {
+        ApiResponse specimenImages = specimenImageApiService.findRawSpecimenImageById(id);
+
+        if (specimenImages.getResult() != null) {
+            // Call for specimen identification (name)
+            asynchService.doAsynchCallsForEachResult(
+                    specimenImages,
+                    specimenImage -> () -> specimenImageApiService.findSpecimenIdentification(
+                            new SearchField(specimenImage.get("specimen_id").toString(), LookUpType.exact)),
+                    specimenImage -> receivedSpecimenImage -> specimenImage.put("specimenIdentification", receivedSpecimenImage));
+        }
+
+        return specimenImages;
     }
 
     @RequestMapping(value = "/raw-sample/{id}")

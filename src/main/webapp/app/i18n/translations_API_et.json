@@ -165,7 +165,8 @@
             "DEVICE_DIGITISED": "Digit. seade",
             "COPYRIGHT": "Autoriõigused",
             "DATE_ADDED": "Kirje sisestatud",
-            "DATE_CHANGED": "Kirje muudetud"
+            "DATE_CHANGED": "Kirje muudetud",
+            "SPECIMEN_NAME": "Nimi"
         },
         "SAMPLE" : {
             "DETAIL_FORM_NAME" : "Proov #",
