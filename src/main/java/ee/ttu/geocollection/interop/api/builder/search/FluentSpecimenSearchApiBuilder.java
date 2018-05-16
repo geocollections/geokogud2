@@ -71,21 +71,23 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
     }
 
     public FluentSpecimenSearchApiBuilder queryStratigraphy(SearchField stratigraphy) {
-        if (stratigraphy.getLookUpType().toString().equals("hierarchy")) {
-            buildMultiSearch(
-                    stratigraphy,
-                    STRATIGRAPHY_STRATIGRAPHY,
-                    STRATIGRAPHY_STRATIGRAPHY_ENG,
-                    LITHOSTRATIGRAPHY__STRATIGRAPHY,
-                    LITHOSTRATIGRAPHY__STRATIGRAPHY_ENG);
-        } else {
-            buildMultiSearch(
-                    stratigraphy,
-                    STRATIGRAPHY_STRATIGRAPHY,
-                    STRATIGRAPHY_STRATIGRAPHY_ENG,
-                    LITHOSTRATIGRAPHY__STRATIGRAPHY,
-                    LITHOSTRATIGRAPHY__STRATIGRAPHY_ENG,
-                    STRATIGRAPHY_FREE);
+        if (stratigraphy != null) {
+            if (stratigraphy.getLookUpType().toString().equals("hierarchy")) {
+                buildMultiSearch(
+                        stratigraphy,
+                        STRATIGRAPHY_STRATIGRAPHY,
+                        STRATIGRAPHY_STRATIGRAPHY_ENG,
+                        LITHOSTRATIGRAPHY__STRATIGRAPHY,
+                        LITHOSTRATIGRAPHY__STRATIGRAPHY_ENG);
+            } else {
+                buildMultiSearch(
+                        stratigraphy,
+                        STRATIGRAPHY_STRATIGRAPHY,
+                        STRATIGRAPHY_STRATIGRAPHY_ENG,
+                        LITHOSTRATIGRAPHY__STRATIGRAPHY,
+                        LITHOSTRATIGRAPHY__STRATIGRAPHY_ENG,
+                        STRATIGRAPHY_FREE);
+            }
         }
         return this;
     }
@@ -175,11 +177,13 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
 
     public FluentSpecimenSearchApiBuilder queryImgNameOfFossil(SearchField nameOfFossil) {
         // BUG FIX: Removing specimen__specimenidentification__name from hierarchy search because of api field not available error.
-        if (nameOfFossil.getLookUpType().toString().equals("hierarchy")) {
+        if (nameOfFossil != null) {
+            if (nameOfFossil.getLookUpType().toString().equals("hierarchy")) {
 //            buildMultiSearch(nameOfFossil, SPECIMEN__SPECIMENIDENTIFICATION__TAXON__TAXON);
-            buildFieldParameters(SPECIMEN__SPECIMENIDENTIFICATION__TAXON__TAXON, nameOfFossil);
-        } else {
-            buildMultiSearch(nameOfFossil, SPECIMEN__SPECIMENIDENTIFICATION__NAME, SPECIMEN__SPECIMENIDENTIFICATION__TAXON__TAXON);
+                buildFieldParameters(SPECIMEN__SPECIMENIDENTIFICATION__TAXON__TAXON, nameOfFossil);
+            } else {
+                buildMultiSearch(nameOfFossil, SPECIMEN__SPECIMENIDENTIFICATION__NAME, SPECIMEN__SPECIMENIDENTIFICATION__TAXON__TAXON);
+            }
         }
         return this;
     }
@@ -215,21 +219,23 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
 
     public FluentSpecimenSearchApiBuilder queryImgStratigraphy(SearchField stratigraphy) {
         // BUG FIX: Removing stratigraphy_free from hierarchy search because of api 500 error.
-        if (stratigraphy.getLookUpType().toString().equals("hierarchy")) {
-            buildMultiSearch(
-                    stratigraphy,
-                    SPECIMEN__STRATIGRAPHY_STRATIGRAPHY,
-                    SPECIMEN__STRATIGRAPHY_STRATIGRAPHY_EN,
-                    SPECIMEN__LITHOSTRATIGRAPHY__STRATIGRAPHY,
-                    SPECIMEN__LITHOSTRATIGRAPHY__STRATIGRAPHY_EN);
-        } else {
-            buildMultiSearch(
-                    stratigraphy,
-                    SPECIMEN__STRATIGRAPHY_STRATIGRAPHY,
-                    SPECIMEN__STRATIGRAPHY_STRATIGRAPHY_EN,
-                    SPECIMEN__LITHOSTRATIGRAPHY__STRATIGRAPHY,
-                    SPECIMEN__LITHOSTRATIGRAPHY__STRATIGRAPHY_EN,
-                    SPECIMEN__STRATIGRAPHY_FREE);
+        if (stratigraphy != null) {
+            if (stratigraphy.getLookUpType().toString().equals("hierarchy")) {
+                buildMultiSearch(
+                        stratigraphy,
+                        SPECIMEN__STRATIGRAPHY_STRATIGRAPHY,
+                        SPECIMEN__STRATIGRAPHY_STRATIGRAPHY_EN,
+                        SPECIMEN__LITHOSTRATIGRAPHY__STRATIGRAPHY,
+                        SPECIMEN__LITHOSTRATIGRAPHY__STRATIGRAPHY_EN);
+            } else {
+                buildMultiSearch(
+                        stratigraphy,
+                        SPECIMEN__STRATIGRAPHY_STRATIGRAPHY,
+                        SPECIMEN__STRATIGRAPHY_STRATIGRAPHY_EN,
+                        SPECIMEN__LITHOSTRATIGRAPHY__STRATIGRAPHY,
+                        SPECIMEN__LITHOSTRATIGRAPHY__STRATIGRAPHY_EN,
+                        SPECIMEN__STRATIGRAPHY_FREE);
+            }
         }
         return this;
     }
