@@ -655,6 +655,7 @@
             "DEVICE": "Camera",
             "REMARKS": "Remarks",
             "VIDEO": "Video",
+            "DATABASE": "Institution",
             "ANALYSIS": {
                 "HEADING": "Related analysis",
                 "ANALYSIS_ID": "Analysis ID"

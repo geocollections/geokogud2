@@ -32,6 +32,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
     service.searchAllSpecimensUsingStratigraphy = searchAllSpecimensUsingStratigraphy;
     service.searchAllSamplesUsingStratigraphy = searchAllSamplesUsingStratigraphy;
     service.getFileLink = getFileLink;
+    service.getAboutDatabase = getAboutDatabase;
 
     service.toggle = function (el,array) {
         utils.toggleInArray(el,array)
@@ -406,6 +407,12 @@ var constructor = function (utils, configuration, $window, $location, $translate
             return "http://files.geocollections.info/" + params.filename.substring(0, 2)
                 + "/" + params.filename.substring(2, 4)
                 + "/" + params.filename;
+        }
+    }
+
+    function getAboutDatabase(params) {
+        if (params.database !== null) {
+            $window.open($window.location.origin + '/about_' + params.database.toLowerCase(), '', 'width=600,height=750,scrollbars, resizable')
         }
     }
 

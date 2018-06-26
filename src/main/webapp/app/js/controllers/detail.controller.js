@@ -132,7 +132,7 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
      */
     function getLocality() {
         // Does not run if on corebox detail view
-        if ($stateParams.type !== "corebox") {
+        if ($stateParams.type !== "corebox" && $stateParams.type !== 'file') {
             var localityFields = configuration.detailFieldsConfig[$stateParams.type].locality;
             if (localityFields) {
                 vm.locality = {

@@ -652,6 +652,7 @@
             "DEVICE": "Kaamera",
             "REMARKS": "Lisainfo",
             "VIDEO": "Video",
+            "DATABASE": "Asutus",
             "ANALYSIS": {
                 "HEADING": "Seotud analüüs",
                 "ANALYSIS_ID": "Analüüsi ID"
