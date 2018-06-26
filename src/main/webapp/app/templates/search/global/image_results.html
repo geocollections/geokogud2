@@ -32,7 +32,7 @@
             <tbody>
                 <tr data-ng-repeat="entity in response.results">
                     <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.NUMBER' | translate }}">
-                        <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:entity.id})">{{entity.image_number}}</a>
+                        <a href data-ng-click="ctrl.service.openInNewWindow({object:'file',id:entity.id})">{{entity.image_number}}</a>
                     </td>
                     <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.AUTHOR' | translate }}">{{entity.author}}</td>
                     <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.DATE' | translate }}">
@@ -49,7 +49,7 @@
                     <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.KEY_WORDS' | translate }}">{{entity.keywords}}</td>
 
                     <td class="text-center" data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.IMAGES' | translate }}">
-                        <a href data-ng-click="ctrl.service.openInNewWindow({object:'image', id:entity.id})">
+                        <a href data-ng-click="ctrl.service.openInNewWindow({object:'file', id:entity.id})">
                             <show-preview data-ng-if="entity.image_preview_url"
                                           classes="previewImage img-rounded"
                                           img-title="[entity.author, entity.date_taken, entity.date_taken_free, null, entity.author_free]"

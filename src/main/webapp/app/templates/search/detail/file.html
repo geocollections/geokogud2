@@ -66,6 +66,10 @@
                             <span data-ng-if="detailCtrl.results.specimen_image_attachment === 2">
                                 {{ 'API_TRANSLATION.ATTACHMENT.TITLE' | translate }}
                             </span>
+
+                            <span data-ng-if="detailCtrl.results.specimen_image_attachment === 3">
+                                {{ 'API_TRANSLATION.ATTACHMENT.TITLE' | translate }}
+                            </span>
                         </td>
                         <td>
                             <localize et="detailCtrl.results.description" en="detailCtrl.results.description_en"/>
@@ -249,6 +253,10 @@
                                 <a href="{{detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.uuid_filename})}}" target="_blank">{{ 'INDEX.LARGE' | translate }}</a>
                                 |
                                 <a href="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}" target="_blank">{{ 'INDEX.ORIGINAL' | translate }}</a>
+                                |
+                                <button class="btn btn-primary btn-sm" data-ng-click="detailCtrl.service.shareImage(detailCtrl.results)">
+                                    <i class="fa fa-facebook-f" aria-hidden="true"></i> &nbsp;{{ 'INDEX.SHARE' | translate }}
+                                </button>
 
                             </div>
                         </div>
