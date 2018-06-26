@@ -20,6 +20,8 @@
                 <h3> {{ 'DETAILVIEW_TABLE_HEADER' | translate }} </h3>
                 <table class="table table-bordered table-hover table-header-styles">
 
+                    <!-- SPECIMEN START -->
+
                     <tr data-ng-if="detailCtrl.results.specimen__coll__number && detailCtrl.results.specimen__coll__number != null">
                         <td> {{' API_TRANSLATION.SPECIMEN.COLL__NUMBER' | translate }} </td>
                         <td>
@@ -38,9 +40,33 @@
                         </td>
                     </tr>
 
+                    <!-- SPECIMEN END -->
+
+                    <!-- PHOTO ARCHIVE START -->
+
+                    <tr data-ng-if="detailCtrl.results.image_number && detailCtrl.results.image_number != null">
+                        <td> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.PHOTO_NUMBER' | translate }} </td>
+                        <td>{{ detailCtrl.results.image_number }}</td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.imageset__imageset_number && detailCtrl.results.imageset__imageset_number != null">
+                        <td> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.IMAGESET__IMAGESET_NUMBER' | translate }} </td>
+                        <td>{{ detailCtrl.results.imageset__imageset_number }}</td>
+                    </tr>
+
+                    <!-- PHOTO ARCHIVE END -->
+
                     <tr data-ng-if="(detailCtrl.results.description && detailCtrl.results.description != null)
                         || (detailCtrl.results.description_en && detailCtrl.results.description_en != null)">
-                        <td> {{ 'API_TRANSLATION.ATTACHMENT.DESCRIPTION' | translate }} </td>
+                        <td>
+                            <span data-ng-if="detailCtrl.results.specimen_image_attachment === 1">
+                                {{ 'API_TRANSLATION.ATTACHMENT.DESCRIPTION' | translate }}
+                            </span>
+
+                            <span data-ng-if="detailCtrl.results.specimen_image_attachment === 2">
+                                {{ 'API_TRANSLATION.ATTACHMENT.TITLE' | translate }}
+                            </span>
+                        </td>
                         <td>
                             <localize et="detailCtrl.results.description" en="detailCtrl.results.description_en"/>
                         </td>
@@ -79,6 +105,7 @@
                         <td> {{ detailCtrl.results.date_created_free }} </td>
                     </tr>
 
+
                     <!--TODO: Keywords-->
 
 
@@ -113,6 +140,46 @@
                                 <!--&lt;!&ndash;src="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}"/>&ndash;&gt;-->
                             </a>
                         </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.original_filename && detailCtrl.results.original_filename">
+                        <td> {{ 'API_TRANSLATION.ATTACHMENT.ORIGINAL_FILENAME' | translate }} </td>
+                        <td> {{ detailCtrl.results.original_filename }} </td>
+                    </tr>
+
+                    <!--PHOTO ARCHIVE-->
+                    <tr data-ng-if="detailCtrl.results.image_object && detailCtrl.results.image_object != null">
+                        <td> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.OBJECT' | translate }} </td>
+                        <td> {{ detailCtrl.results.image_object }} </td>
+                    </tr>
+
+                    <!--PHOTO ARCHIVE-->
+                    <tr data-ng-if="detailCtrl.results.image_place && detailCtrl.results.image_place != null">
+                        <td> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.PLACE' | translate }} </td>
+                        <td> {{ detailCtrl.results.image_place }} </td>
+                    </tr>
+
+                    <!--PHOTO ARCHIVE-->
+                    <tr data-ng-if="(detailCtrl.results.locality__locality && detailCtrl.results.locality__locality != null)
+                        && (detailCtrl.results.locality__locality_en && detailCtrl.results.locality__locality != null)">
+                        <td> {{ 'API_TRANSLATION.ATTACHMENT.LOCALITY' | translate }} </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'locality', id: detailCtrl.results.locality_id})">
+                                <localize et="detailCtrl.results.locality__locality" en="detailCtrl.results.locality__locality_en" />
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!--PHOTO ARCHIVE-->
+                    <tr data-ng-if="detailCtrl.results.image_height && detailCtrl.results.image_height != null">
+                        <td> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.SIZE_HEIGHT' | translate }} </td>
+                        <td> {{ detailCtrl.results.image_height }} </td>
+                    </tr>
+
+                    <!--PHOTO ARCHIVE-->
+                    <tr data-ng-if="detailCtrl.results.image_width && detailCtrl.results.image_width != null">
+                        <td> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.SIZE_WIDTH' | translate }} </td>
+                        <td> {{ detailCtrl.results.image_width }} </td>
                     </tr>
 
                     <tr data-ng-if="detailCtrl.results.device__name && detailCtrl.results.device__name != null">
