@@ -341,6 +341,19 @@ module.config(function($stateProvider, $urlRouterProvider) {
             params: {type: "dataset"}
         })
 
+        .state('file', {
+            template: '<data-ui-view/>'
+        })
+
+        .state('file.view', {
+            data: {
+                pageTitle: "{{ 'TITLES.DETAIL_FILE' | translate }} {{ $stateParams.id }}"
+            },
+            url: "/file/:id",
+            templateUrl: "app/templates/search/detail/file.html",
+            controller: "DetailController as detailCtrl",
+            params: {type: "file"}
+        })
 
 
         /******************************

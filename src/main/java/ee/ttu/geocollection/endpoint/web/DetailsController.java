@@ -12,6 +12,7 @@ import ee.ttu.geocollection.interop.api.dataset.service.DatasetApiService;
 import ee.ttu.geocollection.interop.api.doi.service.DoiApiService;
 import ee.ttu.geocollection.interop.api.drillCores.service.DrillCoreApiService;
 import ee.ttu.geocollection.interop.api.drillCores.service.DrillCoreBoxApiService;
+import ee.ttu.geocollection.interop.api.file.service.FileApiService;
 import ee.ttu.geocollection.interop.api.localities.service.LocalitiesApiService;
 import ee.ttu.geocollection.interop.api.photoArchive.service.PhotoArchiveApiService;
 import ee.ttu.geocollection.interop.api.preparations.PreparationsApiService;
@@ -77,6 +78,9 @@ public class DetailsController {
 
     @Autowired
     private DatasetApiService datasetApiService;
+
+    @Autowired
+    private FileApiService fileApiService;
 
 
     @RequestMapping(value = "/raw-specimen/{id}")
@@ -250,5 +254,8 @@ public class DetailsController {
     public ApiResponse findRawDatasetByIdentifier(@PathVariable Long id) {
         return datasetApiService.findRawById(id);
     }
+
+    @RequestMapping(value = "/raw-file/{id}")
+    public ApiResponse findRawFileById(@PathVariable Long id) { return fileApiService.findRawById(id); }
 
 }

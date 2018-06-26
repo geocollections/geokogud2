@@ -107,6 +107,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
             case "attachment" : url = configuration.attachmentDetailUrl; break;
             case "collection" : url = configuration.collectionDetailUrl; break;
             case "dataset" : url = configuration.datasetDetailUrl; break;
+            case "file" : url = configuration.attachmentDetailUrl; break;
             default : break;
         }
         return url;
