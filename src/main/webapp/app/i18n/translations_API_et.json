@@ -660,6 +660,7 @@
             "TITLE": "Pealkiri",
             "LOCALITY__LOCALITY": "Leiukoht",
             "TAGS": "Märksõnad",
+            "PEOPLE": "Inimesed",
             "ANALYSIS": {
                 "HEADING": "Seotud analüüs",
                 "ANALYSIS_ID": "Analüüsi ID"

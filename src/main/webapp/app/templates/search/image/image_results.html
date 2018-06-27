@@ -12,10 +12,10 @@
                 <!--<th><sort-field value = "id" name="SEARCH.PHOTO_ARCHIVE.TABLE.ID"></sort-field></th>-->
                 <th><sort-field value = "image_number" name="SEARCH.PHOTO_ARCHIVE.TABLE.NUMBER"></sort-field></th>
                 <th><sort-field value = "author__agent" name="SEARCH.PHOTO_ARCHIVE.TABLE.AUTHOR"></sort-field></th>
-                <th><sort-field value = "date_taken" name="SEARCH.PHOTO_ARCHIVE.TABLE.DATE"></sort-field></th>
+                <th><sort-field value = "date_created" name="SEARCH.PHOTO_ARCHIVE.TABLE.DATE"></sort-field></th>
                 <th><sort-field value = "locality__locality,locality__locality_en" name="SEARCH.PHOTO_ARCHIVE.TABLE.LOCALITY"></sort-field></th>
-                <th><sort-field value = "object" name="SEARCH.PHOTO_ARCHIVE.TABLE.CATEGORY"></sort-field></th>
-                <th><sort-field value = "keywords" name="SEARCH.PHOTO_ARCHIVE.TABLE.KEY_WORDS"></sort-field></th>
+                <th><sort-field value = "image_object" name="SEARCH.PHOTO_ARCHIVE.TABLE.CATEGORY"></sort-field></th>
+                <th><sort-field value = "tags" name="SEARCH.PHOTO_ARCHIVE.TABLE.KEY_WORDS"></sort-field></th>
             </tr>
             </thead>
             <tbody>
@@ -23,26 +23,26 @@
                 <!--<td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.ID' | translate }}"><a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:entity.id})">{{entity.id}}</a></td>-->
                 <!--<td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.NUMBER' | translate }}">{{entity.image_number}}</td>-->
                 <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.NUMBER' | translate }}">
-                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:entity.id})">{{entity.image_number}}</a>
+                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'file',id:entity.id})">{{entity.image_number}}</a>
                 </td>
                 <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.AUTHOR' | translate }}"><first-not-null values="[entity.author__agent, entity.author_free]"></first-not-null></td>
                 <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.DATE' | translate }}">
-                    <div data-ng-if="entity.date_taken && entity.date_taken != null">
-                        {{entity.date_taken}}
+                    <div data-ng-if="entity.date_created && entity.date_created != null">
+                        {{entity.date_created | date:dateFormat}}
                         <!--{{entity.date_taken | date:dateFormat}}-->
                     </div>
-                    <div data-ng-if="entity.date_taken == null && entity.date_taken_free != null">
-                        {{entity.date_taken_free}}
+                    <div data-ng-if="entity.date_created == null && entity.date_created_free != null">
+                        {{entity.date_created_free}}
                     </div>
                 </td>
                 <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.LOCALITY' | translate }}">
                     <localize  data-ng-if="entity.locality__locality != null || entity.locality__locality_en != null" et="entity.locality__locality" en="entity.locality__locality_en"/>
-                    <div data-ng-if="(entity.locality__locality == null && entity.locality__locality_en == null) && entity.place != null ">
-                        {{entity.place}}
+                    <div data-ng-if="(entity.locality__locality == null && entity.locality__locality_en == null) && entity.image_place != null ">
+                        {{entity.image_place}}
                     </div>
                 </td>
-                <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.CATEGORY' | translate }}">{{entity.object}}</td>
-                <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.KEY_WORDS' | translate }}">{{entity.keywords}}</td>
+                <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.CATEGORY' | translate }}">{{entity.image_object}}</td>
+                <td data-title="{{ 'SEARCH.PHOTO_ARCHIVE.TABLE.KEY_WORDS' | translate }}">{{entity.tags}}</td>
             </tr>
             </tbody>
         </table>

@@ -96,6 +96,7 @@ public class PhotoArchiveApiServiceImpl implements PhotoArchiveApiService {
                 .querySizeX(searchCriteria.getSizeSince())
                 .querySizeY(searchCriteria.getSizeTo())
                 .queryInstitutions(searchCriteria.getDbs())
+//                .addReturningFields()
                 .buildDefaultFieldsQuery();
         return apiService.searchRawEntities(ATTACHMENT_TABLE, searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }

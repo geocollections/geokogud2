@@ -43,7 +43,7 @@
                                                        ng-model="searchParameters.locality.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.locality.name" sort-by="{{searchParameters.locality.lookUpType}}" table="image" en="locality__locality_en" et="locality__locality"/>
+                                        <autocomplete-field ng-model="searchParameters.locality.name" sort-by="{{searchParameters.locality.lookUpType}}" table="attachment" en="locality__locality_en" et="locality__locality"/>
                                     </div>
                                 </div>
 
@@ -101,7 +101,7 @@
                                                        ng-model="searchParameters.imageNumber.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.imageNumber.name" sort-by="{{searchParameters.imageNumber.lookUpType}}" table="image" en="null" et="image_number" />
+                                        <autocomplete-field ng-model="searchParameters.imageNumber.name" sort-by="{{searchParameters.imageNumber.lookUpType}}" table="attachment" en="null" et="image_number" />
                                     </div>
                                 </div>
 
@@ -112,7 +112,7 @@
                                                        ng-model="searchParameters.authorAgent.lookUpType"></selectdefault>
                                     </div>
                                     <div class="col-md-12 medium-padding">
-                                        <autocomplete-field ng-model="searchParameters.authorAgent.name" sort-by="{{searchParameters.authorAgent.lookUpType}}" table="image" en="null" et="author__agent"/>
+                                        <autocomplete-field ng-model="searchParameters.authorAgent.name" sort-by="{{searchParameters.authorAgent.lookUpType}}" table="attachment" en="null" et="author__agent"/>
                                     </div>
                                 </div>
 
@@ -164,13 +164,13 @@
 
                         <figure class="margin-bottom-20">
 
-                            <a href class="hover-me" data-ng-click="ctrl.service.openInNewWindow({object:'image',id:image.id})">
+                            <a href class="hover-me" data-ng-click="ctrl.service.openInNewWindow({object:'file',id:image.id})">
 
                                 <div data-ng-if="image.uuid_filename && image.uuid_filename != null">
 
                                     <show-preview class="img-responsive set-height"
                                                   classes="previewImage img-rounded"
-                                                  img-title="[image.author__agent, image.date_taken, image.date_taken_free, null, image.author_free]"
+                                                  img-title="[image.author__agent, image.date_created, image.date_created_free, null, image.author_free]"
                                                   img-url="ctrl.service.getFileLink({size: 'small', filename: image.uuid_filename})" />
                                 </div>
 
@@ -179,7 +179,7 @@
                                 </div>
 
                                 <div class="img-gallery-author">
-                                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'image',id:image.id})">
+                                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'file',id:image.id})">
                                         <localize class="font-smaller" et="image.locality__locality" en="image.locality__locality_en" />
                                         <span class="font-smaller" data-ng-if="image.locality__locality == null && image.locality__locality_en == null ">
                                             {{image.image_number}}

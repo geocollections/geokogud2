@@ -663,6 +663,7 @@
             "TITLE": "Title",
             "LOCALITY__LOCALITY": "Locality",
             "TAGS": "Tags",
+            "PEOPLE": "People",
             "ANALYSIS": {
                 "HEADING": "Related analysis",
                 "ANALYSIS_ID": "Analysis ID"

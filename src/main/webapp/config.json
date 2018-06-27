@@ -346,7 +346,17 @@
     },
     "attachment" : {},
     "collection" : {},
-    "dataset" : {}
+    "dataset" : {},
+    "file": {
+      "locality" : {
+        "id" : "locality__id",
+        "country" : "locality__country__value_en",
+        "lat" : "locality__latitude",
+        "lon" : "locality__longitude",
+        "value_et" : "locality__locality",
+        "value_en" : "locality__locality_en"
+      }
+    }
   },
 
   "departments": [{"code": "GIT", "label": "GIT"},

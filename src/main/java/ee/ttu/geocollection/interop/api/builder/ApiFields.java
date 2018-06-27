@@ -81,12 +81,15 @@ public class ApiFields {
     // Photo archive search
     public static final String FILE_NAME = "filename";
     public static final String DATE_TAKEN = "date_taken";
+    public static final String DATE_CREATED = "date_created";
     public static final String DATE_TAKEN_FREE = "date_taken_free";
     public static final String AUTHOR_AGENT = "author__agent";
     public static final String KEYWORDS = "keywords";
     public static final String IMAGE_NUMBER = "image_number";
     public static final String PLACE = "place";
+    public static final String IMAGE_PLACE = "image_place";
     public static final String PEOPLE = "people";
+    public static final String IMAGE_PEOPLE = "image_people";
     public static final String LOCALITY_LOCALITY = "locality__locality";
     public static final String LOCALITY__MAAKOND__MAAKOND_EN = "locality__maakond__maakond_en";
     public static final String LOCALITY__MAAKOND__MAAKOND = "locality__maakond__maakond";
@@ -96,8 +99,11 @@ public class ApiFields {
     public static final String LOCALITY__ASUSTUSYKSUS__ASUSTUSYKSUS_EN = "locality__asustusyksus__asustusyksus_en";
     public static final String LOCALITY__COUNTRY__ISO_CODE = "locality__country__iso_code";
     public static final String OBJECT = "object";
+    public static final String IMAGE_OBJECT = "image_object";
     public static final String SIZE_X = "size_x";
+    public static final String IMAGE_WIDTH = "image_width";
     public static final String SIZE_Y = "size_y";
+    public static final String IMAGE_HEIGHT = "image_height";
     public static final String UUID_FILENAME = "uuid_filename";
 
     public static final String AUTHOR_FORENAME = "author__forename";
@@ -105,6 +111,7 @@ public class ApiFields {
     public static final String AUTHOR_FREE = "author_free";
     public static final String LOCALITY_LOCALITY_EN = "locality__locality_en";
     public static final String DESCRIPTION = "description";
+    public static final String IMAGE_DESCRIPTION = "image_description";
     public static final String DATA_ADDED = "date_added";
     public static final String DATA_CHANGED = "date_changed";
     public static final String TYPE_VALUE = "type__value";

@@ -17,6 +17,53 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+
+
+        <div class="row">
+
+            <!--IMAGES AND VIDEOS-->
+            <div class="col-lg-6" data-ng-if="detailCtrl.results.filename != null">
+                <div data-ng-if="detailCtrl.results.filename.endsWith('png') || detailCtrl.results.filename.endsWith('jpeg') || detailCtrl.results.filename.endsWith('svg') || detailCtrl.results.filename.endsWith('jpg')">
+                    <h3> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.PHOTO' | translate }} </h3>
+
+                    <a href title="{{detailCtrl.service.getFileLink({size: 'medium', filename: detailCtrl.results.uuid_filename})}}" data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.service.getFileLink({size: 'medium', filename: detailCtrl.results.uuid_filename})})">
+                        <img id="img-size" spinner-load ng-src="{{detailCtrl.service.getFileLink({size: 'medium', filename: detailCtrl.results.uuid_filename})}}" class="window-size"/>
+                    </a>
+                    <div class="img-settings">
+                        <div class="img-text">
+                            {{'API_TRANSLATION.PHOTO_ARCHIVE.SIZE ' | translate }}:
+                            <a href="{{detailCtrl.service.getFileLink({size: 'small', filename: detailCtrl.results.uuid_filename})}}" target="_blank">{{ 'INDEX.SMALL' | translate }}</a>
+                            |
+                            <a href="{{detailCtrl.service.getFileLink({size: 'medium', filename: detailCtrl.results.uuid_filename})}}" target="_blank">{{ 'INDEX.MEDIUM' | translate }}</a>
+                            |
+                            <a href="{{detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.uuid_filename})}}" target="_blank">{{ 'INDEX.LARGE' | translate }}</a>
+                            |
+                            <a href="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}" target="_blank">{{ 'INDEX.ORIGINAL' | translate }}</a>
+                            |
+                            <button class="btn btn-primary btn-sm" data-ng-click="detailCtrl.service.shareImage(detailCtrl.results)">
+                                <i class="fa fa-facebook-f" aria-hidden="true"></i> &nbsp;{{ 'INDEX.SHARE' | translate }}
+                            </button>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- TODO: Add more formats -->
+                <div data-ng-if="detailCtrl.results.filename.endsWith('mp4')">
+                    <h3> {{ 'API_TRANSLATION.ATTACHMENT.VIDEO' | translate }} </h3>
+
+                    <video data-ng-if="detailCtrl.results.filename.endsWith('mp4')" width="100%" controls loop>
+                        <source src="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <!-- MAIN INFORMATION -->
+            <div class="col-lg-6">
+
                 <h3> {{ 'DETAILVIEW_TABLE_HEADER' | translate }} </h3>
                 <table class="table table-bordered table-hover table-header-styles">
 
@@ -175,15 +222,19 @@
                     </tr>
 
                     <!--PHOTO ARCHIVE-->
-                    <tr data-ng-if="detailCtrl.results.image_height && detailCtrl.results.image_height != null">
-                        <td> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.SIZE_HEIGHT' | translate }} </td>
-                        <td> {{ detailCtrl.results.image_height }} </td>
+                    <tr data-ng-if="detailCtrl.results.image_people && detailCtrl.results.image_people != null">
+                        <td> {{ 'API_TRANSLATION.ATTACHMENT.PEOPLE' | translate }} </td>
+                        <td> {{ detailCtrl.results.image_people }} </td>
                     </tr>
 
                     <!--PHOTO ARCHIVE-->
-                    <tr data-ng-if="detailCtrl.results.image_width && detailCtrl.results.image_width != null">
-                        <td> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.SIZE_WIDTH' | translate }} </td>
-                        <td> {{ detailCtrl.results.image_width }} </td>
+                    <tr data-ng-if="detailCtrl.results.image_width != null && detailCtrl.results.image_height != null">
+                        <td> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.SIZE' | translate }} </td>
+                        <td> {{ detailCtrl.results.image_width
+                            + " × "
+                            + detailCtrl.results.image_height
+                            + " px" }}
+                        </td>
                     </tr>
 
                     <tr data-ng-if="detailCtrl.results.device__name && detailCtrl.results.device__name != null">
@@ -208,16 +259,15 @@
                         <td> {{ detailCtrl.results.date_digitised_free }} </td>
                     </tr>
 
+                    <tr data-ng-if="detailCtrl.results.device_digitised__name && detailCtrl.results.device_digitised__name != null">
+                        <td> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.DEVICE_DIGITISED__NAME' | translate }} </td>
+                        <td> {{ detailCtrl.results.device_digitised__name }} </td>
+                    </tr>
+
                     <tr data-ng-if="(detailCtrl.results.remarks && detailCtrl.results.remarks != null)">
                         <td> {{ 'API_TRANSLATION.ATTACHMENT.REMARKS' | translate }} </td>
                         <td> {{ detailCtrl.results.remarks }} </td>
                     </tr>
-
-                    <!--TODO: licence-->
-
-                    <!--TODO: record added-->
-
-                    <!--TODO: record changed-->
 
                     <tr data-ng-if="(detailCtrl.results.database__name && detailCtrl.results.database__name != null)
                         && (detailCtrl.results.database__name_en && detailCtrl.results.database__name_en != null)">
@@ -229,48 +279,38 @@
                         </td>
                     </tr>
 
+                    <tr>
+                        <td><localize-label et="'API_TRANSLATION.DOI.LICENCE__LICENCE_EN'" en="'API_TRANSLATION.DOI.LICENCE__LICENCE_EN'"/></td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.results.licence__licence_url_en})">
+                                <localize et="detailCtrl.results.licence__licence_en" en="detailCtrl.results.licence__licence_en"/>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.date_added && detailCtrl.results.date_added != null" >
+                        <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.DATE_ADDED ' | translate }}</td>
+                        <td> {{detailCtrl.results.date_added  | date:dateFormat }}</td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.date_changed && detailCtrl.results.date_changed != null" >
+                        <td> {{'API_TRANSLATION.PHOTO_ARCHIVE.DATE_CHANGED ' | translate }}</td>
+                        <td> {{detailCtrl.results.date_changed  | date:dateFormat }}</td>
+                    </tr>
+
                 </table>
-            </div>
-        </div>
 
-
-        <div class="row">
-            <div class="col-lg-6">
-                <div data-ng-if="detailCtrl.results.filename != null">
-                    <div data-ng-if="detailCtrl.results.filename.endsWith('png') || detailCtrl.results.filename.endsWith('jpeg') || detailCtrl.results.filename.endsWith('svg') || detailCtrl.results.filename.endsWith('jpg')">
-                        <h3> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.PHOTO' | translate }} </h3>
-
-                        <a href title="{{detailCtrl.service.getFileLink({size: 'medium', filename: detailCtrl.results.uuid_filename})}}" data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.service.getFileLink({size: 'medium', filename: detailCtrl.results.uuid_filename})})">
-                            <img id="img-size" spinner-load ng-src="{{detailCtrl.service.getFileLink({size: 'medium', filename: detailCtrl.results.uuid_filename})}}" class="window-size"/>
-                        </a>
-                        <div class="img-settings">
-                            <div class="img-text">
-                                {{'API_TRANSLATION.PHOTO_ARCHIVE.SIZE ' | translate }}:
-                                <a href="{{detailCtrl.service.getFileLink({size: 'small', filename: detailCtrl.results.uuid_filename})}}" target="_blank">{{ 'INDEX.SMALL' | translate }}</a>
-                                |
-                                <a href="{{detailCtrl.service.getFileLink({size: 'medium', filename: detailCtrl.results.uuid_filename})}}" target="_blank">{{ 'INDEX.MEDIUM' | translate }}</a>
-                                |
-                                <a href="{{detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.uuid_filename})}}" target="_blank">{{ 'INDEX.LARGE' | translate }}</a>
-                                |
-                                <a href="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}" target="_blank">{{ 'INDEX.ORIGINAL' | translate }}</a>
-                                |
-                                <button class="btn btn-primary btn-sm" data-ng-click="detailCtrl.service.shareImage(detailCtrl.results)">
-                                    <i class="fa fa-facebook-f" aria-hidden="true"></i> &nbsp;{{ 'INDEX.SHARE' | translate }}
-                                </button>
-
-                            </div>
-                        </div>
-
+                <!--MAP-->
+                <div data-ng-if="detailCtrl.results.locality__latitude && detailCtrl.results.locality__longitude">
+                    <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
+                    <div id='hoverbox' class='coupontooltip'>
+                        <div id='hoversystem'></div>
+                        <div id='hoverstat'></div>
                     </div>
-
-                    <!-- TODO: Add more formats -->
-                    <div data-ng-if="detailCtrl.results.filename.endsWith('mp4')">
-                        <h3> {{ 'API_TRANSLATION.ATTACHMENT.VIDEO' | translate }} </h3>
-
-                        <video data-ng-if="detailCtrl.results.filename.endsWith('mp4')" width="100%" controls loop>
-                            <source src="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}" type="video/mp4">
-                        </video>
-                    </div>
+                    <locality-map x = "detailCtrl.results.locality__latitude" y = "detailCtrl.results.locality__longitude" name = "detailCtrl.results.locality__locality_en" fid = "detailCtrl.results.locality_id"></locality-map>
+                    <a href data-ng-click="detailCtrl.service.showGoogleMap(detailCtrl.results.locality__latitude, detailCtrl.results.locality__longitude, detailCtrl.results.locality__locality_en)">Google Maps</a>
+                    &ensp;&ensp;|&ensp;&ensp;
+                    <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.results.locality__latitude, detailCtrl.results.locality__longitude)">Maa-amet / Estonian Land Board</a>
                 </div>
             </div>
         </div>
