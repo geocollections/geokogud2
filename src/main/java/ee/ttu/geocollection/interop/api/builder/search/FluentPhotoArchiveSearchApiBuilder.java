@@ -68,4 +68,9 @@ public class FluentPhotoArchiveSearchApiBuilder extends FluentSearchApiBuilder<F
         buildFieldParameters(SIZE_Y, size);
         return this;
     }
+
+    public FluentPhotoArchiveSearchApiBuilder querySpecimenImageAttachment() {
+        addFieldNameAndValue(SPECIMEN_IMAGE_ATTACHMENT, "2");
+        return this;
+    }
 }

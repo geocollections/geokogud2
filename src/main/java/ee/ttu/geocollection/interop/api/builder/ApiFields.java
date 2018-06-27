@@ -352,4 +352,7 @@ public class ApiFields {
     public static final String LOCALITY__LONGITUDE = "locality__longitude";
     public static final String LOCALITY__DEPTH = "locality__depth";
 
+
+    public static final String SPECIMEN_IMAGE_ATTACHMENT= "specimen_image_attachment";
+
 }

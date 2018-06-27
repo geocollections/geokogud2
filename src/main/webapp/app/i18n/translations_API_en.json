@@ -661,7 +661,8 @@
             "VIDEO": "Video",
             "DATABASE": "Institution",
             "TITLE": "Title",
-            "LOCALITY": "Locality",
+            "LOCALITY__LOCALITY": "Locality",
+            "TAGS": "Tags",
             "ANALYSIS": {
                 "HEADING": "Related analysis",
                 "ANALYSIS_ID": "Analysis ID"

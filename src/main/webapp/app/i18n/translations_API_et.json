@@ -658,7 +658,8 @@
             "VIDEO": "Video",
             "DATABASE": "Asutus",
             "TITLE": "Pealkiri",
-            "LOCALITY": "Leiukoht",
+            "LOCALITY__LOCALITY": "Leiukoht",
+            "TAGS": "Märksõnad",
             "ANALYSIS": {
                 "HEADING": "Seotud analüüs",
                 "ANALYSIS_ID": "Analüüsi ID"

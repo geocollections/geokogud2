@@ -109,10 +109,10 @@
                         <td> {{ detailCtrl.results.date_created_free }} </td>
                     </tr>
 
-
-                    <!--TODO: Keywords-->
-
-
+                    <tr data-ng-if="detailCtrl.results.tags && detailCtrl.results.tags != null">
+                        <td> {{ 'API_TRANSLATION.ATTACHMENT.TAGS' | translate }} </td>
+                        <td> {{ detailCtrl.results.tags }} </td>
+                    </tr>
 
                     <tr data-ng-if="detailCtrl.results.filename && detailCtrl.results.filename != null">
                         <td> {{ 'API_TRANSLATION.ATTACHMENT.FILENAME' | translate }} </td>
@@ -166,7 +166,7 @@
                     <!--PHOTO ARCHIVE-->
                     <tr data-ng-if="(detailCtrl.results.locality__locality && detailCtrl.results.locality__locality != null)
                         && (detailCtrl.results.locality__locality_en && detailCtrl.results.locality__locality != null)">
-                        <td> {{ 'API_TRANSLATION.ATTACHMENT.LOCALITY' | translate }} </td>
+                        <td> {{ 'API_TRANSLATION.ATTACHMENT.LOCALITY__LOCALITY' | translate }} </td>
                         <td>
                             <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'locality', id: detailCtrl.results.locality_id})">
                                 <localize et="detailCtrl.results.locality__locality" en="detailCtrl.results.locality__locality_en" />

@@ -17,6 +17,7 @@ import java.util.Map;
 public class PhotoArchiveApiServiceImpl implements PhotoArchiveApiService {
 
     private static final String IMAGE_TABLE = "image";
+    private static final String ATTACHMENT_TABLE= "attachment";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -83,6 +84,7 @@ public class PhotoArchiveApiServiceImpl implements PhotoArchiveApiService {
     @Override
     public ApiResponse findPhoto(PhotoArchiveSearchCriteria searchCriteria)  {
         String requestParams = FluentPhotoArchiveSearchApiBuilder.aRequest()
+                .querySpecimenImageAttachment()
                 .queryLocality(searchCriteria.getLocality())
                 .queryPeople(searchCriteria.getPeople())
                 .queryKeywords(searchCriteria.getKeywords())
@@ -95,15 +97,16 @@ public class PhotoArchiveApiServiceImpl implements PhotoArchiveApiService {
                 .querySizeY(searchCriteria.getSizeTo())
                 .queryInstitutions(searchCriteria.getDbs())
                 .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities(IMAGE_TABLE, searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
+        return apiService.searchRawEntities(ATTACHMENT_TABLE, searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
+//    TODO: Change to ApiResponse
     @Override
     public Map findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
-        return apiService.findRawEntity(IMAGE_TABLE, requestParams);
+        return apiService.findRawEntity(ATTACHMENT_TABLE, requestParams);
     }
 }
