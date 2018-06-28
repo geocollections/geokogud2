@@ -83,6 +83,7 @@ public class ApiFields {
     public static final String DATE_TAKEN = "date_taken";
     public static final String DATE_CREATED = "date_created";
     public static final String DATE_TAKEN_FREE = "date_taken_free";
+    public static final String DATE_CREATED_FREE = "date_created_free";
     public static final String AUTHOR_AGENT = "author__agent";
     public static final String KEYWORDS = "keywords";
     public static final String IMAGE_NUMBER = "image_number";

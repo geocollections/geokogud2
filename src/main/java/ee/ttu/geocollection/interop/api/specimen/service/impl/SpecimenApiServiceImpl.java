@@ -28,6 +28,7 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
     private static final String SPECIMEN_REFERENCE_TABLE = "specimen_reference";
     private static final String SPECIMEN_IDENTIFICATION_GEOLOGY_TABLE = "specimen_identification_geology";
     private static final String ATTACHMENT_LINK_TABLE = "attachment_link";
+    private static final String ATTACHMENT_TABLE = "attachment";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -175,16 +176,16 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
     public ApiResponse findSpecimenImage(SearchField specimenId) {
         String requestParams = FluentSpecimenImageSearchApiBuilder.aRequest()
                 .querySpecimenIdForUrl(specimenId).andReturn()
-                .returnImageUrl()
-                .returnImage()
-                .returnDatabaseAcronym()
+//                .returnImageUrl()
+//                .returnImage()
+//                .returnDatabaseAcronym()
                 .returnId()
                 .returnAgent()
                 .returnDate()
                 .returnDateFree()
                 .returnUuidFilename()
                 .buildFullQuery();
-        return apiService.searchRawEntities(SPECIMEN_IMAGE_TABLE, 1,1, new SortField(), requestParams);
+        return apiService.searchRawEntities(ATTACHMENT_TABLE, 1,1, new SortField(), requestParams);
     }
 
     @Override

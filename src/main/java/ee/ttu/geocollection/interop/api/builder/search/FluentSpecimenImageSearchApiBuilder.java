@@ -37,17 +37,20 @@ public class FluentSpecimenImageSearchApiBuilder extends FluentSearchApiBuilder<
     }
 
     public FluentSpecimenImageSearchApiBuilder returnAgent() {
-        addReturningField(AGENT__AGENT);
+//        addReturningField(AGENT__AGENT);
+        addReturningField(AUTHOR_AGENT);
         return this;
     }
 
     public FluentSpecimenImageSearchApiBuilder returnDate() {
-        addReturningField(DATE);
+//        addReturningField(DATE);
+        addReturningField(DATE_CREATED);
         return this;
     }
 
     public FluentSpecimenImageSearchApiBuilder returnDateFree() {
-        addReturningField(DATE_TAKEN_FREE);
+//        addReturningField(DATE_TAKEN_FREE);
+        addReturningField(DATE_CREATED_FREE);
         return this;
     }
 

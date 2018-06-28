@@ -119,7 +119,7 @@
 
                         <show-preview data-ng-if="entity.specimen_image_thumbnail.count > 0 && entity.specimen_image_thumbnail.results[0].uuid_filename !== null"
                                       classes="img-rounded previewImage"
-                                      img-title="[entity.specimen_image_thumbnail.results[0].agent__agent, entity.specimen_image_thumbnail.results[0].date, entity.specimen_image_thumbnail.results[0].date_taken_free]"
+                                      img-title="[entity.specimen_image_thumbnail.results[0].author__agent, entity.specimen_image_thumbnail.results[0].date_created, entity.specimen_image_thumbnail.results[0].date_created_free]"
                                       img-url="ctrl.service.getFileLink({size: 'small', filename: entity.specimen_image_thumbnail.results[0].uuid_filename})"/>
 
                     </a>
