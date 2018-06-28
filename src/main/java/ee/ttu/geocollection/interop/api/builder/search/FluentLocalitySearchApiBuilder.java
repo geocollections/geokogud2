@@ -102,6 +102,11 @@ public class FluentLocalitySearchApiBuilder extends FluentSearchApiBuilder<Fluen
         return this;
     }
 
+    public FluentLocalitySearchApiBuilder queryOnlyImageFiles() {
+        addFieldNameAndValue("or_search", "uuid_filename__iendswith:jpg;uuid_filename__iendswith:png;uuid_filename__iendswith:svg;uuid_filename__iendswith:jpeg");
+        return this;
+    }
+
     public FluentLocalitySearchApiBuilder queryImgLocality(SearchField locality) {
         buildMultiSearch(locality, LOCALITY__LOCALITY_EN, LOCALITY__LOCALITY);
         return this;

@@ -119,6 +119,7 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
     public ApiResponse findLocalityImages(LocalitySearchCriteria searchCriteria) {
         String requestParams = FluentLocalitySearchApiBuilder.aRequest()
                 .queryLocalityIdNotNull()
+                .queryOnlyImageFiles()
                 .queryImgLocality(searchCriteria.getLocality())
                 .queryImgNumber(searchCriteria.getNumber())
                 .queryImgCountry(searchCriteria.getCountry())
@@ -132,7 +133,7 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
                 .queryImgDepth(searchCriteria.getVerticalExtentSince())
                 .queryImgDepth(searchCriteria.getVerticalExtentTo())
                 .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities(IMAGE_TABLE, searchCriteria.getPaginateBy(), searchCriteria.getPage(), new SortField(LOCALITY__ID, SortingOrder.DESCENDING), requestParams);
+        return apiService.searchRawEntities(ATTACHMENT_TABLE, searchCriteria.getPaginateBy(), searchCriteria.getPage(), new SortField(LOCALITY__ID, SortingOrder.DESCENDING), requestParams);
     }
 
     @Override
