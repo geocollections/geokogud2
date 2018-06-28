@@ -227,7 +227,7 @@ public class DetailsController {
 
     @RequestMapping(value = "/raw-photo-archive/{id}")
     public Map findRawPhotoArchiveById(@PathVariable Long id) {
-        return photoArchiveApiService.findRawById(id);
+        return photoArchiveApiService.findRawByIdOld(id);
     }
 
     @RequestMapping(value = "/raw-soil/{id}")

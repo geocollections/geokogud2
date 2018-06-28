@@ -101,7 +101,17 @@ public class PhotoArchiveApiServiceImpl implements PhotoArchiveApiService {
         return apiService.searchRawEntities(ATTACHMENT_TABLE, searchCriteria.getPaginateBy(), searchCriteria.getPage(), searchCriteria.getSortField(), requestParams);
     }
 
-//    TODO: Change to ApiResponse
+
+    @Override
+    public Map findRawByIdOld(Long id) {
+        String requestParams = FluentGeoApiDetailsBuilder.aRequest()
+                .id(id)
+                .returnAllFields(fields)
+                .buildWithReturningFieldsAndRelatedData();
+        return apiService.findRawEntity(IMAGE_TABLE, requestParams);
+    }
+
+    //    TODO: Change to ApiResponse
     @Override
     public Map findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()

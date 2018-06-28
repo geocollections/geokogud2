@@ -12,4 +12,6 @@ public interface PhotoArchiveApiService {
 
     Map findRawById(Long id);
 
+    Map findRawByIdOld(Long id);
+
 }
