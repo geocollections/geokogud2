@@ -117,7 +117,7 @@
                 <td class="text-center" data-title="{{ 'SEARCH.SPECIMENS.IMAGES' | translate }}">
                     <a href class="hover-me" data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:entity.id})">
 
-                        <show-preview data-ng-if="entity.specimen_image_thumbnail.count > 0 && entity.specimen_image_thumbnail.results[0].uuid_filename !== null"
+                        <show-preview data-ng-if="entity.specimen_image_thumbnail.count > 0 && entity.specimen_image_thumbnail.results[0].uuid_filename !== null && (entity.specimen_image_thumbnail.results[0].uuid_filename.endsWith('png') || entity.specimen_image_thumbnail.results[0].uuid_filename.endsWith('jpeg') || entity.specimen_image_thumbnail.results[0].uuid_filename.endsWith('svg') || entity.specimen_image_thumbnail.results[0].uuid_filename.endsWith('jpg'))"
                                       classes="img-rounded previewImage"
                                       img-title="[entity.specimen_image_thumbnail.results[0].author__agent, entity.specimen_image_thumbnail.results[0].date_created, entity.specimen_image_thumbnail.results[0].date_created_free]"
                                       img-url="ctrl.service.getFileLink({size: 'small', filename: entity.specimen_image_thumbnail.results[0].uuid_filename})"/>

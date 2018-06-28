@@ -62,12 +62,12 @@
                     </a>
                 </td>
 
-                <td data-title="{{ 'SEARCH.LOCALITIES.TABLE.IMAGES' | translate }}">
+                <td class="text-center" data-title="{{ 'SEARCH.LOCALITIES.TABLE.IMAGES' | translate }}">
                     <a href class="hover-me" data-ng-click="ctrl.service.openInNewWindow({object: 'locality', id: entity.id})">
 
-                        <show-preview data-ng-if="entity.locality_image_thumbnail.count > 0 && entity.locality_image_thumbnail.results[0].uuid_filename !== null"
+                        <show-preview data-ng-if="entity.locality_image_thumbnail.count > 0 && entity.locality_image_thumbnail.results[0].uuid_filename !== null && (entity.locality_image_thumbnail.results[0].uuid_filename.endsWith('png') || entity.locality_image_thumbnail.results[0].uuid_filename.endsWith('jpeg') || entity.locality_image_thumbnail.results[0].uuid_filename.endsWith('svg') || entity.locality_image_thumbnail.results[0].uuid_filename.endsWith('jpg'))"
                                       classes="img-rounded previewImage"
-                                      img-title="[entity.locality_image_thumbnail.results[0].author__agent, entity.locality_image_thumbnail.results[0].date_taken, entity.locality_image_thumbnail.results[0].date_taken_free]"
+                                      img-title="[entity.locality_image_thumbnail.results[0].author__agent, entity.locality_image_thumbnail.results[0].date_created, entity.locality_image_thumbnail.results[0].date_created_free]"
                                       img-url="ctrl.service.getFileLink({size: 'small', filename: entity.locality_image_thumbnail.results[0].uuid_filename})"/>
 
                     </a>

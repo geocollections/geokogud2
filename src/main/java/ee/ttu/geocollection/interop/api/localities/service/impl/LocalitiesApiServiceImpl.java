@@ -30,6 +30,7 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
     private static final String ATTACHMENT_LINK = "attachment_link";
     private static final String SAMPLE = "sample";
     private static final String STRATIGRAPHY_STRATOTYPE = "stratigraphy_stratotype";
+    private static final String ATTACHMENT_TABLE = "attachment";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -138,8 +139,13 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
     public ApiResponse findLocalityImage(SearchField localityId) {
         String requestParams = FluentLocalityImageSearchApiBuilder.aRequest()
                 .queryLocalityIdForUrl(localityId).andReturn()
-                .buildDefaultFieldsQuery();
-        return apiService.searchRawEntities(IMAGE_TABLE, 1, new SortField("stars", SortingOrder.DESCENDING), requestParams);
+                .returnId()
+                .returnAuthor()
+                .returnDate()
+                .returnDateFree()
+                .returnUuidFilename()
+                .buildFullQuery();
+        return apiService.searchRawEntities(ATTACHMENT_TABLE, 1, new SortField("stars", SortingOrder.DESCENDING), requestParams);
     }
 
     @Override

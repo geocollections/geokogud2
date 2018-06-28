@@ -2,7 +2,7 @@ package ee.ttu.geocollection.interop.api.builder.search;
 
 import ee.ttu.geocollection.domain.SearchField;
 
-import static ee.ttu.geocollection.interop.api.builder.ApiFields.IMAGE_URL;
+import static ee.ttu.geocollection.interop.api.builder.ApiFields.*;
 
 public class FluentLocalityImageSearchApiBuilder extends FluentSearchApiBuilder<FluentLocalityImageSearchApiBuilder> {
 
@@ -20,8 +20,23 @@ public class FluentLocalityImageSearchApiBuilder extends FluentSearchApiBuilder<
         return this;
     }
 
-    public FluentLocalityImageSearchApiBuilder returnImageUrl(){
-        addReturningField(IMAGE_URL);
+    public FluentLocalityImageSearchApiBuilder returnAuthor() {
+        addReturningField(AUTHOR_AGENT);
+        return this;
+    }
+
+    public FluentLocalityImageSearchApiBuilder returnDate() {
+        addReturningField(DATE_CREATED);
+        return this;
+    }
+
+    public FluentLocalityImageSearchApiBuilder returnDateFree() {
+        addReturningField(DATE_CREATED_FREE);
+        return this;
+    }
+
+    public FluentLocalityImageSearchApiBuilder returnUuidFilename(){
+        addReturningField(UUID_FILENAME);
         return this;
     }
 }
