@@ -332,7 +332,7 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'attachment', id: entity.attachment__id})">
+                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'file', id: entity.attachment__id})">
                                         Link
                                     </a>
                                 </td>
@@ -466,8 +466,8 @@
                         </thead>
 
                         <tbody>
-                            <!--<tr data-ng-repeat="specimen in detailCtrl.specimens | limitTo:10">-->
-                            <tr data-ng-repeat="specimen in detailCtrl.results.specimens.results" data-ng-if="specimen.specimenidentification__current == true || specimen.specimenidentificationgeologies__current == true" >
+                            <tr data-ng-repeat="specimen in detailCtrl.specimens | limitTo:10">
+                            <!--<tr data-ng-repeat="specimen in detailCtrl.results.specimens.results" data-ng-if="specimen.specimenidentification__current == true || specimen.specimenidentificationgeologies__current == true" >-->
 
                                 <td data-ng-if="specimen.id != null">
                                     <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen',id:specimen.id})">
