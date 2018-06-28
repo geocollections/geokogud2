@@ -183,6 +183,7 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             vm.doi = vm.relatedData["doi"];
             vm.preparation = vm.relatedData["preparation"];
             vm.taxon = vm.relatedData["taxon"];
+            vm.attachment = vm.relatedData["attachment"];
         }
     }
 

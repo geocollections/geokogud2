@@ -529,23 +529,23 @@
             </div>
 
             <div class="col-sm-6" >
-                <!-- Specimen images -->
-                <div data-ng-if="detailCtrl.specimenImage.length > 0">
+                <!-- Specimen images | updated to get them from attachment table -->
+                <div data-ng-if="detailCtrl.attachment.length > 0">
                     <h3> {{ 'DETAIL.DETAIL_IMAGES' | translate }} </h3>
 
                     <div class="row">
 
-                        <div class="col-md-6 col-xs-6" data-ng-repeat="image in detailCtrl.specimenImage track by $index">
+                        <div class="col-md-6 col-xs-6" data-ng-repeat="image in detailCtrl.attachment track by $index">
 
                             <figure class="margin-bottom-30">
 
                                 <a href="{{detailCtrl.service.getFileLink({size: 'large', filename: image.uuid_filename})}}" class="hover-me" data-fancybox="gallery"
                                    data-caption="{{detailCtrl.service.setFancyBoxCaption(
                                         {
-                                            author: image.agent__agent,
-                                            author_free: image.agent__surename,
-                                            date_taken: image.date,
-                                            date_taken_free: image.date_taken_free,
+                                            author: image.author__agent,
+                                            author_free: image.author__surename,
+                                            date_taken: image.date_created,
+                                            date_taken_free: image.date_created_free,
                                             copyright_agent: image.copyright_agent__agent,
                                             licence: image.licence__licence_en,
                                             licence_url: image.licence__licence_url,
@@ -555,7 +555,7 @@
 
                                     <show-preview class="img-responsive set-height"
                                                   classes="previewImageDetail img-rounded"
-                                                  img-title="[image.agent__agent, image.date, image.date_taken_free, image.id]"
+                                                  img-title="[image.author__agent, image.date_created, image.date_created_free, image.id]"
                                                   img-url="detailCtrl.service.getFileLink({size: 'small', filename: image.uuid_filename})"/>
 
                                 </a>

@@ -160,6 +160,11 @@ public class FluentSpecimenSearchApiBuilder extends FluentSearchApiBuilder<Fluen
         return this;
     }
 
+    public FluentSpecimenSearchApiBuilder querySpecimenImageAttachment() {
+        addFieldNameAndValue("specimen_image_attachment", "1");
+        return this;
+    }
+
     public FluentSpecimenSearchApiBuilder queryImgSpecimenNumber(SearchField specimenNumber) {
         buildMultiSearch(specimenNumber, SPECIMEN__SPECIMEN_NR, SPECIMEN__SPECIMEN_ID);
         return this;

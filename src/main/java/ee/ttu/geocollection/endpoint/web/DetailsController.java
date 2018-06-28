@@ -89,6 +89,7 @@ public class DetailsController {
 //        return specimenSolrService.findSpecimenById(id);
     }
 
+
     @RequestMapping(value = "/raw-specimen-image/{id}")
     public ApiResponse findRawSpecimenImageById(@PathVariable Long id) {
         ApiResponse specimenImages = specimenImageApiService.findRawSpecimenImageById(id);

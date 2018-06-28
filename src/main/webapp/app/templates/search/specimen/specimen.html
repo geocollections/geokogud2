@@ -323,12 +323,12 @@
 
                         <figure class="margin-bottom-20">
 
-                            <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen_image',id:image.id})">
+                            <a href data-ng-click="ctrl.service.openInNewWindow({object:'file',id:image.id})">
                                 <div data-ng-if="image.uuid_filename && image.uuid_filename != null">
 
                                     <show-preview class="img-responsive set-height hover-me"
                                                   classes="previewImage img-rounded"
-                                                  img-title="[image.agent__agent, image.date, image.date_taken_free]"
+                                                  img-title="[image.author__agent, image.date_created, image.date_created_free]"
                                                   img-url="ctrl.service.getFileLink({size: 'small', filename: image.uuid_filename})"/>
                                 </div>
 
@@ -338,7 +338,7 @@
 
                                 <div class="img-gallery-author">
                                     <a href data-ng-click="ctrl.service.openInNewWindow({object:'specimen',id:image.specimen_id,width:950})">
-                                        {{image.specimen__database__acronym}} {{image.specimen__specimen_id}}
+                                        {{image.database__acronym}} {{image.specimen__specimen_id}}
                                     </a>
                                     <br>
                                         <!--<div data-ng-if="col.object.specimenidentification__taxon__taxon == null ||col.object.specimenidentification__taxon__taxon == ''">-->

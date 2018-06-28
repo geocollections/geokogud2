@@ -144,7 +144,8 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
     @Override
     public ApiResponse findSpecimenImages(SpecimenSearchCriteria searchCriteria) {
         String requestParams = FluentSpecimenSearchApiBuilder.aRequest()
-                .queryImageNotNull()
+//                .queryImageNotNull()
+                .querySpecimenImageAttachment()
                 .queryImgSpecimenNumber(searchCriteria.getSpecimenNumber())
                 .queryImgCollectionNumber(searchCriteria.getCollectionNumber())
                 .queryImgClassification(searchCriteria.getClassification())
@@ -165,7 +166,7 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .queryInstitutions(searchCriteria.getDbs())
                 .buildDefaultFieldsQuery();
         return apiService.searchRawEntities(
-                SPECIMEN_IMAGE_TABLE,
+                ATTACHMENT_TABLE,
                 searchCriteria.getPaginateBy(),
                 searchCriteria.getPage(),
                 new SortField("specimen__id", SortingOrder.DESCENDING),
@@ -225,6 +226,7 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .relatedData(SPECIMEN_REFERENCE_TABLE)
                 .relatedData(SPECIMEN_IDENTIFICATION_GEOLOGY_TABLE)
                 .relatedData(ATTACHMENT_LINK_TABLE)
+                .relatedData(ATTACHMENT_TABLE)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(SPECIMEN_TABLE, requestParams);

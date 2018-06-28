@@ -286,10 +286,10 @@ var constructor = function (utils, configuration, $window, $location, $translate
         var date = "Date: ";
         var licence = "Licence: ";
         var detailView = "Picture detail view";
-        var url = $window.location.origin + '/image/';
+        var url = $window.location.origin + '/file/';
 
         if ($stateParams.type === 'specimens') {
-            url = $window.location.origin + '/specimen_image/'
+            url = $window.location.origin + '/file/'
         }
 
         if (params.date_taken && params.date_taken != null) {
