@@ -1,13 +1,6 @@
 jQuery(document).ready(function ($) {
     "use strict"; // Start of use strict
-
-   // jQuery for page scrolling feature - requires jQuery Easing plugin
-    $(document).on('click', 'a.page-scroll', function(event) {
-        $('html, body').animate({
-            scrollTop: ($($(this).attr('href')).offset().top - 50)
-        }, 'fast');
-        event.preventDefault();
-    });
+    
      $(document).on('click', 'a.page-scroll-to-additional', function(event) {
          var slideTo = $(this).attr('data-slide-to');
          setTimeout(

@@ -23,6 +23,7 @@ var constructor = function (configuration, $translate, $http, applicationService
     vm.isGlobalSearch = isGlobalSearch;
     vm.switchYear = switchYear;
     vm.isMain = isMain;
+    vm.goHome = goHome;
 
     // Initial value for which year to show
     $scope.yearToShow = 0;
@@ -183,6 +184,13 @@ var constructor = function (configuration, $translate, $http, applicationService
      */
     function changeLanguage(langKey) {
         $translate.use(langKey);
+    }
+
+    /**
+     * Goes to main page
+     */
+    function goHome() {
+        window.location = '/';
     }
 
     //default ui-bootstrap datepicker options
