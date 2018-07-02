@@ -834,25 +834,20 @@ angular.module('geoApp')
                         $scope.layerData.getSource().clear();
                     }
 
-                    if ($scope.localities.length > 0) {
-                        console.log($scope.localities.length)
+                    angular.forEach($scope.localities, function (locality) {
+                        var centroidLL = ol.proj.transform([Number(locality.longitude), Number(locality.latitude)], 'EPSG:4326', 'EPSG:3857');
+                        var centroidPoint = new ol.geom.Point(centroidLL);
+                        var feature = new ol.Feature({geometry: centroidPoint});
 
-                        angular.forEach($scope.localities, function (locality) {
-                            var centroidLL = ol.proj.transform([Number(locality.longitude), Number(locality.latitude)], 'EPSG:4326', 'EPSG:3857');
-                            var centroidPoint = new ol.geom.Point(centroidLL);
-                            var feature = new ol.Feature({geometry: centroidPoint});
+                        if (locality.localityEng == null) {
+                            feature.name = locality.place;
+                        } else {
+                            feature.name = locality.localityEng;
+                        }
 
-                            if (locality.localityEng == null) {
-                                feature.name = locality.place;
-                            } else {
-                                feature.name = locality.localityEng;
-                            }
-
-                            feature.fid = locality.fid;
-                            $scope.vectorSource.addFeature(feature);
-                        });
-
-                    }
+                        feature.fid = locality.fid;
+                        $scope.vectorSource.addFeature(feature);
+                    });
 
                     $scope.layerData = new ol.layer.Vector({
                         title: "Localities",
