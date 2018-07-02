@@ -834,20 +834,25 @@ angular.module('geoApp')
                         $scope.layerData.getSource().clear();
                     }
 
-                    angular.forEach($scope.localities, function (locality) {
-                        var centroidLL = ol.proj.transform([Number(locality.longitude), Number(locality.latitude)], 'EPSG:4326', 'EPSG:3857');
-                        var centroidPoint = new ol.geom.Point(centroidLL);
-                        var feature = new ol.Feature({geometry: centroidPoint});
+                    if ($scope.localities.length > 0) {
+                        console.log($scope.localities.length)
 
-                        if (locality.localityEng == null) {
-                            feature.name = locality.place;
-                        } else {
-                            feature.name = locality.localityEng;
-                        }
+                        angular.forEach($scope.localities, function (locality) {
+                            var centroidLL = ol.proj.transform([Number(locality.longitude), Number(locality.latitude)], 'EPSG:4326', 'EPSG:3857');
+                            var centroidPoint = new ol.geom.Point(centroidLL);
+                            var feature = new ol.Feature({geometry: centroidPoint});
 
-                        feature.fid = locality.fid;
-                        $scope.vectorSource.addFeature(feature);
-                    });
+                            if (locality.localityEng == null) {
+                                feature.name = locality.place;
+                            } else {
+                                feature.name = locality.localityEng;
+                            }
+
+                            feature.fid = locality.fid;
+                            $scope.vectorSource.addFeature(feature);
+                        });
+
+                    }
 
                     $scope.layerData = new ol.layer.Vector({
                         title: "Localities",
@@ -893,8 +898,10 @@ angular.module('geoApp')
                         displayFeatureInfo(pixel);
                     });
 
-                    var extent = $scope.layerData.getSource().getExtent();
-                    $scope.olMap.getView().fit(extent, $scope.olMap.getSize());
+                    if ($scope.localities.length > 0) {
+                        var extent = $scope.layerData.getSource().getExtent();
+                        $scope.olMap.getView().fit(extent, $scope.olMap.getSize());
+                    }
 
                     var zz = $scope.olMap.getView().getZoom();
                     if (zz > 9) {
@@ -907,10 +914,12 @@ angular.module('geoApp')
 
 
                     // Can't click if ID is missing
-                    if ($scope.vectorSource.getFeatures()[0].fid !== null) {
-                        $scope.olMap.on('click', function (evt) {
-                            openLoc(evt.pixel);
-                        });
+                    if ($scope.localities.length > 0) {
+                        if ($scope.vectorSource.getFeatures()[0].fid !== null) {
+                            $scope.olMap.on('click', function (evt) {
+                                openLoc(evt.pixel);
+                            });
+                        }
                     }
 
                     var layerSwitcher = new ol.control.LayerSwitcher({

@@ -224,6 +224,7 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
         $scope.isMapVisible = !$scope.isMapVisible;
         // console.log($scope.isMapVisible);
         if ($scope.isMapVisible) {
+            console.log($scope.response.results)
             $scope.getLocalities($scope.response.results);
         }
     };
