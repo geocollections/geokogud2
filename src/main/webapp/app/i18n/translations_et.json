@@ -592,8 +592,8 @@
             "LITHOSTRATIGRAPHY_HEADING": "Litostratigraafia",
             "STRATIGRAPHY": "Stratigraafia",
             "DESCRIPTION_HEADING": "Kirjeldus",
-            "SPECIMEN_LINK": "Kogudes talletatud eksemplare (umbkaudne)",
-            "SAMPLE_LINK": "Kogudes talletatud proove (umbkaudne)"
+            "SPECIMEN_LINK": "Otsi kogudes talletatud eksemplare",
+            "SAMPLE_LINK": "Otsi kogudes talletatud proove"
         },
         "ATTACHMENT": {
             "HEADING": "Fail"

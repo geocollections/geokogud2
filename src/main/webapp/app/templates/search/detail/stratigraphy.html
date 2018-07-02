@@ -402,18 +402,16 @@
                 <!--</div>-->
 
                 <!-- Specimen link -->
-                <div data-ng-if="detailCtrl.specimens.length > 0">
-                    {{ 'DETAIL.STRATIGRAPHY.SPECIMEN_LINK' | translate }}:
+                <div>
                     <a href target="_blank" data-ng-click="detailCtrl.service.searchAllSpecimensUsingStratigraphy({stratigraphy: detailCtrl.results.stratigraphy, stratigraphyEn: detailCtrl.results.stratigraphy_en})">
-                        {{detailCtrl.specimens.length}}
+                        {{ 'DETAIL.STRATIGRAPHY.SPECIMEN_LINK' | translate }}
                     </a>
                 </div>
 
                 <!-- Sample link -->
-                <div data-ng-if="detailCtrl.samples.length > 0" style="margin-top: 2rem">
-                    {{ 'DETAIL.STRATIGRAPHY.SAMPLE_LINK' | translate }}:
+                <div style="margin-top: 2rem">
                     <a href target="_blank" data-ng-click="detailCtrl.service.searchAllSamplesUsingStratigraphy({stratigraphy: detailCtrl.results.stratigraphy, stratigraphyEn: detailCtrl.results.stratigraphy_en})">
-                        {{detailCtrl.samples.length}}
+                        {{ 'DETAIL.STRATIGRAPHY.SAMPLE_LINK' | translate }}
                     </a>
                 </div>
 

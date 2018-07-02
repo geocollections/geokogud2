@@ -96,8 +96,8 @@ public class StratigraphyApiServiceImpl implements StratigraphyApiService {
                 .relatedData(STRATIGRAPHY_REFERENCE)
                 .relatedData(STRATIGRAPHY_STRATOTYPE)
                 .relatedData(STRATIGRAPHY_SYNONYM)
-                .relatedData(SPECIMEN)
-                .relatedData(SAMPLE)
+//                .relatedData(SPECIMEN)
+//                .relatedData(SAMPLE)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.searchRawEntities(STRATIGRAPHY_TABLE, requestParams);

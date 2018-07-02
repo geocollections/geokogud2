@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
     "use strict"; // Start of use strict
-    
+
      $(document).on('click', 'a.page-scroll-to-additional', function(event) {
          var slideTo = $(this).attr('data-slide-to');
          setTimeout(

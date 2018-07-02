@@ -592,8 +592,8 @@
             "LITHOSTRATIGRAPHY_HEADING": "Lithostratigraphy",
             "STRATIGRAPHY": "Stratigraphy",
             "DESCRIPTION_HEADING": "Description",
-            "SPECIMEN_LINK": "Specimens in collections (approximately)",
-            "SAMPLE_LINK": "Samples in collections (approximately)"
+            "SPECIMEN_LINK": "Search specimens in collections",
+            "SAMPLE_LINK": "Search samples in collections"
         },
         "ATTACHMENT": {
             "HEADING": "File"
