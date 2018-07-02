@@ -701,11 +701,25 @@ table tr > td:first-child {
     margin: 5px 20px;
 }
 
+.drillcore-tables-rl {
+    float: right;
+    margin: 5px 20px;
+}
+
 .drillcore-tables td {
     padding: 8px;
 }
 
+.drillcore-tables-rl td {
+    padding: 8px;
+}
+
 .drillcore-tables tbody tr td:first-child {
+    background-color: #eceeef;
+    font-size: smaller;
+}
+
+.drillcore-tables-rl tbody tr td:first-child {
     background-color: #eceeef;
     font-size: smaller;
 }

@@ -18,6 +18,7 @@ public class DrillCoreBoxApiServiceImpl implements DrillCoreBoxApiService {
     private static final String SAMPLE_TABLE = "sample";
     private static final String LOCALITY_STRATIGRAPHY_TABLE = "locality_stratigraphy";
     private static final String ATTACHMENT_LINK = "attachment_link";
+    private static final String ATTACHMENT = "attachment";
 
     @Autowired
     private ApiService apiService;
@@ -26,7 +27,8 @@ public class DrillCoreBoxApiServiceImpl implements DrillCoreBoxApiService {
     public ApiResponse findRawCoreBoxById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
-                .relatedData(ATTACHMENT_LINK)
+//                .relatedData(ATTACHMENT_LINK)
+                .relatedData(ATTACHMENT)
                 .buildWithDefaultReturningFields();
         return apiService.searchRawEntities(DRILLCORE_BOX_TABLE, requestParams);
     }

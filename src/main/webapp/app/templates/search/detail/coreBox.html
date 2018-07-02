@@ -129,30 +129,30 @@
 
 
             <div class="col-lg-6 core-box-image">
-                <a href title="{{detailCtrl.service.getFileLink({size: 'small', filename: detailCtrl.results.drillcoreimage__uuid_filename})}}"
-                   data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.service.getFileLink({size: 'small', filename: detailCtrl.results.drillcoreimage__uuid_filename})})">
-                    <img spinner-load ng-src="{{detailCtrl.service.getFileLink({size: 'small', filename: detailCtrl.results.drillcoreimage__uuid_filename})}}">
+                <a href title="{{detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.attachment__uuid_filename})}}"
+                   data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.attachment__uuid_filename})})">
+                    <img spinner-load ng-src="{{detailCtrl.service.getFileLink({size: 'small', filename: detailCtrl.results.attachment__uuid_filename})}}">
                 </a>
 
                 <div class="photo-author">
                     {{ 'DETAIL.CORE_BOX.PHOTO' | translate }}:
-                    {{detailCtrl.results.drillcoreimage__agent__agent}} {{detailCtrl.results.drillcoreimage__image_date | date:dateFormat}}
+                    {{detailCtrl.results.attachment__author__agent}} {{detailCtrl.results.attachment__date_created | date:dateFormat}}
                 </div>
 
                 <div>
                     {{'API_TRANSLATION.PHOTO_ARCHIVE.SIZE ' | translate }}:
-                    <a href="{{detailCtrl.service.getFileLink({size: 'small', filename: detailCtrl.results.drillcoreimage__uuid_filename})}}" target="_blank">{{ 'INDEX.SMALL' | translate }}</a>
+                    <a href="{{detailCtrl.service.getFileLink({size: 'small', filename: detailCtrl.results.attachment__uuid_filename})}}" target="_blank">{{ 'INDEX.SMALL' | translate }}</a>
                     |
-                    <a href="{{detailCtrl.service.getFileLink({size: 'medium', filename: detailCtrl.results.drillcoreimage__uuid_filename})}}" target="_blank">{{ 'INDEX.MEDIUM' | translate }}</a>
+                    <a href="{{detailCtrl.service.getFileLink({size: 'medium', filename: detailCtrl.results.attachment__uuid_filename})}}" target="_blank">{{ 'INDEX.MEDIUM' | translate }}</a>
                     |
-                    <a href="{{detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.drillcoreimage__uuid_filename})}}" target="_blank">{{ 'INDEX.LARGE' | translate }}</a>
+                    <a href="{{detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.attachment__uuid_filename})}}" target="_blank">{{ 'INDEX.LARGE' | translate }}</a>
                     |
-                    <a href="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.drillcoreimage__uuid_filename})}}" target="_blank">{{ 'INDEX.ORIGINAL' | translate }}</a>
+                    <a href="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.attachment__uuid_filename})}}" target="_blank">{{ 'INDEX.ORIGINAL' | translate }}</a>
                 </div>
             </div>
 
             <!-- Related files -->
-            <div class="col-lg-6" data-ng-if="detailCtrl.attachmentLink.length > 0">
+            <div class="col-lg-6" data-ng-if="detailCtrl.attachment.length > 0">
                 <h3> {{ 'DETAIL.DETAIL_ATTACHMENT_LINK' | translate }} </h3>
 
                 <div class="table-responsive">
@@ -168,29 +168,29 @@
                         </thead>
 
                         <tbody>
-                        <tr data-ng-repeat="entity in detailCtrl.attachmentLink">
+                        <tr data-ng-repeat="entity in detailCtrl.attachment">
                             <td>
-                                <localize et="entity.attachment__type__value" en="entity.attachment__type__value_en" />
+                                <localize et="entity.type__value" en="entity.type__value_en" />
                             </td>
                             <td>
-                                <localize et="entity.attachment__description" en="entity.attachment__description_en" />
+                                <localize et="entity.description" en="entity.description_en" />
                             </td>
                             <td>
-                                <first-not-null values="[entity.attachment__author__agent, entity.attachment__author_free]" />
+                                <first-not-null values="[entity.author__agent, entity.author_free]" />
                             </td>
                             <td>
-                                <span data-ng-if="entity.attachment__date_added != null">
-                                    {{ entity.attachment__date_added | date:dateFormat }}
+                                <span data-ng-if="entity.date_added != null">
+                                    {{ entity.date_added | date:dateFormat }}
                                 </span>
-                                <span data-ng-if="entity.attachment__date_added == null && entity.attachment__date_created != null">
-                                    {{ entity.attachment__date_created | date:dateFormat }}
+                                <span data-ng-if="entity.date_added == null && entity.date_created != null">
+                                    {{ entity.date_created | date:dateFormat }}
                                 </span>
-                                <span data-ng-if="entity.attachment__date_added == null && entity.attachment__date_created == null && entity.attachment__date_created_free != null">
-                                    {{ entity.attachment__date_created_free }}
+                                <span data-ng-if="entity.date_added == null && entity.date_created == null && entity.date_created_free != null">
+                                    {{ entity.date_created_free }}
                                 </span>
                             </td>
                             <td>
-                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'file', id: entity.attachment__id})">
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'file', id: entity.id})">
                                     Link
                                 </a>
                             </td>
@@ -201,21 +201,21 @@
             </div>
 
             <!-- Related images -->
-            <div class="col-lg-6" data-ng-if="detailCtrl.attachmentLink.length > 0">
+            <div class="col-lg-6" data-ng-if="detailCtrl.attachment.length > 0">
                 <!--<h3> {{ 'DETAIL.LOCALITY.IMAGES_HEADING'| translate }} </h3>-->
 
                 <div class="row related-images-margin-top">
 
-                    <div class="col-md-6 col-xs-6" data-ng-repeat="image in detailCtrl.attachmentLink"
-                         data-ng-if="image.attachment__filename.endsWith('png') || image.attachment__filename.endsWith('jpeg') || image.attachment__filename.endsWith('svg') || image.attachment__filename.endsWith('jpg')" >
+                    <div class="col-md-6 col-xs-6" data-ng-repeat="image in detailCtrl.attachment"
+                         data-ng-if="(image.filename.endsWith('png') || image.filename.endsWith('jpeg') || image.filename.endsWith('svg') || image.filename.endsWith('jpg')) && detailCtrl.results.id !== image.drillcore_box__id" >
 
                         <figure class="margin-bottom-30">
 
-                            <a href="{{detailCtrl.service.getFileLink({size: 'large', filename: image.attachment__uuid_filename})}}" class="hover-me" data-fancybox="gallery">
+                            <a href="{{detailCtrl.service.getFileLink({size: 'large', filename: image.uuid_filename})}}" class="hover-me" data-fancybox="gallery">
 
                                 <div class="img-responsive set-height">
                                     <img class="previewImageDetail img-rounded"
-                                         src="{{detailCtrl.service.getFileLink({size: 'small', filename: image.attachment__uuid_filename})}}" />
+                                         src="{{detailCtrl.service.getFileLink({size: 'small', filename: image.uuid_filename})}}" />
                                 </div>
 
                             </a>

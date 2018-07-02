@@ -18,6 +18,7 @@ public class DrillCoreApiServiceImpl implements DrillCoreApiService {
 
     private static final String DRILLCORE = "drillcore";
     private static final String DRILLCORE_BOX = "drillcore_box";
+    private static final String ATTACHMENT = "attachment";
 
     @Autowired
     private ApiService apiService;
@@ -44,7 +45,8 @@ public class DrillCoreApiServiceImpl implements DrillCoreApiService {
         "database__acronym",
         "locality__maaamet_pa_id",
         "locality__locality",
-        "locality__locality_en"
+        "locality__locality_en",
+        "direction_lr"
     );
 
     @Override
@@ -72,7 +74,8 @@ public class DrillCoreApiServiceImpl implements DrillCoreApiService {
     public Map findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
-                .relatedData(DRILLCORE_BOX)
+//                .relatedData(DRILLCORE_BOX)
+                .relatedData(ATTACHMENT)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(DRILLCORE, requestParams);

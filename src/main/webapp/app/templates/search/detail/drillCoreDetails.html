@@ -118,13 +118,19 @@
 
         <div class="row">
 
-            <div class="col-sm-12" data-ng-if="detailCtrl.drillcoreBoxes.length > 0">
+            <div class="col-sm-12" data-ng-if="detailCtrl.attachment.length > 0">
                 <h3>{{ 'DETAIL.DRILLCORE.DRILLCORE_BOXES'| translate }}</h3>
-                <table class="table-bordered table-hover drillcore-tables" data-ng-repeat="box in detailCtrl.drillcoreBoxes | orderBy: 'depth_start'" data-ng-if="box.drillcoreimage__image != null">
+
+                <!-- Depends on box direction -->
+                <table class="table-bordered table-hover"
+                       ng-class="detailCtrl.results.direction_lr ? 'drillcore-tables' : 'drillcore-tables-rl'"
+                       data-ng-repeat="box in detailCtrl.attachment | orderBy: 'id'"
+                       data-ng-if="box.uuid_filename != null">
+
                     <tbody>
                         <tr>
                             <td id="drillcore-box-heading" colspan="2">
-                                <h4>{{ 'DETAIL.DRILLCORE.BOX_NUMBER'| translate }} {{box.number}}</h4>
+                                <h4>{{ 'DETAIL.DRILLCORE.BOX_NUMBER'| translate }} {{box.drillcore_box__number}}</h4>
                             </td>
                         </tr>
 
@@ -132,7 +138,7 @@
                             <td>{{ 'DETAIL.DRILLCORE.SINCE'| translate }}</td>
                             <td>
                                 <div class="table-data-min-height">
-                                    {{box.depth_start}}
+                                    {{box.drillcore_box__depth_start}}
                                 </div>
                             </td>
                         </tr>
@@ -141,7 +147,7 @@
                             <td>{{ 'DETAIL.DRILLCORE.TO'| translate }}</td>
                             <td>
                                 <div class="table-data-min-height">
-                                    {{box.depth_end}}
+                                    {{box.drillcore_box__depth_end}}
                                 </div>
                             </td>
                         </tr>
@@ -170,15 +176,15 @@
 
                         <tr>
                             <td id="drillcore-image-background" colspan="2">
-                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'corebox',id:box.id})">
-                                    <img style="max-width: 210px" data-toggle="tooltip" title="{{ 'DETAIL.DRILLCORE.COREBOX_DETAILS' | translate }}"
-                                         ng-src="{{detailCtrl.service.getFileLink({size: 'small', filename: box.drillcoreimage__uuid_filename})}}" />
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'corebox',id:box.drillcore_box__id})">
+                                    <img style="max-width: 210px; max-height: 390px" data-toggle="tooltip" title="{{ 'DETAIL.DRILLCORE.COREBOX_DETAILS' | translate }}"
+                                         ng-src="{{detailCtrl.service.getFileLink({size: 'small', filename: box.uuid_filename})}}" />
                                 </a>
                             </td>
                         </tr>
 
                         <tr>
-                            <td id="core-box-author" colspan="2">{{box.drillcoreimage__agent__agent}} | {{box.drillcoreimage__image_date | date:dateFormat}}</td>
+                            <td id="core-box-author" colspan="2">{{box.author__agent}} | {{box.date_created | date:dateFormat}}</td>
                         </tr>
                     </tbody>
                 </table>
