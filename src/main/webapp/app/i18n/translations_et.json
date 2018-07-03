@@ -579,7 +579,7 @@
             "SAMPLE_LINK": "Kuva proovid"
         },
         "REFERENCE": {
-            "SPECIMEN_LINK": "Specimens cited"
+            "SPECIMEN_LINK": "Viidatud eksemplarid"
         },
         "ANALYSIS": {
             "RESULTS": "Analüüside tulemused",
@@ -596,6 +596,8 @@
             "SAMPLE_LINK": "Otsi kogudes talletatud proove"
         },
         "ATTACHMENT": {
+            "HEADING_PHOTO_ARCHIVE": "Foto",
+            "HEADING_SPECIMEN_IMAGE": "Säiliku foto",
             "HEADING": "Fail"
         },
         "COLLECTION": {

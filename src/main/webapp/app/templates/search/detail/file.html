@@ -13,7 +13,9 @@
 
                 <div class="detailview-title">
                     <h2>
-                        {{ 'DETAIL.ATTACHMENT.HEADING' | translate }}:
+                        <span data-ng-if="detailCtrl.results.specimen_image_attachment === 2">{{ 'DETAIL.ATTACHMENT.HEADING_PHOTO_ARCHIVE' | translate }}:</span>
+                        <span data-ng-if="detailCtrl.results.specimen_image_attachment === 1">{{ 'DETAIL.ATTACHMENT.HEADING_SPECIMEN_IMAGE' | translate }}:</span>
+                        <span data-ng-if="detailCtrl.results.specimen_image_attachment === 3">{{ 'DETAIL.ATTACHMENT.HEADING' | translate }}:</span>
                         <localize et="detailCtrl.results.description" en="detailCtrl.results.description_en"/>
                     </h2>
                     <div>
@@ -98,6 +100,87 @@
                                 {{detailCtrl.results.specimen__specimen_id}}
                             </a>
                         </td>
+                    </tr>
+
+                    <!--NAME START-->
+                    <tr data-ng-if="detailCtrl.results.specimenIdentification.count > 0">
+                        <td> {{ 'API_TRANSLATION.SPECIMEN_IMAGE.SPECIMEN_NAME' | translate }} </td>
+                        <td>
+                            <span>
+                                <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+detailCtrl.results.specimenIdentification.results[0].taxon_id})">
+                                    {{detailCtrl.results.specimenIdentification.results[0].taxon__taxon}}
+                                </a>
+                            </span>
+                            <span data-ng-if="(detailCtrl.results.specimenIdentification.results[0].name && detailCtrl.results.specimenIdentification.results[0].name != null) && detailCtrl.results.specimenIdentification.results[0].name != detailCtrl.results.specimenIdentification.results[0].taxon__taxon">
+                                | {{ detailCtrl.results.specimenIdentification.results[0].name }}
+                            </span>
+                        </td>
+                    </tr>
+
+                    <!--First-->
+                    <tr data-ng-if="detailCtrl.results.specimen__specimenidentification__taxon__taxon
+                        && detailCtrl.results.specimen__specimenidentification__taxon__taxon != null">
+                        <td> {{ 'API_TRANSLATION.SPECIMEN_IMAGE.NAME' | translate }} </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+detailCtrl.results.specimen__specimenidentification__taxon__id})">
+                                {{ detailCtrl.results.specimen__specimenidentification__taxon__taxon }}
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!--Second-->
+                    <tr data-ng-if="detailCtrl.results.specimen__specimenidentification__taxon__taxon == null &&
+                        (detailCtrl.results.specimen__specimenidentification__taxon__name && detailCtrl.results.specimen__specimenidentification__taxon__name != null)">
+                        <td> {{ 'API_TRANSLATION.SPECIMEN_IMAGE.NAME' | translate }} </td>
+                        <td> {{ detailCtrl.results.specimen__specimenidentification__taxon__name }} </td>
+                    </tr>
+
+                    <!--Third-->
+                    <!--TODO: Classification_mineral_name-->
+
+                    <!--Fourth-->
+                    <tr data-ng-if="(detailCtrl.results.specimen__specimenidentification__taxon__taxon == null && detailCtrl.results.specimen__specimenidentification__taxon__name == null)
+                        && ((detailCtrl.results.specimen__specimenidentificationgeologies__name && specimen__specimenidentificationgeologies__name != null)
+                        || (detailCtrl.results.specimen__specimenidentificationgeologies__name_en && specimen__specimenidentificationgeologies__name_en != null))">
+                        <td> {{ 'API_TRANSLATION.SPECIMEN_IMAGE.NAME' | translate }} </td>
+                        <td>
+                            <localize et="detailCtrl.results.specimen__specimenidentificationgeologies__name"
+                                      en="detailCtrl.results.specimen__specimenidentificationgeologies__name_en"
+                        </td>
+                    </tr>
+                    <!--NAME END-->
+
+                    <tr data-ng-if="(detailCtrl.results.specimen__locality__locality && detailCtrl.results.specimen__locality__locality != null)
+                            || (detailCtrl.results.specimen__locality__locality_en && detailCtrl.results.specimen__locality__locality_en != null) ">
+                        <td>
+                            <localize-label et="'API_TRANSLATION.SPECIMEN_IMAGE.LOCALITY'"
+                                            en="'API_TRANSLATION.SPECIMEN_IMAGE.LOCALITY_EN'"/>
+                        </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'locality',id:detailCtrl.results.specimen__locality})">
+                                <localize et="detailCtrl.results.specimen__locality__locality"
+                                          en="detailCtrl.results.specimen__locality__locality_en"/>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr data-ng-if="(detailCtrl.results.specimen__stratigraphy__stratigraphy && detailCtrl.results.specimen__stratigraphy__stratigraphy != null)
+                            || (detailCtrl.results.specimen__stratigraphy__stratigraphy_en && detailCtrl.results.specimen__stratigraphy__stratigraphy_en != null) ">
+                        <td>
+                            <localize-label et="'API_TRANSLATION.SPECIMEN_IMAGE.STRATIGRAPHY'"
+                                            en="'API_TRANSLATION.SPECIMEN_IMAGE.STRATIGRAPHY_EN'"/>
+                        </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'stratigraphy',id:detailCtrl.results.specimen__stratigraphy})">
+                                <localize et="detailCtrl.results.specimen__stratigraphy__stratigraphy"
+                                          en="detailCtrl.results.specimen__stratigraphy__stratigraphy_en"/>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.image_scalebar && detailCtrl.results.image_scalebar != null">
+                        <td> {{ 'API_TRANSLATION.SPECIMEN_IMAGE.SCALEBAR' | translate }} </td>
+                        <td> {{ detailCtrl.results.image_scalebar }} </td>
                     </tr>
 
                     <!-- SPECIMEN END -->

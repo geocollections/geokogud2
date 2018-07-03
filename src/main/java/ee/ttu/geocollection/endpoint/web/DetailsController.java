@@ -243,7 +243,16 @@ public class DetailsController {
 
     @RequestMapping(value = "/raw-attachment/{id}")
     public ApiResponse findRawAttachmentByIdentifier(@PathVariable Long id) {
-        return attachmentApiService.findRawById(id);
+        ApiResponse attachment = attachmentApiService.findRawById(id);
+
+        if (attachment.getResult() != null) {
+            asynchService.doAsynchCallsForEachResult(
+                    attachment,
+                    specimenIdentification -> () -> specimenImageApiService.findSpecimenIdentification(
+                            new SearchField(specimenIdentification.get("specimen_id").toString(), LookUpType.exact)),
+                    specimenId -> receivedSpecimenId -> specimenId.put("specimenIdentification", receivedSpecimenId));
+        }
+        return attachment;
     }
 
     @RequestMapping(value = "/raw-collection/{id}")

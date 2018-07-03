@@ -579,7 +579,7 @@
             "SAMPLE_LINK": "Show samples recovered"
         },
         "REFERENCE": {
-            "SPECIMEN_LINK": "Viidatud eksemplarid"
+            "SPECIMEN_LINK": "Specimens cited"
         },
         "ANALYSIS": {
             "RESULTS": "Analyses results",
@@ -596,6 +596,8 @@
             "SAMPLE_LINK": "Search samples in collections"
         },
         "ATTACHMENT": {
+            "HEADING_PHOTO_ARCHIVE": "Photo",
+            "HEADING_SPECIMEN_IMAGE": "Specimen image",
             "HEADING": "File"
         },
         "COLLECTION": {
