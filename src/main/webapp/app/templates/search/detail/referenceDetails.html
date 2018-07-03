@@ -197,7 +197,7 @@
                         </thead>
 
                         <tbody>
-                        <tr data-ng-repeat="entity in detailCtrl.attachmentLink">
+                        <tr data-ng-repeat="entity in detailCtrl.attachmentLink" data-ng-if="!entity.attachment__is_private">
                             <td> {{ entity.attachment__id }} </td>
                             <td data-ng-if="entity.locality__id === null && entity.locality__locality != null && entity.locality__locality_id != null">
                                 <localize en="entity.locality__locality_en" et="entity.locality__locality" />
