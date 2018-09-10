@@ -13,13 +13,24 @@
 
                 <div class="detailview-title">
                     <h2>
-                        <span data-ng-if="detailCtrl.results.specimen_image_attachment === 2">{{ 'DETAIL.ATTACHMENT.HEADING_PHOTO_ARCHIVE' | translate }}:</span>
-                        <span data-ng-if="detailCtrl.results.specimen_image_attachment === 1">{{ 'DETAIL.ATTACHMENT.HEADING_SPECIMEN_IMAGE' | translate }}:</span>
-                        <span data-ng-if="detailCtrl.results.specimen_image_attachment === 3">{{ 'DETAIL.ATTACHMENT.HEADING' | translate }}:</span>
-                        <localize et="detailCtrl.results.description" en="detailCtrl.results.description_en"/>
+                        <span data-ng-if="detailCtrl.results.specimen_image_attachment === 2">
+                            {{ 'DETAIL.ATTACHMENT.HEADING_PHOTO_ARCHIVE' | translate }}:
+                            <span data-ng-if="detailCtrl.results.image_number && detailCtrl.results.image_number != null">{{ detailCtrl.results.image_number }}</span>
+                        </span>
+                        <span data-ng-if="detailCtrl.results.specimen_image_attachment === 1">
+                            {{ 'DETAIL.ATTACHMENT.HEADING_SPECIMEN_IMAGE' | translate }}:
+                            <span data-ng-if="detailCtrl.results.specimen__coll__number && detailCtrl.results.specimen__coll__number != null">{{ detailCtrl.results.specimen__coll__number | split:' ':0 }}</span>
+                            <span data-ng-if="detailCtrl.results.specimen__specimen_id && detailCtrl.results.specimen__specimen_id != null">{{ detailCtrl.results.specimen__specimen_id }}</span>
+                            <span data-ng-if="detailCtrl.results.specimen_id && detailCtrl.results.specimen_id != null">(ID: {{ detailCtrl.results.specimen_id }})</span>
+                        </span>
+                        <span data-ng-if="detailCtrl.results.specimen_image_attachment === 3">{{ 'DETAIL.ATTACHMENT.HEADING' | translate }}:
+                            <span data-ng-if="detailCtrl.results.description && detailCtrl.results.description != null">
+                                <localize et="detailCtrl.results.description" en="detailCtrl.results.description_en"/>
+                            </span>
+                        </span>
                     </h2>
                     <div>
-                        <em>(ID: {{detailCtrl.results.id}})</em>
+                        <em> {{ 'DETAIL.ATTACHMENT.FILE_ID_HEADING' | translate }}: {{detailCtrl.results.id}}</em>
                     </div>
                 </div>
 

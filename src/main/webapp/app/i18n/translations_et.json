@@ -598,7 +598,8 @@
         "ATTACHMENT": {
             "HEADING_PHOTO_ARCHIVE": "Foto",
             "HEADING_SPECIMEN_IMAGE": "Säiliku foto",
-            "HEADING": "Fail"
+            "HEADING": "Fail",
+            "FILE_ID_HEADING": "Fail ID"
         },
         "COLLECTION": {
             "HEADING": "Kollektsioon #",

@@ -597,8 +597,9 @@
         },
         "ATTACHMENT": {
             "HEADING_PHOTO_ARCHIVE": "Photo",
-            "HEADING_SPECIMEN_IMAGE": "Specimen image",
-            "HEADING": "File"
+            "HEADING_SPECIMEN_IMAGE": "Image of specimen",
+            "HEADING": "File",
+            "FILE_ID_HEADING": "File ID"
         },
         "COLLECTION": {
             "HEADING": "Collection #",
