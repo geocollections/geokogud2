@@ -122,6 +122,11 @@
                         <td> {{ detailCtrl.results.remarks }} </td>
                     </tr>
 
+                    <tr data-ng-if="detailCtrl.results.copyright_agent != null">
+                        <td> {{ 'API_TRANSLATION.ATTACHMENT.COPYRIGHT_AGENT' | translate }} </td>
+                        <td> {{ detailCtrl.results.copyright_agent__agent }} </td>
+                    </tr>
+
                     <!--TODO: licence-->
 
                     <!--TODO: record added-->

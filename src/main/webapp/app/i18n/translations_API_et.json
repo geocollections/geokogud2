@@ -647,6 +647,7 @@
             "TYPE": "Tüüp",
             "DESCRIPTION": "Kirjeldus",
             "AUTHOR": "Autor",
+            "COPYRIGHT_AGENT": "Autoriõigused",
             "DATE": "Aeg",
             "FORMAT": "Formaat",
             "FILENAME": "Failinimi",

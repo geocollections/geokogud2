@@ -650,6 +650,7 @@
             "TYPE": "Type",
             "DESCRIPTION": "Description",
             "AUTHOR": "Author",
+            "COPYRIGHT_AGENT": "Copyright",
             "DATE": "Date",
             "FORMAT": "Format",
             "FILENAME": "File name",
