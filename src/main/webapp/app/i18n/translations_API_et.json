@@ -549,6 +549,7 @@
             "IMAGE_NUMBER":"Number",
             "IMAGESET__IMAGESET_NUMBER":"Pildiseeria nr",
             "IMAGESET__IMAGESET_SERIES":"Pildiseeria",
+            "IMAGE_DESCRIPTION":"Pildi kirjeldus",
             "SIZE":"Pildi suurus",
             "SIZE_HEIGHT":"Pildi kõrgus",
             "SIZE_WIDTH":"Pildi laius",
