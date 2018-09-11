@@ -49,10 +49,11 @@ public class FluentReferenceSearchApiBuilder extends FluentSearchApiBuilder<Flue
     }
 
     public FluentReferenceSearchApiBuilder queryKeywords(SearchField keywords) {
-        buildFieldParameters("referencekeywords__keyword", keywords);
-        if (keywords != null) {
-            addFieldNameAndValue("distinct", "true");
-        }
+        buildFieldParameters(TAGS, keywords); // Changed on 11th of Sept. #134
+//        buildFieldParameters("referencekeywords__keyword", keywords);
+//        if (keywords != null) {
+//            addFieldNameAndValue("distinct", "true");
+//        }
         return this;
     }
 
