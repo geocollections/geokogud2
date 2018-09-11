@@ -661,6 +661,8 @@
             "DATABASE": "Asutus",
             "TITLE": "Pealkiri",
             "LOCALITY__LOCALITY": "Leiukoht",
+            "IMAGE_LATITUDE": "Pildi laiuskraad",
+            "IMAGE_LONGITUDE": "Pildi pikkuskraad",
             "TAGS": "Märksõnad",
             "PEOPLE": "Inimesed",
             "ANALYSIS": {

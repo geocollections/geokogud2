@@ -338,6 +338,18 @@
                     </tr>
 
                     <!--PHOTO ARCHIVE-->
+                    <tr data-ng-if="detailCtrl.results.image_latitude && detailCtrl.results.image_latitude != null">
+                        <td> {{ 'API_TRANSLATION.ATTACHMENT.IMAGE_LATITUDE' | translate }} </td>
+                        <td> {{ detailCtrl.results.image_latitude.toFixed(5) }} </td>
+                    </tr>
+
+                    <!--PHOTO ARCHIVE-->
+                    <tr data-ng-if="detailCtrl.results.image_longitude && detailCtrl.results.image_longitude != null">
+                        <td> {{ 'API_TRANSLATION.ATTACHMENT.IMAGE_LONGITUDE' | translate }} </td>
+                        <td> {{ detailCtrl.results.image_longitude.toFixed(5) }} </td>
+                    </tr>
+
+                    <!--PHOTO ARCHIVE-->
                     <tr data-ng-if="detailCtrl.results.image_people && detailCtrl.results.image_people != null">
                         <td> {{ 'API_TRANSLATION.ATTACHMENT.PEOPLE' | translate }} </td>
                         <td> {{ detailCtrl.results.image_people }} </td>
@@ -417,16 +429,28 @@
                 </table>
 
                 <!--MAP-->
-                <div data-ng-if="detailCtrl.results.locality__latitude && detailCtrl.results.locality__longitude">
+                <div data-ng-if="(detailCtrl.results.locality__latitude && detailCtrl.results.locality__longitude)
+                    || (detailCtrl.results.image_latitude && detailCtrl.results.image_longitude)">
                     <h3> {{ 'DETAIL.DETAIL_MAP' | translate }} </h3>
                     <div id='hoverbox' class='coupontooltip'>
                         <div id='hoversystem'></div>
                         <div id='hoverstat'></div>
                     </div>
-                    <locality-map x = "detailCtrl.results.locality__latitude" y = "detailCtrl.results.locality__longitude" name = "detailCtrl.results.locality__locality_en" fid = "detailCtrl.results.locality_id"></locality-map>
-                    <a href data-ng-click="detailCtrl.service.showGoogleMap(detailCtrl.results.locality__latitude, detailCtrl.results.locality__longitude, detailCtrl.results.locality__locality_en)">Google Maps</a>
-                    &ensp;&ensp;|&ensp;&ensp;
-                    <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.results.locality__latitude, detailCtrl.results.locality__longitude)">Maa-amet / Estonian Land Board</a>
+
+                    <div data-ng-if="detailCtrl.results.image_latitude && detailCtrl.results.image_longitude">
+                        <locality-map x = "detailCtrl.results.image_latitude" y = "detailCtrl.results.image_longitude" name = "detailCtrl.results.image_latitude.toFixed(2) + '; ' + detailCtrl.results.image_longitude.toFixed(2)" fid = "detailCtrl.results.locality_id"></locality-map>
+                        <a href data-ng-click="detailCtrl.service.showGoogleMap(detailCtrl.results.image_latitude, detailCtrl.results.image_longitude, detailCtrl.results.locality__locality_en)">Google Maps</a>
+                        &ensp;&ensp;|&ensp;&ensp;
+                        <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.results.image_latitude, detailCtrl.results.image_longitude)">Maa-amet / Estonian Land Board</a>
+                    </div>
+
+                    <div data-ng-if="(detailCtrl.results.image_latitude == null || detailCtrl.results.image_longitude == null)
+                        && (detailCtrl.results.locality__latitude && detailCtrl.results.locality__longitude)">
+                        <locality-map x = "detailCtrl.results.locality__latitude" y = "detailCtrl.results.locality__longitude" name = "detailCtrl.results.locality__locality_en" fid = "detailCtrl.results.locality_id"></locality-map>
+                        <a href data-ng-click="detailCtrl.service.showGoogleMap(detailCtrl.results.locality__latitude, detailCtrl.results.locality__longitude, detailCtrl.results.locality__locality_en)">Google Maps</a>
+                        &ensp;&ensp;|&ensp;&ensp;
+                        <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.results.locality__latitude, detailCtrl.results.locality__longitude)">Maa-amet / Estonian Land Board</a>
+                    </div>
                 </div>
             </div>
         </div>

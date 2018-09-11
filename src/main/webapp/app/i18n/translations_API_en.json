@@ -664,6 +664,8 @@
             "DATABASE": "Institution",
             "TITLE": "Title",
             "LOCALITY__LOCALITY": "Locality",
+            "IMAGE_LATITUDE": "Image latitude",
+            "IMAGE_LONGITUDE": "Image longitude",
             "TAGS": "Tags",
             "PEOPLE": "People",
             "ANALYSIS": {
