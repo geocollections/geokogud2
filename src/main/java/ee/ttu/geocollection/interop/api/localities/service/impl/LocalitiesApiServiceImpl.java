@@ -57,7 +57,7 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
             "stratigraphy_top__stratigraphy_en",
             "stratigraphy_top__stratigraphy",
             "stratigraphy_top_id",
-            "localitystratigraphy__stratigraphy__stratigraphy_en",
+            //"localitystratigraphy__stratigraphy__stratigraphy_en",
             "type__value_en",
             "type__value",
             "vald__vald_en",
@@ -161,7 +161,7 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
     public ApiResponse findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
-                .relatedData(IMAGE_TABLE)
+//                .relatedData(IMAGE_TABLE)
                 .relatedData(DRILLCORE_TABLE)
                 .relatedData(LOCALITY_REFERENCE)
                 .relatedData(LOCALITY_SYNONYM)
@@ -169,6 +169,7 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
                 .relatedData(ATTACHMENT_LINK)
                 .relatedData(SAMPLE)
                 .relatedData(STRATIGRAPHY_STRATOTYPE)
+                .relatedData(ATTACHMENT_TABLE)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.searchRawEntities(LOCALITY_TABLE, requestParams);

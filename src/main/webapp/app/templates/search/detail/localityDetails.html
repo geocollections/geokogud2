@@ -391,12 +391,12 @@
                 </div>
 
                 <!-- Images -->
-                <div data-ng-if="detailCtrl.images.length > 0">
+                <div data-ng-if="detailCtrl.attachment.length > 0">
                     <h3> {{ 'DETAIL.LOCALITY.IMAGES_HEADING'| translate }} </h3>
 
                     <div class="row">
 
-                        <div class="col-md-6 col-xs-6" data-ng-repeat="image in detailCtrl.images">
+                        <div class="col-md-6 col-xs-6" data-ng-repeat="image in detailCtrl.attachment">
 
                             <figure class="margin-bottom-30">
 
@@ -405,8 +405,8 @@
                                        {
                                             author: image.author__agent,
                                             author_free: image.author_free,
-                                            date_taken: image.date_taken,
-                                            date_taken_free: image.date_taken_free,
+                                            date_taken: image.date_added,
+                                            date_taken_free: image.date_created_free,
                                             copyright_agent: image.copyright_agent__agent,
                                             licence: image.licence__licence_en,
                                             licence_url: image.licence__licence_url,
