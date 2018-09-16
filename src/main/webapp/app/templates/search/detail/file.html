@@ -713,7 +713,7 @@
         </div>
 
         <!-- Related specimen -->
-        <div class="row" data-ng-if="detailCtrl.results.attach_link__specimen__id && detailCtrl.results.attach_link__specimen__id != null">
+        <div class="row" data-ng-if="detailCtrl.results.attach_link__specimen__id && detailCtrl.results.attach_link__specimen__id != null && detailCtrl.results.specimen_image_attachment === 3">
             <div class="col-lg-6">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.SPECIMEN.HEADING' | translate }}</h3>
 
@@ -725,10 +725,10 @@
                     </thead>
 
                     <tbody>
-                    <tr>
+                    <tr data-ng-repeat="entity in detailCtrl.allResults">
                         <td>
-                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen',id:detailCtrl.results.attach_link__specimen__id})">
-                                {{ detailCtrl.results.attach_link__specimen__coll__number | split:' ':0 }} {{ detailCtrl.results.attach_link__specimen__specimen_id }}
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'specimen',id:entity.attach_link__specimen__id})">
+                                {{ entity.attach_link__specimen__coll__number | split:' ':0 }} {{ entity.attach_link__specimen__specimen_id }}
                             </a>
                         </td>
                     </tr>

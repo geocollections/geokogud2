@@ -30,6 +30,9 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             vm.relatedData = response.data.related_data;
             vm.fields = Object.keys(vm.results);
 
+            // For file detail view to get attach_link
+            vm.allResults = response.data.results;
+
             vm.detailLoadingHandler.stop();
             getLocality();
             getRelatedData();
