@@ -457,7 +457,11 @@
 
         <!-- Related analysis -->
         <div class="row" data-ng-if="detailCtrl.results.attach_link__analysis__id && detailCtrl.results.attach_link__analysis__id != null && detailCtrl.results.specimen_image_attachment === 3">
-            <div class="col-lg-6">
+            <div ng-class="detailCtrl.results.filename.endsWith('png') ||
+                           detailCtrl.results.filename.endsWith('jpeg') ||
+                           detailCtrl.results.filename.endsWith('svg') ||
+                           detailCtrl.results.filename.endsWith('jpg') ||
+                           detailCtrl.results.filename.endsWith('mp4') ? 'col-sm-6' : 'col-lg-6'">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.ANALYSIS.HEADING' | translate }}</h3>
 
                 <table class="table table-bordered table-hover">
@@ -482,7 +486,11 @@
 
         <!-- Related collection -->
         <div class="row" data-ng-if="detailCtrl.results.attach_link__collection__id && detailCtrl.results.attach_link__collection__id != null && detailCtrl.results.specimen_image_attachment === 3">
-            <div class="col-lg-6">
+            <div ng-class="detailCtrl.results.filename.endsWith('png') ||
+                           detailCtrl.results.filename.endsWith('jpeg') ||
+                           detailCtrl.results.filename.endsWith('svg') ||
+                           detailCtrl.results.filename.endsWith('jpg') ||
+                           detailCtrl.results.filename.endsWith('mp4') ? 'col-sm-6' : 'col-lg-6'">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.COLLECTION.HEADING' | translate }}</h3>
 
                 <table class="table table-bordered table-hover">
@@ -507,7 +515,11 @@
 
         <!-- Related dataset -->
         <div class="row" data-ng-if="detailCtrl.results.attach_link__dataset__id && detailCtrl.results.attach_link__dataset__id != null && detailCtrl.results.specimen_image_attachment === 3">
-            <div class="col-lg-6">
+            <div ng-class="detailCtrl.results.filename.endsWith('png') ||
+                           detailCtrl.results.filename.endsWith('jpeg') ||
+                           detailCtrl.results.filename.endsWith('svg') ||
+                           detailCtrl.results.filename.endsWith('jpg') ||
+                           detailCtrl.results.filename.endsWith('mp4') ? 'col-sm-6' : 'col-lg-6'">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.DATASET.HEADING' | translate }}</h3>
 
                 <table class="table table-bordered table-hover">
@@ -532,7 +544,11 @@
 
         <!-- Related doi -->
         <div class="row" data-ng-if="detailCtrl.results.attach_link__doi__id && detailCtrl.results.attach_link__doi__id != null && detailCtrl.results.specimen_image_attachment === 3">
-            <div class="col-lg-6">
+            <div ng-class="detailCtrl.results.filename.endsWith('png') ||
+                           detailCtrl.results.filename.endsWith('jpeg') ||
+                           detailCtrl.results.filename.endsWith('svg') ||
+                           detailCtrl.results.filename.endsWith('jpg') ||
+                           detailCtrl.results.filename.endsWith('mp4') ? 'col-sm-6' : 'col-lg-6'">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.DOI.HEADING' | translate }}</h3>
 
                 <table class="table table-bordered table-hover">
@@ -557,7 +573,11 @@
 
         <!-- Related drillcore  -->
         <div class="row" data-ng-if="detailCtrl.results.attach_link__drillcore__id && detailCtrl.results.attach_link__drillcore__id != null && detailCtrl.results.specimen_image_attachment === 3">
-            <div class="col-lg-6">
+            <div ng-class="detailCtrl.results.filename.endsWith('png') ||
+                           detailCtrl.results.filename.endsWith('jpeg') ||
+                           detailCtrl.results.filename.endsWith('svg') ||
+                           detailCtrl.results.filename.endsWith('jpg') ||
+                           detailCtrl.results.filename.endsWith('mp4') ? 'col-sm-6' : 'col-lg-6'">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.DRILLCORE.HEADING' | translate }}</h3>
 
                 <table class="table table-bordered table-hover">
@@ -583,7 +603,11 @@
 
         <!-- Related drillcore box -->
         <div class="row" data-ng-if="detailCtrl.results.attach_link__drillcore_box__drillcore__id && detailCtrl.results.attach_link__drillcore_box__drillcore__id != null && detailCtrl.results.specimen_image_attachment === 3">
-            <div class="col-lg-6">
+            <div ng-class="detailCtrl.results.filename.endsWith('png') ||
+                           detailCtrl.results.filename.endsWith('jpeg') ||
+                           detailCtrl.results.filename.endsWith('svg') ||
+                           detailCtrl.results.filename.endsWith('jpg') ||
+                           detailCtrl.results.filename.endsWith('mp4') ? 'col-sm-6' : 'col-lg-6'">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.DRILLCORE_BOX.HEADING' | translate }}</h3>
 
                 <table class="table table-bordered table-hover">
@@ -614,7 +638,11 @@
 
         <!-- Related locality -->
         <div class="row" data-ng-if="detailCtrl.results.attach_link__locality__id && detailCtrl.results.attach_link__locality__id != null && detailCtrl.results.specimen_image_attachment === 3">
-            <div class="col-lg-6">
+            <div ng-class="detailCtrl.results.filename.endsWith('png') ||
+                           detailCtrl.results.filename.endsWith('jpeg') ||
+                           detailCtrl.results.filename.endsWith('svg') ||
+                           detailCtrl.results.filename.endsWith('jpg') ||
+                           detailCtrl.results.filename.endsWith('mp4') ? 'col-sm-6' : 'col-lg-6'">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.LOCALITY.HEADING' | translate }}</h3>
 
                 <table class="table table-bordered table-hover">
@@ -639,7 +667,11 @@
 
         <!-- Related preparation -->
         <div class="row" data-ng-if="detailCtrl.results.attach_link__preparation__id && detailCtrl.results.attach_link__preparation__id != null && detailCtrl.results.specimen_image_attachment === 3">
-            <div class="col-lg-6">
+            <div ng-class="detailCtrl.results.filename.endsWith('png') ||
+                           detailCtrl.results.filename.endsWith('jpeg') ||
+                           detailCtrl.results.filename.endsWith('svg') ||
+                           detailCtrl.results.filename.endsWith('jpg') ||
+                           detailCtrl.results.filename.endsWith('mp4') ? 'col-sm-6' : 'col-lg-6'">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.PREPARATION.HEADING' | translate }}</h3>
 
                 <table class="table table-bordered table-hover">
@@ -664,7 +696,11 @@
 
         <!-- Related reference -->
         <div class="row" data-ng-if="detailCtrl.results.attach_link__reference__id && detailCtrl.results.attach_link__reference__id != null && detailCtrl.results.specimen_image_attachment === 3">
-            <div class="col-lg-6">
+            <div ng-class="detailCtrl.results.filename.endsWith('png') ||
+                           detailCtrl.results.filename.endsWith('jpeg') ||
+                           detailCtrl.results.filename.endsWith('svg') ||
+                           detailCtrl.results.filename.endsWith('jpg') ||
+                           detailCtrl.results.filename.endsWith('mp4') ? 'col-sm-6' : 'col-lg-6'">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.REFERENCE.HEADING' | translate }}</h3>
 
                 <table class="table table-bordered table-hover">
@@ -689,7 +725,11 @@
 
         <!-- Related sample -->
         <div class="row" data-ng-if="detailCtrl.results.attach_link__sample__id && detailCtrl.results.attach_link__sample__id != null && detailCtrl.results.specimen_image_attachment === 3">
-            <div class="col-lg-6">
+            <div ng-class="detailCtrl.results.filename.endsWith('png') ||
+                           detailCtrl.results.filename.endsWith('jpeg') ||
+                           detailCtrl.results.filename.endsWith('svg') ||
+                           detailCtrl.results.filename.endsWith('jpg') ||
+                           detailCtrl.results.filename.endsWith('mp4') ? 'col-sm-6' : 'col-lg-6'">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.SAMPLE.HEADING' | translate }}</h3>
 
                 <table class="table table-bordered table-hover">
@@ -714,7 +754,11 @@
 
         <!-- Related specimen -->
         <div class="row" data-ng-if="detailCtrl.results.attach_link__specimen__id && detailCtrl.results.attach_link__specimen__id != null && detailCtrl.results.specimen_image_attachment === 3">
-            <div class="col-lg-6">
+            <div ng-class="detailCtrl.results.filename.endsWith('png') ||
+                           detailCtrl.results.filename.endsWith('jpeg') ||
+                           detailCtrl.results.filename.endsWith('svg') ||
+                           detailCtrl.results.filename.endsWith('jpg') ||
+                           detailCtrl.results.filename.endsWith('mp4') ? 'col-sm-6' : 'col-lg-6'">
                 <h3>{{ 'API_TRANSLATION.ATTACHMENT.SPECIMEN.HEADING' | translate }}</h3>
 
                 <table class="table table-bordered table-hover">
