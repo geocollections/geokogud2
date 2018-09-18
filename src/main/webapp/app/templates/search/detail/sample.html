@@ -218,12 +218,13 @@
                         <td> {{ detailCtrl.results.palaeontology }} </td>
                     </tr>
 
-                    <tr data-ng-if="detailCtrl.results.analysis != null ">
-                        <td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS ' | translate }} </td>
-                        <td data-ng-if="detailCtrl.results.analysis">
-                            {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_RESULTS_TRUE ' | translate }}
-                        </td>
-                    </tr>
+                    <!-- Removed 18.09.2018 -->
+                    <!--<tr data-ng-if="detailCtrl.results.analysis != null ">-->
+                        <!--<td> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS ' | translate }} </td>-->
+                        <!--<td data-ng-if="detailCtrl.results.analysis">-->
+                            <!--{{ 'API_TRANSLATION.SAMPLE.ANALYSIS_RESULTS_TRUE ' | translate }}-->
+                        <!--</td>-->
+                    <!--</tr>-->
 
                     <tr data-ng-if="detailCtrl.results.remarks && detailCtrl.results.remarks != null ">
                         <td> {{ 'API_TRANSLATION.SAMPLE.REMARKS ' | translate }} </td>
