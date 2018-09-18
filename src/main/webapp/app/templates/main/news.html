@@ -19,8 +19,8 @@
 			</nav>
 			<div ng-repeat="id in main.news.results | filter: main.yearFilter" class="content">
 				<div ng-bind-html="id.date_added" class="dateAdded"></div>
-				<div ng-bind-html="main.getTitle(id)" class="heading"></div>
-				<div ng-bind-html="main.getText(id)" class="text"></div>
+				<div ng-bind-html="main.getTitle(id) | unsafe" class="heading"></div>
+				<div ng-bind-html="main.getText(id) | unsafe" class="text"></div>
 			</div>
 		</div>
 	</div>

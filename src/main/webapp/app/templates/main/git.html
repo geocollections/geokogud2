@@ -6,8 +6,8 @@
 			<!-- GIT: Geological collections at Tallinn University of Technology -->
 			<h2 class="section-heading text-center">GIT</h2>
 			<hr class="primary">
-			<h3 class="header-collection" ng-bind-html="main.getTitle(main.git)"></h3>
-			<div ng-bind-html="main.getContent(main.git)"></div>
+			<h3 class="header-collection" ng-bind-html="main.getTitle(main.git) | unsafe"></h3>
+			<div ng-bind-html="main.getContent(main.git) | unsafe"></div>
 		</div>
 	</div>
 </div>

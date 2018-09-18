@@ -380,6 +380,9 @@ module.filter('split', function() {
     }
 });
 
+// Filter for webnews 18.09.2018
+module.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
+
 module.factory("SearchFactory", ['$http', 'configuration', function($http, configuration) {
     return {
         autocompleteSearch: function (table, term, sortField, searchField) {

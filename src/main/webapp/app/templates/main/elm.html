@@ -6,8 +6,8 @@
             <!-- Estonian Museum of Natural History -->
             <h2 class="section-heading text-center">ELM</h2>
             <hr class="primary">
-            <h3 class="header-collection" ng-bind-html="main.getTitle(main.elm)"></h3>
-            <div ng-bind-html="main.getContent(main.elm)"></div>
+            <h3 class="header-collection" ng-bind-html="main.getTitle(main.elm) | unsafe"></h3>
+            <div ng-bind-html="main.getContent(main.elm) | unsafe"></div>
         </div>
     </div>
 </div>

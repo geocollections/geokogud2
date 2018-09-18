@@ -6,7 +6,7 @@
 			<h2 class="section-heading text-center"> {{ 'INDEX.ABOUT_COLLECTIONS_LINK' | translate }} </h2>
 			<!--<h2 class="section-heading text-center">{{ '' }}</h2>-->
 			<hr class="primary">
-			<div ng-bind-html="main.getContent(main.geocollection)"></div>
+			<div ng-bind-html="main.getContent(main.geocollection) | unsafe"></div>
 		</div>
     </div>
 </div>
