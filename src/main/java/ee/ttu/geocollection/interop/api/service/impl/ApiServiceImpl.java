@@ -71,9 +71,10 @@ public class ApiServiceImpl implements ApiService {
     @Override
     public ApiResponse searchRawEntities(String tableName, String requestParams) {
         String url;
+        System.out.println(requestParams);
 
 //        TODO: Maybe instead add fields array to those tables
-        if (tableName.equals("attachment") || tableName.equals("collection") || tableName.equals("specimen_image")) {
+        if (tableName.equals("collection") || tableName.equals("specimen_image")) {
             url = apiUrl + "/" + tableName + "/" + requestParams + "?format=json";
         } else {
             url = apiUrl + "/" + tableName + "/" + requestParams + "&format=json";

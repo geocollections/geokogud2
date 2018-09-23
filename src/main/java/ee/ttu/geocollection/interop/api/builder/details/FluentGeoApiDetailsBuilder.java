@@ -45,6 +45,7 @@ public class FluentGeoApiDetailsBuilder {
      */
     public FluentGeoApiDetailsBuilder returnAllFields(List<String> fields) {
         fields.forEach(this::addReturningField);
+        System.out.println("WTFTFTFTFT" + this.returningFields);
         return this;
     }
 
