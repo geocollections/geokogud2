@@ -89,6 +89,22 @@ var constructor = function (utils, configuration, $window, $location, $translate
         utils.httpGet(configuration.autocompleteUrl, {table: table, term: val, searchField: searchField}, null, null);
     };
 
+    // POLYFILL FOR INCLUDES METHOD
+    if (!String.prototype.includes) {
+        String.prototype.includes = function(search, start) {
+            'use strict';
+            if (typeof start !== 'number') {
+                start = 0;
+            }
+
+            if (start + search.length > this.length) {
+                return false;
+            } else {
+                return this.indexOf(search, start) !== -1;
+            }
+        };
+    }
+
     function getDetailUrl (searchType) {
         var url = null;
         switch (searchType) {
