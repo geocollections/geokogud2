@@ -89,7 +89,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
         utils.httpGet(configuration.autocompleteUrl, {table: table, term: val, searchField: searchField}, null, null);
     };
 
-    // POLYFILL FOR INCLUDES METHOD
+    // Polyfill for includes method, issue #138 (IE fix, 24.09.2018)
     if (!String.prototype.includes) {
         String.prototype.includes = function(search, start) {
             'use strict';
