@@ -391,12 +391,12 @@
                 </div>
 
                 <!-- Images -->
-                <div data-ng-if="detailCtrl.attachment.length > 0">
+                <div data-ng-if="detailCtrl.attachment.length > 0 && doesAttachmentTableContainImages()">
                     <h3> {{ 'DETAIL.LOCALITY.IMAGES_HEADING'| translate }} </h3>
 
                     <div class="row">
 
-                        <div class="col-md-6 col-xs-6" data-ng-repeat="image in detailCtrl.attachment">
+                        <div class="col-md-6 col-xs-6" data-ng-repeat="image in detailCtrl.attachment" data-ng-if="image.specimen_image_attachment === 2">
 
                             <figure class="margin-bottom-30">
 

@@ -190,6 +190,18 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
         }
     }
 
+    $scope.doesAttachmentTableContainImages = function() {
+        var containsImage = false;
+        for (var image in vm.attachment) {
+            if (vm.attachment[image].hasOwnProperty("specimen_image_attachment")) {
+                if (vm.attachment[image].specimen_image_attachment === 2) {
+                    containsImage = true
+                }
+            }
+        }
+        return containsImage;
+    }
+
     /**
      * Calculates total number of specimens from preparation_taxa table which is
      * used in preparations detail view general info and needed to calculate percent.
