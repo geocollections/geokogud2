@@ -66,6 +66,8 @@ public class SamplesApiServiceImpl implements SamplesApiService {
             "remarks",
             "series_id",
             "database__acronym",
+            "database__name",
+            "database__name_en",
             "date_added",
             "date_changed",
             "parent_sample",

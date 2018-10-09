@@ -199,7 +199,15 @@
                              <td> {{ detailCtrl.results.sample__agent_collected_free }} </td>
                          </tr>
 
-                         <!-- TODO: Institution -->
+                         <tr data-ng-if="(detailCtrl.results.sample__database__name && detailCtrl.results.sample__database__name != null)
+                            && (detailCtrl.results.sample__database__name_en && detailCtrl.results.sample__database__name_en != null)">
+                             <td> {{ 'API_TRANSLATION.ATTACHMENT.DATABASE' | translate }} </td>
+                             <td>
+                                 <a href data-ng-click="detailCtrl.service.getAboutDatabase({database: detailCtrl.results.sample__database__acronym})">
+                                     <localize et="detailCtrl.results.sample__database__name" en="detailCtrl.results.sample__database__name_en" />
+                                 </a>
+                             </td>
+                         </tr>
 
                          <tr data-ng-if="detailCtrl.results.date_added && detailCtrl.results.date_added != null" >
                              <td>{{ 'API_TRANSLATION.PREPARATION.DATE_ADDED ' | translate }}</td>
