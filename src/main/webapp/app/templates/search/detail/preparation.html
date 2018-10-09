@@ -199,6 +199,8 @@
                              <td> {{ detailCtrl.results.sample__agent_collected_free }} </td>
                          </tr>
 
+                         <!-- TODO: Institution -->
+
                          <tr data-ng-if="detailCtrl.results.date_added && detailCtrl.results.date_added != null" >
                              <td>{{ 'API_TRANSLATION.PREPARATION.DATE_ADDED ' | translate }}</td>
                              <td> {{detailCtrl.results.date_added | date:dateFormat}}</td>

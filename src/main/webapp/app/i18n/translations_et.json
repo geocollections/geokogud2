@@ -123,8 +123,9 @@
     "ERROR": {
         "DETAIL_TITLE": "Lehe sisu ei ole kättesaadav",
         "DETAIL_MESSAGE1": "Lehekülje sisu ei ole kättesaadav. Minge",
-        "DETAIL_MESSAGE2": "või alustage uut otsingut.",
-        "DETAIL_BUTTON": "avalehele"
+        "DETAIL_BUTTON1": "avalehele",
+        "DETAIL_MESSAGE2": "või",
+        "DETAIL_BUTTON2": "alustage uut otsingut"
     },
     "SEARCH": {
         "NO_RESULTS": "Teie otsing ei andnud ühtegi sobivat kirjet. Palun kontrollige oma otsingukriteeriumit ja lugege allpool toodud nõuandeid",

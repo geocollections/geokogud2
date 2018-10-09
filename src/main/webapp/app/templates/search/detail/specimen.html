@@ -234,6 +234,8 @@
                         <td> {{detailCtrl.results.remarks }} </td>
                     </tr>
 
+                    <!-- TODO: Institution -->
+
                     <tr data-ng-if="detailCtrl.results.date_added != null && detailCtrl.results.date_added">
                         <td> {{ ' API_TRANSLATION.SPECIMEN.DATE_ADDED' | translate }} </td>
                         <td> {{ detailCtrl.results.date_added | date:dateFormat }} </td>

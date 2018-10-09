@@ -123,8 +123,9 @@
     "ERROR": {
         "DETAIL_TITLE": "Content not present",
         "DETAIL_MESSAGE1": "The content you are looking is not present or not accessible. Go to the",
-        "DETAIL_MESSAGE2": "or start a new search.",
-        "DETAIL_BUTTON": "main page"
+        "DETAIL_BUTTON1": "main page",
+        "DETAIL_MESSAGE2": "or",
+        "DETAIL_BUTTON2": "start a new search"
     },
     "SEARCH": {
         "NO_RESULTS": "Your search returned no matching records. Please check your search criteria and read the tips below",

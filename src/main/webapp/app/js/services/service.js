@@ -33,6 +33,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
     service.searchAllSamplesUsingStratigraphy = searchAllSamplesUsingStratigraphy;
     service.getFileLink = getFileLink;
     service.getAboutDatabase = getAboutDatabase;
+    service.goToExtendedSearch = goToExtendedSearch;
 
     service.toggle = function (el,array) {
         utils.toggleInArray(el,array)
@@ -430,6 +431,12 @@ var constructor = function (utils, configuration, $window, $location, $translate
         if (params.database !== null) {
             $window.open($window.location.origin + '/about_' + params.database.toLowerCase(), '', 'width=600,height=750,scrollbars, resizable')
         }
+    }
+
+    // Return extended search url by
+    function goToExtendedSearch() {
+        var href = $window.location.href;
+        return href.substring(0, href.lastIndexOf('/'));
     }
 
 

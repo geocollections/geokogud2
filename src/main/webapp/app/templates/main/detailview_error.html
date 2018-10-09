@@ -12,7 +12,11 @@
         <div class="col-lg-6 text-center" bs-loading-overlay bs-loading-overlay-reference-id="detailView" bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
             <i class="fa fa-exclamation-circle fa-5x error-icon"></i>
             <div class="error-message">
-                <p>{{ 'ERROR.DETAIL_MESSAGE1' | translate }} <a href="/">{{ 'ERROR.DETAIL_BUTTON' | translate }}</a> {{ 'ERROR.DETAIL_MESSAGE2' | translate }}</p>
+                <p>{{ 'ERROR.DETAIL_MESSAGE1' | translate }}
+                    <a href="/">{{ 'ERROR.DETAIL_BUTTON1' | translate }}</a>
+                    {{ 'ERROR.DETAIL_MESSAGE2' | translate }}
+                    <a href="{{detailCtrl.service.goToExtendedSearch()}}">{{ 'ERROR.DETAIL_BUTTON2' | translate }}</a>.
+                </p>
             </div>
         </div>
 
