@@ -121,9 +121,10 @@
         }
     },
     "ERROR": {
-        "DETAIL_TITLE": "Detail vaadet ei leitud!",
-        "DETAIL_MESSAGE": "Lehekülge, mida otsisite ei leitud. Minge pealehel",
-        "DETAIL_BUTTON": "vajutades siia!"
+        "DETAIL_TITLE": "Lehe sisu ei ole kättesaadav",
+        "DETAIL_MESSAGE1": "Lehekülje sisu ei ole kättesaadav. Minge",
+        "DETAIL_MESSAGE2": "või alustage uut otsingut.",
+        "DETAIL_BUTTON": "avalehele"
     },
     "SEARCH": {
         "NO_RESULTS": "Teie otsing ei andnud ühtegi sobivat kirjet. Palun kontrollige oma otsingukriteeriumit ja lugege allpool toodud nõuandeid",
