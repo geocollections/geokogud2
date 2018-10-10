@@ -401,7 +401,8 @@ var constructor = function (utils, configuration, $window, $location, $translate
 
         // DETAIL VIEW BLOCK START
         if (params.id && params.id != null) {
-            text += "<div><strong><a target='_blank' href='" + url + params.id + "'><span>" + detailView + "</span></a></strong></div>";
+            // Target must be because otherwise it redirects but won't close the fancybox preview
+            text += "<div><strong><a style='color: #F05F40; font-size: larger' target='_top' href='" + url + params.id + "'><span>" + detailView + "</span></a></strong></div>";
         }
         // DETAIL VIEW BLOCK END
 
