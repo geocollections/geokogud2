@@ -213,7 +213,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
                 width = 1000;
         }
         // New views are opened in the same window for locality and specimen view, JUST FOR TESTING PURPOSES
-        if ($window.location.href.includes('locality/') || $window.location.href.includes('specimen/')) {
+        if (!$window.location.href.includes('search') && ($window.location.href.includes('locality/') || $window.location.href.includes('specimen/'))) {
             $window.open('/' + params.object + '/' + params.id, '_self', 'width=' + width + ',height=750,scrollbars, resizable');
         } else {
             $window.open('/' + params.object + '/' + params.id, '', 'width=' + width + ',height=750,scrollbars, resizable');
