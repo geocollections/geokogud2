@@ -969,6 +969,22 @@ table tr > td:first-child {
     margin-bottom: 0;
 }
 
+/* File detail view  */
+.other-file-download-button {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-style: dashed;
+    background-color: #eceeef;
+    border-color: darkgrey;
+    color: #F05F40;
+}
+
+.other-file-download-button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
 /* UNIVERSAL END*/
 
 

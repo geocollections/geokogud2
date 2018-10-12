@@ -661,6 +661,7 @@
             "DEVICE": "Camera",
             "REMARKS": "Remarks",
             "VIDEO": "Video",
+            "FILE": "File",
             "DATABASE": "Institution",
             "TITLE": "Title",
             "LOCALITY__LOCALITY": "Locality",

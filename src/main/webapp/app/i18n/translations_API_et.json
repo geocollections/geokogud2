@@ -658,6 +658,7 @@
             "DEVICE": "Kaamera",
             "REMARKS": "Lisainfo",
             "VIDEO": "Video",
+            "FILE": "Fail",
             "DATABASE": "Asutus",
             "TITLE": "Pealkiri",
             "LOCALITY__LOCALITY": "Leiukoht",

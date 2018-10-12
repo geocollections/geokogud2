@@ -47,7 +47,8 @@
         "MEDIUM": "medium",
         "LARGE": "large",
         "ORIGINAL": "original",
-        "SHARE": "SHARE"
+        "SHARE": "SHARE",
+        "DOWNLOAD": "Download file"
     },
     "GIT": {
         "GIT_TITLE": "Geological collections at the Institute of Geology at TUT",

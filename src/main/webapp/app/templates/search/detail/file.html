@@ -80,6 +80,24 @@
                     <video data-ng-if="detailCtrl.results.filename.endsWith('mp4')" width="100%" controls loop>
                         <source src="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})}}" type="video/mp4">
                     </video>
+
+                    <!-- TODO: Add FB share button -->
+                </div>
+
+                <!-- OTHER FILES -->
+                <div data-ng-if="!detailCtrl.results.filename.endsWith('png') &&
+                           !detailCtrl.results.filename.endsWith('jpeg') &&
+                           !detailCtrl.results.filename.endsWith('svg') &&
+                           !detailCtrl.results.filename.endsWith('jpg') &&
+                           !detailCtrl.results.filename.endsWith('mp4')">
+                    <h3> {{ 'API_TRANSLATION.ATTACHMENT.FILE' | translate }} </h3>
+
+                    <div class="other-file-download-button" data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})})">
+                        <i class="fa fa-download fa-2x" aria-hidden="true"></i> &nbsp;{{ 'INDEX.DOWNLOAD' | translate }}
+                    </div>
+
+                    <!-- TODO: Add FB share button -->
+
                 </div>
             </div>
 
