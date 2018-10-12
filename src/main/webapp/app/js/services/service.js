@@ -222,7 +222,11 @@ var constructor = function (utils, configuration, $window, $location, $translate
 
     function openUrlInNewWindow(params) {
         // console.log(params.url);
-        $window.open(params.url, '', 'width=600,height=750,scrollbars, resizable');
+        if (params.target) {
+            $window.open(params.url, params.target);
+        } else {
+            $window.open(params.url, '', 'width=600,height=750,scrollbars, resizable');
+        }
     }
 
     // Used in analysis detail view for analysis results, counts total number of grains.

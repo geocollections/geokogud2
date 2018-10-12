@@ -92,7 +92,7 @@
                            !detailCtrl.results.filename.endsWith('mp4')">
                     <h3> {{ 'API_TRANSLATION.ATTACHMENT.FILE' | translate }} </h3>
 
-                    <div class="other-file-download-button" data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename})})">
+                    <div class="other-file-download-button" data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.service.getFileLink({filename: detailCtrl.results.uuid_filename}), target: '_blank'})">
                         <i class="fa fa-download fa-2x" aria-hidden="true"></i> &nbsp;{{ 'INDEX.DOWNLOAD' | translate }}
                     </div>
 
