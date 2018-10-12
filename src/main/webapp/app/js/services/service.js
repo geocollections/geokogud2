@@ -410,6 +410,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
 
         // DETAIL VIEW BLOCK START
         if (params.id && params.id != null) {
+            // TODO: Make this button into button design like in fossils app
             // Target must be because otherwise it redirects but won't close the fancybox preview
             text += "<div><strong><a style='color: #F05F40; font-size: larger' target='_top' href='" + url + params.id + "'><span>" + detailView + "</span></a></strong></div>";
         }
