@@ -985,6 +985,12 @@ table tr > td:first-child {
     opacity: 0.7;
 }
 
+/* Fancybox button which directs to detail view */
+#fancybox-file-btn {
+    text-decoration: none;
+    margin-top: 0.5rem;
+}
+
 /* UNIVERSAL END*/
 
 
