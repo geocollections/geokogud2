@@ -106,6 +106,14 @@ var constructor = function (utils, configuration, $window, $location, $translate
         };
     }
 
+    // Polyfill for startsWith method, issue #138 (IE fix, 21.10.2018)
+    if (!String.prototype.startsWith) {
+        String.prototype.startsWith = function(searchString, position) {
+            position = position || 0;
+            return this.indexOf(searchString, position) === position;
+        };
+    }
+
     function getDetailUrl (searchType) {
         var url = null;
         switch (searchType) {
