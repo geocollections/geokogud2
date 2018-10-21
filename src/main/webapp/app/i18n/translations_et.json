@@ -6,8 +6,8 @@
         "READ_MORE": "Loe rohkem",
         "FOOTER_TITLE": "Küsimustega andmebaasi või veebilehe kohta palun pöörduda: ",
         "FOOTER": {
-            "SARV_TITLE": "SARV: Eesti geokogude infosüsteem",
-            "SARV_ALT": "SARV",
+            "SARV_TITLE": "SARV: Geoloogilised andmed ja kollektsioonid",
+            "SARV_ALT": "SARV: Geoloogilised andmed ja kollektsioonid",
             "NATARC_TITLE": "Loodusteaduslikud arhiivid ja infovõrgustik (NATARC)",
             "NATARC_ALT": "NATARC",
             "DATACITE_TITLE": "DataCite: leia üles, pöördu ja taaskasuta andmeid",
