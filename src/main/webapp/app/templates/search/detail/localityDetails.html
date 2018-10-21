@@ -405,7 +405,7 @@
                                        {
                                             author: image.author__agent,
                                             author_free: image.author_free,
-                                            date_taken: image.date_added,
+                                            date_taken: image.date_created,
                                             date_taken_free: image.date_created_free,
                                             copyright_agent: image.copyright_agent__agent,
                                             licence: image.licence__licence_en,
@@ -416,7 +416,7 @@
 
                                     <show-preview class="img-responsive set-height"
                                                   classes="previewImageDetail img-rounded"
-                                                  img-title="[image.author__agent, image.date_taken, image.date_taken_free]"
+                                                  img-title="[image.author__agent, image.date_created, image.date_created_free]"
                                                   img-url="detailCtrl.service.getFileLink({size: 'small', filename: image.uuid_filename})" />
 
                                 </a>
