@@ -8,14 +8,14 @@ module.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('/',{
             data: {
-                pageTitle: "{{'TITLES.HOME' | translate}}"
+                pageTitle: "Geocollections of Estonia"
             },
             url: "/",
             templateUrl: "app/templates/main/geokogud.html",
     })
         .state('map',{
             data: {
-                pageTitle: "{{'TITLES.MAP' | translate}}"
+                pageTitle: "Geocollections of Estonia: Map"
             },
             url: "/map",
             templateUrl: "app/templates/main/map.html",
@@ -23,7 +23,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('global',{
             data: {
-                pageTitle: "{{'TITLES.GLOBAL' | translate}}"
+                pageTitle: "Geocollections of Estonia: Global search"
             },
             // url: "/search/:tab/:page/:paginateBy/:query",
             url: "/search/:query/:tab/:page/:paginateBy",
@@ -32,7 +32,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('global2',{
             data: {
-                pageTitle: "{{'TITLES.GLOBAL' | translate}}"
+                pageTitle: "Geocollections of Estonia: Global search"
             },
             // url: "/search/:tab/:page/:paginateBy/:query",
             url: "/search/:query",
@@ -45,7 +45,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     // })
         .state('specimens', {
             data: {
-                pageTitle: "{{'TITLES.SPECIMEN' | translate}}"
+                pageTitle: "Geocollections of Estonia: Specimens"
             },
             url: "/specimen",
             templateUrl: "app/templates/search/specimen/specimen.html",
@@ -57,7 +57,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('specimen.view', {
             data: {
-                pageTitle: "{{'TITLES.DETAIL_SPECIMEN' | translate}} {{ $stateParams.id }}"
+                pageTitle: "Geocollections of Estonia: Specimen {{ $stateParams.id }}"
             },
             url: "/specimen/:id",
             templateUrl: "app/templates/search/detail/specimen.html",
@@ -69,7 +69,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('specimenImage.view', {
             data: {
-                pageTitle: "{{'TITLES.SPECIMEN_IMAGE' | translate}} {{ $stateParams.id }}"
+                pageTitle: "Geocollections of Estonia: Specimen image {{ $stateParams.id }}"
             },
             url: "/specimen_image/:id",
             templateUrl: "app/templates/search/detail/specimenImage.html",
@@ -78,7 +78,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('samples', {
             data: {
-                pageTitle: "{{'TITLES.SAMPLE' | translate}}"
+                pageTitle: "Geocollections of Estonia: Samples"
             },
             url: "/sample",
             templateUrl: "app/templates/search/sample/sample.html",
@@ -90,7 +90,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('sample.view', {
             data: {
-                pageTitle: "{{'TITLES.DETAIL_SAMPLE' | translate}} {{ $stateParams.id }}"
+                pageTitle: "Geocollections of Estonia: Sample {{ $stateParams.id }}"
             },
             url: "/sample/:id",
             templateUrl: "app/templates/search/detail/sample.html",
@@ -99,7 +99,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('drillcores', {
             data: {
-                pageTitle: "{{'TITLES.DRILLCORE' | translate}}"
+                pageTitle: "Geocollections of Estonia: Drill cores"
             },
             url: "/drillcore",
             templateUrl: "app/templates/search/drillcore/drillcore.html",
@@ -111,7 +111,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('drillcore.view', {
             data: {
-                pageTitle: "{{'TITLES.DETAIL_DRILLCORE' | translate}} {{ $stateParams.id }}"
+                pageTitle: "Geocollections of Estonia: Drill core {{ $stateParams.id }}"
             },
             url: "/drillcore/:id",
             templateUrl: "app/templates/search/detail/drillCoreDetails.html",
@@ -123,7 +123,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('coreBox.view', {
             data: {
-                pageTitle: "{{'TITLES.COREBOX' | translate}} {{ $stateParams.id }}"
+                pageTitle: "Geocollections of Estonia: Corebox {{ $stateParams.id }}"
             },
             url: "/corebox/:id",
             templateUrl: "app/templates/search/detail/coreBox.html",
@@ -132,7 +132,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('localities', {
             data: {
-                pageTitle: "{{'TITLES.LOCALITY' | translate}}"
+                pageTitle: "Geocollections of Estonia: Localities"
             },
             url: "/locality",
             templateUrl: "app/templates/search/locality/locality.html",
@@ -144,7 +144,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('locality.view', {
             data: {
-                pageTitle: "{{'TITLES.DETAIL_LOCALITY' | translate}} {{ $stateParams.id }}"
+                pageTitle: "Geocollections of Estonia: Locality {{ $stateParams.id }}"
             },
             url: "/locality/:id",
             templateUrl: "app/templates/search/detail/localityDetails.html",
@@ -153,7 +153,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('references', {
             data: {
-                pageTitle: "{{'TITLES.REFERENCE' | translate}}"
+                pageTitle: "Geocollections of Estonia: References"
             },
             url: "/reference",
             templateUrl: "app/templates/search/reference/reference.html",
@@ -165,7 +165,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('reference.view', {
             data: {
-                pageTitle: "{{'TITLES.DETAIL_REFERENCE' | translate}} {{ $stateParams.id }}"
+                pageTitle: "Geocollections of Estonia: Reference {{ $stateParams.id }}"
             },
             url: "/reference/:id",
             templateUrl: "app/templates/search/detail/referenceDetails.html",
@@ -174,7 +174,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('stratigraphies', {
             data: {
-                pageTitle: "{{'TITLES.STRATIGRAPHY' | translate}}"
+                pageTitle: "Geocollections of Estonia: Stratigraphy"
             },
             url: "/stratigraphy",
             templateUrl: "app/templates/search/stratigraphy/stratigraphy.html",
@@ -186,7 +186,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('stratigraphy.view', {
             data: {
-                pageTitle: "{{'TITLES.STRATIGRAPHY' | translate}} {{ $stateParams.id }}"
+                pageTitle: "Geocollections of Estonia: Stratigraphy {{ $stateParams.id }}"
             },
             url: "/stratigraphy/:id",
             templateUrl: "app/templates/search/detail/stratigraphy.html",
@@ -195,7 +195,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('analyses', {
             data: {
-                pageTitle: "{{'TITLES.ANALYSES' | translate}}"
+                pageTitle: "Geocollections of Estonia: Analyses"
             },
             url: "/analysis",
             templateUrl: "app/templates/search/analysis/analysis.html",
@@ -207,7 +207,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('analysis.view', {
             data: {
-                pageTitle: "{{'TITLES.DETAIL_ANALYSES' | translate}} {{ $stateParams.id }}"
+                pageTitle: "Geocollections of Estonia: Analysis {{ $stateParams.id }}"
             },
             url: "/analysis/:id",
             templateUrl: 'app/templates/search/detail/analysis.html',
@@ -216,7 +216,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('preparations', {
             data: {
-                pageTitle: "{{'TITLES.PREPARATION' | translate}}"
+                pageTitle: "Geocollections of Estonia: Preparation"
             },
             url: "/preparation",
             templateUrl: "app/templates/search/preparation/preparation.html",
@@ -228,7 +228,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('preparation.view', {
             data: {
-                pageTitle: "{{'TITLES.DETAIL_PREPARATION' | translate}} {{ $stateParams.id }}"
+                pageTitle: "Geocollections of Estonia: Preparation {{ $stateParams.id }}"
             },
             url: "/preparation/:id",
             templateUrl: "app/templates/search/detail/preparation.html",
@@ -237,7 +237,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('photoArchives', {
             data: {
-                pageTitle: "{{'TITLES.PHOTO_ARCHIVE' | translate}}"
+                pageTitle: "Geocollections of Estonia: Photo archive"
             },
             url: "/image",
             templateUrl: "app/templates/search/image/image.html",
@@ -249,7 +249,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('photoArchive.view', {
             data: {
-                pageTitle: "{{'TITLES.DETAIL_PHOTO_ARCHIVE' | translate}} {{ $stateParams.id }}"
+                pageTitle: "Geocollections of Estonia: Photo {{ $stateParams.id }}"
             },
             url: "/image/:id",
             templateUrl: "app/templates/search/detail/photoArchive.html",
@@ -275,7 +275,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     // })
         .state('dois', {
             data: {
-                pageTitle: "{{'TITLES.DOI' | translate}}"
+                pageTitle: "Geocollections of Estonia: DOI"
             },
             url: "/doi",
             templateUrl: "app/templates/search/doi/doi.html",
@@ -287,7 +287,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
     })
         .state('doi.view', {
             data: {
-                pageTitle: "{{'TITLES.DOI' | translate}} {{ $stateParams.id }}"
+                pageTitle: "Geocollections of Estonia: DOI {{ $stateParams.id }}"
             },
             url: "/doi/{id:.+}",
             templateUrl: "app/templates/search/detail/doiDetails.html",
@@ -305,7 +305,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
 
         .state('attachment.view', {
             data: {
-                pageTitle: "{{'TITLES.DETAIL_ATTACHMENT' | translate}} {{ $stateParams.id }}"
+                pageTitle: "Geocollections of Estonia: Attachment {{ $stateParams.id }}"
             },
             url: "/attachment/:id",
             templateUrl: "app/templates/search/detail/attachment.html",
@@ -319,7 +319,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
 
         .state('collection.view', {
             data: {
-                pageTitle: "{{'TITLES.DETAIL_COLLECTION' | translate}} {{ $stateParams.id }}"
+                pageTitle: "Geocollections of Estonia: Collection {{ $stateParams.id }}"
             },
             url: "/collection/:id",
             templateUrl: "app/templates/search/detail/collection.html",
@@ -333,7 +333,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
 
         .state('dataset.view', {
             data: {
-                pageTitle: "{{'TITLES.DETAIL_DATASET' | translate}} {{ $stateParams.id }}"
+                pageTitle: "Geocollections of Estonia: Dataset {{ $stateParams.id }}"
             },
             url: "/dataset/:id",
             templateUrl: "app/templates/search/detail/dataset.html",
@@ -347,7 +347,7 @@ module.config(function($stateProvider, $urlRouterProvider) {
 
         .state('file.view', {
             data: {
-                pageTitle: "{{ 'TITLES.DETAIL_FILE' | translate }} {{ $stateParams.id }}"
+                pageTitle: "Geocollections of Estonia: File {{ $stateParams.id }}"
             },
             url: "/file/:id",
             templateUrl: "app/templates/search/detail/file.html",
