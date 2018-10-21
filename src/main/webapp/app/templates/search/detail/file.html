@@ -425,7 +425,8 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr data-ng-if="(detailCtrl.results.licence__licence_url_en && detailCtrl.results.licence__licence_url_en != null)
+                        && (detailCtrl.results.licence__licence_en && detailCtrl.results.licence__licence_en != null)">
                         <td><localize-label et="'API_TRANSLATION.DOI.LICENCE__LICENCE_EN'" en="'API_TRANSLATION.DOI.LICENCE__LICENCE_EN'"/></td>
                         <td>
                             <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.results.licence__licence_url_en})">
