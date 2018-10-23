@@ -59,9 +59,10 @@
                             <localize et="entity.rock" en="entity.rock_en"/>
                         </a>
 
-                        <span data-ng-if="(entity.rock || entity.rock_en) && (entity.rock_txt || entity.rock_txt_en)">|</span>
+                        <span data-ng-if="((entity.rock || entity.rock_en) && (entity.rock_txt || entity.rock_txt_en))
+                            && ((entity.rock != entity.rock_txt[0]) && (entity.rock_en != entity.rock_txt_en))">|</span>
 
-                        <span>
+                        <span data-ng-if="(entity.rock != entity.rock_txt[0]) && (entity.rock_en != entity.rock_txt_en)">
                             <i><localize et="entity.rock_txt[0]" en="entity.rock_txt_en"/></i>
                         </span>
                     </div>
