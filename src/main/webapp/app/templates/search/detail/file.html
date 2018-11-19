@@ -28,6 +28,11 @@
                                 <localize et="detailCtrl.results.description" en="detailCtrl.results.description_en"/>
                             </span>
                         </span>
+                        <span data-ng-if="detailCtrl.results.specimen_image_attachment === 4">{{ 'DETAIL.ATTACHMENT.HEADING_DIGITISED_REFERENCE' | translate }}:
+                            <span data-ng-if="detailCtrl.results.reference__reference && detailCtrl.results.reference__reference !== null">
+                                {{ detailCtrl.results.reference__reference }}
+                            </span>
+                        </span>
                     </h2>
                     <div>
                         <em> {{ 'DETAIL.ATTACHMENT.FILE_ID_HEADING' | translate }}: {{detailCtrl.results.id}}</em>
@@ -111,7 +116,11 @@
                 <h3> {{ 'DETAILVIEW_TABLE_HEADER' | translate }} </h3>
                 <table class="table table-bordered table-hover table-header-styles">
 
+
+
                     <!-- SPECIMEN START -->
+                    <!---->
+                    <!---->
 
                     <tr data-ng-if="detailCtrl.results.specimen__coll__number && detailCtrl.results.specimen__coll__number != null">
                         <td> {{' API_TRANSLATION.SPECIMEN.COLL__NUMBER' | translate }} </td>
@@ -212,9 +221,15 @@
                         <td> {{ detailCtrl.results.image_scalebar }} </td>
                     </tr>
 
+                    <!---->
+                    <!---->
                     <!-- SPECIMEN END -->
 
+
+
                     <!-- PHOTO ARCHIVE START -->
+                    <!---->
+                    <!---->
 
                     <tr data-ng-if="detailCtrl.results.image_number && detailCtrl.results.image_number != null">
                         <td> {{ 'API_TRANSLATION.PHOTO_ARCHIVE.PHOTO_NUMBER' | translate }} </td>
@@ -234,7 +249,30 @@
                         </td>
                     </tr>
 
+                    <!---->
+                    <!---->
                     <!-- PHOTO ARCHIVE END -->
+
+
+
+                    <!-- DIGITISED REFERENCE START -->
+                    <!---->
+                    <!---->
+
+                    <tr data-ng-if="detailCtrl.results.reference__reference && detailCtrl.results.reference__reference !== null">
+                        <td> {{ 'API_TRANSLATION.REFERENCE.REFERENCE' | translate }} </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference', id: detailCtrl.results.reference__id, target: '_self'})">
+                                {{ detailCtrl.results.reference__reference }}
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!---->
+                    <!---->
+                    <!-- DIGITISED REFERENCE END -->
+
+
 
                     <tr data-ng-if="(detailCtrl.results.description && detailCtrl.results.description != null)
                         || (detailCtrl.results.description_en && detailCtrl.results.description_en != null)">
@@ -248,6 +286,10 @@
                             </span>
 
                             <span data-ng-if="detailCtrl.results.specimen_image_attachment === 3">
+                                {{ 'API_TRANSLATION.ATTACHMENT.TITLE' | translate }}
+                            </span>
+
+                            <span data-ng-if="detailCtrl.results.specimen_image_attachment === 4">
                                 {{ 'API_TRANSLATION.ATTACHMENT.TITLE' | translate }}
                             </span>
                         </td>

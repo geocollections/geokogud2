@@ -140,7 +140,9 @@ public class AttachmentApiServiceImpl implements AttachmentApiService {
             "attach_link__sample__number",
             "attach_link__specimen__id",
             "attach_link__specimen__specimen_id",
-            "attach_link__specimen__coll__number"
+            "attach_link__specimen__coll__number",
+            "reference__id",
+            "reference__reference"
     );
 
     @Autowired

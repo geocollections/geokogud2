@@ -601,6 +601,7 @@
         "ATTACHMENT": {
             "HEADING_PHOTO_ARCHIVE": "Foto",
             "HEADING_SPECIMEN_IMAGE": "Säiliku foto",
+            "HEADING_DIGITISED_REFERENCE": "Kirjandusallikas",
             "HEADING": "Fail",
             "FILE_ID_HEADING": "Fail ID"
         },

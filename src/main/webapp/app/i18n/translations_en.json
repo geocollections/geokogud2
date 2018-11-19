@@ -601,6 +601,7 @@
         "ATTACHMENT": {
             "HEADING_PHOTO_ARCHIVE": "Photo",
             "HEADING_SPECIMEN_IMAGE": "Image of specimen",
+            "HEADING_DIGITISED_REFERENCE": "Reference",
             "HEADING": "File",
             "FILE_ID_HEADING": "File ID"
         },

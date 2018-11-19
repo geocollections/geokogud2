@@ -209,6 +209,10 @@ var constructor = function (utils, configuration, $window, $location, $translate
 
     function openInNewWindow(params) {
         var width = 600;
+        var target = ''
+        if (params.target) {
+            target = params.target
+        }
         // console.log(params.object + "/" + params.id);
         switch (params.object) {
             case "specimen":
@@ -224,7 +228,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
         if (!$window.location.href.includes('search') && ($window.location.href.includes('locality/') || $window.location.href.includes('specimen/'))) {
             $window.open('/' + params.object + '/' + params.id, '_self', 'width=' + width + ',height=750,scrollbars, resizable');
         } else {
-            $window.open('/' + params.object + '/' + params.id, '', 'width=' + width + ',height=750,scrollbars, resizable');
+            $window.open('/' + params.object + '/' + params.id, target, 'width=' + width + ',height=750,scrollbars, resizable');
         }
     }
 
