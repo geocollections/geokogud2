@@ -556,7 +556,9 @@ var constructor = function (utils, configuration, $window, $location, $translate
                             'og:url': location.href,
                             'og:title': document.title,
                             'og:description': $translate.use() === 'et' ? estText : engText,
-                            'og:image': getFileLink({filename: imageData.uuid_filename})
+                            'og:image': getFileLink({filename: imageData.uuid_filename}),
+                            'og:image:url': getFileLink({filename: imageData.uuid_filename}),
+                            'og:image:secure_url': getFileLink({filename: imageData.uuid_filename})
                         }
                     })
                 },
@@ -592,7 +594,9 @@ var constructor = function (utils, configuration, $window, $location, $translate
                             'og:url': location.href,
                             'og:title': document.title,
                             'og:description': $translate.use() === 'et' ? estText : engText,
-                            'og:image': getFileLink({filename: imageData.uuid_filename})
+                            'og:image': getFileLink({filename: imageData.uuid_filename}),
+                            'og:image:url': getFileLink({filename: imageData.uuid_filename}),
+                            'og:image:secure_url': getFileLink({filename: imageData.uuid_filename})
                         }
                     })
                 },
