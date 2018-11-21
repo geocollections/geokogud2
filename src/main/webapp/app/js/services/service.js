@@ -517,7 +517,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
         if (imageData.specimen_image_attachment === 3) {
             if (imageData.description !== null && imageData.description) {
                 estText += "Fail: " + imageData.description + ". ";
-                engText += "File: " + imageData.description + ". ";
+                engText += "File: " + imageData.description_en + ". ";
             }
             if (imageData.author__agent !== null && imageData.author__agent) {
                 estText += "Autor: " + imageData.author__agent + ". ";
@@ -563,7 +563,8 @@ var constructor = function (utils, configuration, $window, $location, $translate
                 function (response) {
                     // Action after response
                 });
-        } else {
+            <!-- TODO: Add more formats -->
+        } else if (imageData.specimen_image_attachment === 3 && detailCtrl.results.filename.endsWith('mp4')) {
             FB.ui({
                     method: 'share_open_graph',
                     action_type: 'og.shares',
@@ -572,6 +573,23 @@ var constructor = function (utils, configuration, $window, $location, $translate
                             'og:url': location.href,
                             'og:title': document.title,
                             'og:description': $translate.use() === 'et' ? estText : engText,
+                            'og:video': getFileLink({filename: imageData.uuid_filename})
+
+                        }
+                    })
+                },
+                function (response) {
+                    // Action after response
+                });
+        } else {
+            FB.ui({
+                    method: 'share_open_graph',
+                    action_type: 'og.shares',
+                    action_properties: JSON.stringify({
+                        object: {
+                            'og:url': location.href,
+                            'og:title': document.title,
+                            'og:description': $translate.use() === 'et' ? estText : engText
                         }
                     })
                 },
