@@ -583,6 +583,22 @@ var constructor = function (utils, configuration, $window, $location, $translate
                 function (response) {
                     // Action after response
                 });
+        } else if (imageData.specimen_image_attachment === 3 && (imageData.filename.endsWith('png') || imageData.filename.endsWith('jpeg') || imageData.filename.endsWith('svg') || imageData.filename.endsWith('jpg'))) {
+            FB.ui({
+                    method: 'share_open_graph',
+                    action_type: 'og.shares',
+                    action_properties: JSON.stringify({
+                        object: {
+                            'og:url': location.href,
+                            'og:title': document.title,
+                            'og:description': $translate.use() === 'et' ? estText : engText,
+                            'og:image': getFileLink({filename: imageData.uuid_filename})
+                        }
+                    })
+                },
+                function (response) {
+                    // Action after response
+                });
         } else {
             FB.ui({
                     method: 'share_open_graph',
