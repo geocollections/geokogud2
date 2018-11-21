@@ -469,23 +469,23 @@ var constructor = function (utils, configuration, $window, $location, $translate
         var engText = "";
 
         // images
-        if (imageData.database__acronym) {
+        if (imageData.database__acronym && imageData.specimen_image_attachment === 2) {
             if (imageData.author__agent !== null && imageData.author__agent) {
                 estText += "Autor: " + imageData.author__agent + ". ";
                 engText += "Author: " + imageData.author__agent + ". ";
             }
-            if (imageData.date_taken !== null && imageData.date_taken) {
-                estText += "Pildistamise aeg: " + new Date(imageData.date_taken).toLocaleDateString('et-EE') + ". ";
-                engText += "Date taken: " + new Date(imageData.date_taken).toDateString() + ". ";
+            if (imageData.date_created !== null && imageData.date_created) {
+                estText += "Pildistamise aeg: " + new Date(imageData.date_created).toLocaleDateString('et-EE') + ". ";
+                engText += "Date taken: " + new Date(imageData.date_created).toDateString() + ". ";
             }
-            if (imageData.date_taken === null && imageData.date_taken_free !== null && imageData.date_taken_free) {
-                estText += "Pildistamise aeg: " + imageData.date_taken_free + ". ";
-                engText += "Date taken: " + imageData.date_taken_free + ". ";
+            if (imageData.date_created === null && imageData.date_created_free !== null && imageData.date_created_free) {
+                estText += "Pildistamise aeg: " + imageData.date_created_free + ". ";
+                engText += "Date taken: " + imageData.date_created_free + ". ";
             }
         }
 
         // Specimen images
-        if (imageData.specimen__database__acronym) {
+        if (imageData.specimen__database__acronym && imageData.specimen_image_attachment === 1) {
             if (imageData.specimenIdentification.count > 0) {
                 if (imageData.specimenIdentification.results[0].taxon__taxon !== null && imageData.specimenIdentification.results[0].taxon__taxon) {
                     estText += "Nimi: " + imageData.specimenIdentification.results[0].taxon__taxon;
@@ -507,27 +507,80 @@ var constructor = function (utils, configuration, $window, $location, $translate
                 estText += "Pildistamise aeg: " + new Date(imageData.date).toLocaleDateString('et-EE') + ". ";
                 engText += "Date taken: " + new Date(imageData.date).toDateString() + ". ";
             }
-            if (imageData.date === null && imageData.date_taken_free !== null && imageData.date_taken_free) {
-                estText += "Pildistamise aeg: " + imageData.date_taken_free + ". ";
-                engText += "Date taken: " + imageData.date_taken_free + ". ";
+            if (imageData.date === null && imageData.date_created_free !== null && imageData.date_created_free) {
+                estText += "Pildistamise aeg: " + imageData.date_created_free + ". ";
+                engText += "Date taken: " + imageData.date_created_free + ". ";
             }
         }
 
-        FB.ui({
-                method: 'share_open_graph',
-                action_type: 'og.shares',
-                action_properties: JSON.stringify({
-                    object: {
-                        'og:url': location.href,
-                        'og:title': document.title,
-                        'og:description': $translate.use() === 'et' ? estText : engText,
-                        'og:image': getFileLink({filename: imageData.uuid_filename})
-                    }
-                })
-            },
-            function (response) {
-                // Action after response
-            });
+        // Other files
+        if (imageData.specimen_image_attachment === 3) {
+            if (imageData.description !== null && imageData.description) {
+                estText += "Fail: " + imageData.description + ". ";
+                engText += "File: " + imageData.description + ". ";
+            }
+            if (imageData.author__agent !== null && imageData.author__agent) {
+                estText += "Autor: " + imageData.author__agent + ". ";
+                engText += "Author: " + imageData.author__agent + ". ";
+            }
+            if (imageData.author__agent === null && imageData.author_free !== null && imageData.author_free) {
+                estText += "Autor: " + imageData.author_free + ". ";
+                engText += "Author: " + imageData.author_free + ". ";
+            }
+
+        }
+
+        // Digitised references
+        if (imageData.specimen_image_attachment === 4) {
+            if (imageData.reference__reference !== null && imageData.reference__reference) {
+                estText += "Kirjandusallikas: " + imageData.reference__reference + ". ";
+                engText += "Reference: " + imageData.reference__reference + ". ";
+            }
+            if (imageData.author__agent !== null && imageData.author__agent) {
+                estText += "Autor: " + imageData.author__agent + ". ";
+                engText += "Author: " + imageData.author__agent + ". ";
+            }
+            if (imageData.author__agent === null && imageData.author_free !== null && imageData.author_free) {
+                estText += "Autor: " + imageData.author_free + ". ";
+                engText += "Author: " + imageData.author_free + ". ";
+            }
+        }
+
+        // Only difference is that photo archive and specimen images have image in share dialog
+        if (imageData.specimen_image_attachment === 1 || imageData.specimen_image_attachment === 2) {
+            FB.ui({
+                    method: 'share_open_graph',
+                    action_type: 'og.shares',
+                    action_properties: JSON.stringify({
+                        object: {
+                            'og:url': location.href,
+                            'og:title': document.title,
+                            'og:description': $translate.use() === 'et' ? estText : engText,
+                            'og:image': getFileLink({filename: imageData.uuid_filename})
+                        }
+                    })
+                },
+                function (response) {
+                    // Action after response
+                });
+        } else {
+            FB.ui({
+                    method: 'share_open_graph',
+                    action_type: 'og.shares',
+                    action_properties: JSON.stringify({
+                        object: {
+                            'og:url': location.href,
+                            'og:title': document.title,
+                            'og:description': $translate.use() === 'et' ? estText : engText,
+                        }
+                    })
+                },
+                function (response) {
+                    // Action after response
+                });
+        }
+
+
     };
     // FACEBOOK END
 
