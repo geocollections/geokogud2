@@ -439,12 +439,12 @@ var constructor = function (utils, configuration, $window, $location, $translate
      */
     function getFileLink(params) {
         if (params.size) {
-            return "http://files.geocollections.info/" + params.size
+            return "https://files.geocollections.info/" + params.size
                 + "/" + params.filename.substring(0, 2)
                 + "/" + params.filename.substring(2, 4)
                 + "/" + params.filename;
         } else {
-            return "http://files.geocollections.info/" + params.filename.substring(0, 2)
+            return "https://files.geocollections.info/" + params.filename.substring(0, 2)
                 + "/" + params.filename.substring(2, 4)
                 + "/" + params.filename;
         }
@@ -573,7 +573,9 @@ var constructor = function (utils, configuration, $window, $location, $translate
                             'og:url': location.href,
                             'og:title': document.title,
                             'og:description': $translate.use() === 'et' ? estText : engText,
-                            'og:video': getFileLink({filename: imageData.uuid_filename})
+                            'og:video': getFileLink({filename: imageData.uuid_filename}),
+                            'og:video:url': getFileLink({filename: imageData.uuid_filename}),
+                            'og:video:secure_url': getFileLink({filename: imageData.uuid_filename})
 
                         }
                     })
