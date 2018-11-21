@@ -288,7 +288,7 @@
                                     <td>
                                         <first-not-null values="[entity.attachment__author__agent, entity.attachment__author_free]" />
                                     </td>
-                                    <td> {{ entity.attachment__date_added | date:dateFormat }} </td>
+                                    <td> {{ entity.attachment__date_created | date:dateFormat }} </td>
                                     <td>
                                         <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'file', id: entity.attachment__id})">
                                             Link
