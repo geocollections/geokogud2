@@ -564,7 +564,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
                     // Action after response
                 });
             <!-- TODO: Add more formats -->
-        } else if (imageData.specimen_image_attachment === 3 && detailCtrl.results.filename.endsWith('mp4')) {
+        } else if (imageData.specimen_image_attachment === 3 && imageData.filename.endsWith('mp4')) {
             FB.ui({
                     method: 'share_open_graph',
                     action_type: 'og.shares',
