@@ -145,6 +145,15 @@
                 </table>
             </div>
 
+            <!-- FILE DOWNLOAD -->
+            <div class="col-lg-6" data-ng-if="detailCtrl.results.attachment__filename && detailCtrl.results.attachment__filename !== null">
+                <h3> {{ 'API_TRANSLATION.ATTACHMENT.FILE' | translate }} </h3>
+
+                <div class="other-file-download-button" data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.service.getFileLink({filename: detailCtrl.results.attachment__filename}), target: '_blank'})">
+                    <i class="fa fa-download fa-2x" aria-hidden="true"></i> &nbsp;{{ 'INDEX.DOWNLOAD' | translate }}
+                </div>
+            </div>
+
             <!-- Doi -->
             <div class="col-lg-6" data-ng-if="detailCtrl.doi.length > 0">
                 <h3> {{ 'API_TRANSLATION.REFERENCE.DOI.HEADING' | translate }} </h3>
