@@ -283,6 +283,8 @@
                 "BOOK": "Book",
                 "PP": "Pages",
                 "DOI": "DOI",
+                "URL": "URL",
+                "PDF": "PDF",
                 "REMARKS": "Remarks",
                 "ID": "ID",
                 "AUTHOR": "Author",

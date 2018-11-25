@@ -234,10 +234,19 @@ var constructor = function (utils, configuration, $window, $location, $translate
 
     function openUrlInNewWindow(params) {
         // console.log(params.url);
-        if (params.target) {
-            $window.open(params.url, params.target);
+
+        // Otherwise some urls won't open
+        var url = params.url
+        if (url.includes('http')) {
+            url = url.substr(url.indexOf('http'))
         } else {
-            $window.open(params.url, '', 'width=600,height=750,scrollbars, resizable');
+            url = 'http://' + url
+        }
+
+        if (params.target) {
+            $window.open(url, params.target);
+        } else {
+            $window.open(url, '', 'width=600,height=750,scrollbars, resizable');
         }
     }
 
