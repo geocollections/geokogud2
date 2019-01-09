@@ -761,14 +761,14 @@
                 "STRATIGRAPHY": "Stratigraafia",
                 "LITHOSTRATIGRAPHY": "Litostratigraafia",
                 "ROCK": "Kivim"
-            },
-            "LIBRARY": {
-                "AUTHOR_TXT": "Autorid",
-                "ABSTRACT": "Kokkuvõte",
-                "DATE_ADDED": "Kogumik loodud",
-                "DATE_CHANGED": "Viimati muudetud",
-                "REFERENCE_COLLECTION": "Kogumikule viitamine"
             }
+        },
+        "LIBRARY": {
+            "AUTHOR_TXT": "Autorid",
+            "ABSTRACT": "Kokkuvõte",
+            "DATE_ADDED": "Kogumik loodud",
+            "DATE_CHANGED": "Viimati muudetud",
+            "REFERENCE_COLLECTION": "Kogumikule viitamine"
         }
     }
 }
