@@ -355,6 +355,20 @@ module.config(function($stateProvider, $urlRouterProvider) {
             params: {type: "file"}
         })
 
+        .state('library', {
+            template: '<data-ui-view/>'
+        })
+
+        .state('library.view', {
+            data: {
+                pageTitle: "Geocollections of Estonia: Library {{ $stateParams.id }}"
+            },
+            url: "/library/:id",
+            templateUrl: "app/templates/search/detail/library.html",
+            controller: "DetailController as detailCtrl",
+            params: {type: "library"}
+        })
+
 
         /******************************
          *** MAIN PAGE SLIDER START ***

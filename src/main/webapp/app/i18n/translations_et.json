@@ -614,6 +614,9 @@
         "DATASET": {
             "HEADING": "Dataset No."
         },
+        "LIBRARY": {
+            "TITLE": "Virtuaalne artiklite kogumik"
+        },
         "NEXT": "JÄRGMINE",
         "NEXT_INFO": "Kas teadsid, et sa saad navigeerida ka klaviatuuri nooleklahve kasutades",
         "PREVIOUS": "EELMINE",

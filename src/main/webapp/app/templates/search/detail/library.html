@@ -1,0 +1,77 @@
+<div ng-include="'app/templates/main/partial/detailview_header.html'"></div>
+
+<div id="elementToFocus" tabindex="1" style="outline: 0" ng-arrow-left="detailCtrl.reload({table:'library', left:true})" ng-arrow-right="detailCtrl.reload({table:'library', right:true})"  class="panel detailview-page">
+    <div class="panel-body detailview-max-width" data-ng-if="detailCtrl.results != null">
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="detailview-title">
+                    <h2>
+                        {{ 'DETAIL.LIBRARY.TITLE' | translate }}:
+                        <localize et="detailCtrl.results.title" en="detailCtrl.results.title_en"/>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-sm-12">
+                <h3> {{ 'DETAILVIEW_TABLE_HEADER' | translate }} </h3>
+
+                <table class="table table-bordered table-hover table-header-styles">
+
+                    <tr data-ng-if="detailCtrl.results.author_txt && detailCtrl.results.author_txt != null">
+                        <td> {{' API_TRANSLATION.LIBRARY.AUTHOR_TXT' | translate }} </td>
+                        <td>{{detailCtrl.results.author_txt}}</td>
+                    </tr>
+
+                    <tr data-ng-if="(detailCtrl.results.abstract && detailCtrl.results.abstract != null)
+                            || (detailCtrl.results.abstract_en && detailCtrl.results.abstract_en != null) ">
+                        <td> {{' API_TRANSLATION.LIBRARY.ABSTRACT' | translate }} </td>
+                        <td>
+                            <localize et="detailCtrl.results.abstract" en="detailCtrl.results.abstract_en"/>
+                        </td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.date_added && detailCtrl.results.date_added != null">
+                        <td> {{' API_TRANSLATION.LIBRARY.DATE_ADDED' | translate }} </td>
+                        <td>{{detailCtrl.results.date_added | date:dateFormat}}</td>
+                    </tr>
+
+                    <tr data-ng-if="detailCtrl.results.date_changed && detailCtrl.results.date_changed != null">
+                        <td> {{' API_TRANSLATION.LIBRARY.DATE_CHANGED' | translate }} </td>
+                        <td>{{detailCtrl.results.date_changed | date:dateFormat}}</td>
+                    </tr>
+
+                    <tr data-ng-if="true">
+                        <td> {{' API_TRANSLATION.LIBRARY.REFERENCE_COLLECTION' | translate }} </td>
+                        <td>
+                            <span>{{detailCtrl.results.author_txt}}</span>
+                            <span>{{detailCtrl.results.year}}</span>
+                            <span>{{detailCtrl.results.title}}</span>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div data-ng-if="detailCtrl.results == null && pageHasError" ng-include="'app/templates/main/detailview_error.html'"></div>
+
+</div>
+
+<div ng-include="'app/templates/main/partial/detailview_footer.html'"></div>
+
+<script>
+    $(function(){
+        $('#elementToFocus').focus();
+    });
+</script>

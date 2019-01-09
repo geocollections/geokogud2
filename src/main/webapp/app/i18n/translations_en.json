@@ -614,6 +614,9 @@
         "DATASET": {
             "HEADING": "Dataset Nr."
         },
+        "LIBRARY": {
+            "TITLE": "Virtual reference collection"
+        },
         "NEXT": "NEXT",
         "NEXT_INFO": "Did you know that you can also use keyboard arrow keys",
         "PREVIOUS": "PREVIOUS",

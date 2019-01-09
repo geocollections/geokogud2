@@ -134,6 +134,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
             case "collection" : url = configuration.collectionDetailUrl; break;
             case "dataset" : url = configuration.datasetDetailUrl; break;
             case "file" : url = configuration.attachmentDetailUrl; break;
+            case "library" : url = configuration.libraryDetailUrl; break;
             default : break;
         }
         return url;

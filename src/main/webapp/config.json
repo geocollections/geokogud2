@@ -224,6 +224,7 @@
   "attachmentDetailUrl":"/details/raw-attachment",
   "collectionDetailUrl":"/details/raw-collection",
   "datasetDetailUrl":"/details/raw-dataset",
+  "libraryDetailUrl":"/details/raw-library",
 
   "detailFieldsConfig" : {
     "specimens" : {
@@ -347,6 +348,7 @@
     "attachment" : {},
     "collection" : {},
     "dataset" : {},
+    "library" : {},
     "file": {
       "locality" : {
         "id" : "locality__id",

@@ -764,6 +764,13 @@
                 "LITHOSTRATIGRAPHY": "Lithostratigraphy",
                 "ROCK": "Rock"
             }
+        },
+        "LIBRARY": {
+            "AUTHOR_TXT": "Authors",
+            "ABSTRACT": "Summary",
+            "DATE_ADDED": "Collection created",
+            "DATE_CHANGED": "Last changed",
+            "REFERENCE_COLLECTION": "Cite the collection"
         }
 
     }
