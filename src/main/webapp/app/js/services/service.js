@@ -72,7 +72,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
         // console.log("callback: " + callback);
         var url = getDetailUrl(searchType);
         // console.log("url: " + url);
-        if (id.includes("10.15152/GEO.")) { // If clause for universal DOI identifier
+        if (id.includes("10.15152/GEO.") || id.includes("10.15152/geo.")) { // If clause for universal DOI identifier
             utils.httpGet(url + "/" + id.substring(13), null, callback, error);
         } else {
             utils.httpGet(url + "/" + id, null, callback, error);
