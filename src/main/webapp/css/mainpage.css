@@ -513,8 +513,8 @@ table tr > td:first-child {
 
 .shortcut-buttons {
     margin-top: 3rem;
-    margin-left: 4rem;
-    margin-right: 4rem;
+    /*margin-left: 4rem;*/
+    /*margin-right: 4rem;*/
 }
 
 .shortcut-buttons .col-xs-12 {
@@ -539,6 +539,7 @@ table tr > td:first-child {
 
 .card b {
     color: white;
+    text-shadow: 0px 1px 9px rgba(82, 73, 73, 0.65);
 }
 
 /* SHORTCUT BUTTONS 3x3 END */
