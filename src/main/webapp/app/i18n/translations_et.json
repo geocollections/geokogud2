@@ -677,6 +677,17 @@
         "SEARCH_TIP_2": "Mitme märksõna korral otsitakse vasteid, kus esineb vähemalt üks otsitavatest. Et märksõna kindlasti tulemustes sisalduks, lisa selle ette '+'. Kui soovid mõne termini välistada, siis kasuta märksõna ees '-'. Näiteks:",
         "SEARCH_TIP_3": "Mitmesõnalise väljendi otsimiseks ümbritse see jutumärkidega. Sama tee ka siis kui otsitav sisaldab erimärke, nagu '-' ja '+', nt"
     },
+    "SHORTCUT": {
+        "SPECIMEN": "Eksemplarid",
+        "REFERENCE": "Geoloogiline kirjandus",
+        "PHOTO_ARCHIVE": "Fotoarhiiv",
+        "FOSSILS": "Fossiilid",
+        "ROCKS": "Mineraalid ja Kivimid",
+        "SAMPLE": "Kivimiproovid",
+        "LOCALITY": "Lokaliteedid",
+        "DRILLCORE": "Puursüdamikud",
+        "RESEARCH": "Geoloogilised andmed"
+    },
     "GLOBAL_SEARCH_INFO" : "Globaalne otsing kuvab maksimaalselt 100 tulemust. Rohkemate andmete kuvamiseks palun kasutage detailotsingut.",
     "GLOBAL_SEARCH_NO_INFO": "Teie kiirotsing ei andnud tulemusi. Palun proovige teisi märksõnu või kasutage detailotsingut.",
     "GLOBAL_SEARCH_ERROR1": "Hetkel kuvab",

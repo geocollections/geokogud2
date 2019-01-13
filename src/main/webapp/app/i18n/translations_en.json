@@ -677,6 +677,17 @@
         "SEARCH_TIP_2": "In case of multiple terms the results will include any of the terms. To require a specific keyword to be present, precede it with '+'. To exclude a term, precede it with '-'. For instance:",
         "SEARCH_TIP_3": "To search exact expression, use double quotation marks. Use them also if the term includes special characters like '+' or '-', for instance:"
     },
+    "SHORTCUT": {
+        "SPECIMEN": "Museum specimens",
+        "REFERENCE": "Geological Literature",
+        "PHOTO_ARCHIVE": "Photo Archive",
+        "FOSSILS": "Fossils",
+        "ROCKS": "Minerals and Rocks",
+        "SAMPLE": "Samples",
+        "LOCALITY": "Localities",
+        "DRILLCORE": "Drill cores",
+        "RESEARCH": "Research Data"
+    },
     "GLOBAL_SEARCH_INFO" : "Global search shows max 100 results. To see more results please use extended search.",
     "GLOBAL_SEARCH_NO_INFO": "Your quick search returned no results. Please try another more generic keyword or use extended search and select, which kind of information you are looking for.",
     "GLOBAL_SEARCH_ERROR1": "Currently showing",
