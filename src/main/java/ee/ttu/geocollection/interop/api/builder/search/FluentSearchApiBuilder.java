@@ -151,4 +151,13 @@ public abstract class FluentSearchApiBuilder<B extends FluentSearchApiBuilder<B>
     void addFieldNameAndValue(String fieldName, String value) {
         query += "&" + fieldName + "=" + value;
     }
+
+    /**
+     * Same as addFieldNameAndValue
+     * @param firstFieldName
+     * @param value
+     */
+    void addFirstFieldNameAndValue(String firstFieldName, String value) {
+        query += "?" + firstFieldName + "=" + value;
+    }
 }

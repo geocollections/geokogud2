@@ -8,4 +8,6 @@ public interface LibraryApiService {
     ApiResponse findFile(FileSearchCriteria searchCriteria);
 
     ApiResponse findRawById(Long id);
+
+    ApiResponse findLibraryReferenceById(Long id);
 }

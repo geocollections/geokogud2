@@ -273,6 +273,13 @@ public class DetailsController {
     public ApiResponse findRawFileById(@PathVariable Long id) { return fileApiService.findRawById(id); }
 
     @RequestMapping(value = "/raw-library/{id}")
-    public ApiResponse findRawLibraryById(@PathVariable Long id) { return libraryApiService.findRawById(id); }
+    public ApiResponse findRawLibraryById(@PathVariable Long id) {
+        ApiResponse library = libraryApiService.findRawById(id);
+
+        // TODO: Have to return both library and libraryReference
+        ApiResponse libraryReference = libraryApiService.findLibraryReferenceById(id);
+
+        return library;
+    }
 
 }
