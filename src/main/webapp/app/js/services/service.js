@@ -34,6 +34,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
     service.getFileLink = getFileLink;
     service.getAboutDatabase = getAboutDatabase;
     service.goToExtendedSearch = goToExtendedSearch;
+    service.getCurrentLanguage = getCurrentLanguage;
 
     service.toggle = function (el,array) {
         utils.toggleInArray(el,array)
@@ -470,6 +471,10 @@ var constructor = function (utils, configuration, $window, $location, $translate
     function goToExtendedSearch() {
         var href = $window.location.href;
         return href.substring(0, href.lastIndexOf('/'));
+    }
+
+    function getCurrentLanguage() {
+        return $translate.use()
     }
 
 

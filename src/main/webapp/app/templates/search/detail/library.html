@@ -32,7 +32,8 @@
                             || (detailCtrl.results.abstract_en && detailCtrl.results.abstract_en != null) ">
                         <td> {{' API_TRANSLATION.LIBRARY.ABSTRACT' | translate }} </td>
                         <td>
-                            <localize et="detailCtrl.results.abstract" en="detailCtrl.results.abstract_en"/>
+                            <p data-ng-if="detailCtrl.service.getCurrentLanguage() === 'et'" ng-bind-html="detailCtrl.results.abstract"></p>
+                            <p data-ng-if="detailCtrl.service.getCurrentLanguage() === 'en'" ng-bind-html="detailCtrl.results.abstract_en"></p>
                         </td>
                     </tr>
 
@@ -50,8 +51,13 @@
                         <td> {{' API_TRANSLATION.LIBRARY.REFERENCE_COLLECTION' | translate }} </td>
                         <td>
                             <span>{{detailCtrl.results.author_txt}}</span>
+                            <span>({{ 'DETAIL.LIBRARY.COMPILED' | translate }}.)</span>
                             <span>{{detailCtrl.results.year}}.</span>
-                            <span>{{detailCtrl.results.title}}</span>
+                            <span>{{detailCtrl.results.title}}.</span>
+                            <span>{{ 'DETAIL.LIBRARY.TITLE_LARGE' | translate }}.</span>
+                            <span><a href="{{ getUrlPath() }}" target="_blank">{{ getUrlPath() }}</a>.</span>
+                            <span>{{ 'DETAIL.LIBRARY.VISITED' | translate }}:</span>
+                            <span>{{ getCurrentDate() | date:dateFormat }}</span>
                         </td>
                     </tr>
 
@@ -59,6 +65,14 @@
 
             </div>
 
+        </div>
+
+        <div class="row" data-ng-if="referenceCollection.results.length > 0">
+            <div class="col-sm-12">
+                <h3> {{ 'DETAIL.LIBRARY.REFERENCE_COLLECTIONS' | translate }} </h3>
+
+
+            </div>
         </div>
 
     </div>

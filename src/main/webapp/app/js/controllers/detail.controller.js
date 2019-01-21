@@ -1,6 +1,6 @@
 var module = angular.module("geoApp");
 
-var constructor = function ($scope, $state, $stateParams, applicationService, configuration, bsLoadingOverlayService, errorService) {
+var constructor = function ($scope, $state, $stateParams, $http, applicationService, configuration, bsLoadingOverlayService, errorService, Library) {
     var vm = this;
 
     vm.service = applicationService;
@@ -38,6 +38,12 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
             getRelatedData();
             vm.localities = (['doi'].indexOf($stateParams.type) > -1 ? getDoiLocalities() : []);
             vm.datasetLocalities = (['dataset'].indexOf($stateParams.type) > -1 ? getDatasetLocalities() : []);
+
+            if (['library'].indexOf($stateParams.type) > -1) {
+                getReferenceCollections()
+            }
+            console.log(vm.referenceCollections)
+
 
             if (vm.relatedData != null) {
                 vm.numOfSpecimens = (['preparations'].indexOf($stateParams.type) > -1 ? sumNumberOfSpecimens(vm.relatedData) : []);
@@ -103,6 +109,20 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
 
         console.log(localities)
         return localities
+    }
+
+    /**
+     * Get request for reference collections in library detail view
+     */
+    function getReferenceCollections() {
+
+        var myDataPromise = Library.getData({id: vm.results.id, orderBy: '-sort'})
+
+        myDataPromise.then(function(result) {
+            console.log(result)
+            vm.referenceCollections = result
+        });
+
     }
 
     /**
@@ -202,6 +222,14 @@ var constructor = function ($scope, $state, $stateParams, applicationService, co
         return containsImage;
     }
 
+    $scope.getUrlPath = function () {
+        return location.href
+    }
+
+    $scope.getCurrentDate = function () {
+        return new Date()
+    }
+
     /**
      * Calculates total number of specimens from preparation_taxa table which is
      * used in preparations detail view general info and needed to calculate percent.
@@ -276,10 +304,12 @@ constructor.$inject = [
     "$scope",
     "$state",
     "$stateParams",
+    "$http",
     'ApplicationService',
     'configuration',
     'bsLoadingOverlayService',
-    'ErrorService'
+    'ErrorService',
+    'Library'
 ];
 
 module.controller("DetailController", constructor);

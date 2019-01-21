@@ -615,7 +615,11 @@
             "HEADING": "Dataset No."
         },
         "LIBRARY": {
-            "TITLE": "Virtuaalne artiklite kogumik"
+            "TITLE": "Virtuaalne artiklite kogumik",
+            "COMPILED": "koost",
+            "TITLE_LARGE": "Virtuaalne kirjanduse kogumik Eesti geokogude infosüsteemis",
+            "VISITED": "Külastatud",
+            "REFERENCE_COLLECTIONS": "Kogumiku artiklid"
         },
         "NEXT": "JÄRGMINE",
         "NEXT_INFO": "Kas teadsid, et sa saad navigeerida ka klaviatuuri nooleklahve kasutades",

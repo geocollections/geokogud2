@@ -615,7 +615,11 @@
             "HEADING": "Dataset Nr."
         },
         "LIBRARY": {
-            "TITLE": "Virtual reference collection"
+            "TITLE": "Virtual reference collection",
+          "COMPILED": "comp",
+          "TITLE_LARGE": "Virtual reference collection in Geoscience Collections of Estonia",
+            "VISITED": "Visited",
+            "REFERENCE_COLLECTIONS": "Reference collections"
         },
         "NEXT": "NEXT",
         "NEXT_INFO": "Did you know that you can also use keyboard arrow keys",
