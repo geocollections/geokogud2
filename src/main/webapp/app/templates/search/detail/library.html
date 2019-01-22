@@ -67,10 +67,76 @@
 
         </div>
 
-        <div class="row" data-ng-if="referenceCollection.results.length > 0">
+        <div class="row" data-ng-if="detailCtrl.referenceCollections.length > 0">
             <div class="col-sm-12">
                 <h3> {{ 'DETAIL.LIBRARY.REFERENCE_COLLECTIONS' | translate }} </h3>
 
+                <div data-ng-repeat="entity in detailCtrl.referenceCollections track by $index">
+
+                    <div style="padding: 5px 0; margin: 5px 0 5px 30px; font-size: 0.9em; border-top: dotted 1.2pt #ccc;">
+                        <span>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'reference',id:entity.reference})">
+                                <b style="font-size: 14px">{{$index + 1}}.</b>
+                            </a>
+                        </span>
+
+                        <span data-ng-if="entity.reference__author && entity.reference__author != null">
+                            {{ entity.reference__author }},
+                        </span>
+
+                        <span data-ng-if="entity.reference__year && entity.reference__year != null">
+                            {{ entity.reference__year }}.
+                        </span>
+
+                        <span data-ng-if="entity.reference__title && entity.reference__title != null">
+                            {{ entity.reference__title }}.
+                        </span>
+
+                        <span data-ng-if="entity.reference__book && entity.reference__book != null">
+                            {{ entity.reference__book }},
+                        </span>
+
+                        <span data-ng-if="entity.reference__publisher && entity.reference__publisher != null">
+                            {{ entity.reference__publisher }}.
+                        </span>
+
+                        <span data-ng-if="entity.reference__publisher_place && entity.reference__publisher_place != null">
+                            {{ entity.reference__publisher_place }}.
+                        </span>
+
+                        <span data-ng-if="entity.reference__journal__journal_name && entity.reference__journal__journal_name != null">
+                            <i>{{ entity.reference__journal__journal_name }}</i>,
+                        </span>
+
+                        <span data-ng-if="entity.reference__volume && entity.reference__volume != null">
+                            <b>{{ entity.reference__volume }}</b>,
+                        </span>
+
+                        <span data-ng-if="entity.reference__pages && entity.reference__pages != null">
+                            {{ entity.reference__pages }}.
+                        </span>
+
+                        <span data-ng-if="entity.reference__doi && entity.reference__doi != null">
+                            <a href data-ng-click="detailCtrl.service.openDoiInNewWindow({doi:entity.reference__doi})">
+                                <b>DOI:{{entity.reference__doi}}</b>
+                            </a>
+                        </span>
+
+                        <span data-ng-if="entity.reference__attachment__filename && entity.reference__attachment__filename != null">
+                            <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.service.getFileLink({filename: entity.reference__attachment__filename})})">
+                                <b style="color: green">PDF</b>
+                            </a>
+                        </span>
+
+                        <span data-ng-if="entity.reference__attachment__filename === null
+                            && (entity.reference__url && entity.reference__url !== null)">
+                            <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url: entity.reference__url})">
+                                <b style="color: red">PDF</b>
+                            </a>
+                        </span>
+                    </div>
+
+                </div>
 
             </div>
         </div>

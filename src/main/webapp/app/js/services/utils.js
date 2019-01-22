@@ -416,19 +416,24 @@ module.factory("SearchFactory", ['$http', 'configuration', function($http, confi
         }
     };
 }]).factory("Library", ['$http', 'configuration', function($http, configuration){
-    var getData = function (data) {
-        return $http({
-                method: 'GET',
-                url: configuration.referenceCollectionUrl,
-                params: {
-                    library: data.id,
-                    order_by: data.orderBy
-                }
-            }).then(function(response) {
-                if (response.status === 200) {
-                    return response
-                }
-            });
-    };
-    return { getData: getData }
+    return {
+        referenceCollections: function (data, callback) {
+            return $http.get(configuration.referenceCollectionUrl, {params:{library: data.id, order_by: data.orderBy}}).then(callback);
+        }
+    }
+    // var getData = function (data) {
+    //     return $http({
+    //             method: 'GET',
+    //             url: configuration.referenceCollectionUrl,
+    //             params: {
+    //                 library: data.id,
+    //                 order_by: data.orderBy
+    //             }
+    //         }).then(function(response) {
+    //             if (response.status === 200) {
+    //                 return response
+    //             }
+    //         });
+    // };
+    // return { getData: getData }
 }]);

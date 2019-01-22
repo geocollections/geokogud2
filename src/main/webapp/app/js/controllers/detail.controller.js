@@ -20,6 +20,9 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
     function searchEntity () {
         vm.detailLoadingHandler.start();
         applicationService.getEntity($stateParams.type, $stateParams.id, onEntityData, onDetailError);
+        if (['library'].indexOf($stateParams.type) > -1) {
+            Library.referenceCollections({id: $stateParams.id, orderBy: '-sort'}, onReferenceCollectionsLoaded)
+        }
     }
 
     function onEntityData(response) {
@@ -38,12 +41,6 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
             getRelatedData();
             vm.localities = (['doi'].indexOf($stateParams.type) > -1 ? getDoiLocalities() : []);
             vm.datasetLocalities = (['dataset'].indexOf($stateParams.type) > -1 ? getDatasetLocalities() : []);
-
-            if (['library'].indexOf($stateParams.type) > -1) {
-                getReferenceCollections()
-            }
-            console.log(vm.referenceCollections)
-
 
             if (vm.relatedData != null) {
                 vm.numOfSpecimens = (['preparations'].indexOf($stateParams.type) > -1 ? sumNumberOfSpecimens(vm.relatedData) : []);
@@ -114,15 +111,9 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
     /**
      * Get request for reference collections in library detail view
      */
-    function getReferenceCollections() {
-
-        var myDataPromise = Library.getData({id: vm.results.id, orderBy: '-sort'})
-
-        myDataPromise.then(function(result) {
-            console.log(result)
-            vm.referenceCollections = result
-        });
-
+    function onReferenceCollectionsLoaded(response) {
+        console.log(response.data.results)
+        vm.referenceCollections = response.data.results
     }
 
     /**
