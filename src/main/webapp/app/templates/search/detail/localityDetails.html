@@ -456,6 +456,7 @@
                 <div data-ng-if="detailCtrl.relatedSpecimens.length > 0">
                     <h3> {{ 'DETAIL.LOCALITY.SPECIMEN' | translate }} </h3>
 
+                    <!-- Pagination -->
                     <div class="search-pagination">
                         <nav class="pull-right">
                             <ul uib-pagination
@@ -493,30 +494,56 @@
                                     </a>
                                 </td>
 
-                                <!-- specimen_identification -->
-                                <td data-ng-if="detailCtrl.relatedSpecimenIdentfication.length > 0 && detailCtrl.relatedSpecimenIdentficationGeology.length === 0">
-                                    <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+detailCtrl.relatedSpecimenIdentfication[$index].taxon_id})">
-                                        <div data-ng-if="detailCtrl.relatedSpecimenIdentfication[$index].taxon__taxon && detailCtrl.relatedSpecimenIdentfication[$index].taxon__taxon != null">
-                                            {{ detailCtrl.relatedSpecimenIdentfication[$index].taxon__taxon }}
-                                        </div>
+                                <td>
+                                    <!-- specimen_identification -->
+                                    <span data-ng-if="detailCtrl.relatedSpecimenIdentfication.length > 0">
 
-                                        <div data-ng-if="detailCtrl.relatedSpecimenIdentfication[$index].taxon__taxon === null
-                                            && (detailCtrl.relatedSpecimenIdentfication[$index].name && detailCtrl.relatedSpecimenIdentfication[$index].name !== null)">
-                                            {{ detailCtrl.relatedSpecimenIdentfication[$index].name }}
-                                        </div>
-                                    </a>
+                                        <span data-ng-repeat="taxon in detailCtrl.relatedSpecimenIdentfication">
+                                            <span data-ng-if="specimen.id === taxon.specimen_id">
+
+                                                <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/' + taxon.taxon_id})">
+                                                    <span data-ng-if="taxon.taxon__taxon && taxon.taxon__taxon != null">
+                                                        {{ taxon.taxon__taxon }}
+                                                    </span>
+
+                                                    <span data-ng-if="taxon.taxon__taxon === null && (taxon.name && taxon.name !== null)">
+                                                        {{ taxon.name }}
+                                                    </span>
+                                                </a>
+
+                                            </span>
+                                        </span>
+                                    </span>
+
+                                    <!-- TODO: Enable if it is possible to be both TAXON or ROCK -->
+                                    <!--<span data-ng-if="(detailCtrl.relatedSpecimenIdentfication.length > 0 && detailCtrl.relatedSpecimenIdentficationGeology.length > 0)-->
+                                        <!--&& (detailCtrl.relatedSpecimenIdentfication[$index].taxon_id != null || detailCtrl.relatedSpecimenIdentficationGeology[$index].rock_id != null)">-->
+                                        <!--|-->
+                                    <!--</span>-->
+
+                                    <!-- specimen_identification_geology -->
+                                    <span data-ng-if="detailCtrl.relatedSpecimenIdentficationGeology.length > 0">
+
+                                        <span data-ng-repeat="rock in detailCtrl.relatedSpecimenIdentficationGeology">
+                                            <span data-ng-if="specimen.id === rock.specimen_id">
+
+                                                <a href data-ng-if="rock.rock_id != null"
+                                                   data-ng-click="detailCtrl.service.openUrlInNewWindow({url: 'http://www.kivid.info/' + rock.rock_id})">
+                                                    <span data-ng-if="(rock.name && rock.name != null) || (rock.name_en && rock.name_en != null)">
+                                                        <localize et="rock.name" en="rock.name_en" />
+                                                    </span>
+
+                                                    <span data-ng-if="(rock.name === null && rock.name_en === null)
+                                                        && ((rock.rock__name && rock.rock__name != null) || (rock.rock__name_en && rock.rock__name_en != null))">
+                                                        <localize et="rock.rock__name" en="rock.rock__name_en" />
+                                                    </span>
+
+                                                </a>
+
+                                            </span>
+                                        </span>
+                                    </span>
                                 </td>
-
-                                <!-- specimen_identification_geology -->
-                                <td data-ng-if="detailCtrl.relatedSpecimenIdentficationGeology.length > 0 && detailCtrl.relatedSpecimenIdentfication.length === 0">
-                                    <a href data-ng-if="specimen.specimenidentificationgeologies__rock__id != null"
-                                       data-ng-click="detailCtrl.service.openUrlInNewWindow({url: 'http://www.kivid.info/' + detailCtrl.relatedSpecimenIdentfication.rock_id})">
-                                        <localize et="detailCtrl.relatedSpecimenIdentfication.rock__name" en="detailCtrl.relatedSpecimenIdentfication.rock__name_en" />
-                                    </a>
-                                </td>
-
-                                <!-- empty table cell if both are empty -->
-                                <td data-ng-if="detailCtrl.relatedSpecimenIdentfication.length === 0 && detailCtrl.relatedSpecimenIdentficationGeology.length === 0"></td>
 
                                 <td>
                                     <a data-ng-click="detailCtrl.service.openInNewWindow({object: 'stratigraphy', id: specimen.stratigraphy_id})"
