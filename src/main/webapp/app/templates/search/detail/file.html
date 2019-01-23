@@ -182,10 +182,30 @@
                         <td> {{ detailCtrl.results.specimen__specimenidentification__taxon__name }} </td>
                     </tr>
 
-                    <!--Third-->
-                    <!--TODO: Classification_mineral_name-->
+                    <!--Third (free name)-->
+                    <tr data-ng-if="detailCtrl.results.specimenIdentificationGeology.count > 0">
+                        <td> {{ 'API_TRANSLATION.SPECIMEN_IMAGE.SPECIMEN_NAME' | translate }} </td>
+                        <td>
+                            <span data-ng-if="(detailCtrl.results.specimenIdentificationGeology.results[0].rock__name && detailCtrl.results.specimenIdentificationGeology.results[0].rock__name != null)
+                                || detailCtrl.results.specimenIdentificationGeology.results[0].rock__name_en && detailCtrl.results.specimenIdentificationGeology.results[0].rock__name_en">
+                                <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://kivid.info/'+detailCtrl.results.specimenIdentificationGeology.results[0].rock_id})">
+                                    <localize et="detailCtrl.results.specimenIdentificationGeology.results[0].rock__name" en="detailCtrl.results.specimenIdentificationGeology.results[0].rock__name_en" />
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
 
-                    <!--Fourth-->
+                    <!--Fourth (formal name)-->
+                    <tr data-ng-if="detailCtrl.results.specimenIdentificationGeology.count > 0
+                        && ((detailCtrl.results.specimenIdentificationGeology.results[0].rock__formula && detailCtrl.results.specimenIdentificationGeology.results[0].rock__formula != null)
+                         || (detailCtrl.results.specimenIdentificationGeology.results[0].rock__formula_html && detailCtrl.results.specimenIdentificationGeology.results[0].rock__formula_html != null))">
+                        <td> {{ 'DETAIL.SPECIMEN.GEOLOGY_FORMULA' | translate }} </td>
+                        <td>
+                            <first-not-null values="[detailCtrl.results.specimenIdentificationGeology.results[0].rock__formula, detailCtrl.results.specimenIdentificationGeology.results[0].rock__formula_html]" />
+                        </td>
+                    </tr>
+
+                    <!--Fifth-->
                     <tr data-ng-if="(detailCtrl.results.specimen__specimenidentification__taxon__taxon == null && detailCtrl.results.specimen__specimenidentification__taxon__name == null)
                         && ((detailCtrl.results.specimen__specimenidentificationgeologies__name && specimen__specimenidentificationgeologies__name != null)
                         || (detailCtrl.results.specimen__specimenidentificationgeologies__name_en && specimen__specimenidentificationgeologies__name_en != null))">

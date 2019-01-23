@@ -55,4 +55,14 @@ public class FluentSpecimenIdentificationGeologiesSearchApiBuilder extends Fluen
         return this;
     }
 
+    public FluentSpecimenIdentificationGeologiesSearchApiBuilder returnRockFormula() {
+        addReturningField(ROCK__FORMULA);
+        return this;
+    }
+
+    public FluentSpecimenIdentificationGeologiesSearchApiBuilder returnRockFormulaHtml() {
+        addReturningField(ROCK__FORMULA_HTML);
+        return this;
+    }
+
 }

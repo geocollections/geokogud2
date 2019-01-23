@@ -255,6 +255,12 @@ public class DetailsController {
                     specimenIdentification -> () -> specimenImageApiService.findSpecimenIdentification(
                             new SearchField(specimenIdentification.get("specimen_id").toString(), LookUpType.exact)),
                     specimenId -> receivedSpecimenId -> specimenId.put("specimenIdentification", receivedSpecimenId));
+
+            asynchService.doAsynchCallsForEachResult(
+                    attachment,
+                    specimenIdentificationGeology -> () -> specimenApiService.findSpecimenIdentificationGeologies(
+                            new SearchField(specimenIdentificationGeology.get("specimen_id").toString(), LookUpType.exact)),
+                    specimenId -> receivedSpecimenId -> specimenId.put("specimenIdentificationGeology", receivedSpecimenId));
         }
         return attachment;
     }

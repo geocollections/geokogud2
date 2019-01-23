@@ -271,6 +271,8 @@ public class ApiFields {
     public static final String ROCK_ID = "rock_id";
     public static final String NAME_EN = "name_en";
     public static final String ROCK__MINDAT_ID = "rock__mindat_id";
+    public static final String ROCK__FORMULA  = "rock__formula";
+    public static final String ROCK__FORMULA_HTML  = "rock__formula_html";
 
     /**
      * PREPARATION search

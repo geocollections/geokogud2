@@ -216,6 +216,8 @@ public class SpecimenApiServiceImpl implements SpecimenApiService {
                 .returnName()
                 .returnNameEn()
                 .returnCurrent()
+                .returnRockFormula()
+                .returnRockFormulaHtml()
                 .buildFullQuery();
         return apiService.searchRawEntities(SPECIMEN_IDENTIFICATION_GEOLOGY_TABLE, 5,1, new SortField(), requestParams);
     }
