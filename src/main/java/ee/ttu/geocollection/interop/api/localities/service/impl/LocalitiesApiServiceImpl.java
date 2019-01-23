@@ -165,9 +165,9 @@ public class LocalitiesApiServiceImpl implements LocalitiesApiService {
                 .relatedData(DRILLCORE_TABLE)
                 .relatedData(LOCALITY_REFERENCE)
                 .relatedData(LOCALITY_SYNONYM)
-                .relatedData(SPECIMEN_TABLE)
+//                .relatedData(SPECIMEN_TABLE) TOO SLOW!!!
                 .relatedData(ATTACHMENT_LINK)
-                .relatedData(SAMPLE)
+//                .relatedData(SAMPLE) TOO SLOW!!!
                 .relatedData(STRATIGRAPHY_STRATOTYPE)
                 .relatedData(ATTACHMENT_TABLE)
                 .returnAllFields(fields)

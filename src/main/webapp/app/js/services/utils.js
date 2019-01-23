@@ -421,19 +421,20 @@ module.factory("SearchFactory", ['$http', 'configuration', function($http, confi
             return $http.get(configuration.referenceCollectionUrl, {params:{library: data.id, order_by: data.orderBy}}).then(callback);
         }
     }
-    // var getData = function (data) {
-    //     return $http({
-    //             method: 'GET',
-    //             url: configuration.referenceCollectionUrl,
-    //             params: {
-    //                 library: data.id,
-    //                 order_by: data.orderBy
-    //             }
-    //         }).then(function(response) {
-    //             if (response.status === 200) {
-    //                 return response
-    //             }
-    //         });
-    // };
-    // return { getData: getData }
-}]);
+}]).factory("Locality", ['$http', 'configuration', function($http, configuration){
+    return {
+        relatedSpecimens: function (data, callback) {
+            var url = configuration.relatedSpecimensUrl
+                + '?locality__id=' + data.id
+                + '&paginate_by=' + data.paginateBy
+                + '&page=' + data.page
+                + '&order_by=id&related_data=specimen_identification&order_by=specimen_id&related_data=specimen_identification_geology&order_by=specimen_id'
+            console.log(url)
+            return $http.get(url).then(callback);
+        },
+
+        relatedSamples: function (data, callback) {
+            return $http.get(configuration.relatedSamplesUrl, {params:{locality: data.id, paginate_by: data.paginateBy, page: data.page }}).then(callback);
+        }
+    }
+}] );

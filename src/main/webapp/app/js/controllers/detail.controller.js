@@ -1,6 +1,6 @@
 var module = angular.module("geoApp");
 
-var constructor = function ($scope, $state, $stateParams, $http, applicationService, configuration, bsLoadingOverlayService, errorService, Library) {
+var constructor = function ($scope, $state, $stateParams, $http, applicationService, configuration, bsLoadingOverlayService, errorService, Library, Locality) {
     var vm = this;
 
     vm.service = applicationService;
@@ -22,6 +22,12 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
         applicationService.getEntity($stateParams.type, $stateParams.id, onEntityData, onDetailError);
         if (['library'].indexOf($stateParams.type) > -1) {
             Library.referenceCollections({id: $stateParams.id, orderBy: '-sort'}, onReferenceCollectionsLoaded)
+        }
+        if (['localities'].indexOf($stateParams.type) > -1) {
+            Locality.relatedSpecimens({id: $stateParams.id, paginateBy: '10', page: '1'}, onRelatedSpecimensLoaded)
+            Locality.relatedSamples({id: $stateParams.id, paginateBy: '10', page: '1'}, onRelatedSamplesLoaded)
+        //    TODO: specimen request with pagination
+        //    TODO: sample request with pagination
         }
     }
 
@@ -114,6 +120,21 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
     function onReferenceCollectionsLoaded(response) {
         console.log(response.data.results)
         vm.referenceCollections = response.data.results
+    }
+
+    function onRelatedSpecimensLoaded(response) {
+        console.log(response)
+        vm.relatedSpecimensCount = response.data.count
+        vm.relatedSpecimens = response.data.results
+
+        vm.relatedSpecimenIdentfication = response.data.related_data['specimen_identification']
+        vm.relatedSpecimenIdentficationGeology = response.data.related_data['specimen_identification_geology']
+    }
+
+    function onRelatedSamplesLoaded(response) {
+        console.log(response)
+        vm.relatedSamplesCount = response.data.count
+        vm.relatedSamples = response.data.results
     }
 
     /**
@@ -300,7 +321,8 @@ constructor.$inject = [
     'configuration',
     'bsLoadingOverlayService',
     'ErrorService',
-    'Library'
+    'Library',
+    'Locality'
 ];
 
 module.controller("DetailController", constructor);

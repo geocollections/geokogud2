@@ -227,6 +227,8 @@
   "libraryDetailUrl":"/details/raw-library",
 
   "referenceCollectionUrl": "https://api.geocollections.info/library_reference/",
+  "relatedSpecimensUrl": "https://api.geocollections.info/specimen/",
+  "relatedSamplesUrl": "https://api.geocollections.info/sample/",
 
   "detailFieldsConfig" : {
     "specimens" : {
