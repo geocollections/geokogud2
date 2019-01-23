@@ -429,7 +429,6 @@ module.factory("SearchFactory", ['$http', 'configuration', function($http, confi
                 + '&paginate_by=' + data.paginateBy
                 + '&page=' + data.page
                 + '&order_by=id&related_data=specimen_identification&order_by=specimen_id&related_data=specimen_identification_geology&order_by=specimen_id'
-            console.log(url)
             return $http.get(url).then(callback);
         },
 

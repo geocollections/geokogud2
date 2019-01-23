@@ -456,6 +456,24 @@
                 <div data-ng-if="detailCtrl.relatedSpecimens.length > 0">
                     <h3> {{ 'DETAIL.LOCALITY.SPECIMEN' | translate }} </h3>
 
+                    <div class="search-pagination">
+                        <nav class="pull-right">
+                            <ul uib-pagination
+                                boundary-links="true"
+                                ng-change="searchRelatedSpecimens()"
+                                items-per-page="10"
+                                max-size="5"
+                                total-items="detailCtrl.relatedSpecimensCount"
+                                ng-model="specimenPage"
+                                class="pagination-sm"
+                                style="margin-bottom: 10px; margin-top: 0"
+                                first-text="&laquo;"
+                                previous-text="&lsaquo;"
+                                next-text="&rsaquo;"
+                                last-text="&raquo;"></ul>
+                        </nav>
+                    </div>
+
                     <table class="table table-bordered table-hover margin-bottom-5">
                         <thead class="styles-for-table-headers">
                             <tr>
@@ -478,7 +496,14 @@
                                 <!-- specimen_identification -->
                                 <td data-ng-if="detailCtrl.relatedSpecimenIdentfication.length > 0 && detailCtrl.relatedSpecimenIdentficationGeology.length === 0">
                                     <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+detailCtrl.relatedSpecimenIdentfication[$index].taxon_id})">
-                                        <first-not-null values="[detailCtrl.relatedSpecimenIdentfication[$index].taxon__taxon, detailCtrl.relatedSpecimenIdentfication[$index].name]" />
+                                        <div data-ng-if="detailCtrl.relatedSpecimenIdentfication[$index].taxon__taxon && detailCtrl.relatedSpecimenIdentfication[$index].taxon__taxon != null">
+                                            {{ detailCtrl.relatedSpecimenIdentfication[$index].taxon__taxon }}
+                                        </div>
+
+                                        <div data-ng-if="detailCtrl.relatedSpecimenIdentfication[$index].taxon__taxon === null
+                                            && (detailCtrl.relatedSpecimenIdentfication[$index].name && detailCtrl.relatedSpecimenIdentfication[$index].name !== null)">
+                                            {{ detailCtrl.relatedSpecimenIdentfication[$index].name }}
+                                        </div>
                                     </a>
                                 </td>
 

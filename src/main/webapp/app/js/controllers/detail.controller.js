@@ -24,10 +24,10 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
             Library.referenceCollections({id: $stateParams.id, orderBy: '-sort'}, onReferenceCollectionsLoaded)
         }
         if (['localities'].indexOf($stateParams.type) > -1) {
+            //    TODO: specimen request with pagination
+            //    TODO: sample request with pagination
             Locality.relatedSpecimens({id: $stateParams.id, paginateBy: '10', page: '1'}, onRelatedSpecimensLoaded)
             Locality.relatedSamples({id: $stateParams.id, paginateBy: '10', page: '1'}, onRelatedSamplesLoaded)
-        //    TODO: specimen request with pagination
-        //    TODO: sample request with pagination
         }
     }
 
@@ -240,6 +240,14 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
 
     $scope.getCurrentDate = function () {
         return new Date()
+    }
+
+
+    /**
+     * Gets triggered when pagination is used
+     */
+    $scope.searchRelatedSpecimens = function () {
+        Locality.relatedSpecimens({id: $stateParams.id, paginateBy: '10', page: this.specimenPage}, onRelatedSpecimensLoaded)
     }
 
     /**
