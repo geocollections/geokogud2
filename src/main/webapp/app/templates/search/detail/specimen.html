@@ -13,13 +13,26 @@
                         <span data-ng-repeat="entity in detailCtrl.specimenIdentifications" data-ng-if="detailCtrl.specimenIdentifications.length > 0">
                             |
                             <a href ng-if="entity.current == true" data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://fossiilid.info/'+entity.taxon_id})">
-                                {{ entity.taxon__taxon }}
+                                <span data-ng-if="entity.taxon__taxon && entity.taxon__taxon != null">
+                                    {{ entity.taxon__taxon }}
+                                </span>
+
+                                <span data-ng-if="entity.taxon__taxon === null && (entity.name && entity.name !== null)">
+                                    {{ entity.name }}
+                                </span>
                             </a>
                         </span>
                         <span data-ng-repeat="entity in detailCtrl.specimenIdentificationGeology" data-ng-if="detailCtrl.specimenIdentificationGeology.length > 0">
                             |
                             <a href ng-if="entity.current == true" data-ng-click="detailCtrl.service.openUrlInNewWindow({url:'http://www.kivid.info/'+entity.rock_id})">
-                                <localize en="entity.rock__name_en" et="entity.rock__name" />
+                                <span data-ng-if="(entity.name && entity.name != null) || (entity.name_en && entity.name_en != null)">
+                                    <localize en="entity.name_en" et="entity.name" />
+                                </span>
+
+                                <span data-ng-if="(entity.name === null && entity.name_en === null)
+                                    && ((entity.rock__name && entity.name != null) || (entity.rock__name_en && entity.name_en != null))">
+                                    <localize en="entity.rock__name_en" et="entity.rock__name" />
+                                </span>
                             </a>
                         </span>
                     </h2>
