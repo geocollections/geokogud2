@@ -621,7 +621,7 @@
             "TITLE_LARGE": "Virtual reference collection in Geoscience Collections of Estonia",
             "VISITED": "Visited",
             "REFERENCE_COLLECTIONS": "Reference collections",
-            "REFERENCE_COLLECTIONS_ERROR": "References have not yet been added or they have not been made publicly visible"
+            "REFERENCE_COLLECTIONS_ERROR": "References have not yet been added nor made publicly visible"
         },
         "NEXT": "NEXT",
         "NEXT_INFO": "Did you know that you can also use keyboard arrow keys",
