@@ -36,7 +36,12 @@
 
                     <div>
                         <p data-ng-if="detailCtrl.service.getCurrentLanguage() === 'et'" ng-bind-html="detailCtrl.results.abstract"></p>
-                        <p data-ng-if="detailCtrl.service.getCurrentLanguage() === 'en'" ng-bind-html="detailCtrl.results.abstract_en"></p>
+
+                        <p data-ng-if="detailCtrl.service.getCurrentLanguage() === 'en' && detailCtrl.results.abstract_en && detailCtrl.results.abstract_en != null"
+                           ng-bind-html="detailCtrl.results.abstract_en"></p>
+
+                        <p data-ng-if="detailCtrl.service.getCurrentLanguage() === 'en' && detailCtrl.results.abstract_en === null && detailCtrl.results.abstract != null"
+                           ng-bind-html="detailCtrl.results.abstract"></p>
                     </div>
 
                 </div>
