@@ -616,10 +616,12 @@
         },
         "LIBRARY": {
             "TITLE": "Virtuaalne artiklite kogumik",
+            "TITLE_COMPILED": "Koostanud",
             "COMPILED": "koost",
             "TITLE_LARGE": "Virtuaalne kirjanduse kogumik Eesti geokogude infosüsteemis",
             "VISITED": "Külastatud",
-            "REFERENCE_COLLECTIONS": "Kogumiku artiklid"
+            "REFERENCE_COLLECTIONS": "Kogumiku artiklid",
+            "REFERENCE_COLLECTIONS_ERROR": "Artikleid pole veel lisatud või ei ole need avalikult nähtavad."
         },
         "NEXT": "JÄRGMINE",
         "NEXT_INFO": "Kas teadsid, et sa saad navigeerida ka klaviatuuri nooleklahve kasutades",

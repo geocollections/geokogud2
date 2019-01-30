@@ -6,11 +6,18 @@
 
         <div class="row">
             <div class="col-sm-12">
-                <div class="detailview-title">
-                    <h2>
+                <div class="detailview-title-library">
+                    <h3>
                         {{ 'DETAIL.LIBRARY.TITLE' | translate }}:
+                    </h3>
+                    <h3>
                         <localize et="detailCtrl.results.title" en="detailCtrl.results.title_en"/>
-                    </h2>
+                    </h3>
+                    <h4>
+                        <span>{{ 'DETAIL.LIBRARY.TITLE_COMPILED' | translate }}:</span>
+                        <span>{{detailCtrl.results.author_txt}}</span>
+                        <span>({{detailCtrl.results.year}})</span>
+                    </h4>
                 </div>
             </div>
         </div>
@@ -19,49 +26,52 @@
         <div class="row">
 
             <div class="col-sm-12">
-                <h3> {{ 'DETAILVIEW_TABLE_HEADER' | translate }} </h3>
 
-                <table class="table table-bordered table-hover table-header-styles">
-
-                    <tr data-ng-if="detailCtrl.results.author_txt && detailCtrl.results.author_txt != null">
-                        <td> {{' API_TRANSLATION.LIBRARY.AUTHOR_TXT' | translate }} </td>
-                        <td>{{detailCtrl.results.author_txt}}</td>
-                    </tr>
-
-                    <tr data-ng-if="(detailCtrl.results.abstract && detailCtrl.results.abstract != null)
+                <div data-ng-if="(detailCtrl.results.abstract && detailCtrl.results.abstract != null)
                             || (detailCtrl.results.abstract_en && detailCtrl.results.abstract_en != null) ">
-                        <td> {{' API_TRANSLATION.LIBRARY.ABSTRACT' | translate }} </td>
-                        <td>
-                            <p data-ng-if="detailCtrl.service.getCurrentLanguage() === 'et'" ng-bind-html="detailCtrl.results.abstract"></p>
-                            <p data-ng-if="detailCtrl.service.getCurrentLanguage() === 'en'" ng-bind-html="detailCtrl.results.abstract_en"></p>
-                        </td>
-                    </tr>
 
-                    <tr data-ng-if="detailCtrl.results.date_added && detailCtrl.results.date_added != null">
-                        <td> {{' API_TRANSLATION.LIBRARY.DATE_ADDED' | translate }} </td>
-                        <td>{{detailCtrl.results.date_added | date:dateFormat}}</td>
-                    </tr>
+                    <h4 style="margin-top: 20px">
+                        <b>{{' API_TRANSLATION.LIBRARY.ABSTRACT' | translate }}</b>
+                    </h4>
 
-                    <tr data-ng-if="detailCtrl.results.date_changed && detailCtrl.results.date_changed != null">
-                        <td> {{' API_TRANSLATION.LIBRARY.DATE_CHANGED' | translate }} </td>
-                        <td>{{detailCtrl.results.date_changed | date:dateFormat}}</td>
-                    </tr>
+                    <div>
+                        <p data-ng-if="detailCtrl.service.getCurrentLanguage() === 'et'" ng-bind-html="detailCtrl.results.abstract"></p>
+                        <p data-ng-if="detailCtrl.service.getCurrentLanguage() === 'en'" ng-bind-html="detailCtrl.results.abstract_en"></p>
+                    </div>
 
-                    <tr data-ng-if="true">
-                        <td> {{' API_TRANSLATION.LIBRARY.REFERENCE_COLLECTION' | translate }} </td>
-                        <td>
-                            <span>{{detailCtrl.results.author_txt}}</span>
-                            <span>({{ 'DETAIL.LIBRARY.COMPILED' | translate }}.)</span>
-                            <span>{{detailCtrl.results.year}}.</span>
-                            <span>{{detailCtrl.results.title}}.</span>
-                            <span>{{ 'DETAIL.LIBRARY.TITLE_LARGE' | translate }}.</span>
-                            <span><a href="{{ getUrlPath() }}" target="_blank">{{ getUrlPath() }}</a>.</span>
-                            <span>{{ 'DETAIL.LIBRARY.VISITED' | translate }}:</span>
-                            <span>{{ getCurrentDate() | date:dateFormat }}</span>
-                        </td>
-                    </tr>
+                </div>
 
-                </table>
+
+                <div>
+                    <span data-ng-if="detailCtrl.results.date_added && detailCtrl.results.date_added != null">
+                        <b>{{' API_TRANSLATION.LIBRARY.DATE_ADDED' | translate }}:</b>
+                        {{detailCtrl.results.date_added | date:dateFormat}},
+                    </span>
+
+                    <span data-ng-if="detailCtrl.results.date_changed && detailCtrl.results.date_changed != null">
+                        <b>{{' API_TRANSLATION.LIBRARY.DATE_CHANGED' | translate }}:</b>
+                        {{detailCtrl.results.date_changed | date:dateFormat}}
+                    </span>
+                </div>
+
+
+                <div style="margin-top: 20px">
+                    <div>
+                        <b>{{' API_TRANSLATION.LIBRARY.REFERENCE_COLLECTION' | translate }}:</b>
+                    </div>
+
+                    <div>
+                        <span>{{detailCtrl.results.author_txt}}</span>
+                        <span>({{ 'DETAIL.LIBRARY.COMPILED' | translate }}.)</span>
+                        <span>{{detailCtrl.results.year}}.</span>
+                        <span>{{detailCtrl.results.title}}.</span>
+                        <span>{{ 'DETAIL.LIBRARY.TITLE_LARGE' | translate }}.</span>
+                        <span><a href="{{ getUrlPath() }}" target="_blank">{{ getUrlPath() }}</a>.</span>
+                        <span>{{ 'DETAIL.LIBRARY.VISITED' | translate }}:</span>
+                        <span>{{ getCurrentDate() | date:dateFormat }}</span>
+                    </div>
+
+                </div>
 
             </div>
 
@@ -136,6 +146,18 @@
                         </span>
                     </div>
 
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row" data-ng-if="detailCtrl.referenceCollections.length === 0">
+            <div class="col-sm-12">
+                <h3> {{ 'DETAIL.LIBRARY.REFERENCE_COLLECTIONS' | translate }} </h3>
+
+                <div>
+                    {{ 'DETAIL.LIBRARY.REFERENCE_COLLECTIONS_ERROR' | translate }}
                 </div>
 
             </div>

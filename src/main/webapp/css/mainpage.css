@@ -607,6 +607,18 @@ table tr > td:first-child {
     margin-top: 10px;
 }
 
+/* Title styles for library detail view */
+.detailview-title-library {
+    padding: 10px 3rem;
+    background-color: #eceeef; /* New color? */
+    margin-bottom: 10px;
+}
+
+/* overrides default h3 margin top 20 px */
+.detailview-title-library h3 {
+    margin-top: 10px;
+}
+
 #detailview-navbar-brand {
     color: #F05F40;
     font-size: 13.5px;

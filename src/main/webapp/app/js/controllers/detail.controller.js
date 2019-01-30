@@ -119,7 +119,7 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
      */
     function onReferenceCollectionsLoaded(response) {
         console.log(response.data.results)
-        vm.referenceCollections = response.data.results
+        vm.referenceCollections = (response.data.results !== undefined) ? response.data.results : []
     }
 
     function onRelatedSpecimensLoaded(response) {
