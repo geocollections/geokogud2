@@ -115,6 +115,16 @@ var constructor = function (utils, configuration, $window, $location, $translate
         };
     }
 
+    // Polyfill for endsWith method, issue #138 (IE fix, 30.01.2019)
+    if (!String.prototype.endsWith) {
+        String.prototype.endsWith = function(search, this_len) {
+            if (this_len === undefined || this_len > this.length) {
+                this_len = this.length;
+            }
+            return this.substring(this_len - search.length, this_len) === search;
+        };
+    }
+
     function getDetailUrl (searchType) {
         var url = null;
         switch (searchType) {
