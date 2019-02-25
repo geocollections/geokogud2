@@ -640,7 +640,7 @@
         "DETAIL_DOWNLOAD": "Allalaadimised",
         "DETAIL_RELATIONS": "Seotud isikud ja asutused",
         "DETAIL_IDENTIFIERS": "Seotud identifikaatorid",
-        "DETAIL_GEOLOCATIONS": "Seotud geolokatsioonid",
+        "DETAIL_GEOLOCATIONS": "Seotud kohad",
         "DETAIL_PREVIEW_DATA": "Eelvaate andmed (ainult teksti ja pildi failid)",
         "DETAIL_ATTACHMENT_LINK": "Seotud failid",
         "DETAIL_ANALYSIS_RESULTS": "Analüüside tulemused",
