@@ -372,7 +372,7 @@
             "PREVIEW": "Eelvaade",
             "URL": "URL",
             "DOI": {
-              "HEADING": "Täiendus (DOI)",
+              "HEADING": "Seotud identifikaatorid (DOI)",
               "DOI": "DOI",
               "AUTHOR": "Autor",
               "DATE": "Aeg",
@@ -638,7 +638,7 @@
             "RELATED_IDENTIFIER": "Identifikaator",
             "VALUE": "Väärtus",
             "REMARKS":"Lisainfo",
-            "PLACE": "Nimetatud koht",
+            "PLACE": "Koht",
             "POINT": "Punkt (Laiusk. Pikkusk.)",
             "LOCALITY_DB": "Lokaliteet andmebaasist",
             "DOWNLOAD": "Lae alla",
