@@ -8,16 +8,16 @@
             <div class="col-sm-12">
                 <div class="detailview-title-library">
                     <h3>
-                        {{ 'DETAIL.LIBRARY.TITLE' | translate }}:
+                        {{ 'DETAIL.LIBRARY.TITLE' | translate }}
                     </h3>
                     <h1>
                         <localize et="detailCtrl.results.title" en="detailCtrl.results.title_en"/>
                     </h1>
-                    <h2>
+                    <h3>
                         <span>{{ 'DETAIL.LIBRARY.TITLE_COMPILED' | translate }}:</span>
                         <span>{{detailCtrl.results.author_txt}}</span>
                         <span>({{detailCtrl.results.year}})</span>
-                    </h2>
+                    </h3>
                 </div>
             </div>
         </div>
@@ -61,9 +61,9 @@
                 <div data-ng-if="(detailCtrl.results.abstract && detailCtrl.results.abstract != null)
                             || (detailCtrl.results.abstract_en && detailCtrl.results.abstract_en != null) ">
 
-                    <h2 style="margin-top: 30px">
+                    <h3 style="margin-top: 30px">
                         <b>{{' API_TRANSLATION.LIBRARY.ABSTRACT' | translate }}</b>
-                    </h2>
+                    </h3>
 
                     <div>
                         <p data-ng-if="detailCtrl.service.getCurrentLanguage() === 'et'" ng-bind-html="detailCtrl.results.abstract"></p>
@@ -81,9 +81,9 @@
 
         </div>
 
-        <div class="row" style="margin-top: 30px; padding: 0 25px;" data-ng-if="detailCtrl.referenceCollections.length > 0">
+        <div class="row" style="padding: 0 25px;" data-ng-if="detailCtrl.referenceCollections.length > 0">
             <div class="col-sm-12">
-                <h2> {{ 'DETAIL.LIBRARY.REFERENCE_COLLECTIONS' | translate }} </h2>
+                <h3><b>{{ 'DETAIL.LIBRARY.REFERENCE_COLLECTIONS' | translate }}</b></h3>
 
                 <div data-ng-repeat="entity in detailCtrl.referenceCollections track by $index">
 
