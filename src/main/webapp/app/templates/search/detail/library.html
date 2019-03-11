@@ -49,7 +49,7 @@
                         <span>{{detailCtrl.results.author_txt}}</span>
                         <span>({{ 'DETAIL.LIBRARY.COMPILED' | translate }}.)</span>
                         <span>{{detailCtrl.results.year}}.</span>
-                        <span><localize et="detailCtrl.results.title" en="detailCtrl.results.title_en"/></span>
+                        <span><localize et="detailCtrl.results.title" en="detailCtrl.results.title_en"/>. </span>
                         <span>{{ 'DETAIL.LIBRARY.TITLE_LARGE' | translate }}.</span>
                         <span><a href="{{ getUrlPath() }}" target="_blank">{{ getUrlPath() }}</a>.</span>
                         <span>{{ 'DETAIL.LIBRARY.VISITED' | translate }}:</span>
@@ -149,7 +149,7 @@
                         <span data-ng-if="entity.reference__attachment__filename === null
                             && (entity.reference__url && entity.reference__url !== null)">
                             <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url: entity.reference__url})">
-                                <b style="color: red">PDF</b>
+                                <b style="color: red">URL</b>
                             </a>
                         </span>
                     </div>
