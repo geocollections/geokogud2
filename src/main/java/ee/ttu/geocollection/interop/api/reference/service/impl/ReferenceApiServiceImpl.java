@@ -49,7 +49,8 @@ public class ReferenceApiServiceImpl implements ReferenceApiService {
             "type__value_en",
             "url",
             "attachment__id",
-            "attachment__filename"
+            "attachment__filename",
+            "number"
     );
 
     @Autowired
