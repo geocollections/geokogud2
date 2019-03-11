@@ -7,13 +7,13 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="detailview-title-library">
-                    <h3>
+                    <h4>
                         {{ 'DETAIL.LIBRARY.TITLE' | translate }}
-                    </h3>
+                    </h4>
                     <h1>
                         <localize et="detailCtrl.results.title" en="detailCtrl.results.title_en"/>
                     </h1>
-                    <h3>
+                    <h3 style="margin-top: 10px;">
                         <span>{{ 'DETAIL.LIBRARY.TITLE_COMPILED' | translate }}:</span>
                         <span>{{detailCtrl.results.author_txt}}</span>
                         <span>({{detailCtrl.results.year}})</span>
@@ -49,7 +49,7 @@
                         <span>{{detailCtrl.results.author_txt}}</span>
                         <span>({{ 'DETAIL.LIBRARY.COMPILED' | translate }}.)</span>
                         <span>{{detailCtrl.results.year}}.</span>
-                        <span>{{detailCtrl.results.title}}.</span>
+                        <span><localize et="detailCtrl.results.title" en="detailCtrl.results.title_en"/></span>
                         <span>{{ 'DETAIL.LIBRARY.TITLE_LARGE' | translate }}.</span>
                         <span><a href="{{ getUrlPath() }}" target="_blank">{{ getUrlPath() }}</a>.</span>
                         <span>{{ 'DETAIL.LIBRARY.VISITED' | translate }}:</span>
@@ -127,7 +127,7 @@
                         </span>
                         
                         <span data-ng-if="entity.reference__number && entity.reference__number != null">
-                            <b>{{ entity.reference__number }}</b>,
+                            {{ entity.reference__number }},
                         </span>
                         
                         <span data-ng-if="entity.reference__pages && entity.reference__pages != null">
