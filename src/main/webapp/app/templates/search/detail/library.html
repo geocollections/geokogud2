@@ -8,44 +8,24 @@
             <div class="col-sm-12">
                 <div class="detailview-title-library">
                     <h3>
-                        {{ 'DETAIL.LIBRARY.TITLE' | translate }}:
+                        {{ 'DETAIL.LIBRARY.TITLE' | translate }}
                     </h3>
-                    <h3>
+                    <h1>
                         <localize et="detailCtrl.results.title" en="detailCtrl.results.title_en"/>
-                    </h3>
-                    <h4>
+                    </h1>
+                    <h3>
                         <span>{{ 'DETAIL.LIBRARY.TITLE_COMPILED' | translate }}:</span>
                         <span>{{detailCtrl.results.author_txt}}</span>
                         <span>({{detailCtrl.results.year}})</span>
-                    </h4>
+                    </h3>
                 </div>
             </div>
         </div>
 
 
-        <div class="row">
+        <div class="row" style="padding: 0 25px;">
 
             <div class="col-sm-12">
-
-                <div data-ng-if="(detailCtrl.results.abstract && detailCtrl.results.abstract != null)
-                            || (detailCtrl.results.abstract_en && detailCtrl.results.abstract_en != null) ">
-
-                    <h4 style="margin-top: 20px">
-                        <b>{{' API_TRANSLATION.LIBRARY.ABSTRACT' | translate }}</b>
-                    </h4>
-
-                    <div>
-                        <p data-ng-if="detailCtrl.service.getCurrentLanguage() === 'et'" ng-bind-html="detailCtrl.results.abstract"></p>
-
-                        <p data-ng-if="detailCtrl.service.getCurrentLanguage() === 'en' && detailCtrl.results.abstract_en && detailCtrl.results.abstract_en != null"
-                           ng-bind-html="detailCtrl.results.abstract_en"></p>
-
-                        <p data-ng-if="detailCtrl.service.getCurrentLanguage() === 'en' && detailCtrl.results.abstract_en === null && detailCtrl.results.abstract != null"
-                           ng-bind-html="detailCtrl.results.abstract"></p>
-                    </div>
-
-                </div>
-
 
                 <div>
                     <span data-ng-if="detailCtrl.results.date_added && detailCtrl.results.date_added != null">
@@ -78,17 +58,36 @@
 
                 </div>
 
+                <div data-ng-if="(detailCtrl.results.abstract && detailCtrl.results.abstract != null)
+                            || (detailCtrl.results.abstract_en && detailCtrl.results.abstract_en != null) ">
+
+                    <h3 style="margin-top: 30px">
+                        <b>{{' API_TRANSLATION.LIBRARY.ABSTRACT' | translate }}</b>
+                    </h3>
+
+                    <div>
+                        <p data-ng-if="detailCtrl.service.getCurrentLanguage() === 'et'" ng-bind-html="detailCtrl.results.abstract"></p>
+
+                        <p data-ng-if="detailCtrl.service.getCurrentLanguage() === 'en' && detailCtrl.results.abstract_en && detailCtrl.results.abstract_en != null"
+                           ng-bind-html="detailCtrl.results.abstract_en"></p>
+
+                        <p data-ng-if="detailCtrl.service.getCurrentLanguage() === 'en' && detailCtrl.results.abstract_en === null && detailCtrl.results.abstract != null"
+                           ng-bind-html="detailCtrl.results.abstract"></p>
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
 
-        <div class="row" data-ng-if="detailCtrl.referenceCollections.length > 0">
+        <div class="row" style="padding: 0 25px;" data-ng-if="detailCtrl.referenceCollections.length > 0">
             <div class="col-sm-12">
-                <h3> {{ 'DETAIL.LIBRARY.REFERENCE_COLLECTIONS' | translate }} </h3>
+                <h3><b>{{ 'DETAIL.LIBRARY.REFERENCE_COLLECTIONS' | translate }}</b></h3>
 
                 <div data-ng-repeat="entity in detailCtrl.referenceCollections track by $index">
 
-                    <div style="padding: 5px 0; margin: 5px 0 5px 30px; font-size: 0.9em; border-top: dotted 1.2pt #ccc;">
+                    <div style="padding: 5px 0; margin: 5px 0 5px 30px; font-size: 1em; border-top: dotted 1.2pt #ccc;">
                         <span>
                             <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'reference',id:entity.reference})">
                                 <b style="font-size: 14px">{{$index + 1}}.</b>
@@ -126,7 +125,11 @@
                         <span data-ng-if="entity.reference__volume && entity.reference__volume != null">
                             <b>{{ entity.reference__volume }}</b>,
                         </span>
-
+                        
+                        <span data-ng-if="entity.reference__number && entity.reference__number != null">
+                            <b>{{ entity.reference__number }}</b>,
+                        </span>
+                        
                         <span data-ng-if="entity.reference__pages && entity.reference__pages != null">
                             {{ entity.reference__pages }}.
                         </span>
