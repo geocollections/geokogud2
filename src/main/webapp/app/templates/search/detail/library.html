@@ -7,13 +7,13 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="detailview-title-library">
-                    <h3>
+                    <h4>
                         {{ 'DETAIL.LIBRARY.TITLE' | translate }}
-                    </h3>
+                    </h4>
                     <h1>
                         <localize et="detailCtrl.results.title" en="detailCtrl.results.title_en"/>
                     </h1>
-                    <h3>
+                    <h3 style="margin-top: 20px;">
                         <span>{{ 'DETAIL.LIBRARY.TITLE_COMPILED' | translate }}:</span>
                         <span>{{detailCtrl.results.author_txt}}</span>
                         <span>({{detailCtrl.results.year}})</span>
@@ -49,7 +49,7 @@
                         <span>{{detailCtrl.results.author_txt}}</span>
                         <span>({{ 'DETAIL.LIBRARY.COMPILED' | translate }}.)</span>
                         <span>{{detailCtrl.results.year}}.</span>
-                        <span>{{detailCtrl.results.title}}.</span>
+                        <span><localize et="detailCtrl.results.title" en="detailCtrl.results.title_en"/>. </span>
                         <span>{{ 'DETAIL.LIBRARY.TITLE_LARGE' | translate }}.</span>
                         <span><a href="{{ getUrlPath() }}" target="_blank">{{ getUrlPath() }}</a>.</span>
                         <span>{{ 'DETAIL.LIBRARY.VISITED' | translate }}:</span>
@@ -87,10 +87,10 @@
 
                 <div data-ng-repeat="entity in detailCtrl.referenceCollections track by $index">
 
-                    <div style="padding: 5px 0; margin: 5px 0 5px 30px; font-size: 1em; border-top: dotted 1.2pt #ccc;">
+                    <div style="padding: 8px 0; margin: 5px 0; font-size: 1em; border-top: dotted 1.2pt #ccc;">
                         <span>
                             <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'reference',id:entity.reference})">
-                                <b style="font-size: 14px">{{$index + 1}}.</b>
+                                <b style="font-size: 14px">{{$index +	 1}}.</b>
                             </a>
                         </span>
 
@@ -127,7 +127,7 @@
                         </span>
                         
                         <span data-ng-if="entity.reference__number && entity.reference__number != null">
-                            <b>{{ entity.reference__number }}</b>,
+                            {{ entity.reference__number }},
                         </span>
                         
                         <span data-ng-if="entity.reference__pages && entity.reference__pages != null">
@@ -142,14 +142,14 @@
 
                         <span data-ng-if="entity.reference__attachment__filename && entity.reference__attachment__filename != null">
                             <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.service.getFileLink({filename: entity.reference__attachment__filename})})">
-                                <b style="color: green">PDF</b>
+                                <b style="color: red">PDF</b>
                             </a>
                         </span>
 
                         <span data-ng-if="entity.reference__attachment__filename === null
                             && (entity.reference__url && entity.reference__url !== null)">
                             <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url: entity.reference__url})">
-                                <b style="color: red">PDF</b>
+                                <b style="color: red">URL</b>
                             </a>
                         </span>
                     </div>
