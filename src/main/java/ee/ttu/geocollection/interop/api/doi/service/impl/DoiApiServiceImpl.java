@@ -75,6 +75,7 @@ public class DoiApiServiceImpl implements DoiApiService {
                 .queryAuthor(searchCriteria.getAuthor())
                 .queryAbstract(searchCriteria.getAbstractText())
                 .queryInstitutions(searchCriteria.getDbs())
+                .queryDataciteNotNull()
                 .returnReferenceId()
                 .returnDatasetId()
                 .returnReference()

@@ -469,7 +469,8 @@ angular.module('geoApp')
                 x: '=',
                 y: '=',
                 name: '=',
-                fid: '='
+                fid: '=',
+                country: '='
             },
             restrict: 'AE',
             replace: true,
@@ -524,7 +525,7 @@ angular.module('geoApp')
                 var mapbox = new ol.layer.Tile({
                     title: 'MapBox grayscale',
                     type: 'base',
-                    visible: true,
+                    visible: $scope.country !== 'Estonia',
                     source: new ol.source.XYZ({
                         url: 'https://api.tiles.mapbox.com/v4/mapbox.light/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3V1dG9iaW5lIiwiYSI6ImNpZWlxdXAzcjAwM2Nzd204enJvN2NieXYifQ.tp6-mmPsr95hfIWu3ASz2w'
                     })
@@ -560,10 +561,73 @@ angular.module('geoApp')
                     ]
                 });
 
+                var estonianMaps = new ol.layer.Group({
+                    'title' : 'Estonia',
+                    layers: [
+                        new ol.layer.Tile({
+                            title: 'Maaameti fotokaart',
+                            maxZoom: 18,
+                            minZoom: 6,
+                            type: 'base',
+                            visible: false,
+                            source: new ol.source.XYZ({
+                                url: 'https://tiles.maaamet.ee/tm/tms/1.0.0/foto@GMC/{z}/{x}/{-y}.png&ASUTUS=TALTECH&KESKKOND=LIVE&IS=SARV',
+                                params: {
+                                    attribution: 'Eesti kaardid: <a  href=\'http://www.maaamet.ee/\'>Maa-amet</a>',
+                                    tms: true,
+                                    worldCopyJump: true,
+                                    detectRetina: true,
+                                    zIndex: 1,
+                                    updateWhenIdle: true,
+                                    continuousWorld: true
+                                }
+                            })
+                        }),
+                        new ol.layer.Tile({
+                            title: 'Maaameti kaart',
+                            maxZoom: 18,
+                            minZoom: 6,
+                            type: 'base',
+                            visible: $scope.country === 'Estonia',
+                            source: new ol.source.XYZ({
+                                url: 'https://tiles.maaamet.ee/tm/tms/1.0.0/kaart@GMC/{z}/{x}/{-y}.png&ASUTUS=TALTECH&KESKKOND=LIVE&IS=SARV',
+                                params: {
+                                    attribution: 'Eesti kaardid: <a  href=\'http://www.maaamet.ee/\'>Maa-amet</a>',
+                                    tms: true,
+                                    worldCopyJump: true,
+                                    detectRetina: true,
+                                    zIndex: 1,
+                                    updateWhenIdle: true,
+                                    continuousWorld: true
+                                }
+                            })
+                        }),
+                        new ol.layer.Tile({
+                            title: 'Maaameti hübriidkaart',
+                            maxZoom: 18,
+                            minZoom: 6,
+                            type: 'base',
+                            visible: false,
+                            source: new ol.source.XYZ({
+                                url: 'https://tiles.maaamet.ee/tm/tms/1.0.0/hybriid@GMC/{z}/{x}/{-y}.png&ASUTUS=TALTECH&KESKKOND=LIVE&IS=SARV',
+                                params: {
+                                    attribution: 'Eesti kaardid: <a  href=\'http://www.maaamet.ee/\'>Maa-amet</a>',
+                                    tms: true,
+                                    worldCopyJump: true,
+                                    detectRetina: true,
+                                    zIndex: 2,
+                                    updateWhenIdle: true,
+                                    continuousWorld: true
+                                }
+                            })
+                        }),
+                    ]
+                })
+
                 function init() {
                     olMap = new ol.Map({
                         target: "map",
-                        layers: [basemaps, overlays],
+                        layers: [estonianMaps, basemaps, overlays],
                         controls: ol.control.defaults({
                             attributionOptions: ({
                                 collapsible: true
@@ -705,7 +769,7 @@ angular.module('geoApp')
     function () {
         return {
             scope: {
-                localities: '='
+                localities: '=',
             },
             restrict: 'AE',
             replace: true,
@@ -800,6 +864,69 @@ angular.module('geoApp')
                     ]
                 });
 
+                var estonianMaps = new ol.layer.Group({
+                    'title' : 'Estonia',
+                    layers: [
+                        new ol.layer.Tile({
+                            title: 'Maaameti fotokaart',
+                            maxZoom: 18,
+                            minZoom: 6,
+                            type: 'base',
+                            visible: false,
+                            source: new ol.source.XYZ({
+                                url: 'https://tiles.maaamet.ee/tm/tms/1.0.0/foto@GMC/{z}/{x}/{-y}.png&ASUTUS=TALTECH&KESKKOND=LIVE&IS=SARV',
+                                params: {
+                                    attribution: 'Eesti kaardid: <a  href=\'http://www.maaamet.ee/\'>Maa-amet</a>',
+                                    tms: true,
+                                    worldCopyJump: true,
+                                    detectRetina: true,
+                                    zIndex: 1,
+                                    updateWhenIdle: true,
+                                    continuousWorld: true
+                                }
+                            })
+                        }),
+                        new ol.layer.Tile({
+                            title: 'Maaameti kaart',
+                            maxZoom: 18,
+                            minZoom: 6,
+                            type: 'base',
+                            visible: false,
+                            source: new ol.source.XYZ({
+                                url: 'https://tiles.maaamet.ee/tm/tms/1.0.0/kaart@GMC/{z}/{x}/{-y}.png&ASUTUS=TALTECH&KESKKOND=LIVE&IS=SARV',
+                                params: {
+                                    attribution: 'Eesti kaardid: <a  href=\'http://www.maaamet.ee/\'>Maa-amet</a>',
+                                    tms: true,
+                                    worldCopyJump: true,
+                                    detectRetina: true,
+                                    zIndex: 1,
+                                    updateWhenIdle: true,
+                                    continuousWorld: true
+                                }
+                            })
+                        }),
+                        new ol.layer.Tile({
+                            title: 'Maaameti hübriidkaart',
+                            maxZoom: 18,
+                            minZoom: 6,
+                            type: 'base',
+                            visible: false,
+                            source: new ol.source.XYZ({
+                                url: 'https://tiles.maaamet.ee/tm/tms/1.0.0/hybriid@GMC/{z}/{x}/{-y}.png&ASUTUS=TALTECH&KESKKOND=LIVE&IS=SARV',
+                                params: {
+                                    attribution: 'Eesti kaardid: <a  href=\'http://www.maaamet.ee/\'>Maa-amet</a>',
+                                    tms: true,
+                                    worldCopyJump: true,
+                                    detectRetina: true,
+                                    zIndex: 2,
+                                    updateWhenIdle: true,
+                                    continuousWorld: true
+                                }
+                            })
+                        }),
+                    ]
+                })
+
                 function init() {
 
                     function defaultStyle(feature, resolution) {
@@ -865,7 +992,7 @@ angular.module('geoApp')
                     if (!$scope.olMap) {
                         $scope.olMap = new ol.Map({
                             target: "map",
-                            layers: [basemaps, overlays, currentLocalitiesFromTable],
+                            layers: [estonianMaps, basemaps, overlays, currentLocalitiesFromTable],
                             controls: ol.control.defaults({
                                 attributionOptions: ({
                                     collapsible: true

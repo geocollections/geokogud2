@@ -65,4 +65,9 @@ public class FluentDoiSearchApiBuilder extends FluentSearchApiBuilder<FluentDoiS
         return this;
     }
 
+    public FluentDoiSearchApiBuilder queryDataciteNotNull() {
+        addFieldNameAndValue("datacite_created__isnull", "false");
+        return this;
+    }
+
 }

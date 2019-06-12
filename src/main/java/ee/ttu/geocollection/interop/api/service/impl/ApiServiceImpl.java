@@ -52,7 +52,8 @@ public class ApiServiceImpl implements ApiService {
             url = apiUrl + "/" + tableName + "/" + requestParams;
         } else  if (tableName.equals("drillcore_box") || tableName.equals("specimen_image")) {
             url = apiUrl + "/" + tableName + "/" + requestParams + "?format=json";
-
+        } else if (tableName.equals("doi")) {
+            url = apiUrl + "/" + tableName + "/" + requestParams.charAt(0) + "?datacite_created__isnull=false&" + requestParams.substring(2) + "&format=json";
         } else {
             url = apiUrl + "/" + tableName + "/" + requestParams + "&format=json";
         }

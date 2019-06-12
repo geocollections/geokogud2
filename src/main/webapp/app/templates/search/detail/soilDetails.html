@@ -55,7 +55,7 @@
                     <div id='hoversystem'></div>
                     <div id='hoverstat'></div>
                 </div>
-                <locality-map x = "detailCtrl.locality.latitude" y = "detailCtrl.locality.longitude" name = "detailCtrl.locality.localityEn" fid = "detailCtrl.locality.localityId"></locality-map>
+                <locality-map x = "detailCtrl.locality.latitude" y = "detailCtrl.locality.longitude" name = "detailCtrl.locality.localityEn" fid = "detailCtrl.locality.localityId" country="detailCtrl.results.locality__country__value_en"></locality-map>
                 <a href data-ng-click="detailCtrl.service.showGoogleMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude, detailCtrl.locality.localityEn)">Google Maps</a></span>
                 &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.locality.latitude, detailCtrl.locality.longitude)">Maa-amet / Estonian Land Board</a>
             </div>
