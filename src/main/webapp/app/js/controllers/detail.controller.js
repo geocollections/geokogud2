@@ -21,7 +21,7 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
         vm.detailLoadingHandler.start();
         applicationService.getEntity($stateParams.type, $stateParams.id, onEntityData, onDetailError);
         if (['library'].indexOf($stateParams.type) > -1) {
-            Library.referenceCollections({id: $stateParams.id, orderBy: '-sort'}, onReferenceCollectionsLoaded)
+            Library.referenceCollections({id: $stateParams.id, orderBy: '-sort,reference__author,-reference__year'}, onReferenceCollectionsLoaded)
         }
         if (['localities'].indexOf($stateParams.type) > -1) {
             //    TODO: specimen request with pagination
