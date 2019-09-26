@@ -139,7 +139,7 @@
 
                     <tr data-ng-if="detailCtrl.results.abstract && detailCtrl.results.abstract != null">
                         <td> {{ 'API_TRANSLATION.REFERENCE.ABSTRACT' | translate }} </td>
-                        <td> {{ detailCtrl.results.abstract }} </td>
+                        <td ng-bind-html="detailCtrl.results.abstract"></td>
                     </tr>
 
                 </table>
