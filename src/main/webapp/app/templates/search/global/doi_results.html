@@ -31,7 +31,7 @@
             <tbody>
             <tr data-ng-repeat="entity in response.results">
                 <td data-title="{{ 'SEARCH.DOI.TABLE.DOI' | translate }}">
-                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'doi',id:entity.id})">{{entity.identifier}}</a>
+                    <a href data-ng-click="ctrl.service.openDoiInDoiPortal(entity.id)">{{entity.identifier}}</a>
                 </td>
                 <td data-title="{{ 'SEARCH.DOI.TABLE.AUTHOR' | translate }}">{{entity.creators[0]}}</td>
                 <td data-title="{{ 'SEARCH.DOI.TABLE.YEAR' | translate }}">{{entity.publication_year}}</td>

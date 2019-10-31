@@ -265,7 +265,7 @@
                     <tbody>
                     <tr data-ng-repeat="entity in detailCtrl.allResults">
                         <td>
-                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'doi',id:entity.attach_link__doi__id})">
+                            <a href data-ng-click="detailCtrl.service.openDoiInDoiPortal(entity.attach_link__doi__id)">
                                 {{ entity.attach_link__doi__identifier }}
                             </a>
                         </td>

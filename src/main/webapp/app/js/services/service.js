@@ -35,6 +35,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
     service.getAboutDatabase = getAboutDatabase;
     service.goToExtendedSearch = goToExtendedSearch;
     service.getCurrentLanguage = getCurrentLanguage;
+    service.openDoiInDoiPortal = openDoiInDoiPortal;
 
     service.toggle = function (el,array) {
         utils.toggleInArray(el,array)
@@ -241,6 +242,16 @@ var constructor = function (utils, configuration, $window, $location, $translate
             $window.open('/' + params.object + '/' + params.id, '_self', 'width=' + width + ',height=750,scrollbars, resizable');
         } else {
             $window.open('/' + params.object + '/' + params.id, target, 'width=' + width + ',height=750,scrollbars, resizable');
+        }
+    }
+
+    function openDoiInDoiPortal(doiId) {
+        if (doiId) {
+            $window.open(
+                "https://doi.geocollections.info/10.15152/GEO." + doiId,
+                "DoiWindow",
+                'width=1050,height=750,scrollbars, resizable'
+            )
         }
     }
 
