@@ -27,6 +27,7 @@ var constructor = function (configuration, $translate, $http, applicationService
 
     // Initial value for which year to show
     $scope.yearToShow = 0;
+    $scope.currentYear = new Date().getFullYear();
 
     // Event listener for rootScope. Everytime its state
     // changes successfully then asynLoadData is called
