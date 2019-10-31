@@ -272,21 +272,25 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
      */
     function composeTaxonListInfo(results) {
         var preparationTaxons = [];
-        var numOfSpecimen = sumNumberOfSpecimens(results);
-        var percent = 0;
 
-        angular.forEach(results.preparation_taxa, function(data) {
-            percent = ((data.frequency * 100) / numOfSpecimen).toFixed(1);
-            // console.log(percent);
+        if (results && results.preparation_taxa && Array.isArray(results.preparation_taxa)) {
 
-            preparationTaxons.push({
-                name: data.name,
-                frequency: data.frequency,
-                percent: percent,
-                remarks: data.remarks
+            var numOfSpecimen = sumNumberOfSpecimens(results);
+            var percent = 0;
+
+            angular.forEach(results.preparation_taxa, function(data) {
+                percent = ((data.frequency * 100) / numOfSpecimen).toFixed(1);
+                // console.log(percent);
+
+                preparationTaxons.push({
+                    name: data.name,
+                    frequency: data.frequency,
+                    percent: percent,
+                    remarks: data.remarks
+                });
+
             });
-
-        });
+        }
         return preparationTaxons;
     }
 
