@@ -74,7 +74,7 @@ public class DrillCoreApiServiceImpl implements DrillCoreApiService {
     public Map findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
-//                .relatedData(DRILLCORE_BOX)
+                .relatedData(DRILLCORE_BOX)
                 .relatedData(ATTACHMENT)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
