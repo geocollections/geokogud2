@@ -41,12 +41,12 @@ module.config(function ($translateProvider, $locationProvider) {
 
     // Necessary for app translations
     // console.log(window.navigator.language)
-    if (window.navigator.language === 'et-EE') {
+    if ((window.navigator.languages && window.navigator.languages.includes('et')) || window.navigator.language === 'et-EE') {
         $translateProvider.preferredLanguage('et');
     } else {
         $translateProvider.preferredLanguage('en');
     }
-    $translateProvider.fallbackLanguage('en');
+    $translateProvider.fallbackLanguage('et');
     $translateProvider.useLocalStorage();
     $translateProvider.useSanitizeValueStrategy('escape');
     $translateProvider.forceAsyncReload(true);
