@@ -50,7 +50,7 @@
                 <td data-title="{{ 'SEARCH.SAMPLES.DEPTH_M' | translate }}">{{entity.depth}}</td>
                 <td data-title="">{{entity.depth_interval}}</td>
                 <td data-title="{{ 'SEARCH.SAMPLES.STRATIGRAPHY' | translate }}">
-                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.stratigraphy_id})">
+                    <a href data-ng-click="ctrl.service.openInNewWindow({object:'stratigraphy',id:entity.stratigraphy__id})">
                         <localize en="entity.stratigraphy__stratigraphy_en" et="entity.stratigraphy__stratigraphy"/>
                     </a>
                     <span data-ng-if="entity.stratigraphy__stratigraphy != null && entity.lithostratigraphy__stratigraphy != null">|</span>
