@@ -7,6 +7,9 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
     vm.reload = reload;
     vm.fields = [];  vm.urlsMap = [];
     // vm.isIncludedField = isIncludedField;
+    $scope.isLoggedIn = false;
+    vm.isUserLoggedInToEditPortal = getUserLoggedInState();
+    vm.recordPathname = getRecordPathname();
 
     vm.detailLoadingHandler = bsLoadingOverlayService.createHandler({referenceId: "detailView"});
 
@@ -307,6 +310,44 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
 
         if (idFromUrl > 0 && Number.isInteger(idFromUrl)) {
             $state.go(params.table + '.view', {id:idFromUrl})
+        }
+    }
+
+
+    /**
+     * Checks if user is logged in to edit portal
+     * @returns boolean value
+     */
+    function getUserLoggedInState() {
+        applicationService.getEditPortalLoggedInState(onLoginStateFetched);
+    }
+
+    function onLoginStateFetched(response) {
+        if (response && response.status === 200 && response.data && response.data.results) {
+            $scope.isLoggedIn = response.data.results.success;
+        } else $scope.isLoggedIn = false;
+    }
+
+    /**
+     * Gets record pathname for edit portal
+     * @returns String
+     */
+    function getRecordPathname() {
+        var editUrl = configuration.editPortal;
+        var detailViewPathname = window.location.pathname;
+        var pathnameList = detailViewPathname.split("/");
+
+        if (detailViewPathname.includes("file") || detailViewPathname.includes("specimen_image")) {
+            detailViewPathname = "/attachment/" + pathnameList[pathnameList.length - 1];
+        } else if (detailViewPathname.includes("corebox")) {
+            detailViewPathname = "/drillcore_box/" + pathnameList[pathnameList.length - 1];
+        }
+
+
+        if (typeof detailViewPathname !== "undefined" && detailViewPathname !== null) {
+            return editUrl + detailViewPathname;
+        } else {
+            return editUrl;
         }
     }
 

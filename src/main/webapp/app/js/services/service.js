@@ -91,6 +91,10 @@ var constructor = function (utils, configuration, $window, $location, $translate
     service.autocompleteSearch = function (table, val, searchField) {
         utils.httpGet(configuration.autocompleteUrl, {table: table, term: val, searchField: searchField}, null, null);
     };
+    service.getEditPortalLoggedInState = function (callback) {
+        var url = configuration.editApi + '/is_logged_in/login_state';
+        utils.httpGet(url, null, callback)
+    };
 
     // Polyfill for includes method, issue #138 (IE fix, 24.09.2018)
     if (!String.prototype.includes) {

@@ -247,15 +247,15 @@ module.config(function($stateProvider, $urlRouterProvider) {
         .state('photoArchive', {
             template: '<data-ui-view/>'
     })
-        .state('photoArchive.view', {
-            data: {
-                pageTitle: "Geocollections of Estonia: Photo {{ $stateParams.id }}"
-            },
-            url: "/image/:id",
-            templateUrl: "app/templates/search/detail/photoArchive.html",
-            controller: "DetailController as detailCtrl",
-            params: {type: "photoArchive"}
-    })
+    //     .state('photoArchive.view', {
+    //         data: {
+    //             pageTitle: "Geocollections of Estonia: Photo {{ $stateParams.id }}"
+    //         },
+    //         url: "/image/:id",
+    //         templateUrl: "app/templates/search/detail/photoArchive.html",
+    //         controller: "DetailController as detailCtrl",
+    //         params: {type: "photoArchive"}
+    // })
             // SOIL IS CURRENTLY NOT SUPPORTED
     //     .state('soils', {
     //         url: "/soilsite",

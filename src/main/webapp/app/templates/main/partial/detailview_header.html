@@ -1,4 +1,9 @@
 <nav id="detailview-navbar" class="navbar navbar-default navbar-fixed-top">
+
+    <a id="edit-button" data-ng-if="isLoggedIn" ng-href="{{ detailCtrl.recordPathname }}" title="{{ 'INDEX.EDIT_LINK' | translate }}">
+        <i id="edit-button-icon" class="fa fa-edit fa-2x" ></i>
+    </a>
+
     <div class="container-fluid">
         <div class="navbar-header">
             <a href="/">

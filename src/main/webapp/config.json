@@ -390,6 +390,7 @@
   "egkUrl" : "http://www.egk.ee/",
   "eurocoreUrl" : "https://eurocore.rocks/",
   "balticChitinozoansUrl": "http://chitinozoa.net/",
-  "peatStudiesUrl": "http://turvas.geokogud.info"
-
+  "peatStudiesUrl": "http://turvas.geokogud.info",
+  "editPortal": "https://edit.geocollections.info",
+  "editApi": "https://rwapi.geocollections.info"
 }
