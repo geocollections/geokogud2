@@ -7,8 +7,7 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
     vm.reload = reload;
     vm.fields = [];  vm.urlsMap = [];
     // vm.isIncludedField = isIncludedField;
-    $scope.isLoggedIn = false;
-    vm.isUserLoggedInToEditPortal = getUserLoggedInState();
+    $scope.isLoggedIn = getUserLoggedInState();
     vm.recordPathname = getRecordPathname();
 
     vm.detailLoadingHandler = bsLoadingOverlayService.createHandler({referenceId: "detailView"});
@@ -319,15 +318,10 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
      * @returns boolean value
      */
     function getUserLoggedInState() {
-        var cookies = document.cookie.split(";")
-        console.log(cookies)
-        applicationService.getEditPortalLoggedInState(onLoginStateFetched);
-    }
+        var cookies = document.cookie.split(";");
+        var csrftokenCookie = cookies.find(function(cookie) {return cookie.includes("csrftoken")});
 
-    function onLoginStateFetched(response) {
-        if (response && response.status === 200 && response.data && response.data.results) {
-            $scope.isLoggedIn = response.data.results.success;
-        } else $scope.isLoggedIn = false;
+        return typeof csrftokenCookie !== "undefined" && csrftokenCookie !== null && csrftokenCookie.split("=")[1].length > 0;
     }
 
     /**
