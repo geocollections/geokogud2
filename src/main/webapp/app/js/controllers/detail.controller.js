@@ -53,7 +53,7 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
                 vm.preparationTaxons = (['preparations'].indexOf($stateParams.type) > -1 ? composeTaxonListInfo(vm.relatedData) : []);
             }
 
-            $scope.isLoggedIn = !getUserLoggedInState();
+            $scope.isLoggedIn = getUserLoggedInState();
             if ($scope.isLoggedIn) vm.recordPathname = getRecordPathname();
 
         } else {
