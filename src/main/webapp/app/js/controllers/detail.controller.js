@@ -319,6 +319,8 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
      * @returns boolean value
      */
     function getUserLoggedInState() {
+        var cookies = document.cookie.split(";")
+        console.log(cookies)
         applicationService.getEditPortalLoggedInState(onLoginStateFetched);
     }
 
