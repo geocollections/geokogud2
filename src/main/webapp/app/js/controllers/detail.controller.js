@@ -7,8 +7,6 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
     vm.reload = reload;
     vm.fields = [];  vm.urlsMap = [];
     // vm.isIncludedField = isIncludedField;
-    $scope.isLoggedIn = getUserLoggedInState();
-    vm.recordPathname = getRecordPathname();
 
     vm.detailLoadingHandler = bsLoadingOverlayService.createHandler({referenceId: "detailView"});
 
@@ -54,6 +52,9 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
                 vm.numOfSpecimens = (['preparations'].indexOf($stateParams.type) > -1 ? sumNumberOfSpecimens(vm.relatedData) : []);
                 vm.preparationTaxons = (['preparations'].indexOf($stateParams.type) > -1 ? composeTaxonListInfo(vm.relatedData) : []);
             }
+
+            $scope.isLoggedIn = !getUserLoggedInState();
+            if ($scope.isLoggedIn) vm.recordPathname = getRecordPathname();
 
         } else {
             onDetailError(response);
@@ -331,6 +332,7 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
     function getRecordPathname() {
         var editUrl = configuration.editPortal;
         var detailViewPathname = window.location.pathname;
+        console.log(window.location.pathname)
         var pathnameList = detailViewPathname.split("/");
 
         if (detailViewPathname.includes("file") || detailViewPathname.includes("specimen_image")) {
