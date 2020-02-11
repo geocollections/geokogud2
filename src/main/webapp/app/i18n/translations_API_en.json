@@ -282,7 +282,6 @@
             "LOCALITY__LOCALITY_EN":"Locality"
         },
         "LOCALITY" : {
-            "DETAIL_FORM_NAME" : "",
             "HELP_POPUP": {
                 "HEADING": "SEARCH TIPS:",
                 "PARAGRAPH_ONE": "First select the base table (specimens, samples, localities, references etc);",

@@ -130,8 +130,10 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
         vm.relatedSpecimensCount = response.data.count
         vm.relatedSpecimens = response.data.results
 
-        vm.relatedSpecimenIdentfication = response.data.related_data['specimen_identification']
-        vm.relatedSpecimenIdentficationGeology = response.data.related_data['specimen_identification_geology']
+        if (vm.relatedSpecimensCount > 0) {
+            vm.relatedSpecimenIdentfication = response.data.related_data['specimen_identification'];
+            vm.relatedSpecimenIdentficationGeology = response.data.related_data['specimen_identification_geology']
+        }
     }
 
     function onRelatedSamplesLoaded(response) {
@@ -332,7 +334,6 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
     function getRecordPathname() {
         var editUrl = configuration.editPortal;
         var detailViewPathname = window.location.pathname;
-        console.log(window.location.pathname)
         var pathnameList = detailViewPathname.split("/");
 
         if (detailViewPathname.includes("file") || detailViewPathname.includes("specimen_image")) {
