@@ -349,15 +349,13 @@ var constructor = function ($scope, $state, configuration, ApplicationService) {
                         type: 'base',
                         source: new ol.source.XYZ({
                             url: 'https://tiles.maaamet.ee/tm/tms/1.0.0/foto@GMC/{z}/{x}/{-y}.png&ASUTUS=TALTECH&KESKKOND=LIVE&IS=SARV',
-                            params: {
-                                attribution: 'Eesti kaardid: <a  href=\'http://www.maaamet.ee/\'>Maa-amet</a>',
-                                tms: true,
-                                worldCopyJump: true,
-                                detectRetina: true,
-                                zIndex: 1,
-                                updateWhenIdle: true,
-                                continuousWorld: true
-                            }
+                            attributions: 'Eesti kaardid: <a  href=\'http://www.maaamet.ee/\'>Maa-amet</a>',
+                            tms: true,
+                            worldCopyJump: true,
+                            detectRetina: true,
+                            zIndex: 1,
+                            updateWhenIdle: true,
+                            continuousWorld: true
                         })
                     }),
                     new ol.layer.Tile({
@@ -367,15 +365,13 @@ var constructor = function ($scope, $state, configuration, ApplicationService) {
                         type: 'base',
                         source: new ol.source.XYZ({
                             url: 'https://tiles.maaamet.ee/tm/tms/1.0.0/kaart@GMC/{z}/{x}/{-y}.png&ASUTUS=TALTECH&KESKKOND=LIVE&IS=SARV',
-                            params: {
-                                attribution: 'Eesti kaardid: <a  href=\'http://www.maaamet.ee/\'>Maa-amet</a>',
-                                tms: true,
-                                worldCopyJump: true,
-                                detectRetina: true,
-                                zIndex: 1,
-                                updateWhenIdle: true,
-                                continuousWorld: true
-                            }
+                            attribution: 'Eesti kaardid: <a  href=\'http://www.maaamet.ee/\'>Maa-amet</a>',
+                            tms: true,
+                            worldCopyJump: true,
+                            detectRetina: true,
+                            zIndex: 1,
+                            updateWhenIdle: true,
+                            continuousWorld: true
                         })
                     }),
                     new ol.layer.Tile({
@@ -385,19 +381,17 @@ var constructor = function ($scope, $state, configuration, ApplicationService) {
                         type: 'base',
                         source: new ol.source.XYZ({
                             url: 'https://tiles.maaamet.ee/tm/tms/1.0.0/hybriid@GMC/{z}/{x}/{-y}.png&ASUTUS=TALTECH&KESKKOND=LIVE&IS=SARV',
-                            params: {
-                                attribution: 'Eesti kaardid: <a  href=\'http://www.maaamet.ee/\'>Maa-amet</a>',
-                                tms: true,
-                                worldCopyJump: true,
-                                detectRetina: true,
-                                zIndex: 2,
-                                updateWhenIdle: true,
-                                continuousWorld: true
-                            }
+                            attribution: 'Eesti kaardid: <a  href=\'http://www.maaamet.ee/\'>Maa-amet</a>',
+                            tms: true,
+                            worldCopyJump: true,
+                            detectRetina: true,
+                            zIndex: 2,
+                            updateWhenIdle: true,
+                            continuousWorld: true
                         })
-                    }),
+                    })
                 ]
-            })
+            });
 
             var map = new ol.Map({
                 layers: [basemaps, estonianMaps, overlays, vectors],

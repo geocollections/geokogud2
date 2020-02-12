@@ -216,12 +216,62 @@ var constructor = function (utils, configuration, $window, $location, $translate
         );
     }
 
-    function showEstonianLandBoardMap(lat,lon) {
+    function showEstonianLandBoardMap(lat,lon, name) {
         $window.open(
-            'http://geoportaal.maaamet.ee/url/xgis-latlon.php?lat=' + lat + '&lon=' + lon + '&out=xgis&app_id=UU82',
+            'https://xgis.maaamet.ee/xgis2/page/app/maainfo?punkt=' + geoToLest(lat,lon) + '&moot=300&tooltip=' + name,
             '',
             'width=800,height=600,scrollbars, resizable'
         );
+    }
+
+    /* Code from:  http://www.maaamet.ee/rr/geo-lest/files/geo-lest_function_php.txt */
+    function geoToLest(north, east) {
+        var LAT = north * (Math.PI / 180);
+        var LON = east * (Math.PI / 180);
+        var a = 6378137.0;
+        var F = 298.257222100883;
+        var RF = F;
+        F = 1 / F;
+        var B0 = (57.0 + 31.0 / 60.0 + 3.194148 / 3600.0) * (Math.PI / 180);
+        var L0 = 24.0 * (Math.PI / 180);
+        var FN = 6375000.0;
+        var FE = 500000.0;
+        var B1 = (59.0 + 20.0 / 60.0) * (Math.PI / 180);
+        var B2 = 58.0 * (Math.PI / 180);
+        // let xx = north - FN;
+        // let yy = east - FE;
+        var f1 = 1 / RF;
+        var er = 2.0 * f1 - f1 * f1;
+        var e = Math.sqrt(er);
+        var t1 = Math.sqrt(
+            ((1.0 - Math.sin(B1)) / (1.0 + Math.sin(B1))) *
+            Math.pow((1.0 + e * Math.sin(B1)) / (1.0 - e * Math.sin(B1)), e)
+        );
+        var t2 = Math.sqrt(
+            ((1.0 - Math.sin(B2)) / (1.0 + Math.sin(B2))) *
+            Math.pow((1.0 + e * Math.sin(B2)) / (1.0 - e * Math.sin(B2)), e)
+        );
+        var t0 = Math.sqrt(
+            ((1.0 - Math.sin(B0)) / (1.0 + Math.sin(B0))) *
+            Math.pow((1.0 + e * Math.sin(B0)) / (1.0 - e * Math.sin(B0)), e)
+        );
+        var t = Math.sqrt(
+            ((1.0 - Math.sin(LAT)) / (1.0 + Math.sin(LAT))) *
+            Math.pow((1.0 + e * Math.sin(LAT)) / (1.0 - e * Math.sin(LAT)), e)
+        );
+        var m1 =
+            Math.cos(B1) / Math.pow(1.0 - er * Math.sin(B1) * Math.sin(B1), 0.5);
+        var m2 =
+            Math.cos(B2) / Math.pow(1.0 - er * Math.sin(B2) * Math.sin(B2), 0.5);
+        var n = (Math.log(m1) - Math.log(m2)) / (Math.log(t1) - Math.log(t2));
+        var FF = m1 / (n * Math.pow(t1, n));
+        var p0 = a * FF * Math.pow(t0, n);
+        var FII = n * (LON - L0);
+        var p = a * FF * Math.pow(t, n);
+        n = p0 - p * Math.cos(FII) + FN;
+        e = p * Math.sin(FII) + FE;
+
+        return [n, e];
     }
 
     function openInNewWindow(params) {
