@@ -346,8 +346,9 @@
                     </div>
                     <localities-map localities="detailCtrl.localities"></localities-map>
                     <a href data-ng-click="detailCtrl.service.showGoogleMap(detailCtrl.localities[0].latitude, detailCtrl.localities[0].longitude, detailCtrl.localities[0].localityEng)">Google Maps</a></span>
-                    &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.localities[0].latitude, detailCtrl.localities[0].longitude, detailCtrl.localities[0].localityEng)">{{ 'ESTONIAN_LAND_BOARD' | translate }}</a>
-
+                    <span data-ng-if="detailCtrl.localities[0].isEstonia" >
+                        &ensp;&ensp;|&ensp;&ensp; <a href data-ng-click="detailCtrl.service.showEstonianLandBoardMap(detailCtrl.localities[0].latitude, detailCtrl.localities[0].longitude, detailCtrl.localities[0].localityEng)">{{ 'ESTONIAN_LAND_BOARD' | translate }}</a>
+                    </span>
                 </div>
 
             </div>

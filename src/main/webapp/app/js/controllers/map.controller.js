@@ -350,6 +350,7 @@ var constructor = function ($scope, $state, configuration, ApplicationService) {
                         source: new ol.source.XYZ({
                             url: 'https://tiles.maaamet.ee/tm/tms/1.0.0/foto@GMC/{z}/{x}/{-y}.png&ASUTUS=TALTECH&KESKKOND=LIVE&IS=SARV',
                             attributions: 'Eesti kaardid: <a  href=\'http://www.maaamet.ee/\'>Maa-amet</a>',
+                            attributionsCollapsible: false,
                             tms: true,
                             worldCopyJump: true,
                             detectRetina: true,
@@ -366,6 +367,7 @@ var constructor = function ($scope, $state, configuration, ApplicationService) {
                         source: new ol.source.XYZ({
                             url: 'https://tiles.maaamet.ee/tm/tms/1.0.0/kaart@GMC/{z}/{x}/{-y}.png&ASUTUS=TALTECH&KESKKOND=LIVE&IS=SARV',
                             attributions: 'Eesti kaardid: <a  href=\'http://www.maaamet.ee/\'>Maa-amet</a>',
+                            attributionsCollapsible: false,
                             tms: true,
                             worldCopyJump: true,
                             detectRetina: true,
@@ -382,6 +384,7 @@ var constructor = function ($scope, $state, configuration, ApplicationService) {
                         source: new ol.source.XYZ({
                             url: 'https://tiles.maaamet.ee/tm/tms/1.0.0/hybriid@GMC/{z}/{x}/{-y}.png&ASUTUS=TALTECH&KESKKOND=LIVE&IS=SARV',
                             attributions: 'Eesti kaardid: <a  href=\'http://www.maaamet.ee/\'>Maa-amet</a>',
+                            attributionsCollapsible: false,
                             tms: true,
                             worldCopyJump: true,
                             detectRetina: true,

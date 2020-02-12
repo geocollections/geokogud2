@@ -86,7 +86,8 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
                 localityEng: location.locality__locality_en,
                 localityEt: location.locality__locality,
                 fid: location.locality_id,
-                place: location.place
+                place: location.place,
+                isEstonia: location.locality__country__value_en === "Estonia"
             })
         });
         return localities;
@@ -107,6 +108,7 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
                     localityEt: location.analysis__sample__locality__locality,
                     fid: location.analysis__sample__locality__id,
                     place: location.analysis__sample__locality__country__value_en,
+                    isEstonia: location.analysis__sample__locality__country__value_en === "Estonia"
                 });
             }
         });
@@ -150,7 +152,7 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
         return array.reduce(function (p, c) {
 
             // create an identifying id from the object values
-            var id = [c.latitude, c.longitude, c.localityEng, c.localityEt, c.fid, c.place].join('|');
+            var id = [c.latitude, c.longitude, c.localityEng, c.localityEt, c.fid, c.place, c.isEstonia].join('|');
 
             // if the id is not found in the temp array
             // add the object to the output array
@@ -180,7 +182,8 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
                     longitude: vm.results[localityFields.lon],
                     localityId: vm.results[localityFields.id],
                     localityEn: vm.results[localityFields.value_en],
-                    countryEn: vm.results[localityFields.country]
+                    countryEn: vm.results[localityFields.country],
+                    isEstonia: vm.results['country__value_en'] === "Estonia"
                 };
             }
         }
