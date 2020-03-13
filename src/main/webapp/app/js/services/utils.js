@@ -74,7 +74,7 @@ var constructor = function ($http, $stateParams, $location, configuration) {
             angular.forEach(Object.keys(data), function (attr) {
                 if (attr != 'sortField' && attr != 'dbs' && configuration.urlHelper[currentTable]) {
                     var fieldName = configuration.urlHelper[currentTable].fields[attr];
-                    if (fieldName) url += fieldName + "_1=" + configuration.urlHelper['lookUpType'][data[attr].lookUpType] + "&" + fieldName + "=" + (data[attr].name ? data[attr].name : "") + "&";
+                    if (fieldName) url += fieldName + "_1=" + configuration.urlHelper['lookUpType'][data[attr].lookUpType] + "&" + fieldName + "=" + (data[attr].name ? encodeURIComponent(data[attr].name) : "") + "&";
                 }
             });
             if (url != "") {

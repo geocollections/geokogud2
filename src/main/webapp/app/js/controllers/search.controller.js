@@ -21,7 +21,7 @@ var constructor = function ($scope, $location, $stateParams, configuration, $htt
      * @param result, Success response from server.
      */
     function onSearchData(result) {
-        console.log(result);
+        // console.log(result);
         $scope.totalItems = result.data.count;
 
         if ($scope.totalItems === 0 || $scope.totalItems == null) $scope.noResults = true;
