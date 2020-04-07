@@ -32,7 +32,8 @@ public class FluentPhotoArchiveSearchApiBuilder extends FluentSearchApiBuilder<F
 
     public FluentPhotoArchiveSearchApiBuilder queryKeywords(SearchField keywords) {
 //        buildMultiSearch(keywords, KEYWORDS, DESCRIPTION, OBJECT, PLACE, LOCALITY_LOCALITY_EN, LOCALITY_LOCALITY);
-        buildMultiSearch(keywords, TAGS, IMAGE_DESCRIPTION, IMAGE_OBJECT, IMAGE_PLACE, LOCALITY_LOCALITY_EN, LOCALITY_LOCALITY);
+        buildMultiSearch(keywords, ATTACHMENTKEYWORD__KEYWORD__KEYWORD, TAGS, IMAGE_DESCRIPTION, IMAGE_OBJECT, IMAGE_PLACE, LOCALITY_LOCALITY_EN, LOCALITY_LOCALITY);
+        addFieldNameAndValue("distinct", "true");
         return this;
     }
 

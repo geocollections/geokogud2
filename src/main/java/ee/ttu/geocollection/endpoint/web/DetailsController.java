@@ -261,6 +261,13 @@ public class DetailsController {
                     specimenIdentificationGeology -> () -> specimenApiService.findSpecimenIdentificationGeologies(
                             new SearchField(specimenIdentificationGeology.get("specimen_id").toString(), LookUpType.exact)),
                     specimenId -> receivedSpecimenId -> specimenId.put("specimenIdentificationGeology", receivedSpecimenId));
+
+//            Using related_data instead of this async method
+//            asynchService.doAsynchCallsForEachResult(
+//                    attachment,
+//                    attachmentId -> () -> attachmentApiService.findAttachmentKeyword(
+//                            new SearchField(attachmentId.get("id").toString(), LookUpType.exact)),
+//                    attachmentId -> receivedAttachment -> attachmentId.put("attachmentKeyword", receivedAttachment));
         }
         return attachment;
     }

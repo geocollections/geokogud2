@@ -113,6 +113,7 @@ public class ApiFields {
     public static final String LOCALITY_LOCALITY_EN = "locality__locality_en";
     public static final String DESCRIPTION = "description";
     public static final String IMAGE_DESCRIPTION = "image_description";
+    public static final String ATTACHMENTKEYWORD__KEYWORD__KEYWORD = "attachmentkeyword__keyword__keyword";
     public static final String DATA_ADDED = "date_added";
     public static final String DATA_CHANGED = "date_changed";
     public static final String TYPE_VALUE = "type__value";

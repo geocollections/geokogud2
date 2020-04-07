@@ -1,5 +1,7 @@
 package ee.ttu.geocollection.interop.api.attachment.service.impl;
 
+import ee.ttu.geocollection.domain.SearchField;
+import ee.ttu.geocollection.domain.SortField;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.attachment.service.AttachmentApiService;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
@@ -14,6 +16,7 @@ import java.util.List;
 public class AttachmentApiServiceImpl implements AttachmentApiService {
 
     private static final String ATTACHMENT_TABLE = "attachment";
+    private static final String ATTACHMENT_KEYWORD = "attachment_keyword";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -153,9 +156,18 @@ public class AttachmentApiServiceImpl implements AttachmentApiService {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
                 .returnAllFields(fields)
+                .relatedData(ATTACHMENT_KEYWORD)
                 .buildWithReturningFieldsAndRelatedData();
 //                .buildWithDefaultReturningFields();
         return apiService.searchRawEntities(ATTACHMENT_TABLE, requestParams);
+    }
+
+    @Override
+    public ApiResponse findAttachmentKeyword(SearchField attachmentId) {
+        String requestParams = FluentGeoApiDetailsBuilder.aRequest()
+                .addFieldNameAndValue("attachment", attachmentId.toNotOverridedString(), false)
+                .buildWithDefaultReturningFields();
+        return apiService.searchRawEntities(ATTACHMENT_KEYWORD, 5,1, new SortField(), requestParams);
     }
 
 }

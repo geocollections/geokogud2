@@ -44,4 +44,8 @@ public class SearchField {
     public String toString() {
         return "name=" + name;
     }
+
+    public String toNotOverridedString() {
+        return name;
+    }
 }

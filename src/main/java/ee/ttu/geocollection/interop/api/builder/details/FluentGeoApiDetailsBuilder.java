@@ -85,4 +85,18 @@ public class FluentGeoApiDetailsBuilder {
     private String replaceFirstCharacterWithQuestionMark(String relatedData) {
         return "?" + relatedData.substring(1);
     }
+
+    /**
+     * Custom String field name and value which are used in request URL
+     * @param fieldName Field in API which is given a value
+     * @param value Value which is given to certain field name
+     */
+    public FluentGeoApiDetailsBuilder addFieldNameAndValue(String fieldName, String value, Boolean isFirst) {
+        if (isFirst) {
+            query += "?" + fieldName + "=" + value;
+        } else {
+            query += "&" + fieldName + "=" + value;
+        }
+        return this;
+    }
 }
