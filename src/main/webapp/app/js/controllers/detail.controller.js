@@ -227,6 +227,7 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
             vm.preparation = vm.relatedData["preparation"];
             vm.taxon = vm.relatedData["taxon"];
             vm.attachment = vm.relatedData["attachment"];
+            vm.attachmentKeywords = vm.relatedData["attachment_keyword"];
         }
     }
 

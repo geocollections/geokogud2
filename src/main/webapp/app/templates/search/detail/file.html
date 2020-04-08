@@ -366,6 +366,17 @@
                         <td> {{ detailCtrl.results.tags }} </td>
                     </tr>
 
+                    <tr data-ng-if="detailCtrl.attachmentKeywords != null && detailCtrl.attachmentKeywords.length > 0">
+                        <td>
+                            {{ 'SEARCH.REFERENCES.KEYWORDS' | translate }}
+                        </td>
+                        <td>
+                            <ul style="margin-bottom: 0; padding-inline-start: 20px;" data-ng-repeat="entity in detailCtrl.attachmentKeywords">
+                                <li>{{ entity.keyword__keyword }}</li>
+                            </ul>
+                        </td>
+                    </tr>
+
                     <tr data-ng-if="detailCtrl.results.filename && detailCtrl.results.filename != null">
                         <td> {{ 'API_TRANSLATION.ATTACHMENT.FILENAME' | translate }} </td>
                         <td>

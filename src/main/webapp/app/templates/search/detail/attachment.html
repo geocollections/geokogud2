@@ -127,12 +127,27 @@
                         <td> {{ detailCtrl.results.copyright_agent__agent }} </td>
                     </tr>
 
-                    <!--TODO: licence-->
+                    <tr data-ng-if="detailCtrl.results.licence__licence_en != null">
+                        <td>
+                            <localize-label et="'API_TRANSLATION.DOI.LICENCE__LICENCE_EN'" en="'API_TRANSLATION.DOI.LICENCE__LICENCE_EN'"/>
+                        </td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openUrlInNewWindow({url:detailCtrl.results.licence__licence_url_en})">
+                                <localize et="detailCtrl.results.licence__licence_en" en="detailCtrl.results.licence__licence_en"/>
+                            </a>
+                        </td>
+                    </tr>
 
-                    <!--TODO: record added-->
-
-                    <!--TODO: record changed-->
-
+                    <tr data-ng-if="detailCtrl.attachmentKeywords != null && detailCtrl.attachmentKeywords.length > 0">
+                        <td>
+                            {{ 'SEARCH.REFERENCES.KEYWORDS' | translate }}
+                        </td>
+                        <td>
+                            <ul style="margin-bottom: 0; padding-inline-start: 20px;" data-ng-repeat="entity in detailCtrl.attachmentKeywords">
+                                <li>{{ entity.keyword__keyword }}</li>
+                            </ul>
+                        </td>
+                    </tr>
                 </table>
             </div>
         </div>
