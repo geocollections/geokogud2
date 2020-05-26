@@ -36,6 +36,10 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         $scope.pageSize = $scope.searchParameters.paginateBy; // Essential for pagination
         fixPaginationIfNeeded();
 
+        if ($stateParams.query.includes("-") && !$stateParams.query.includes(" ")) {
+            $stateParams.query = '"' + $stateParams.query + '"';
+        }
+
         // console.log($scope.searchParameters);
 
         GlobalSearchFactory.searchGlobally(
