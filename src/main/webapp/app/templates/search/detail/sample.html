@@ -43,6 +43,16 @@
                         <td> {{ detailCtrl.results.parent_sample }} </td>
                     </tr>
 
+                    <tr data-ng-if="detailCtrl.results.site__name || detailCtrl.results.site__name_en">
+                        <td>
+                            <localize-label et="'API_TRANSLATION.SAMPLE.SITE__NAME'"
+                                            en="'API_TRANSLATION.SAMPLE.SITE__NAME_EN'"/>
+                        </td>
+                        <td>
+                            <localize et="detailCtrl.results.site__name" en="detailCtrl.results.site__name_en"/>
+                        </td>
+                    </tr>
+
                     <tr data-ng-if="(detailCtrl.results.locality__locality && detailCtrl.results.locality__locality != null)
                         || (detailCtrl.results.locality__locality_en && detailCtrl.results.locality__locality_en != null) ">
                         <td>
@@ -242,9 +252,9 @@
                         && (detailCtrl.results.database__name_en && detailCtrl.results.database__name_en != null)">
                         <td> {{ 'API_TRANSLATION.ATTACHMENT.DATABASE' | translate }} </td>
                         <td>
-                            <a href data-ng-click="detailCtrl.service.getAboutDatabase({database: detailCtrl.results.database__acronym})">
+                            <!--<a href data-ng-click="detailCtrl.service.getAboutDatabase({database: detailCtrl.results.database__acronym})">-->
                                 <localize et="detailCtrl.results.database__name" en="detailCtrl.results.database__name_en" />
-                            </a>
+                            <!--</a>-->
                         </td>
                     </tr>
 

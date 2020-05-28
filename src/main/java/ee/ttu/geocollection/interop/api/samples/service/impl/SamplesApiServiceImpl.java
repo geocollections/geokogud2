@@ -79,7 +79,9 @@ public class SamplesApiServiceImpl implements SamplesApiService {
             "palaeontology",
             "analysis",
             "owner__agent",
-            "stratigraphy_free"
+            "stratigraphy_free",
+            "site__name",
+            "site__name_en"
     );
 
     @Autowired
