@@ -114,8 +114,6 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
         });
 
         localities = removeDuplicates(localities);
-
-        console.log(localities)
         return localities
     }
 

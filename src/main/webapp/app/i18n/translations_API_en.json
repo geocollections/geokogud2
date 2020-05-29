@@ -745,8 +745,9 @@
         },
         "DATASET": {
             "ID": "ID",
-            "NAME": "Name",
-            "AUTHOR": "Author",
+            "NAME": "Pealkiri",
+            "AUTHOR": "Corresponding author",
+            "AUTHORS": "Author(s)",
             "DATE": "Date",
             "COPYRIGHT": "Copyright",
             "LICENCE": "Licence",
@@ -776,6 +777,11 @@
                 "STRATIGRAPHY": "Stratigraphy",
                 "LITHOSTRATIGRAPHY": "Lithostratigraphy",
                 "ROCK": "Rock"
+            },
+            "DATA_ANALYSIS": {
+                "HEADING": "Seotud analüüsid ja proovid",
+                "ANALYSIS": "Analysis",
+                "SAMPLE": "Sample"
             }
         },
         "LIBRARY": {

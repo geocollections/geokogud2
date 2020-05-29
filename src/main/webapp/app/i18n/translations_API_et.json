@@ -744,8 +744,9 @@
         },
         "DATASET": {
             "ID": "ID",
-            "NAME": "Nimi",
-            "AUTHOR": "Autor",
+            "NAME": "Pealkiri",
+            "AUTHOR": "Põhiautor",
+            "AUTHORS": "Autor(id)",
             "DATE": "Aeg",
             "COPYRIGHT": "Autoriõigused",
             "LICENCE": "Kasutustingimused",
@@ -775,6 +776,11 @@
                 "STRATIGRAPHY": "Stratigraafia",
                 "LITHOSTRATIGRAPHY": "Litostratigraafia",
                 "ROCK": "Kivim"
+            },
+            "DATA_ANALYSIS": {
+                "HEADING": "Seotud analüüsid ja proovid",
+                "ANALYSIS": "Analüüs",
+                "SAMPLE": "Proov"
             }
         },
         "LIBRARY": {

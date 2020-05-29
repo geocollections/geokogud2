@@ -39,15 +39,14 @@
                         </td>
                     </tr>
 
+                    <tr data-ng-if="detailCtrl.results.owner_txt && detailCtrl.results.owner_txt != null">
+                        <td> {{ 'API_TRANSLATION.DATASET.AUTHORS' | translate }} </td>
+                        <td> {{ detailCtrl.results.owner_txt }} </td>
+                    </tr>
+
                     <tr data-ng-if="detailCtrl.results.owner__agent && detailCtrl.results.owner__agent != null">
                         <td> {{ 'API_TRANSLATION.DATASET.AUTHOR' | translate }} </td>
                         <td> {{ detailCtrl.results.owner__agent }} </td>
-                    </tr>
-
-                    <tr data-ng-if="detailCtrl.results.owner__agent == null &&
-                        (detailCtrl.results.owner_txt && detailCtrl.results.owner_txt != null)">
-                        <td> {{ 'API_TRANSLATION.DATASET.AUTHOR' | translate }} </td>
-                        <td> {{ detailCtrl.results.owner_txt }} </td>
                     </tr>
 
                     <tr data-ng-if="detailCtrl.results.date && detailCtrl.results.date != null">
@@ -188,6 +187,36 @@
 
                 </div>
 
+            </div>
+
+            <!-- Dataset analysis -->
+            <div class="col-sm-6" data-ng-if="detailCtrl.datasetAnalysis.length > 0">
+                <h3>  {{ 'API_TRANSLATION.DATASET.DATA_ANALYSIS.HEADING' | translate }}  </h3>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="styles-for-table-headers">
+                        <tr>
+                            <th> {{ 'API_TRANSLATION.DATASET.DATA_ANALYSIS.ANALYSIS' | translate }} </th>
+                            <th> {{ 'API_TRANSLATION.DATASET.DATA_ANALYSIS.SAMPLE' | translate }} </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="entity in detailCtrl.datasetAnalysis">
+                            <td>
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'analysis', id:entity.analysis})">
+                                    {{ entity.analysis }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'sample', id:entity.analysis__sample__id})">
+                                    <first-not-null values="[entity.analysis__sample__number, entity.analysis__sample__id]" />
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
