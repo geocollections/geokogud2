@@ -26,6 +26,8 @@ public class SamplesApiServiceImpl implements SamplesApiService {
     private static final String ATTACHMENT_LINK = "attachment_link";
     private static final String ANALYSIS_RESULTS = "analysis_results";
     private static final String PREPARATION = "preparation";
+    private static final String DATASET_ANALYSIS = "dataset_analysis";
+    private static final String SAMPLE_REFERENCE = "sample_reference";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -135,6 +137,8 @@ public class SamplesApiServiceImpl implements SamplesApiService {
                 .relatedData(ATTACHMENT_LINK)
                 .relatedData(ANALYSIS_RESULTS)
                 .relatedData(PREPARATION)
+                .relatedData(DATASET_ANALYSIS)
+                .relatedData(SAMPLE_REFERENCE)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.searchRawEntities(SAMPLE_TABLE, requestParams);

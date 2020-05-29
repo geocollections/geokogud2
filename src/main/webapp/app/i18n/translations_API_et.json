@@ -262,6 +262,17 @@
               "STORAGE": "Hoiukoht",
               "REMARKS": "Lisainfo",
               "METHOD": "Metoodika"
+            },
+            "DATASET_ANALYSIS": {
+                "HEADING": "Seotud andmekogumid",
+                "ID": "ID",
+                "AUTHOR": "Põhiautor",
+                "TITLE": "Pealkiri"
+            },
+            "REFERENCE": {
+                "HEADING": "Seotud viited",
+                "ID": "ID",
+                "REFERENCE": "Viide"
             }
         },
         "DRILL_CORE" : {

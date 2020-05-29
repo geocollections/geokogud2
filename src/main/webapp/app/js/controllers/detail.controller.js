@@ -186,7 +186,6 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
                         countryEn: vm.results[localityFields.country],
                         isEstonia: vm.results['country__value_en'] === "Estonia"
                     };
-                    console.log(vm.locality)
                 } else {
                     vm.locality = {
                         latitude: vm.results[localityFields.lat],
@@ -240,6 +239,7 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
             vm.taxon = vm.relatedData["taxon"];
             vm.attachment = vm.relatedData["attachment"];
             vm.attachmentKeywords = vm.relatedData["attachment_keyword"];
+            vm.sampleReference = vm.relatedData["sample_reference"];
         }
     }
 

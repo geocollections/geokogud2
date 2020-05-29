@@ -258,6 +258,17 @@
               "STORAGE": "Storage",
               "REMARKS": "Remarks",
               "METHOD": "Method"
+            },
+            "DATASET_ANALYSIS": {
+                "HEADING": "Related datasets",
+                "ID": "ID",
+                "AUTHOR": "Corresponding author",
+                "TITLE": "Title"
+            },
+            "REFERENCE": {
+                "HEADING": "Related referenecs",
+                "ID": "ID",
+                "REFERENCE": "Reference"
             }
         },
         "DRILL_CORE" : {

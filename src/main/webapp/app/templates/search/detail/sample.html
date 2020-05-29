@@ -446,6 +446,34 @@
 
                 </div>
 
+                <!-- Dataset analysis -->
+                <div data-ng-if="detailCtrl.datasetAnalysis.length > 0">
+                    <h3>  {{ 'API_TRANSLATION.SAMPLE.DATASET_ANALYSIS.HEADING' | translate }}  </h3>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="styles-for-table-headers">
+                            <tr>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.DATASET_ANALYSIS.ID' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.DATASET_ANALYSIS.AUTHOR' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.DATASET_ANALYSIS.TITLE' | translate }} </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="entity in detailCtrl.datasetAnalysis">
+                                <td>
+                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'dataset', id:entity.dataset})">
+                                        {{ entity.dataset }}
+                                    </a>
+                                </td>
+                                <td><first-not-null values="[entity.dataset__owner__agent, entity.dataset__owner_txt]" /></td>
+                                <td><localize et="entity.dataset__name" en="entity.dataset__name_en" /></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
                 <!-- Preparation -->
                 <!-- TODO: Missing some information -->
                 <div data-ng-if="detailCtrl.preparation.length > 0">
@@ -550,7 +578,44 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
 
+                <!-- Related references -->
+                <div data-ng-if="detailCtrl.analysis.length > 0 || detailCtrl.sampleReference.length > 0">
+                    <h3>  {{ 'API_TRANSLATION.SAMPLE.REFERENCE.HEADING' | translate }}  </h3>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="styles-for-table-headers">
+                            <tr>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.REFERENCE.ID' | translate }} </th>
+                                <th> {{ 'API_TRANSLATION.SAMPLE.REFERENCE.REFERENCE' | translate }} </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <div data-ng-if="detailCtrl.analysis.length > 0">
+                                    <tr ng-repeat="entity in detailCtrl.analysis">
+                                        <td data-ng-if="entity.reference">
+                                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'reference', id:entity.reference})">
+                                                {{ entity.reference }}
+                                            </a>
+                                        </td>
+                                        <td data-ng-if="entity.reference">{{ entity.reference__reference }}</td>
+                                    </tr>
+                                </div>
+                                <div data-ng-if="detailCtrl.sampleReference.length > 0">
+                                    <tr ng-repeat="entity in detailCtrl.sampleReference">
+                                        <td>
+                                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'reference', id:entity.reference})">
+                                                {{ entity.reference }}
+                                            </a>
+                                        </td>
+                                        <td>{{ entity.reference__reference }}</td>
+                                    </tr>
+                                </div>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
             </div>
