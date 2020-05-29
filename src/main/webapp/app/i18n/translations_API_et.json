@@ -249,9 +249,10 @@
               "DATE": "Aeg"
             },
             "ANALYSIS_RESULTS": {
-              "VARIABLE": "Muutuja",
-              "VALUE": "Väärtus",
-              "ID": "Analüüsi ID"
+                "VARIABLE": "Parameeter",
+                "VALUE": "Väärtus",
+                "TEXT": "Väärtus",
+                "ID": "Analüüsi ID"
             },
             "PREPARATION": {
               "HEADING": "Mikrofauna preparaadid",

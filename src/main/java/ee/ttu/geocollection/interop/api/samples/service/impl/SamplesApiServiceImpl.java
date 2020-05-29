@@ -81,7 +81,9 @@ public class SamplesApiServiceImpl implements SamplesApiService {
             "owner__agent",
             "stratigraphy_free",
             "site__name",
-            "site__name_en"
+            "site__name_en",
+            "site__latitude",
+            "site__longitude"
     );
 
     @Autowired

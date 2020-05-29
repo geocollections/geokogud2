@@ -245,9 +245,10 @@
               "DATE": "Aeg"
             },
             "ANALYSIS_RESULTS": {
-              "VARIABLE": "Muutuja",
-              "VALUE": "Väärtus",
-              "ID": "Analüüsi ID"
+              "VARIABLE": "Parameter",
+              "VALUE": "Value",
+              "TEXT": "Text",
+              "ID": "Analysis"
             },
             "PREPARATION": {
               "HEADING": "Microfossil preparations",

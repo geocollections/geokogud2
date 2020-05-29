@@ -352,14 +352,22 @@
                             <tr>
                                 <td>{{ 'API_TRANSLATION.SAMPLE.ANALYSIS_RESULTS.VARIABLE' | translate }}</td>
                                 <td>{{ 'API_TRANSLATION.SAMPLE.ANALYSIS_RESULTS.VALUE' | translate }}</td>
-                                <td>{{ 'API_TRANSLATION.SAMPLE.ANALYSIS_RESULTS.VALUE' | translate }}</td>
+                                <td>{{ 'API_TRANSLATION.SAMPLE.ANALYSIS_RESULTS.TEXT' | translate }}</td>
                                 <td>{{ 'API_TRANSLATION.SAMPLE.ANALYSIS_RESULTS.ID' | translate }}</td>
                             </tr>
                             </thead>
 
                             <tbody>
                             <tr data-ng-repeat="entity in detailCtrl.analysisResults | orderBy:'name'">
-                                <td> {{ entity.name }} </td>
+                                <td>
+                                    <div data-ng-if="entity.parameter__parameter_html && entity.unit__value">
+                                        <span ng-bind-html="entity.parameter__parameter_html"></span>
+                                        <span>{{ entity.unit__value }}</span>
+                                    </div>
+                                    <div data-ng-if="!(entity.parameter__parameter_html && entity.unit__value)">
+                                        {{ entity.name }}
+                                    </div>
+                                </td>
 
                                 <td>{{ entity.value }}</td>
 
@@ -409,10 +417,10 @@
                                 <th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_METHOD_DETAILS' | translate }} </th>
                                 <th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_MASS' | translate }} </th>
                                 <th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_DATE' | translate }} </th>
-                                <th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_LAB' | translate }} </th>
-                                <th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_AGENT' | translate }} </th>
-                                <th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_LOCATION' | translate }} </th>
-                                <th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_REMARKS' | translate }} </th>
+                                <!--<th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_LAB' | translate }} </th>-->
+                                <!--<th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_AGENT' | translate }} </th>-->
+                                <!--<th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_LOCATION' | translate }} </th>-->
+                                <!--<th> {{ 'API_TRANSLATION.SAMPLE.ANALYSIS_REMARKS' | translate }} </th>-->
                             </tr>
                             </thead>
                             <tbody>
@@ -427,10 +435,10 @@
                                 <td> {{ entity.mass }} </td>
                                 <td data-ng-if="entity.date && entity.date != null"> {{ entity.date }} </td>
                                 <td data-ng-if="entity.date == null"> {{ entity.date_free }} </td>
-                                <td> {{ entity.lab_txt }} </td>
-                                <td> {{ entity.agent__agent }} </td>
-                                <td> {{ entity.location }} </td>
-                                <td> {{ entity.remarks }} </td>
+                                <!--<td> {{ entity.lab_txt }} </td>-->
+                                <!--<td> {{ entity.agent__agent }} </td>-->
+                                <!--<td> {{ entity.location }} </td>-->
+                                <!--<td> {{ entity.remarks }} </td>-->
                             </tr>
                             </tbody>
                         </table>

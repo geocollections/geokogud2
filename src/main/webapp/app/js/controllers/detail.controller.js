@@ -177,14 +177,26 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
         if ($stateParams.type !== "corebox") {
             var localityFields = configuration.detailFieldsConfig[$stateParams.type].locality;
             if (localityFields) {
-                vm.locality = {
-                    latitude: vm.results[localityFields.lat],
-                    longitude: vm.results[localityFields.lon],
-                    localityId: vm.results[localityFields.id],
-                    localityEn: vm.results[localityFields.value_en],
-                    countryEn: vm.results[localityFields.country],
-                    isEstonia: vm.results['country__value_en'] === "Estonia"
-                };
+                if ($stateParams.type === "samples") {
+                    vm.locality = {
+                        latitude: vm.results[localityFields.lat] ? vm.results[localityFields.lat] : vm.results[localityFields.site_lat],
+                        longitude: vm.results[localityFields.lon] ? vm.results[localityFields.lon] : vm.results[localityFields.site_lon],
+                        localityId: vm.results[localityFields.id],
+                        localityEn: vm.results[localityFields.value_en] ? vm.results[localityFields.value_en] : vm.results[localityFields.site_name_en] ? vm.results[localityFields.site_name_en] : vm.results[localityFields.site_name],
+                        countryEn: vm.results[localityFields.country],
+                        isEstonia: vm.results['country__value_en'] === "Estonia"
+                    };
+                    console.log(vm.locality)
+                } else {
+                    vm.locality = {
+                        latitude: vm.results[localityFields.lat],
+                        longitude: vm.results[localityFields.lon],
+                        localityId: vm.results[localityFields.id],
+                        localityEn: vm.results[localityFields.value_en],
+                        countryEn: vm.results[localityFields.country],
+                        isEstonia: vm.results['country__value_en'] === "Estonia"
+                    };
+                }
             }
         }
     }

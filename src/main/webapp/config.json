@@ -272,7 +272,7 @@
         {"value_et" : "rock",  "value_en" : "rock_en"}
       ],
       "date" : ["date_collected","date_collected_free", "date_added", "date_changed"],
-      "locality" : {"id" : "locality_id", "country" : "locality__country__value_en", "lat" : "locality__latitude", "lon" : "locality__longitude", "value_et" : "locality__locality", "value_en" : "locality__locality_en"},
+      "locality" : {"id" : "locality_id", "country" : "locality__country__value_en", "lat" : "locality__latitude", "lon" : "locality__longitude", "value_et" : "locality__locality", "value_en" : "locality__locality_en", "site_lat":  "site__latitude", "site_lon": "site__longitude", "site_name": "site__name" , "site_name_en": "site__name_en"},
       "ignoreFields" : ["locality_id", "stratigraphy_id"]
     },
     "drillCores" : {
