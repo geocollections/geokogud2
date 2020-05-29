@@ -189,7 +189,11 @@
 
                     <tr data-ng-if="detailCtrl.results.reference">
                         <td> {{'API_TRANSLATION.ANALYSIS.REFERENCE' | translate }}</td>
-                        <td> {{detailCtrl.results.date_added | date:dateFormat}}</td>
+                        <td>
+                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference', id: detailCtrl.results.reference})">
+                                {{ detailCtrl.results.reference__reference }}
+                            </a>
+                        </td>
                     </tr>
 
                     <tr data-ng-if="detailCtrl.results.dataset">
@@ -222,18 +226,26 @@
                 <table class="table table-bordered table-hover">
                     <thead class="styles-for-table-headers">
                         <tr>
-                            <th> {{ 'DETAIL.ANALYSIS.RESULTS_NAME' | translate }} </th>
-                            <th> {{ 'DETAIL.ANALYSIS.RESULTS_VALUE' | translate }} </th>
-                            <th> {{ 'DETAIL.ANALYSIS.RESULTS_VALUE_BIN' | translate }} </th>
-                            <th> {{ 'DETAIL.ANALYSIS.RESULTS_VALUE_TXT' | translate }} </th>
+                            <td>{{ 'API_TRANSLATION.SAMPLE.ANALYSIS_RESULTS.VARIABLE' | translate }}</td>
+                            <td>{{ 'API_TRANSLATION.SAMPLE.ANALYSIS_RESULTS.VALUE' | translate }}</td>
+                            <td>{{ 'API_TRANSLATION.SAMPLE.ANALYSIS_RESULTS.TEXT' | translate }}</td>
+                            <td>{{ 'API_TRANSLATION.SAMPLE.ANALYSIS_RESULTS.VALUE_ERROR' | translate }}</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="entity in detailCtrl.analysisResults | orderBy: '-value'">
-                            <td> {{ entity.name }} </td>
+                            <td>
+                                <div data-ng-if="entity.parameter__parameter_html && entity.unit__value">
+                                    <span ng-bind-html="entity.parameter__parameter_html"></span>
+                                    <span>{{ entity.unit__value }}</span>
+                                </div>
+                                <div data-ng-if="!(entity.parameter__parameter_html && entity.unit__value)">
+                                    {{ entity.name }}
+                                </div>
+                            </td>
                             <td> {{ entity.value }} </td>
-                            <td> {{ entity.value_bin }} </td>
                             <td> {{ entity.value_txt }} </td>
+                            <td> {{ entity.value_error }} </td>
                         </tr>
                     </tbody>
                 </table>

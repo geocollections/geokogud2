@@ -248,7 +248,8 @@
               "VARIABLE": "Parameter",
               "VALUE": "Value",
               "TEXT": "Text",
-              "ID": "Analysis"
+                "VALUE_ERROR": "Error",
+                "ID": "Analysis"
             },
             "PREPARATION": {
               "HEADING": "Microfossil preparations",

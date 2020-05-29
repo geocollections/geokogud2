@@ -251,7 +251,8 @@
             "ANALYSIS_RESULTS": {
                 "VARIABLE": "Parameeter",
                 "VALUE": "Väärtus",
-                "TEXT": "Väärtus",
+                "TEXT": "Tekst",
+                "VALUE_ERROR": "Viga",
                 "ID": "Analüüsi ID"
             },
             "PREPARATION": {
