@@ -238,6 +238,11 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
             vm.attachment = vm.relatedData["attachment"];
             vm.attachmentKeywords = vm.relatedData["attachment_keyword"];
             vm.sampleReference = vm.relatedData["sample_reference"];
+
+            if ($stateParams.type === "samples") {
+                vm.relatedDatasetsFromAnalysis = getUniqueValuesFromObjectArray(vm.datasetAnalysis, "dataset");
+                vm.relatedReferencesFromAnalysis = getUniqueValuesFromObjectArray(vm.analysis, "reference");
+            }
         }
     }
 
@@ -267,6 +272,14 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
      */
     $scope.searchRelatedSpecimens = function () {
         Locality.relatedSpecimens({id: $stateParams.id, paginateBy: '10', page: this.specimenPage}, onRelatedSpecimensLoaded)
+    }
+
+    function getUniqueValuesFromObjectArray(myObjectArray, myValue) {
+        return myObjectArray.filter(function (item, index, arr) {
+            return arr.findIndex(function (arrItem) {
+                return (arrItem[myValue] && (arrItem[myValue] === item[myValue]))
+            }) === index
+        });
     }
 
     /**

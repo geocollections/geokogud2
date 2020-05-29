@@ -19,6 +19,7 @@ public class AnalysesApiServiceImpl implements AnalysesApiService {
     private static final String ANALYSIS = "analysis";
     private static final String ANALYSIS_RESULTS = "analysis_results";
     private static final String ATTACHMENT_LINK = "attachment_link";
+    private static final String DATASET_ANALYSIS = "dataset_analysis";
 
     private List<String> fields = Arrays.asList(
             "id",
@@ -27,6 +28,8 @@ public class AnalysesApiServiceImpl implements AnalysesApiService {
             "method_details",
             "method_details_en",
             "lab",
+            "lab__lab",
+            "lab__lab_en",
             "instrument",
             "instrument_txt",
             "sample",
@@ -58,7 +61,15 @@ public class AnalysesApiServiceImpl implements AnalysesApiService {
             "date_added",
             "date_changed",
             "database__name",
-            "database__name_en"
+            "database__name_en",
+            "instrument__instrument",
+            "instrument__instrument_en",
+            "dataset",
+            "dataset__name",
+            "dataset__name_en",
+            "reference",
+            "reference__reference",
+            "owner__agent"
             );
 
     @Autowired
@@ -101,6 +112,7 @@ public class AnalysesApiServiceImpl implements AnalysesApiService {
                 .id(id)
                 .relatedData(ANALYSIS_RESULTS)
                 .relatedData(ATTACHMENT_LINK)
+                .relatedData(DATASET_ANALYSIS)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
         return apiService.findRawEntity(ANALYSIS, requestParams);

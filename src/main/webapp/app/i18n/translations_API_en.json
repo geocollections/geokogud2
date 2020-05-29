@@ -266,7 +266,7 @@
                 "TITLE": "Title"
             },
             "REFERENCE": {
-                "HEADING": "Related referenecs",
+                "HEADING": "Related references",
                 "ID": "ID",
                 "REFERENCE": "Reference"
             }
@@ -459,11 +459,11 @@
             "ANALYSIS_METHOD__ANALYSIS_METHOD":"Method (ET)",
             "ANALYSIS_METHOD__METHOD_EN":"Method",
             "METHOD_DETAILS":"Method details",
-            "LAB":"Method details",
+            "LAB":"Lab",
             "INSTRUMENT":"Instrument (ET)",
-            "INSTRUMENT_TXT":"Instrument",
+            "INSTRUMENT_TXT":"Instrument txt.",
             "SAMPLE":"Sample ID",
-            "SAMPLE_NUMBER":"Sample #",
+            "SAMPLE_NUMBER":"Sample no.",
             "DATE":"Date",
             "DATE_FREE":"Date",
             "SAMPLE__LOCALITY__LOCALITY":"Locality (ET)",
@@ -479,12 +479,15 @@
             "DATE_ADDED":"Date added",
             "DATE_CHANGED":"Date changed",
             "AGENT__AGENT": "Person/Institution",
-            "DATABASE__NAME": "Owner (institution) (ET)",
-            "DATABASE__NAME_EN": "Owner (institution)",
+            "DATABASE__NAME": "Institution (ET)",
+            "DATABASE__NAME_EN": "Institution",
             "MATERIAL": "Material",
             "LAB_ANALYSIS_NUMBER": "Lab analysis No.",
             "MASS": "Mass",
             "COUNTED_GRAINS": "Counted grains, points etc",
+          "OWNER__AGENT": "Omanik",
+          "DATASET": "Dataset",
+          "REFERENCE": "Reference",
             "ATTACHMENT_LINK": {
                 "TYPE": "Type",
                 "DESCRIPTION": "Description",

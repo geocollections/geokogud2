@@ -447,7 +447,7 @@
                 </div>
 
                 <!-- Dataset analysis -->
-                <div data-ng-if="detailCtrl.datasetAnalysis.length > 0">
+                <div data-ng-if="detailCtrl.relatedDatasetsFromAnalysis.length > 0">
                     <h3>  {{ 'API_TRANSLATION.SAMPLE.DATASET_ANALYSIS.HEADING' | translate }}  </h3>
 
                     <div class="table-responsive">
@@ -460,7 +460,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="entity in detailCtrl.datasetAnalysis">
+                            <tr ng-repeat="entity in detailCtrl.relatedDatasetsFromAnalysis">
                                 <td>
                                     <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'dataset', id:entity.dataset})">
                                         {{ entity.dataset }}
@@ -581,7 +581,7 @@
                 </div>
 
                 <!-- Related references -->
-                <div data-ng-if="detailCtrl.analysis.length > 0 || detailCtrl.sampleReference.length > 0">
+                <div data-ng-if="detailCtrl.relatedReferencesFromAnalysis.length > 0 || detailCtrl.sampleReference.length > 0">
                     <h3>  {{ 'API_TRANSLATION.SAMPLE.REFERENCE.HEADING' | translate }}  </h3>
 
                     <div class="table-responsive">
@@ -593,8 +593,8 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <div data-ng-if="detailCtrl.analysis.length > 0">
-                                    <tr ng-repeat="entity in detailCtrl.analysis">
+                                <div data-ng-if="detailCtrl.relatedReferencesFromAnalysis.length > 0">
+                                    <tr ng-repeat="entity in detailCtrl.relatedReferencesFromAnalysis">
                                         <td data-ng-if="entity.reference">
                                             <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'reference', id:entity.reference})">
                                                 {{ entity.reference }}
