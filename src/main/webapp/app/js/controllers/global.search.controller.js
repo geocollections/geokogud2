@@ -36,7 +36,7 @@ var constructor = function (configuration, $filter, $translate, $http, applicati
         $scope.pageSize = $scope.searchParameters.paginateBy; // Essential for pagination
         fixPaginationIfNeeded();
 
-        if ($stateParams.query.includes("-") && !$stateParams.query.includes(" ")) {
+        if ($stateParams.query.includes("-") && !$stateParams.query.includes(" ") && !($stateParams.query.startsWith('"') && $stateParams.query.endsWith('"'))) {
             $stateParams.query = '"' + $stateParams.query + '"';
         }
 
