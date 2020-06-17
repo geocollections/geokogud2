@@ -128,7 +128,7 @@
             </div>
 
 
-            <div class="col-lg-6 core-box-image" data-ng-if="detailCtrl.results.drillcorebox_image__attachment__uuid_filename != null">
+            <div id="corebox-view-image" class="col-lg-6 core-box-image" data-ng-if="detailCtrl.results.drillcorebox_image__attachment__uuid_filename != null">
                 <a href title="{{detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.drillcorebox_image__attachment__uuid_filename})}}"
                    data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.drillcorebox_image__attachment__uuid_filename})})">
                     <img spinner-load ng-src="{{detailCtrl.service.getFileLink({size: 'small', filename: detailCtrl.results.drillcorebox_image__attachment__uuid_filename})}}">
