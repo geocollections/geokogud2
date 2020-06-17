@@ -810,7 +810,7 @@ table tr > td:first-child {
     text-align: center;
 }
 
-@media (min-width: 576px) {
+@media (max-width: 576px) {
     #drillcore-image-background img {
         max-width: 200px;
     }
