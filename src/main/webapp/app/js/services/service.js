@@ -74,7 +74,10 @@ var constructor = function (utils, configuration, $window, $location, $translate
         // console.log("callback: " + callback);
         var url = getDetailUrl(searchType);
         // console.log("url: " + url);
-        if (id.includes("10.15152/GEO.") || id.includes("10.15152/geo.")) { // If clause for universal DOI identifier
+        if (id.includes("10.23679")) {
+            console.log(url + "/" + id.substring(9))
+            utils.httpGet(url + "/" + id.substring(9), null, callback, error);
+        } else if (id.includes("10.15152/GEO.") || id.includes("10.15152/geo.")) { // If clause for universal DOI identifier
             utils.httpGet(url + "/" + id.substring(13), null, callback, error);
         } else {
             utils.httpGet(url + "/" + id, null, callback, error);
@@ -299,10 +302,10 @@ var constructor = function (utils, configuration, $window, $location, $translate
         }
     }
 
-    function openDoiInDoiPortal(doiId) {
-        if (doiId) {
+    function openDoiInDoiPortal(identifier) {
+        if (identifier) {
             $window.open(
-                "https://doi.geocollections.info/10.15152/GEO." + doiId,
+                "https://doi.geocollections.info/" + identifier,
                 "DoiWindow",
                 'width=1050,height=750,scrollbars, resizable'
             )
