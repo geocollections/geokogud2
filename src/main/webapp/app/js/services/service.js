@@ -394,11 +394,14 @@ var constructor = function (utils, configuration, $window, $location, $translate
     }
 
     service.openInstitutionUrl = function (institution) {
-        if (institution === "TUGO") {
+        if (institution === "GIT" || institution === "TUG" || institution === "ELM") {
+            $window.open($window.location.origin + '/' + institution.toLowerCase(), '', 'width=600,height=750,scrollbars, resizable');
+        } else if (institution === "TUGO") {
             $window.open('https://www.geoloogia.ut.ee/et', '', 'width=600,height=750,scrollbars, resizable');
-        }
-        if (institution === "EGK") {
-            $window.open('http://www.egk.ee/', '', 'width=600,height=750,scrollbars, resizable');
+        } else if (institution === "EGK") {
+            $window.open('https://www.egt.ee/', '', 'width=600,height=750,scrollbars, resizable');
+        } else if (institution === "LGT") {
+            $window.open('https://www.lgt.lt/', '', 'width=600,height=750,scrollbars, resizable');
         }
     };
 
@@ -541,7 +544,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
 
     function getAboutDatabase(params) {
         if (params.database !== null) {
-            $window.open($window.location.origin + '/about_' + params.database.toLowerCase(), '', 'width=600,height=750,scrollbars, resizable')
+            $window.open($window.location.origin + '/' + params.database.toLowerCase(), '', 'width=600,height=750,scrollbars, resizable')
         }
     }
 

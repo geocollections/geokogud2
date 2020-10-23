@@ -406,21 +406,21 @@ module.config(function($stateProvider, $urlRouterProvider) {
             data: {
                 pageTitle: "Geocollections of Estonia: GIT"
             },
-            url: "/about_git",
+            url: "/git",
             templateUrl: "app/templates/main/git.html"
     })
         .state('tug', {
             data: {
                 pageTitle: "Geocollections of Estonia: TUG"
             },
-            url: "/about_tug",
+            url: "/tug",
             templateUrl: "app/templates/main/tug.html"
     })
         .state('elm', {
             data: {
                 pageTitle: "Geocollections of Estonia: ELM"
             },
-            url: "/about_elm",
+            url: "/elm",
             templateUrl: "app/templates/main/elm.html"
     })
         .state('help', {

@@ -41,15 +41,18 @@
                 </td>
 
                 <td data-title="{{ 'SEARCH.DRILL_CORES.TABLE.INSTITUTE' | translate }}">
-                    <a data-ng-if="entity.database__acronym === 'GIT' || entity.database__acronym === 'TUG' || entity.database__acronym === 'ELM'"
-                       class="page-scroll-to-additional" href="/" data-target="#infoCarousel"
-                       data-slide-to="{{ctrl.service.returnInstitutionSlideNumber(entity.database__acronym)}}">
-                        {{entity.database__acronym}}
-                    </a>
-                    <a data-ng-if="entity.database__acronym !== 'GIT' && entity.database__acronym !== 'TUG' && entity.database__acronym !== 'ELM'" href
+<!--                    <a data-ng-if="entity.database__acronym === 'GIT' || entity.database__acronym === 'TUG' || entity.database__acronym === 'ELM'"-->
+<!--                       class="page-scroll-to-additional" href="/" data-target="#infoCarousel"-->
+<!--                       data-slide-to="{{ctrl.service.returnInstitutionSlideNumber(entity.database__acronym)}}">-->
+<!--                        {{entity.database__acronym}}-->
+<!--                    </a>-->
+                    <a data-ng-if="entity.database__acronym === 'GIT' || entity.database__acronym === 'TUG' || entity.database__acronym === 'ELM' || entity.database__acronym === 'TUGO' || entity.database__acronym === 'EGK' || entity.database__acronym === 'LGT'" href
                         data-ng-click="ctrl.service.openInstitutionUrl(entity.database__acronym)">
                         {{entity.database__acronym}}
                     </a>
+                    <div data-ng-if="entity.database__acronym !== 'GIT' && entity.database__acronym !== 'TUG' && entity.database__acronym !== 'ELM' && entity.database__acronym !== 'TUGO' && entity.database__acronym !== 'EGK' && entity.database__acronym !== 'LGT'">
+                        {{ entity.database__acronym }}
+                    </div>
                 </td>
 
                 <td data-title="{{ 'SEARCH.DRILL_CORES.TABLE.STORAGE' | translate }}">
