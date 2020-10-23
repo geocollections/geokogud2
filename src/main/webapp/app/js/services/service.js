@@ -198,15 +198,16 @@ var constructor = function (utils, configuration, $window, $location, $translate
     }
 
     function openDoiInNewWindow(params) {
-        var doi = params.doi;
+        let doi = params.doi;
+        let windowName = "Doi"
         if (doi && doi != null) {
             doi = doi.replace(/\s/g,''); // removes all whitespace
             if (doi.startsWith('http')) {
-                $window.open(doi, '', 'width=600,height=750,scrollbars, resizable');
+                $window.open(doi, windowName, 'width=600,height=750,scrollbars, resizable');
 
             } else {
                 doi = "1" + doi.substring(doi.indexOf("10.")+1); // gets the doi identifier
-                $window.open('https://doi.org/' + doi, '', 'width=600,height=750,scrollbars, resizable');
+                $window.open('https://doi.org/' + doi, windowName, 'width=600,height=750,scrollbars, resizable');
             }
         }
     }
@@ -214,7 +215,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
     function showGoogleMap(lat, lon, localityName) {
         $window.open(
             'http://maps.google.com/?q=' + lat + ',' + lon + ' (' + localityName + ')',
-            '',
+            'GoogleMaps',
             'width=800,height=600,scrollbars, resizable'
         );
     }
@@ -222,7 +223,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
     function showEstonianLandBoardMap(lat,lon, name) {
         $window.open(
             'https://xgis.maaamet.ee/xgis2/page/app/maainfo?punkt=' + geoToLest(lat,lon) + '&moot=300&tooltip=' + name,
-            '',
+            'Maaamet',
             'width=800,height=600,scrollbars, resizable'
         );
     }
@@ -326,7 +327,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
         if (params.target) {
             $window.open(url, params.target);
         } else {
-            $window.open(url, '', 'width=600,height=750,scrollbars, resizable');
+            $window.open(url, 'Url', 'width=600,height=750,scrollbars, resizable');
         }
     }
 
@@ -394,14 +395,16 @@ var constructor = function (utils, configuration, $window, $location, $translate
     }
 
     service.openInstitutionUrl = function (institution) {
+        let windowName = "Institution"
+        let extraOptions = 'width=1000,height=750,scrollbars,resizable'
         if (institution === "GIT" || institution === "TUG" || institution === "ELM") {
-            $window.open($window.location.origin + '/' + institution.toLowerCase(), '', 'width=600,height=750,scrollbars, resizable');
+            $window.open($window.location.origin + '/' + institution.toLowerCase(), windowName, extraOptions);
         } else if (institution === "TUGO") {
-            $window.open('https://www.geoloogia.ut.ee/et', '', 'width=600,height=750,scrollbars, resizable');
+            $window.open('https://www.geoloogia.ut.ee/et', windowName, extraOptions);
         } else if (institution === "EGK") {
-            $window.open('http://www.egk.ee/', '', 'width=600,height=750,scrollbars, resizable');
+            $window.open('http://www.egk.ee/', windowName, extraOptions);
         } else if (institution === "LGT") {
-            $window.open('https://www.lgt.lt/', '', 'width=600,height=750,scrollbars, resizable');
+            $window.open('https://www.lgt.lt/', windowName, extraOptions);
         }
     };
 
@@ -544,7 +547,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
 
     function getAboutDatabase(params) {
         if (params.database !== null) {
-            $window.open($window.location.origin + '/' + params.database.toLowerCase(), '', 'width=600,height=750,scrollbars, resizable')
+            $window.open($window.location.origin + '/' + params.database.toLowerCase(), 'Institution', 'width=600,height=750,scrollbars, resizable')
         }
     }
 

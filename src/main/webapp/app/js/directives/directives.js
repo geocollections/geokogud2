@@ -738,7 +738,7 @@ angular.module('geoApp')
 
                     if (feature) {
                         //window.location = '/locality/' + feature.fid;
-                        if (feature.fid != null) window.open('/locality/' + feature.fid, '', 'width=600,height=750,scrollbars, resizable');
+                        if (feature.fid != null) window.open('/locality/' + feature.fid, 'Locality', 'width=600,height=750,scrollbars, resizable');
                     }
                     else {
                         document.getElementById('hoverbox').style.display = 'none';
@@ -1061,7 +1061,7 @@ angular.module('geoApp')
 
                     if (feature) {
                         //window.location = '/locality/' + feature.fid;
-                        window.open('/locality/' + feature.fid, '', 'width=600,height=750,scrollbars, resizable');
+                        window.open('/locality/' + feature.fid, 'Locality', 'width=600,height=750,scrollbars, resizable');
                     }
                     else {
                         document.getElementById('hoverbox').style.display = 'none';

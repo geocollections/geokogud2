@@ -434,12 +434,12 @@ var constructor = function ($scope, $state, configuration, ApplicationService) {
                     var fid, pikk;
                     if (fid = feature.get('fid')) {
                         //document.getElementById('hoversystem').innerHTML = name;
-                        window.open('/locality/' + fid, '', 'width=1025,height=750,scrollbars, resizable');
+                        window.open('/locality/' + fid, 'Locality', 'width=1025,height=750,scrollbars, resizable');
                     } else if (pikk = feature.get('features').length) {
                         if (pikk == 1) {
                             fid = feature.get('features')[0].get('fid');
                             //document.getElementById('hoversystem').innerHTML = name;
-                            window.open('/locality/' + fid, '', 'width=1025,height=750,scrollbars, resizable');
+                            window.open('/locality/' + fid, 'Locality', 'width=1025,height=750,scrollbars, resizable');
                         }
                     }
                 }
