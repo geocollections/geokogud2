@@ -250,7 +250,7 @@ var constructor = function ($scope, $state, configuration, ApplicationService) {
                 title: 'CartoDB',
                 type: 'base',
                 visible: true,
-                source: new ol.source.OSM({
+                source: new ol.source.CartoDB({
                     url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
                 })
             });
