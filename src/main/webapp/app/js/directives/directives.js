@@ -523,7 +523,7 @@ angular.module('geoApp')
                 });
 
                 var cartoDB = new ol.layer.Tile({
-                    title: 'MapBox grayscale',
+                    title: 'CartoDB',
                     type: 'base',
                     visible: $scope.country !== 'Estonia',
                     source: new ol.source.XYZ({
