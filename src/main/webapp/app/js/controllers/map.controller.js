@@ -347,7 +347,7 @@ var constructor = function ($scope, $state, configuration, ApplicationService) {
                         maxZoom: 18,
                         minZoom: 6,
                         type: 'base',
-                        source: new ol.source.TileWMS({
+                        source: new ol.source.XYZ({
                             url: 'https://tiles.maaamet.ee/tm/tms/1.0.0/foto/{z}/{x}/{y}.png&ASUTUS=TALTECH&KESKKOND=LIVE&IS=SARV',
                             attributions: 'Eesti kaardid: <a  href=\'http://www.maaamet.ee/\'>Maa-amet</a>',
                             attributionsCollapsible: false,
