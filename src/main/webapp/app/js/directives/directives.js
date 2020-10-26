@@ -526,7 +526,7 @@ angular.module('geoApp')
                     title: 'CartoDB',
                     type: 'base',
                     visible: $scope.country !== 'Estonia',
-                    source: new ol.source.XYZ({
+                    source: new ol.source.OSM({
                         url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
                     })
                 });
@@ -826,7 +826,7 @@ angular.module('geoApp')
                     title: 'CartoDB',
                     type: 'base',
                     visible: true,
-                    source: new ol.source.XYZ({
+                    source: new ol.source.OSM({
                         url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
                     })
                 });
