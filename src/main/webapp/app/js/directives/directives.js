@@ -522,12 +522,12 @@ angular.module('geoApp')
                     ]
                 });
 
-                var mapbox = new ol.layer.Tile({
+                var cartoDB = new ol.layer.Tile({
                     title: 'MapBox grayscale',
                     type: 'base',
                     visible: $scope.country !== 'Estonia',
                     source: new ol.source.XYZ({
-                        url: 'https://api.tiles.mapbox.com/v4/mapbox.light/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3V1dG9iaW5lIiwiYSI6ImNpZWlxdXAzcjAwM2Nzd204enJvN2NieXYifQ.tp6-mmPsr95hfIWu3ASz2w'
+                        url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
                     })
                 });
 
@@ -557,7 +557,7 @@ angular.module('geoApp')
                             visible: false,
                             source: new ol.source.OSM()
                         }),
-                        mapbox
+                        cartoDB
                     ]
                 });
 
