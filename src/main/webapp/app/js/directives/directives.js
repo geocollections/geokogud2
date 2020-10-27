@@ -522,15 +522,6 @@ angular.module('geoApp')
                     ]
                 });
 
-                var cartoDB = new ol.layer.Tile({
-                    title: 'CartoDB',
-                    type: 'base',
-                    visible: $scope.country !== 'Estonia',
-                    source: new ol.source.XYZ({
-                        url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
-                    })
-                });
-
                 var basemaps = new ol.layer.Group({
                     'title': 'Base maps',
                     layers: [
@@ -551,11 +542,10 @@ angular.module('geoApp')
                                 layer: 'terrain'
                             })
                         }),
-                        cartoDB,
                         new ol.layer.Tile({
                             title: 'OpenStreetMap',
                             type: 'base',
-                            visible: false,
+                            visible: $scope.country !== 'Estonia',
                             source: new ol.source.OSM()
                         })
                     ]
@@ -822,15 +812,6 @@ angular.module('geoApp')
                     ]
                 });
 
-                var cartoDB = new ol.layer.Tile({
-                    title: 'CartoDB',
-                    type: 'base',
-                    visible: true,
-                    source: new ol.source.OSM({
-                        url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
-                    })
-                });
-
                 var basemaps = new ol.layer.Group({
                     'title': 'Base maps',
                     layers: [
@@ -851,11 +832,10 @@ angular.module('geoApp')
                                 layer: 'terrain'
                             })
                         }),
-                        cartoDB,
                         new ol.layer.Tile({
                             title: 'OpenStreetMap',
                             type: 'base',
-                            visible: false,
+                            visible: true,
                             source: new ol.source.OSM()
                         })
                     ]

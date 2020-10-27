@@ -249,7 +249,7 @@ var constructor = function ($scope, $state, configuration, ApplicationService) {
             var cartoDB = new ol.layer.Tile({
                 title: 'CartoDB',
                 type: 'base',
-                visible: true,
+                visible: false,
                 source: new ol.source.OSM({
                     url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
                 })
@@ -333,7 +333,7 @@ var constructor = function ($scope, $state, configuration, ApplicationService) {
                     new ol.layer.Tile({
                         title: 'OpenStreetMap',
                         type: 'base',
-                        visible: false,
+                        visible: true,
                         source: new ol.source.OSM()
                     })
                 ]
