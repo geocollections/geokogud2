@@ -246,15 +246,6 @@ var constructor = function ($scope, $state, configuration, ApplicationService) {
                 style: styleFunction1
             });
 
-            var cartoDB = new ol.layer.Tile({
-                title: 'CartoDB',
-                type: 'base',
-                visible: false,
-                source: new ol.source.OSM({
-                    url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
-                })
-            });
-
             var vectors = new ol.layer.Group({
                 title: 'Localities',
                 //visible: false,
@@ -329,7 +320,6 @@ var constructor = function ($scope, $state, configuration, ApplicationService) {
                             layer: 'terrain'
                         })
                     }),
-                    cartoDB,
                     new ol.layer.Tile({
                         title: 'OpenStreetMap',
                         type: 'base',
