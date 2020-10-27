@@ -551,13 +551,13 @@ angular.module('geoApp')
                                 layer: 'terrain'
                             })
                         }),
+                        cartoDB,
                         new ol.layer.Tile({
                             title: 'OpenStreetMap',
                             type: 'base',
                             visible: false,
                             source: new ol.source.OSM()
-                        }),
-                        cartoDB
+                        })
                     ]
                 });
 
@@ -851,13 +851,13 @@ angular.module('geoApp')
                                 layer: 'terrain'
                             })
                         }),
+                        cartoDB,
                         new ol.layer.Tile({
                             title: 'OpenStreetMap',
                             type: 'base',
                             visible: false,
                             source: new ol.source.OSM()
-                        }),
-                        cartoDB
+                        })
                     ]
                 });
 
