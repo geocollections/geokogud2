@@ -20,6 +20,7 @@ var constructor = function (configuration, $translate, $http, applicationService
     vm.changeLanguage = changeLanguage;
     vm.isSearch = isSearch;
     vm.isDetailForm = isDetailForm;
+    vm.isInstitutionPage = isInstitutionPage;
     vm.isGlobalSearch = isGlobalSearch;
     vm.switchYear = switchYear;
     vm.isMain = isMain;
@@ -228,6 +229,14 @@ var constructor = function (configuration, $translate, $http, applicationService
      */
     function isDetailForm () {
         return $state.params && $state.params.id;
+    }
+
+    /**
+     * Checks if user is on institution page (git, tug or elm).
+     * @returns boolean value
+     */
+    function isInstitutionPage () {
+        return $state.current.name === 'git' || $state.current.name === 'tug' || $state.current.name === 'elm';
     }
 
     /**

@@ -123,7 +123,7 @@
             </div>
         </form>
 
-        <a href="/" class="page-scroll-to-additional" data-target="#infoCarousel" data-slide-to="7" data-ng-click="main.showGlobalSearchTips()" id="global-show-tips" >
+        <a ng-show="!main.isInstitutionPage()" href="/" class="page-scroll-to-additional" data-target="#infoCarousel" data-slide-to="7" id="global-show-tips" >
             {{ 'GLOBAL_SEARCH_TIPS' | translate }}
         </a>
 
