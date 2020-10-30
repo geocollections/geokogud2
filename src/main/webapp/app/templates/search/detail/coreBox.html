@@ -4,10 +4,7 @@
     <div class="panel-body" data-ng-if="detailCtrl.results != null">
 
         <div class="row">
-            <div class="col-lg-6"
-                 bs-loading-overlay bs-loading-overlay-reference-id="detailView"
-                 bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
-
+            <div id="corebox-view-image" class="col-lg-6 core-box-image" style="margin-bottom: 16px;" data-ng-if="detailCtrl.results.drillcorebox_image__attachment__uuid_filename != null">
                 <div class="detailview-title">
                     <h2>
                         <localize en="detailCtrl.results.drillcore__drillcore_en"
@@ -26,6 +23,32 @@
                         {{ 'DETAIL.NEXT'| translate }}
                     </a>
                 </div>
+
+                <a href title="{{detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.drillcorebox_image__attachment__uuid_filename})}}"
+                   data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.drillcorebox_image__attachment__uuid_filename})})">
+                    <img style="max-width: -webkit-fill-available" spinner-load ng-src="{{detailCtrl.service.getFileLink({size: 'medium', filename: detailCtrl.results.drillcorebox_image__attachment__uuid_filename})}}">
+                </a>
+
+                <div class="photo-author" data-ng-if="detailCtrl.results.attachment__author__agent || detailCtrl.results.attachment__date_created">
+                    {{ 'DETAIL.CORE_BOX.PHOTO' | translate }}:
+                    {{detailCtrl.results.attachment__author__agent}} {{detailCtrl.results.attachment__date_created | date:dateFormat}}
+                </div>
+
+                <div style="margin-top: 4px;">
+                    {{'API_TRANSLATION.PHOTO_ARCHIVE.SIZE ' | translate }}:
+                    <a href="{{detailCtrl.service.getFileLink({size: 'small', filename: detailCtrl.results.drillcorebox_image__attachment__uuid_filename})}}" target="_blank">{{ 'INDEX.SMALL' | translate }}</a>
+                    |
+                    <a href="{{detailCtrl.service.getFileLink({size: 'medium', filename: detailCtrl.results.drillcorebox_image__attachment__uuid_filename})}}" target="_blank">{{ 'INDEX.MEDIUM' | translate }}</a>
+                    |
+                    <a href="{{detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.drillcorebox_image__attachment__uuid_filename})}}" target="_blank">{{ 'INDEX.LARGE' | translate }}</a>
+                    |
+                    <a href="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.drillcorebox_image__attachment__uuid_filename})}}" target="_blank">{{ 'INDEX.ORIGINAL' | translate }}</a>
+                </div>
+            </div>
+
+            <div class="col-lg-6"
+                 bs-loading-overlay bs-loading-overlay-reference-id="detailView"
+                 bs-loading-overlay-template-url="app/templates/main/partial/loading.overlay.html">
 
                 <table class="table table-bordered table-hover table-header-styles">
 
@@ -125,30 +148,6 @@
                     </tbody>
                 </table>
 
-            </div>
-
-
-            <div id="corebox-view-image" class="col-lg-6 core-box-image" data-ng-if="detailCtrl.results.drillcorebox_image__attachment__uuid_filename != null">
-                <a href title="{{detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.drillcorebox_image__attachment__uuid_filename})}}"
-                   data-ng-click="detailCtrl.service.openUrlInNewWindow({url: detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.drillcorebox_image__attachment__uuid_filename})})">
-                    <img spinner-load ng-src="{{detailCtrl.service.getFileLink({size: 'small', filename: detailCtrl.results.drillcorebox_image__attachment__uuid_filename})}}">
-                </a>
-
-                <div class="photo-author">
-                    {{ 'DETAIL.CORE_BOX.PHOTO' | translate }}:
-                    {{detailCtrl.results.attachment__author__agent}} {{detailCtrl.results.attachment__date_created | date:dateFormat}}
-                </div>
-
-                <div>
-                    {{'API_TRANSLATION.PHOTO_ARCHIVE.SIZE ' | translate }}:
-                    <a href="{{detailCtrl.service.getFileLink({size: 'small', filename: detailCtrl.results.drillcorebox_image__attachment__uuid_filename})}}" target="_blank">{{ 'INDEX.SMALL' | translate }}</a>
-                    |
-                    <a href="{{detailCtrl.service.getFileLink({size: 'medium', filename: detailCtrl.results.drillcorebox_image__attachment__uuid_filename})}}" target="_blank">{{ 'INDEX.MEDIUM' | translate }}</a>
-                    |
-                    <a href="{{detailCtrl.service.getFileLink({size: 'large', filename: detailCtrl.results.drillcorebox_image__attachment__uuid_filename})}}" target="_blank">{{ 'INDEX.LARGE' | translate }}</a>
-                    |
-                    <a href="{{detailCtrl.service.getFileLink({filename: detailCtrl.results.drillcorebox_image__attachment__uuid_filename})}}" target="_blank">{{ 'INDEX.ORIGINAL' | translate }}</a>
-                </div>
             </div>
 
             <!-- Related files -->
