@@ -7,3 +7,6 @@ phantomjs/
 out/
 src/main/resources/application.properties
 node_modules/
+gradlew
+gradlew.bat
+gradle/
