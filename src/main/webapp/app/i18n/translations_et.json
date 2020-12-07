@@ -528,6 +528,7 @@
         },
         "DRILLCORE": {
             "DRILLCORE_BOXES": "Puursüdamiku kastid",
+            "DRILLCORE_BOXES_IMAGES": "pilti",
             "BOX_NUMBER": "Kast nr.",
             "SINCE": "Algus (m)",
             "TO": "Lõpp (m)",

@@ -127,8 +127,19 @@ public class DetailsController {
     }
 
     @RequestMapping(value = "/raw-drillcore/{id}")
-    public Map findRawDrillCoreById(@PathVariable Long id) {
-        return drillCoreApiService.findRawById(id);
+    public ApiResponse findRawDrillCoreById(@PathVariable Long id) {
+        ApiResponse drillCore = drillCoreApiService.findRawById(id);
+
+        if (drillCore.getResult() != null) {
+            asynchService.doAsynchCallsForEachResult(
+                    drillCore,
+                    core -> () -> drillCoreApiService.findAttachmentLinks(
+                            new SearchField(core.get("id").toString(), LookUpType.exact)),
+                    core -> receivedAttachmentLink -> core.put("attachmentLinksFound", receivedAttachmentLink)
+            );
+        }
+
+        return drillCore;
     }
 
     @RequestMapping(value = "/raw-corebox/{id}")

@@ -365,5 +365,7 @@ public class ApiFields {
 
 
     public static final String SPECIMEN_IMAGE_ATTACHMENT= "specimen_image_attachment";
+    public static final String DRILLCORE_BOX__DRILLCORE= "drillcore_box__drillcore";
+    public static final String ATTACHMENT__IS_PREFERRED= "attachment__is_preferred";
 
 }

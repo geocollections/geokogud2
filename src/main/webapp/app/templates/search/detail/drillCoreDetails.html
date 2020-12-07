@@ -121,7 +121,7 @@
         <div class="row">
 
             <div class="col-sm-12" data-ng-if="detailCtrl.drillcoreAttachments.length > 0">
-                <h3>{{ 'DETAIL.DRILLCORE.DRILLCORE_BOXES'| translate }}</h3>
+                <h3>{{ 'DETAIL.DRILLCORE.DRILLCORE_BOXES'| translate }} <span style="font-size: 1.5rem;">({{ detailCtrl.drillcoreAttachments.length }} {{ 'DETAIL.DRILLCORE.DRILLCORE_BOXES_IMAGES'| translate }})</span></h3>
 
                 <!-- Depends on box direction -->
                 <table class="table-bordered table-hover"
@@ -179,20 +179,20 @@
                         </td>
                     </tr>
 
-                    <tr data-ng-if="box.filename != null">
+                    <tr data-ng-if="box.attachment__uuid_filename != null">
                         <td id="drillcore-image-background" colspan="2">
                             <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'corebox',id:box.drillcore_box_id})">
-                                <img  data-toggle="tooltip" title="{{ 'DETAIL.DRILLCORE.COREBOX_DETAILS' | translate }}"
-                                      ng-src="{{detailCtrl.service.getFileLink({size: 'small', filename: box.filename})}}" />
+                                <img data-toggle="tooltip" title="{{ 'DETAIL.DRILLCORE.COREBOX_DETAILS' | translate }}"
+                                     ng-src="{{detailCtrl.service.getFileLink({size: 'small', filename: box.attachment__uuid_filename})}}" />
                             </a>
                         </td>
                     </tr>
 
-                    <tr data-ng-if="box.filename != null">
+                    <tr data-ng-if="box.attachment__uuid_filename != null">
                         <td id="core-box-author" colspan="2">
-                            {{ box.author__agent }}
-                            <span data-ng-if="box.author__agent != null && box.date_added != null"> | </span>
-                            {{box.date_added | date:dateFormat}}
+                            {{ box.attachment__author__agent }}
+                            <span data-ng-if="box.attachment__author__agent != null && box.attachment__date_added != null"> | </span>
+                            {{box.attachment__date_added | date:dateFormat}}
                         </td>
                     </tr>
                     </tbody>

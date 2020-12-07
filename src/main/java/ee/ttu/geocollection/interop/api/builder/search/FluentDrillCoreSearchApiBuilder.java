@@ -1,10 +1,16 @@
 package ee.ttu.geocollection.interop.api.builder.search;
 
 import ee.ttu.geocollection.domain.SearchField;
+import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
+
+import java.util.List;
 
 import static ee.ttu.geocollection.interop.api.builder.ApiFields.*;
+import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 public class FluentDrillCoreSearchApiBuilder extends FluentSearchApiBuilder<FluentDrillCoreSearchApiBuilder>{
+
+    private String fields = EMPTY;
 
     public static FluentDrillCoreSearchApiBuilder aRequest() {
         return new FluentDrillCoreSearchApiBuilder();
@@ -58,4 +64,13 @@ public class FluentDrillCoreSearchApiBuilder extends FluentSearchApiBuilder<Flue
         return this;
     }
 
+    public FluentDrillCoreSearchApiBuilder queryDrillcoreId(SearchField drillcoreId) {
+        buildFieldParameters(DRILLCORE_BOX__DRILLCORE, drillcoreId);
+        return this;
+    }
+
+    public FluentDrillCoreSearchApiBuilder queryFields(List<String> fields) {
+        fields.forEach(this::addReturningField);
+        return this;
+    }
 }

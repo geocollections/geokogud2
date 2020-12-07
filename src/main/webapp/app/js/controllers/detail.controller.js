@@ -243,10 +243,13 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
                 vm.relatedDatasetsFromAnalysis = getUniqueValuesFromObjectArray(vm.datasetAnalysis, "dataset");
                 vm.relatedReferencesFromAnalysis = getUniqueValuesFromObjectArray(vm.analysis, "reference");
             }
+        }
 
-            if ($stateParams.type === "drillCores") {
-                vm.drillcoreAttachments = vm.attachment.filter(item => item.is_preferred);
-            }
+        if ($stateParams.type === "drillCores" && vm.results.attachmentLinksFound && vm.results.attachmentLinksFound.results && vm.results.attachmentLinksFound.results.length > 0) {
+            vm.drillcoreAttachments = vm.results.attachmentLinksFound.results.filter(item => item.attachment__is_preferred);
+
+            // If there aren't any preferred images then show non preferred
+            if (vm.drillcoreAttachments.length === 0) vm.drillcoreAttachments = vm.results.attachmentLinksFound.results;
         }
     }
 

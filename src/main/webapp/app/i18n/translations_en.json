@@ -528,6 +528,7 @@
         },
         "DRILLCORE": {
             "DRILLCORE_BOXES": "Drill core boxes",
+            "DRILLCORE_BOXES_IMAGES": "images",
             "BOX_NUMBER": "Box no.",
             "SINCE": "Start (m)",
             "TO": "End (m)",

@@ -1,5 +1,8 @@
 package ee.ttu.geocollection.interop.api.drillCores.service.impl;
 
+import ee.ttu.geocollection.domain.SearchField;
+import ee.ttu.geocollection.domain.SortField;
+import ee.ttu.geocollection.domain.SortingOrder;
 import ee.ttu.geocollection.interop.api.Response.ApiResponse;
 import ee.ttu.geocollection.interop.api.builder.details.FluentGeoApiDetailsBuilder;
 import ee.ttu.geocollection.interop.api.builder.search.FluentDrillCoreSearchApiBuilder;
@@ -19,6 +22,7 @@ public class DrillCoreApiServiceImpl implements DrillCoreApiService {
     private static final String DRILLCORE = "drillcore";
     private static final String DRILLCORE_BOX = "drillcore_box";
     private static final String ATTACHMENT = "attachment";
+    private static final String ATTACHMENT_LINK = "attachment_link";
 
     @Autowired
     private ApiService apiService;
@@ -49,6 +53,24 @@ public class DrillCoreApiServiceImpl implements DrillCoreApiService {
         "direction_lr"
     );
 
+    private List<String> attachmentLinkFields = Arrays.asList(
+        "attachment__uuid_filename",
+        "attachment__author__agent",
+        "attachment__is_preferred",
+        "attachment__author__agent",
+        "attachment__date_added",
+        "drillcore_box__depth_start",
+        "drillcore_box__depth_end",
+        "drillcore_box__number",
+        "drillcore_box__stratigraphy_top",
+        "drillcore_box__stratigraphy_top__stratigraphy",
+        "drillcore_box__stratigraphy_top__stratigraphy_en",
+        "drillcore_box__stratigraphy_base",
+        "drillcore_box__stratigraphy_base__stratigraphy",
+        "drillcore_box__stratigraphy_base__stratigraphy_en",
+        "drillcore_box_id"
+    );
+
     @Override
     public ApiResponse findDrillCore(DrillCoreSearchCriteria searchCriteria)  {
         String requestParams = FluentDrillCoreSearchApiBuilder.aRequest()
@@ -71,13 +93,22 @@ public class DrillCoreApiServiceImpl implements DrillCoreApiService {
     }
 
     @Override
-    public Map findRawById(Long id) {
+    public ApiResponse findAttachmentLinks(SearchField drillcoreId) {
+        String requestParams = FluentDrillCoreSearchApiBuilder.aRequest()
+                .queryDrillcoreId(drillcoreId)
+                .queryFields(attachmentLinkFields)
+                .buildFullQuery();
+        return apiService.searchRawEntities(ATTACHMENT_LINK, 1000, 1, new SortField("drillcore_box__depth_start", SortingOrder.ASCENDING), requestParams);
+    }
+
+    @Override
+    public ApiResponse findRawById(Long id) {
         String requestParams = FluentGeoApiDetailsBuilder.aRequest()
                 .id(id)
 //                .relatedData(DRILLCORE_BOX)
-                .relatedData(ATTACHMENT)
+//                .relatedData(ATTACHMENT)
                 .returnAllFields(fields)
                 .buildWithReturningFieldsAndRelatedData();
-        return apiService.findRawEntity(DRILLCORE, requestParams);
+        return apiService.searchRawEntities(DRILLCORE, requestParams);
     }
 }
