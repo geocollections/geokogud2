@@ -243,6 +243,10 @@ var constructor = function ($scope, $state, $stateParams, $http, applicationServ
                 vm.relatedDatasetsFromAnalysis = getUniqueValuesFromObjectArray(vm.datasetAnalysis, "dataset");
                 vm.relatedReferencesFromAnalysis = getUniqueValuesFromObjectArray(vm.analysis, "reference");
             }
+
+            if ($stateParams.type === "drillCores") {
+                vm.drillcoreAttachments = vm.attachment.filter(item => item.is_preferred);
+            }
         }
     }
 

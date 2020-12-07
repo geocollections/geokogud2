@@ -173,9 +173,9 @@ bootRun {
     systemProperties = System.properties
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.4'
-}
+//task wrapper(type: Wrapper) {
+//    gradleVersion = '4.4'
+//}
 
 test {
      exclude "**/ee/ttu/geocollection/uiTests/*.class"
