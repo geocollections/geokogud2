@@ -7,7 +7,7 @@
     </div>
 
     <div class="col-xs-12 col-sm-4">
-        <div class="card elevation-4" data-ui-sref="references" style="background-image: url(https://files.geocollections.info/img/geocollections-front/reference.jpg)">
+        <div class="card elevation-4" style="background-image: url(https://files.geocollections.info/img/geocollections-front/reference.jpg)" data-ng-click="main.service.openUrlInNewWindow({url: main.configuration.geoloogiaUrl, target: '_blank'})">
             <h3><b>{{ 'SHORTCUT.REFERENCE' | translate }}</b></h3>
         </div>
     </div>
@@ -59,7 +59,7 @@
     </div>
 
     <div class="col-xs-12 col-sm-4">
-        <div class="card elevation-4" style="background-image: url(https://files.geocollections.info/img/geocollections-front/data.jpg);" data-ng-click="main.service.openUrlInNewWindow({url: main.configuration.ermasUrl, target: '_blank'})">
+        <div class="card elevation-4" style="background-image: url(https://files.geocollections.info/img/geocollections-front/data.jpg);" data-ng-click="main.service.openUrlInNewWindow({url: main.configuration.sarvDoi, target: '_blank'})">
             <h3><b>{{ 'SHORTCUT.RESEARCH' | translate }}</b></h3>
         </div>
     </div>

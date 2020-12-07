@@ -412,7 +412,7 @@
                     <tbody>
                     <tr data-ng-repeat="entity in detailCtrl.allResults">
                         <td>
-                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'reference',id:entity.attach_link__reference__id})">
+                            <a href data-ng-click="detailCtrl.service.openReferenceInGeoloogiaPortal(entity.attach_link__reference__id)">
                                 {{ entity.attach_link__reference__reference }}
                             </a>
                         </td>

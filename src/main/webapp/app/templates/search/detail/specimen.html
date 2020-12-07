@@ -308,7 +308,7 @@
                                 </td>
 
                                 <td>
-                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference', id: entity.reference_id})">
+                                    <a href data-ng-click="detailCtrl.service.openReferenceInGeoloogiaPortal(entity.reference_id)">
                                         {{entity.reference__reference}}
                                     </a>
                                 </td>
@@ -380,7 +380,7 @@
                                 </td>
 
                                 <td>
-                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference',id: entity.reference_id})">
+                                    <a href data-ng-click="detailCtrl.service.openReferenceInGeoloogiaPortal(entity.reference_id)">
                                         {{entity.reference__reference}}
                                     </a>
                                 </td>
@@ -410,7 +410,7 @@
                             <tbody>
                             <tr data-ng-repeat="entity in detailCtrl.specimenReference">
                                 <td>
-                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'reference',id:entity.reference_id})">{{entity.reference__reference}}</a>
+                                    <a href data-ng-click="detailCtrl.service.openReferenceInGeoloogiaPortal(entity.reference_id)">{{entity.reference__reference}}</a>
                                 </td>
                                 <td>{{entity.pages}}</td>
                                 <td>{{entity.figures}}</td>

@@ -280,7 +280,7 @@
                                     {{ entity.depth_top }}<span ng-show="entity.depth_base != null && entity.depth_top != null">..</span>{{entity.depth_base }}
                                 </td>
                                 <td>
-                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference', id: entity.reference__id})">
+                                    <a href data-ng-click="detailCtrl.service.openReferenceInGeoloogiaPortal(entity.reference__id)">
                                         {{ entity.reference__reference }}
                                     </a>
                                 </td>
@@ -574,7 +574,7 @@
                         <tbody>
                         <tr data-ng-repeat="entity in detailCtrl.localityReferences">
                             <td>
-                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference', id: entity.reference_id})">{{entity.reference__reference}}</a>
+                                <a href data-ng-click="detailCtrl.service.openReferenceInGeoloogiaPortal(entity.reference_id)">{{entity.reference__reference}}</a>
                             <td>{{ entity.pages }}</td>
                             <td>{{ entity.figures }}</td>
                             <td>{{ entity.remarks }}</td>

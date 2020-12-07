@@ -152,7 +152,7 @@
                             <tr data-ng-repeat="entity in detailCtrl.datasetReference">
                                 <td data-ng-if="(entity.reference__id && entity.reference__id != null)
                                         && entity.reference__reference && entity.reference__reference != null">
-                                    <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference', id: entity.reference__id})">
+                                    <a href data-ng-click="detailCtrl.service.openReferenceInGeoloogiaPortal(entity.reference__id)">
                                         {{ entity.reference__reference }}
                                     </a>
                                 </td>

@@ -596,7 +596,7 @@
                                 <div data-ng-if="detailCtrl.relatedReferencesFromAnalysis.length > 0">
                                     <tr ng-repeat="entity in detailCtrl.relatedReferencesFromAnalysis">
                                         <td data-ng-if="entity.reference">
-                                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'reference', id:entity.reference})">
+                                            <a href data-ng-click="detailCtrl.service.openReferenceInGeoloogiaPortal(entity.reference)">
                                                 {{ entity.reference }}
                                             </a>
                                         </td>
@@ -606,7 +606,7 @@
                                 <div data-ng-if="detailCtrl.sampleReference.length > 0">
                                     <tr ng-repeat="entity in detailCtrl.sampleReference">
                                         <td>
-                                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object:'reference', id:entity.reference})">
+                                            <a href data-ng-click="detailCtrl.service.openReferenceInGeoloogiaPortal(entity.reference)">
                                                 {{ entity.reference }}
                                             </a>
                                         </td>

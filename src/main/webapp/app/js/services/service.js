@@ -36,6 +36,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
     service.goToExtendedSearch = goToExtendedSearch;
     service.getCurrentLanguage = getCurrentLanguage;
     service.openDoiInDoiPortal = openDoiInDoiPortal;
+    service.openReferenceInGeoloogiaPortal = openReferenceInGeoloogiaPortal;
 
     service.toggle = function (el,array) {
         utils.toggleInArray(el,array)
@@ -308,6 +309,17 @@ var constructor = function (utils, configuration, $window, $location, $translate
             $window.open(
                 "https://doi.geocollections.info/" + identifier,
                 "DoiWindow",
+                'width=1050,height=750,scrollbars, resizable'
+            )
+        }
+    }
+
+    function openReferenceInGeoloogiaPortal(id) {
+        console.log(id)
+        if (id) {
+            $window.open(
+                "https://geoloogia.info/reference/" + id,
+                "ReferenceWindow",
                 'width=1050,height=750,scrollbars, resizable'
             )
         }

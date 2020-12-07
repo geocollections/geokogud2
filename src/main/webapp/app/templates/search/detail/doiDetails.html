@@ -184,7 +184,7 @@
                         <tr data-ng-if="detailCtrl.results.reference__reference && detailCtrl.results.reference__reference != null">
                             <td> {{ 'API_TRANSLATION.DOI.RELATED_REFERENCE' | translate }} </td>
                             <td>
-                                <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference', id: detailCtrl.results.reference_id})"
+                                <a href data-ng-click="detailCtrl.service.openReferenceInGeoloogiaPortal(detailCtrl.results.reference_id)"
                                    data-ng-if="detailCtrl.results.reference_id && detailCtrl.results.reference_id != null">
                                     {{ detailCtrl.results.reference__reference }}
                                 </a>

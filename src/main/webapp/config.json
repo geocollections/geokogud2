@@ -393,5 +393,7 @@
   "balticChitinozoansUrl": "http://chitinozoa.net/",
   "peatStudiesUrl": "http://turvas.geokogud.info",
   "editPortal": "https://edit.geocollections.info",
-  "editApi": "https://rwapi.geocollections.info"
+  "editApi": "https://rwapi.geocollections.info",
+  "sarvDoi": "https://doi.geocollections.info",
+  "geoloogiaUrl": "https://geoloogia.info"
 }

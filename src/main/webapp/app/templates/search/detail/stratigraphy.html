@@ -179,7 +179,7 @@
                         <td> {{ 'API_TRANSLATION.STRATIGRAPHY.AGE_REFERENCE__REFERENCE ' | translate }} </td>
                         <td>
                             <a href data-ng-if="detailCtrl.results.age_reference__id != null"
-                               data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference', id: detailCtrl.results.age_reference__id})">
+                               data-ng-click="detailCtrl.service.openReferenceInGeoloogiaPortal(detailCtrl.results.age_reference__id)">
                                 {{ detailCtrl.results.age_reference__reference }}
                             </a>
                         </td>
@@ -280,7 +280,7 @@
                     <tbody>
                     <tr data-ng-repeat="entity in detailCtrl.stratigraphyReference">
                         <td>
-                            <a href data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference', id: entity.reference_id})">
+                            <a href data-ng-click="detailCtrl.service.openReferenceInGeoloogiaPortal(entity.reference_id)">
                                 {{ entity.reference__reference }}
                             </a>
                         </td>
@@ -323,7 +323,7 @@
                                 <td ng-if="entity.depth_top === null && entity.depth_base === null"></td>
                                 <td>
                                     <a href data-ng-if="entity.reference__id !== null"
-                                       data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference', id: entity.reference__id})">
+                                       data-ng-click="detailCtrl.service.openReferenceInGeoloogiaPortal(entity.reference__id)">
                                         {{ entity.reference__reference }}
                                     </a>
                                 </td>
@@ -353,7 +353,7 @@
                                 <td><localize et="entity.language__value" en="entity.language__value_en"/></td>
                                 <td>
                                     <a href data-ng-if="entity.reference__id !== null"
-                                       data-ng-click="detailCtrl.service.openInNewWindow({object: 'reference', id: entity.reference__id})">
+                                       data-ng-click="detailCtrl.service.openReferenceInGeoloogiaPortal(entity.reference__id)">
                                         {{ entity.reference__reference }}
                                     </a>
                                 </td>
