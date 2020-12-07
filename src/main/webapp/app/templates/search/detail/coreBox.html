@@ -286,7 +286,10 @@
 
                             <td><first-not-null values="[sample.agent_collected__agent, sample.agent_collected_free]" /></td>
 
-                            <td>{{ sample.date_added | date:dateFormat }}</td>
+                            <td>
+                                <div data-ng-if="sample.date_collected != null">{{ sample.date_collected | date:dateFormat }}</div>
+                                <div data-ng-if="sample.date_collected == null && sample.date_collected_free != null">{{ sample.date_collected_free }}</div>
+                            </td>
 
                             <td>
                                 <localize en="sample.sample_purpose__value_en" et="sample.sample_purpose__value" />
