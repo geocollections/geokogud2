@@ -318,7 +318,7 @@ var constructor = function (utils, configuration, $window, $location, $translate
         console.log(id)
         if (id) {
             $window.open(
-                "https://geoloogia.info/reference/" + id,
+                "https://kirjandus.geoloogia.info/reference/" + id,
                 "ReferenceWindow",
                 'width=1050,height=750,scrollbars, resizable'
             )
